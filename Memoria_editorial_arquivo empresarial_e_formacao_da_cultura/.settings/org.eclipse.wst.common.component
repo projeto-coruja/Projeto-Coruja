@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="Memoria_editorial_arquivo empresarial_e_formacao_da_cultura">
-        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/JavaSource"/>
-        <property name="context-root" value="Memoria_editorial_arquivo_empresarial_e_formacao_da_cultura"/>
-        <property name="java-output-path" value="/Memoria_editorial_arquivo empresarial_e_formacao_da_cultura/WebContent/WEB-INF/classes"/>
-    </wb-module>
-</project-modules>
