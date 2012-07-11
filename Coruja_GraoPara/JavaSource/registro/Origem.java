@@ -35,12 +35,12 @@ public class Origem {
 		this.tipoOrigem = tipoOrigem;
 	}
 
-	public String getNumOrigem() {
+	public String getCodOrigem() {
 		return codOrigem;
 	}
 
-	public void setNumOrigem(String numOrigem) {
-		this.codOrigem = numOrigem;
+	public void setCodOrigem(String codOrigem) {
+		this.codOrigem = codOrigem;
 	}
 
 	public String getTitulo() {

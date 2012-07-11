@@ -16,7 +16,6 @@ public class IdNumDocumento {
 	@Column(name = "tipoId")
 	private String tipoId;
 	
-
 	//Respectivo código alfanumérico APEP ou sequencial
 	@Id
 	@Column(name = "codId")
@@ -30,12 +29,12 @@ public class IdNumDocumento {
 		this.tipoId = tipoId;
 	}
 
-	public String getCodOrigem() {
+	public String getCodId() {
 		return codId;
 	}
 
-	public void setCodOrigem(String codOrigem) {
-		this.codId = codOrigem;
+	public void setCodOrigem(String codId) {
+		this.codId = codId;
 	}
 	
 
