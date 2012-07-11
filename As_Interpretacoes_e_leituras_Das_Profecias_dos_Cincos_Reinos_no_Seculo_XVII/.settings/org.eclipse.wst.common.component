@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="As_Interpretacoes_e_leituras_Das_Profecias_dos_Cincos_Reinos_no_Seculo_XVII">
-        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/JavaSource"/>
-        <property name="context-root" value="As_Interpretacoes_e_leituras_Das_Profecias_dos_Cincos_Reinos_no_Seculo_XVII"/>
-        <property name="java-output-path" value="/As_Interpretacoes_e_leituras_Das_Profecias_dos_Cincos_Reinos_no_Seculo_XVII/WebContent/WEB-INF/classes"/>
-    </wb-module>
-</project-modules>
