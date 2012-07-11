@@ -42,5 +42,8 @@ public class Documentos {
 	@Column(name = "resumo", length = 2048)
 	private String resumo;
 	
+	@NotNull
+	@Column(name = "data", referencedColumnName )
+	
 
 }
