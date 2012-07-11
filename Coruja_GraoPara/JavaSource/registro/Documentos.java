@@ -43,7 +43,7 @@ public class Documentos {
 	private String resumo;
 	
 	@NotNull
-	@Column(name = "data", referencedColumnName )
+	@Column(name = "data")
+	private java.util.Date data;
 	
-
 }
