@@ -12,7 +12,7 @@ public class PasswordTest {
 	@Test
 	public void testGetHash01() {
 		String s3 = Password.getHash("ab12#$%@,fasfk13t");
-		assertTrue("ok", !s1.equals(s3));
+		assertTrue("fail", !s1.equals(s3));
 	}
 	
 	@Test
@@ -25,6 +25,7 @@ public class PasswordTest {
 	public void testGetHash03() {
 		String s3 = Password.getHash("ab12#$%@,fasfk13t"); 
 		assertEquals(s2, s3);
+		
 	}
 
 }
