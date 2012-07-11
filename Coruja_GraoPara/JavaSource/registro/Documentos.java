@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -11,12 +13,14 @@ import javax.validation.constraints.NotNull;
 @Table(name = "Documentos")
 public class Documentos {
 	
+	@ManyToOne
 	@JoinColumns({
 		@JoinColumn(name = "tipoOrigem", referencedColumnName = "tipoOrigem"),
 		@JoinColumn(name = "numOrigem", referencedColumnName = "numOrigem")
 	})
 	private Origem origemDocumento;
 	
+	@ManyToOne
 	@JoinColumns({
 		@JoinColumn(name = "tipoId", referencedColumnName = "tipoId"),
 		@JoinColumn(name = "codId", referencedColumnName = "codId")
@@ -42,5 +46,8 @@ public class Documentos {
 	@NotNull
 	@Column(name = "data")
 	private java.util.Date data;
+	
+	@OneToMany
+	private PalavraChave[] palChaves = new PalavraChave[3];
 	
 }
