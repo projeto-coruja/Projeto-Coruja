@@ -14,12 +14,12 @@ public class Origem {
 	
 	//Indica se é CAIXA ou CODICE, por favor só utilizar esses valores
 	@NotNull
-	@Column(name = "tipoOrigem")
+	@Column(name = "tipo_Origem")
 	private String tipoOrigem;
 	
 	//Código alfanumérico da respectiva caixa ou códice
 	@Id
-	@Column(name = "codOrigem")
+	@Column(name = "cod_Origem")
 	private String codOrigem;
 	
 	//Título do códice

@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
 //Define informações sobre os tipos de documentos cadastros
 
 @Entity
-@Table(name="Documentos")
+@Table(name="Tipo_Documento")
 public class TipoDocumento {
 	
 	//Define identificação de uso interno
@@ -20,7 +20,7 @@ public class TipoDocumento {
 	
 	//Define tipo de documento
 	@NotNull
-	@Column(name = "tipoDeDocumento", unique = true)
+	@Column(name = "tipo_De_Documento", unique = true)
 	private String tipoDeDocumento;
 	
 	public Integer getId() {

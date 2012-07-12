@@ -1,5 +1,7 @@
 package registro;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -8,17 +10,20 @@ import javax.persistence.Table;
 //Determina informações sobre a numeração do documento
 
 @Entity
-@Table(name = "IdNumDocumento")
-public class IdNumDocumento {
+@Table(name = "Id_Num_Documento")
+public class IdNumDocumento implements Serializable{
 	
+	//Precisa ser serializável, então precisa ter
+	private static final long serialVersionUID = 1L;
+
 	//Indica se é APEP ou SEQ, por favor só utilizar esses valores
 	@Id
-	@Column(name = "tipoId")
+	@Column(name = "tipo_Id")
 	private String tipoId;
 	
 	//Respectivo código alfanumérico APEP ou sequencial
 	@Id
-	@Column(name = "codId")
+	@Column(name = "cod_Id")
 	private String codId;
 	
 	public String getTipoId() {

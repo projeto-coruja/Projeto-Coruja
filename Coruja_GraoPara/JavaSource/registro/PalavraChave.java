@@ -8,7 +8,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "PalavraChave")
+@Table(name = "Palavra_Chave")
 public class PalavraChave {
 	
 	//Define identificação de uso interno
