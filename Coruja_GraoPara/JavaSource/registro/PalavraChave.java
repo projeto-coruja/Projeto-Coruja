@@ -18,7 +18,7 @@ public class PalavraChave {
 	
 	//Define palavra-chave
 	@NotNull
-	@Column(name = "palavra", unique = true)
+	@Column(name = "palavra", unique = true, length = 30)
 	private String palavra;
 
 	public Integer getId() {

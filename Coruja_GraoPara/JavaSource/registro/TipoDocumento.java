@@ -20,7 +20,7 @@ public class TipoDocumento {
 	
 	//Define tipo de documento
 	@NotNull
-	@Column(name = "tipo_De_Documento", unique = true)
+	@Column(name = "tipo_De_Documento", unique = true, length = 20)
 	private String tipoDeDocumento;
 	
 	public Integer getId() {

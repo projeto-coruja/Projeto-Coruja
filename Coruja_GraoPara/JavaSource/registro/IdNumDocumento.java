@@ -18,12 +18,12 @@ public class IdNumDocumento implements Serializable{
 
 	//Indica se é APEP ou SEQ, por favor só utilizar esses valores
 	@Id
-	@Column(name = "tipo_Id")
+	@Column(name = "tipo_Id", length = 5)
 	private String tipoId;
 	
 	//Respectivo código alfanumérico APEP ou sequencial
 	@Id
-	@Column(name = "cod_Id")
+	@Column(name = "cod_Id", length = 7)
 	private String codId;
 	
 	public String getTipoId() {
