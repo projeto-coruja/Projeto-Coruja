@@ -6,6 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="login_user")
@@ -14,7 +15,9 @@ public class User {
 	@Id
 	@GeneratedValue
 	private Integer id;
+	@NotNull
 	private String username;
+	@NotNull
 	private String password;
 	private String name;
 	@ManyToOne
