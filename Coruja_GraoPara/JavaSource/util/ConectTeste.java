@@ -1,3 +1,4 @@
+package util;
 import static org.junit.Assert.*;
 
 import org.hibernate.Session;
