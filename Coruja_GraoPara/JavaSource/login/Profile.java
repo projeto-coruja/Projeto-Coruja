@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="profile")
@@ -13,7 +12,6 @@ public class Profile {
 	@Id
 	@GeneratedValue
 	private Integer id;
-	@NotNull
 	private String profile;
 	private Boolean write;
 	private Boolean read;

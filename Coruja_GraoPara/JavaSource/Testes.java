@@ -10,7 +10,7 @@ public class Testes {
 
 	@Test
 	public void testGetSession() {
-		Session sessao = new HibernateUtil().getSession().openSession();
+		Session sessao = HibernateUtil.getSession().openSession();
 		assertTrue(sessao != null);
 	}
 
