@@ -8,7 +8,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="user")
+@Table(name="login_user")
 public class User {
 
 	@Id
@@ -32,7 +32,7 @@ public class User {
 	
 	public String getName() {return name;}
 	public void setName(String name) {this.name = name;}
-	
+
 	public Profile getUserProfile() {return userProfile;}
 	public void setUserProfile(Profile userProfile) {this.userProfile = userProfile;}
 	
