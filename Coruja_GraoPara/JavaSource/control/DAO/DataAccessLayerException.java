@@ -1,4 +1,4 @@
-package control.DAO.genericCreate;
+package control.DAO;
 
 /**
  * Represents Exceptions thrown by the Data Access Layer.

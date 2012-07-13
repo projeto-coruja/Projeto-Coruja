@@ -1,4 +1,4 @@
-package control.DAO.genericCreate;
+package control.DAO;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.HibernateException;

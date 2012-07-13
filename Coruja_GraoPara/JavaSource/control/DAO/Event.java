@@ -1,4 +1,4 @@
-package control.DAO.genericCreate;
+package control.DAO;
 
 import java.io.Serializable;
 import java.util.Date;
