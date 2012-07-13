@@ -5,7 +5,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.junit.Test;
 
-import control.DAO.HibernateUtil;
+import control.DAO.genericCreate.HibernateUtil;
 
 
 public class ConectTeste {

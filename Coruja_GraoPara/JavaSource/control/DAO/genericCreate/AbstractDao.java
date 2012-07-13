@@ -1,4 +1,4 @@
-package control.DAO;
+package control.DAO.genericCreate;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;

@@ -3,7 +3,7 @@ import static org.junit.Assert.*;
 import org.hibernate.Session;
 import org.junit.Test;
 
-import control.DAO.HibernateUtil;
+import control.DAO.genericCreate.HibernateUtil;
 
 
 
