@@ -37,6 +37,10 @@ public class Documentos implements Serializable{
 	private IdNumDocumento identDocumento;
 	
 	@NotNull
+	@JoinColumn(name = "tipo_De_Documento", referencedColumnName = "tipo_De_Documento")
+	private TipoDocumento tipoDeDocumento;
+	
+	@NotNull
 	@Column(name = "autor", length = 48)
 	private String autor;
 	
@@ -122,6 +126,35 @@ public class Documentos implements Serializable{
 
 	public void setPalChaves(PalavraChave[] palChaves) {
 		this.palChaves = palChaves;
+	}
+
+	public TipoDocumento getTipoDeDocumento() {
+		return tipoDeDocumento;
+	}
+
+	public void setTipoDeDocumento(TipoDocumento tipoDeDocumento) {
+		this.tipoDeDocumento = tipoDeDocumento;
+	}
+	
+	@Override
+	public boolean equals(Object outro) {
+		if(this == outro) return true;
+		
+		if(!(outro instanceof Documentos)) return false;
+		
+		final Documentos comp = (Documentos) outro;
+		if(!(comp.getIdentDocumento().equals(getIdentDocumento()))) return false;
+		if(!(comp.getOrigemDocumento().equals(getOrigemDocumento()))) return false;
+		
+		return true;
+	}
+	
+	@Override
+	public int hashCode() {
+		int result;
+		result = getIdentDocumento().hashCode();
+		result = result*31 + getOrigemDocumento().hashCode();
+		return result;
 	}
 	
 }

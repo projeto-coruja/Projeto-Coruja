@@ -42,5 +42,26 @@ public class IdNumDocumento implements Serializable{
 		this.codId = codId;
 	}
 	
+	@Override
+	public boolean equals(Object outro) {
+		if(this == outro) return true;
+		
+		if(!(outro instanceof IdNumDocumento)) return false;
+		
+		final IdNumDocumento comp = (IdNumDocumento) outro;
+		if(!(comp.getCodId().equals(getCodId()))) return false;
+		if(!(comp.getTipoId().equals(getTipoId()))) return false;
+		
+		return true;
+	}
+	
+	@Override
+	public int hashCode() {
+		int result;
+		result = getTipoId().hashCode();
+		result = result*29 + getCodId().hashCode();
+		return result;
+	}
+	
 
 }
