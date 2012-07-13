@@ -10,7 +10,7 @@ public class Conect {
 		System.out.println("FORA");
 		try {
 			System.out.println("DENTRO TRY");
-			sessao = new HibernateUtil().getSession().openSession();
+			sessao = HibernateUtil.getSession().openSession();
 			System.out.println("Conectou -->HibernateUtil().getSession().openSession();");
 		} 
 		catch(Exception e){
