@@ -1,6 +1,8 @@
 package util;
 import org.hibernate.Session;
 
+import control.DAO.HibernateUtil;
+
 
 public class Conect {
 	

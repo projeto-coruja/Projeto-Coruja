@@ -10,6 +10,8 @@ import javax.servlet.ServletResponse;
 
 import org.hibernate.SessionFactory;
 
+import control.DAO.HibernateUtil;
+
 public class ConnectionFilter implements Filter {
 	private SessionFactory session;
 
