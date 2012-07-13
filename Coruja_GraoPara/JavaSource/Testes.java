@@ -24,12 +24,22 @@ public class Testes {
 	
 	@Test
 	public void profileDAO(){
+		LoginDAO l = new LoginDAO();
+		
 		Profile p = new Profile();
 		p.setProfile("teste");
 		p.setWrite(true);
 		p.setRead(true);
 		p.setEdit(true);
-		LoginDAO l = new LoginDAO();
-		l.createUser(p);
+		
+		User u = new User();
+		u.setUsername("teste");
+		u.setPassword("lalala");
+		u.setName("um nome");
+		u.setEmail("emaillegal@superfoda.com");
+		u.setUserProfile(p);
+		
+		l.createProfile(p);
+		l.createUser(u);
 	}
 }
