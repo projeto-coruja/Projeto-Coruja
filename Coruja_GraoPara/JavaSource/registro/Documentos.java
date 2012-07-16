@@ -37,6 +37,7 @@ public class Documentos implements Serializable{
 	private IdNumDocumento identDocumento;
 	
 	@NotNull
+	@ManyToOne
 	@JoinColumn(name = "tipo_De_Documento", referencedColumnName = "tipo_De_Documento")
 	private TipoDocumento tipoDeDocumento;
 	
