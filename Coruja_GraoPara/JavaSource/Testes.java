@@ -51,6 +51,8 @@ public class Testes {
 		LoginDAO dao = new LoginDAO();
 		List<User> l = dao.findAllUsers();
 		System.out.println(l.size());
-		assertTrue(l.isEmpty());
+		User u = l.get(0);
+		assertTrue(u.getName().equals("Outro Nome"));
+		assertTrue(u.getUsername().equals("teste"));
 	}
 }
