@@ -2,10 +2,15 @@ package control.DAO;
 
 import java.util.List;
 
+import javax.persistence.Table;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+
+
+
 
 
 public abstract class AbstractDao {
@@ -16,10 +21,22 @@ public abstract class AbstractDao {
 		HibernateUtil.buildIfNeeded();
 	}
 
-	protected void saveOrUpdate(Object obj) throws DataAccessLayerException{
+	protected void save(Object obj) throws DataAccessLayerException{
 		try{
 			startOperation();
-			session.saveOrUpdate(obj);
+			session.save(obj);
+			transaction.commit();
+		}catch(HibernateException e){
+			handleException(e);
+		}finally{
+			HibernateUtil.close(session);
+		}
+	}
+	
+	protected void update(Object obj) throws DataAccessLayerException{
+		try{
+			startOperation();
+			session.update(obj);
 			transaction.commit();
 		}catch(HibernateException e){
 			handleException(e);
@@ -57,11 +74,11 @@ public abstract class AbstractDao {
 	}
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	protected List<Object> findAll(Class classe) throws DataAccessLayerException{
-		List<Object> obj = null;
+	protected <T> List<T> findAll(Class classe) throws DataAccessLayerException{
+		List<T> obj = null;
 		try{
 			startOperation();
-			Query query = session.createQuery("from" + classe.getName());
+			Query query = session.createQuery("from " + ((Table) classe.getAnnotation(Table.class)).name() );
 			obj = query.list();
 			transaction.commit();
 		}catch(HibernateException e){

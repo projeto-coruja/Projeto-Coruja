@@ -17,5 +17,6 @@
 		<mapping class="registro.PalavraChave" />
 		<mapping class="registro.TipoDocumento" />
 		<mapping class="registro.Documentos" />
+		
 	</session-factory>
 </hibernate-configuration>

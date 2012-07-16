@@ -10,8 +10,7 @@ public class EventDAO extends AbstractDao {
 	 * Insert a new Event into the database.
 	 * @param event
 	 */
-	public void create(Event event) throws DataAccessLayerException { super.saveOrUpdate(event); }
-
+	public void create(Event event) throws DataAccessLayerException { super.save(event); }
 
 	/**
 	 * Delete a detached Event from the database.
@@ -31,7 +30,7 @@ public class EventDAO extends AbstractDao {
 	 *
 	 * @param event
 	 */
-	public void update(Event event) throws DataAccessLayerException {super.saveOrUpdate(event);}
+	public void update(Event event) throws DataAccessLayerException {super.update(event);}
 	
 	/**
 	 * Finds all Events in the database.
