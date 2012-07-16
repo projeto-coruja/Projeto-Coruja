@@ -9,10 +9,6 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-
-
-
-
 public abstract class AbstractDao {
 	private Session session;
 	private Transaction transaction;
@@ -78,7 +74,7 @@ public abstract class AbstractDao {
 		List<T> obj = null;
 		try{
 			startOperation();
-			Query query = session.createQuery("from " + ((Table) classe.getAnnotation(Table.class)).name() );
+			Query query = session.createQuery("from " + classe.getName());
 			obj = query.list();
 			transaction.commit();
 		}catch(HibernateException e){
