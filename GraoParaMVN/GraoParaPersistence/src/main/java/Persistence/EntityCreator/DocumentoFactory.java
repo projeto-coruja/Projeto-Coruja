@@ -1,6 +1,6 @@
 package Persistence.EntityCreator;
 
-public class DocumentoFactory implements EntityFactory, EntityFactory {
+public class DocumentoFactory implements EntityFactory {
 
 
 	/**

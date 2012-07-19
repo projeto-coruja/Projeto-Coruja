@@ -26,21 +26,11 @@ public class IdNumDocumento implements Serializable{
 	@Column(name = "cod_id", length = 7)
 	private String codId;
 
-	public String getTipoId() {
-		return tipoId;
-	}
+	public String getTipoId() {	return tipoId;	}
+	public void setTipoId(String tipoId) {	this.tipoId = tipoId;	}
 
-	public void setTipoId(String tipoId) {
-		this.tipoId = tipoId;
-	}
-
-	public String getCodId() {
-		return codId;
-	}
-
-	public void setCodOrigem(String codId) {
-		this.codId = codId;
-	}
+	public String getCodId() {	return codId;	}
+	public void setCodOrigem(String codId) {	this.codId = codId;	}
 
 	@Override
 	public boolean equals(Object outro) {

@@ -37,5 +37,4 @@ public class Password {
 		return hashword;
 	}
 
-
 }

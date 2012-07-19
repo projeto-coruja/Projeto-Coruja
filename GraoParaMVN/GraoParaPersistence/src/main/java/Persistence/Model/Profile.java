@@ -2,6 +2,7 @@ package Persistence.Model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -25,6 +26,7 @@ public class Profile implements Serializable{
 
 	@NotNull
 	@NotEmpty
+	@Column(unique=true)
 	private String profile;
 
 	@NotNull
@@ -39,44 +41,19 @@ public class Profile implements Serializable{
 	@NotEmpty
 	private Boolean edit;
 
-	public Integer getId() {
-		return id;
-	}
+	public Integer getId() {	return id;	}
+	public void setId(Integer id) {	this.id = id;	}
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+	public String getProfile() {	return profile;	}
+	public void setProfile(String profile) {	this.profile = profile;	}
 
-	public String getProfile() {
-		return profile;
-	}
+	public Boolean getWrite() {	return write;	}
+	public void setWrite(Boolean write) {	this.write = write;	}
 
-	public void setProfile(String profile) {
-		this.profile = profile;
-	}
+	public Boolean getRead() {	return read;	}
+	public void setRead(Boolean read) {	this.read = read;	}
 
-	public Boolean getWrite() {
-		return write;
-	}
-
-	public void setWrite(Boolean write) {
-		this.write = write;
-	}
-
-	public Boolean getRead() {
-		return read;
-	}
-
-	public void setRead(Boolean read) {
-		this.read = read;
-	}
-
-	public Boolean getEdit() {
-		return edit;
-	}
-
-	public void setEdit(Boolean edit) {
-		this.edit = edit;
-	}
+	public Boolean getEdit() {	return edit;	}
+	public void setEdit(Boolean edit) {	this.edit = edit;	}
 
 }

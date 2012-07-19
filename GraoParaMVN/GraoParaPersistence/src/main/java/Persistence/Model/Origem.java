@@ -34,28 +34,13 @@ public class Origem implements Serializable{
 	@Column(name = "titulo")
 	private String titulo;
 
-	public String getTipoOrigem() {
-		return tipoOrigem;
-	}
+	public String getTipoOrigem() {	return tipoOrigem;	}
+	public void setTipoOrigem(String tipoOrigem) {	this.tipoOrigem = tipoOrigem;	}
 
-	public void setTipoOrigem(String tipoOrigem) {
-		this.tipoOrigem = tipoOrigem;
-	}
+	public String getCodOrigem() {	return codOrigem;	}
+	public void setCodOrigem(String codOrigem) {	this.codOrigem = codOrigem;	}
 
-	public String getCodOrigem() {
-		return codOrigem;
-	}
-
-	public void setCodOrigem(String codOrigem) {
-		this.codOrigem = codOrigem;
-	}
-
-	public String getTitulo() {
-		return titulo;
-	}
-
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
-	}
+	public String getTitulo() {	return titulo;	}
+	public void setTitulo(String titulo) {	this.titulo = titulo;	}
 
 }
