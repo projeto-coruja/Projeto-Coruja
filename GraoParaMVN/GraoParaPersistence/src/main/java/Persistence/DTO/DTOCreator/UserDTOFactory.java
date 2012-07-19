@@ -16,7 +16,7 @@ public class UserDTOFactory implements DTOFactory {
 		User entry = (User) entity;
 		newDTO.setEmail(entry.getEmail());
 		newDTO.setId(entry.getId());
-		newDTO.setNome(entry.getNome());
+		newDTO.setName(entry.getName());
 		newDTO.setPassword(entry.getPassword());
 		newDTO.setUsername(entry.getUsername());
 		newDTO.setUserProfile(getProfileDTO(entry));

@@ -14,7 +14,7 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-import GraoParaPersistence.Password;
+import Persistence.Utility.Password;
 
 @Entity
 @Table(name = "tbl_user")

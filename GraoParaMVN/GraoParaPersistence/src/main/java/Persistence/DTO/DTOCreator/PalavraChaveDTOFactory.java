@@ -8,7 +8,7 @@ public class PalavraChaveDTOFactory implements DTOFactory {
 	 * 
 	 *  
 	 */
-	public Object createDTO(Object entityObject) {
+	public Object createDTO(Object entity) {
 
 	}
 
