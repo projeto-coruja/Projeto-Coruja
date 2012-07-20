@@ -1,6 +1,5 @@
 package Persistence.DTO;
 
-import Persistence.Model.Origem;
 import java.util.Date;
 
 public class DocumentoDTO {
