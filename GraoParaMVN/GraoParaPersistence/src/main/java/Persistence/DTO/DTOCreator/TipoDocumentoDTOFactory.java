@@ -15,6 +15,7 @@ public class TipoDocumentoDTOFactory implements DTOFactory {
 	public TipoDocumentoDTO createDTO(Object entity) {
 		TipoDocumentoDTO newDTO = new TipoDocumentoDTO();
 		TipoDocumento entry = (TipoDocumento) entity;
+		newDTO.setTipoDocumento(entry.getTipoDocumento());
 		
 		return newDTO;
 

@@ -1,8 +1,6 @@
 package Persistence.DTO.DTOCreator;
 
-import Persistence.DTO.*;
 import Persistence.Model.*;
-import Persistence.Utility.EntityManager;
 
 import java.util.ArrayList;
 import java.util.List;
