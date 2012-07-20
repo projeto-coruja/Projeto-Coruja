@@ -1,9 +1,10 @@
 package Persistence;
 
+import java.util.List;
+
 import Persistence.DTO.DTOCreator.DTOGenerator;
 import Persistence.EntityCreator.EntitySender;
 import Persistence.Utility.EntityManager;
-import java.util.List;
 
 public class PersistenceAccess {
 
