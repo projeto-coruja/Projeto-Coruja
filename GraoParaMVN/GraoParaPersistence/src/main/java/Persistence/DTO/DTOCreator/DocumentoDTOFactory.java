@@ -3,11 +3,11 @@ package Persistence.DTO.DTOCreator;
 import Persistence.DTO.DocumentoDTO;
 import Persistence.DTO.IdNumDocumentoDTO;
 import Persistence.DTO.OrigemDTO;
-import Persistence.DTO.ProfileDTO;
+import Persistence.DTO.PalavraChaveDTO;
 import Persistence.DTO.TipoDocumentoDTO;
 import Persistence.DTO.UserDTO;
 import Persistence.Model.Documento;
-import Persistence.Model.User;
+import Persistence.Model.PalavraChave;
 
 public class DocumentoDTOFactory implements DTOFactory {
 
@@ -30,9 +30,7 @@ public class DocumentoDTOFactory implements DTOFactory {
 		newDTO.setResumo(entry.getResumo());
 		newDTO.setDataInclusao(entry.getDataInclusao());
 		newDTO.setDataDocumento(entry.getDataDocumento());
-		
-		//////////////////////////////////falta palavra chave
-		
+		newDTO.setPalChaves(getPalavraChaveDTO(entry));		
 		newDTO.setUploader(getUserDTO(entry)); 
 		return newDTO;
 	}
@@ -55,5 +53,17 @@ public class DocumentoDTOFactory implements DTOFactory {
 	private IdNumDocumentoDTO getIdNumDocumentoDTO(Documento entry) {
 		DTOFactory aux_factory = new IdNumDocumentoDTOFactory();
 		return (IdNumDocumentoDTO) aux_factory.createDTO(entry.getIdNumDocumento());
+	}
+	
+	private PalavraChaveDTO[] getPalavraChaveDTO(Documento entry) {
+		DTOFactory aux_factory = new PalavraChaveDTOFactory();
+		PalavraChave[] list = entry.getPalChaves();
+		int length = list.length;
+		PalavraChaveDTO[] palchaves = new PalavraChaveDTO[length];
+		for(int i = 0; i < length; i++)
+		{
+			palchaves[i] = (PalavraChaveDTO) aux_factory.createDTO(list[i]);
+		}
+		return palchaves;
 	}
 }

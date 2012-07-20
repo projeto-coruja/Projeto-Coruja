@@ -13,7 +13,7 @@ public class DTOGenerator {
 		factory = null;
 	}
 
-	@SuppressWarnings("rawtypes")
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public List generateDTOSet(List resultSet) {
 		if (resultSet.isEmpty()) return null;
 		Object ent = resultSet.get(0);
