@@ -3,13 +3,15 @@ package Persistence;
 import java.util.List;
 
 import Persistence.DTO.DTOCreator.DTOGenerator;
-import Persistence.EntityCreator.EntitySender;
+import Persistence.EntityCreator.EntityGenerator;
 import Persistence.Utility.EntityManager;
 
 public class PersistenceAccess {
 
 	private DTOGenerator generator;
-	private EntitySender sender;
+
+	private EntityGenerator sender;
+
 	private EntityManager sharedManager;
 
 	public void saveEntity() {

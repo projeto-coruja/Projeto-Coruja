@@ -35,7 +35,7 @@ public class Documento implements Serializable{
 		@JoinColumn(name = "tipo_id", referencedColumnName = "tipo_id"),
 		@JoinColumn(name = "cod_id", referencedColumnName = "cod_id")
 	})
-	private IdNumDocumento identDocumento;
+	private IdNumDocumento idNumDocumento;
 
 	@NotNull
 	@ManyToOne
@@ -68,7 +68,7 @@ public class Documento implements Serializable{
 
 	@OneToMany
 	@OrderColumn
-	private PalavraChave[] palChaves;// = new PalavraChave[3];
+	private PalavraChave[] palavrasChaves;// = new PalavraChave[3];
 	
 	@OneToMany
 	@Column(name = "uploader")
@@ -81,7 +81,7 @@ public class Documento implements Serializable{
 		if(!(outro instanceof Documento)) return false;
 
 		final Documento comp = (Documento) outro;
-		if(!(comp.getIdentDocumento().equals(getIdentDocumento()))) return false;
+		if(!(comp.getIdNumDocumento().equals(getIdNumDocumento()))) return false;
 		if(!(comp.getOrigemDocumento().equals(getOrigemDocumento()))) return false;
 
 		return true;
@@ -90,7 +90,7 @@ public class Documento implements Serializable{
 	@Override
 	public int hashCode() {
 		int result;
-		result = getIdentDocumento().hashCode();
+		result = getIdNumDocumento().hashCode();
 		result = result*31 + getOrigemDocumento().hashCode();
 		return result;
 	}
@@ -103,12 +103,12 @@ public class Documento implements Serializable{
 		this.origemDocumento = origemDocumento;
 	}
 
-	public IdNumDocumento getIdentDocumento() {
-		return identDocumento;
+	public IdNumDocumento getIdNumDocumento() {
+		return idNumDocumento;
 	}
 
 	public void setIdentDocumento(IdNumDocumento identDocumento) {
-		this.identDocumento = identDocumento;
+		this.idNumDocumento = identDocumento;
 	}
 
 	public TipoDocumento getTipoDocumento() {
@@ -168,11 +168,11 @@ public class Documento implements Serializable{
 	}
 
 	public PalavraChave[] getPalChaves() {
-		return palChaves;
+		return palavrasChaves;
 	}
 
 	public void setPalChaves(PalavraChave[] palChaves) {
-		this.palChaves = palChaves;
+		this.palavrasChaves = palChaves;
 	}
 
 	public User getUploader() {

@@ -1,18 +1,27 @@
 package Persistence.DTO;
 
-import Persistence.Model.Origem;
 import java.util.Date;
 
 public class DocumentoDTO {
 
 	private OrigemDTO origemDocumento;
-	private IdNumDocumentoDTO identDocumento;
+
+	private IdNumDocumentoDTO idNumDocumento;
+
 	private TipoDocumentoDTO tipoDocumento;
+
 	private String autor;
+
 	private String local;
-	private String destinatário;
+
+	private String destinatario;
+
 	private String resumo;
-	private Date data;
+
+	private Date dataDocumento;
+	
+	private Date dataInclusao;
+
 	private UserDTO uploader;
 
 	private PalavraChaveDTO[] palChaves;
@@ -25,12 +34,12 @@ public class DocumentoDTO {
 		this.origemDocumento = origemDocumento;
 	}
 
-	public IdNumDocumentoDTO getIdentDocumento() {
-		return identDocumento;
+	public IdNumDocumentoDTO getIdNumDocumento() {
+		return idNumDocumento;
 	}
 
-	public void setIdentDocumento(IdNumDocumentoDTO identDocumento) {
-		this.identDocumento = identDocumento;
+	public void setIdNumDocumento(IdNumDocumentoDTO identDocumento) {
+		this.idNumDocumento = identDocumento;
 	}
 
 	public TipoDocumentoDTO getTipoDocumento() {
@@ -57,12 +66,12 @@ public class DocumentoDTO {
 		this.local = local;
 	}
 
-	public String getDestinatário() {
-		return destinatário;
+	public String getDestinatario() {
+		return destinatario;
 	}
 
-	public void setDestinatário(String destinatário) {
-		this.destinatário = destinatário;
+	public void setDestinatario(String destinatario) {
+		this.destinatario = destinatario;
 	}
 
 	public String getResumo() {
@@ -71,14 +80,6 @@ public class DocumentoDTO {
 
 	public void setResumo(String resumo) {
 		this.resumo = resumo;
-	}
-
-	public Date getData() {
-		return data;
-	}
-
-	public void setData(Date data) {
-		this.data = data;
 	}
 
 	public UserDTO getUploader() {
@@ -95,6 +96,22 @@ public class DocumentoDTO {
 
 	public void setPalChaves(PalavraChaveDTO[] palChaves) {
 		this.palChaves = palChaves;
+	}
+
+	public Date getDataDocumento() {
+		return dataDocumento;
+	}
+
+	public void setDataDocumento(Date dataDocumento) {
+		this.dataDocumento = dataDocumento;
+	}
+
+	public Date getDataInclusao() {
+		return dataInclusao;
+	}
+
+	public void setDataInclusao(Date dataInclusao) {
+		this.dataInclusao = dataInclusao;
 	}
 
 }

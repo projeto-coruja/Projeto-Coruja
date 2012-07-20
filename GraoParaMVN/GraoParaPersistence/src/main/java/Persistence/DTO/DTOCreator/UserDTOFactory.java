@@ -22,6 +22,7 @@ public class UserDTOFactory implements DTOFactory {
 		return newDTO;
 	}
 	
+	
 	private ProfileDTO getProfileDTO(User entry) {
 		DTOFactory aux_factory = new ProfileDTOFactory();
 		return (ProfileDTO) aux_factory.createDTO(entry.getUserProfile());
