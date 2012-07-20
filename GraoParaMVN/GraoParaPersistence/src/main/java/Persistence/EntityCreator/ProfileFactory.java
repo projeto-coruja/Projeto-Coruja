@@ -12,6 +12,7 @@ public class ProfileFactory implements EntityFactory {
 	public Profile createEntity(Object dto) {
 		Profile newEnt = new Profile();
 		ProfileDTO entry = (ProfileDTO) dto;
+		
 		newEnt.setProfile(entry.getProfile());
 		newEnt.setEdit(entry.isEdit());
 		newEnt.setRead(entry.isRead());

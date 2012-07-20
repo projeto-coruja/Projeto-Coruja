@@ -30,7 +30,7 @@ public class IdNumDocumento implements Serializable{
 	public void setTipoId(String tipoId) {	this.tipoId = tipoId;	}
 
 	public String getCodId() {	return codId;	}
-	public void setCodOrigem(String codId) {	this.codId = codId;	}
+	public void setCodId(String codId) {	this.codId = codId;	}
 
 	@Override
 	public boolean equals(Object outro) {
