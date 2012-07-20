@@ -1,5 +1,8 @@
 package Persistence.EntityCreator;
 
+import Persistence.DTO.TipoDocumentoDTO;
+import Persistence.Model.TipoDocumento;
+
 public class TipoDocumentoFactory implements EntityFactory {
 
 
@@ -8,7 +11,7 @@ public class TipoDocumentoFactory implements EntityFactory {
 	 */
 	public Object createEntity(Object dto) {
 		TipoDocumento newEnt = new TipoDocumento();
-		OrigemDTO entry = (OrigemDTO) dto;
+		TipoDocumentoDTO entry = (TipoDocumentoDTO) dto;
 		
 		newEnt.setTipoDocumento(entry.getTipoDocumento());
 		
