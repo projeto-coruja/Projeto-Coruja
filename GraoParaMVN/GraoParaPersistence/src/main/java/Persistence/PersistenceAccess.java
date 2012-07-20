@@ -8,14 +8,20 @@ import Persistence.Utility.EntityManager;
 
 public class PersistenceAccess {
 
-	private DTOGenerator generator;
+	private DTOGenerator dtoGen;
 
-	private EntityGenerator sender;
+	private EntityGenerator entGen;
 
 	private EntityManager sharedManager;
+	
+	public PersistenceAccess() {
+		dtoGen = new DTOGenerator();
+		entGen = new EntityGenerator();
+		sharedManager = new EntityManager();
+	}
 
-	public void saveEntity() {
-
+	public void saveEntity(Object dto) {
+		
 	}
 
 	public void updateEntity() {
