@@ -9,9 +9,7 @@ import Persistence.Utility.EntityManager;
 public class PersistenceAccess {
 
 	private DTOGenerator generator;
-
 	private EntitySender sender;
-
 	private EntityManager sharedManager;
 
 	public void saveEntity() {

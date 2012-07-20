@@ -15,15 +15,12 @@ public class UserDTOFactory implements DTOFactory {
 		UserDTO newDTO = new UserDTO();
 		User entry = (User) entity;
 		newDTO.setEmail(entry.getEmail());
-		newDTO.setId(entry.getId());
 		newDTO.setName(entry.getName());
 		newDTO.setPassword(entry.getPassword());
-		newDTO.setUsername(entry.getUsername());
 		newDTO.setUserProfile(getProfileDTO(entry));
 		
 		return newDTO;
 	}
-	
 	
 	private ProfileDTO getProfileDTO(User entry) {
 		DTOFactory aux_factory = new ProfileDTOFactory();

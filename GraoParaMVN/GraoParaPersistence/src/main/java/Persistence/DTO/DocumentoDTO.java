@@ -6,26 +6,18 @@ import java.util.Date;
 public class DocumentoDTO {
 
 	private OrigemDTO origemDocumento;
-
 	private IdNumDocumentoDTO identDocumento;
-
 	private TipoDocumentoDTO tipoDocumento;
-
 	private String autor;
-
 	private String local;
-
 	private String destinatário;
-
 	private String resumo;
-
 	private Date data;
-
 	private UserDTO uploader;
 
 	private PalavraChaveDTO[] palChaves;
 
-	public Origem getOrigemDocumento() {
+	public OrigemDTO getOrigemDocumento() {
 		return origemDocumento;
 	}
 
