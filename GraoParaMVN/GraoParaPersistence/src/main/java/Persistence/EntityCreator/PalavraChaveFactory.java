@@ -1,13 +1,22 @@
 package Persistence.EntityCreator;
 
+import Persistence.DTO.PalavraChaveDTO;
+import Persistence.Model.PalavraChave;
+
 public class PalavraChaveFactory implements EntityFactory {
 
 
 	/**
 	 * @see Persistence.EntityCreator.EntityFactory#createEntity(Object)
 	 */
-	public Object createEntity(Object dto) {
-		return null;
+	public PalavraChave createEntity(Object dto) {
+		PalavraChave newEnt = new PalavraChave();
+		PalavraChaveDTO entry = (PalavraChaveDTO) dto;
+		
+		newEnt.setPalavra(entry.getPalavra());
+		newEnt.setAprovada(entry.isAprovada());
+		
+		return newEnt;
 	}
 
 }
