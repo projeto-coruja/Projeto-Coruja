@@ -4,9 +4,9 @@ public class IdNumDocumentoFactory implements EntityFactory {
 
 
 	/**
-	 * @see Persistence.EntityCreator.EntityFactory#createEntity()
+	 * @see Persistence.EntityCreator.EntityFactory#createEntity(Object)
 	 */
-	public object createEntity() {
+	public Object createEntity(Object dto) {
 		return null;
 	}
 

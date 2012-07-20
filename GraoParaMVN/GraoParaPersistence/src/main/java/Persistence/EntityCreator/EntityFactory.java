@@ -2,6 +2,6 @@ package Persistence.EntityCreator;
 
 public interface EntityFactory {
 
-	public object createEntity();
+	public Object createEntity(Object dto);
 
 }

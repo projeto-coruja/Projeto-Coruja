@@ -15,6 +15,9 @@ public class ProfileDTOFactory implements DTOFactory {
 		ProfileDTO newDTO = new ProfileDTO();
 		Profile entry = (Profile) entity;
 		newDTO.setProfile(entry.getProfile());
+		newDTO.setEdit(entry.getEdit());
+		newDTO.setRead(entry.getRead());
+		newDTO.setWrite(entry.getWrite());
 		
 		return newDTO;
 	}
