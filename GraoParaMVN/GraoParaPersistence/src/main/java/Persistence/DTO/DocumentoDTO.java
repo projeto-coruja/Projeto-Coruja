@@ -5,11 +5,11 @@ import java.util.Date;
 
 public class DocumentoDTO {
 
-	private Origem origemDocumento;
+	private OrigemDTO origemDocumento;
 
 	private IdNumDocumentoDTO identDocumento;
 
-	private TipoDocumentoDTO tipoDeDocumento;
+	private TipoDocumentoDTO tipoDocumento;
 
 	private String autor;
 
@@ -29,7 +29,7 @@ public class DocumentoDTO {
 		return origemDocumento;
 	}
 
-	public void setOrigemDocumento(Origem origemDocumento) {
+	public void setOrigemDocumento(OrigemDTO origemDocumento) {
 		this.origemDocumento = origemDocumento;
 	}
 
@@ -41,12 +41,12 @@ public class DocumentoDTO {
 		this.identDocumento = identDocumento;
 	}
 
-	public TipoDocumentoDTO getTipoDeDocumento() {
-		return tipoDeDocumento;
+	public TipoDocumentoDTO getTipoDocumento() {
+		return tipoDocumento;
 	}
 
-	public void setTipoDeDocumento(TipoDocumentoDTO tipoDeDocumento) {
-		this.tipoDeDocumento = tipoDeDocumento;
+	public void setTipoDocumento(TipoDocumentoDTO tipoDocumento) {
+		this.tipoDocumento = tipoDocumento;
 	}
 
 	public String getAutor() {

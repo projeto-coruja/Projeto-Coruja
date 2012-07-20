@@ -1,6 +1,6 @@
 package Persistence.EntityCreator;
 
-public class ProfileFactory implements EntityFactory, EntityFactory {
+public class ProfileFactory implements EntityFactory {
 
 
 	/**

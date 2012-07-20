@@ -2,14 +2,14 @@ package Persistence.DTO;
 
 public class TipoDocumentoDTO {
 
-	private String tipoDeDocumento;
+	private String tipoDocumento;
 
-	public String getTipoDeDocumento() {
-		return tipoDeDocumento;
+	public String getTipoDocumento() {
+		return tipoDocumento;
 	}
 
-	public void setTipoDeDocumento(String tipoDeDocumento) {
-		this.tipoDeDocumento = tipoDeDocumento;
+	public void setTipoDocumento(String tipoDocumento) {
+		this.tipoDocumento = tipoDocumento;
 	}
 
 }

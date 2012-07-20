@@ -1,6 +1,6 @@
 package Persistence.EntityCreator;
 
-public class PalavraChaveFactory implements EntityFactory, EntityFactory {
+public class PalavraChaveFactory implements EntityFactory {
 
 
 	/**

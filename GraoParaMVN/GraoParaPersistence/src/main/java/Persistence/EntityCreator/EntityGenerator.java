@@ -2,7 +2,7 @@ package Persistence.EntityCreator;
 
 import Persistence.Utility.EntityManager;
 
-public class EntitySender {
+public class EntityGenerator {
 
 	private EntityFactory factory;
 

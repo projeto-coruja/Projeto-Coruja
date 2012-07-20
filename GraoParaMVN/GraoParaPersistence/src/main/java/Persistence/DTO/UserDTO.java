@@ -1,9 +1,10 @@
 package Persistence.DTO;
 
+import java.util.Date;
+
 public class UserDTO {
 
-	private Long id;
-
+	
 	private String name;
 
 	private String username;
@@ -13,14 +14,8 @@ public class UserDTO {
 	private ProfileDTO userProfile;
 	
 	private String email;
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
+	
+	private Date dataInclusao;
 
 	public String getName() {
 		return name;
@@ -61,5 +56,12 @@ public class UserDTO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+	public Date getDataInclusao() {
+		return dataInclusao;
+	}
 
+	public void setDataInclusao(Date dataInclusao) {
+		this.dataInclusao = dataInclusao;
+	}
 }

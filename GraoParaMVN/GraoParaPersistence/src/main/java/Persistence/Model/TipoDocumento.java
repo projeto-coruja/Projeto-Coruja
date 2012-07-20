@@ -24,10 +24,10 @@ public class TipoDocumento implements Serializable{
 	@Column(name = "tipo_documento", length = 20)
 	private String tipoDocumento;
 
-	public String getTipoDeDocumento() {
+	public String getTipoDocumento() {
 		return tipoDocumento;
 	}
-	public void setTipoDeDocumento(String tipoDocumento) {
+	public void setTipoDocumento(String tipoDocumento) {
 		this.tipoDocumento = tipoDocumento;
 	}
 
