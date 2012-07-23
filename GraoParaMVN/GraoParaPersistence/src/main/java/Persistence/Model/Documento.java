@@ -5,6 +5,7 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
@@ -20,8 +21,11 @@ public class Documento implements Serializable{
 
 	//Serializável por necessidade
 	private static final long serialVersionUID = 8543050270396423210L;
-
+	
 	@Id
+	@GeneratedValue
+	private Long id;
+
 	@ManyToOne
 	@JoinColumns({
 		@JoinColumn(name = "tipo_origem", referencedColumnName = "tipo_origem"),
@@ -29,7 +33,6 @@ public class Documento implements Serializable{
 	})
 	private Origem origemDocumento;
 
-	@Id
 	@ManyToOne
 	@JoinColumns({
 		@JoinColumn(name = "tipo_id", referencedColumnName = "tipo_id"),
@@ -74,25 +77,12 @@ public class Documento implements Serializable{
 	@Column(name = "uploader")
 	private User uploader;
 
-	@Override
-	public boolean equals(Object outro) {
-		if(this == outro) return true;
-
-		if(!(outro instanceof Documento)) return false;
-
-		final Documento comp = (Documento) outro;
-		if(!(comp.getIdNumDocumento().equals(getIdNumDocumento()))) return false;
-		if(!(comp.getOrigemDocumento().equals(getOrigemDocumento()))) return false;
-
-		return true;
+	public Long getId() {
+		return id;
 	}
 
-	@Override
-	public int hashCode() {
-		int result;
-		result = getIdNumDocumento().hashCode();
-		result = result*31 + getOrigemDocumento().hashCode();
-		return result;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public Origem getOrigemDocumento() {
