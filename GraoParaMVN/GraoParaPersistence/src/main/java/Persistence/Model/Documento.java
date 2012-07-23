@@ -73,7 +73,7 @@ public class Documento implements Serializable{
 	@OrderColumn
 	private PalavraChave[] palavrasChaves;// = new PalavraChave[3];
 	
-	@OneToMany
+	//@OneToMany
 	@Column(name = "uploader")
 	private User uploader;
 

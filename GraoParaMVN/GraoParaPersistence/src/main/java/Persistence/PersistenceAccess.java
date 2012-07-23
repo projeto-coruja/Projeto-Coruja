@@ -2,11 +2,9 @@ package Persistence;
 
 import java.util.List;
 
-import org.hibernate.HibernateException;
 import Persistence.DTO.DTOCreator.DTOGenerator;
 import Persistence.EntityCreator.EntityGenerator;
 import Persistence.Utility.EntityManager;
-import Persistence.Utility.PersistenceUtility;
 
 public class PersistenceAccess {
 
@@ -23,15 +21,15 @@ public class PersistenceAccess {
 	}
 
 	public void saveEntity(Object dto) {
-		
+		sharedManager.save(entGen.generateEntity(dto));
 	}
 
 	public void updateEntity(Object dto) {
-
+		sharedManager.update(entGen.generateEntity(dto));
 	}
 
 	public void deleteEntity(Object dto) {
-
+		sharedManager.delete(entGen.generateEntity(dto));
 	}
 	
 	@SuppressWarnings("rawtypes")
