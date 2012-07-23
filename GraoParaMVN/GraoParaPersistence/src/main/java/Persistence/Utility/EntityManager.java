@@ -19,7 +19,7 @@ public class EntityManager {
 		PersistenceUtility.buildIfNeeded();
 	}
 
-	protected void save(Object obj) throws DataAccessLayerException{
+	public void save(Object obj) throws DataAccessLayerException{
 		try{
 			startOperation();
 			session.save(obj);
@@ -31,7 +31,7 @@ public class EntityManager {
 		}
 	}
 	
-	protected void update(Object obj) throws DataAccessLayerException{
+	public void update(Object obj) throws DataAccessLayerException{
 		try{
 			startOperation();
 			session.update(obj);
@@ -43,7 +43,7 @@ public class EntityManager {
 		}
 	}
 
-	protected void delete(Object obj) throws DataAccessLayerException{
+	public void delete(Object obj) throws DataAccessLayerException{
 		try{
 			startOperation();
 			session.delete(obj);
@@ -54,9 +54,25 @@ public class EntityManager {
 			PersistenceUtility.close(session);
 		}
 	}
+	
+	@SuppressWarnings("rawtypes")
+	public Object find(Class table, long id) throws DataAccessLayerException{
+		Object obj = null;
+		try{
+			startOperation();
+			obj = session.load(table, id);
+			transaction.commit();
+		}catch(HibernateException e){
+			handleException(e);
+		}finally{
+			PersistenceUtility.close(session);
+		}
+		return obj;
+	}
+
 
 	@SuppressWarnings({ "unchecked"})
-	protected <T> List<T> find(String criteria) throws DataAccessLayerException{
+	public <T> List<T> find(String criteria) throws DataAccessLayerException{
 		List<T> obj = null;
 		try{
 			startOperation();
