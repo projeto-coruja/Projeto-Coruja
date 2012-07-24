@@ -17,7 +17,7 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "tbl_documentos")
-public class Documento implements Serializable{
+public class Documento implements Serializable,Entidade{
 
 	//Serializável por necessidade
 	private static final long serialVersionUID = 8543050270396423210L;
@@ -172,6 +172,7 @@ public class Documento implements Serializable{
 	public void setUploader(User uploader) {
 		this.uploader = uploader;
 	}
+
 	
 	
 

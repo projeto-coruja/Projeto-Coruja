@@ -1,6 +1,6 @@
 package Persistence.DTO;
 
-public class IdNumDocumentoDTO {
+public class IdNumDocumentoDTO implements DTO {
 
 	private String tipoId;
 

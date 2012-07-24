@@ -2,7 +2,7 @@ package Persistence.DTO;
 
 import java.util.Date;
 
-public class UserDTO {
+public class UserDTO implements DTO {
 
 	
 	private String name;

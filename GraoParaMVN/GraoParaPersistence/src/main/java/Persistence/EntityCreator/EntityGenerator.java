@@ -1,6 +1,7 @@
 package Persistence.EntityCreator;
 
 import Persistence.DTO.*;
+import Persistence.Model.Entidade;
 
 public class EntityGenerator {
 
@@ -10,7 +11,7 @@ public class EntityGenerator {
 		factory = null;
 	}
 	
-	public Object generateEntity(Object dto) {
+	public Entidade generateEntity(DTO dto) {
 		if(dto == null) return null;
 		
 		if(dto instanceof UserDTO)

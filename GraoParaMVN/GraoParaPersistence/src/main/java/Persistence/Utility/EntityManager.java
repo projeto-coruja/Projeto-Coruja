@@ -7,6 +7,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import Persistence.Model.Entidade;
 import Persistence.Utility.DataAccessLayerException;
 import Persistence.Utility.PersistenceUtility;
 
@@ -19,7 +20,7 @@ public class EntityManager {
 		PersistenceUtility.buildIfNeeded();
 	}
 
-	public void save(Object obj) throws DataAccessLayerException{
+	public void save(Entidade obj) throws DataAccessLayerException{
 		try{
 			startOperation();
 			session.save(obj);
@@ -31,7 +32,7 @@ public class EntityManager {
 		}
 	}
 	
-	public void update(Object obj) throws DataAccessLayerException{
+	public void update(Entidade obj) throws DataAccessLayerException{
 		try{
 			startOperation();
 			session.update(obj);
@@ -43,7 +44,7 @@ public class EntityManager {
 		}
 	}
 
-	public void delete(Object obj) throws DataAccessLayerException{
+	public void delete(Entidade obj) throws DataAccessLayerException{
 		try{
 			startOperation();
 			session.delete(obj);
@@ -56,11 +57,11 @@ public class EntityManager {
 	}
 	
 	@SuppressWarnings("rawtypes")
-	public Object find(Class table, long id) throws DataAccessLayerException{
-		Object obj = null;
+	public Entidade find(Class table, long id) throws DataAccessLayerException{
+		Entidade obj = null;
 		try{
 			startOperation();
-			obj = session.load(table, id);
+			obj = (Entidade) session.load(table, id);
 			transaction.commit();
 		}catch(HibernateException e){
 			handleException(e);
@@ -72,8 +73,8 @@ public class EntityManager {
 
 
 	@SuppressWarnings({ "unchecked"})
-	public <T> List<T> find(String criteria) throws DataAccessLayerException{
-		List<T> obj = null;
+	public List<Entidade> find(String criteria) throws DataAccessLayerException{
+		List<Entidade> obj = null;
 		try{
 			startOperation();
 			Query query = session.createQuery(criteria);

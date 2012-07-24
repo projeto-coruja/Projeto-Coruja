@@ -1,6 +1,7 @@
 package Persistence.DTO.DTOCreator;
 
 import Persistence.DTO.OrigemDTO;
+import Persistence.Model.Entidade;
 import Persistence.Model.Origem;
 
 public class OrigemDTOFactory implements DTOFactory {
@@ -11,7 +12,7 @@ public class OrigemDTOFactory implements DTOFactory {
 	 * 
 	 *  
 	 */
-	public OrigemDTO createDTO(Object entity) {
+	public OrigemDTO createDTO(Entidade entity) {
 		OrigemDTO newDTO = new OrigemDTO();
 		Origem entry = (Origem) entity;
 		newDTO.setCodOrigem(entry.getCodOrigem());

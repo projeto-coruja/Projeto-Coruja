@@ -1,6 +1,6 @@
 package Persistence.DTO;
 
-public class OrigemDTO {
+public class OrigemDTO implements DTO {
 
 	private String codOrigem;
 

@@ -1,6 +1,8 @@
 package Persistence.EntityCreator;
 
+import Persistence.DTO.DTO;
 import Persistence.DTO.UserDTO;
+import Persistence.Model.Entidade;
 import Persistence.Model.Profile;
 import Persistence.Model.User;
 
@@ -10,7 +12,7 @@ public class UserFactory implements EntityFactory {
 	/**
 	 * @see Persistence.EntityCreator.EntityFactory#createEntity(Object)
 	 */
-	public Object createEntity(Object dto) {
+	public Entidade createEntity(DTO dto) {
 		User newEnt = new User();
 		UserDTO entry = (UserDTO) dto;
 		

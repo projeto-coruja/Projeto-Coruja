@@ -13,7 +13,7 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="tbl_tipo_documento")
-public class TipoDocumento implements Serializable{
+public class TipoDocumento implements Serializable,Entidade {
 	
 	/**
 	 * 

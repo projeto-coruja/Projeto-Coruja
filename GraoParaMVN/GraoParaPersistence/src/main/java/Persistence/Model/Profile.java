@@ -13,7 +13,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "tbl_profile")
-public class Profile implements Serializable{
+public class Profile implements Serializable,Entidade {
 
 	/**
 	 * 

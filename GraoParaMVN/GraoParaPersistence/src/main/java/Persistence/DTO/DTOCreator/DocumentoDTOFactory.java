@@ -7,6 +7,7 @@ import Persistence.DTO.PalavraChaveDTO;
 import Persistence.DTO.TipoDocumentoDTO;
 import Persistence.DTO.UserDTO;
 import Persistence.Model.Documento;
+import Persistence.Model.Entidade;
 import Persistence.Model.PalavraChave;
 
 public class DocumentoDTOFactory implements DTOFactory {
@@ -17,7 +18,7 @@ public class DocumentoDTOFactory implements DTOFactory {
 	 * 
 	 *  
 	 */
-	public DocumentoDTO createDTO(Object entity) {
+	public DocumentoDTO createDTO(Entidade entity) {
 		DocumentoDTO newDTO = new DocumentoDTO();
 		Documento entry = (Documento) entity;
 		

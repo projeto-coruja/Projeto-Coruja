@@ -1,6 +1,7 @@
 package Persistence.DTO.DTOCreator;
 
 import Persistence.DTO.ProfileDTO;
+import Persistence.Model.Entidade;
 import Persistence.Model.Profile;
 
 public class ProfileDTOFactory implements DTOFactory {
@@ -11,7 +12,7 @@ public class ProfileDTOFactory implements DTOFactory {
 	 * 
 	 *  
 	 */
-	public ProfileDTO createDTO(Object entity) {
+	public ProfileDTO createDTO(Entidade entity) {
 		ProfileDTO newDTO = new ProfileDTO();
 		Profile entry = (Profile) entity;
 		newDTO.setProfile(entry.getProfile());

@@ -1,5 +1,6 @@
 package Persistence.EntityCreator;
 
+import Persistence.DTO.DTO;
 import Persistence.DTO.PalavraChaveDTO;
 import Persistence.Model.PalavraChave;
 
@@ -9,7 +10,7 @@ public class PalavraChaveFactory implements EntityFactory {
 	/**
 	 * @see Persistence.EntityCreator.EntityFactory#createEntity(Object)
 	 */
-	public PalavraChave createEntity(Object dto) {
+	public PalavraChave createEntity(DTO dto) {
 		PalavraChave newEnt = new PalavraChave();
 		PalavraChaveDTO entry = (PalavraChaveDTO) dto;
 		

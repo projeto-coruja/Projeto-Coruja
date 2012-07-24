@@ -2,8 +2,10 @@ package Persistence;
 
 import java.util.List;
 
+import Persistence.DTO.DTO;
 import Persistence.DTO.DTOCreator.DTOGenerator;
 import Persistence.EntityCreator.EntityGenerator;
+import Persistence.Model.Entidade;
 import Persistence.Utility.EntityManager;
 
 public class PersistenceAccess {
@@ -20,25 +22,25 @@ public class PersistenceAccess {
 		sharedManager = new EntityManager();
 	}
 
-	public void saveEntity(Object dto) {
-		sharedManager.save(entGen.generateEntity(dto));
+	public void saveEntity(DTO dto) {
+		sharedManager.save((Entidade) entGen.generateEntity(dto));
 	}
 
-	public void updateEntity(Object dto) {
-		sharedManager.update(entGen.generateEntity(dto));
+	public void updateEntity(DTO dto) {
+		sharedManager.update((Entidade) entGen.generateEntity(dto));
 	}
 
-	public void deleteEntity(Object dto) {
-		sharedManager.delete(entGen.generateEntity(dto));
+	public void deleteEntity(DTO dto) {
+		sharedManager.delete((Entidade) entGen.generateEntity(dto));
 	}
 	
-	@SuppressWarnings("rawtypes")
-	public Object findSingleEntity(Class table, long id) {
+	@SuppressWarnings({ "rawtypes" })
+	public DTO findSingleEntity(Class table, long id) {
 		return dtoGen.generateDTOSet(sharedManager.find(table, id));
 	}
 
 
-	public List findEntities(String query) {
+	public List<DTO> findEntities(String query) {
 		return dtoGen.generateDTOSet(sharedManager.find(query));
 	}
 

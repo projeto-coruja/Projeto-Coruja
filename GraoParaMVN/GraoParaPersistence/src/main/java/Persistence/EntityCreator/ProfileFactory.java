@@ -1,5 +1,6 @@
 package Persistence.EntityCreator;
 
+import Persistence.DTO.DTO;
 import Persistence.DTO.ProfileDTO;
 import Persistence.Model.Profile;
 
@@ -9,7 +10,7 @@ public class ProfileFactory implements EntityFactory {
 	/**
 	 * @see Persistence.EntityCreator.EntityFactory#createEntity(Object)
 	 */
-	public Profile createEntity(Object dto) {
+	public Profile createEntity(DTO dto) {
 		Profile newEnt = new Profile();
 		ProfileDTO entry = (ProfileDTO) dto;
 		

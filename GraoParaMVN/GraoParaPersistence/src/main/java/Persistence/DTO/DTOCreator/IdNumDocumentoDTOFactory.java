@@ -1,6 +1,7 @@
 package Persistence.DTO.DTOCreator;
 
 import Persistence.DTO.IdNumDocumentoDTO;
+import Persistence.Model.Entidade;
 import Persistence.Model.IdNumDocumento;
 
 public class IdNumDocumentoDTOFactory implements DTOFactory {
@@ -11,7 +12,7 @@ public class IdNumDocumentoDTOFactory implements DTOFactory {
 	 * 
 	 *  
 	 */
-	public IdNumDocumentoDTO createDTO(Object entity) {
+	public IdNumDocumentoDTO createDTO(Entidade entity) {
 		IdNumDocumentoDTO newDTO = new IdNumDocumentoDTO();
 		IdNumDocumento entry = (IdNumDocumento) entity;
 		

@@ -13,7 +13,7 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "tbl_origem")
-public class Origem implements Serializable {
+public class Origem implements Serializable,Entidade {
 
 	/**
 	 * 

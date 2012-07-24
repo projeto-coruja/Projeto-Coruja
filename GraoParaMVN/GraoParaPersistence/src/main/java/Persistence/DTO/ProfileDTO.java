@@ -1,6 +1,6 @@
 package Persistence.DTO;
 
-public class ProfileDTO {
+public class ProfileDTO implements DTO {
 
 	private String profile;
 

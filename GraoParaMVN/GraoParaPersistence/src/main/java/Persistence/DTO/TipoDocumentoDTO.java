@@ -1,6 +1,6 @@
 package Persistence.DTO;
 
-public class TipoDocumentoDTO {
+public class TipoDocumentoDTO implements DTO {
 
 	private String tipoDocumento;
 

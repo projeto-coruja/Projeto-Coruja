@@ -1,5 +1,6 @@
 package Persistence.DTO.DTOCreator;
 
+import Persistence.DTO.DTO;
 import Persistence.Model.*;
 
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ public class DTOGenerator {
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public List generateDTOSet(List resultSet) {
+	public List<DTO> generateDTOSet(List<Entidade> resultSet) {
 		if (resultSet.isEmpty()) return null;
 		Object ent = resultSet.get(0);
 		
@@ -35,14 +36,14 @@ public class DTOGenerator {
 		else throw new IllegalArgumentException();
 		
 		List DTOset = new ArrayList();
-		for(Object x : resultSet)
+		for(Entidade x : resultSet)
 		{
 			DTOset.add(factory.createDTO(x));
 		}
 		return DTOset;
 	}
 	
-	public Object generateDTOSet(Object ent) {
+	public DTO generateDTOSet(Entidade ent) {
 		if(ent == null) return null;
 		
 		if(ent instanceof User)

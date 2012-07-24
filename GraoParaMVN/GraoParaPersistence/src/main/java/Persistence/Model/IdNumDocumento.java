@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "tbl_id_num_documento")
-public class IdNumDocumento implements Serializable {
+public class IdNumDocumento implements Serializable,Entidade {
 
 	// Precisa ser serializável, então precisa ter
 	private static final long serialVersionUID = -4847594347591942450L;

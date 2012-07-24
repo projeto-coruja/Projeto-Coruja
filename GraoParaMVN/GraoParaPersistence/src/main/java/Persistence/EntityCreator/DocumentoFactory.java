@@ -1,5 +1,6 @@
 package Persistence.EntityCreator;
 
+import Persistence.DTO.DTO;
 import Persistence.DTO.DocumentoDTO;
 import Persistence.DTO.PalavraChaveDTO;
 import Persistence.Model.Documento;
@@ -15,7 +16,7 @@ public class DocumentoFactory implements EntityFactory {
 	/**
 	 * @see Persistence.EntityCreator.EntityFactory#createEntity(Object)
 	 */
-	public Documento createEntity(Object dto) {
+	public Documento createEntity(DTO dto) {
 		Documento newEnt = new Documento();
 		DocumentoDTO entry = (DocumentoDTO) dto;
 		

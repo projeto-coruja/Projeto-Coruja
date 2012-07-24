@@ -18,7 +18,7 @@ import Persistence.Utility.Password;
 
 @Entity
 @Table(name = "tbl_user")
-public class User implements Serializable{
+public class User implements Serializable,Entidade {
 
 	private static final long serialVersionUID = 1115684572959901460L;
 

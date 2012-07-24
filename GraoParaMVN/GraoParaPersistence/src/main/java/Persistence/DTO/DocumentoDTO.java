@@ -2,7 +2,7 @@ package Persistence.DTO;
 
 import java.util.Date;
 
-public class DocumentoDTO {
+public class DocumentoDTO implements DTO {
 
 	private OrigemDTO origemDocumento;
 

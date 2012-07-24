@@ -1,6 +1,6 @@
 package Persistence.DTO;
 
-public class PalavraChaveDTO {
+public class PalavraChaveDTO implements DTO {
 
 	private String palavra;
 

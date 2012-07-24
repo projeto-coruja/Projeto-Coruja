@@ -2,6 +2,7 @@ package Persistence.DTO.DTOCreator;
 
 import Persistence.DTO.ProfileDTO;
 import Persistence.DTO.UserDTO;
+import Persistence.Model.Entidade;
 import Persistence.Model.User;
 
 public class UserDTOFactory implements DTOFactory {
@@ -11,7 +12,7 @@ public class UserDTOFactory implements DTOFactory {
 	 * 
 	 *  
 	 */
-	public UserDTO createDTO(Object entity) {
+	public UserDTO createDTO(Entidade entity) {
 		UserDTO newDTO = new UserDTO();
 		User entry = (User) entity;
 		newDTO.setEmail(entry.getEmail());

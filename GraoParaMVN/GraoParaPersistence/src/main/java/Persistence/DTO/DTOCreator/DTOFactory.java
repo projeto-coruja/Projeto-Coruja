@@ -1,7 +1,10 @@
 package Persistence.DTO.DTOCreator;
 
+import Persistence.DTO.DTO;
+import Persistence.Model.Entidade;
+
 public interface DTOFactory {
 
-	public Object createDTO(Object entity);
+	public DTO createDTO(Entidade entity);
 
 }

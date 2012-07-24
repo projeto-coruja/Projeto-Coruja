@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "tbl_palavra_chave")
-public class PalavraChave implements Serializable {
+public class PalavraChave implements Serializable,Entidade {
 
 	/**
 	 * 
