@@ -9,6 +9,7 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>GraoParaBusiness</artifactId>
+	<packaging>pom</packaging>
 	<name>GraoParaBusiness</name>
 	<url>http://maven.apache.org</url>
 	<properties>

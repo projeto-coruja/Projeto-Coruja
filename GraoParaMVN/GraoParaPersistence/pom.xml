@@ -5,9 +5,9 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>br.unifesp.coruja</groupId>
-		<artifactId>GraoParaBusiness</artifactId>
+		<artifactId>GraoParaMVN</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-		<relativePath>../GraoParaBusiness</relativePath>
+		<relativePath>GraoParaMVN</relativePath>
 	</parent>
 	<artifactId>GraoParaPersistence</artifactId>
 	<name>GraoParaPersistence</name>

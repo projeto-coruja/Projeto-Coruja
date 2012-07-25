@@ -3,18 +3,19 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
 	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
+
 	<parent>
 		<groupId>br.unifesp.coruja</groupId>
-		<artifactId>GraoParaBusiness</artifactId>
+		<artifactId>GraoParaMVN</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-		<relativePath>../GraoParaBusiness</relativePath>
+		<relativePath>GraoParaMVN</relativePath>
 	</parent>
-	
+
 	<artifactId>GraoParaWEB</artifactId>
 	<packaging>pom</packaging>
 	<name>GraoParaWEB</name>
 	<url>http://maven.apache.org</url>
-	
+
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
