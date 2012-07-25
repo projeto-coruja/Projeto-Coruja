@@ -1,11 +1,12 @@
 package persistence;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -48,7 +49,8 @@ public class Persistence {
 		ProfileDTO q = (ProfileDTO) l.get(l.size() - 1);
 		assertEquals(((ProfileDTO) q).getProfile(), q.getProfile());
 	}
-
+	
+	@Ignore
 	@Test
 	public void testUpdateEntity() {
 		List<DTO> l = pa.findEntities("from Profile");
@@ -63,15 +65,14 @@ public class Persistence {
 		ProfileDTO s = (ProfileDTO) pa.findSingleEntity(Profile.class, r.getId());
 		assertEquals(r.getProfile(), s.getProfile());
 	}
-
+	
+	//@Ignore
 	@Test
 	public void testDeleteEntity() {
-		fail("Not yet implemented");
+		List<DTO> l = pa.findEntities("from Profile");
+		ProfileDTO t = (ProfileDTO) l.get(l.size() - 1);
+		pa.deleteEntity(t);
+		l = pa.findEntities("from Profile");
+		assertTrue(l == null);
 	}
-
-	@Test
-	public void testFindSingleEntity() {
-		fail("Not yet implemented");
-	}
-
 }

@@ -62,7 +62,7 @@ public class EntityManager {
 		Entidade obj = null;
 		try{
 			startOperation();
-			obj = (Entidade) session.load(table, id);
+			obj = (Entidade) session.get(table, id);
 			transaction.commit();
 		}catch(HibernateException e){
 			handleException(e);
