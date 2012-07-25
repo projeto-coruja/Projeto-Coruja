@@ -2,6 +2,7 @@ package persistence.utility;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Random;
 
 public class Password {
 	private Password (){}
@@ -35,6 +36,31 @@ public class Password {
 		hashword = byteArrayToHexString(genHash(password));
 		System.out.println(hashword);
 		return hashword;
+	}
+	
+	public static String genNewRandomPassword(){
+		char c;
+		Random r = new Random();
+		String password = "";
+		for(int i = 0; i < 6; i++){
+			switch(r.nextInt(3)){
+			case 0:
+				c = (char) ('a' + r.nextInt(26));
+				break;
+			case 1:
+				c = (char) ('A' + r.nextInt(26));
+				break;
+			case 2:
+				c = (char) ('0' + r.nextInt(9));
+				break;
+			default:
+				c = '-';
+			}
+			password += c;
+		}
+		
+		return password;
+		
 	}
 
 }
