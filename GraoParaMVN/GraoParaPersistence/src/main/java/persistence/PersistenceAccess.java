@@ -21,6 +21,7 @@ import persistence.model.TipoDocumento;
 import persistence.model.User;
 import persistence.model.entityCreator.EntityGenerator;
 import persistence.model.entityUpdater.EntityChanger;
+import persistence.utility.DataAccessLayerException;
 import persistence.utility.EntityManager;
 
 
@@ -41,31 +42,31 @@ public class PersistenceAccess {
 		sharedManager = new EntityManager();
 	}
 
-	public void saveEntity(DTO dto) {
+	public void saveEntity(DTO dto) throws DataAccessLayerException {
 		sharedManager.save(entGen.generateEntity(dto));
 	}
 
-	public void updateEntity(DTO dto) {
+	public void updateEntity(DTO dto) throws DataAccessLayerException{
 		Entidade target = findTarget(dto);
 		sharedManager.update(entChg.updateEntity(dto, target));
 	}
 
-	public void deleteEntity(DTO dto) {
+	public void deleteEntity(DTO dto) throws DataAccessLayerException{
 		Entidade target = findTarget(dto);
 		sharedManager.delete(target);
 	}
 	
 	@SuppressWarnings({ "rawtypes" })
-	public DTO findSingleEntity(Class table, long id) {
+	public DTO findSingleEntity(Class table, long id) throws DataAccessLayerException{
 		return dtoGen.generateSingleDTO(sharedManager.find(table, id));
 	}
 
 
-	public List<DTO> findEntities(String query) {
+	public List<DTO> findEntities(String query) throws DataAccessLayerException{
 		return dtoGen.generateDTOSet(sharedManager.find(query));
 	}
 	
-	private Entidade findTarget(DTO dto) {
+	private Entidade findTarget(DTO dto) throws DataAccessLayerException{
 		
 		@SuppressWarnings("rawtypes")
 		Class table;

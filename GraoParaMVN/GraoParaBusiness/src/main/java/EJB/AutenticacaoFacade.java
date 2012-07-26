@@ -1,5 +1,7 @@
 package EJB;
 
+import javax.security.auth.login.LoginException;
+
 import persistence.dto.UserDTO;
 import DAO.LoginDAO;
 
@@ -11,22 +13,22 @@ public class AutenticacaoFacade {
 		loginDAO = new LoginDAO();
 	}
 	
-	public void validarLogin(String email, String password) {
-		UserDTO check = loginDAO.findUserByEmail(email);
-		if(check != null) {
+	public void validarLogin(String email, String password) throws LoginException{
+		UserDTO check = null;
+		try {
+			check = loginDAO.findUserByEmail(email);
 			String hashedPassword = Password.getHash(password);
 			if(check.getPassword().equals(hashedPassword)) {
-				//TODO: código de autenticação e etc
-				System.out.println("validarLogin: OK");
+				//TODO faz algo
 			}
 			else {
-				//TODO: throw exception
+				throw new LoginException("Senha incorreta.");
 			}
+		} catch (LoginException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw e;
 		}
-		else {
-			//TODO: throw exception
-		}
-
 	}
-
+	
 }
