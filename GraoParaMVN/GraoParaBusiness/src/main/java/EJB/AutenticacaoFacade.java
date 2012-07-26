@@ -1,6 +1,7 @@
 package EJB;
 
-import javax.security.auth.login.LoginException;
+import exceptions.IncorrectLoginInformationException;
+import exceptions.UnreachableDataBaseException;
 
 import persistence.dto.UserDTO;
 import DAO.LoginDAO;
@@ -13,7 +14,7 @@ public class AutenticacaoFacade {
 		loginDAO = new LoginDAO();
 	}
 	
-	public void validarLogin(String email, String password) throws LoginException{
+	public void validarLogin(String email, String password) throws IncorrectLoginInformationException, UnreachableDataBaseException{
 		UserDTO check = null;
 		try {
 			check = loginDAO.findUserByEmail(email);
@@ -22,9 +23,9 @@ public class AutenticacaoFacade {
 				//TODO faz algo
 			}
 			else {
-				throw new LoginException("Senha incorreta.");
+				throw new IncorrectLoginInformationException("Senha incorreta.");
 			}
-		} catch (LoginException e) {
+		} catch (IncorrectLoginInformationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			throw e;
