@@ -8,8 +8,6 @@ public class UserDTO implements DTO {
 	
 	private String name;
 
-	private String username;
-
 	private String password;
 
 	private ProfileDTO userProfile;
@@ -17,6 +15,18 @@ public class UserDTO implements DTO {
 	private String email;
 	
 	private Date dataInclusao;
+	
+	public UserDTO() {}
+
+	public UserDTO(String name, String password, ProfileDTO userProfile,
+			String email, Date dataInclusao) {
+		super();
+		this.name = name;
+		this.password = password;
+		this.userProfile = userProfile;
+		this.email = email;
+		this.dataInclusao = dataInclusao;
+	}
 
 	public String getName() {
 		return name;
@@ -24,14 +34,6 @@ public class UserDTO implements DTO {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
 	}
 
 	public String getPassword() {

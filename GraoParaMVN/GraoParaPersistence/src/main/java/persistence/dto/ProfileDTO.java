@@ -11,6 +11,16 @@ public class ProfileDTO implements DTO {
 	private boolean read;
 
 	private boolean edit;
+	
+	public ProfileDTO() {}
+
+	public ProfileDTO(String profile, boolean write, boolean read, boolean edit) {
+		super();
+		this.profile = profile;
+		this.write = write;
+		this.read = read;
+		this.edit = edit;
+	}
 
 	public String getProfile() {
 		return profile;
