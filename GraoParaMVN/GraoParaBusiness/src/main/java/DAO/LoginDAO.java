@@ -3,6 +3,8 @@ package DAO;
 import java.util.Date;
 import java.util.List;
 
+import exceptions.IncorrectLoginInformationException;
+import exceptions.ProfileNotFoundException;
 import exceptions.UserNotFoundException;
 //import exceptions.IncorrectLoginInformationException;
 import exceptions.UnreachableDataBaseException;
@@ -25,7 +27,7 @@ public class LoginDAO {
 			defaultProfile = new ProfileDTO("default", false, true, false);
 		}
 	}
-
+	
 	public UserDTO findUserByEmail(String email) throws UserNotFoundException, UnreachableDataBaseException {
 		List<DTO> resultSet = null;
 		try {
@@ -59,16 +61,44 @@ public class LoginDAO {
 		try {
 			manager.saveEntity(newUser);
 		} catch(DataAccessLayerException e){
+			e.printStackTrace();
 			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
 		}
 	}
 	
-	public void removeUser(String email) throws UnreachableDataBaseException,  UserNotFoundException{
+	public void removeUser(String email) throws UnreachableDataBaseException, UserNotFoundException{
 		UserDTO check = null;
 		try{
 			check = findUserByEmail(email);
 			manager.deleteEntity(check);
 		} catch(DataAccessLayerException e){
+			e.printStackTrace();
+			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
+		}
+	}
+	
+	public void createProfile(String profile, boolean read, boolean write, boolean edit) throws UnreachableDataBaseException{
+		ProfileDTO newProfile = new ProfileDTO(profile, write, read, edit);
+		try {
+			manager.saveEntity(newProfile);
+		} catch (DataAccessLayerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
+		}
+	}
+	
+	public ProfileDTO findProfileByName(String profile) throws UnreachableDataBaseException, ProfileNotFoundException {
+		List<DTO> resultSet = null;
+		try {
+			resultSet = manager.findEntities("from Profile where profile = '" + profile + "'");
+			if(resultSet == null) {
+				//TODO: trocar essa exceção por uma específica a Profile
+				throw new ProfileNotFoundException();
+			}
+			else return (ProfileDTO) resultSet.get(0);
+		} catch(DataAccessLayerException e) {
+			e.printStackTrace();
 			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
 		}
 	}
