@@ -3,8 +3,8 @@ package DAO;
 import java.util.Date;
 import java.util.List;
 
-
-import exceptions.IncorrectLoginInformationException;
+import exceptions.UserNotFoundException;
+//import exceptions.IncorrectLoginInformationException;
 import exceptions.UnreachableDataBaseException;
 
 import persistence.PersistenceAccess;
@@ -26,12 +26,12 @@ public class LoginDAO {
 		}
 	}
 
-	public UserDTO findUserByEmail(String email) throws IncorrectLoginInformationException, UnreachableDataBaseException {
+	public UserDTO findUserByEmail(String email) throws UserNotFoundException, UnreachableDataBaseException {
 		List<DTO> resultSet = null;
 		try {
 			resultSet = manager.findEntities("from User where email = '" + email +"'");
 			if(resultSet == null) {
-				throw new IncorrectLoginInformationException("Email não encontrado");
+				throw new UserNotFoundException("Email não encontrado");
 			}
 			else return (UserDTO) resultSet.get(0);
 		} catch (DataAccessLayerException e) {
@@ -40,12 +40,12 @@ public class LoginDAO {
 		}
 	}
 	
-	public List<DTO> findUsersByName(String name) throws IncorrectLoginInformationException, UnreachableDataBaseException  {
+	public List<DTO> findUsersByName(String name) throws  UserNotFoundException, UnreachableDataBaseException  {
 		List<DTO> resultSet = null;
 		try {
 			resultSet = manager.findEntities("from User where name like '" + name +"'");
 			if(resultSet == null) {
-				throw new IncorrectLoginInformationException("Usuário não encontrado");
+				throw new  UserNotFoundException("Usuário não encontrado");
 			}
 			else return resultSet;
 		} catch (DataAccessLayerException e) {
@@ -63,7 +63,7 @@ public class LoginDAO {
 		}
 	}
 	
-	public void removeUser(String email) throws UnreachableDataBaseException, IncorrectLoginInformationException{
+	public void removeUser(String email) throws UnreachableDataBaseException,  UserNotFoundException{
 		UserDTO check = null;
 		try{
 			check = findUserByEmail(email);
