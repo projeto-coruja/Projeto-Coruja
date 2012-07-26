@@ -32,7 +32,7 @@ public class DocumentoDTOFactory implements DTOFactory {
 		newDTO.setResumo(entry.getResumo());
 		newDTO.setDataInclusao(entry.getDataInclusao());
 		newDTO.setDataDocumento(entry.getDataDocumento());
-		newDTO.setPalChaves(getPalavraChaveDTO(entry));		
+		newDTO.setPalavrasChaves(getPalavraChaveDTO(entry));		
 		newDTO.setUploader(getUserDTO(entry)); 
 		return newDTO;
 	}

@@ -3,15 +3,11 @@ package persistence.dto;
 public class ProfileDTO implements DTO {
 
 	private Long id;
-	
 	private String profile;
-
 	private boolean write;
-
 	private boolean read;
-
 	private boolean edit;
-	
+
 	public ProfileDTO() {}
 
 	public ProfileDTO(String profile, boolean write, boolean read, boolean edit) {
@@ -22,44 +18,19 @@ public class ProfileDTO implements DTO {
 		this.edit = edit;
 	}
 
-	public String getProfile() {
-		return profile;
-	}
+	public String getProfile() {	return profile;	}
+	public void setProfile(String profile) {	this.profile = profile;	}
 
-	public void setProfile(String profile) {
-		this.profile = profile;
-	}
+	public boolean isWrite() {	return write;	}
+	public void setWrite(boolean write) {	this.write = write;	}
 
-	public boolean isWrite() {
-		return write;
-	}
+	public boolean isRead() {	return read;	}
+	public void setRead(boolean read) {	this.read = read;	}
 
-	public void setWrite(boolean write) {
-		this.write = write;
-	}
+	public boolean isEdit() {	return edit;	}
+	public void setEdit(boolean edit) {	this.edit = edit;	}
 
-	public boolean isRead() {
-		return read;
-	}
-
-	public void setRead(boolean read) {
-		this.read = read;
-	}
-
-	public boolean isEdit() {
-		return edit;
-	}
-
-	public void setEdit(boolean edit) {
-		this.edit = edit;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
+	public Long getId() {	return id;	}
+	public void setId(Long id) {	this.id = id;	}
 
 }

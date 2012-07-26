@@ -56,7 +56,7 @@ public class DocumentoFactory implements EntityFactory {
 	
 	private PalavraChave[] getPalavraChave(DocumentoDTO entry) {
 		EntityFactory aux_factory = new PalavraChaveFactory();
-		PalavraChaveDTO[] list = entry.getPalChaves();
+		PalavraChaveDTO[] list = entry.getPalavrasChaves();
 		int length = list.length;
 		PalavraChave[] palchaves = new PalavraChave[length];
 		for(int i = 0; i < length; i++)
