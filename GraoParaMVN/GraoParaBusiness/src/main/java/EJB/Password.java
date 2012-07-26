@@ -30,6 +30,11 @@ public class Password {
 		return null;
 	}
 
+	/**
+	 * Transforma uma senha em hash.
+	 * @param password - String que será transformado em hash.
+	 * @return hashword - Hash da senha.
+	 */
 	public static String getHash(String password){
 
 		String hashword = null;
@@ -38,11 +43,16 @@ public class Password {
 		return hashword;
 	}
 	
-	public static String genNewRandomPassword(){
+	/**
+	 * Gera uma nova senha de n caracteres.
+	 * @param n - Número de caracteres que será colocado na nova senha. 
+	 * @return password - Nova senha gerado aleatóriamente.
+	 */
+	public static String genNewRandomPassword(Integer n){
 		char c;
 		Random r = new Random();
 		String password = "";
-		for(int i = 0; i < 6; i++){
+		for(int i = 0; i < n; i++){
 			switch(r.nextInt(3)){
 			case 0:
 				c = (char) ('a' + r.nextInt(26));
