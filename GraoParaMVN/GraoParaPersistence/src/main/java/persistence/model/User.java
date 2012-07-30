@@ -12,6 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
@@ -37,12 +39,11 @@ public class User implements Serializable, Entidade {
 	@NotEmpty
 	private String name;
 
-	@NotNull
-	@NotEmpty
 	@Column(name = "data_inclusao")
 	private Date dataInclusao;
 
 	@ManyToOne
+	@Cascade(value = {CascadeType.SAVE_UPDATE})
 	@JoinColumn(name = "profile", nullable = false)
 	private Profile userProfile;
 

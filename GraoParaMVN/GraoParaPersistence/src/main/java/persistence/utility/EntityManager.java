@@ -29,7 +29,7 @@ public class EntityManager {
 		}catch(HibernateException e){
 			handleException(e);
 		}finally{
-			PersistenceUtility.close(session);
+			finishOperation();
 		}
 	}
 	
@@ -41,7 +41,7 @@ public class EntityManager {
 		}catch(HibernateException e){
 			handleException(e);
 		}finally{
-			PersistenceUtility.close(session);
+			finishOperation();
 		}
 	}
 
@@ -53,7 +53,7 @@ public class EntityManager {
 		}catch(HibernateException e){
 			handleException(e);
 		}finally{
-			PersistenceUtility.close(session);
+			finishOperation();
 		}
 	}
 	
@@ -83,10 +83,12 @@ public class EntityManager {
 			transaction.commit();
 		}catch(HibernateException e){
 			handleException(e);
-		}finally{
-			PersistenceUtility.close(session);
 		}
 		return obj;
+	}
+	
+	public void finishOperation() {
+		PersistenceUtility.close(session);
 	}
 
 	private void handleException(HibernateException e) throws DataAccessLayerException {
@@ -99,6 +101,5 @@ public class EntityManager {
 		transaction = session.beginTransaction();
 
 	}
-
 
 }

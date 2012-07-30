@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import java.util.Date;
 import java.util.List;
 
 import org.junit.Before;
@@ -12,22 +13,20 @@ import org.junit.Test;
 
 import persistence.dto.DTO;
 import persistence.dto.ProfileDTO;
+import persistence.dto.UserDTO;
 import persistence.model.Profile;
 
 public class Persistence {
 	
 	PersistenceAccess pa;
-	DTO dto;
+	DTO profile;
+	DTO user;
 	
 	@Before
 	public void setUp(){
 		pa = new PersistenceAccess();
-		dto = new ProfileDTO();
-		
-		((ProfileDTO) dto).setEdit(true);
-		((ProfileDTO) dto).setRead(true);
-		((ProfileDTO) dto).setWrite(true);
-		((ProfileDTO) dto).setProfile("lalala");
+		profile = new ProfileDTO("lalala", true, true, true);
+		user = new UserDTO("Hueho", "senha", (ProfileDTO) profile, "hueho@coruja.org", new Date());
 	}
 	
 	@Test
@@ -35,38 +34,44 @@ public class Persistence {
 		 assertNotNull(pa);
 	}
 	
-	@Ignore
+	//@Ignore
 	@Test
 	public void saveEntity() {
-		pa.saveEntity(((ProfileDTO) dto));
+		//pa.saveEntity(profile);
+		pa.saveEntity(user);
 	}
 	
 
-	@Ignore
+	//@Ignore
 	@Test
 	public void testFindEntities() {
 		List<DTO> l = pa.findEntities("from Profile");
 		ProfileDTO q = (ProfileDTO) l.get(l.size() - 1);
-		assertEquals(((ProfileDTO) q).getProfile(), q.getProfile());
+		assertEquals(((ProfileDTO) profile).getProfile(), q.getProfile());
 	}
 	
 	@Ignore
 	@Test
 	public void testUpdateEntity() {
-		List<DTO> l = pa.findEntities("from Profile");
-		ProfileDTO r = (ProfileDTO) l.get(l.size() - 1);
+		List<DTO> l = pa.findEntities("from User");
+		UserDTO t_user = (UserDTO) l.get(l.size() - 1);
 		
-		r.setEdit(false);
-		r.setWrite(false);
-		r.setRead(false);
-		r.setProfile("alalalala");
-		pa.updateEntity(r);
+		ProfileDTO t_profile = (ProfileDTO) t_user.getUserProfile();
 		
-		ProfileDTO s = (ProfileDTO) pa.findSingleEntity(Profile.class, r.getId());
-		assertEquals(r.getProfile(), s.getProfile());
+		t_profile.setEdit(false);
+		t_profile.setWrite(false);
+		t_profile.setRead(false);
+		t_profile.setProfile("alalalala");
+		pa.updateEntity(t_profile);
+		pa.updateEntity(t_user);
+		
+		l = pa.findEntities("from User");
+		t_user = (UserDTO) l.get(l.size() - 1);
+		t_profile = t_user.getUserProfile();
+		assertEquals(t_profile.getProfile(), "alalalala");
 	}
 	
-	//@Ignore
+	@Ignore
 	@Test
 	public void testDeleteEntity() {
 		List<DTO> l = pa.findEntities("from Profile");

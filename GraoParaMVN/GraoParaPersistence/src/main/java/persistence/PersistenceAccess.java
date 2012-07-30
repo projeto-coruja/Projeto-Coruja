@@ -63,7 +63,10 @@ public class PersistenceAccess {
 
 
 	public List<DTO> findEntities(String query) throws DataAccessLayerException{
-		return dtoGen.generateDTOSet(sharedManager.find(query));
+		List<DTO> resultSet = dtoGen.generateDTOSet(sharedManager.find(query));
+		sharedManager.finishOperation();
+		return resultSet;
+		
 	}
 	
 	private Entidade findTarget(DTO dto) throws DataAccessLayerException{
