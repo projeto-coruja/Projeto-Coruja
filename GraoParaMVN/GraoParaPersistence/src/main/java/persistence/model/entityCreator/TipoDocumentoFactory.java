@@ -14,7 +14,8 @@ public class TipoDocumentoFactory implements EntityFactory {
 	public Entidade createEntity(DTO dto) {
 		TipoDocumento newEnt = new TipoDocumento();
 		TipoDocumentoDTO entry = (TipoDocumentoDTO) dto;
-		
+
+		newEnt.setId(entry.getId());
 		newEnt.setTipoDocumento(entry.getTipoDocumento());
 		
 		return newEnt;

@@ -13,7 +13,8 @@ public class IdNumDocumentoFactory implements EntityFactory {
 	public IdNumDocumento createEntity(DTO dto) {
 		IdNumDocumento newEnt = new IdNumDocumento();
 		IdNumDocumentoDTO entry = (IdNumDocumentoDTO) dto;
-		
+
+		newEnt.setId(entry.getId());
 		newEnt.setCodId(entry.getCodId());
 		newEnt.setTipoId(entry.getTipoId());
 		

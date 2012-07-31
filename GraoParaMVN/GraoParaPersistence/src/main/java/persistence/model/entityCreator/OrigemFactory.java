@@ -13,7 +13,8 @@ public class OrigemFactory implements EntityFactory {
 	public Origem createEntity(DTO dto) {
 		Origem newEnt = new Origem();
 		OrigemDTO entry = (OrigemDTO) dto;
-		
+
+		newEnt.setId(entry.getId());
 		newEnt.setCodOrigem(entry.getCodOrigem());
 		newEnt.setTipoOrigem(entry.getTipoOrigem());
 		newEnt.setTitulo(entry.getTitulo());

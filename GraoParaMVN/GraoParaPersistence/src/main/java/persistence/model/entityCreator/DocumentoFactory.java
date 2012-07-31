@@ -23,6 +23,7 @@ public class DocumentoFactory implements EntityFactory {
 		newEnt.setOrigemDocumento(getOrigem(entry));
 		newEnt.setIdentDocumento(getIdNumDocumento(entry));
 		newEnt.setTipoDocumento(getTipoDocumento(entry));
+		newEnt.setId(entry.getId());
 		newEnt.setAutor(entry.getAutor());
 		newEnt.setDestinatario(entry.getDestinatario());
 		newEnt.setLocal(entry.getLocal());
