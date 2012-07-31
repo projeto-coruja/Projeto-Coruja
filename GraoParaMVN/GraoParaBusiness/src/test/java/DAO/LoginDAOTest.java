@@ -2,20 +2,15 @@ package DAO;
 
 import static org.junit.Assert.*;
 
-import java.util.Date;
 
 import org.junit.Test;
 
 import exceptions.UnreachableDataBaseException;
 import exceptions.UserNotFoundException;
 
-import persistence.dto.ProfileDTO;
-import persistence.dto.UserDTO;
-import persistence.model.Profile;
 
 public class LoginDAOTest {
-
-	LoginDAO loginDAO;
+	LoginDAO loginDAO = new LoginDAO();
 
 	@Test
 	public void testLoginDAO() {

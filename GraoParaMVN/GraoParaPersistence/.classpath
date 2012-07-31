@@ -24,15 +24,5 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry exported="true" kind="con" path="org.testng.TESTNG_CONTAINER"/>
-	<classpathentry exported="true" kind="lib" path="/Users/vitorkawai/.m2/repository/org/hibernate/javax/persistence/hibernate-jpa-2.0-api/1.0.1.Final/hibernate-jpa-2.0-api-1.0.1.Final.jar">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-			<attribute name="maven.groupId" value="org.hibernate.javax.persistence"/>
-			<attribute name="maven.artifactId" value="hibernate-jpa-2.0-api"/>
-			<attribute name="maven.version" value="1.0.1.Final"/>
-			<attribute name="maven.scope" value="compile"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry exported="true" kind="src" path="/GraoParaBusiness"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

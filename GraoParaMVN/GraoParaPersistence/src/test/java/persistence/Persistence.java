@@ -14,7 +14,6 @@ import org.junit.Test;
 import persistence.dto.DTO;
 import persistence.dto.ProfileDTO;
 import persistence.dto.UserDTO;
-import persistence.model.Profile;
 
 public class Persistence {
 	

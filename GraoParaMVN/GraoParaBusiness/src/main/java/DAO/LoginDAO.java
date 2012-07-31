@@ -3,7 +3,6 @@ package DAO;
 import java.util.Date;
 import java.util.List;
 
-import exceptions.IncorrectLoginInformationException;
 import exceptions.ProfileNotFoundException;
 import exceptions.UserNotFoundException;
 //import exceptions.IncorrectLoginInformationException;
