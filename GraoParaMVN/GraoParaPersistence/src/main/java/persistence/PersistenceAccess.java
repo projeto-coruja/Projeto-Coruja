@@ -43,7 +43,9 @@ public class PersistenceAccess {
 	}
 
 	public void saveEntity(DTO dto) throws DataAccessLayerException {
-		sharedManager.save(entGen.generateEntity(dto));
+		Entidade ent = entGen.generateEntity(dto);
+		sharedManager.save(ent);
+		dto.setId(ent.getId());
 	}
 
 	public void updateEntity(DTO dto) throws DataAccessLayerException{
@@ -54,11 +56,6 @@ public class PersistenceAccess {
 	public void deleteEntity(DTO dto) throws DataAccessLayerException{
 		Entidade target = findTarget(dto);
 		sharedManager.delete(target);
-	}
-	
-	@SuppressWarnings({ "rawtypes" })
-	public DTO findSingleEntity(Class table, long id) throws DataAccessLayerException{
-		return dtoGen.generateSingleDTO(sharedManager.find(table, id));
 	}
 
 

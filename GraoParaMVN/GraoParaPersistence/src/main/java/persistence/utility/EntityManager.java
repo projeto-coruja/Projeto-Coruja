@@ -92,6 +92,7 @@ public class EntityManager {
 	}
 
 	private void handleException(HibernateException e) throws DataAccessLayerException {
+		e.printStackTrace();
 		PersistenceUtility.rollback(transaction);
 		throw new DataAccessLayerException(e);
 	}

@@ -5,6 +5,6 @@ package persistence.dto;
  * Todos os DTOs devem implementar essa interface.
  */
 public interface DTO {
-
+	void setId(Long id);
 	Long getId();
 }

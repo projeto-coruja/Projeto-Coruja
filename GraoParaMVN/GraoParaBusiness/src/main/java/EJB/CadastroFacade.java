@@ -27,6 +27,17 @@ public class CadastroFacade {
 		}
 	}
 	
+	public void adicionarUsuario(String email, String name, String password) throws UnreachableDataBaseException {
+		try {
+			UserDTO check = loginDAO.findUserByEmail(email);
+		} catch (UnreachableDataBaseException e) {
+			e.printStackTrace();
+		} catch (UserNotFoundException e) {
+			loginDAO.addUser(email, name, password);
+			e.printStackTrace();
+		}
+	}
+	
 	public void adicionarProfile(String profile, boolean read, boolean write, boolean edit) throws UnreachableDataBaseException, IncorrectProfileInformationException {
 		try {
 			@SuppressWarnings("unused")

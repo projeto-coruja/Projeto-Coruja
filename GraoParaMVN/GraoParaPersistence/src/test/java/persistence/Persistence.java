@@ -20,12 +20,14 @@ public class Persistence {
 	PersistenceAccess pa;
 	DTO profile;
 	DTO user;
+	DTO user2;
 	
 	@Before
 	public void setUp(){
 		pa = new PersistenceAccess();
 		profile = new ProfileDTO("lalala", true, true, true);
 		user = new UserDTO("Hueho", "senha", (ProfileDTO) profile, "hueho@coruja.org", new Date());
+		user2 = new UserDTO("Kawai", "123", (ProfileDTO) profile, "kawai@coruja.org", new Date());
 	}
 	
 	@Test
@@ -36,8 +38,9 @@ public class Persistence {
 	//@Ignore
 	@Test
 	public void saveEntity() {
-		//pa.saveEntity(profile);
+		pa.saveEntity(profile);
 		pa.saveEntity(user);
+		pa.saveEntity(user2);
 	}
 	
 
@@ -49,7 +52,7 @@ public class Persistence {
 		assertEquals(((ProfileDTO) profile).getProfile(), q.getProfile());
 	}
 	
-	@Ignore
+//	@Ignore
 	@Test
 	public void testUpdateEntity() {
 		List<DTO> l = pa.findEntities("from User");

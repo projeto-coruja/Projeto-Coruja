@@ -15,16 +15,37 @@ import persistence.dto.UserDTO;
 import persistence.utility.DataAccessLayerException;
 
 public class LoginDAO {
+
+	private static ProfileDTO defaultProfile;
+	private static String defaultProfileName = "default";
 	
 	private PersistenceAccess manager;
-	private static ProfileDTO defaultProfile;
 
 	public LoginDAO() {
 		manager = new PersistenceAccess();
-		if(defaultProfile != null)
-		{
-			defaultProfile = new ProfileDTO("default", false, true, false);
+		getDefaultProfile();
+	}
+	
+	private void getDefaultProfile() { 
+		if(defaultProfile == null) {	
+			try {
+				defaultProfile = this.findProfileByName(defaultProfileName);
+			} catch (UnreachableDataBaseException e) {
+				e.printStackTrace();
+			} catch (ProfileNotFoundException e) {
+				try {
+					this.createProfile(defaultProfileName, true, false, false);
+					defaultProfile = this.findProfileByName(defaultProfileName);
+				} catch (UnreachableDataBaseException e1) {
+					e1.printStackTrace();
+				} catch (ProfileNotFoundException e1) {
+					e1.printStackTrace();
+				}
+				e.printStackTrace();
+			}
+			//		defaultProfile = new ProfileDTO("default", false, true, false);
 		}
+	
 	}
 	
 	public UserDTO findUserByEmail(String email) throws UserNotFoundException, UnreachableDataBaseException {
@@ -56,7 +77,7 @@ public class LoginDAO {
 	}
 
 	public void addUser(String email, String name, String password) throws UnreachableDataBaseException {
-		UserDTO newUser = new UserDTO(name, password, defaultProfile, email, new Date());
+		UserDTO newUser = new UserDTO(name, password, LoginDAO.defaultProfile, email, new Date());
 		try {
 			manager.saveEntity(newUser);
 		} catch(DataAccessLayerException e){
@@ -81,7 +102,6 @@ public class LoginDAO {
 		try {
 			manager.saveEntity(newProfile);
 		} catch (DataAccessLayerException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
 		}

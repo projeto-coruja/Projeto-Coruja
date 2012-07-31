@@ -15,24 +15,25 @@ public class AutenticacaoFacade {
 		loginDAO = new LoginDAO();
 	}
 	
-	public void validarLogin(String email, String password) throws IncorrectLoginInformationException,  UserNotFoundException, UnreachableDataBaseException{
+	public boolean validarLogin(String email, String password) throws IncorrectLoginInformationException,  UserNotFoundException, UnreachableDataBaseException{
 		UserDTO check = null;
 		try {
 			check = loginDAO.findUserByEmail(email);
 			String hashedPassword = Password.getHash(password);
 			if(check.getPassword().equals(hashedPassword)) {
-				//TODO faz algo
+				return true;
 			}
 			else {
 				throw new IncorrectLoginInformationException("Senha incorreta.");
 			}
 		} catch (IncorrectLoginInformationException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-			throw e;
+//			throw e;
+			return false;
 		} catch (UserNotFoundException e) {
 			e.printStackTrace();
-			throw e;
+			return false;
+//			throw e;
 		}
 	}
 	
