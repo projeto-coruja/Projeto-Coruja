@@ -33,21 +33,8 @@ public class CadastroFacade {
 		} catch (UnreachableDataBaseException e) {
 			e.printStackTrace();
 		} catch (UserNotFoundException e) {
-			loginDAO.addUser(email, name, password);
-			e.printStackTrace();
-		}
-	}
-	
-	public void adicionarProfile(String profile, boolean read, boolean write, boolean edit) throws UnreachableDataBaseException, IncorrectProfileInformationException {
-		try {
-			@SuppressWarnings("unused")
-			ProfileDTO check = loginDAO.findProfileByName(profile);
-			throw new IncorrectProfileInformationException("Nome de profile já existe.");
-		} catch(ProfileNotFoundException e) {
-			loginDAO.createProfile(profile, read, write, edit);
-		} catch (UnreachableDataBaseException e) {
-			e.printStackTrace();
-			throw e;
+			loginDAO.addUser(email, name, Password.getHash(password));
+			//e.printStackTrace();
 		}
 	}
 

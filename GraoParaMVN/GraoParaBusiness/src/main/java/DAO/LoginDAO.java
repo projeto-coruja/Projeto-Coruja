@@ -3,6 +3,7 @@ package DAO;
 import java.util.Date;
 import java.util.List;
 
+import exceptions.IncorrectProfileInformationException;
 import exceptions.ProfileNotFoundException;
 import exceptions.UserNotFoundException;
 //import exceptions.IncorrectLoginInformationException;
@@ -94,6 +95,22 @@ public class LoginDAO {
 		} catch(DataAccessLayerException e){
 			e.printStackTrace();
 			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
+		}
+	}
+	
+	public void changeUserProfile(String email, ProfileDTO new_profile) throws IncorrectProfileInformationException, UnreachableDataBaseException, UserNotFoundException {
+		UserDTO check = null;
+		try {
+			check = findUserByEmail(email);
+			String old_profile = check.getUserProfile().getProfile();
+			if(old_profile != new_profile.getProfile()) check.setUserProfile(new_profile);
+			else throw new IncorrectProfileInformationException("Perfil já definido para esse usuário, escolha outro.");
+		} catch (DataAccessLayerException e) {
+			e.printStackTrace();
+			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
+		} catch (UserNotFoundException e) {
+			e.printStackTrace();
+			throw new UserNotFoundException("Usuário não existe.");
 		}
 	}
 	

@@ -35,7 +35,7 @@ public class Persistence {
 		 assertNotNull(pa);
 	}
 	
-	//@Ignore
+	@Ignore
 	@Test
 	public void saveEntity() {
 		pa.saveEntity(profile);
@@ -44,7 +44,7 @@ public class Persistence {
 	}
 	
 
-	//@Ignore
+	@Ignore
 	@Test
 	public void testFindEntities() {
 		List<DTO> l = pa.findEntities("from Profile");
@@ -52,7 +52,7 @@ public class Persistence {
 		assertEquals(((ProfileDTO) profile).getProfile(), q.getProfile());
 	}
 	
-//	@Ignore
+	@Ignore
 	@Test
 	public void testUpdateEntity() {
 		List<DTO> l = pa.findEntities("from User");
@@ -76,10 +76,10 @@ public class Persistence {
 	@Ignore
 	@Test
 	public void testDeleteEntity() {
-		List<DTO> l = pa.findEntities("from Profile");
-		ProfileDTO t = (ProfileDTO) l.get(l.size() - 1);
-		pa.deleteEntity(t);
-		l = pa.findEntities("from Profile");
+		List<DTO> l = pa.findEntities("from User");
+		for(DTO t : l)
+			pa.deleteEntity(t);
+		l = pa.findEntities("from User");
 		assertTrue(l == null);
 	}
 }

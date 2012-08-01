@@ -21,6 +21,7 @@ public class UserFactory implements EntityFactory {
 		newEnt.setName(entry.getName());
 		newEnt.setPassword(entry.getPassword());
 		newEnt.setUserProfile(getProfile(entry));
+		newEnt.setDataInclusao(entry.getDataInclusao());
 		
 		return newEnt;
 	}
