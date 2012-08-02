@@ -29,11 +29,7 @@
 	<div class="container">
 		<div class="header">
 			<!-- Começo do banner -->
-			<a href="#"><img src="../../images/corujaLogoEditar2.png"
-				alt="Ãrea reservada para logos, caso precise" name="Insert_logo"
-				width="100" height="100" id="Insert_logo"
-				style="background-color: #8090AB; display: block; float: inherit;" />
-				<strong>Projeto Grão-Pará</strong> </a>
+			<center><a href="#" class="banner" ></a> </center>
 
 		</div>
 		<!-- Fim do Banner -->

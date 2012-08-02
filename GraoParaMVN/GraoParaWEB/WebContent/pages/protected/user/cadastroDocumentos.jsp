@@ -192,7 +192,7 @@ function Formatadata(Campo, teclapres)
 					<label for="dataDocumento" class="labelForms">Data do Documento:<font color="#FF0000">*</font></label>
 				</td>
 				<td height="20">
-					<input class="input" type="text" name="data" maxlength="10" onkeyup="Formatadata(this,event)" required/>
+					<input class="input" type="date" name="data" maxlength="10" required /> <!--  onkeyup="Formatadata(this,event)" -->
 				</td>
 			</tr>
 			<tr>
