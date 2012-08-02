@@ -13,14 +13,14 @@
 <script type="text/javascript"
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
 <script type="text/javascript" src="../javascript/tabs.js"></script>
-<script type="text/javascript">  
-    $(document).ready(function(){  
-        $("#menu a").click(function( e ){  
-            e.preventDefault();  
-            var href = $( this ).attr('href');  
-            $("#content").load( href +" #content");  
-        });  
-    });  
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#menu a").click(function(e) {
+			e.preventDefault();
+			var href = $(this).attr('href');
+			$("#content").load(href + " #content");
+		});
+	});
 </script>
 </head>
 

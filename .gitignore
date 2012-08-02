@@ -1,0 +1,8 @@
+/GraoParaMVN
+
+# Ignorar arquivos específicos
+.DS_Store
+
+#ignorar extensoes abaixo
+*.class
+*.classpath
