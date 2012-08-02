@@ -13,14 +13,14 @@
 <script type="text/javascript"
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
 <script type="text/javascript" src="../javascript/tabs.js"></script>
-<script type="text/javascript">  
-    $(document).ready(function(){  
-        $("#menu a").click(function( e ){  
-            e.preventDefault();  
-            var href = $( this ).attr('href');  
-            $("#content").load( href +" #content");  
-        });  
-    });  
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#menu a").click(function(e) {
+			e.preventDefault();
+			var href = $(this).attr('href');
+			$("#content").load(href + " #content");
+		});
+	});
 </script>
 </head>
 
@@ -29,7 +29,9 @@
 	<div class="container">
 		<div class="header">
 			<!-- Começo do banner -->
-			<center><a href="#" class="banner" ></a> </center>
+			<center>
+				<a href="#" class="banner"></a>
+			</center>
 
 		</div>
 		<!-- Fim do Banner -->
@@ -37,22 +39,29 @@
 		<div class="sidebar1">
 
 			<!--Começo da área de login -->
-			<form method="POST">
+			<form method="post" action = "LoginServlet">
 				<fieldset>
-					<label for="login">Login:</label> <input class="inputLogin"
-						type="text" name="login" height="30px" size="auto"
-						placeholder="Seu login" required autofocus> <label
-						for="senha">Senha:</label> <input class="inputLogin"
-						type="password" name="senha" height="30px" size="auto"
-						placeholder="Sua senha" required>
+					<label for="login">Login:</label>
+						<input class="inputLogin"
+							type="text" name="login" height="30px" size="auto"
+							placeholder="Seu login" required autofocus>
+					<label for="senha">Senha:</label>
+						<input class="inputLogin"
+							type="password" name="senha" height="30px" size="auto"
+							placeholder="Sua senha" required>
 				</fieldset>
 				<fieldset>
-					<input class="buttonEntrar" type="button" name="Entrar"
-						value="Entrar" /> <a onclick="abrirPag('CadUsuario.jsp');"><input
-						class="buttonRegistrar" type="button" name="Registrar"
-						value="Registrar" /></a>
+					<input class="buttonEntrar" type="submit" name="Entrar"
+						value="Entrar" />
 				</fieldset>
 			</form>
+			<fieldset>
+				<a onclick="abrirPag('CadUsuario.jsp');">
+					<input
+						class="buttonRegistrar" type="button" name="Registrar"
+						value="Registrar" />
+				</a>
+			</fieldset>
 			<!-- Fim da área de login -->
 
 
