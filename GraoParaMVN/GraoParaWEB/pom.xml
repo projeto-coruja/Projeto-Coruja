@@ -36,6 +36,12 @@
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.jboss.spec.javax.servlet</groupId>
+			<artifactId>jboss-servlet-api_3.0_spec</artifactId>
+			<version>1.0.2.Final</version>
+		</dependency>
+
 	</dependencies>
 	<build>
 		<finalName>GraoParaWEB</finalName>
