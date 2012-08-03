@@ -26,6 +26,6 @@
 	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/GraoParaBusiness"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/GraoParaBusiness"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

@@ -299,4 +299,18 @@ apagado quando o usuário digitar algo dentro, para isso use o atributo placehol
 	margin: 0 0 0 30%;
 }
 
+/* Banner rules xD */
+
+.banner {
+ margin-bottom: 0px;
+ width: 700px;
+ height:100px;
+ display:block;
+ background:transparent url('../../images/bannerCoruja.png') center top no-repeat;
+ text-align: center;
+}
+
+.banner:hover {
+   background-image: url('../../images/bannerMouseOver.png');
+}
 
