@@ -1,13 +1,19 @@
+@charset "utf-8";
+
 /* BASIC RESET */
 ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,body,html,p,blockquote,fieldset,input{ margin:0px; padding:0px; }
 img, a { border:0px; outline:0px; }
 
 /* HTML ELEMENTS */
 body {
-	background-color: #4E5869;
+	background-color: #fff;
 	letter-spacing:1px;
 	font-size: 62.5%;
-	margin:10px;
+	margin: 0;
+	padding: 0;
+	color: #000;
+	/*text-align: center; */
+}
 }
 
 /* ~~ this container surrounds all other divs giving them their percentage-based width ~~ */
@@ -16,7 +22,8 @@ body {
 	max-width: 1260px;/* a max-width may be desirable to keep this layout from getting too wide on a large monitor. This keeps line length more readable. IE6 does not respect this declaration. */
 	min-width: 780px;/* a min-width may be desirable to keep this layout from getting too narrow. This keeps line length more readable in the side columns. IE6 does not respect this declaration. */
 	background-color: #FFF;
-	margin: 0 auto; /* the auto value on the sides, coupled with the width, centers the layout. It is not needed if you set the .container's width to 100%. */
+	margin: 10px auto; /* the auto value on the sides, coupled with the width, centers the layout. It is not needed if you set the .container's width to 100%. */
+	font-size: 100%;
 }
 
 /* ~~ the header is not given a width. It will extend the full width of your layout. It contains an image placeholder that should be replaced with your own linked logo ~~ */
@@ -26,29 +33,20 @@ body {
 
 .content {
 	padding: 10px 0;
-	width: 725px;
-	float: left;
-}
-
-.footer {
-	padding: 10px 0;
-	background-color: #6F7D94;
-	text-align:center;"/media/4C1AFBE11AFBC5CC/Angela/ProjetoCoruja/Site/ie.css"
-	text-shadow:#000;
-	position: relative;/* this gives IE6 hasLayout to properly clear */
-	clear: both; /* this clear property forces the .container to understand where the columns end and contain them */
+	width: 100%;
+	background-color: #FFF;
 }
 
 
 .clear { clear:both; }
 
-h2 { font-size:18px; margin:10px 0px 5px 0px; }
-p { font-size:15px; width:580px; margin:20px 0px 0px 0px; }
+h2 { font-size:18px; margin:10px 10px 30px 80px; }
+p { font-size:15px; width:580px; margin:10px 10px 30px 80px; }
 .browser a {
 	display:inline-block;
 	float:left;
 	text-align:center;
-	margin:10px 10px 0px 0px;
+	margin:10px 10px 30px 80px;
 }
 a:hover { text-decoration:none; }
 
