@@ -11,8 +11,10 @@
 <script type="text/javascript">
  	
 </script>
-<!-- /TinyMCE -->
-</head>
+
+<link rel="stylesheet" href="../css/validationEngine.jquery.css" type="text/css"/>
+	<link rel="stylesheet" href="../css/template.css" type="text/css"/>
+	</head>
 <body>
 
 	<h2>Cadastro Usuário</h2>
@@ -45,7 +47,7 @@
 				</td>
 				<td width="377" height="20">
 					
-						<input class="input" id="email" name="email" type="email" maxlength="100" placeholder="Digite um e-mail valido." required>
+						<input class="input" name="email" type="email" maxlength="100" required>
 						<font class="digitosTexts">(máx 50 digitos)</font> 
 					
 				</td>
@@ -65,7 +67,7 @@
 					<label for="confsenha" class="labelForms">Confirme sua senha:<font color="#FF0000">*</font></label>
 				</td>
 				<td width="377" height="20">
-					<input class="input" name="confsenha" type="password" maxlength="20" required>
+					<input class="input" name="confsenha" type="password" maxlength="20" required">
 					<font class="digitosTexts">(min. 6 e máx. 20 digitos)</font> 
 				</td>
 			</tr>
