@@ -197,11 +197,6 @@ a:hover, a:active, a:focus { /* this group of selectors will give a keyboard nav
 	
 }
 
-/*Código para setar background no preenchimento de e-mails inválidos e válidos*/
-/* Dependendo da cor até que fica legal, mas é mais por enquanto está sendo usádo só para testes de validação de patterns */
-#email:valid {background:#006600;color:#fff } 
-#email:invalid {background:#990000; color:#fff} 
-
 fieldset{
 	padding: 0 0 0 0;
 	margin: 10px;

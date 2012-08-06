@@ -3,20 +3,16 @@
 <head>
 <meta charset="utf-8">
 <title>Grão-Pará</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<!-- Carregando os estilos CSS -->
-<link href="/GraoPara/faces/pages/css/principal.css" rel="stylesheet" type="text/css"/>
-<link href="/GraoPara/faces/pages/css/tabs.css" rel="stylesheet" type="text/css"/>
-<link href="/GraoPara/faces/pages/css/controle.css" rel="stylesheet" type="text/css"/>
+<link href="/GraoPara/faces/pages/css/principal.css" rel="stylesheet" type="text/css" />
+<link href="/GraoPara/faces/pages/css/tabs.css" rel="stylesheet" type="text/css" />
+<link href="/GraoPara/faces/pages/css/controle.css" rel="stylesheet" type="text/css" />
 
-<!-- Carregando os Javascripts -->
 <script type="text/javascript" src="/GraoPara/faces/pages/javascript/ajax.js"></script>
 <script type="text/javascript" src="/GraoPara/faces/pages/javascript/instrucao.js"></script>
-
 <script type="text/javascript"
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
-	
+
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#menu a").click(function(e) {
@@ -70,14 +66,14 @@
 
 
 			<ul class="nav" id="menu">
-				<li><a href="#Pesquisa" onclick="abrirPag('/GraoPara/faces/pages/public/pesquisa.jsp');">Pesquisar</a></li>
-				<li><a href="#cadastroDocumento"
+				<li><a href="#" onclick="abrirPag('/GraoPara/faces/pages/public/pesquisa.jsp');">Pesquisar</a></li>
+				<li><a href="#"
 					onclick="abrirPag('/GraoPara/faces/pages/protected/user/cadastroDocumentos.jsp');">Cadastrar
 						Documento</a></li>
-				<li><a href="#userControle"
+				<li><a href="#"
 					onclick="abrirPag('/GraoPara/faces/pages/protected/user/UserControle.jsp');">Painel
 						User</a></li>
-				<li><a href="#adminControle"
+				<li><a href="#"
 					onclick="abrirPag('/GraoPara/faces/pages/protected/admin/AdminControle.jsp');">Painel
 						Admin</a></li>
 			</ul>

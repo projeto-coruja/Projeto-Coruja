@@ -4,7 +4,7 @@
 <meta charset="utf-8" http-equiv="Content-Type">
 <link href="../css/principal.css" rel="stylesheet" type="text/css">
 
-<title>Untitled Document</title>
+<title>Pesquisa de Documento</title>
 </head>
 
 <body>

@@ -3,9 +3,16 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<link href="/GraoParaWEB/faces/pages/css/principal.css" rel="stylesheet" type="text/css"/>
-<link href="/GraoParaWEB/faces/pages/css/tabs.css" rel="stylesheet" type="text/css"/>
-<link href="/GraoParaWEB/faces/pages/css/controle.css" rel="stylesheet" type="text/css"/>
+<link href="../../css/principal.css" rel="stylesheet" type="text/css"/>
+<link href="../../css/tabs.css" rel="stylesheet" type="text/css"/>
+<link href="../../css/controle.css" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" href="../../css/validationEngine.jquery.css" type="text/css"/>
+<link rel="stylesheet" href="../../css/template.css" type="text/css"/>
+<!-- scripts -->
+<script type="text/javascript" src="../../jscripts/tiny_mce/tiny_mce.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript" src="../../javascript/jquery.validationEngine.js" charset="utf-8"></script><script type="text/javascript" src="../../javascript/languages/jquery.validationEngine-pt.js" charset="utf-8"></script><script type="text/javascript" src="../../javascript/script.js"></script>							
+<!-- /scripts -->
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Painel de controle</title>
 </head>
@@ -41,15 +48,15 @@
 		</tr>
 		<tr>
 			<td><label for="senhaAtual">Senha atual: </label></td>
-			<td colspan="2"><input class="inputControle" type="password" name="senhaAtual" />
+			<td colspan="2"><input class="inputControle validate[required]" type="password" name="senhaAtual" id="senhaAtual"/>
 		</tr>
 		<tr>
 			<td><label for="senhaNova">Nova senha: </label></td>
-			<td colspan="2"><input class="inputControle" type="password" name="senhaNova" />
+			<td colspan="2"><input class="inputControle validate[required,minSize[6]]" id="senhaNova" type="password" name="senhaNova" />
 		</tr>
 		<tr>
 			<td><label for="senhaConfirme">Confirme nova senha: </label></td>
-			<td colspan="2"><input class="inputControle" type="password" name="senhaConfirme" />
+			<td colspan="2"><input class="inputControle validate[required,equals[senhaNova]]" type="password" name="senhaConfirme" id="senhaConfirme" />
 		</tr>
 		<tr>
 			

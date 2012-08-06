@@ -27,12 +27,10 @@
 				  	<br />
 					
 				  	<label for="conMail">Email</label>
-				  	<input type="text" name="conMail" id="conMail" class="validate[required] validate[custom[email]] mediumInput"/>
+				  	<input type="text" name="conMail" id="conMail" class="validate[required] validate[custom[email]] mediumInput" style="FONT-FAMILY: 'Andale Mono';"/>
 					<br />
 					
-					<label for="conOperator" class="none">Operadora</label>
-					<label for="conPhone">Telefone</label>
-					<select name="conOperator" id="conOperator" class="validate[required] smallInput">
+					<label for="conOperator" class="none">Operadora</label> <select name="conOperator" id="conOperator" class="validate[required] smallInput" style="FONT-FAMILY: 'Arial Black';">
 						<option value="">-- Selecione a operadora --</option>
 						<option value="TIM">TIM</option>
 						<option value="OI">OI</option>
@@ -41,6 +39,8 @@
 						<option value="Nextel">Nextel</option>
 						<option value="Outros">Outros</option>
 					</select>
+					<br />
+					<label for="conPhone">Telefone</label>					
 				  	<input type="text" name="conPhone" id="conPhone" class="validate[required] mediumInput phone"/>
 				  	<br />
 				  	

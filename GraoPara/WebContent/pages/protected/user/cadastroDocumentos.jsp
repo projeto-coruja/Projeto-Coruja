@@ -5,72 +5,22 @@
 <meta http-equiv="Content-Type" charset="utf-8">
 <title>Projeto Grão-Pará</title>
 
-<link href="/GraoParaWEB/faces/pages/css/principal.css" rel="stylesheet" type="text/css"/>
-
-<script type="text/javascript" src="../jscripts/tiny_mce/tiny_mce.js"></script>
-<script type="text/javascript">
-
-//Formatanto a data:
-function Formatadata(Campo, teclapres)
-{
-	var tecla = teclapres.keyCode;
-	var vr = new String(Campo.value);
-	vr = vr.replace("/", "");
-	vr = vr.replace("/", "");
-	vr = vr.replace("/", "");
-	tam = vr.length + 1;
-	if (tecla != 8 && tecla != 8)
-	{
-		if (tam > 0 && tam < 2)
-			Campo.value = vr.substr(0, 2) ;
-		if (tam > 2 && tam < 4)
-			Campo.value = vr.substr(0, 2) + '/' + vr.substr(2, 2);
-		if (tam > 4 && tam < 7)
-			Campo.value = vr.substr(0, 2) + '/' + vr.substr(2, 2) + '/' + vr.substr(4, 7);
-	}
-}
-	// O2k7 skin (silver)
-	tinyMCE.init({
-		// General options
-		mode : "exact",
-		elements : "resumo",
-		theme : "advanced",
-		skin : "o2k7",
-		skin_variant : "black",
-		plugins : "lists,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template,inlinepopups,autosave",
-
-		// Theme options
-		theme_advanced_buttons1 : "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,styleselect,formatselect,fontselect,fontsizeselect",
-		theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview,|,forecolor,backcolor",
-		theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl,|,fullscreen",
-		theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,|,cite,abbr,acronym,del,ins,attribs,|,visualchars,nonbreaking,template,pagebreak,restoredraft",
-		theme_advanced_toolbar_location : "top",
-		theme_advanced_toolbar_align : "left",
-		theme_advanced_statusbar_location : "bottom",
-		theme_advanced_resizing : true,
-
-		// Example content CSS (should be your site CSS)
-		content_css : "css/content.css",
-
-		// Drop lists for link/image/media/template dialogs
-		template_external_list_url : "lists/template_list.js",
-		external_link_list_url : "lists/link_list.js",
-		external_image_list_url : "lists/image_list.js",
-		media_external_list_url : "lists/media_list.js",
-
-		// Replace values for the template plugin
-		template_replace_values : {
-			username : "Some User",
-			staffid : "991234"
-		}
-	});
-</script>
+<link href="../../css/principal.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="../../css/validationEngine.jquery.css" type="text/css"/>
+<link rel="stylesheet" href="../../css/template.css" type="text/css"/>
+<!-- scripts -->
+<script type="text/javascript" src="../../jscripts/tiny_mce/tiny_mce.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript" src="../../javascript/jquery.validationEngine.js" charset="utf-8"></script>
+<script type="text/javascript" src="../../javascript/languages/jquery.validationEngine-pt.js" charset="utf-8"></script>
+<script type="text/javascript" src="../../javascript/script.js"></script>							
+<!-- /scripts -->
 
 </head>
 <body>
 	
 <h2>Cadastro de Documentos</h2>
-	<form action="#" method="POST" name="cadastro" onSubmit="return valida();">
+	<form action="#" method="POST" name="cadastro">
 		<table class="tableForms" width="600" border="0" align="center" cellpadding="0" cellspacing="0">
 			<tr>
 				<td height="20" colspan="2">
@@ -87,7 +37,7 @@ function Formatadata(Campo, teclapres)
 					<label for="identificaÃ§Ã£o" class="labelForms">Identificação:<font color="#FF0000">*</font></label>
 				</td>
 				<td height="20">
-				 	<select name="identificacao" class="input" required>
+				 	<select name="identificacao" class="input validate[required] smallInput" id="identificacao">
 							<option value="">Selecione...</option>
 							<option value="codice">Número de Códice</option>
 							<option value="caixa">Número da Caixa</option>
@@ -99,7 +49,7 @@ function Formatadata(Campo, teclapres)
 					<label for="codigo" class="labelForms">Código:<font color="#FF0000">*</font></label>
 				</td>
 				<td width="377" height="20">
-						<input class="input" name="codigo" type="text" size="10" maxlength="5" required>
+						<input class="input validate[required,custom[onlyNumberSp]]" name="codigo" id="codigo" type="text" size="10" maxlength="5">
                         <label for="maxDigitos" class="labelForms">(máx. 5 digitos)</label>
 				</td>
 			</tr>
@@ -108,7 +58,7 @@ function Formatadata(Campo, teclapres)
 					<label for="nomeDocumento" class="labelForms">Nome do Documento:<font color="#FF0000">*</font></label>
 				</td>
 				<td width="377" height="20">
-						<input class="input" name="nome" type="text" size="20" maxlength="100" required>
+						<input class="input validate[required]" name="nome" id="nome" type="text" size="20" maxlength="100">
                         <label for="maxDigitos" class="labelForms">(máx.100 digitos)</label> 
 				</td>
 			</tr>
@@ -117,7 +67,7 @@ function Formatadata(Campo, teclapres)
 					<label for="numeroAPEP" class="labelForms">Número APEP ou Sequencial:<font color="#FF0000">*</font></label>
 				</td>
 				<td width="377" height="20">
-						<input class="input" name="numero" type="text" size="10" maxlength="4" required>
+						<input class="input validate[required,custom[onlyNumberSp]]" name="numero" id="numero" type="text" size="10" maxlength="4" style="FONT-FAMILY: 'Century Schoolbook L';">
                         <label for="maxDigitos" class="labelForms">(máx. 4 digitos)</label>
 				</td>
 			</tr>
@@ -126,7 +76,7 @@ function Formatadata(Campo, teclapres)
 					<label for="autor" class="labelForms">Autor do Documento:<font color="#FF0000">*</font></label>
 				</td>
 				<td width="377" height="20">
-				 		<input class="input" name="autor" type="text" size="20" maxlength="100" required>
+				 		<input class="input validate[required]" name="autor" id="autor" type="text" size="20" maxlength="100">
                         <label for="maxDigitos" class="labelForms">(máx. 100 digitos)</label>
 				</td>
 			</tr>
@@ -136,7 +86,7 @@ function Formatadata(Campo, teclapres)
 				</td>
 				<td width="377" height="20">
 				     
-				    	<input class="input" name="destinatario" type="text" size="20" maxlength="100" required>
+				    	<input class="input validate[required]" name="destinatario" id="destinatario" type="text" size="20" maxlength="100">
                         <label for="maxDigitos" class="labelForms">(máx. 100 digitos)</label>
 				</td>
 			</tr>
@@ -146,7 +96,7 @@ function Formatadata(Campo, teclapres)
                 
 				</td>
                 <td>
-                    <select class="inputEstado" name="estado" id="estado" required>
+                    <select class="inputEstado validate[required] smallInput" name="estado" id="estado">
 							<option value="">---</option>
 							<option value="AC">AC</option>
 							<option value="AL">AL</option>
@@ -184,15 +134,15 @@ function Formatadata(Campo, teclapres)
 						
 				</td>
                 <td>
-                <input class="input" name="cidade" type="text" size="15" maxlength="8" required>
-                </td>
+                <input class="input validate[required]" name="cidade" id="cidade" type="text" size="15" maxlength="100">
+                        <label for="maxDigitos" class="labelForms">(máx. 100 digitos)</label>
             </tr>
 			<tr>
 				<td height="20">
 					<label for="dataDocumento" class="labelForms">Data do Documento:<font color="#FF0000">*</font></label>
 				</td>
 				<td height="20">
-					<input class="input" type="date" name="data" maxlength="10" required /> <!--  onkeyup="Formatadata(this,event)" -->
+					<input class="input validate[required,custom[date]]" type="text" name="data" id="data" maxlength="10"/> <label for="maxDigitos" class="labelForms">(Ex.: 12/02/1993)</label>
 				</td>
 			</tr>
 			<tr>
@@ -200,7 +150,7 @@ function Formatadata(Campo, teclapres)
 					<label for="dataDocumento" class="labelForms">Tipo do Documento:<font color="#FF0000">*</font></label>
 				</td>
 				<td height="20">
-				 	<select class="input" name="tipoDoc" required> <!-- Pegar do Banco de dados os tipos e, caso o usuÃ¡rio selecione outro, exibir campo para cadastrar outro tipo -->
+				 	<select class="input validate[required] smallInput" name="tipoDoc" id="tipoDoc"> <!-- Pegar do Banco de dados os tipos e, caso o usuÃ¡rio selecione outro, exibir campo para cadastrar outro tipo -->
 							<option value="">Selecione...</option>
 							<option value="codice">Ofícios</option>
 							<option value="caixa">Relatórios</option>
@@ -219,7 +169,7 @@ function Formatadata(Campo, teclapres)
 			</tr>
 			<td height="20" colspan="2">
 				<font class="labelForms">
-					<textarea class="inputResumo" id="resumo" name="resumo" rows="7" cols="40" maxlength="1000"></textarea>
+					<textarea class="inputResumo" id="resumo" name="resumo" rows="7" cols="40" maxlength="1000" style="FONT-SIZE: x-small;"></textarea>
 				</font>
 			</td>			
 			<tr>
@@ -231,9 +181,9 @@ function Formatadata(Campo, teclapres)
 			</tr>
 			<tr>
 				<td colspan="2">
-						<input class="inputPalavraChave" name="chave1" type="text" size="15" maxlength="30" required> - 
-						<input class="inputPalavraChave" name="chave2" type="text" size="15" maxlength="30"> - 
-						<input class="inputPalavraChave" name="chave3" type="text" size="15" maxlength="30"> 
+						<input class="inputPalavraChave validate[groupRequired[chaves]]" id="chave1" name="chave1" type="text" size="15" maxlength="30"> - 
+						<input class="inputPalavraChave validate[groupRequired[chaves]]" id="chave2" name="chave2" type="text" size="15" maxlength="30"> - 
+						<input class="inputPalavraChave validate[groupRequired[chaves]]" id="chave3" name="chave3" type="text" size="15" maxlength="30"> 
 				</td>
 			</tr>
 			<tr>
