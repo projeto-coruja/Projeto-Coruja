@@ -10,7 +10,7 @@ public class CadastroFacade {
 
 	private LoginDAO loginDAO;
 
-	private final String emailPattern = "([A-Za-z0-9]+)([A-Za-z0-9]|_|-|.)*@([A-Za-z0-9]+)(\\.[A-Za-z0-9]+)+";
+	private final String emailPattern = "([A-Za-z0-9])([A-Za-z0-9]|_|-|.)*@([A-Za-z0-9]+)(\\.[A-Za-z0-9]+)+";
 	private final RegularExpression emailChecker = new RegularExpression(emailPattern);
 	
 	

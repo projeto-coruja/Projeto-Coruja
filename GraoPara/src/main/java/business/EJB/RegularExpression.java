@@ -8,8 +8,8 @@ public class RegularExpression {
 	private Pattern p;
 	
 	public RegularExpression(String pattern){
-//		if(pattern.charAt(0) != 'ˆ')	pattern = "ˆ" + pattern;
-//		if(pattern.charAt(pattern.length()-1) != '$')	pattern = pattern + "$";
+		if(pattern.charAt(0) != '^')	pattern = "^" + pattern;
+		if(pattern.charAt(pattern.length()-1) != '$')	pattern = pattern + "$";
 		System.out.println(pattern);
 		p = Pattern.compile(pattern, Pattern.CASE_INSENSITIVE);
 	}

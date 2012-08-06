@@ -9,7 +9,7 @@ import business.EJB.RegularExpression;
 
 public class RegularExpressionTest {
 	
-	String expressao = "([A-Za-z0-9])([A-Za-z0-9]|_|-|.)*@([A-Za-z0-9]+)(\\.[A-Za-z0-9][A-Za-z0-9]*)+";
+	String expressao = "([A-Za-z0-9])([A-Za-z0-9]|_|-|.)*@([A-Za-z0-9]+)(\\.[A-Za-z0-9]+)+";
 	
 	RegularExpression p = new RegularExpression( expressao );
 	
