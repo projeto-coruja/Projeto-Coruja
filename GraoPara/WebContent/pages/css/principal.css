@@ -172,6 +172,7 @@ a:hover, a:active, a:focus { /* this group of selectors will give a keyboard nav
 	box-shadow: 0 0px 1px rgba(255, 255, 255);
 	color: #fff;
 	
+	cursor:pointer;
 }
 
 /* Para evitar colocar código de estilo dentro do código html, afim de sobrescrever o botão acima, foi criado um outro grupo de parametros só para o botão registrar */
@@ -194,6 +195,7 @@ a:hover, a:active, a:focus { /* this group of selectors will give a keyboard nav
 	box-shadow: 0 0px 1px rgba(255, 255, 255);
 	color: #fff;
 	
+	cursor:pointer;
 	
 }
 
@@ -309,3 +311,12 @@ apagado quando o usuário digitar algo dentro, para isso use o atributo placehol
    background-image: url('../../images/bannerMouseOver.png');
 }
 
+article.menuLateral section,  
+article.menuLateral section h2  
+{  
+    -webkit-transition: all 500ms ease;  
+    -moz-transition: all 500ms ease;  
+    -ms-transition: all 500ms ease;  
+    -o-transition: all 500ms ease;  
+    transition: all 500ms ease;  
+}  
