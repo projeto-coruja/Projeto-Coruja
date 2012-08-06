@@ -14,14 +14,11 @@ public class AutenticacaoFacade {
 		loginDAO = new LoginDAO();
 	}
 
-	public boolean validarLogin(String email, String password) throws UnreachableDataBaseException {
-		
-		UserDTO check = null;
-		try {
-			check = loginDAO.findUserByEmail(email);
-		} catch(UserNotFoundException e) {
-			return false;
-		}
+	public boolean validarLogin(String email, String password) throws UnreachableDataBaseException, UserNotFoundException {
+
+		UserDTO check = loginDAO.findUserByEmail(email);
+		if(check == null)
+			throw new UserNotFoundException();
 		
 		String hashedPassword = Password.getHash(password);
 		if (check.getPassword().equals(hashedPassword))

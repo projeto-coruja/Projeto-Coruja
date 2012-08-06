@@ -3,12 +3,12 @@ package DAO;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import business.EJB.AutenticacaoFacade;
 import business.EJB.CadastroFacade;
+import business.exceptions.DuplicateUserException;
 import business.exceptions.IncorrectLoginInformationException;
 import business.exceptions.UnreachableDataBaseException;
 import business.exceptions.UserNotFoundException;
@@ -19,7 +19,7 @@ public class LoginDAOTest {
 
 	@Before
 	@Test
-	public void testAddUser() {
+	public void testAddUser() throws DuplicateUserException, UserNotFoundException {
 		String email = "outlook@gmail.com";
 		String pass = "password";
 		CadastroFacade cf = new CadastroFacade();

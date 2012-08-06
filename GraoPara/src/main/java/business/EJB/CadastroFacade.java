@@ -1,9 +1,9 @@
 package business.EJB;
 
 import business.DAO.LoginDAO;
+import business.exceptions.DuplicateUserException;
 import business.exceptions.IncorrectLoginInformationException;
 import business.exceptions.UnreachableDataBaseException;
-import business.exceptions.UserNotFoundException;
 import persistence.dto.UserDTO;
 
 public class CadastroFacade {
@@ -17,27 +17,17 @@ public class CadastroFacade {
 	public CadastroFacade() {
 		loginDAO = new LoginDAO();
 	}
-
-	public void validacaoCadastro(String email, String password, String name) throws IncorrectLoginInformationException, UnreachableDataBaseException {
-		try {
-			@SuppressWarnings("unused")
-			UserDTO check = loginDAO.findUserByEmail(email);
-			throw new IncorrectLoginInformationException("Email já existe.");
-		} catch (UserNotFoundException e) {
-			loginDAO.addUser(email, name, password);
-		}
-	}
 	
-	public void adicionarUsuario(String email, String name, String password) throws UnreachableDataBaseException, IncorrectLoginInformationException {
+	public void adicionarUsuario(String email, String name, String password) throws UnreachableDataBaseException, IncorrectLoginInformationException, DuplicateUserException {
 		try {
 			if(!emailChecker.check(email))	throw new IncorrectLoginInformationException("Email inválido");	
-			@SuppressWarnings("unused")
 			UserDTO check = loginDAO.findUserByEmail(email);
+			if(check != null)
+				throw new DuplicateUserException();
+			else
+				loginDAO.addUser(email, name, Password.getHash(password));
 		} catch (UnreachableDataBaseException e) {
 			e.printStackTrace();
-		} catch (UserNotFoundException e) {
-			loginDAO.addUser(email, name, Password.getHash(password));
-			//e.printStackTrace();
 		}
 	}
 

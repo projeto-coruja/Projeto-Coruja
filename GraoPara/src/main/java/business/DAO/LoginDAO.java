@@ -50,12 +50,13 @@ public class LoginDAO {
 	
 	}
 	
-	public UserDTO findUserByEmail(String email) throws UserNotFoundException, UnreachableDataBaseException {
+	public UserDTO findUserByEmail(String email) throws UnreachableDataBaseException {
 		List<DTO> resultSet = null;
 		try {
 			resultSet = manager.findEntities("from User where email = '" + email +"'");
 			if(resultSet == null) {
-				throw new UserNotFoundException("Email não encontrado");
+				//throw new UserNotFoundException("Email não encontrado");
+				return null;
 			}
 			else return (UserDTO) resultSet.get(0);
 		} catch (DataAccessLayerException e) {
@@ -103,15 +104,13 @@ public class LoginDAO {
 		UserDTO check = null;
 		try {
 			check = findUserByEmail(email);
+			if(check == null) throw new UserNotFoundException("Usuário não existe!");
 			String old_profile = check.getUserProfile().getProfile();
 			if(old_profile != new_profile.getProfile()) check.setUserProfile(new_profile);
 			else throw new IncorrectProfileInformationException("Perfil já definido para esse usuário, escolha outro.");
 		} catch (DataAccessLayerException e) {
 			e.printStackTrace();
 			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
-		} catch (UserNotFoundException e) {
-			e.printStackTrace();
-			throw new UserNotFoundException("Usuário não existe.");
 		}
 	}
 	

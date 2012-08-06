@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import business.EJB.AutenticacaoFacade;
-import business.EJB.Password;
 import business.exceptions.UnreachableDataBaseException;
+import business.exceptions.UserNotFoundException;
 
 /**
  * Servlet implementation class LoginServlet
@@ -49,6 +49,10 @@ public class LoginServlet extends HttpServlet {
 		} catch (UnreachableDataBaseException e) {
 			e.printStackTrace();
 			response.sendRedirect("VIXE.jsp");
+		} catch (UserNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			response.sendRedirect("NOPE.jsp");
 		}
 	}
 
