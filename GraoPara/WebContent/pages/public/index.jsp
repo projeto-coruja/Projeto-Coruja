@@ -70,14 +70,14 @@
 
 
 			<ul class="nav" id="menu">
-				<li><a href="#" onclick="abrirPag('/GraoPara/faces/pages/public/pesquisa.jsp');">Pesquisar</a></li>
-				<li><a href="#"
+				<li><a href="#Pesquisa" onclick="abrirPag('/GraoPara/faces/pages/public/pesquisa.jsp');">Pesquisar</a></li>
+				<li><a href="#cadastroDocumento"
 					onclick="abrirPag('/GraoPara/faces/pages/protected/user/cadastroDocumentos.jsp');">Cadastrar
 						Documento</a></li>
-				<li><a href="#"
+				<li><a href="#userControle"
 					onclick="abrirPag('/GraoPara/faces/pages/protected/user/UserControle.jsp');">Painel
 						User</a></li>
-				<li><a href="#"
+				<li><a href="#adminControle"
 					onclick="abrirPag('/GraoPara/faces/pages/protected/admin/AdminControle.jsp');">Painel
 						Admin</a></li>
 			</ul>

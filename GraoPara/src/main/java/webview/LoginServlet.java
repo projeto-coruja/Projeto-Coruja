@@ -3,11 +3,13 @@ package webview;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import business.EJB.AutenticacaoFacade;
+import business.EJB.Password;
 import business.exceptions.UnreachableDataBaseException;
 
 /**
@@ -34,9 +36,16 @@ public class LoginServlet extends HttpServlet {
 		AutenticacaoFacade af = new AutenticacaoFacade();
 		try {
 			if(af.validarLogin(user, senha))
-				response.sendRedirect("OK.jsp");
+			{
+				Cookie c_user = new Cookie("user_graopara", user);
+				//Cookie c_pass = new Cookie("userpwd_graopara", Password.getHash(senha));
+				response.addCookie(c_user);
+				//response.addCookie(c_pass);				
+			} 
 			else
+			{
 				response.sendRedirect("NOPE.jsp");
+			}
 		} catch (UnreachableDataBaseException e) {
 			e.printStackTrace();
 			response.sendRedirect("VIXE.jsp");
