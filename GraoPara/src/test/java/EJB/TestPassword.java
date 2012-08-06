@@ -1,4 +1,5 @@
-package DAO;
+package EJB;
+
 
 import static org.junit.Assert.*;
 

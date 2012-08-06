@@ -8,8 +8,9 @@ public class RegularExpression {
 	private Pattern p;
 	
 	public RegularExpression(String pattern){
-		if(pattern.charAt(0) != 'ˆ')	pattern = "ˆ" + pattern;
-		if(pattern.charAt(pattern.length()-1) != '$')	pattern = pattern + "$";
+//		if(pattern.charAt(0) != 'ˆ')	pattern = "ˆ" + pattern;
+//		if(pattern.charAt(pattern.length()-1) != '$')	pattern = pattern + "$";
+		System.out.println(pattern);
 		p = Pattern.compile(pattern, Pattern.CASE_INSENSITIVE);
 	}
 	
@@ -23,7 +24,7 @@ public class RegularExpression {
 	
 	public void setPattern(String newPattern){
 		if(newPattern.charAt(0) != 'ˆ')	newPattern = "ˆ" + newPattern;
-		if(newPattern.charAt(newPattern.length()-1) != '$')	newPattern =newPattern + "$";
+		if(newPattern.charAt(newPattern.length()-1) != '$')	newPattern = newPattern + "$";
 		p = Pattern.compile(newPattern, Pattern.CASE_INSENSITIVE);
 	}
 }
