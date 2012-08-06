@@ -20,7 +20,7 @@
 <body>
 
 	<h2>Cadastro Usuário</h2>
-	<form action="#" method="POST" name="cadastro">
+	<form action="CadastroServlet" method="POST" name="cadastro">
 		<table class="tableForms" width="522" border="0" align="center" cellpadding="0" cellspacing="0">
 			<tr>
 				<td height="20" colspan="2">
