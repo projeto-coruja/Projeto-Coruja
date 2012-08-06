@@ -23,7 +23,7 @@ public class RegularExpression {
 	}
 	
 	public void setPattern(String newPattern){
-		if(newPattern.charAt(0) != 'ˆ')	newPattern = "ˆ" + newPattern;
+		if(newPattern.charAt(0) != '^')	newPattern = "^" + newPattern;
 		if(newPattern.charAt(newPattern.length()-1) != '$')	newPattern = newPattern + "$";
 		p = Pattern.compile(newPattern, Pattern.CASE_INSENSITIVE);
 	}

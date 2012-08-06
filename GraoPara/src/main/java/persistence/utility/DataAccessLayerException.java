@@ -1,9 +1,7 @@
 package persistence.utility;
 
 public class DataAccessLayerException extends RuntimeException {
-
-	private static final long serialVersionUID = 1L;
-
+	
 	public DataAccessLayerException() {
     }
 
