@@ -30,7 +30,7 @@ public class CadastroFacade {
 	
 	public void adicionarUsuario(String email, String name, String password) throws UnreachableDataBaseException, IncorrectLoginInformationException {
 		try {
-			if(!emailChecker.check(email))	throw new IncorrectLoginInformationException("Email inválido");	
+			//if(!emailChecker.check(email))	throw new IncorrectLoginInformationException("Email inválido");	
 			@SuppressWarnings("unused")
 			UserDTO check = loginDAO.findUserByEmail(email);
 		} catch (UnreachableDataBaseException e) {

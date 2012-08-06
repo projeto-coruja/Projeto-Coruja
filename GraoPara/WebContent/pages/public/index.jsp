@@ -60,7 +60,7 @@
 				</fieldset>
 			</form>
 			<fieldset>
-				<a onclick="abrirPag('CadUsuario.jsp');">
+				<a onclick="abrirPag('/GraoPara/faces/pages/public/CadUsuario.jsp');">
 					<input
 						class="buttonRegistrar" type="button" name="Registrar"
 						value="Registrar" />
@@ -70,15 +70,15 @@
 
 
 			<ul class="nav" id="menu">
-				<li><a href="#" onclick="abrirPag('/GraoParaWEB/faces/pages/public/pesquisa.jsp');">Pesquisar</a></li>
+				<li><a href="#" onclick="abrirPag('/GraoPara/faces/pages/public/pesquisa.jsp');">Pesquisar</a></li>
 				<li><a href="#"
-					onclick="abrirPag('/GraoParaWEB/faces/pages/protected/user/cadastroDocumentos.jsp');">Cadastrar
+					onclick="abrirPag('/GraoPara/faces/pages/protected/user/cadastroDocumentos.jsp');">Cadastrar
 						Documento</a></li>
 				<li><a href="#"
-					onclick="abrirPag('/GraoParaWEB/faces/pages/protected/user/UserControle.jsp');">Painel
+					onclick="abrirPag('/GraoPara/faces/pages/protected/user/UserControle.jsp');">Painel
 						User</a></li>
 				<li><a href="#"
-					onclick="abrirPag('/GraoParaWEB/faces/pages/protected/admin/AdminControle.jsp');">Painel
+					onclick="abrirPag('/GraoPara/faces/pages/protected/admin/AdminControle.jsp');">Painel
 						Admin</a></li>
 			</ul>
 			<p>Área que se expande ao ir digitando algo, pode adicionar
