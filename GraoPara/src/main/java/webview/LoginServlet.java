@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import business.EJB.AuthBean;
 import business.EJB.Password;
-import business.exceptions.UnreachableDataBaseException;
+import business.exceptions.login.UnreachableDataBaseException;
 
 /**
  * Servlet implementation class LoginServlet

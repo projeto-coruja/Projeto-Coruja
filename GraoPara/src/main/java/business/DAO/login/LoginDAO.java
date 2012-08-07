@@ -1,12 +1,12 @@
-package business.DAO;
+package business.DAO.login;
 
 import java.util.Date;
 import java.util.List;
 
-import business.exceptions.IncorrectProfileInformationException;
-import business.exceptions.ProfileNotFoundException;
-import business.exceptions.UnreachableDataBaseException;
-import business.exceptions.UserNotFoundException;
+import business.exceptions.login.IncorrectProfileInformationException;
+import business.exceptions.login.ProfileNotFoundException;
+import business.exceptions.login.UnreachableDataBaseException;
+import business.exceptions.login.UserNotFoundException;
 
 //import exceptions.IncorrectLoginInformationException;
 

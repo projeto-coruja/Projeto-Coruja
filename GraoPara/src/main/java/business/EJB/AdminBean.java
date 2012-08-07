@@ -1,10 +1,10 @@
 package business.EJB;
 
-import business.DAO.LoginDAO;
-import business.exceptions.IncorrectProfileInformationException;
-import business.exceptions.ProfileNotFoundException;
-import business.exceptions.UnreachableDataBaseException;
-import business.exceptions.UserNotFoundException;
+import business.DAO.login.LoginDAO;
+import business.exceptions.login.IncorrectProfileInformationException;
+import business.exceptions.login.ProfileNotFoundException;
+import business.exceptions.login.UnreachableDataBaseException;
+import business.exceptions.login.UserNotFoundException;
 import persistence.dto.ProfileDTO;
 
 public class AdminBean {

@@ -3,7 +3,7 @@ package webview;
 import javax.servlet.http.Cookie;
 
 import business.EJB.AuthBean;
-import business.exceptions.UnreachableDataBaseException;
+import business.exceptions.login.UnreachableDataBaseException;
 
 public final class WebUtility {
 	

@@ -1,7 +1,7 @@
 package business.EJB;
 
-import business.DAO.LoginDAO;
-import business.exceptions.UnreachableDataBaseException;
+import business.DAO.login.LoginDAO;
+import business.exceptions.login.UnreachableDataBaseException;
 
 import persistence.dto.UserDTO;
 

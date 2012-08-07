@@ -8,10 +8,10 @@ import org.junit.Test;
 
 import business.EJB.AuthBean;
 import business.EJB.CadastroBean;
-import business.exceptions.DuplicateUserException;
-import business.exceptions.IncorrectLoginInformationException;
-import business.exceptions.UnreachableDataBaseException;
-import business.exceptions.UserNotFoundException;
+import business.exceptions.login.DuplicateUserException;
+import business.exceptions.login.IncorrectLoginInformationException;
+import business.exceptions.login.UnreachableDataBaseException;
+import business.exceptions.login.UserNotFoundException;
 
 
 public class LoginDAOTest {

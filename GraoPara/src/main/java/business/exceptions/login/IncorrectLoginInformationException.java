@@ -1,4 +1,4 @@
-package business.exceptions;
+package business.exceptions.login;
 
 import javax.security.auth.login.LoginException;
 

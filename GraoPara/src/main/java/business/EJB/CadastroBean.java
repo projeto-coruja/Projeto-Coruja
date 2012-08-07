@@ -1,9 +1,9 @@
 package business.EJB;
 
-import business.DAO.LoginDAO;
-import business.exceptions.DuplicateUserException;
-import business.exceptions.IncorrectLoginInformationException;
-import business.exceptions.UnreachableDataBaseException;
+import business.DAO.login.LoginDAO;
+import business.exceptions.login.DuplicateUserException;
+import business.exceptions.login.IncorrectLoginInformationException;
+import business.exceptions.login.UnreachableDataBaseException;
 import persistence.dto.UserDTO;
 
 public class CadastroBean {

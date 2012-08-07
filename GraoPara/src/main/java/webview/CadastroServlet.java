@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import business.EJB.CadastroBean;
-import business.exceptions.DuplicateUserException;
-import business.exceptions.IncorrectLoginInformationException;
-import business.exceptions.UnreachableDataBaseException;
+import business.exceptions.login.DuplicateUserException;
+import business.exceptions.login.IncorrectLoginInformationException;
+import business.exceptions.login.UnreachableDataBaseException;
 
 /**
  * Servlet implementation class CadastroServlet
