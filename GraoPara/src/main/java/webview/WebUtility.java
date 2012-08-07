@@ -9,12 +9,12 @@ public final class WebUtility {
 	
 	public static String cookie_email = "email_graopara";
 	public static String cookie_password = "senha_graopara";
-	public static String session_logged = "isLogged";
+	public static String session_logged = "loggedUserType";
 	
 	public static int cookie_expire = (60 * 60 * 24) * 100; //100 dias
 	
-	public static boolean cookieLogin(Cookie[] cookie_list) {
-		if(cookie_list == null || cookie_list.length < 2) return false;
+	public static int cookieLogin(Cookie[] cookie_list) {
+		if(cookie_list == null || cookie_list.length < 2) return AuthBean.LoginFail;
 		
 		String email = null;
 		String password = null;
@@ -28,19 +28,15 @@ public final class WebUtility {
 		}
 		if(email != null && password != null) {
 			try {
-				if(AuthBean.validarLogin(email, password, AuthBean.HashedPwd)) {
-					return true;
-				}
-				else {
-					return false;
-				}
+				int result = AuthBean.validarLogin(email, password, AuthBean.HashedPwd);
+				return result;
 			} catch (UnreachableDataBaseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-				return false;
+				return AuthBean.LoginFail;
 			}
 		}
-		return false;
+		return AuthBean.LoginFail;
 	}
 
 }

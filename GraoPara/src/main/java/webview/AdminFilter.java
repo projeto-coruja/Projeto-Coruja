@@ -11,16 +11,18 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import business.EJB.AuthBean;
+
 /**
- * Servlet Filter implementation class LoginFilter
+ * Servlet Filter implementation class AdminFilter
  */
-@WebFilter("/pages/protected/*")
-public class LoginFilter implements Filter {
+@WebFilter("/pages/protected/admin/*")
+public class AdminFilter implements Filter {
 
     /**
      * Default constructor. 
      */
-    public LoginFilter() {
+    public AdminFilter() {
         // TODO Auto-generated constructor stub
     }
 
@@ -36,17 +38,20 @@ public class LoginFilter implements Filter {
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest) request;
-		String isLogged = (String) req.getSession().getAttribute(WebUtility.session_logged);
-		if(isLogged != null && isLogged.equals("true")) {
-			chain.doFilter(request, response);
-		}
-		else if(WebUtility.cookieLogin(req.getCookies())) {
-			req.setAttribute(WebUtility.session_logged, "true");
+		int logType = (Integer) req.getSession().getAttribute(WebUtility.session_logged);
+		if(logType > AuthBean.LoginSuccessUser) {
 			chain.doFilter(request, response);
 		}
 		else {
-			HttpServletResponse res = (HttpServletResponse) response;
-			res.sendRedirect(req.getContextPath());
+			logType = WebUtility.cookieLogin(req.getCookies());
+			if(logType > AuthBean.LoginSuccessUser) {
+				req.setAttribute(WebUtility.session_logged, logType);
+				chain.doFilter(request, response);
+			}
+			else {
+				HttpServletResponse res = (HttpServletResponse) response;
+				res.sendRedirect(req.getContextPath() + "/pages/public/Error.jsp");
+			}
 		}
 	}
 

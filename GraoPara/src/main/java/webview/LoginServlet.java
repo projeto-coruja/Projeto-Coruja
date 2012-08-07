@@ -37,17 +37,18 @@ public class LoginServlet extends HttpServlet {
 		String user = request.getParameter("login");
 		String senha = request.getParameter("senha");
 		try {
-			if(AuthBean.validarLogin(user, senha, AuthBean.NonHashedPwd))
+			int login_result = AuthBean.validarLogin(user, senha, AuthBean.NonHashedPwd);
+			if(login_result == AuthBean.LoginSuccessAdmin || login_result == AuthBean.LoginSuccessUser)
 			{
-				Cookie c_email = new Cookie("email_graopara", user);
-				Cookie c_pass = new Cookie("userpwd_graopara", Password.getHash(senha));
+				Cookie c_email = new Cookie(WebUtility.cookie_email, user);
+				Cookie c_pass = new Cookie(WebUtility.cookie_password, Password.getHash(senha));
 				c_email.setMaxAge(WebUtility.cookie_expire);
 				c_pass.setMaxAge(WebUtility.cookie_expire);
 				response.addCookie(c_email);
 				response.addCookie(c_pass);
-				HttpSession session = request.getSession();
-				session.setAttribute("isLogged", "true");
 				//Qualquer coisa que mude a página, ou redirecionar para uma nova página só para usuários logados, provisório
+				//response.sendRedirect(request.getContextPath() + "/pages/public/Error.jsp");
+				
 				response.setContentType("text/html");  
 			    PrintWriter out=response.getWriter();   
 			    out.println("<script>");  
@@ -65,7 +66,10 @@ public class LoginServlet extends HttpServlet {
 			    out.println("document.location=('/GraoPara/');");  
 			    out.println("</script>");
 			}
-		} catch (UnreachableDataBaseException e) {
+			HttpSession session = request.getSession();
+			session.setAttribute(WebUtility.session_logged, login_result);
+			System.out.println("login servlet : " + login_result);
+			} catch (UnreachableDataBaseException e) {
 			e.printStackTrace();
 		}
 	}

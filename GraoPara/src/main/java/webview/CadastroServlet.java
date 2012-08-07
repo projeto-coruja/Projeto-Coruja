@@ -60,6 +60,7 @@ public class CadastroServlet extends HttpServlet {
 			} catch (UnreachableDataBaseException e) {
 				e.printStackTrace();
 			} catch (IncorrectLoginInformationException e) {
+//				response.sendRedirect(request.getContextPath() + "/pages/public/Error.jsp");
 				response.setContentType("text/html");  
 			    PrintWriter out=response.getWriter();   
 				out.println("<script>");  
