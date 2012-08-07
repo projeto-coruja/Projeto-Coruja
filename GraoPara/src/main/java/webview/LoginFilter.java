@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet Filter implementation class LoginFilter
  */
-@WebFilter("/protected/*")
+@WebFilter("/pages/protected/*")
 public class LoginFilter implements Filter {
 
     /**
@@ -46,7 +46,7 @@ public class LoginFilter implements Filter {
 		}
 		else {
 			HttpServletResponse res = (HttpServletResponse) response;
-			res.sendRedirect(req.getContextPath() + "/index.jsp");
+			res.sendRedirect(req.getContextPath());
 		}
 	}
 

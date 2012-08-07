@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <title>Grão-Pará</title>
 
-<link href="/GraoPara/faces/pages/css/principal.css" rel="stylesheet" type="text/css" />
-<link href="/GraoPara/faces/pages/css/tabs.css" rel="stylesheet" type="text/css" />
-<link href="/GraoPara/faces/pages/css/controle.css" rel="stylesheet" type="text/css" />
+<link href="/GraoPara/pages/css/principal.css" rel="stylesheet" type="text/css" />
+<link href="/GraoPara/pages/css/tabs.css" rel="stylesheet" type="text/css" />
+<link href="/GraoPara/pages/css/controle.css" rel="stylesheet" type="text/css" />
 
-<script type="text/javascript" src="/GraoPara/faces/pages/javascript/ajax.js"></script>
-<script type="text/javascript" src="/GraoPara/faces/pages/javascript/instrucao.js"></script>
+<script type="text/javascript" src="/GraoPara/pages/javascript/ajax.js"></script>
+<script type="text/javascript" src="/GraoPara/pages/javascript/instrucao.js"></script>
 <script type="text/javascript"
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
 
@@ -56,7 +56,7 @@
 				</fieldset>
 			</form>
 			<fieldset>
-				<a onclick="abrirPag('/GraoPara/faces/pages/public/CadUsuario.jsp');">
+				<a onclick="abrirPag('/GraoPara/pages/public/CadUsuario.jsp');">
 					<input
 						class="buttonRegistrar" type="button" name="Registrar"
 						value="Registrar" />
@@ -66,15 +66,15 @@
 
 
 			<ul class="nav" id="menu">
-				<li><a href="#" onclick="abrirPag('/GraoPara/faces/pages/public/pesquisa.jsp');">Pesquisar</a></li>
+				<li><a href="#" onclick="abrirPag('/GraoPara/pages/public/pesquisa.jsp');">Pesquisar</a></li>
 				<li><a href="#"
-					onclick="abrirPag('/GraoPara/faces/pages/protected/user/cadastroDocumentos.jsp');">Cadastrar
+					onclick="abrirPag('/GraoPara/pages/protected/user/cadastroDocumentos.jsp');">Cadastrar
 						Documento</a></li>
 				<li><a href="#"
-					onclick="abrirPag('/GraoPara/faces/pages/protected/user/UserControle.jsp');">Painel
+					onclick="abrirPag('/GraoPara/pages/protected/user/UserControle.jsp');">Painel
 						User</a></li>
 				<li><a href="#"
-					onclick="abrirPag('/GraoPara/faces/pages/protected/admin/AdminControle.jsp');">Painel
+					onclick="abrirPag('/GraoPara/pages/protected/admin/AdminControle.jsp');">Painel
 						Admin</a></li>
 			</ul>
 			<p>Área que se expande ao ir digitando algo, pode adicionar
