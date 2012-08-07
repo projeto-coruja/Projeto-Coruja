@@ -6,7 +6,7 @@ function abrirPag(valor){
 	xmlRequest.send(null);
  
 	if (xmlRequest.readyState == 1) {
-		document.getElementById("frame").innerHTML = "<img src='loader.gif'>";
+		document.getElementById("content").innerHTML = "<img src='loader.gif'>";
 	}
  
 	return url;
@@ -14,6 +14,6 @@ function abrirPag(valor){
  
 function mudancaEstado(){
 	if (xmlRequest.readyState == 4){
-		document.getElementById("frame").innerHTML = xmlRequest.responseText;
+		document.getElementById("content").innerHTML = xmlRequest.responseText;
 	}
 }// JavaScript Document

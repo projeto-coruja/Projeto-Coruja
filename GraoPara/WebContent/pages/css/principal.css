@@ -28,11 +28,11 @@ a img { /* this selector removes the default blue border displayed in some brows
 /* ~~ Styling for your site's links must remain in this order - including the group of selectors that create the hover effect. ~~ */
 a:link {
 	color:#414958;
-	text-decoration: underline; /* unless you style your links to look extremely unique, it's best to provide underlines for quick visual identification */
+	text-decoration: none; /* unless you style your links to look extremely unique, it's best to provide underlines for quick visual identification */
 }
 a:visited {
 	color: #4E5869;
-	text-decoration: underline;
+	text-decoration: none;
 }
 a:hover, a:active, a:focus { /* this group of selectors will give a keyboard navigator the same hover experience as the person using a mouse. */
 	text-decoration: none;
@@ -154,11 +154,11 @@ a:hover, a:active, a:focus { /* this group of selectors will give a keyboard nav
 
 /* Estilo do botão de entrar do painel de login, está sendo reaproveitado para vários outros botões */
 .buttonEntrar{
-	width:70px;
+	width:185px;
 	height:24px;
 	text-align:center;
 	border: none;
-	float: right;
+	float: inherit;
 	
 	background: #6F7D94;
 	background: -webkit-gradient(linear, left top);
@@ -177,11 +177,34 @@ a:hover, a:active, a:focus { /* this group of selectors will give a keyboard nav
 
 /* Para evitar colocar código de estilo dentro do código html, afim de sobrescrever o botão acima, foi criado um outro grupo de parametros só para o botão registrar */
 .buttonRegistrar{
-	width:70px;
+	width:185px;
 	height:24px;
 	text-align:center;
 	border: none;
-	float: left;
+	float: inherit;
+	
+	background: #6F7D94;
+	background: -webkit-gradient(linear, left top);
+	
+	-webkit-border-radius: .6em;
+	-moz-border-radius: .6em;
+	border-radius: .6em;
+	
+	-webkit-box-shadow: 0 0px 1px rgba( 255, 255, 255);
+	-moz-box-shadow: 0 0px 1px rgba(255, 255, 255);
+	box-shadow: 0 0px 1px rgba(255, 255, 255);
+	color: #fff;
+	
+	cursor:pointer;
+	
+}
+
+.buttonPesquisa{
+	width:185px;
+	height:24px;
+	text-align:center;
+	border: none;
+	float: right;
 	
 	background: #6F7D94;
 	background: -webkit-gradient(linear, left top);
@@ -250,6 +273,12 @@ ul.nav a:hover, ul.nav a:active, ul.nav a:focus { /* this changes the background
 	background-color: #6F7D94;
 	color: #FFF;
 }
+
+.active{
+	background-color: #6F7D94;
+	color: #FFF;
+}
+
 
 /* ~~ The footer ~~ */
 .footer {

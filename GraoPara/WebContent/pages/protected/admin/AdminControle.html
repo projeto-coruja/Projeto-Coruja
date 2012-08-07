@@ -4,11 +4,18 @@
 <link href="../../css/principal.css" rel="stylesheet" type="text/css"/>
 <link href="../../css/tabs.css" rel="stylesheet" type="text/css"/>
 <link href="../../css/controle.css" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" href="../../css/validationEngine.jquery.css" type="text/css"/>
+<link rel="stylesheet" href="../../css/template.css" type="text/css"/>
+<!-- scripts -->
+<script type="text/javascript" src="../../jscripts/tiny_mce/tiny_mce.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript" src="../../javascript/jquery.validationEngine.js" charset="utf-8"></script><script type="text/javascript" src="../../javascript/languages/jquery.validationEngine-pt.js" charset="utf-8"></script><script type="text/javascript" src="../../javascript/script.js"></script>							
+<!-- /scripts -->
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Painel de controle</title>
 </head>
 <body>
-<div id="painel">
+<div id="content">
 		<form class="control" >
 		<table class="tableControle">
 		<tr>
@@ -39,15 +46,15 @@
 		</tr>
 		<tr>
 			<td><label for="senhaAtual">Senha atual: </label></td>
-			<td colspan="2"><input class="inputControle" type="password" name="senhaAtual" />
+			<td colspan="2"><input class="inputControle validate[required]" type="password" name="senhaAtual" id="senhaAtual"/>
 		</tr>
 		<tr>
 			<td><label for="senhaNova">Nova senha: </label></td>
-			<td colspan="2"><input class="inputControle" type="password" name="senhaNova" />
+			<td colspan="2"><input class="inputControle validate[required,minSize[6]]" id="senhaNova" type="password" name="senhaNova" />
 		</tr>
 		<tr>
 			<td><label for="senhaConfirme">Confirme nova senha: </label></td>
-			<td colspan="2"><input class="inputControle" type="password" name="senhaConfirme" />
+			<td colspan="2"><input class="inputControle validate[required,equals[senhaNova]]" type="password" name="senhaConfirme" id="senhaConfirme" />
 		</tr>
 		<tr>
 			
@@ -60,37 +67,30 @@
 		<!-- Novo formulário para novos usuários -->
 	
 		<br>
-		<div id="wrapper">
-			<div id="tabContainer">
-				<div class="tabs">
-					<ul>
-						<li id="tabHeader_1">Novos Usuários</li>
-						<li id="tabHeader_2">Usuários Cadastrados</li>
-						<li id="tabHeader_3">Palavras-Chaves Pendentes</li>
-						<li id="tabHeader_4">Palavras-Chaves</li>
-					</ul>
-				</div>
-				<div class="tabscontent">
-					<div class="tabpage" id="tabpage_1">
-						<h2>Novos Usuários</h2>
-						<p>Novos usuários</p>
-					</div>
-					<div class="tabpage" id="tabpage_2">
-						<h2>Usuários Cadastrados</h2>
-						<p>Lista</p>
-					</div>
-					<div class="tabpage" id="tabpage_3">
-						<h2>Palavras-Chaves Pendentes</h2>
-						<p>Lista Palavras Pendentes</p>
-					</div>
-					<div class="tabpage" id="tabpage_4">
-						<h2>Palavras-Chaves</h2>
-						<p>Lista Palavras</p>
-					</div>
-				</div>
-			</div>
-			<script src="tabs.js"></script>
-		</div>
+
+		<article class="tabsCSS">  
+    		<section id="tab1">  
+        		<h2><a href="#tab1">Palavras-Chaves Pendentes</a></h2>  
+        		<br>
+        		<p>This content appears on tab 1.</p>  
+   			</section>  
+    		<section id="tab2">  
+        		<h2><a href="#tab2">Novos Usuários</a></h2>  
+        		<br>
+        		<p>This content appears on tab 2.</p>  
+    		</section>  
+    		<section id="tab3">  
+        		<h2><a href="#tab3">Usuários</a></h2>  
+        		<br>
+        		<p>This content appears on tab 3.</p>  
+    		</section>
+    		<section id="tab4">  
+        		<h2><a href="#tab4">Palavras-Chaves</a></h2>  
+        		<br>
+        		<p>This content appears on tab 4.</p>  
+    		</section>  
+		</article>  
 	</div>
+	
 </body>
 </html>

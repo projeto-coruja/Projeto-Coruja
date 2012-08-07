@@ -1,128 +1,176 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE HTML>
+<!doctype html>
 <html>
 <head>
-<link href="../../css/principal.css" rel="stylesheet" type="text/css"/>
-<link href="../../css/tabs.css" rel="stylesheet" type="text/css"/>
-<link href="../../css/controle.css" rel="stylesheet" type="text/css"/>
-<link rel="stylesheet" href="../../css/validationEngine.jquery.css" type="text/css"/>
-<link rel="stylesheet" href="../../css/template.css" type="text/css"/>
-<!-- scripts -->
-<script type="text/javascript" src="../../jscripts/tiny_mce/tiny_mce.js"></script>
+<meta charset="utf-8">
+<title>Gr„o-Par·</title>
+
+<!-- Import dos styles CSS -->
+<link href="/GraoPara/pages/css/principal.css" rel="stylesheet" type="text/css" />
+<link href="/GraoPara/pages/css/tabs.css" rel="stylesheet" type="text/css" />
+<link href="/GraoPara/pages/css/controle.css" rel="stylesheet" type="text/css" />
+
+<!-- CSS das validaÁıes -->
+<link href="/GraoPara/pages/css/validationEngine.jquery.css" rel="stylesheet" type="text/css"/>
+
+<!-- Import dos javascripts -->
+<script type="text/javascript" src="/GraoPara/faces/pages/javascript/ajax.js"></script>
+<script type="text/javascript" src="/GraoPara/faces/pages/javascript/instrucao.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-<script type="text/javascript" src="../../javascript/jquery.validationEngine.js" charset="utf-8"></script><script type="text/javascript" src="../../javascript/languages/jquery.validationEngine-pt.js" charset="utf-8"></script><script type="text/javascript" src="../../javascript/script.js"></script>							
-<!-- /scripts -->
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Painel de controle</title>
+
+<!-- Import dos scripts de validaÁ„o de formul·rio -->
+<script type="text/javascript" src="/GraoPara/faces/pages/javascript/jquery.validationEngine.js"></script>
+<script type="text/javascript" src="/GraoPara/faces/pages/javascript/script.js"></script>
+<script type="text/javascript" src="/GraoPara/faces/pages/javascript/languages/jquery.validationEngine-pt.js"></script>
+
 </head>
+
 <body>
-<div id="painel">
-		<form class="control" >
-		<table class="tableControle">
-		<tr>
-			<th colspan="3" align="center"> Painel de controle </th>
-		</tr>
-		
-		<tr>
-			<td><label for="documentos">Meus documentos: </label></td>
-			<td colspan="2"><select class="inputControle" name="documentos">
-			<option selected>Selecione...</option>
-			<option value="Script"> Script </option>
-			</select>
-			</td>
-			
-		</tr>
-		<tr>
-			<td><input type="button" class="buttonDocumento" value="Visualizar" name="Visualizar" alt="Verificar campos de cadastro desse documento"></td>
-			<td><input type="button" class="buttonDocumento" value="Alterar" name="Alterar" alt="Alterar os campos de cadastro desse documento"></td>
-			<td><input type="button" class="buttonDocumento" value="Deletar" name="Deletar" alt="Deletar o registro desse documento"></td>
-		</tr>
-		</table>
-		</form>
-		<!-- Novo formul√°rio para mudan√ßa de senha -->
-		<form class="control" >
-		<table class="tableControle">
-		<tr>
-			<th colspan="3" align="center"> Mudar Senha Atual </th>
-		</tr>
-		<tr>
-			<td><label for="senhaAtual">Senha atual: </label></td>
-			<td colspan="2"><input class="inputControle validate[required]" type="password" name="senhaAtual" id="senhaAtual"/>
-		</tr>
-		<tr>
-			<td><label for="senhaNova">Nova senha: </label></td>
-			<td colspan="2"><input class="inputControle validate[required,minSize[6]]" id="senhaNova" type="password" name="senhaNova" />
-		</tr>
-		<tr>
-			<td><label for="senhaConfirme">Confirme nova senha: </label></td>
-			<td colspan="2"><input class="inputControle validate[required,equals[senhaNova]]" type="password" name="senhaConfirme" id="senhaConfirme" />
-		</tr>
-		<tr>
-			
-			<td><input type="button" class="buttonDocumento" value="Mudar" name="Mudar" alt="Mudar a senha atual."></td>
-			<td></td>
-			<td></td>
-		</tr>
-		</table>
-		</form>
-		<!-- Novo formul√°rio para novos usu√°rios -->
-	
-		<br>
-		<!-- <div id="wrapper">
-			<div id="tabContainer">
-				<div class="tabs">
-					<ul>
-						<li id="tabHeader_1">Novos Usu√°rios</li>
-						<li id="tabHeader_2">Usu√°rios Cadastrados</li>
-						<li id="tabHeader_3">Palavras-Chaves Pendentes</li>
-						<li id="tabHeader_4">Palavras-Chaves</li>
-					</ul>
-				</div>
-				<div class="tabscontent">
-					<div class="tabpage" id="tabpage_1">
-						<h2>Novos Usu√°rios</h2>
-						<p>Novos usu√°rios</p>
-					</div>
-					<div class="tabpage" id="tabpage_2">
-						<h2>Usu√°rios Cadastrados</h2>
-						<p>Lista</p>
-					</div>
-					<div class="tabpage" id="tabpage_3">
-						<h2>Palavras-Chaves Pendentes</h2>
-						<p>Lista Palavras Pendentes</p>
-					</div>
-					<div class="tabpage" id="tabpage_4">
-						<h2>Palavras-Chaves</h2>
-						<p>Lista Palavras</p>
-					</div>
-				</div>
+
+	<div class="container">
+		<div class="header">
+			<!-- ComeÁo do banner -->
+			<a href="/GraoPara/faces/pages/public/index.jsp" class="banner"></a>
+		</div>
+		<!-- Fim do Banner -->
+		<!-- ComeÁo do menu lateral -->
+		<div class="sidebar1">
+
+			<!--ComeÁo da ·rea de login -->
+			<div class="LoginArea" id="LoginArea">
+			<form method="post" action = "LoginServlet">
+				<fieldset>
+					<label for="login">Login:</label>
+						<input class="inputLogin"
+							type="text" name="login" height="30px" size="auto"
+							placeholder="Seu login" required>
+					<label for="senha">Senha:</label>
+						<input class="inputLogin"
+							type="password" name="senha" height="30px" size="auto"
+							placeholder="Sua senha" required>
+				</fieldset>
+				<fieldset>
+					<input class="buttonEntrar" type="submit" name="Entrar" value="Entrar"/>
+				</fieldset>
+			</form>
 			</div>
-		</div>  -->
-		<article class="tabsCSS">  
-    		<section id="tab1">  
-        		<h2><a href="#tab1">Palavras-Chaves Pendentes</a></h2>  
-        		<br>
-        		<p>This content appears on tab 1.</p>  
-   			</section>  
-    		<section id="tab2">  
-        		<h2><a href="#tab2">Novos Usu√°rios</a></h2>  
-        		<br>
-        		<p>This content appears on tab 2.</p>  
-    		</section>  
-    		<section id="tab3">  
-        		<h2><a href="#tab3">Usu√°rios</a></h2>  
-        		<br>
-        		<p>This content appears on tab 3.</p>  
-    		</section>
-    		<section id="tab4">  
-        		<h2><a href="#tab4">Palavras-Chaves</a></h2>  
-        		<br>
-        		<p>This content appears on tab 4.</p>  
-    		</section>  
-		</article>  
+			<div class="AfterLogin" id="AfterLogin" hidden="0">
+			Bem vindo #UserName
+			<input class="buttonEntrar" type="submit" name="Entrar" value="Entrar"/>
+			</div>
+			<fieldset>
+				<a href="/GraoPara/pages/public/CadUsuario.jsp"><input type="button" class="buttonRegistrar" name="Registrar" value="Registrar"></a>
+			</fieldset>
+			<!-- Fim da ·rea de login -->
+
+			<article class="menuLateral">  
+			<ul class="nav" id="menu">
+				<li><a href="/GraoPara/faces/pages/public/index.jsp"><span>H</span>ome</a></li>
+				<li><a href="/GraoPara/faces/pages/public/pesquisa.jsp"><span>P</span>esquisar</a></li>
+				<li><a href="/GraoPara/faces/pages/public/sobre.jsp"><span>S</span>obre</a></li>
+				
+				<!-- Bot„o que precisa, ou n„o, ser escondido para visitantes -->
+				<li><a href="/GraoPara/faces/pages/protected/user/cadastroDocumentos.jsp">Cadastrar Documento</a></li>
+				
+				<!-- Botıes tempor·rios para testes -->
+				<li><a href="/GraoPara/faces/pages/protected/user/UserControle.jsp">Painel User</a></li>
+				<li><a href="/GraoPara/faces/pages/protected/admin/AdminControle.jsp">Painel Admin</a></li>
+			</ul>
+			</article>
+			
+			<!-- ¡rea para texto na barra lateral, a barra cresce ao inserir conteudo... --> 
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
+		</div>
+		<!-- Fim do Menu Lateral -->
+		<div class="content" id="content">
+		
+				<form class="control" >
+				<table class="tableControle">
+				<tr>
+					<th colspan="3" align="center"> Painel de controle </th>
+				</tr>
+				
+				<tr>
+					<td><label for="documentos">Meus documentos: </label></td>
+					<td colspan="2"><select class="inputControle" name="documentos">
+					<option selected>Selecione...</option>
+					<option value="Script"> Script </option>
+					</select>
+					</td>
+					
+				</tr>
+				<tr>
+					<td><input type="button" class="buttonDocumento" value="Visualizar" name="Visualizar" alt="Verificar campos de cadastro desse documento"></td>
+					<td><input type="button" class="buttonDocumento" value="Alterar" name="Alterar" alt="Alterar os campos de cadastro desse documento"></td>
+					<td><input type="button" class="buttonDocumento" value="Deletar" name="Deletar" alt="Deletar o registro desse documento"></td>
+				</tr>
+				</table>
+				</form>
+				<!-- Novo formul·rio para mudanÁa de senha -->
+				<form class="control" >
+				<table class="tableControle">
+				<tr>
+					<th colspan="3" align="center"> Mudar Senha Atual </th>
+				</tr>
+				<tr>
+					<td><label for="senhaAtual">Senha atual: </label></td>
+					<td colspan="2"><input class="inputControle validate[required]" type="password" name="senhaAtual" id="senhaAtual"/>
+				</tr>
+				<tr>
+					<td><label for="senhaNova">Nova senha: </label></td>
+					<td colspan="2"><input class="inputControle validate[required,minSize[6]]" id="senhaNova" type="password" name="senhaNova" />
+				</tr>
+				<tr>
+					<td><label for="senhaConfirme">Confirme nova senha: </label></td>
+					<td colspan="2"><input class="inputControle validate[required,equals[senhaNova]]" type="password" name="senhaConfirme" id="senhaConfirme" />
+				</tr>
+				<tr>
+					
+					<td><input type="button" class="buttonDocumento" value="Mudar" name="Mudar" alt="Mudar a senha atual."></td>
+					<td></td>
+					<td></td>
+				</tr>
+				</table>
+				</form>
+				<!-- Novo formul·rio para novos usu·rios -->
+			
+				<br>
+		
+				<article class="tabsCSS">  
+		    		<section id="tab1">  
+		        		<h2><a href="#tab1">Palavras-Chaves Pendentes</a></h2>  
+		        		<br>
+		        		<p>This content appears on tab 1.</p>  
+		   			</section>  
+		    		<section id="tab2">  
+		        		<h2><a href="#tab2">Novos Usu·rios</a></h2>  
+		        		<br>
+		        		<p>This content appears on tab 2.</p>  
+		    		</section>  
+		    		<section id="tab3">  
+		        		<h2><a href="#tab3">Usu·rios</a></h2>  
+		        		<br>
+		        		<p>This content appears on tab 3.</p>  
+		    		</section>
+		    		<section id="tab4">  
+		        		<h2><a href="#tab4">Palavras-Chaves</a></h2>  
+		        		<br>
+		        		<p>This content appears on tab 4.</p>  
+		    		</section>  
+				</article>  
+		
+		</div>
+		<!-- ComeÁo do RodapÈ -->
+		<div class="footer">
+			<p>Copyright © - Universidade Federal de S„o Paulo - UNIFESP 2012</p>
+			<p>Desenvolvido pelo grupo Coruja</p>
+			<a href="/GraoPara/faces/pages/public/sobre.jsp">- Sobre -</a>
+		</div>
+		<!-- Fim do RodapÈ -->
+		<!-- end .container -->
 	</div>
-	<script type="text/javascript" src="../../javascript/tabs.js"></script>
-	<script type="text/javascript" src="../javascript/tabs.js"></script>
 </body>
 </html>
+
