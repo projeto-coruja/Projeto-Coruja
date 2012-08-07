@@ -6,7 +6,7 @@ import business.exceptions.IncorrectLoginInformationException;
 import business.exceptions.UnreachableDataBaseException;
 import persistence.dto.UserDTO;
 
-public class CadastroFacade {
+public class CadastroBean {
 
 	private LoginDAO loginDAO;
 
@@ -14,7 +14,7 @@ public class CadastroFacade {
 	private final RegularExpression emailChecker = new RegularExpression(emailPattern);
 	
 	
-	public CadastroFacade() {
+	public CadastroBean() {
 		loginDAO = new LoginDAO();
 	}
 	

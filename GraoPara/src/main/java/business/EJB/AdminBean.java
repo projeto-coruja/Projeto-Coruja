@@ -7,14 +7,14 @@ import business.exceptions.UnreachableDataBaseException;
 import business.exceptions.UserNotFoundException;
 import persistence.dto.ProfileDTO;
 
-public class AdminFacade {
+public class AdminBean {
 	
 	private LoginDAO loginDAO;
 	
 	private final String profileNamePattern = "([a-z0-9]){3,}";
 	private final RegularExpression profileNameChecker = new RegularExpression(profileNamePattern);
 	
-	public AdminFacade() {
+	public AdminBean() {
 		loginDAO = new LoginDAO();
 	}
 	

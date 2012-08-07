@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import business.EJB.CadastroFacade;
+import business.EJB.CadastroBean;
 import business.exceptions.DuplicateUserException;
 import business.exceptions.IncorrectLoginInformationException;
 import business.exceptions.UnreachableDataBaseException;
@@ -48,7 +48,7 @@ public class CadastroServlet extends HttpServlet {
 			response.sendRedirect("NOPE.jsp");
 		else
 		{
-			CadastroFacade cf = new CadastroFacade();
+			CadastroBean cf = new CadastroBean();
 			try {
 				cf.adicionarUsuario(email, nome, senha);
 				response.setContentType("text/html");  

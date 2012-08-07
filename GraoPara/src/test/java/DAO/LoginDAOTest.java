@@ -6,8 +6,8 @@ import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.Test;
 
-import business.EJB.AutenticacaoFacade;
-import business.EJB.CadastroFacade;
+import business.EJB.AuthBean;
+import business.EJB.CadastroBean;
 import business.exceptions.DuplicateUserException;
 import business.exceptions.IncorrectLoginInformationException;
 import business.exceptions.UnreachableDataBaseException;
@@ -22,12 +22,11 @@ public class LoginDAOTest {
 	public void testAddUser() throws DuplicateUserException, UserNotFoundException {
 		String email = "outlook@gmail.com";
 		String pass = "password";
-		CadastroFacade cf = new CadastroFacade();
-		AutenticacaoFacade af = new AutenticacaoFacade();
+		CadastroBean cf = new CadastroBean();
 		try {
 			cf.adicionarUsuario(email, "gmail", pass);
 
-			assertTrue(af.validarLogin(email, pass));
+			assertTrue(AuthBean.validarLogin(email, pass, AuthBean.NonHashedPwd));
 
 		} catch (UnreachableDataBaseException e) {
 			System.out.println("DEU ERRO EM MIM GALVÃO!!!! db");

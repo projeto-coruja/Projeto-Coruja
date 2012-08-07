@@ -41,11 +41,11 @@
 			<!--Começo da área de login -->
 			<form method="post" action = "LoginServlet">
 				<fieldset>
-					<label for="login">Login:</label>
+					<label for="login"></label>
 						<input class="inputLogin"
 							type="text" name="login" height="30px" size="auto"
-							placeholder="Seu login" required autofocus>
-					<label for="senha">Senha:</label>
+							placeholder="Seu login" required>
+					<label for="senha"></label>
 						<input class="inputLogin"
 							type="password" name="senha" height="30px" size="auto"
 							placeholder="Sua senha" required>
