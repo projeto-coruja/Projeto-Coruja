@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import business.EJB.Password;
+import business.EJB.userEJB.Password;
 
 public class TestPassword {
 	

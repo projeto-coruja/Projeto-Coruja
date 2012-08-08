@@ -1,4 +1,4 @@
-package business.EJB;
+package business.EJB.userEJB;
 
 import business.DAO.login.LoginDAO;
 import business.exceptions.login.UnreachableDataBaseException;

@@ -40,6 +40,7 @@ public class TipoDocumento implements Serializable,Entidade {
 	public String getTipoDocumento() {
 		return tipoDocumento;
 	}
+	
 	public void setTipoDocumento(String tipoDocumento) {
 		this.tipoDocumento = tipoDocumento;
 	}

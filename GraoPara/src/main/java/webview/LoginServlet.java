@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import business.EJB.AuthBean;
-import business.EJB.Password;
+import business.EJB.userEJB.AuthBean;
+import business.EJB.userEJB.Password;
 import business.exceptions.login.UnreachableDataBaseException;
 
 /**

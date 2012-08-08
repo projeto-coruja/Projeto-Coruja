@@ -6,8 +6,8 @@ import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.Test;
 
-import business.EJB.AuthBean;
-import business.EJB.CadastroBean;
+import business.EJB.userEJB.AuthBean;
+import business.EJB.userEJB.CadastroBean;
 import business.exceptions.login.DuplicateUserException;
 import business.exceptions.login.IncorrectLoginInformationException;
 import business.exceptions.login.UnreachableDataBaseException;

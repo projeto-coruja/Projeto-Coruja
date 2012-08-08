@@ -1,6 +1,7 @@
-package business.EJB;
+package business.EJB.userEJB;
 
 import business.DAO.login.LoginDAO;
+import business.EJB.RegularExpression;
 import business.exceptions.login.DuplicateUserException;
 import business.exceptions.login.IncorrectLoginInformationException;
 import business.exceptions.login.UnreachableDataBaseException;

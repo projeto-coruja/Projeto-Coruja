@@ -1,4 +1,4 @@
-package business.EJB;
+package business.EJB.userEJB;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
