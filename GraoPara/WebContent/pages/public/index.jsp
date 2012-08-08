@@ -5,9 +5,9 @@
 <title>Grão-Pará</title>
 
 <!-- Import dos styles CSS -->
-<link href="/GraoPara/pages/css/principal.css" rel="stylesheet" type="text/css" />
-<link href="/GraoPara/pages/css/tabs.css" rel="stylesheet" type="text/css" />
-<link href="/GraoPara/pages/css/controle.css" rel="stylesheet" type="text/css" />
+<link href="/GraoPara/faces/pages/css/principal.css" rel="stylesheet" type="text/css" />
+<link href="/GraoPara/faces/pages/css/tabs.css" rel="stylesheet" type="text/css" />
+<link href="/GraoPara/faces/pages/css/controle.css" rel="stylesheet" type="text/css" />
 
 <!-- Import dos javascripts -->
 <script type="text/javascript" src="/GraoPara/faces/pages/javascript/ajax.js"></script>
@@ -35,7 +35,7 @@
 
 			<!--Começo da área de login -->
 			<div class="LoginArea" id="LoginArea">
-			<form method="post" action = "LoginServlet">
+			<form method="post" action = "/GraoPara/LoginServlet">
 				<fieldset>
 					<label for="login">Login:</label>
 						<input class="inputLogin"

@@ -16,7 +16,7 @@ import business.EJB.userEJB.AuthBean;
 /**
  * Servlet Filter implementation class LoginFilter
  */
-@WebFilter("/pages/protected/user/*")
+@WebFilter("/faces/pages/protected/user/*")
 public class UserFilter implements Filter {
 
     /**
@@ -38,19 +38,19 @@ public class UserFilter implements Filter {
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest) request;
-		int logType = (Integer) req.getSession().getAttribute(WebUtility.session_logged);
-		if(logType > AuthBean.LoginFail) {
+		Integer logType = (Integer) req.getSession().getAttribute(WebUtility.session_logged);
+		if(logType != null && logType > AuthBean.LoginFail) {
 			chain.doFilter(request, response);
 		}
 		else {
 			logType = WebUtility.cookieLogin(req.getCookies());
-			if(logType > AuthBean.LoginFail) {
+			if(logType != null && logType > AuthBean.LoginFail) {
 				req.setAttribute(WebUtility.session_logged, logType);
 				chain.doFilter(request, response);
 			}
 			else {
 				HttpServletResponse res = (HttpServletResponse) response;
-				res.sendRedirect(req.getContextPath() + "/pages/public/Error.jsp");
+				res.sendRedirect(req.getContextPath() + "/faces/pages/public/Error.jsp");
 			}
 		}
 	}

@@ -34,6 +34,7 @@ public class PersistenceUtility {
 			throw new DataAccessLayerException(e);
 		}
 	}
+	
 	public static SessionFactory getSessionFactory() {
 		return sessionFactory;
 	}
