@@ -19,21 +19,10 @@ public class DocumentoDTOFactory implements DTOFactory {
 	 *  
 	 */
 	public DocumentoDTO createDTO(Entidade entity) {
-		DocumentoDTO newDTO = new DocumentoDTO();
 		Documento entry = (Documento) entity;
-		
-		newDTO.setId(entry.getId());
-		newDTO.setOrigemDocumento(getOrigemDTO(entry));
-		newDTO.setIdNumDocumento(getIdNumDocumentoDTO(entry));
-		newDTO.setTipoDocumento(getTipoDocumentoDTO(entry));
-		newDTO.setAutor(entry.getAutor());
-		newDTO.setDestinatario(entry.getDestinatario());
-		newDTO.setLocal(entry.getLocal());
-		newDTO.setResumo(entry.getResumo());
-		newDTO.setDataInclusao(entry.getDataInclusao());
-		newDTO.setDataDocumento(entry.getDataDocumento());
-		newDTO.setPalavrasChaves(getPalavraChaveDTO(entry));		
-		newDTO.setUploader(getUserDTO(entry)); 
+		DocumentoDTO newDTO = new DocumentoDTO(entry.getId(), getOrigemDTO(entry), getIdNumDocumentoDTO(entry), getTipoDocumentoDTO(entry),
+				entry.getAutor(), entry.getLocal(), entry.getDestinatario(), entry.getResumo(), entry.getDataDocumento(),
+				entry.getDataInclusao(), getUserDTO(entry), getPalavraChaveDTO(entry));
 		return newDTO;
 	}
 	
