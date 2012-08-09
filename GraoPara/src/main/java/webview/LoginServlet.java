@@ -18,7 +18,7 @@ import business.exceptions.login.UnreachableDataBaseException;
 /**
  * Servlet implementation class LoginServlet
  */
-@WebServlet("/LoginServlet")
+@WebServlet("/doLogin")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

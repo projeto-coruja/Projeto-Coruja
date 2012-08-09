@@ -38,5 +38,13 @@ public final class WebUtility {
 		}
 		return AuthBean.LoginFail;
 	}
+	
+	public static String strDiff(String str1, String str2) {
+		int idx = str1.lastIndexOf(str2);
+	    if (idx > -1) {
+	      return str1.substring(str2.length());
+	    }
+	    else return str1;
+	}
 
 }

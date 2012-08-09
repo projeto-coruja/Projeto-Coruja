@@ -17,7 +17,7 @@ import business.exceptions.login.UnreachableDataBaseException;
 /**
  * Servlet implementation class CadastroServlet
  */
-@WebServlet("/CadastroServlet")
+@WebServlet("/doRegister")
 public class CadastroServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

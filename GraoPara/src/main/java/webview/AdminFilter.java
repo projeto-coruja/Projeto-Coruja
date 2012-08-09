@@ -18,7 +18,7 @@ import business.EJB.userEJB.AuthBean;
 /**
  * Servlet Filter implementation class AdminFilter
  */
-@WebFilter("/faces/pages/protected/admin/*")
+@WebFilter("/pages/protected/admin/*")
 public class AdminFilter implements Filter {
 
 	/**

@@ -13,14 +13,14 @@
 <link href="/GraoPara/pages/css/validationEngine.jquery.css" rel="stylesheet" type="text/css"/>
 
 <!-- Import dos javascripts -->
-<script type="text/javascript" src="/GraoPara/faces/pages/javascript/ajax.js"></script>
-<script type="text/javascript" src="/GraoPara/faces/pages/javascript/instrucao.js"></script>
+<script type="text/javascript" src="/GraoPara/pages/javascript/ajax.js"></script>
+<script type="text/javascript" src="/GraoPara/pages/javascript/instrucao.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 
 <!-- Import dos scripts de validação de formulário -->
-<script type="text/javascript" src="/GraoPara/faces/pages/javascript/jquery.validationEngine.js"></script>
-<script type="text/javascript" src="/GraoPara/faces/pages/javascript/script.js"></script>
-<script type="text/javascript" src="/GraoPara/faces/pages/javascript/languages/jquery.validationEngine-pt.js"></script>
+<script type="text/javascript" src="/GraoPara/pages/javascript/jquery.validationEngine.js"></script>
+<script type="text/javascript" src="/GraoPara/pages/javascript/script.js"></script>
+<script type="text/javascript" src="/GraoPara/pages/javascript/languages/jquery.validationEngine-pt.js"></script>
 
 
 </head>
@@ -30,7 +30,7 @@
 	<div class="container">
 		<div class="header">
 			<!-- Começo do banner -->
-			<a href="/GraoPara/faces/pages/public/index.jsp" class="banner"></a>
+			<a href="/GraoPara/pages/public/index.jsp" class="banner"></a>
 		</div>
 		<!-- Fim do Banner -->
 		<!-- Começo do menu lateral -->
@@ -65,16 +65,16 @@
 
 			<article class="menuLateral">  
 			<ul class="nav" id="menu">
-				<li><a href="/GraoPara/faces/pages/public/index.jsp"><span>H</span>ome</a></li>
-				<li><a href="/GraoPara/faces/pages/public/pesquisa.jsp"><span>P</span>esquisar</a></li>
-				<li><a href="/GraoPara/faces/pages/public/sobre.jsp"><span>S</span>obre</a></li>
+				<li><a href="/GraoPara/pages/public/index.jsp"><span>H</span>ome</a></li>
+				<li><a href="/GraoPara/pages/public/pesquisa.jsp"><span>P</span>esquisar</a></li>
+				<li><a href="/GraoPara/pages/public/sobre.jsp"><span>S</span>obre</a></li>
 				
 				<!-- Botão que precisa, ou não, ser escondido para visitantes -->
-				<li><a href="/GraoPara/faces/pages/protected/user/cadastroDocumentos.jsp">Cadastrar Documento</a></li>
+				<li><a href="/GraoPara/pages/protected/user/cadastroDocumentos.jsp">Cadastrar Documento</a></li>
 				
 				<!-- Botões temporários para testes -->
-				<li><a href="/GraoPara/faces/pages/protected/user/UserControle.jsp">Painel User</a></li>
-				<li><a href="/GraoPara/faces/pages/protected/admin/AdminControle.jsp">Painel Admin</a></li>
+				<li><a href="/GraoPara/pages/protected/user/UserControle.jsp">Painel User</a></li>
+				<li><a href="/GraoPara/pages/protected/admin/AdminControle.jsp">Painel Admin</a></li>
 			</ul>
 			</article>
 			
@@ -141,7 +141,7 @@
 		<div class="footer">
 			<p>Copyright © - Universidade Federal de São Paulo - UNIFESP 2012</p>
 			<p>Desenvolvido pelo grupo Coruja</p>
-			<a href="/GraoPara/faces/pages/public/sobre.jsp">- Sobre -</a>
+			<a href="/GraoPara/pages/public/sobre.jsp">- Sobre -</a>
 		</div>
 		<!-- Fim do Rodapé -->
 		<!-- end .container -->
