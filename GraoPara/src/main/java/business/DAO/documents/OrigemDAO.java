@@ -58,5 +58,4 @@ public class OrigemDAO {
 			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
 		}
 	}
-	
 }
