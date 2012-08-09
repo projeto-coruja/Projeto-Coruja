@@ -3,7 +3,19 @@
 /* Configuração da página em si, aplicado no index */
 body {
 	font: 100%/1.4 Verdana, Arial, Helvetica, sans-serif;
-	background-color: #4E5869; 
+	/*background-color: 	#FFFFED;	*/ /*#4E5869;*/
+	/* background-image: url('../../images/bg_principal.jpg'); */
+	background: #f6f8f9; /* Old browsers */
+	background: #f6f8f9; /* Old browsers */
+	background: -moz-linear-gradient(left,  #f6f8f9 0%, #e5ebee 15%, #e5ebee 85%, #f5f7f9 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,#f6f8f9), color-stop(15%,#e5ebee), color-stop(85%,#e5ebee), color-stop(100%,#f5f7f9)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(left,  #f6f8f9 0%,#e5ebee 15%,#e5ebee 85%,#f5f7f9 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(left,  #f6f8f9 0%,#e5ebee 15%,#e5ebee 85%,#f5f7f9 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(left,  #f6f8f9 0%,#e5ebee 15%,#e5ebee 85%,#f5f7f9 100%); /* IE10+ */
+	background: linear-gradient(to right,  #f6f8f9 0%,#e5ebee 15%,#e5ebee 85%,#f5f7f9 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f6f8f9', endColorstr='#f5f7f9',GradientType=1 ); /* IE6-9 */
+
+
 	margin: 0;
 	padding: 0;
 	color: #000;
@@ -245,6 +257,7 @@ label{
 	padding: 10px 0;
 	width: 725px;
 	float: left;
+	
 }
 
 /* ~~ This grouped selector gives the lists in the .content area space ~~ */
