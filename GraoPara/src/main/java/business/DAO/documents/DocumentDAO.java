@@ -1,12 +1,18 @@
 package business.DAO.documents;
 
+import java.util.Date;
 import java.util.List;
 
+import business.DAO.login.LoginDAO;
 import business.exceptions.documents.DocumentNotFoundException;
+import business.exceptions.login.IncorrectProfileInformationException;
 import business.exceptions.login.UnreachableDataBaseException;
+import business.exceptions.login.UserNotFoundException;
 import persistence.PersistenceAccess;
 import persistence.dto.DTO;
+import persistence.dto.DocumentoDTO;
 import persistence.dto.PalavraChaveDTO;
+import persistence.dto.ProfileDTO;
 import persistence.dto.UserDTO;
 import persistence.utility.DataAccessLayerException;
 
@@ -19,7 +25,38 @@ public class DocumentDAO {
 		
 	}
 	
-
+	public void addDocument(String email, String name, String password) throws UnreachableDataBaseException {
+		DocumentoDTO newDoc = new DocumentoDTO(name, password, LoginDAO.defaultProfile, email, new Date());
+		try {
+			manager.saveEntity(newDoc);
+		} catch(DataAccessLayerException e){
+			e.printStackTrace();
+			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
+		}
+	}
+	
+	public void removeDocument(DocumentoDTO doc) throws UnreachableDataBaseException {
+		if(doc == null)	throw new IllegalArgumentException("Nenhum documento especificado");
+		try{
+			manager.deleteEntity(doc);
+		} catch(DataAccessLayerException e){
+			e.printStackTrace();
+			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
+		}
+	}
+	
+	public void changeDocument(DocumentoDTO doc) throws UnreachableDataBaseException {
+		if(doc == null) throw new IllegalArgumentException("Documento inexistente!");
+		try {
+			String old_profile = check.getUserProfile().getProfile();
+			if(old_profile != new_profile.getProfile()) check.setUserProfile(new_profile);
+			else throw new IncorrectProfileInformationException("Perfil já definido para esse usuário, escolha outro.");
+		} catch (DataAccessLayerException e) {
+			e.printStackTrace();
+			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
+		}
+	}
+	
 	public List<DTO> findDocumentsByOrigin(String autor) throws  DocumentNotFoundException, UnreachableDataBaseException  {
 		List<DTO> resultSet = null;
 		try {

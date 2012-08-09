@@ -17,6 +17,26 @@ public class DocumentoDTO implements DTO {
 	private UserDTO uploader;
 	private PalavraChaveDTO[] palavrasChaves;
 	
+	public DocumentoDTO(Long id, OrigemDTO origemDocumento,
+			IdNumDocumentoDTO idNumDocumento, TipoDocumentoDTO tipoDocumento,
+			String autor, String local, String destinatario, String resumo,
+			Date dataDocumento, Date dataInclusao, UserDTO uploader,
+			PalavraChaveDTO[] palavrasChaves) {
+		super();
+		this.id = id;
+		this.origemDocumento = origemDocumento;
+		this.idNumDocumento = idNumDocumento;
+		this.tipoDocumento = tipoDocumento;
+		this.autor = autor;
+		this.local = local;
+		this.destinatario = destinatario;
+		this.resumo = resumo;
+		this.dataDocumento = dataDocumento;
+		this.dataInclusao = dataInclusao;
+		this.uploader = uploader;
+		this.palavrasChaves = palavrasChaves;
+	}
+	
 	public Long getId() {	return id;	}
 	public void setId(Long id) {	this.id = id;	}
 
