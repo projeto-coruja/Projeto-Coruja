@@ -3,18 +3,17 @@ package business.DAO.documents;
 import java.util.Date;
 import java.util.List;
 
-import business.DAO.login.LoginDAO;
-import business.exceptions.documents.DocumentNotFoundException;
-import business.exceptions.login.IncorrectProfileInformationException;
-import business.exceptions.login.UnreachableDataBaseException;
-import business.exceptions.login.UserNotFoundException;
 import persistence.PersistenceAccess;
 import persistence.dto.DTO;
 import persistence.dto.DocumentoDTO;
+import persistence.dto.IdNumDocumentoDTO;
+import persistence.dto.OrigemDTO;
 import persistence.dto.PalavraChaveDTO;
-import persistence.dto.ProfileDTO;
+import persistence.dto.TipoDocumentoDTO;
 import persistence.dto.UserDTO;
 import persistence.utility.DataAccessLayerException;
+import business.exceptions.documents.DocumentNotFoundException;
+import business.exceptions.login.UnreachableDataBaseException;
 
 public class DocumentDAO {
 	
@@ -22,11 +21,18 @@ public class DocumentDAO {
 	
 	public DocumentDAO() {
 		manager = new PersistenceAccess();
-		
 	}
 	
-	public void addDocument(String email, String name, String password) throws UnreachableDataBaseException {
-		DocumentoDTO newDoc = new DocumentoDTO(name, password, LoginDAO.defaultProfile, email, new Date());
+	public void addDocument(Long id, OrigemDTO origemDocumento,
+			IdNumDocumentoDTO idNumDocumento, TipoDocumentoDTO tipoDocumento,
+			String autor, String local, String destinatario, String resumo,
+			Date dataDocumento, Date dataInclusao, UserDTO uploader,
+			PalavraChaveDTO[] palavrasChaves) throws UnreachableDataBaseException {
+		
+		DocumentoDTO newDoc = new DocumentoDTO(id, origemDocumento, 
+				idNumDocumento, tipoDocumento, autor, local, destinatario, 
+				resumo, dataDocumento, dataInclusao, uploader, palavrasChaves);
+		
 		try {
 			manager.saveEntity(newDoc);
 		} catch(DataAccessLayerException e){
@@ -45,22 +51,20 @@ public class DocumentDAO {
 		}
 	}
 	
-	public void changeDocument(DocumentoDTO doc) throws UnreachableDataBaseException {
+	public void updateDocument(DocumentoDTO doc) throws UnreachableDataBaseException {
 		if(doc == null) throw new IllegalArgumentException("Documento inexistente!");
-		try {
-			String old_profile = check.getUserProfile().getProfile();
-			if(old_profile != new_profile.getProfile()) check.setUserProfile(new_profile);
-			else throw new IncorrectProfileInformationException("Perfil já definido para esse usuário, escolha outro.");
+		try { 
+			manager.updateEntity(doc);
 		} catch (DataAccessLayerException e) {
 			e.printStackTrace();
 			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
 		}
 	}
 	
-	public List<DTO> findDocumentsByOrigin(String autor) throws  DocumentNotFoundException, UnreachableDataBaseException  {
+	public List<DTO> findDocumentsByOrigin(OrigemDTO origem) throws  DocumentNotFoundException, UnreachableDataBaseException  {
 		List<DTO> resultSet = null;
 		try {
-			resultSet = manager.findEntities("from Documento where autor like '" + autor +"'");
+			resultSet = manager.findEntities("from Documento where origemdocumento like '" + origem +"'");
 			if(resultSet == null) {
 				throw new  DocumentNotFoundException("Autor não encontrado");
 			}
@@ -74,7 +78,7 @@ public class DocumentDAO {
 	public List<DTO> findDocumentsByAutor(String autor) throws  DocumentNotFoundException, UnreachableDataBaseException  {
 		List<DTO> resultSet = null;
 		try {
-			resultSet = manager.findEntities("from Documento where autor like '" + autor +"'");
+			resultSet = manager.findEntities("from Documento where autor like '%" + autor +"%'");
 			if(resultSet == null) {
 				throw new  DocumentNotFoundException("Autor não encontrado");
 			}
@@ -88,7 +92,7 @@ public class DocumentDAO {
 	public List<DTO> findDocumentsByLocal(String local) throws  DocumentNotFoundException, UnreachableDataBaseException  {
 		List<DTO> resultSet = null;
 		try {
-			resultSet = manager.findEntities("from Documento where local like '" + local +"'");
+			resultSet = manager.findEntities("from Documento where local like '%" + local +"%'");
 			if(resultSet == null) {
 				throw new  DocumentNotFoundException("Local não encontrado");
 			}
@@ -99,10 +103,10 @@ public class DocumentDAO {
 		}
 	}
 	
-	public List<DTO> findDocumentsByRecipient(String recipient) throws  DocumentNotFoundException, UnreachableDataBaseException  {
+	public List<DTO> findDocumentsByRecipient(String destinatario) throws  DocumentNotFoundException, UnreachableDataBaseException  {
 		List<DTO> resultSet = null;
 		try {
-			resultSet = manager.findEntities("from Documento where destinatario like '" + recipient +"'");
+			resultSet = manager.findEntities("from Documento where destinatario like '%" + destinatario +"%'");
 			if(resultSet == null) {
 				throw new  DocumentNotFoundException("Destinatario não encontrado");
 			}
@@ -116,8 +120,7 @@ public class DocumentDAO {
 	public List<DTO> findDocumentsBySummary(String summary) throws  DocumentNotFoundException, UnreachableDataBaseException  {
 		List<DTO> resultSet = null;
 		try {
-			//TODO: Modificar para que a busca seja por ocorrencias e não por igualdade
-			resultSet = manager.findEntities("from Documento where resumo like '" + summary +"'");
+			resultSet = manager.findEntities("from Documento where resumo like '%" + summary +"%'");
 			if(resultSet == null) {
 				throw new  DocumentNotFoundException("Documento não encontrado");
 			}

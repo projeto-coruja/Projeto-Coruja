@@ -68,7 +68,7 @@ public class LoginDAO {
 	public List<DTO> findUsersByName(String name) throws  UserNotFoundException, UnreachableDataBaseException  {
 		List<DTO> resultSet = null;
 		try {
-			resultSet = manager.findEntities("from User where name like '" + name +"'");
+			resultSet = manager.findEntities("from User where name like '%" + name +"%'");
 			if(resultSet == null) {
 				throw new  UserNotFoundException("Usuário não encontrado");
 			}
@@ -108,6 +108,7 @@ public class LoginDAO {
 			String old_profile = check.getUserProfile().getProfile();
 			if(old_profile != new_profile.getProfile()) check.setUserProfile(new_profile);
 			else throw new IncorrectProfileInformationException("Perfil já definido para esse usuário, escolha outro.");
+			manager.updateEntity(check);
 		} catch (DataAccessLayerException e) {
 			e.printStackTrace();
 			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");

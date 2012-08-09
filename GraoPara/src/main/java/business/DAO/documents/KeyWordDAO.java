@@ -4,8 +4,11 @@ import java.util.List;
 
 import business.exceptions.documents.KeywordNotFoundException;
 import business.exceptions.login.UnreachableDataBaseException;
+import business.exceptions.login.UserNotFoundException;
 import persistence.PersistenceAccess;
 import persistence.dto.DTO;
+import persistence.dto.PalavraChaveDTO;
+import persistence.dto.TipoDocumentoDTO;
 import persistence.utility.DataAccessLayerException;
 
 public class KeyWordDAO {
@@ -16,10 +19,41 @@ public class KeyWordDAO {
 		manager = new PersistenceAccess();	
 	}
 	
-	public List<DTO> findKeywordByString(String key) throws  UnreachableDataBaseException, KeywordNotFoundException  {
+	public void addKeyWord(String key) throws UnreachableDataBaseException{
+		PalavraChaveDTO newKey = new PalavraChaveDTO(key,false);
+		try{
+			manager.saveEntity(newKey);
+		}catch(DataAccessLayerException e){
+			e.printStackTrace();
+			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");			
+		}
+	}
+
+	public void removeKeyWord(String key) throws UnreachableDataBaseException, UserNotFoundException, KeywordNotFoundException{
+		PalavraChaveDTO check = null;
+		try{
+			check = (PalavraChaveDTO) findKeyWordByString(key);
+			manager.deleteEntity(check);
+		} catch(DataAccessLayerException e){
+			e.printStackTrace();
+			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
+		}
+	}
+	
+	public void updateDocumentType(TipoDocumentoDTO docType) throws UnreachableDataBaseException {
+		if(docType == null) throw new IllegalArgumentException("Tipo de documento inexistente!");
+		try { 
+			manager.updateEntity(docType);
+		} catch (DataAccessLayerException e) {
+			e.printStackTrace();
+			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
+		}
+	}
+	
+	public List<DTO> findKeyWordByString(String key) throws  UnreachableDataBaseException, KeywordNotFoundException  {
 		List<DTO> resultSet = null;
 		try {
-			resultSet = manager.findEntities("from Documento where palavra like '" + key +"'");
+			resultSet = manager.findEntities("from PalavraChave where palavra like '%" + key + "%'");
 			if(resultSet == null) {
 				throw new KeywordNotFoundException ("Palavra não encontrada");
 			}
@@ -33,7 +67,7 @@ public class KeyWordDAO {
 	public List<DTO> getAllApprovedKeys() throws  UnreachableDataBaseException, KeywordNotFoundException  {
 		List<DTO> resultSet = null;
 		try {
-			resultSet = manager.findEntities("from Documento where aprovada like 'true'");
+			resultSet = manager.findEntities("from PalavraChave where aprovada like TRUE");
 			if(resultSet == null) {
 				throw new KeywordNotFoundException ("Nenhuma palavra aprovada");
 			}
@@ -47,7 +81,7 @@ public class KeyWordDAO {
 	public List<DTO> getAllPendentKeys() throws  UnreachableDataBaseException, KeywordNotFoundException  {
 		List<DTO> resultSet = null;
 		try {
-			resultSet = manager.findEntities("from Documento where aprovada like 'false'");
+			resultSet = manager.findEntities("from PalavraChave where aprovada like FALSE");
 			if(resultSet == null) {
 				throw new KeywordNotFoundException ("Nenhuma palavra esperando por aprovação");
 			}
