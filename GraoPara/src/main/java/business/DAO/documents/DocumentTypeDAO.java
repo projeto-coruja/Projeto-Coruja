@@ -60,5 +60,4 @@ public class DocumentTypeDAO {
 			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
 		}
 	}
-	
 }

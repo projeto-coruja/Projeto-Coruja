@@ -91,5 +91,4 @@ public class KeyWordDAO {
 			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
 		}
 	}
-	
 }

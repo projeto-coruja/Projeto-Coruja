@@ -130,7 +130,6 @@ public class LoginDAO {
 		try {
 			resultSet = manager.findEntities("from Profile where profile = '" + profile + "'");
 			if(resultSet == null) {
-				//TODO: trocar essa exceção por uma específica a Profile
 				throw new ProfileNotFoundException();
 			}
 			else return (ProfileDTO) resultSet.get(0);
