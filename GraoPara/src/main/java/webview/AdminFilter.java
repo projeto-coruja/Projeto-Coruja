@@ -1,6 +1,8 @@
 package webview;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -19,12 +21,12 @@ import business.EJB.userEJB.AuthBean;
 @WebFilter("/faces/pages/protected/admin/*")
 public class AdminFilter implements Filter {
 
-    /**
-     * Default constructor. 
-     */
-    public AdminFilter() {
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 * Default constructor. 
+	 */
+	public AdminFilter() {
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see Filter#destroy()
@@ -50,7 +52,12 @@ public class AdminFilter implements Filter {
 			}
 			else {
 				HttpServletResponse res = (HttpServletResponse) response;
-				res.sendRedirect(req.getContextPath() + "/faces/pages/public/Error.jsp");
+				res.setContentType("text/html");  
+				PrintWriter out=res.getWriter();   
+				out.println("<script>");  
+				out.println("alert('Você não possuí permissão para acessar esta área!');");  
+				out.println("document.location=('/GraoPara/');");  
+				out.println("</script>");
 			}
 		}
 	}

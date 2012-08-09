@@ -15,6 +15,8 @@ import org.apache.commons.logging.LogFactory;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.PropertyConfigurator;
 
+import business.EJB.userEJB.Password;
+
 import persistence.PersistenceAccess;
 import persistence.dto.DTO;
 import persistence.dto.ProfileDTO;
@@ -63,8 +65,13 @@ public class InitServlet extends HttpServlet {
 		}
 		
 		//TODO: MUDAR SENHA
-		pa.saveEntity(new UserDTO("Admin", "null", (ProfileDTO) (pa.findEntities("from Profile where profile = 'admin'").get(0)),
+		List<DTO> admin = pa.findEntities("from User where email = 'admin@graopara.com'");
+		if(admin == null)
+		{
+			log.info("Criando usuário de admin...");
+			pa.saveEntity(new UserDTO("Admin", Password.getHash("null"), (ProfileDTO) (pa.findEntities("from Profile where profile = 'admin'").get(0)),
 				"admin@graopara.com", new Date()));
+		}
 	}
 
 	private void initLogger(ServletConfig config) {
@@ -90,7 +97,7 @@ public class InitServlet extends HttpServlet {
 
 	@Override
 	public void destroy() {
-		// maritacaInitEJB.terminateMaritaca();
+
 	}
 
 }

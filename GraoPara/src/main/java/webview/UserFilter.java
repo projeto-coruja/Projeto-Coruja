@@ -1,6 +1,8 @@
 package webview;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -50,7 +52,13 @@ public class UserFilter implements Filter {
 			}
 			else {
 				HttpServletResponse res = (HttpServletResponse) response;
-				res.sendRedirect(req.getContextPath() + "/faces/pages/public/Error.jsp");
+				res.setContentType("text/html");  
+			    PrintWriter out=res.getWriter();   
+				out.println("<script>");  
+			    out.println("alert('Você não possuí permissão para acessar esta área!');");  
+			    out.println("document.location=('/GraoPara/');");  
+			    out.println("</script>");
+				//res.sendRedirect(req.getContextPath() + "/faces/pages/public/index.jsp");
 			}
 		}
 	}
