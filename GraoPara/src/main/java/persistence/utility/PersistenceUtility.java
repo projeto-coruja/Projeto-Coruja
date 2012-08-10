@@ -81,10 +81,10 @@ public class PersistenceUtility {
 		serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties()).buildServiceRegistry();        
 		sessionFactory = configuration.buildSessionFactory(serviceRegistry);
 
-		String rootPath = PersistenceUtility.class.getResource("PersistenceUtility.class").getPath();
-		rootPath = rootPath.replace("/target/classes/persistence/utility/PersistenceUtility.class", " ");
-		System.out.println(rootPath);
-        System.setProperty("rootPath", rootPath);
+//		String rootPath = PersistenceUtility.class.getResource("PersistenceUtility.class").getPath();
+//		rootPath = rootPath.replace("/target/classes/persistence/utility/PersistenceUtility.class", " ");
+//		System.out.println(rootPath);
+//        System.setProperty("rootPath", rootPath);
 		
 		return sessionFactory;
 	}
