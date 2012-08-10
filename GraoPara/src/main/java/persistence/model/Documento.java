@@ -15,13 +15,10 @@ import javax.persistence.OrderColumn;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.search.annotations.Analyze;
-import org.hibernate.search.annotations.Field;
-import org.hibernate.search.annotations.Indexed;
-import org.hibernate.search.annotations.IndexedEmbedded;
+
 
 @Entity
-@Indexed
+//@Indexed
 @Table(name = "tbl_documentos")
 public class Documento implements Serializable,Entidade{
 
@@ -51,37 +48,37 @@ public class Documento implements Serializable,Entidade{
 	@JoinColumn(name = "tipo_documento", referencedColumnName = "tipo_documento")
 	private TipoDocumento tipoDocumento;
 
-	@Field
+	//@Field
 	@NotNull
 	@Column(name = "autor", length = 48)
 	private String autor;
 
-	@Field
+	//@Field
 	@NotNull
 	@Column(name = "destinatario", length = 48)
 	private String destinatario;
 
-	@Field
+	//@Field
 	@NotNull
 	@Column(name = "local", length = 48)
 	private String local;
 
-	@Field
+	//@Field
 	@NotNull
 	@Column(name = "resumo", length = 2048)
 	private String resumo;
 
-	@Field(analyze=Analyze.NO)
+	//@Field(analyze=Analyze.NO)
 	@NotNull
 	@Column(name = "data_inclusao")
 	private Date dataInclusao;
 	
-	@Field(analyze=Analyze.NO)
+	//@Field(analyze=Analyze.NO)
 	@NotNull
 	@Column(name = "data_documento")
 	private Date dataDocumento;
 
-	@IndexedEmbedded
+	//@IndexedEmbedded
 	@OneToMany
 	@OrderColumn
 	private PalavraChave[] palavrasChaves;// = new PalavraChave[3];

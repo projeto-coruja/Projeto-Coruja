@@ -64,7 +64,9 @@ public class DocumentDAO {
 	public List<DTO> findDocumentsByOrigin(OrigemDTO origem) throws  DocumentNotFoundException, UnreachableDataBaseException  {
 		List<DTO> resultSet = null;
 		try {
-			resultSet = manager.findEntities("from Documento where origemdocumento like '" + origem +"'");
+			resultSet = manager.findEntities("from Documento " +
+					"where origemDocumento.codOrigem like '" + origem.getCodOrigem() +"'" +
+							"and origemDocumento.tipoOrigem like'" + origem.getTipoOrigem() +"'");
 			if(resultSet == null) {
 				throw new  DocumentNotFoundException("Autor não encontrado");
 			}

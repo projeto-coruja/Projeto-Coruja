@@ -9,12 +9,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.search.annotations.Analyze;
-import org.hibernate.search.annotations.Field;
-import org.hibernate.search.annotations.Indexed;
+
 
 @Entity
-@Indexed
+//@Indexed
 @Table(name = "tbl_palavra_chave")
 public class PalavraChave implements Serializable,Entidade {
 
@@ -26,7 +24,7 @@ public class PalavraChave implements Serializable,Entidade {
 	@GeneratedValue
 	private Long id;
 
-	@Field(analyze=Analyze.NO)
+	//@Field(analyze=Analyze.NO)
 	@NotNull
 	@Column(name = "palavra", unique = true, length = 30)
 	private String palavra;

@@ -8,9 +8,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+
+
 //Determina informações sobre a numeração do documento
 
 @Entity
+//@Indexed
 @Table(name = "tbl_id_num_documento")
 public class IdNumDocumento implements Serializable,Entidade {
 
@@ -26,6 +29,7 @@ public class IdNumDocumento implements Serializable,Entidade {
 	private String tipoId;
 
 	// Respectivo código alfanumérico APEP ou sequencial
+	//@Field(analyze=Analyze.NO)
 	@Column(name = "cod_id", length = 7, unique = true)
 	private String codId;
 	
