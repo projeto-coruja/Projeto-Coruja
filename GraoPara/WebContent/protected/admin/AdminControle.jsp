@@ -30,7 +30,9 @@
 	<div class="container">
 		<div class="header">
 			<!-- Começo do banner -->
-			<a href="/GraoPara/index.jsp" class="banner"></a>
+			<address>
+				<a href="/GraoPara/index.jsp" class="banner"></a>
+			</address>
 		</div>
 		<!-- Fim do Banner -->
 		<!-- Começo do menu lateral -->

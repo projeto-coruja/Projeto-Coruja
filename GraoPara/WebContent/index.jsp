@@ -38,7 +38,7 @@
 
 			<!--Começo da área de login -->
 			<div class="LoginArea" id="LoginArea">
-			<form method="post" action = "/GraoPara/doLogin">
+			<form method="post" action = "/GraoPara/logar.jsp">
 				<fieldset>
 					<label for="login">Login:</label>
 						<input class="inputLogin"
