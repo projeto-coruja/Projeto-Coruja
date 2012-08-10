@@ -3,7 +3,6 @@
 <head>
 <meta charset="utf-8">
 <title>Grão-Pará</title>
-
 <!-- Import dos styles CSS -->
 <link href="/GraoPara/pages/css/principal.css" rel="stylesheet" type="text/css" />
 <link href="/GraoPara/pages/css/tabs.css" rel="stylesheet" type="text/css" />
@@ -12,15 +11,16 @@
 <!-- CSS das validações -->
 <link href="/GraoPara/pages/css/validationEngine.jquery.css" rel="stylesheet" type="text/css"/>
 
+
 <!-- Import dos javascripts -->
 <script type="text/javascript" src="/GraoPara/pages/javascript/ajax.js"></script>
 <script type="text/javascript" src="/GraoPara/pages/javascript/instrucao.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 
 <!-- Import dos scripts de validação de formulário -->
-<script type="text/javascript" src="/GraoPara/pages/javascript/jquery.validationEngine.js"></script>
-<script type="text/javascript" src="/GraoPara/pages/javascript/script.js"></script>
-<script type="text/javascript" src="/GraoPara/pages/javascript/languages/jquery.validationEngine-pt.js"></script>
+<script type="text/javascript" src="/GraoPara/pages/javascript/jquery.validationEngine.js" charset="utf-8"charset="utf-8"></script>
+<script type="text/javascript" src="/GraoPara/pages/javascript/script.js" charset="utf-8"></script>
+<script type="text/javascript" src="/GraoPara/pages/javascript/languages/jquery.validationEngine-pt.js" charset="utf-8"></script>
 
 </head>
 

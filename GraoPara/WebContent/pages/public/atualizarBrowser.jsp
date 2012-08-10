@@ -28,10 +28,7 @@ a:active {
 </head>
 	<body>
 		<div class="container">
-   			<div class="header">
-   				<a href="#"><img src="../../images/corujaLogoEditar2.png" alt="Área reservada para logos, caso precise" name="Insert_logo" width="220px" height="90" id="Insert_logo" style="background-color: #8090AB; display:block;" /></a> 
-    		<!-- end .header --></div>
-    		<div class="content">				
+   			<div class="content">				
 				<div class="browser">
 				<h2>Atualize o seu browser.</h2>
 				<p>
