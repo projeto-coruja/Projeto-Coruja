@@ -26,7 +26,9 @@ public class UserUpdater implements EntityUpdate {
 	
 	private Profile getProfile(UserDTO dto, Entidade ent) {
 		EntityUpdate aux_update = new ProfileUpdater();
-		return (Profile) aux_update.updateEntity(dto.getUserProfile(), ((User) ent).getUserProfile());
+		Profile p = (Profile) aux_update.updateEntity(dto.getUserProfile(), ((User) ent).getUserProfile());
+		((User) ent).getUserProfile().setId(dto.getUserProfile().getId());
+		return p;
 	}
 
 }
