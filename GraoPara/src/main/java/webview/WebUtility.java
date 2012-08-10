@@ -2,6 +2,8 @@ package webview;
 
 import javax.servlet.http.Cookie;
 
+import persistence.dto.ProfileDTO;
+
 import business.EJB.userEJB.AuthBean;
 import business.exceptions.login.UnreachableDataBaseException;
 
@@ -10,6 +12,10 @@ public final class WebUtility {
 	public static String cookie_email = "email_graopara";
 	public static String cookie_password = "senha_graopara";
 	public static String session_logged = "loggedUserType";
+	
+	public static ProfileDTO admin_profile = new ProfileDTO("admin", false, true, false);
+	public static ProfileDTO user_profile = new ProfileDTO("user", true, true, true);
+	public static ProfileDTO default_profile = new ProfileDTO("default", true, true, true);
 	
 	public static int cookie_expire = (60 * 60 * 24) * 100; //100 dias
 	

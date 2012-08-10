@@ -52,12 +52,15 @@ public class InitServlet extends HttpServlet {
 			profile = pa.findEntities("from Profile where profile = '" + p + "'");
 			if(profile == null) {
 				log.info("Profile '" + p + "' não encontrado, recriando..." );
-				if(p.equals("default"))
-					pa.saveEntity(new ProfileDTO(p, false, true, false));
-				else if(p.equals("user"))
-					pa.saveEntity(new ProfileDTO(p, true, true, false));
-				else if(p.equals("admin"))
-					pa.saveEntity(new ProfileDTO(p, true, true, true));
+				if(p.equals("default")) {
+					pa.saveEntity(WebUtility.default_profile);
+				}
+				else if(p.equals("user")) {
+					pa.saveEntity(WebUtility.user_profile);
+				}
+				else if(p.equals("admin")) {
+					pa.saveEntity(WebUtility.admin_profile);
+				}
 			}
 			else if(profile.size() > 1) {
 				log.error("Profile '" + p + "' repetido no banco de dados, verificar imediatamente.");
