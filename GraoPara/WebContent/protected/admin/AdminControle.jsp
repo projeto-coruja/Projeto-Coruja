@@ -30,7 +30,7 @@
 	<div class="container">
 		<div class="header">
 			<!-- Começo do banner -->
-			<a href="/GraoPara/pages/public/index.jsp" class="banner"></a>
+			<a href="/GraoPara/index.jsp" class="banner"></a>
 		</div>
 		<!-- Fim do Banner -->
 		<!-- Começo do menu lateral -->
@@ -59,22 +59,22 @@
 			<input class="buttonEntrar" type="submit" name="Entrar" value="Entrar"/>
 			</div>
 			<fieldset>
-				<a href="/GraoPara/pages/public/CadUsuario.jsp"><input type="button" class="buttonRegistrar" name="Registrar" value="Registrar"></a>
+				<a href="/GraoPara/public/CadUsuario.jsp"><input type="button" class="buttonRegistrar" name="Registrar" value="Registrar"></a>
 			</fieldset>
 			<!-- Fim da área de login -->
 
 			<article class="menuLateral">  
 			<ul class="nav" id="menu">
-				<li><a href="/GraoPara/pages/public/index.jsp"><span>H</span>ome</a></li>
-				<li><a href="/GraoPara/pages/public/pesquisa.jsp"><span>P</span>esquisar</a></li>
-				<li><a href="/GraoPara/pages/public/sobre.jsp"><span>S</span>obre</a></li>
+				<li><a href="/GraoPara/index.jsp"><span>H</span>ome</a></li>
+				<li><a href="/GraoPara/pesquisa.jsp"><span>P</span>esquisar</a></li>
+				<li><a href="/GraoPara/sobre.jsp"><span>S</span>obre</a></li>
 				
 				<!-- Botão que precisa, ou não, ser escondido para visitantes -->
-				<li><a href="/GraoPara/pages/protected/user/cadastroDocumentos.jsp">Cadastrar Documento</a></li>
+				<li><a href="/GraoPara/protected/user/cadastroDocumentos.jsp">Cadastrar Documento</a></li>
 				
 				<!-- Botões temporários para testes -->
-				<li><a href="/GraoPara/pages/protected/user/UserControle.jsp">Painel User</a></li>
-				<li><a href="/GraoPara/pages/protected/admin/AdminControle.jsp">Painel Admin</a></li>
+				<li><a href="/GraoPara/protected/user/UserControle.jsp">Painel User</a></li>
+				<li><a href="/GraoPara/protected/admin/AdminControle.jsp">Painel Admin</a></li>
 			</ul>
 			</article>
 			
@@ -167,7 +167,7 @@
 		<div class="footer">
 			<p>Copyright © - Universidade Federal de São Paulo - UNIFESP 2012</p>
 			<p>Desenvolvido pelo grupo Coruja</p>
-			<a href="/GraoPara/pages/public/sobre.jsp">- Sobre -</a>
+			<a href="/GraoPara/sobre.jsp">- Sobre -</a>
 		</div>
 		<!-- Fim do Rodapé -->
 		<!-- end .container -->
