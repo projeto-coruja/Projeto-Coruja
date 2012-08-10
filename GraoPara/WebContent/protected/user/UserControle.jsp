@@ -5,23 +5,22 @@
 <title>Grão-Pará</title>
 
 <!-- Import dos styles CSS -->
-<link href="/GraoPara/pages/css/principal.css" rel="stylesheet" type="text/css" />
-<link href="/GraoPara/pages/css/tabs.css" rel="stylesheet" type="text/css" />
-<link href="/GraoPara/pages/css/controle.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="/GraoPara/css/principal.css" />
+<link rel="stylesheet" type="text/css" href="/GraoPara/css/tabs.css" />
+<link rel="stylesheet" type="text/css" href="/GraoPara/css/controle.css" />
 
 <!-- CSS das validações -->
-<link href="/GraoPara/pages/css/validationEngine.jquery.css" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" type="text/css" href="/GraoPara/css/validationEngine.jquery.css" />
 
 <!-- Import dos javascripts -->
-<script type="text/javascript" src="/GraoPara/pages/javascript/ajax.js"></script>
-<script type="text/javascript" src="/GraoPara/pages/javascript/instrucao.js"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript" src="/GraoPara/javascript/ajax.js" charset="utf-8"></script>
+<script type="text/javascript" src="/GraoPara/javascript/instrucao.js" charset="utf-8"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" charset="utf-8"></script>
 
 <!-- Import dos scripts de validação de formulário -->
-<script type="text/javascript" src="/GraoPara/pages/javascript/jquery.validationEngine.js"></script>
-<script type="text/javascript" src="/GraoPara/pages/javascript/script.js"></script>
-<script type="text/javascript" src="/GraoPara/pages/javascript/languages/jquery.validationEngine-pt.js"></script>
-
+<script type="text/javascript" src="/GraoPara/javascript/jquery.validationEngine.js" charset="utf-8"></script>
+<script type="text/javascript" src="/GraoPara/javascript/script.js" charset="utf-8"></script>
+<script type="text/javascript" src="/GraoPara/javascript/languages/jquery.validationEngine-pt.js" charset="utf-8"></script>
 
 </head>
 
