@@ -4,7 +4,6 @@
 <meta charset="utf-8">
 <title>Grão-Pará</title>
 
-
 <!-- Import dos styles CSS -->
 <link rel="stylesheet" type="text/css" href="/GraoPara/css/principal.css" />
 <link rel="stylesheet" type="text/css" href="/GraoPara/css/tabs.css" />
@@ -24,9 +23,7 @@
 <script type="text/javascript" src="/GraoPara/javascript/languages/jquery.validationEngine-pt.js" charset="utf-8"></script>
 
 </head>
-
 <body>
-
 	<div class="container">
 		<div class="header">
 			<!-- Começo do banner -->
