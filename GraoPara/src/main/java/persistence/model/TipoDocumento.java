@@ -9,9 +9,14 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.search.annotations.Analyze;
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Indexed;
+
 //Define informações sobre os tipos de documentos cadastros
 
 @Entity
+@Indexed
 @Table(name="tbl_tipo_documento")
 public class TipoDocumento implements Serializable,Entidade {
 	
@@ -25,6 +30,7 @@ public class TipoDocumento implements Serializable,Entidade {
 	private Long id;
 	
 	//Define tipo de documento
+	@Field(analyze=Analyze.NO)
 	@NotNull
 	@Column(name = "tipo_documento", length = 20)
 	private String tipoDocumento;

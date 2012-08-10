@@ -9,9 +9,15 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.search.annotations.Analyze;
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Indexed;
+import org.hibernate.validator.constraints.NotEmpty;
+
 //Determina informações sobre a origem do documento
 
 @Entity
+@Indexed
 @Table(name = "tbl_origem")
 public class Origem implements Serializable,Entidade {
 
@@ -25,15 +31,21 @@ public class Origem implements Serializable,Entidade {
 	private Long id;
 
 	// Código alfanumérico da respectiva caixa ou códice
+	@Field(analyze=Analyze.NO)
+	@NotEmpty
+	@NotNull
 	@Column(name = "cod_origem", length = 7)
 	private String codOrigem;
 
 	// Indica se é CAIXA ou CODICE, por favor só utilizar esses valores
+	@Field(analyze=Analyze.NO)
+	@NotEmpty
 	@NotNull
 	@Column(name = "tipo_origem", length = 7)
 	private String tipoOrigem;
 
 	// Título do códice
+	@Field
 	@NotNull
 	@Column(name = "titulo")
 	private String titulo;
