@@ -14,14 +14,14 @@
 <link rel="stylesheet" type="text/css" href="/GraoPara/css/validationEngine.jquery.css" />
 
 <!-- Import dos javascripts -->
-<script type="text/javascript" src="/GraoPara/javascript/ajax.js"></script>
-<script type="text/javascript" src="/GraoPara/javascript/instrucao.js"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript" src="/GraoPara/javascript/ajax.js" charset="utf-8"></script>
+<script type="text/javascript" src="/GraoPara/javascript/instrucao.js" charset="utf-8"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" charset="utf-8"></script>
 
 <!-- Import dos scripts de validação de formulário -->
-<script type="text/javascript" src="/GraoPara/javascript/jquery.validationEngine.js"></script>
-<script type="text/javascript" src="/GraoPara/javascript/script.js"></script>
-<script type="text/javascript" src="/GraoPara/javascript/languages/jquery.validationEngine-pt.js"></script>
+<script type="text/javascript" src="/GraoPara/javascript/jquery.validationEngine.js" charset="utf-8"></script>
+<script type="text/javascript" src="/GraoPara/javascript/script.js" charset="utf-8"></script>
+<script type="text/javascript" src="/GraoPara/javascript/languages/jquery.validationEngine-pt.js" charset="utf-8"></script>
 
 </head>
 
@@ -99,9 +99,7 @@
 							</td>
 							<td width="377" height="20">
 								 
-								<input class="input validate[required] mediumInput" name="nome" type="text" id="nome" maxlength="50">
-								<font class="digitosTexts">(máx.50 digitos)</font>  
-								
+								<input class="input validate[required] mediumInput" name="nome" type="text" id="nome" maxlength="50">								
 							</td>
 						</tr>
 						<tr>
@@ -110,9 +108,7 @@
 							</td>
 							<td width="377" height="20">
 								
-									<input class="input validate[required] validate[custom[email]] mediumInput" name="email" id="email" maxlength="50">
-									<font class="digitosTexts">(máx 50 digitos)</font> 
-								
+									<input class="input validate[required] validate[custom[email]] mediumInput" name="email" id="email" maxlength="50">								
 							</td>
 						</tr>
 						<tr>
@@ -121,7 +117,6 @@
 							</td>
 							<td width="377" height="20">
 								<input class="input validate[required,minSize[6]]" id="senha" name="senha" type="password" maxlength="20">
-								<font class="digitosTexts">(min. 6 e máx. 20 digitos)</font> 					
 							</td>
 						</tr>
 						<tr>
@@ -130,7 +125,6 @@
 							</td>
 							<td width="377" height="20">
 								<input class="input validate[required,equals[senha]]" id="confsenha" name="confsenha" type="password" maxlength="20">
-								<font class="digitosTexts">(min. 6 e máx. 20 digitos)</font> 
 							</td>
 						</tr>
 						<tr>

@@ -5,22 +5,22 @@
 <title>Grão-Pará</title>
 
 <!-- Import dos styles CSS -->
-<link href="/GraoPara/css/principal.css" rel="stylesheet" type="text/css" />
-<link href="/GraoPara/css/tabs.css" rel="stylesheet" type="text/css" />
-<link href="/GraoPara/css/controle.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="/GraoPara/css/principal.css" />
+<link rel="stylesheet" type="text/css" href="/GraoPara/css/tabs.css" />
+<link rel="stylesheet" type="text/css" href="/GraoPara/css/controle.css" />
 
 <!-- CSS das validações -->
 <link rel="stylesheet" type="text/css" href="/GraoPara/css/validationEngine.jquery.css" />
 
 <!-- Import dos javascripts -->
-<script type="text/javascript" src="/GraoPara/javascript/ajax.js"></script>
-<script type="text/javascript" src="/GraoPara/javascript/instrucao.js"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript" src="/GraoPara/javascript/ajax.js" charset="utf-8"></script>
+<script type="text/javascript" src="/GraoPara/javascript/instrucao.js" charset="utf-8"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" charset="utf-8"></script>
 
 <!-- Import dos scripts de validação de formulário -->
-<script type="text/javascript" src="/GraoPara/javascript/jquery.validationEngine.js"></script>
-<script type="text/javascript" src="/GraoPara/javascript/script.js"></script>
-<script type="text/javascript" src="/GraoPara/javascript/languages/jquery.validationEngine-pt.js"></script>
+<script type="text/javascript" src="/GraoPara/javascript/jquery.validationEngine.js" charset="utf-8"></script>
+<script type="text/javascript" src="/GraoPara/javascript/script.js" charset="utf-8"></script>
+<script type="text/javascript" src="/GraoPara/javascript/languages/jquery.validationEngine-pt.js" charset="utf-8"></script>
 
 </head>
 
@@ -116,8 +116,7 @@
 							<label for="codigo" class="labelForms">Código:<font color="#FF0000">*</font></label>
 						</td>
 						<td width="377" height="20">
-								<input class="input validate[required,custom[onlyNumberSp]]" name="codigo" id="codigo" type="text" size="10" maxlength="5">
-		                        <label for="maxDigitos" class="labelForms">(máx. 5 digitos)</label>
+								<input class="inputShort validate[required,custom[onlyNumberSp]]" name="codigo" size="10" id="codigo" type="text" maxlength="5">
 						</td>
 					</tr>
 					<tr>
@@ -126,7 +125,7 @@
 						</td>
 						<td width="377" height="20">
 								<input class="input validate[required]" name="nome" id="nome" type="text" size="20" maxlength="100">
-		                        <label for="maxDigitos" class="labelForms">(máx.100 digitos)</label> 
+		                        
 						</td>
 					</tr>
 					<tr>
@@ -134,8 +133,7 @@
 							<label for="numeroAPEP" class="labelForms">Número APEP ou Sequencial:<font color="#FF0000">*</font></label>
 						</td>
 						<td width="377" height="20">
-								<input class="input validate[required,custom[onlyNumberSp]]" name="numero" id="numero" type="text" size="10" maxlength="4" style="FONT-FAMILY: 'Century Schoolbook L';">
-		                        <label for="maxDigitos" class="labelForms">(máx. 4 digitos)</label>
+								<input class="inputShort validate[required,custom[onlyNumberSp]]" name="numero" id="numero" type="text" maxlength="4" style="FONT-FAMILY: 'Century Schoolbook L';">
 						</td>
 					</tr>
 					<tr>
@@ -144,7 +142,6 @@
 						</td>
 						<td width="377" height="20">
 						 		<input class="input validate[required]" name="autor" id="autor" type="text" size="20" maxlength="100">
-		                        <label for="maxDigitos" class="labelForms">(máx. 100 digitos)</label>
 						</td>
 					</tr>
 					<tr>
@@ -154,7 +151,6 @@
 						<td width="377" height="20">
 						     
 						    	<input class="input validate[required]" name="destinatario" id="destinatario" type="text" size="20" maxlength="100">
-		                        <label for="maxDigitos" class="labelForms">(máx. 100 digitos)</label>
 						</td>
 					</tr>
 					<tr>
@@ -201,8 +197,7 @@
 								
 						</td>
 		                <td>
-		                <input class="input validate[required]" name="cidade" id="cidade" type="text" size="15" maxlength="100">
-		                        <label for="maxDigitos" class="labelForms">(máx. 100 digitos)</label>
+		                <input class="input validate[required]" name="cidade" id="cidade" type="text" maxlength="100">
 		            </tr>
 					<tr>
 						<td height="20">
