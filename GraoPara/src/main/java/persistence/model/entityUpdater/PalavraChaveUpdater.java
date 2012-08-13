@@ -5,20 +5,21 @@ import persistence.dto.PalavraChaveDTO;
 import persistence.model.Entidade;
 import persistence.model.PalavraChave;
 
-public class PalavraChaveFactory implements EntityUpdate {
+public class PalavraChaveUpdater implements EntityUpdate {
 
 
 	/**
 	 * @see persistence.model.entityCreator.EntityFactory#createEntity(Object)
 	 */
-	public PalavraChave updateEntity(DTO dto, Entidade ent) {
-		PalavraChave newEnt = new PalavraChave();
+	public Entidade updateEntity(DTO dto, Entidade ent) {
 		PalavraChaveDTO entry = (PalavraChaveDTO) dto;
 		
-		newEnt.setPalavra(entry.getPalavra());
-		newEnt.setAprovada(entry.isAprovada());
+
+		((PalavraChave) ent).setId(entry.getId());
+		((PalavraChave) ent).setPalavra(entry.getPalavra());
+		((PalavraChave) ent).setAprovada(entry.isAprovada());
 		
-		return newEnt;
+		return ent;
 	}
 
 }

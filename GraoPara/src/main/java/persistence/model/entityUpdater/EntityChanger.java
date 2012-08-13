@@ -19,15 +19,15 @@ public class EntityChanger {
 		else if(dto instanceof ProfileDTO)
 			updater = new ProfileUpdater();
 		else if(dto instanceof DocumentoDTO)
-			updater = new DocumentoFactory();
+			updater = new DocumentoUpdater();
 		else if(dto instanceof TipoDocumentoDTO)
-			updater = new TipoDocumentoFactory();
+			updater = new TipoDocumentoUpdater();
 		else if(dto instanceof IdNumDocumentoDTO)
-			updater = new IdNumDocumentoFactory();
+			updater = new IdNumDocumentoUpdater();
 		else if(dto instanceof OrigemDTO)
-			updater = new OrigemFactory();
+			updater = new OrigemUpdater();
 		else if(dto instanceof PalavraChaveDTO)
-			updater = new PalavraChaveFactory();
+			updater = new PalavraChaveUpdater();
 		else throw new IllegalArgumentException();
 		
 		return updater.updateEntity(dto, ent);

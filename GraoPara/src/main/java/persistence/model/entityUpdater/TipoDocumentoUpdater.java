@@ -5,19 +5,20 @@ import persistence.dto.TipoDocumentoDTO;
 import persistence.model.Entidade;
 import persistence.model.TipoDocumento;
 
-public class TipoDocumentoFactory implements EntityUpdate {
+public class TipoDocumentoUpdater implements EntityUpdate {
 
 
 	/**
 	 * @see persistence.model.entityCreator.EntityFactory#createEntity(Object)
 	 */
 	public Entidade updateEntity(DTO dto, Entidade ent) {
-		TipoDocumento newEnt = new TipoDocumento();
 		TipoDocumentoDTO entry = (TipoDocumentoDTO) dto;
 		
-		newEnt.setTipoDocumento(entry.getTipoDocumento());
+
+		((TipoDocumento) ent).setId(entry.getId());
+		((TipoDocumento) ent).setTipoDocumento(entry.getTipoDocumento());
 		
-		return newEnt;
+		return ent;
 	}
 
 }
