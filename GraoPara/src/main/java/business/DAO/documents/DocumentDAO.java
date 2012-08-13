@@ -25,7 +25,7 @@ public class DocumentDAO {
 		manager = new PersistenceAccess();
 	}
 	
-	public DocumentoDTO addDocument(DocumentoDTO newDoc) throws UnreachableDataBaseException {
+	public synchronized DocumentoDTO addDocument(DocumentoDTO newDoc) throws UnreachableDataBaseException {
 		
 		List<DTO> check;
 		DocumentTypeDAO dtd = new DocumentTypeDAO();

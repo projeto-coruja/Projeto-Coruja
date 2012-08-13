@@ -65,7 +65,7 @@ public class IdNumDocumentoDAO {
 	public List<DTO> findIdByCodId(String cod) throws  UnreachableDataBaseException, IdNumDocumentNotFoundException  {
 		List<DTO> resultSet = null;
 		try {
-			resultSet = manager.findEntities("from IdNumDocumento where codid '" + cod +"'");
+			resultSet = manager.findEntities("from IdNumDocumento where codid = '" + cod +"'");
 			if(resultSet == null) {
 				throw new IdNumDocumentNotFoundException ("Código não encontrado");
 			}
