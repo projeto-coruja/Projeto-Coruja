@@ -19,7 +19,7 @@ import business.EJB.userEJB.AuthBean;
 /**
  * Servlet Filter implementation class AdminFilter
  */
-@WebFilter("/pages/protected/admin/*")
+@WebFilter("/protected/admin/*")
 public class AdminFilter implements Filter {
 
 	/**
