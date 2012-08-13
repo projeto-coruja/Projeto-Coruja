@@ -14,6 +14,7 @@ public class ProfileUpdater implements EntityUpdate {
 	public Entidade updateEntity(DTO dto, Entidade ent) {
 		ProfileDTO entry = (ProfileDTO) dto;
 		
+		((Profile) ent).setId(entry.getId());
 		((Profile) ent).setProfile(entry.getProfile());
 		((Profile) ent).setEdit(entry.isEdit());
 		((Profile) ent).setRead(entry.isRead());
