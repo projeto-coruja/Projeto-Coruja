@@ -16,7 +16,7 @@ public class IdNumDocumentoDAO {
 		manager = new PersistenceAccess();	
 	}
 
-	public void addIdNumDocument(String tipoId, String codId) throws UnreachableDataBaseException, IllegalArgumentException {
+	public IdNumDocumentoDTO addIdNumDocument(String tipoId, String codId) throws UnreachableDataBaseException, IllegalArgumentException {
 		if(tipoId != "APEP" && tipoId != "SEQ")	throw new IllegalArgumentException("Tipo deve ser \"APEP\" ou \"SEQ\"");
 		IdNumDocumentoDTO newId = new IdNumDocumentoDTO(tipoId, codId);
 		try{
@@ -25,6 +25,7 @@ public class IdNumDocumentoDAO {
 			e.printStackTrace();
 			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");			
 		}
+		return newId;
 	}
 
 	public void removeIdNumDocument(IdNumDocumentoDTO id) throws UnreachableDataBaseException {

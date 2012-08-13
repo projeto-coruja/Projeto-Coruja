@@ -17,7 +17,7 @@ public class DocumentTypeDAO {
 		manager = new PersistenceAccess();	
 	}
 
-	public void addDocumentType(String tipoDocumento) throws UnreachableDataBaseException{
+	public TipoDocumentoDTO addDocumentType(String tipoDocumento) throws UnreachableDataBaseException{
 		TipoDocumentoDTO newType = new TipoDocumentoDTO(tipoDocumento);
 		try{
 			manager.saveEntity(newType);
@@ -25,6 +25,7 @@ public class DocumentTypeDAO {
 			e.printStackTrace();
 			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");			
 		}
+		return newType;
 	}
 
 	public void removeDocumentType(TipoDocumentoDTO docType) throws UnreachableDataBaseException {
