@@ -6,6 +6,7 @@ import business.exceptions.documents.OriginNotFoundException;
 import business.exceptions.login.UnreachableDataBaseException;
 import persistence.PersistenceAccess;
 import persistence.dto.DTO;
+import persistence.dto.OrigemDTO;
 import persistence.utility.DataAccessLayerException;
 
 public class OrigemDAO {
@@ -17,6 +18,17 @@ public class OrigemDAO {
 		
 	}
 
+	public OrigemDTO addOrigem(String codOrigem, String tipoOrigem, String titulo) throws UnreachableDataBaseException {
+		OrigemDTO newId = new OrigemDTO(codOrigem, tipoOrigem, titulo);
+		try{
+			manager.saveEntity(newId);
+		}catch(DataAccessLayerException e){
+			e.printStackTrace();
+			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");			
+		}
+		return newId;
+	}
+	
 	public List<DTO> findOriginByCod(String cod) throws  UnreachableDataBaseException, OriginNotFoundException  {
 		List<DTO> resultSet = null;
 		try {
