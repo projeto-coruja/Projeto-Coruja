@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.hibernate.Session;
 import org.junit.Test;
 
-public class PesistenceUtility {
+public class PersistenceUtilityTest {
 
 	@Test
 	public void testOpenSession() {

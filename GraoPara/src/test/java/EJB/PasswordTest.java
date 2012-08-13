@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import business.EJB.userEJB.Password;
 
-public class TestPassword {
+public class PasswordTest {
 	
 	String pass;
 	String hash;
