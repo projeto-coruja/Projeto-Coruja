@@ -13,6 +13,7 @@
 <link rel="stylesheet" type="text/css" href="/GraoPara/css/validationEngine.jquery.css" />
 
 <!-- Import dos javascripts -->
+<script type="text/javascript" src="/GraoPara/javascript/cookie.js" charset="utf-8"></script>
 <script type="text/javascript" src="/GraoPara/javascript/ajax.js" charset="utf-8"></script>
 <script type="text/javascript" src="/GraoPara/javascript/instrucao.js" charset="utf-8"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" charset="utf-8"></script>
@@ -23,7 +24,7 @@
 <script type="text/javascript" src="/GraoPara/javascript/languages/jquery.validationEngine-pt.js" charset="utf-8"></script>
 
 </head>
-<body>
+<body onload="checkCookie()">
 	<div class="container">
 		<div class="header">
 			<!-- Começo do banner -->
@@ -35,7 +36,7 @@
 
 			<!--Começo da área de login -->
 			<div class="LoginArea" id="LoginArea">
-			<form method="post" action = "/GraoPara/logar.jsp">
+			<form method="post" action = "/GraoPara/index.jsp">
 				<fieldset>
 					<label for="login">Login:</label>
 						<input class="inputLogin"
