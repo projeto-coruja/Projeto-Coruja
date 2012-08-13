@@ -1,8 +1,6 @@
 package business.DAO.documents;
 
-import java.util.Date;
 import java.util.List;
-
 import persistence.PersistenceAccess;
 import persistence.dto.DTO;
 import persistence.dto.DocumentoDTO;
@@ -13,6 +11,10 @@ import persistence.dto.TipoDocumentoDTO;
 import persistence.dto.UserDTO;
 import persistence.utility.DataAccessLayerException;
 import business.exceptions.documents.DocumentNotFoundException;
+import business.exceptions.documents.DocumentTypeNotFoundException;
+import business.exceptions.documents.IdNumDocumentNotFoundException;
+import business.exceptions.documents.KeywordNotFoundException;
+import business.exceptions.documents.OriginNotFoundException;
 import business.exceptions.login.UnreachableDataBaseException;
 
 public class DocumentDAO {
@@ -23,15 +25,64 @@ public class DocumentDAO {
 		manager = new PersistenceAccess();
 	}
 	
-	public void addDocument(Long id, OrigemDTO origemDocumento,
-			IdNumDocumentoDTO idNumDocumento, TipoDocumentoDTO tipoDocumento,
-			String autor, String local, String destinatario, String resumo,
-			Date dataDocumento, Date dataInclusao, UserDTO uploader,
-			PalavraChaveDTO[] palavrasChaves) throws UnreachableDataBaseException {
+	public DocumentoDTO addDocument(DocumentoDTO newDoc) throws UnreachableDataBaseException {
 		
-		DocumentoDTO newDoc = new DocumentoDTO(id, origemDocumento, 
-				idNumDocumento, tipoDocumento, autor, local, destinatario, 
-				resumo, dataDocumento, dataInclusao, uploader, palavrasChaves);
+		List<DTO> check;
+		DocumentTypeDAO dtd = new DocumentTypeDAO();
+		IdNumDocumentoDAO indd = new IdNumDocumentoDAO();
+		KeyWordDAO kwd = new KeyWordDAO();
+		OrigemDAO od = new OrigemDAO();
+		
+		
+		// Verificação de existência do tipo de documento no banco
+		try {
+			check = dtd.findDocumentTypeByString(newDoc.getTipoDocumento().getTipoDocumento());
+			for(DTO dto : check){
+				if(((TipoDocumentoDTO) dto).getTipoDocumento().equals(newDoc.getTipoDocumento().getTipoDocumento()))
+					newDoc.setTipoDocumento((TipoDocumentoDTO) dto);
+			}
+		} catch (DocumentTypeNotFoundException e1) {	
+			newDoc.setTipoDocumento(dtd.addDocumentType(newDoc.getTipoDocumento().getTipoDocumento()));
+		}
+
+		// Verificação de existência do id do documento no banco
+		try {
+			check = indd.findIdByCodId(newDoc.getIdNumDocumento().getTipoId());
+			for(DTO dto : check){
+				if(		((IdNumDocumentoDTO) dto).getTipoId().equals(newDoc.getIdNumDocumento().getTipoId()) &&
+						((IdNumDocumentoDTO) dto).getCodId().equals(newDoc.getIdNumDocumento().getCodId()))
+					newDoc.setIdNumDocumento((IdNumDocumentoDTO) dto);
+			}
+		} catch (IdNumDocumentNotFoundException e1) {
+			newDoc.setIdNumDocumento(indd.addIdNumDocument(newDoc.getIdNumDocumento().getTipoId(), newDoc.getIdNumDocumento().getCodId()));
+		}
+
+		// Verificação de existência das palavras chaves documento no banco
+		PalavraChaveDTO palavrasChaves[] = newDoc.getPalavrasChaves();
+		for(int i = 0; i < palavrasChaves.length; i++){
+			try {
+				check = kwd.findKeyWordByString(palavrasChaves[i].getPalavra());
+				if(palavrasChaves[i].getPalavra().equals(((PalavraChaveDTO)check).getPalavra()))
+					palavrasChaves[i] = (PalavraChaveDTO) check;
+				
+			} catch (KeywordNotFoundException e1) {
+				palavrasChaves[i] = kwd.addKeyWord(palavrasChaves[i].getPalavra());
+			}
+		}
+		newDoc.setPalavrasChaves(palavrasChaves);
+
+		// Verificação de existência da origem do documento no banco
+		try {
+			check = od.findOriginByTitle(newDoc.getOrigemDocumento().getTitulo());
+			for(DTO dto : check){
+				if(((OrigemDTO) dto).getTitulo().equals(((OrigemDTO) dto).getTitulo()) &&
+						((OrigemDTO) dto).getTipoOrigem().equals(((OrigemDTO) dto).getTipoOrigem()) &&
+						((OrigemDTO) dto).getCodOrigem().equals(((OrigemDTO) dto).getCodOrigem()))
+					newDoc.setOrigemDocumento((OrigemDTO) check);
+			}
+		} catch (OriginNotFoundException e1) {
+			newDoc.setOrigemDocumento(od.addOrigem(newDoc.getOrigemDocumento().getCodOrigem(), newDoc.getOrigemDocumento().getTipoOrigem(), newDoc.getOrigemDocumento().getTitulo()));
+		}
 		
 		try {
 			manager.saveEntity(newDoc);
@@ -39,6 +90,8 @@ public class DocumentDAO {
 			e.printStackTrace();
 			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
 		}
+		
+		return newDoc;
 	}
 	
 	public void removeDocument(DocumentoDTO doc) throws UnreachableDataBaseException {

@@ -19,14 +19,15 @@ public class KeyWordDAO {
 		manager = new PersistenceAccess();	
 	}
 	
-	public void addKeyWord(String key) throws UnreachableDataBaseException{
-		PalavraChaveDTO newKey = new PalavraChaveDTO(key,false);
+	public PalavraChaveDTO addKeyWord(String key) throws UnreachableDataBaseException{
+		PalavraChaveDTO newKey = new PalavraChaveDTO(key.toLowerCase(),false);
 		try{
 			manager.saveEntity(newKey);
 		}catch(DataAccessLayerException e){
 			e.printStackTrace();
 			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");			
 		}
+		return newKey;
 	}
 
 	public void removeKeyWord(String key) throws UnreachableDataBaseException, UserNotFoundException, KeywordNotFoundException{
