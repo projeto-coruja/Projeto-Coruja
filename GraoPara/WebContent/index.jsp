@@ -5,26 +5,37 @@
 <title>Grão-Pará</title>
 
 <!-- Import dos styles CSS -->
-<link rel="stylesheet" type="text/css" href="/GraoPara/css/principal.css" />
+<link rel="stylesheet" type="text/css"
+	href="/GraoPara/css/principal.css" />
 <link rel="stylesheet" type="text/css" href="/GraoPara/css/tabs.css" />
 <link rel="stylesheet" type="text/css" href="/GraoPara/css/controle.css" />
 
 <!-- CSS das validações -->
-<link rel="stylesheet" type="text/css" href="/GraoPara/css/validationEngine.jquery.css" />
+<link rel="stylesheet" type="text/css"
+	href="/GraoPara/css/validationEngine.jquery.css" />
 
 <!-- Import dos javascripts -->
-<script type="text/javascript" src="/GraoPara/javascript/cookie.js" charset="utf-8"></script>
-<script type="text/javascript" src="/GraoPara/javascript/ajax.js" charset="utf-8"></script>
-<script type="text/javascript" src="/GraoPara/javascript/instrucao.js" charset="utf-8"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="/GraoPara/javascript/cookie.js"
+	charset="utf-8"></script>
+<script type="text/javascript" src="/GraoPara/javascript/ajax.js"
+	charset="utf-8"></script>
+<script type="text/javascript" src="/GraoPara/javascript/instrucao.js"
+	charset="utf-8"></script>
+<script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"
+	charset="utf-8"></script>
 
 <!-- Import dos scripts de validação de formulário -->
-<script type="text/javascript" src="/GraoPara/javascript/jquery.validationEngine.js" charset="utf-8"></script>
-<script type="text/javascript" src="/GraoPara/javascript/script.js" charset="utf-8"></script>
-<script type="text/javascript" src="/GraoPara/javascript/languages/jquery.validationEngine-pt.js" charset="utf-8"></script>
+<script type="text/javascript"
+	src="/GraoPara/javascript/jquery.validationEngine.js" charset="utf-8"></script>
+<script type="text/javascript" src="/GraoPara/javascript/script.js"
+	charset="utf-8"></script>
+<script type="text/javascript"
+	src="/GraoPara/javascript/languages/jquery.validationEngine-pt.js"
+	charset="utf-8"></script>
 
 </head>
-<body onload="checkCookie()">
+<body onloadstart="checkCookie()">
 	<div class="container">
 		<div class="header">
 			<!-- Começo do banner -->
@@ -35,41 +46,42 @@
 		<div class="sidebar1">
 
 			<!--Começo da área de login -->
-			<div class="LoginArea" id="LoginArea">
-			<form method="post" action = "/GraoPara/index.jsp">
-				<fieldset>
-					<label for="login">Login:</label>
-						<input class="inputLogin"
+			<div class="LoginArea" id="LoginArea" hidden="">
+				<form method="post" action="/GraoPara/doLogin">
+					<fieldset>
+						<label for="login">Login:</label> <input class="inputLogin"
 							type="text" name="login" height="30px" size="auto"
-							placeholder="Seu login" required>
-					<label for="senha">Senha:</label>
-						<input class="inputLogin"
-							type="password" name="senha" height="30px" size="auto"
-							placeholder="Sua senha" required>
-				</fieldset>
-				<fieldset>
-					<input class="buttonEntrar" type="submit" name="Entrar" value="Entrar"/>
-				</fieldset>
-			</form>
+							placeholder="Seu login" required> <label for="senha">Senha:</label>
+						<input class="inputLogin" type="password" name="senha"
+							height="30px" size="auto" placeholder="Sua senha" required>
+					</fieldset>
+					<fieldset>
+						<input class="buttonEntrar" type="submit" name="Entrar"
+							value="Entrar" />
+					</fieldset>
+				</form>
 			</div>
 			<div class="AfterLogin" id="AfterLogin" hidden="0">
-			Bem vindo #UserName
-			<input class="buttonEntrar" type="submit" name="Entrar" value="Entrar"/>
+				<form method="post" action="/GraoPara/doLogout">
+					Bem vindo #UserName <input class="buttonEntrar" type="submit"
+						name="Sair" value="Sair" />
+				</form>
 			</div>
 			<fieldset>
-				<a href="/GraoPara/CadUsuario.jsp"><input type="button" class="buttonRegistrar" name="Registrar" value="Registrar"></a>
+				<a href="/GraoPara/CadUsuario.jsp"><input type="button"
+					class="buttonRegistrar" name="Registrar" value="Registrar"></a>
 			</fieldset>
 			<!-- Fim da área de login -->
 
-			<article class="menuLateral">  
-			<ul class="nav" id="menu">
-				<li><a href="/GraoPara/index.jsp"><span>H</span>ome</a></li>
-				<li><a href="/GraoPara/pesquisa.jsp"><span>P</span>esquisar</a></li>
-				<li><a href="/GraoPara/sobre.jsp"><span>S</span>obre</a></li>
-			</ul>
+			<article class="menuLateral">
+				<ul class="nav" id="menu">
+					<li><a href="/GraoPara/index.jsp"><span>H</span>ome</a></li>
+					<li><a href="/GraoPara/pesquisa.jsp"><span>P</span>esquisar</a></li>
+					<li><a href="/GraoPara/sobre.jsp"><span>S</span>obre</a></li>
+				</ul>
 			</article>
-			
-			<!-- Área para texto na barra lateral, a barra cresce ao inserir conteudo... --> 
+
+			<!-- Área para texto na barra lateral, a barra cresce ao inserir conteudo... -->
 			<p></p>
 			<p></p>
 			<p></p>
