@@ -1,6 +1,7 @@
 package persistence.model;
 
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -13,6 +14,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderColumn;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 
@@ -76,7 +79,8 @@ public class Documento implements Serializable,Entidade{
 	//@Field(analyze=Analyze.NO)
 	@NotNull
 	@Column(name = "data_documento")
-	private Date dataDocumento;
+	@Temporal(TemporalType.DATE)
+	private Calendar dataDocumento;
 
 	//@IndexedEmbedded
 	@OneToMany
@@ -159,11 +163,11 @@ public class Documento implements Serializable,Entidade{
 		this.dataInclusao = dataInclusao;
 	}
 
-	public Date getDataDocumento() {
+	public Calendar getDataDocumento() {
 		return dataDocumento;
 	}
 
-	public void setDataDocumento(Date dataDocumento) {
+	public void setDataDocumento(Calendar dataDocumento) {
 		this.dataDocumento = dataDocumento;
 	}
 
