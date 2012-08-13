@@ -45,8 +45,10 @@
 		<!-- Começo do menu lateral -->
 		<div class="sidebar1">
 
+			<!-- ----------------------------------------------------------------------- começa-->
+
 			<!--Começo da área de login -->
-			<div class="LoginArea" id="LoginArea" hidden="">
+			<div class="LoginArea" id="loginDefault">
 				<form method="post" action="/GraoPara/doLogin">
 					<fieldset>
 						<label for="login">Login:</label> <input class="inputLogin"
@@ -61,6 +63,41 @@
 					</fieldset>
 				</form>
 			</div>
+			
+			
+			<!-- ----------------------------------------------------------------------- -->
+			
+			<!--Depois de logado, sendo permissão tipo USER-->
+			<div class="LoginArea" id="loginUser">
+				<form method="post" action="/GraoPara/doLogin">
+					<fieldset>
+						<label for="login">Bem vindo</label>
+					</fieldset>
+					<fieldset>
+						<input class="buttonSair" type="submit" name="Sair"
+							value="Sair" />
+					</fieldset>
+				</form>
+			</div>
+
+
+			<!-- ----------------------------------------------------------------------- -->
+			
+			<!--Depois de logado, sendo permissão tipo ADMIN-->
+			<div class="LoginArea" id="loginAdmin">
+				<form method="post" action="/GraoPara/doLogin">
+					<fieldset>
+						<label for="login">Bem vindo</label>
+					</fieldset>
+					<fieldset>
+						<input class="buttonSair" type="submit" name="Sair"
+							value="Sair" />
+					</fieldset>
+				</form>
+			</div>
+			
+			<!-- ----------------------------------------------------------------------- termina-->
+			
 			<div class="AfterLogin" id="AfterLogin" hidden="0">
 				<form method="post" action="/GraoPara/doLogout">
 					Bem vindo #UserName <input class="buttonEntrar" type="submit"
