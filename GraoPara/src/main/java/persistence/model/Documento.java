@@ -12,7 +12,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OrderColumn;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -83,9 +82,21 @@ public class Documento implements Serializable,Entidade{
 	private Calendar dataDocumento;
 
 	//@IndexedEmbedded
+	@NotNull
 	@OneToMany
-	@OrderColumn
-	private PalavraChave[] palavrasChaves;// = new PalavraChave[3];
+	@Column(name = "palavra_chave_1")
+//	@OrderColumn
+	private PalavraChave palavrasChaves1;
+
+	@OneToMany
+	@Column(name = "palavra_chave_2")
+//	@OrderColumn
+	private PalavraChave palavrasChaves2;
+
+	@OneToMany
+	@Column(name = "palavra_chave_3")
+//	@OrderColumn
+	private PalavraChave palavrasChaves3;
 	
 	//@OneToMany
 	@Column(name = "uploader")
@@ -171,20 +182,36 @@ public class Documento implements Serializable,Entidade{
 		this.dataDocumento = dataDocumento;
 	}
 
-	public PalavraChave[] getPalChaves() {
-		return palavrasChaves;
-	}
-
-	public void setPalChaves(PalavraChave[] palChaves) {
-		this.palavrasChaves = palChaves;
-	}
-
 	public User getUploader() {
 		return uploader;
 	}
 
 	public void setUploader(User uploader) {
 		this.uploader = uploader;
+	}
+
+	public PalavraChave getPalavrasChaves1() {
+		return palavrasChaves1;
+	}
+
+	public void setPalavrasChaves1(PalavraChave palavrasChaves1) {
+		this.palavrasChaves1 = palavrasChaves1;
+	}
+
+	public PalavraChave getPalavrasChaves2() {
+		return palavrasChaves2;
+	}
+
+	public void setPalavrasChaves2(PalavraChave palavrasChaves2) {
+		this.palavrasChaves2 = palavrasChaves2;
+	}
+
+	public PalavraChave getPalavrasChaves3() {
+		return palavrasChaves3;
+	}
+
+	public void setPalavrasChaves3(PalavraChave palavrasChaves3) {
+		this.palavrasChaves3 = palavrasChaves3;
 	}
 
 	
