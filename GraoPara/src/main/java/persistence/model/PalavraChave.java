@@ -26,7 +26,7 @@ public class PalavraChave implements Serializable,Entidade {
 
 	//@Field(analyze=Analyze.NO)
 	@NotNull
-	@Column(name = "palavra", unique = true, length = 30)
+	@Column(name = "palavra", unique = true, length = 32)
 	private String palavra;
 
 	@NotNull
