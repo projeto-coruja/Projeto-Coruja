@@ -35,17 +35,8 @@ public class LoginDAO {
 			} catch (UnreachableDataBaseException e) {
 				e.printStackTrace();
 			} catch (ProfileNotFoundException e) {
-				try {
-					this.createProfile(defaultProfileName, true, false, false);
-					defaultProfile = this.findProfileByName(defaultProfileName);
-				} catch (UnreachableDataBaseException e1) {
-					e1.printStackTrace();
-				} catch (ProfileNotFoundException e1) {
-					e1.printStackTrace();
-				}
 				e.printStackTrace();
 			}
-			//		defaultProfile = new ProfileDTO("default", false, true, false);
 		}
 	
 	}

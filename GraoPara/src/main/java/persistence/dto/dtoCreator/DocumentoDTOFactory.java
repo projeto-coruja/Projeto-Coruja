@@ -8,7 +8,6 @@ import persistence.dto.TipoDocumentoDTO;
 import persistence.dto.UserDTO;
 import persistence.model.Documento;
 import persistence.model.Entidade;
-import persistence.model.PalavraChave;
 
 public class DocumentoDTOFactory implements DTOFactory {
 
@@ -22,7 +21,7 @@ public class DocumentoDTOFactory implements DTOFactory {
 		Documento entry = (Documento) entity;
 		DocumentoDTO newDTO = new DocumentoDTO(entry.getId(), getOrigemDTO(entry), getIdNumDocumentoDTO(entry), getTipoDocumentoDTO(entry),
 				entry.getAutor(), entry.getLocal(), entry.getDestinatario(), entry.getResumo(), entry.getDataDocumento(),
-				entry.getDataInclusao(), getUserDTO(entry), getPalavraChaveDTO(entry));
+				entry.getDataInclusao(), getUserDTO(entry), getPalavraChave1(entry), getPalavraChave2(entry), getPalavraChave3(entry));
 		return newDTO;
 	}
 	
@@ -46,15 +45,18 @@ public class DocumentoDTOFactory implements DTOFactory {
 		return (IdNumDocumentoDTO) aux_factory.createDTO(entry.getIdNumDocumento());
 	}
 	
-	private PalavraChaveDTO[] getPalavraChaveDTO(Documento entry) {
+	private PalavraChaveDTO getPalavraChave1(Documento entry) {
 		DTOFactory aux_factory = new PalavraChaveDTOFactory();
-		PalavraChave[] list = entry.getPalChaves();
-		int length = list.length;
-		PalavraChaveDTO[] palchaves = new PalavraChaveDTO[length];
-		for(int i = 0; i < length; i++)
-		{
-			palchaves[i] = (PalavraChaveDTO) aux_factory.createDTO(list[i]);
-		}
-		return palchaves;
+		return (PalavraChaveDTO) aux_factory.createDTO(entry.getPalavrasChaves1());
+	}
+	
+	private PalavraChaveDTO getPalavraChave2(Documento entry) {
+		DTOFactory aux_factory = new PalavraChaveDTOFactory();
+		return (PalavraChaveDTO) aux_factory.createDTO(entry.getPalavrasChaves2());
+	}
+	
+	private PalavraChaveDTO getPalavraChave3(Documento entry) {
+		DTOFactory aux_factory = new PalavraChaveDTOFactory();
+		return (PalavraChaveDTO) aux_factory.createDTO(entry.getPalavrasChaves3());
 	}
 }

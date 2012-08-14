@@ -14,7 +14,6 @@ public class PalavraChaveFactory implements EntityFactory {
 		PalavraChave newEnt = new PalavraChave();
 		PalavraChaveDTO entry = (PalavraChaveDTO) dto;
 
-		newEnt.setId(entry.getId());
 		newEnt.setPalavra(entry.getPalavra());
 		newEnt.setAprovada(entry.isAprovada());
 		

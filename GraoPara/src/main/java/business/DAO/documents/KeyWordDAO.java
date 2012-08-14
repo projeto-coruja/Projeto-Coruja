@@ -54,7 +54,7 @@ public class KeyWordDAO {
 	public List<DTO> findKeyWordByString(String key) throws  UnreachableDataBaseException, KeywordNotFoundException  {
 		List<DTO> resultSet = null;
 		try {
-			resultSet = manager.findEntities("from PalavraChave where palavra like '%" + key + "%'");
+			resultSet = manager.findEntities("from PalavraChave where palavra = '" + key + "'");
 			if(resultSet == null) {
 				throw new KeywordNotFoundException ("Palavra não encontrada");
 			}

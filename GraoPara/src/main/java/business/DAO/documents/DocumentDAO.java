@@ -58,19 +58,46 @@ public class DocumentDAO {
 		}
 
 		// Verificação de existência das palavras chaves documento no banco
-		PalavraChaveDTO palavrasChaves[] = newDoc.getPalavrasChaves();
-		for(int i = 0; i < palavrasChaves.length; i++){
+		if(newDoc.getPalavrasChaves1() != null)
+		{
 			try {
-				check = kwd.findKeyWordByString(palavrasChaves[i].getPalavra());
-				if(palavrasChaves[i].getPalavra().equals(((PalavraChaveDTO)check).getPalavra()))
-					palavrasChaves[i] = (PalavraChaveDTO) check;
-				
+				check = kwd.findKeyWordByString(newDoc.getPalavrasChaves1().getPalavra());
+				for(DTO dto : check){
+					if(((PalavraChaveDTO) dto).getPalavra().equals(newDoc.getPalavrasChaves1().getPalavra()))
+						newDoc.setPalavrasChaves1((PalavraChaveDTO) dto);
+				}
 			} catch (KeywordNotFoundException e1) {
-				palavrasChaves[i] = kwd.addKeyWord(palavrasChaves[i].getPalavra());
+				newDoc.setPalavrasChaves1(kwd.addKeyWord(newDoc.getPalavrasChaves1().getPalavra()));
 			}
 		}
-		newDoc.setPalavrasChaves(palavrasChaves);
-
+		else throw new IllegalArgumentException("Palavra-chave principal não pode ser nula.");
+	
+		if(newDoc.getPalavrasChaves2() != null)
+		{
+			try {
+				check = kwd.findKeyWordByString(newDoc.getPalavrasChaves2().getPalavra());
+				for(DTO dto : check){
+					if(((PalavraChaveDTO) dto).getPalavra().equals(newDoc.getPalavrasChaves2().getPalavra()))
+						newDoc.setPalavrasChaves2((PalavraChaveDTO) dto);
+				}
+			} catch (KeywordNotFoundException e1) {
+				newDoc.setPalavrasChaves2(kwd.addKeyWord(newDoc.getPalavrasChaves2().getPalavra()));
+			}
+		}
+		
+		if(newDoc.getPalavrasChaves3() != null)
+		{
+			try {
+				check = kwd.findKeyWordByString(newDoc.getPalavrasChaves3().getPalavra());
+				for(DTO dto : check){
+					if(((PalavraChaveDTO) dto).getPalavra().equals(newDoc.getPalavrasChaves3().getPalavra()))
+						newDoc.setPalavrasChaves3((PalavraChaveDTO) dto);
+				}
+			} catch (KeywordNotFoundException e1) {
+				newDoc.setPalavrasChaves3(kwd.addKeyWord(newDoc.getPalavrasChaves3().getPalavra()));
+			}
+		}
+		
 		// Verificação de existência da origem do documento no banco
 		try {
 			check = od.findOriginByTitle(newDoc.getOrigemDocumento().getTitulo());

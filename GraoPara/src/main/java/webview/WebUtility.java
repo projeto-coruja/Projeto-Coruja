@@ -13,9 +13,9 @@ public final class WebUtility {
 	public static String cookie_password = "senha_graopara";
 	public static String cookie_status = "status_graopara";
 	
-	public static ProfileDTO admin_profile = new ProfileDTO("admin", false, true, false);
-	public static ProfileDTO user_profile = new ProfileDTO("user", true, true, true);
-	public static ProfileDTO default_profile = new ProfileDTO("default", true, true, true);
+	public static ProfileDTO admin_profile = new ProfileDTO("admin", true, true, true);
+	public static ProfileDTO user_profile = new ProfileDTO("user", true, true, false);
+	public static ProfileDTO default_profile = new ProfileDTO("default", false, true, false);
 	
 	public static int cookie_expire = (60 * 60 * 24) * 100; //100 dias
 	
