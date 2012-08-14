@@ -32,7 +32,7 @@ public class OrigemDAO {
 	public List<DTO> findOriginByCod(String cod) throws  UnreachableDataBaseException, OriginNotFoundException  {
 		List<DTO> resultSet = null;
 		try {
-			resultSet = manager.findEntities("from Documento where codorigem like '" + cod +"'");
+			resultSet = manager.findEntities("from Origem where codorigem like '" + cod +"'");
 			if(resultSet == null) {
 				throw new OriginNotFoundException ("Código não encontrado");
 			}
@@ -46,7 +46,7 @@ public class OrigemDAO {
 	public List<DTO> findOriginByType(String type) throws  UnreachableDataBaseException, OriginNotFoundException  {
 		List<DTO> resultSet = null;
 		try {
-			resultSet = manager.findEntities("from Documento where tipoorigem like '" + type +"'");
+			resultSet = manager.findEntities("from Origem where tipoorigem like '" + type +"'");
 			if(resultSet == null) {
 				throw new OriginNotFoundException ("Tipo não encontrado");
 			}
@@ -60,7 +60,7 @@ public class OrigemDAO {
 	public List<DTO> findOriginByTitle(String title) throws  UnreachableDataBaseException, OriginNotFoundException  {
 		List<DTO> resultSet = null;
 		try {
-			resultSet = manager.findEntities("from Documento where titulo like '" + title +"'");
+			resultSet = manager.findEntities("from Origem where titulo like '%" + title +"%'");
 			if(resultSet == null) {
 				throw new OriginNotFoundException ("Título não encontrado");
 			}

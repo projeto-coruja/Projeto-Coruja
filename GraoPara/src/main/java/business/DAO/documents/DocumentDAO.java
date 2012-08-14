@@ -61,10 +61,11 @@ public class DocumentDAO {
 		PalavraChaveDTO palavrasChaves[] = newDoc.getPalavrasChaves();
 		for(int i = 0; i < palavrasChaves.length; i++){
 			try {
-				check = kwd.findKeyWordByString(palavrasChaves[i].getPalavra());
-				if(palavrasChaves[i].getPalavra().equals(((PalavraChaveDTO)check).getPalavra()))
-					palavrasChaves[i] = (PalavraChaveDTO) check;
-				
+				if (palavrasChaves[i] != null) {
+					check = kwd.findKeyWordByString(palavrasChaves[i].getPalavra());
+					if(palavrasChaves[i].getPalavra().equals(((PalavraChaveDTO)check).getPalavra()))
+						palavrasChaves[i] = (PalavraChaveDTO) check;
+				}
 			} catch (KeywordNotFoundException e1) {
 				palavrasChaves[i] = kwd.addKeyWord(palavrasChaves[i].getPalavra());
 			}

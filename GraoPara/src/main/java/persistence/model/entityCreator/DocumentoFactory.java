@@ -23,7 +23,6 @@ public class DocumentoFactory implements EntityFactory {
 		newEnt.setOrigemDocumento(getOrigem(entry));
 		newEnt.setIdentDocumento(getIdNumDocumento(entry));
 		newEnt.setTipoDocumento(getTipoDocumento(entry));
-		newEnt.setId(entry.getId());
 		newEnt.setAutor(entry.getAutor());
 		newEnt.setDestinatario(entry.getDestinatario());
 		newEnt.setLocal(entry.getLocal());
@@ -62,7 +61,9 @@ public class DocumentoFactory implements EntityFactory {
 		PalavraChave[] palchaves = new PalavraChave[length];
 		for(int i = 0; i < length; i++)
 		{
-			palchaves[i] = (PalavraChave) aux_factory.createEntity(list[i]);
+			if(list[i] != null)
+				palchaves[i] = (PalavraChave) aux_factory.createEntity(list[i]);
+			else palchaves[i] = null;
 		}
 		return palchaves;
 	}

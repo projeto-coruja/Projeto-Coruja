@@ -18,6 +18,9 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 
 
 @Entity
@@ -33,6 +36,7 @@ public class Documento implements Serializable,Entidade{
 	private Long id;
 
 	@ManyToOne
+	@Cascade(CascadeType.SAVE_UPDATE)
 	@JoinColumns({
 		@JoinColumn(name = "tipo_origem", referencedColumnName = "tipo_origem"),
 		@JoinColumn(name = "cod_origem", referencedColumnName = "cod_origem")
@@ -40,6 +44,7 @@ public class Documento implements Serializable,Entidade{
 	private Origem origemDocumento;
 
 	@ManyToOne
+	@Cascade(CascadeType.SAVE_UPDATE)
 	@JoinColumns({
 		@JoinColumn(name = "tipo_id", referencedColumnName = "tipo_id"),
 		@JoinColumn(name = "cod_id", referencedColumnName = "cod_id")
@@ -48,6 +53,7 @@ public class Documento implements Serializable,Entidade{
 
 	@NotNull
 	@ManyToOne
+	@Cascade(CascadeType.SAVE_UPDATE)
 	@JoinColumn(name = "tipo_documento", referencedColumnName = "tipo_documento")
 	private TipoDocumento tipoDocumento;
 
@@ -88,6 +94,7 @@ public class Documento implements Serializable,Entidade{
 	private PalavraChave[] palavrasChaves;// = new PalavraChave[3];
 	
 	//@OneToMany
+	@Cascade(CascadeType.SAVE_UPDATE)
 	@Column(name = "uploader")
 	private User uploader;
 

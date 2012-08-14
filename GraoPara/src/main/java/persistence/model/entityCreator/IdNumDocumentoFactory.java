@@ -14,7 +14,6 @@ public class IdNumDocumentoFactory implements EntityFactory {
 		IdNumDocumento newEnt = new IdNumDocumento();
 		IdNumDocumentoDTO entry = (IdNumDocumentoDTO) dto;
 
-		newEnt.setId(entry.getId());
 		newEnt.setCodId(entry.getCodId());
 		newEnt.setTipoId(entry.getTipoId());
 		

@@ -44,7 +44,7 @@ public class User implements Serializable, Entidade {
 	private Date dataInclusao;
 
 	@ManyToOne
-	@Cascade(value = {CascadeType.SAVE_UPDATE})
+	@Cascade(CascadeType.SAVE_UPDATE)
 	@JoinColumn(name = "profile", nullable = false)
 	private Profile userProfile;
 
