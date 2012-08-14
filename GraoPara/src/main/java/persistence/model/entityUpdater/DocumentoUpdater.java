@@ -2,7 +2,6 @@ package persistence.model.entityUpdater;
 
 import persistence.dto.DTO;
 import persistence.dto.DocumentoDTO;
-import persistence.dto.PalavraChaveDTO;
 import persistence.model.Documento;
 import persistence.model.Entidade;
 import persistence.model.IdNumDocumento;
@@ -31,41 +30,46 @@ public class DocumentoUpdater implements EntityUpdate {
 		((Documento) ent).setDataDocumento(entry.getDataDocumento());
 		((Documento) ent).setDataInclusao(entry.getDataInclusao());
 		((Documento) ent).setUploader(getUser(entry, ent));
-		((Documento) ent).setPalChaves(getPalavraChave(entry, ent));
+		((Documento) ent).setPalavrasChaves1(getPalavraChave1(entry, ent));
+		((Documento) ent).setPalavrasChaves2(getPalavraChave2(entry, ent));
+		((Documento) ent).setPalavrasChaves3(getPalavraChave3(entry, ent));
 		
 		return ent;
 	}
 	
 	private User getUser(DocumentoDTO entry, Entidade ent) {
 		EntityUpdate aux_factory = new UserUpdater();
-		return (User) aux_factory.updateEntity(entry.getUploader(), null);
+		return (User) aux_factory.updateEntity(entry.getUploader(), ((Documento) ent).getUploader());
 	}
 
 	private TipoDocumento getTipoDocumento(DocumentoDTO entry, Entidade ent) {
 		EntityUpdate aux_factory = new TipoDocumentoUpdater();
-		return (TipoDocumento) aux_factory.updateEntity(entry.getTipoDocumento(), null);
+		return (TipoDocumento) aux_factory.updateEntity(entry.getTipoDocumento(), ((Documento) ent).getTipoDocumento());
 	}
 
 	private Origem getOrigem(DocumentoDTO entry, Entidade ent) {
 		EntityUpdate aux_factory = new OrigemUpdater();
-		return (Origem) aux_factory.updateEntity(entry.getOrigemDocumento(), null);
+		return (Origem) aux_factory.updateEntity(entry.getOrigemDocumento(), ((Documento) ent).getOrigemDocumento());
 	}
 
 	private IdNumDocumento getIdentDocumento(DocumentoDTO entry, Entidade ent) {
 		EntityUpdate aux_factory = new IdNumDocumentoUpdater();
-		return (IdNumDocumento) aux_factory.updateEntity(entry.getIdNumDocumento(), null);
+		return (IdNumDocumento) aux_factory.updateEntity(entry.getIdNumDocumento(), ((Documento) ent).getIdNumDocumento());
 	}
 	
-	private PalavraChave[] getPalavraChave(DocumentoDTO entry, Entidade ent) {
+	private PalavraChave getPalavraChave1(DocumentoDTO entry, Entidade ent) {
 		EntityUpdate aux_factory = new PalavraChaveUpdater();
-		PalavraChaveDTO[] list = entry.getPalavrasChaves();
-		int length = list.length;
-		PalavraChave[] palchaves = new PalavraChave[length];
-		for(int i = 0; i < length; i++)
-		{
-			palchaves[i] = (PalavraChave) aux_factory.updateEntity(list[i], null);
-		}
-		return palchaves;
+		return (PalavraChave) aux_factory.updateEntity(entry.getPalavrasChaves1(), ((Documento) ent).getPalavrasChaves1());
+	}
+	
+	private PalavraChave getPalavraChave2(DocumentoDTO entry, Entidade ent) {
+		EntityUpdate aux_factory = new PalavraChaveUpdater();
+		return (PalavraChave) aux_factory.updateEntity(entry.getPalavrasChaves2(), ((Documento) ent).getPalavrasChaves2());
+	}
+	
+	private PalavraChave getPalavraChave3(DocumentoDTO entry, Entidade ent) {
+		EntityUpdate aux_factory = new PalavraChaveUpdater();
+		return (PalavraChave) aux_factory.updateEntity(entry.getPalavrasChaves3(), ((Documento) ent).getPalavrasChaves3());
 	}
 
 

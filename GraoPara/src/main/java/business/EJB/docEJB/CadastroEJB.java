@@ -50,7 +50,8 @@ public class CadastroEJB {
 		palavraChaveDTO[2].setPalavra(palavraChave03);
 		palavraChaveDTO[2].setAprovada(false);
 		
-		docDTO = new DocumentoDTO(null, origemDTO, idDTO, tipoDTO, autor, local, destinatario, resumo, dataDocumento, dataInclusao, uploader, palavraChaveDTO);
+		docDTO = new DocumentoDTO(null, origemDTO, idDTO, tipoDTO, autor, local, destinatario, resumo, dataDocumento, dataInclusao, uploader, 
+				palavraChaveDTO[0], palavraChaveDTO[1], palavraChaveDTO[2]);
 		
 		try {
 			docDTO = docDao.addDocument(docDTO);

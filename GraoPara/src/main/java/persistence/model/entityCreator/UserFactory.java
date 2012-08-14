@@ -16,6 +16,7 @@ public class UserFactory implements EntityFactory {
 		User newEnt = new User();
 		UserDTO entry = (UserDTO) dto;
 
+		newEnt.setId(entry.getId());
 		newEnt.setEmail(entry.getEmail());
 		newEnt.setName(entry.getName());
 		newEnt.setPassword(entry.getPassword());

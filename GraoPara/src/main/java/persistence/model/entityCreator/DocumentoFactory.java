@@ -2,7 +2,6 @@ package persistence.model.entityCreator;
 
 import persistence.dto.DTO;
 import persistence.dto.DocumentoDTO;
-import persistence.dto.PalavraChaveDTO;
 import persistence.model.Documento;
 import persistence.model.IdNumDocumento;
 import persistence.model.Origem;
@@ -29,7 +28,9 @@ public class DocumentoFactory implements EntityFactory {
 		newEnt.setResumo(entry.getResumo());
 		newEnt.setDataInclusao(entry.getDataInclusao());
 		newEnt.setDataDocumento(entry.getDataDocumento());
-		newEnt.setPalChaves(getPalavraChave(entry));		
+		newEnt.setPalavrasChaves1(getPalavraChave1(entry));	
+		newEnt.setPalavrasChaves2(getPalavraChave2(entry));		
+		newEnt.setPalavrasChaves3(getPalavraChave3(entry));		
 		newEnt.setUploader(getUser(entry)); 
 		return newEnt;
 	}
@@ -54,18 +55,23 @@ public class DocumentoFactory implements EntityFactory {
 		return (IdNumDocumento) aux_factory.createEntity(entry.getIdNumDocumento());
 	}
 	
-	private PalavraChave[] getPalavraChave(DocumentoDTO entry) {
+	private PalavraChave getPalavraChave1(DocumentoDTO entry) {
 		EntityFactory aux_factory = new PalavraChaveFactory();
-		PalavraChaveDTO[] list = entry.getPalavrasChaves();
-		int length = list.length;
-		PalavraChave[] palchaves = new PalavraChave[length];
-		for(int i = 0; i < length; i++)
-		{
-			if(list[i] != null)
-				palchaves[i] = (PalavraChave) aux_factory.createEntity(list[i]);
-			else palchaves[i] = null;
-		}
-		return palchaves;
+		return (PalavraChave) aux_factory.createEntity(entry.getPalavrasChaves1());
+	}
+	
+	private PalavraChave getPalavraChave2(DocumentoDTO entry) {
+		EntityFactory aux_factory = new PalavraChaveFactory();
+		DTO check = entry.getPalavrasChaves2();
+		if(check != null) return (PalavraChave) aux_factory.createEntity(check);
+		else return null;
+	}
+	
+	private PalavraChave getPalavraChave3(DocumentoDTO entry) {
+		EntityFactory aux_factory = new PalavraChaveFactory();
+		DTO check = entry.getPalavrasChaves3();
+		if(check != null) return (PalavraChave) aux_factory.createEntity(check);
+		else return null;
 	}
 
 

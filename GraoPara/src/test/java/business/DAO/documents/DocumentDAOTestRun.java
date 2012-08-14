@@ -60,7 +60,6 @@ public class DocumentDAOTestRun {
 	
 
 	public static void testAddDocument() throws UnreachableDataBaseException {
-		PalavraChaveDTO[] palchaves = {new PalavraChaveDTO("cabral", false), null, null};
 		DocumentoDTO carta = new DocumentoDTO(null, 
 				new OrigemDTO("A362", "APEP", "histórias do conde de notre dame"), 
 				new IdNumDocumentoDTO("APEP", "10202"),
@@ -68,7 +67,7 @@ public class DocumentDAOTestRun {
 				"pero vaz", "pará", "vaz pero", "loren ipsum loren ipsum loren ipsum loren ipsum", 
 				new GregorianCalendar(1500, 3, 29), new Date(), 
 				LA.findUserByEmail("outlook@gmail.com"),
-				palchaves);
+				new PalavraChaveDTO("cabral", false), null, null);
 		DA.addDocument(carta);
 	}
 }

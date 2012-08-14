@@ -88,25 +88,25 @@ public class Documento implements Serializable,Entidade{
 	private Calendar dataDocumento;
 
 	//@IndexedEmbedded
+	//@OneToMany
 	@NotNull
-	@OneToMany
-	@Column(name = "palavra_chave_1")
-//	@OrderColumn
+	@Cascade(CascadeType.SAVE_UPDATE)
+	@JoinColumn(name = "palavra_chave_1", referencedColumnName = "palavra")
 	private PalavraChave palavrasChaves1;
 
-	@OneToMany
-	@Column(name = "palavra_chave_2")
-//	@OrderColumn
+	//@ManyToOne
+	@Cascade(CascadeType.SAVE_UPDATE)
+	@JoinColumn(name = "palavra_chave_2", referencedColumnName = "palavra")
 	private PalavraChave palavrasChaves2;
 
-	@OneToMany
-	@Column(name = "palavra_chave_3")
-//	@OrderColumn
+	//@ManyToOne
+	@Cascade(CascadeType.SAVE_UPDATE)
+	@JoinColumn(name = "palavra_chave_3", referencedColumnName = "palavra")
 	private PalavraChave palavrasChaves3;
 	
-	//@OneToMany
+	//@ManyToOne
 	@Cascade(CascadeType.SAVE_UPDATE)
-	@Column(name = "uploader")
+	@JoinColumn(name = "email_uploader", referencedColumnName = "email")
 	private User uploader;
 
 	public Long getId() {
@@ -220,8 +220,6 @@ public class Documento implements Serializable,Entidade{
 	public void setPalavrasChaves3(PalavraChave palavrasChaves3) {
 		this.palavrasChaves3 = palavrasChaves3;
 	}
-
-	
 	
 
 }

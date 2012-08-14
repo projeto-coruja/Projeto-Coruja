@@ -4,7 +4,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class DocumentoDTO implements DTO {
-	
+
 	private Long id;
 	private OrigemDTO origemDocumento;
 	private IdNumDocumentoDTO idNumDocumento;
@@ -16,13 +16,16 @@ public class DocumentoDTO implements DTO {
 	private Calendar dataDocumento;
 	private Date dataInclusao;
 	private UserDTO uploader;
-	private PalavraChaveDTO[] palavrasChaves;
-	
+	private PalavraChaveDTO palavrasChaves1;
+	private PalavraChaveDTO palavrasChaves2;
+	private PalavraChaveDTO palavrasChaves3;
+
 	public DocumentoDTO(Long id, OrigemDTO origemDocumento,
 			IdNumDocumentoDTO idNumDocumento, TipoDocumentoDTO tipoDocumento,
 			String autor, String local, String destinatario, String resumo,
 			Calendar dataDocumento, Date dataInclusao, UserDTO uploader,
-			PalavraChaveDTO[] palavrasChaves) {
+			PalavraChaveDTO palavrasChaves1, PalavraChaveDTO palavrasChaves2,
+			PalavraChaveDTO palavrasChaves3) {
 		super();
 		this.id = id;
 		this.origemDocumento = origemDocumento;
@@ -35,43 +38,121 @@ public class DocumentoDTO implements DTO {
 		this.dataDocumento = dataDocumento;
 		this.dataInclusao = dataInclusao;
 		this.uploader = uploader;
-		this.palavrasChaves = palavrasChaves;
+		this.palavrasChaves1 = palavrasChaves1;
+		this.palavrasChaves2 = palavrasChaves2;
+		this.palavrasChaves3 = palavrasChaves3;
 	}
-	
-	public Long getId() {	return id;	}
-	public void setId(Long id) {	this.id = id;	}
 
-	public OrigemDTO getOrigemDocumento() {	return origemDocumento;	}
-	public void setOrigemDocumento(OrigemDTO origemDocumento) {	this.origemDocumento = origemDocumento;	}
+	public Long getId() {
+		return id;
+	}
 
-	public IdNumDocumentoDTO getIdNumDocumento() {	return idNumDocumento;	}
-	public void setIdNumDocumento(IdNumDocumentoDTO identDocumento) {	this.idNumDocumento = identDocumento;	}
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-	public TipoDocumentoDTO getTipoDocumento() {	return tipoDocumento;	}
-	public void setTipoDocumento(TipoDocumentoDTO tipoDocumento) {	this.tipoDocumento = tipoDocumento;	}
+	public OrigemDTO getOrigemDocumento() {
+		return origemDocumento;
+	}
 
-	public String getAutor() {	return autor;	}
-	public void setAutor(String autor) {	this.autor = autor;	}
+	public void setOrigemDocumento(OrigemDTO origemDocumento) {
+		this.origemDocumento = origemDocumento;
+	}
 
-	public String getLocal() {	return local;	}
-	public void setLocal(String local) {	this.local = local;	}
+	public IdNumDocumentoDTO getIdNumDocumento() {
+		return idNumDocumento;
+	}
 
-	public String getDestinatario() {	return destinatario;	}
-	public void setDestinatario(String destinatario) {	this.destinatario = destinatario;	}
+	public void setIdNumDocumento(IdNumDocumentoDTO identDocumento) {
+		this.idNumDocumento = identDocumento;
+	}
 
-	public String getResumo() {	return resumo;	}
-	public void setResumo(String resumo) {	this.resumo = resumo;	}
+	public TipoDocumentoDTO getTipoDocumento() {
+		return tipoDocumento;
+	}
 
-	public UserDTO getUploader() {	return uploader;	}
-	public void setUploader(UserDTO uploader) {	this.uploader = uploader;	}
+	public void setTipoDocumento(TipoDocumentoDTO tipoDocumento) {
+		this.tipoDocumento = tipoDocumento;
+	}
 
-	public PalavraChaveDTO[] getPalavrasChaves() {	return palavrasChaves;	}
-	public void setPalavrasChaves(PalavraChaveDTO[] palChaves) {	this.palavrasChaves = palChaves;	}
+	public String getAutor() {
+		return autor;
+	}
 
-	public Calendar getDataDocumento() {	return dataDocumento;	}
-	public void setDataDocumento(Calendar dataDocumento) {	this.dataDocumento = dataDocumento;	}
+	public void setAutor(String autor) {
+		this.autor = autor;
+	}
 
-	public Date getDataInclusao() {	return dataInclusao;	}
-	public void setDataInclusao(Date dataInclusao) {	this.dataInclusao = dataInclusao;	}
+	public String getLocal() {
+		return local;
+	}
+
+	public void setLocal(String local) {
+		this.local = local;
+	}
+
+	public String getDestinatario() {
+		return destinatario;
+	}
+
+	public void setDestinatario(String destinatario) {
+		this.destinatario = destinatario;
+	}
+
+	public String getResumo() {
+		return resumo;
+	}
+
+	public void setResumo(String resumo) {
+		this.resumo = resumo;
+	}
+
+	public UserDTO getUploader() {
+		return uploader;
+	}
+
+	public void setUploader(UserDTO uploader) {
+		this.uploader = uploader;
+	}
+
+	public Calendar getDataDocumento() {
+		return dataDocumento;
+	}
+
+	public void setDataDocumento(Calendar dataDocumento) {
+		this.dataDocumento = dataDocumento;
+	}
+
+	public Date getDataInclusao() {
+		return dataInclusao;
+	}
+
+	public void setDataInclusao(Date dataInclusao) {
+		this.dataInclusao = dataInclusao;
+	}
+
+	public PalavraChaveDTO getPalavrasChaves1() {
+		return palavrasChaves1;
+	}
+
+	public void setPalavrasChaves1(PalavraChaveDTO palavrasChaves1) {
+		this.palavrasChaves1 = palavrasChaves1;
+	}
+
+	public PalavraChaveDTO getPalavrasChaves2() {
+		return palavrasChaves2;
+	}
+
+	public void setPalavrasChaves2(PalavraChaveDTO palavrasChaves2) {
+		this.palavrasChaves2 = palavrasChaves2;
+	}
+
+	public PalavraChaveDTO getPalavrasChaves3() {
+		return palavrasChaves3;
+	}
+
+	public void setPalavrasChaves3(PalavraChaveDTO palavrasChaves3) {
+		this.palavrasChaves3 = palavrasChaves3;
+	}
 
 }
