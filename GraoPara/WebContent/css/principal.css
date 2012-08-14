@@ -74,14 +74,11 @@ a:hover, a:active, a:focus { /* this group of selectors will give a keyboard nav
 	/* Parametros para deixar a borda arredondada nos principais navegadores */
 	-webkit-border-radius: .4em;
 	-moz-border-radius: .4em;
-	border-radius: .4em;
-	
+	border-radius: .4em;	
 	/* Parametros para deixar uma sombra, com um estilo bevel */
 	-moz-box-shadow: 0 -1px 0 0px #000;
 	-webkit-box-shadow: 0 -1px 0 0px #000;
 	box-shadow: 0 -1px 0 0px #000;
-	
-
 	border: none;
 	width: 180px;
 	height: 27px;
@@ -97,11 +94,9 @@ a:hover, a:active, a:focus { /* this group of selectors will give a keyboard nav
 	background-color: #ffffff;
 	/* Proximos três atributos definem a borda arredondada dos inputs, cada linha é para um tipo de navegador */
 	/* Por algum motivo obscuro o Opera ainda está deixando os inputs retangulares, apesar de no input login ele aceitar o código de borda arredondada*/
-	
 	-webkit-border-radius: 0.4em;
 	-moz-border-radius: 0.4em;
 	border-radius: 0.4em;
-	
 	border: 1; /* Necessário quando o background da página em que o formulario estiver for branco */
 	width: 180px;
 	height: 20px;
@@ -113,12 +108,26 @@ a:hover, a:active, a:focus { /* this group of selectors will give a keyboard nav
 	letter-spacing: 1px;
 }
 
+.inputTipoNum{
+	background-color: #ffffff;
+	-webkit-border-radius: 0.4em;
+	-moz-border-radius: 0.4em;
+	border-radius: 0.4em;	
+	border: 1;
+	width: 120px;
+	height: 20px;
+	margin: 5px 0;
+	color: #000;
+	padding: 0 0 0 10px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 1em;
+	letter-spacing: 1px;
+}
 .inputPalavraChave{
 	background-color: #ffffff;
 	-webkit-border-radius: 0.4em;
 	-moz-border-radius: 0.4em;
-	border-radius: 0.4em;
-	
+	border-radius: 0.4em;	
 	border: 1;
 	width: 100px;
 	height: 20px;
@@ -344,6 +353,13 @@ apagado quando o usuário digitar algo dentro, para isso use o atributo placehol
 .labelForms {
 	font-size: 80%;
 	text-align:left;
+}
+
+.labelExibe {
+	font-size: 12px;
+	text-align:left;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	text-align:center;
 }
 
 .digitosTexts {

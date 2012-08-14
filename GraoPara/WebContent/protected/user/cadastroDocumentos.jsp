@@ -133,7 +133,12 @@
 							<label for="numeroAPEP" class="labelForms">Número APEP ou Sequencial:<font color="#FF0000">*</font></label>
 						</td>
 						<td width="377" height="20">
-								<input class="inputShort validate[required,custom[onlyNumberSp]]" name="numero" id="numero" type="text" maxlength="4" style="FONT-FAMILY: 'Century Schoolbook L';">
+								<select name="tipo_num" class="inputTipoNum validate[required] smallInput" id="tipo_num">
+									<option value="" selected>Selecione...</option>
+									<option value="0">APEP</option>
+									<option value="1">Sequencial</option>
+								</select>
+								<input class="inputShort validate[required,custom[onlyNumberSp]]" name="numero" id="numero" type="text" maxlength="4"> 
 						</td>
 					</tr>
 					<tr>

@@ -145,12 +145,51 @@
 		    		<section id="tab1">  
 		        		<h2><a href="#tab1">Palavras-Chaves Pendentes</a></h2>  
 		        		<br>
-		        		<p>This content appears on tab 1.</p>  
+		        			<p>This content appears on tab 1.</p>  	
 		   			</section>  
 		    		<section id="tab2">  
 		        		<h2><a href="#tab2">Novos Usuários</a></h2>  
 		        		<br>
-		        		<p>This content appears on tab 2.</p>  
+		        		<table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
+				<tr>
+						<td height="20" colspan="4">
+							<div align="left">
+								<strong><label for="identificacao" class="labelExibe">LISTAGEM DE USUARIOS</label></strong>									
+							</div>
+						</td>
+					</tr>
+				<tr>
+					<td width="120" height="20">
+						<label for="identificacao" class="labelExibe">Nome</label>
+					</td>
+					<td width="120" height="20">
+						<label for="identificacao" class="labelExibe">Email</label>
+					</td>
+					<td width="120" height="20">
+						<label for="identificacao" class="labelExibe">Permissão</label>
+					</td>
+					<td width="120" height="20">
+						<label for="identificacao" class="labelExibe">Ação</label>
+					</td>
+					<!-- Exemplo de cadastro -->			
+				</tr>
+				<tr>
+				<td width="120" height="20">
+						<label for="identificacao" class="labelExibe">Usuario Teste</label>
+					</td>
+					<td width="120" height="20">
+						<label for="identificacao" class="labelExibe">teste@teste.com.br</label>
+					</td>
+					<td width="120" height="20">
+						<label for="identificacao" class="labelExibe">Aluno</label>
+					</td>
+					<td width="120" height="20">
+						<a href="#"><img src="/GraoPara/images/edit.png" alt="Editar"/></a> 
+						<a href="#"><img src="/GraoPara/images/remove.png" alt="Remover"/></a>
+					</td>	
+					</tr>			
+			</table>
+		        		
 		    		</section>  
 		    		<section id="tab3">  
 		        		<h2><a href="#tab3">Usuários</a></h2>  

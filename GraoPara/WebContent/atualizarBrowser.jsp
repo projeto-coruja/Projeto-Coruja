@@ -38,14 +38,14 @@ a:active {
 					Melhore sua experiência na web atualizando para uma versão mais
 					recente do seu navegador. <br />		
 				</p>
-					<a href="http://www.google.com/chrome/?hl=pt_BR"> <img
-					src="../../images/chrome.png" alt="Chrome"/><br /> 
+					<a href="http://www.google.com/chrome/?hl=pt_BR"> 
+					<img src="/images/chrome.png" alt="Chrome"/><br /> 
 					Download do Google Chrome </a>
 					<a href="http://www.mozilla.com/firefox/">
-					<img src="../../images/firefox.png" alt="Firefox" /><br />
+					<img src="/images/firefox.png" alt="Firefox" /><br />
 			 		Download do Firefox </a> 
-			 		<a href="http://www.apple.com/safari/download/"> <img
-					src="../../images/safari.png" alt="Safari" /><br /> 
+			 		<a href="http://www.apple.com/safari/download/"> 
+			 		<img src="/images/safari.png" alt="Safari" /><br /> 
 					Download do Safari </a>
 				</div><!-- end .browser -->
 			</div><!-- end .content -->
