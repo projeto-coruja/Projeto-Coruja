@@ -107,17 +107,15 @@
 						</td>
 						<td width="377" height="20">
 								<input class="input" name="codigo" type="text" size="10" maxlength="5">
-		                        <label for="maxDigitos" class="labelForms">(máx. 5 digitos)</label>
 						</td>
 					</tr>
 					<tr>
 						<td height="20">
-							<label for="nomeDocumento" class="labelForms">Nome do Documento:</label>
+							<label for="titulo" class="labelForms">Título:</label>
 						</td>
 						<td width="377" height="20">
-								<input class="input" name="nome" type="text" size="20" maxlength="100">
-		                        <label for="maxDigitos" class="labelForms">(máx.100 digitos)</label> 
-						</td>
+								<input class="input" name="titulo" type="text" size="20" maxlength="48">
+						</td> 
 					</tr>
 					<tr>
 						<td height="20">
@@ -125,7 +123,6 @@
 						</td>
 						<td width="377" height="20">
 								<input class="input" name="numero" type="text" size="10" maxlength="4">
-		                        <label for="maxDigitos" class="labelForms">(máx. 4 digitos)</label>
 						</td>
 					</tr>
 					<tr>
@@ -133,8 +130,7 @@
 							<label for="autor" class="labelForms">Autor do Documento:</label>
 						</td>
 						<td width="377" height="20">
-						 		<input class="input" name="autor" type="text" size="20" maxlength="100">
-		                        <label for="maxDigitos" class="labelForms">(máx. 100 digitos)</label>
+						 		<input class="input" name="autor" type="text" size="20" maxlength="48">
 						</td>
 					</tr>
 					<tr>
@@ -143,8 +139,7 @@
 						</td>
 						<td width="377" height="20">
 						     
-						    	<input class="input" name="destinatario" type="text" size="20" maxlength="100">
-		                        <label for="maxDigitos" class="labelForms">(máx. 100 digitos)</label>
+						    	<input class="input" name="destinatario" type="text" size="20" maxlength="48">
 						</td>
 					</tr>
 					<tr>
@@ -191,7 +186,7 @@
 								
 						</td>
 		                <td>
-		                <input class="input" name="cidade" type="text" size="15" maxlength="8">
+		                <input class="input" name="cidade" type="text" size="15" maxlength="43">
 		                </td>
 		            </tr>
 					<tr>
@@ -199,7 +194,7 @@
 							<label for="dataDocumento" class="labelForms">Data do Documento:</label>
 						</td>
 						<td height="20">
-							<input class="input" type="text" name="data" maxlength="10" onkeyup="Formatadata(this,event)" />
+						<input class="input validate[custom[date]]" type="text" name="data" id="data" maxlength="10"/>
 						</td>
 					</tr>
 					<tr>
@@ -227,9 +222,9 @@
 					</tr>
 					<tr>
 						<td colspan="2">
-								<input class="inputPalavraChave" name="chave1" type="text" size="15" maxlength="30"> - 
-								<input class="inputPalavraChave" name="chave2" type="text" size="15" maxlength="30"> - 
-								<input class="inputPalavraChave" name="chave3" type="text" size="15" maxlength="30"> 
+								<input class="inputPalavraChave" name="chave1" type="text" size="15" maxlength="32"> - 
+								<input class="inputPalavraChave" name="chave2" type="text" size="15" maxlength="32"> - 
+								<input class="inputPalavraChave" name="chave3" type="text" size="15" maxlength="32"> 
 						</td>
 					</tr>
 					<tr>

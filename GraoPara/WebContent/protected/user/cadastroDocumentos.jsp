@@ -116,15 +116,15 @@
 							<label for="codigo" class="labelForms">Código:<font color="#FF0000">*</font></label>
 						</td>
 						<td width="377" height="20">
-								<input class="inputShort validate[required,custom[onlyNumberSp]]" name="codigo" size="10" id="codigo" type="text" maxlength="5">
+								<input class="inputShort validate[required]" name="codigo" size="10" id="codigo" type="text" maxlength="5">
 						</td>
 					</tr>
-					<tr>
+					 <tr>
 						<td height="20">
-							<label for="nomeDocumento" class="labelForms">Nome do Documento:<font color="#FF0000">*</font></label>
+							<label for="titulo" class="labelForms">Título:<font color="#FF0000">*</font></label>
 						</td>
 						<td width="377" height="20">
-								<input class="input validate[required]" name="nome" id="nome" type="text" size="20" maxlength="100">
+								<input class="input validate[required]" name="titulo" id="titulo" type="text" size="20" maxlength="48">
 		                        
 						</td>
 					</tr>
@@ -141,7 +141,7 @@
 							<label for="autor" class="labelForms">Autor do Documento:<font color="#FF0000">*</font></label>
 						</td>
 						<td width="377" height="20">
-						 		<input class="input validate[required]" name="autor" id="autor" type="text" size="20" maxlength="100">
+						 		<input class="input validate[required]" name="autor" id="autor" type="text" size="20" maxlength="48">
 						</td>
 					</tr>
 					<tr>
@@ -150,7 +150,7 @@
 						</td>
 						<td width="377" height="20">
 						     
-						    	<input class="input validate[required]" name="destinatario" id="destinatario" type="text" size="20" maxlength="100">
+						    	<input class="input validate[required]" name="destinatario" id="destinatario" type="text" size="20" maxlength="48">
 						</td>
 					</tr>
 					<tr>
@@ -197,7 +197,7 @@
 								
 						</td>
 		                <td>
-		                <input class="input validate[required]" name="cidade" id="cidade" type="text" maxlength="100">
+		                <input class="input validate[required]" name="cidade" id="cidade" type="text" maxlength="43">
 		            </tr>
 					<tr>
 						<td height="20">
@@ -231,7 +231,7 @@
 					</tr>
 					<td height="20" colspan="2">
 						<font class="labelForms">
-							<textarea class="inputResumo" id="resumo" name="resumo" rows="7" cols="40" maxlength="1000" style="FONT-SIZE: x-small;"></textarea>
+							<textarea class="inputResumo" id="resumo" name="resumo" rows="7" cols="40" maxlength="2048"></textarea>
 						</font>
 					</td>			
 					<tr>
@@ -243,9 +243,9 @@
 					</tr>
 					<tr>
 						<td colspan="2">
-								<input class="inputPalavraChave validate[groupRequired[chaves]]" id="chave1" name="chave1" type="text" size="15" maxlength="30"> - 
-								<input class="inputPalavraChave validate[groupRequired[chaves]]" id="chave2" name="chave2" type="text" size="15" maxlength="30"> - 
-								<input class="inputPalavraChave validate[groupRequired[chaves]]" id="chave3" name="chave3" type="text" size="15" maxlength="30"> 
+								<input class="inputPalavraChave validate[groupRequired[chaves]]" id="chave1" name="chave1" type="text" size="15" maxlength="32"> - 
+								<input class="inputPalavraChave validate[groupRequired[chaves]]" id="chave2" name="chave2" type="text" size="15" maxlength="32"> - 
+								<input class="inputPalavraChave validate[groupRequired[chaves]]" id="chave3" name="chave3" type="text" size="15" maxlength="32"> 
 						</td>
 					</tr>
 					<tr>
