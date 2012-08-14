@@ -1,5 +1,6 @@
 package business.EJB.docEJB;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -27,7 +28,7 @@ public class CadastroEJB {
 			String tipoDocumento_tipoDocumento,
 			String palavraChave01, String palavraChave02, String palavraChave03,
 			String autor, String local, String destinatario, String resumo,
-			Date dataDocumento, Date dataInclusao, UserDTO uploader){
+			Calendar dataDocumento, Date dataInclusao, UserDTO uploader){
 		
 		DocumentoDTO docDTO;
 		TipoDocumentoDTO tipoDTO;
