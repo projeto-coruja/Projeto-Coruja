@@ -72,9 +72,9 @@ public class DocServlet extends HttpServlet {
 		//Fazendo verificação das palavras chaves
 		if(!palChave1.isEmpty())
 			chave_ver1 = new PalavraChaveDTO(palChave1, false); 
-		if(!palChave1.isEmpty())
+		if(!palChave2.isEmpty())
 			chave_ver2 = new PalavraChaveDTO(palChave2, false); 
-		if(!palChave1.isEmpty())
+		if(!palChave3.isEmpty())
 			chave_ver3 = new PalavraChaveDTO(palChave3, false);
 		
 		DocumentDAO dd = new DocumentDAO();
@@ -90,6 +90,8 @@ public class DocServlet extends HttpServlet {
 					new Date(), 
 					ld.findUserByEmail(email), 
 					chave_ver1, chave_ver2, chave_ver3));
+			//Provisório
+			response.sendRedirect("/GraoPara/");
 		} catch (UnreachableDataBaseException e) {
 			response.setContentType("text/html");  
 		    PrintWriter out=response.getWriter();   
