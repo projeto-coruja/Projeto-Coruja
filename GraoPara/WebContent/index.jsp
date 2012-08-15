@@ -38,8 +38,7 @@
 <body onloadstart="checkCookie()">
 	<div class="container">
 		<div class="header">
-			<!-- Começo do banner -->
-			<a href="/GraoPara/index.jsp" class="banner"></a>
+			<a href="/GraoPara/index.jsp" class="banner"><img src="/GraoPara/images/header.png"/></a>
 		</div>
 		<!-- Fim do Banner -->
 		<!-- Começo do menu lateral -->
@@ -48,8 +47,8 @@
 			<!-- ----------------------------------------------------------------------- começa-->
 
 			<!--Começo da área de login -->
-			<div class="LoginArea" id="loginDefault">
-				<form method="post" action="doLogin">
+			<div class="LoginArea" id="loginDefault" display = "block">
+				<form method="post" action="/GraoPara/doLogin">
 					<fieldset>
 						<label for="login">Login:</label> <input class="inputLogin"
 							type="text" name="login" height="30px" size="auto"
@@ -67,11 +66,11 @@
 			
 			<!-- ----------------------------------------------------------------------- -->
 			
-			<!--Depois de logado, sendo permissão tipo USER-->
-			<div class="LoginArea" id="loginUser">
-				<form method="post" action="">
-					<fieldset>
-						<label for="login">Bem vindo</label>
+ 			<!--Depois de logado, sendo permissão tipo USER-->
+ 			<div class="LoginArea" id="loginUser" display = "none">
+ 				<form method="post" action="/GraoPara/doLogin">
+ 					<fieldset>
+ 						<label for="login">Bem vindo USER</label>
 					</fieldset>
 					<fieldset>
 						<input class="buttonSair" type="submit" name="Sair"
@@ -80,14 +79,13 @@
 				</form>
 			</div>
 
-
-			<!-- ----------------------------------------------------------------------- -->
+ 			<!-- ----------------------------------------------------------------------- -->
 			
-			<!--Depois de logado, sendo permissão tipo ADMIN-->
-			<div class="LoginArea" id="loginAdmin">
-				<form method="post" action="">
+ 			<!--Depois de logado, sendo permissão tipo ADMIN-->
+			<div class="LoginArea" id="loginAdmin" display = "none">
+				<form method="post" action="/GraoPara/doLogin">
 					<fieldset>
-						<label for="login">Bem vindo</label>
+						<label for="login">Bem vindo ADMIN</label>
 					</fieldset>
 					<fieldset>
 						<input class="buttonSair" type="submit" name="Sair"

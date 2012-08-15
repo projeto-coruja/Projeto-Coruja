@@ -65,7 +65,8 @@ a:hover, a:active, a:focus { /* this group of selectors will give a keyboard nav
 /* ~~ the header is not given a width. It will extend the full width of your layout. It contains an image placeholder that should be replaced with your own linked logo ~~ */
 /* Banner, dentro do código tem o espaço para colocar o logo */
 .header {
-	background-color: #6F7D94;
+	background-color: #eaf3fb;
+	height: 185px;
 }
 
 /* Configuração dos campos de input para o painel de login*/
@@ -286,6 +287,13 @@ label{
 	
 }
 
+.contentListagem {
+padding: 10px;
+width: 850px;
+float: left;
+text-align: center;
+}
+
 /* ~~ This grouped selector gives the lists in the .content area space ~~ */
 .content ul, .content ol { 
 	padding: 0 15px 15px 40px; /* this padding mirrors the right padding in the headings and paragraph rule above. Padding was placed on the bottom for space between other elements on the lists and on the left to create the indention. These may be adjusted as you wish. */
@@ -356,8 +364,7 @@ apagado quando o usuário digitar algo dentro, para isso use o atributo placehol
 }
 
 .labelExibe {
-	font-size: 12px;
-	text-align:left;
+	font-size: 10px;
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	text-align:center;
 }
