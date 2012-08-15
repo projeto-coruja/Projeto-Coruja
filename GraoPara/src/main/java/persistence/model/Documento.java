@@ -11,7 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -23,7 +22,6 @@ import org.hibernate.annotations.CascadeType;
 
 
 @Entity
-//@Indexed
 @Table(name = "tbl_documentos")
 public class Documento implements Serializable,Entidade{
 
@@ -56,57 +54,50 @@ public class Documento implements Serializable,Entidade{
 	@JoinColumn(name = "tipo_documento", referencedColumnName = "tipo_documento")
 	private TipoDocumento tipoDocumento;
 
-	//@Field
 	@NotNull
 	@Column(name = "autor", length = 48)
 	private String autor;
 
-	//@Field
 	@NotNull
 	@Column(name = "destinatario", length = 48)
 	private String destinatario;
 
-	//@Field
 	@NotNull
 	@Column(name = "local", length = 48)
 	private String local;
 
-	//@Field
 	@NotNull
 	@Column(name = "resumo", length = 2048)
 	private String resumo;
 
-	//@Field(analyze=Analyze.NO)
 	@NotNull
 	@Column(name = "data_inclusao")
 	private Date dataInclusao;
 	
-	//@Field(analyze=Analyze.NO)
 	@NotNull
 	@Column(name = "data_documento")
 	@Temporal(TemporalType.DATE)
 	private Calendar dataDocumento;
 
-	//@IndexedEmbedded
-	//@OneToMany
 	@NotNull
+	@ManyToOne
 	@Cascade(CascadeType.SAVE_UPDATE)
 	@JoinColumn(name = "palavra_chave_1", referencedColumnName = "palavra")
 	private PalavraChave palavrasChaves1;
 
-	//@ManyToOne
+	@ManyToOne
 	@Cascade(CascadeType.SAVE_UPDATE)
 	@JoinColumn(name = "palavra_chave_2", referencedColumnName = "palavra")
 	private PalavraChave palavrasChaves2;
 
-	//@ManyToOne
+	@ManyToOne
 	@Cascade(CascadeType.SAVE_UPDATE)
 	@JoinColumn(name = "palavra_chave_3", referencedColumnName = "palavra")
 	private PalavraChave palavrasChaves3;
 	
-	//@ManyToOne
+	@ManyToOne
 	@Cascade(CascadeType.SAVE_UPDATE)
-	@JoinColumn(name = "email_uploader", referencedColumnName = "email")
+	@JoinColumn(name = "email_uploader", referencedColumnName = "endereco")
 	private User uploader;
 
 	public Long getId() {
