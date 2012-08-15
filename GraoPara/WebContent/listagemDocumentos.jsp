@@ -39,8 +39,7 @@
 	<div class="container">
 		<div class="header">
 			<!-- Começo do banner -->
-			<a href="/GraoPara/index.jsp" class="banner"></a>
-		</div>
+				<a href="/GraoPara/index.jsp" class="banner"><img src="/GraoPara/images/header.png"/></a>		</div>
 		<!-- Fim do Banner -->
 		<!-- Começo do menu lateral -->
 		<div class="sidebar1">
@@ -127,45 +126,79 @@
 			<p></p>
 		</div>
 		<!-- Fim do Menu Lateral -->
-		<div class="content" id="content">
-			<table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
+		<div class="contentListagem" id="content">
+		<h2>Listagem de Documentos</h2>
+			<table width="100%" border="1" align="center" cellpadding="0" cellspacing="0">
+				<tr><td>
+						<label class="labelExibe">Identificação</label>
+					</td>
+					<td>
+						<label class="labelExibe">Código</label>
+					</td>
+					<td>
+						<label class="labelExibe">Título</label>
+					</td>
+					<td>
+						<label class="labelExibe">Tipo de Número</label>
+					</td>
+					<td>
+						<label class="labelExibe">Número</label>
+					</td>
+					<td>
+						<label class="labelExibe">Autor</label>
+					</td>
+					<td>
+						<label class="labelExibe">Destinatário</label>
+					</td>
+					<td>
+						<label class="labelExibe">Local</label>
+					</td>
+					<td>
+						<label class="labelExibe">Data</label>
+					</td>
+					<td>
+						<label class="labelExibe" style="FONT-FAMILY: 'Bitstream Charter';">Documento</label>
+					</td>
+					<td>
+						<label class="labelExibe">Ações</label>
+					</td>
+				</tr>
+				<!-- Exemplo de Documento inserido -->
 				<tr>
-						<td height="20" colspan="4">
-							<div align="left">
-								<strong><label for="identificacao" class="labelExibe">LISTAGEM DE DOCUMENTOS</label></strong>									
-							</div>
-						</td>
-					</tr>
-				<tr>
-					<td width="120" height="20">
-						<label for="identificacao" class="labelExibe">Identificação</label>
+					<td>
+						<label class="labelExibe">Códice</label>
 					</td>
-					<td width="120" height="20">
-						<label for="identificacao" class="labelExibe">Código</label>
+					<td>
+						<label class="labelExibe">1234</label>
 					</td>
-					<td width="120" height="20">
-						<label for="identificacao" class="labelExibe">Título</label>
+					<td>
+						<label class="labelExibe">Documento de Exemplo</label>
 					</td>
-					<td width="120" height="20">
-						<label for="identificacao" class="labelExibe">Tipo de Número</label>
+					<td>
+						<label class="labelExibe">APEP</label>
 					</td>
-					<td width="120" height="20">
-						<label for="identificacao" class="labelExibe">Número</label>
+					<td>
+						<label class="labelExibe">2531</label>
 					</td>
-					<td width="120" height="20">
-						<label for="identificacao" class="labelExibe">Autor</label>
+					<td>
+						<label class="labelExibe">José Maria</label>
 					</td>
-					<td width="120" height="20">
-						<label for="identificacao" class="labelExibe">Destinatário</label>
+					<td>
+						<label class="labelExibe">Maria João</label>
 					</td>
-					<td width="120" height="20">
-						<label for="identificacao" class="labelExibe">Local</label>
+					<td>
+						<label class="labelExibe">São Paulo - SP</label>
 					</td>
-					<td width="120" height="20">
-						<label for="identificacao" class="labelExibe">Data</label>
+					<td>
+						<label class="labelExibe">11/10/1900</label>
 					</td>
-					<td width="120" height="20">
-						<label for="identificacao" class="labelExibe">Tipo de Documento</label>
+					<td>
+						<label class="labelExibe">Carta</label>
+					</td>
+					<td>
+						<a href="#"><img src="/GraoPara/images/approve.png" title="Aprovar" alt="Aprovarr"/></a> 
+						<a href="#"><img src="/GraoPara/images/edit.png" title="Editar" alt="Editar"/></a> 
+						<a href="#"><img src="/GraoPara/images/remove.png" title="Remover" alt="Remover"/></a>
 					</td>
 				</tr>
 			</table>
