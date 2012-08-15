@@ -65,7 +65,8 @@ a:hover, a:active, a:focus { /* this group of selectors will give a keyboard nav
 /* ~~ the header is not given a width. It will extend the full width of your layout. It contains an image placeholder that should be replaced with your own linked logo ~~ */
 /* Banner, dentro do código tem o espaço para colocar o logo */
 .header {
-	background-color: #eaf3fb;
+	background-image: url("/GraoPara/images/header2.png");
+	background-repeat: repeat-x;
 	height: 185px;
 }
 
@@ -275,6 +276,7 @@ label{
 .sidebar1 {
 	float: left;
 	width: 220px;
+	height: 900px;
 	background-color: #93A5C4;
 	padding-bottom: 10px;
 }
