@@ -38,8 +38,7 @@
 <body onloadstart="checkCookie()">
 	<div class="container">
 		<div class="header">
-			<!-- Começo do banner -->
-			<a href="/GraoPara/index.jsp" class="banner"></a>
+			<a href="/GraoPara/index.jsp" class="banner"><img src="/GraoPara/images/header.png"/></a>
 		</div>
 		<!-- Fim do Banner -->
 		<!-- Começo do menu lateral -->
