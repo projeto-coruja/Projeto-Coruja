@@ -23,9 +23,7 @@
 <script type="text/javascript" src="/GraoPara/javascript/languages/jquery.validationEngine-pt.js" charset="utf-8"></script>
 
 </head>
-
-<body>
-
+<body onloadstart="checkCookie()">
 	<div class="container">
 		<div class="header">
 			<!-- Começo do banner -->
@@ -35,49 +33,74 @@
 		<!-- Começo do menu lateral -->
 		<div class="sidebar1">
 
+			<!-- ----------------------------------------------------------------------- começa-->
+
 			<!--Começo da área de login -->
-			<div class="LoginArea" id="LoginArea">
-			<form method="post" action = "LoginServlet">
-				<fieldset>
-					<label for="login">Login:</label>
-						<input class="inputLogin"
+			<div class="LoginArea" id="loginDefault">
+				<form method="post" action="/GraoPara/doLogin">
+					<fieldset>
+						<label for="login">Login:</label> <input class="inputLogin"
 							type="text" name="login" height="30px" size="auto"
-							placeholder="Seu login" required>
-					<label for="senha">Senha:</label>
-						<input class="inputLogin"
-							type="password" name="senha" height="30px" size="auto"
-							placeholder="Sua senha" required>
-				</fieldset>
-				<fieldset>
-					<input class="buttonEntrar" type="submit" name="Entrar" value="Entrar"/>
-				</fieldset>
-			</form>
+							placeholder="Seu login" required> <label for="senha">Senha:</label>
+						<input class="inputLogin" type="password" name="senha"
+							height="30px" size="auto" placeholder="Sua senha" required>
+					</fieldset>
+					<fieldset>
+						<input class="buttonEntrar" type="submit" name="Entrar"
+							value="Entrar" />
+					</fieldset>
+				</form>
 			</div>
-			<div class="AfterLogin" id="AfterLogin" hidden="0">
-			Bem vindo #UserName
-			<input class="buttonEntrar" type="submit" name="Entrar" value="Entrar"/>
+			
+			
+			<!-- ----------------------------------------------------------------------- -->
+			
+			<!--Depois de logado, sendo permissão tipo USER-->
+			<div class="LoginArea" id="loginUser">
+				<form method="post" action="/GraoPara/doLogin">
+					<fieldset>
+						<label for="login">Bem vindo</label>
+					</fieldset>
+					<fieldset>
+						<input class="buttonSair" type="submit" name="Sair"
+							value="Sair" />
+					</fieldset>
+				</form>
 			</div>
+
+
+			<!-- ----------------------------------------------------------------------- -->
+			
+			<!--Depois de logado, sendo permissão tipo ADMIN-->
+			<div class="LoginArea" id="loginAdmin">
+				<form method="post" action="/GraoPara/doLogin">
+					<fieldset>
+						<label for="login">Bem vindo</label>
+					</fieldset>
+					<fieldset>
+						<input class="buttonSair" type="submit" name="Sair"
+							value="Sair" />
+					</fieldset>
+				</form>
+			</div>
+			
+			<!-- ----------------------------------------------------------------------- termina-->
+			
 			<fieldset>
-				<a href="/GraoPara/CadUsuario.jsp"><input type="button" class="buttonRegistrar" name="Registrar" value="Registrar"></a>
+				<a href="/GraoPara/CadUsuario.jsp"><input type="button"
+					class="buttonRegistrar" name="Registrar" value="Registrar"></a>
 			</fieldset>
 			<!-- Fim da área de login -->
 
-			<article class="menuLateral">  
-			<ul class="nav" id="menu">
-				<li><a href="/GraoPara/index.jsp"><span>H</span>ome</a></li>
-				<li><a href="/GraoPara/pesquisa.jsp"><span>P</span>esquisar</a></li>
-				<li><a href="/GraoPara/sobre.jsp"><span>S</span>obre</a></li>
-				
-				<!-- Botão que precisa, ou não, ser escondido para visitantes -->
-				<li><a href="/GraoPara/protected/user/cadastroDocumentos.jsp">Cadastrar Documento</a></li>
-				
-				<!-- Botões temporários para testes -->
-				<li><a href="/GraoPara/protected/user/UserControle.jsp">Painel User</a></li>
-				<li><a href="/GraoPara/protected/admin/AdminControle.jsp">Painel Admin</a></li>
-			</ul>
+			<article class="menuLateral">
+				<ul class="nav" id="menu">
+					<li><a href="/GraoPara/index.jsp"><span>H</span>ome</a></li>
+					<li><a href="/GraoPara/pesquisa.jsp"><span>P</span>esquisar</a></li>
+					<li><a href="/GraoPara/sobre.jsp"><span>S</span>obre</a></li>
+				</ul>
 			</article>
-			
-			<!-- Área para texto na barra lateral, a barra cresce ao inserir conteudo... --> 
+
+			<!-- Área para texto na barra lateral, a barra cresce ao inserir conteudo... -->
 			<p></p>
 			<p></p>
 			<p></p>

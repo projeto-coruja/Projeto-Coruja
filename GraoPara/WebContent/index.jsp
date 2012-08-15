@@ -49,7 +49,7 @@
 
 			<!--Começo da área de login -->
 			<div class="LoginArea" id="loginDefault">
-				<form method="post" action="/GraoPara/doLogin">
+				<form method="post" action="doLogin">
 					<fieldset>
 						<label for="login">Login:</label> <input class="inputLogin"
 							type="text" name="login" height="30px" size="auto"
@@ -69,7 +69,7 @@
 			
 			<!--Depois de logado, sendo permissão tipo USER-->
 			<div class="LoginArea" id="loginUser">
-				<form method="post" action="/GraoPara/doLogin">
+				<form method="post" action="">
 					<fieldset>
 						<label for="login">Bem vindo</label>
 					</fieldset>
@@ -85,7 +85,7 @@
 			
 			<!--Depois de logado, sendo permissão tipo ADMIN-->
 			<div class="LoginArea" id="loginAdmin">
-				<form method="post" action="/GraoPara/doLogin">
+				<form method="post" action="">
 					<fieldset>
 						<label for="login">Bem vindo</label>
 					</fieldset>
@@ -98,12 +98,6 @@
 			
 			<!-- ----------------------------------------------------------------------- termina-->
 			
-			<div class="AfterLogin" id="AfterLogin" hidden="0">
-				<form method="post" action="/GraoPara/doLogout">
-					Bem vindo #UserName <input class="buttonEntrar" type="submit"
-						name="Sair" value="Sair" />
-				</form>
-			</div>
 			<fieldset>
 				<a href="/GraoPara/CadUsuario.jsp"><input type="button"
 					class="buttonRegistrar" name="Registrar" value="Registrar"></a>
