@@ -48,7 +48,7 @@
 			<!-- ----------------------------------------------------------------------- começa-->
 
 			<!--Começo da área de login -->
-			<div class="LoginArea" id="loginDefault">
+			<div class="LoginArea" id="loginDefault" display = "block">
 				<form method="post" action="/GraoPara/doLogin">
 					<fieldset>
 						<label for="login">Login:</label> <input class="inputLogin"
@@ -67,11 +67,11 @@
 			
 			<!-- ----------------------------------------------------------------------- -->
 			
-			<!--Depois de logado, sendo permissão tipo USER-->
-			<div class="LoginArea" id="loginUser">
-				<form method="post" action="/GraoPara/doLogin">
-					<fieldset>
-						<label for="login">Bem vindo</label>
+ 			<!--Depois de logado, sendo permissão tipo USER-->
+ 			<div class="LoginArea" id="loginUser" display = "none">
+ 				<form method="post" action="/GraoPara/doLogin">
+ 					<fieldset>
+ 						<label for="login">Bem vindo USER</label>
 					</fieldset>
 					<fieldset>
 						<input class="buttonSair" type="submit" name="Sair"
@@ -81,13 +81,13 @@
 			</div>
 
 
-			<!-- ----------------------------------------------------------------------- -->
+ 			<!-- ----------------------------------------------------------------------- -->
 			
-			<!--Depois de logado, sendo permissão tipo ADMIN-->
-			<div class="LoginArea" id="loginAdmin">
+ 			<!--Depois de logado, sendo permissão tipo ADMIN-->
+			<div class="LoginArea" id="loginAdmin" display = "none">
 				<form method="post" action="/GraoPara/doLogin">
 					<fieldset>
-						<label for="login">Bem vindo</label>
+						<label for="login">Bem vindo ADMIN</label>
 					</fieldset>
 					<fieldset>
 						<input class="buttonSair" type="submit" name="Sair"
@@ -98,7 +98,7 @@
 			
 			<!-- ----------------------------------------------------------------------- termina-->
 			
-			<div class="AfterLogin" id="AfterLogin" hidden="0">
+			<div class="AfterLogin" id="AfterLogin" display = "none">
 				<form method="post" action="/GraoPara/doLogout">
 					Bem vindo #UserName <input class="buttonEntrar" type="submit"
 						name="Sair" value="Sair" />
