@@ -58,6 +58,12 @@ public class CadastroServlet extends HttpServlet {
 			    out.println("document.location=('/GraoPara/');");  
 			    out.println("</script>");
 			} catch (UnreachableDataBaseException e) {
+				response.setContentType("text/html");  
+			    PrintWriter out=response.getWriter();   
+			    out.println("<script>");  
+			    out.println("alert('Erro no banco de dados! Contate o suporte e tente novamente mais tarde. ');");  
+			    out.println("document.location=('/GraoPara/');");  
+			    out.println("</script>");
 				e.printStackTrace();
 			} catch (IncorrectLoginInformationException e) {
 //				response.sendRedirect(request.getContextPath() + "/pages/public/Error.jsp");
