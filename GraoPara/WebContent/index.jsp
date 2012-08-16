@@ -45,9 +45,6 @@
 		<!-- Fim do Banner -->
 		<!-- Começo do menu lateral -->
 		<div class="sidebar1">
-		
-
-			<!-- ----------------------------------------------------------------------- começa-->
 
 			<!--Começo da área de login -->
 			<div class="LoginArea" id="loginDefault" style="display:block;">
@@ -69,31 +66,6 @@
 					</fieldset>
 				</form>
 			</div>
-
-			<!-- ----------------------------------------------------------------------- -->
-
-			<!--Depois de logado, sendo permissão tipo USER-->
-			<div class="LoginArea" id="logado" style="display:none;">
- 			<!-- ----------------------------------------------------------------------- -->
-			
- 			<!--Depois de logado, sendo permissão tipo ADMIN-->
-			<div class="LoginArea" id="loginAdmin" display = "none">
-				<form method="post" action="/GraoPara/doLogin">
-					<fieldset>
-						<label for="login">Bem vindo *NomeUsuario*</label>
-					</fieldset>
-					<fieldset>
-						<a href="/GraoPara/index.jsp">
-						<input class="buttonSair" type="submit" name="Sair" value="Sair" /></a>
-					</fieldset>
-				</form>
-			</div>
-			<!-- ----------------------------------------------------------------------- termina-->
-			
-			<fieldset>
-				<a href="/GraoPara/CadUsuario.jsp"><input type="button"
-					class="buttonRegistrar" name="Registrar" value="Registrar"></a>
-			</fieldset>
 			<!-- Fim da área de login -->
 
 			<article class="menuLateral">

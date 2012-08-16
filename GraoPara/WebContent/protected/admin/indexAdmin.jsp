@@ -51,7 +51,8 @@
 			<div class="LoginArea" id="logado" style="display:block;">
 				<form method="post" action="/GraoPara/doLogin">
 					<fieldset>
-						<label for="login">Bem vindo *NomeUsuario*</label>
+						<label for="login">Bem vindo</label>
+						<label onload="getName()"></label>
 					</fieldset>
 					<fieldset>
 						<a href="/GraoPara/protected/admin/indexAdmin.jsp">
@@ -64,9 +65,10 @@
 
 			<article class="menuLateral">
 				<ul class="nav" id="menu">
-					<li><a href="/GraoPara/protected/admin/indexAdmin.jsp"><span>H</span>ome</a></li>
-					<li><a href="/GraoPara/protected/admin/pesquisaAdmin.jsp"><span>P</span>esquisar</a></li>
-					<li><a href="/GraoPara/protected/admin/sobreAdmin.jsp"><span>S</span>obre</a></li>
+					<li><a href="/GraoPara/protected/admin/indexAdmin.jsp">Home</a></li>
+					<li><a href="/GraoPara/protected/admin/pesquisaAdmin.jsp">Pesquisar</a></li>
+					<li><a href="/GraoPara/protected/admin/sobreAdmin.jsp">Sobre</a></li>
+					<li><a href="/GraoPara/protected/admin/AdminControle.jsp.jsp">Sobre</a></li>
 				</ul>
 			</article>
 
