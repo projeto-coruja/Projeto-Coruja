@@ -37,7 +37,7 @@ public class BuscaDocEJB {
 		String query = "from Documento where ";
 		
 		if(identificacao != null && !identificacao.isEmpty()){
-			query += "tipo_origem like '%" + identificacao + "%'";
+			query += "tipo_origem = '" + identificacao + "'";
 			continue_query = true;
 		}
 		
@@ -45,7 +45,7 @@ public class BuscaDocEJB {
 			if(continue_query == true){
 				query += " and ";
 			}
-			query += "cod_origem like '%" + codigo + "%'";
+			query += "cod_origem = '" + codigo + "'";
 			continue_query = true;
 		}
 		
@@ -53,7 +53,7 @@ public class BuscaDocEJB {
 			if(continue_query == true){
 				query += " and ";
 			}
-			query += "tipo_id like '%" + tipoAPEP_SEQ + "%'";
+			query += "tipo_id = '" + tipoAPEP_SEQ + "'";
 			continue_query = true;
 		}
 		
@@ -61,7 +61,7 @@ public class BuscaDocEJB {
 			if(continue_query == true){
 				query += " and ";
 			}
-			query += "num_id like '%" + numAPEP_SEQ + "%'";
+			query += "cod_id = '" + numAPEP_SEQ + "'";
 			continue_query = true;
 		}
 		
@@ -93,7 +93,7 @@ public class BuscaDocEJB {
 			if(continue_query == true){
 				query += " and ";
 			}
-			query += "data_documento like '%" + data + "%'";	// Notação: yyyy-mm-dd
+			query += "data_documento = '" + data + "'";	// Notação: yyyy-mm-dd
 			continue_query = true;
 		}
 		
@@ -101,7 +101,7 @@ public class BuscaDocEJB {
 			if(continue_query == true){
 				query += " and ";
 			}
-			query += "tipo_documento like '%" + tipo + "%'";
+			query += "tipo_documento = '" + tipo + "'";
 			continue_query = true;
 		}
 		
@@ -109,7 +109,7 @@ public class BuscaDocEJB {
 			if(continue_query == true){
 				query += " and ";
 			}
-			query += "palavra_chave_1 like '%" + palavra1 + "%'";
+			query += "palavra_chave_1 = '" + palavra1.toLowerCase() + "'";
 			continue_query = true;
 		}
 		
@@ -117,7 +117,7 @@ public class BuscaDocEJB {
 			if(continue_query == true){
 				query += " and ";
 			}
-			query += "palavra_chave_2 like '%" + palavra2 + "%'";
+			query += "palavra_chave_2 = '" + palavra2.toLowerCase() + "'";
 			continue_query = true;
 		}
 		
@@ -125,7 +125,7 @@ public class BuscaDocEJB {
 			if(continue_query == true){
 				query += " and ";
 			}
-			query += "palavra_chave_3 like '%" + palavra3 + "%'";
+			query += "palavra_chave_3 = '" + palavra3.toLowerCase() + "'";
 			continue_query = true;
 		}
 		
