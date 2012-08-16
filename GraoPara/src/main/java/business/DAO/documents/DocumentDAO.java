@@ -140,79 +140,7 @@ public class DocumentDAO {
 			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
 		}
 	}
-	
-	public List<DTO> findDocumentsByOrigin(OrigemDTO origem) throws  DocumentNotFoundException, UnreachableDataBaseException  {
-		List<DTO> resultSet = null;
-		try {
-			resultSet = manager.findEntities("from Documento " +
-					"where origemDocumento.codOrigem like '" + origem.getCodOrigem() +"'" +
-							"and origemDocumento.tipoOrigem like'" + origem.getTipoOrigem() +"'");
-			if(resultSet == null) {
-				throw new  DocumentNotFoundException("Autor não encontrado");
-			}
-			else return resultSet;
-		} catch (DataAccessLayerException e) {
-			e.printStackTrace();
-			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
-		}
-	}
-	
-	public List<DTO> findDocumentsByAutor(String autor) throws  DocumentNotFoundException, UnreachableDataBaseException  {
-		List<DTO> resultSet = null;
-		try {
-			resultSet = manager.findEntities("from Documento where autor like '%" + autor +"%'");
-			if(resultSet == null) {
-				throw new  DocumentNotFoundException("Autor não encontrado");
-			}
-			else return resultSet;
-		} catch (DataAccessLayerException e) {
-			e.printStackTrace();
-			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
-		}
-	}
-	
-	public List<DTO> findDocumentsByLocal(String local) throws  DocumentNotFoundException, UnreachableDataBaseException  {
-		List<DTO> resultSet = null;
-		try {
-			resultSet = manager.findEntities("from Documento where local like '%" + local +"%'");
-			if(resultSet == null) {
-				throw new  DocumentNotFoundException("Local não encontrado");
-			}
-			else return resultSet;
-		} catch (DataAccessLayerException e) {
-			e.printStackTrace();
-			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
-		}
-	}
-	
-	public List<DTO> findDocumentsByRecipient(String destinatario) throws  DocumentNotFoundException, UnreachableDataBaseException  {
-		List<DTO> resultSet = null;
-		try {
-			resultSet = manager.findEntities("from Documento where destinatario like '%" + destinatario +"%'");
-			if(resultSet == null) {
-				throw new  DocumentNotFoundException("Destinatario não encontrado");
-			}
-			else return resultSet;
-		} catch (DataAccessLayerException e) {
-			e.printStackTrace();
-			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
-		}
-	}
-	
-	public List<DTO> findDocumentsBySummary(String summary) throws  DocumentNotFoundException, UnreachableDataBaseException  {
-		List<DTO> resultSet = null;
-		try {
-			resultSet = manager.findEntities("from Documento where resumo like '%" + summary +"%'");
-			if(resultSet == null) {
-				throw new  DocumentNotFoundException("Documento não encontrado");
-			}
-			else return resultSet;
-		} catch (DataAccessLayerException e) {
-			e.printStackTrace();
-			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
-		}
-	}
-	
+		
 	public List<DTO> findDocumentsByUploader(UserDTO uploader) throws  DocumentNotFoundException, UnreachableDataBaseException {
 		List<DTO> resultSet = null;
 		try {
@@ -226,18 +154,19 @@ public class DocumentDAO {
 			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
 		}
 	}
-	
-	public List<DTO> findDocumentsByKeyWord(PalavraChaveDTO keyword) throws  DocumentNotFoundException, UnreachableDataBaseException {
+		
+	public List<DTO> findDocumentByQuery(String query) throws DocumentNotFoundException, UnreachableDataBaseException{
 		List<DTO> resultSet = null;
 		try {
-			resultSet = manager.findEntities("from Documento where palavrachave like '" + keyword +"'");
+			resultSet = manager.findEntities(query);
 			if(resultSet == null) {
-				throw new  DocumentNotFoundException("Nenhum documento levantado pelo usuário");
+				throw new  DocumentNotFoundException("Nenhum documento encontrado.");
 			}
 			else return resultSet;
 		} catch (DataAccessLayerException e) {
 			e.printStackTrace();
 			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
 		}
+		
 	}
 }

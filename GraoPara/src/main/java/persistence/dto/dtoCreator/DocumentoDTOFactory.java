@@ -47,16 +47,22 @@ public class DocumentoDTOFactory implements DTOFactory {
 	
 	private PalavraChaveDTO getPalavraChave1(Documento entry) {
 		DTOFactory aux_factory = new PalavraChaveDTOFactory();
-		return (PalavraChaveDTO) aux_factory.createDTO(entry.getPalavrasChaves1());
+		Entidade check = entry.getPalavrasChaves1();
+		if(check != null) return (PalavraChaveDTO) aux_factory.createDTO(check);
+		else return null;
 	}
 	
 	private PalavraChaveDTO getPalavraChave2(Documento entry) {
 		DTOFactory aux_factory = new PalavraChaveDTOFactory();
-		return (PalavraChaveDTO) aux_factory.createDTO(entry.getPalavrasChaves2());
+		Entidade check = entry.getPalavrasChaves2();
+		if(check != null) return (PalavraChaveDTO) aux_factory.createDTO(check);
+		else return null;
 	}
 	
 	private PalavraChaveDTO getPalavraChave3(Documento entry) {
 		DTOFactory aux_factory = new PalavraChaveDTOFactory();
-		return (PalavraChaveDTO) aux_factory.createDTO(entry.getPalavrasChaves3());
+		Entidade check = entry.getPalavrasChaves3();
+		if(check != null) return (PalavraChaveDTO) aux_factory.createDTO(check);
+		else return null;
 	}
 }

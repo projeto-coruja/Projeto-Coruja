@@ -23,60 +23,80 @@
 <script type="text/javascript" src="/GraoPara/javascript/languages/jquery.validationEngine-pt.js" charset="utf-8"></script>
 
 </head>
-
-<body>
-
+<body onloadstart="checkCookie()">
 	<div class="container">
-		<div class="header">
-			<!-- Começo do banner -->
-				<a href="/GraoPara/index.jsp" class="banner"><img src="/GraoPara/images/header.png"/></a>		</div>
-		<!-- Fim do Banner -->
+		<div class="header"></div>
 		<!-- Começo do menu lateral -->
 		<div class="sidebar1">
 
+			<!-- ----------------------------------------------------------------------- começa-->
+
 			<!--Começo da área de login -->
-			<div class="LoginArea" id="LoginArea">
-			<form method="post" action = "LoginServlet">
-				<fieldset>
-					<label for="login">Login:</label>
-						<input class="inputLogin"
+			<div class="LoginArea" id="loginDefault">
+				<form method="post" action="/GraoPara/doLogin">
+					<fieldset>
+						<label for="login">Login:</label> <input class="inputLogin"
 							type="text" name="login" height="30px" size="auto"
-							placeholder="Seu login" required>
-					<label for="senha">Senha:</label>
-						<input class="inputLogin"
-							type="password" name="senha" height="30px" size="auto"
-							placeholder="Sua senha" required>
-				</fieldset>
-				<fieldset>
-					<input class="buttonEntrar" type="submit" name="Entrar" value="Entrar"/>
-				</fieldset>
-			</form>
+							placeholder="Seu login" required> <label for="senha">Senha:</label>
+						<input class="inputLogin" type="password" name="senha"
+							height="30px" size="auto" placeholder="Sua senha" required>
+					</fieldset>
+					<fieldset>
+						<input class="buttonEntrar" type="submit" name="Entrar"
+							value="Entrar" />
+					</fieldset>
+				</form>
 			</div>
-			<div class="AfterLogin" id="AfterLogin" hidden="0">
-			Bem vindo #UserName
-			<input class="buttonEntrar" type="submit" name="Entrar" value="Entrar"/>
+			
+			
+			<!-- ----------------------------------------------------------------------- -->
+			
+			<!--Depois de logado, sendo permissão tipo USER-->
+			<div class="LoginArea" id="loginUser">
+				<form method="post" action="/GraoPara/doLogin">
+					<fieldset>
+						<label for="login">Bem vindo</label>
+					</fieldset>
+					<fieldset>
+						<input class="buttonSair" type="submit" name="Sair"
+							value="Sair" />
+					</fieldset>
+				</form>
 			</div>
+
+
+			<!-- ----------------------------------------------------------------------- -->
+			
+			<!--Depois de logado, sendo permissão tipo ADMIN-->
+			<div class="LoginArea" id="loginAdmin">
+				<form method="post" action="/GraoPara/doLogin">
+					<fieldset>
+						<label for="login">Bem vindo</label>
+					</fieldset>
+					<fieldset>
+						<input class="buttonSair" type="submit" name="Sair"
+							value="Sair" />
+					</fieldset>
+				</form>
+			</div>
+			
+			<!-- ----------------------------------------------------------------------- termina-->
+			
 			<fieldset>
-				<a href="/GraoPara/CadUsuario.jsp"><input type="button" class="buttonRegistrar" name="Registrar" value="Registrar"></a>
+				<a href="/GraoPara/CadUsuario.jsp"><input type="button"
+					class="buttonRegistrar" name="Registrar" value="Registrar"></a>
 			</fieldset>
 			<!-- Fim da área de login -->
 
-			<article class="menuLateral">  
-			<ul class="nav" id="menu">
-				<li><a href="/GraoPara/index.jsp"><span>H</span>ome</a></li>
-				<li><a href="/GraoPara/pesquisa.jsp"><span>P</span>esquisar</a></li>
-				<li><a href="/GraoPara/sobre.jsp"><span>S</span>obre</a></li>
-				
-				<!-- Botão que precisa, ou não, ser escondido para visitantes -->
-				<li><a href="/GraoPara/protected/user/cadastroDocumentos.jsp">Cadastrar Documento</a></li>
-				
-				<!-- Botões temporários para testes -->
-				<li><a href="/GraoPara/protected/user/UserControle.jsp">Painel User</a></li>
-				<li><a href="/GraoPara/protected/admin/AdminControle.jsp">Painel Admin</a></li>
-			</ul>
+			<article class="menuLateral">
+				<ul class="nav" id="menu">
+					<li><a href="/GraoPara/index.jsp"><span>H</span>ome</a></li>
+					<li><a href="/GraoPara/pesquisa.jsp"><span>P</span>esquisar</a></li>
+					<li><a href="/GraoPara/sobre.jsp"><span>S</span>obre</a></li>
+				</ul>
 			</article>
-			
-			<!-- Área para texto na barra lateral, a barra cresce ao inserir conteudo... --> 
+
+			<!-- Área para texto na barra lateral, a barra cresce ao inserir conteudo... -->
 			<p></p>
 			<p></p>
 			<p></p>
@@ -86,7 +106,7 @@
 		<div class="content" id="content">
 				
 			<h2>Cadastro de Documentos</h2>
-			<form action="#" method="POST" name="cadastro">
+			<form action="/GraoPara/addDoc" method="POST" name="cadastro">
 				<table class="tableForms" width="600" border="0" align="center" cellpadding="0" cellspacing="0">
 					<tr>
 						<td height="20" colspan="2">
@@ -134,8 +154,8 @@
 						<td width="377" height="20">
 								<select name="tipo_num" class="inputTipoNum validate[required] smallInput" id="tipo_num">
 									<option value="" selected>Selecione...</option>
-									<option value="0">APEP</option>
-									<option value="1">Sequencial</option>
+									<option value="APEP">APEP</option>
+									<option value="SEQ">Sequencial</option>
 								</select>
 								<input class="inputShort validate[required,custom[onlyNumberSp]]" name="numero" id="numero" type="text" maxlength="4"> 
 						</td>
@@ -157,7 +177,7 @@
 						    	<input class="input validate[required]" name="destinatario" id="destinatario" type="text" size="20" maxlength="48">
 						</td>
 					</tr>
-					<tr>
+					<!-- <tr>
 						<td height="20">
 							<label for="estado" class="labelForms">Estado:<font color="#FF0000">*</font></label>
 		                
@@ -194,14 +214,14 @@
 							</select>
 		                </td>
 						
-					</tr>
+					</tr> -->
 		            <tr>
 		            	<td height="20">
-							<label for="cidade" class="labelForms">Cidade:<font color="#FF0000">*</font></label>
+							<label for="local" class="labelForms">Local:<font color="#FF0000">*</font></label>
 								
 						</td>
 		                <td>
-		                <input class="input validate[required]" name="cidade" id="cidade" type="text" maxlength="43">
+		                <input class="input validate[required]" name="local" id="local" type="text" maxlength="43">
 		            </tr>
 					<tr>
 						<td height="20">
@@ -218,11 +238,11 @@
 						<td height="20">
 						 	<select class="input validate[required] smallInput" name="tipoDoc" id="tipoDoc"> <!-- Pegar do Banco de dados os tipos e, caso o usuÃ¡rio selecione outro, exibir campo para cadastrar outro tipo -->
 									<option value="">Selecione...</option>
-									<option value="codice">Ofícios</option>
-									<option value="caixa">Relatórios</option>
-									<option value="caixa">Impressos</option>
-									<option value="caixa">Processos</option>
-									<option value="caixa">Outro</option>
+									<option value="ofícios">Ofícios</option>
+									<option value="relatórios">Relatórios</option>
+									<option value="impressos">Impressos</option>
+									<option value="processos">Processos</option>
+									<option value="cartas">Cartas</option>
 							</select>
 						</td>
 					</tr>			

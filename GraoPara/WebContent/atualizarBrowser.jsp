@@ -29,7 +29,6 @@ a:active {
 	<body>
 		<div class="container">
    			<div class="header">
-				<a href="/GraoPara/index.jsp" class="banner"><img src="/GraoPara/images/header.png"/></a>    
 			<!-- end .header --></div>
     		<div class="content">				
 				<div class="browser">

@@ -29,7 +29,7 @@ public class User implements Serializable, Entidade {
 
 	@NotNull
 	@NotEmpty
-	@Column(unique = true)
+	@Column(name = "endereco", unique = true)
 	private String email;
 
 	@NotNull

@@ -57,7 +57,9 @@ public class DocumentoFactory implements EntityFactory {
 	
 	private PalavraChave getPalavraChave1(DocumentoDTO entry) {
 		EntityFactory aux_factory = new PalavraChaveFactory();
-		return (PalavraChave) aux_factory.createEntity(entry.getPalavrasChaves1());
+		DTO check = entry.getPalavrasChaves1();
+		if(check != null) return (PalavraChave) aux_factory.createEntity(check);
+		else return null;
 	}
 	
 	private PalavraChave getPalavraChave2(DocumentoDTO entry) {

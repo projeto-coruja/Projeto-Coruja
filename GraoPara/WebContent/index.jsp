@@ -40,10 +40,12 @@
 		<div class="header">
 			<a href="/GraoPara/index.jsp" class="banner"><img
 				src="/GraoPara/images/header.png" /></a>
+			<!--  <a href="/GraoPara/index.jsp" class="banner"><img src="/GraoPara/images/header.png"/></a> -->
 		</div>
 		<!-- Fim do Banner -->
 		<!-- Começo do menu lateral -->
 		<div class="sidebar1">
+		
 
 			<!-- ----------------------------------------------------------------------- começa-->
 
@@ -68,11 +70,14 @@
 				</form>
 			</div>
 
-
 			<!-- ----------------------------------------------------------------------- -->
 
 			<!--Depois de logado, sendo permissão tipo USER-->
 			<div class="LoginArea" id="logado" style="display:none;">
+ 			<!-- ----------------------------------------------------------------------- -->
+			
+ 			<!--Depois de logado, sendo permissão tipo ADMIN-->
+			<div class="LoginArea" id="loginAdmin" display = "none">
 				<form method="post" action="/GraoPara/doLogin">
 					<fieldset>
 						<label for="login">Bem vindo *NomeUsuario*</label>
@@ -84,6 +89,11 @@
 				</form>
 			</div>
 			<!-- ----------------------------------------------------------------------- termina-->
+			
+			<fieldset>
+				<a href="/GraoPara/CadUsuario.jsp"><input type="button"
+					class="buttonRegistrar" name="Registrar" value="Registrar"></a>
+			</fieldset>
 			<!-- Fim da área de login -->
 
 			<article class="menuLateral">
