@@ -13,6 +13,7 @@ import persistence.dto.TipoDocumentoDTO;
 import persistence.dto.UserDTO;
 import business.DAO.documents.DocumentDAO;
 import business.DAO.documents.KeyWordDAO;
+import business.DAO.login.LoginDAO;
 import business.exceptions.documents.KeywordNotFoundException;
 import business.exceptions.login.UnreachableDataBaseException;
 
@@ -29,12 +30,13 @@ public class CadastroEJB {
 			String tipoDocumento_tipoDocumento, String palavraChave01,
 			String palavraChave02, String palavraChave03, String autor,
 			String local, String destinatario, String resumo,
-			Calendar dataDocumento, UserDTO uploader) {
+			Calendar dataDocumento, String uploader) {
 
 		DocumentoDTO docDTO;
 		TipoDocumentoDTO tipoDTO;
 		OrigemDTO origemDTO;
 		IdNumDocumentoDTO idDTO;
+		UserDTO uploaderDTO;
 		PalavraChaveDTO[] palavraChaveDTO = { null, null, null };
 
 		if (!(idNumDoc_tipoId.equals("APEP") || idNumDoc_tipoId.equals("SEQ")))
@@ -50,26 +52,28 @@ public class CadastroEJB {
 		idDTO = new IdNumDocumentoDTO(idNumDoc_tipoId, idNumDoc_codId);
 
 		tipoDTO = new TipoDocumentoDTO(tipoDocumento_tipoDocumento);
+		
 
 		if(!palavraChave01.isEmpty()) {
-			palavraChaveDTO[0].setPalavra(palavraChave01);
-			palavraChaveDTO[0].setAprovada(false);
+			palavraChaveDTO[0] = new PalavraChaveDTO(palavraChave01, false);
 		}
+		else throw new IllegalArgumentException("Palavra-chave principal não pode ser vazia!");
+			
 		if(!palavraChave02.isEmpty()) {
-			palavraChaveDTO[1].setPalavra(palavraChave02);
-			palavraChaveDTO[1].setAprovada(false);
+			palavraChaveDTO[1] = new PalavraChaveDTO(palavraChave02, false);
+
 		}
 		if(!palavraChave03.isEmpty()) {
-			palavraChaveDTO[2].setPalavra(palavraChave03);
-			palavraChaveDTO[2].setAprovada(false);
+			palavraChaveDTO[2] = new PalavraChaveDTO(palavraChave03, false);
+
 		}
-
-		docDTO = new DocumentoDTO(null, origemDTO, idDTO, tipoDTO, autor,
-				local, destinatario, resumo, dataDocumento, new Date(),
-				uploader, palavraChaveDTO[0], palavraChaveDTO[1],
-				palavraChaveDTO[2]);
-
+		
 		try {
+			uploaderDTO = (new LoginDAO()).findUserByEmail(uploader);
+			docDTO = new DocumentoDTO(null, origemDTO, idDTO, tipoDTO, autor,
+					local, destinatario, resumo, dataDocumento, new Date(),
+					uploaderDTO, palavraChaveDTO[0], palavraChaveDTO[1],
+					palavraChaveDTO[2]);
 			docDTO = docDao.addDocument(docDTO);
 		} catch (UnreachableDataBaseException e) {
 			e.printStackTrace();
