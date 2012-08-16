@@ -11,13 +11,14 @@ public final class WebUtility {
 	
 	public static String cookie_email = "email_graopara";
 	public static String cookie_password = "senha_graopara";
+	public static String cookie_nome = "nome_graopara";
 	public static String cookie_status = "status_graopara";
 	
 	public static ProfileDTO admin_profile = new ProfileDTO("admin", true, true, true);
 	public static ProfileDTO user_profile = new ProfileDTO("user", true, true, false);
 	public static ProfileDTO default_profile = new ProfileDTO("default", false, true, false);
 	
-	public static int cookie_expire = (60 * 60 * 24) * 100; //100 dias
+	public static int cookie_expire = -1; //1 sessão dias
 	
 	public static int cookieLogin(Cookie[] cookie_list) {
 		if(cookie_list == null || cookie_list.length < 2) return AuthBean.LoginFail;

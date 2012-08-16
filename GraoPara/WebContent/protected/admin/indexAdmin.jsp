@@ -47,38 +47,14 @@
 
 			<!-- ----------------------------------------------------------------------- começa-->
 
-			<!--Começo da área de login -->
-			<div class="LoginArea" id="loginDefault" style="display:block;">
-				<form method="post" action="/GraoPara/doLogin">
-					<fieldset>
-						<label for="login">Login:</label> <input class="inputLogin"
-							type="text" name="login" height="30px" size="auto"
-							placeholder="Seu login" required> <label for="senha">Senha:</label>
-						<input class="inputLogin" type="password" name="senha"
-							height="30px" size="auto" placeholder="Sua senha" required>
-					</fieldset>
-					<fieldset>
-						<input class="buttonEntrar" type="submit" name="Entrar"
-							value="Entrar" />
-					</fieldset>
-					<fieldset>
-						<a href="/GraoPara/CadUsuario.jsp"><input type="button"
-							class="buttonRegistrar" name="Registrar" value="Registrar"></a>
-					</fieldset>
-				</form>
-			</div>
-
-
-			<!-- ----------------------------------------------------------------------- -->
-
-			<!--Depois de logado, sendo permissão tipo USER-->
-			<div class="LoginArea" id="logado" style="display:none;">
+			<!--Depois de logado-->
+			<div class="LoginArea" id="logado" style="display:block;">
 				<form method="post" action="/GraoPara/doLogin">
 					<fieldset>
 						<label for="login">Bem vindo *NomeUsuario*</label>
 					</fieldset>
 					<fieldset>
-						<a href="/GraoPara/index.jsp">
+						<a href="/GraoPara/protected/admin/indexAdmin.jsp">
 						<input class="buttonSair" type="submit" name="Sair" value="Sair" /></a>
 					</fieldset>
 				</form>
@@ -88,9 +64,9 @@
 
 			<article class="menuLateral">
 				<ul class="nav" id="menu">
-					<li><a href="/GraoPara/index.jsp"><span>H</span>ome</a></li>
-					<li><a href="/GraoPara/pesquisa.jsp"><span>P</span>esquisar</a></li>
-					<li><a href="/GraoPara/sobre.jsp"><span>S</span>obre</a></li>
+					<li><a href="/GraoPara/protected/admin/indexAdmin.jsp"><span>H</span>ome</a></li>
+					<li><a href="/GraoPara/protected/admin/pesquisaAdmin.jsp"><span>P</span>esquisar</a></li>
+					<li><a href="/GraoPara/protected/admin/sobreAdmin.jsp"><span>S</span>obre</a></li>
 				</ul>
 			</article>
 

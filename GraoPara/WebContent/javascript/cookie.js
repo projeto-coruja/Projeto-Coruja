@@ -21,17 +21,19 @@ function setCookie(c_name,value,exdays)
 	document.cookie=c_name + "=" + c_value;
 }
 
-//function checkCookie() {	
-//	var node = "loginDefault";
-////	var username = getCookie("email_graopara");
-//	var status = getCookie("status_graopara");
-//
-//	if(status == 2){
-//		node = document.getElementById("loginAdmin");
-//		//document.getElementById("loginUser").style.display = "none";
-//	}
-//	else if(status == 1)
-//		node = document.getElementById("loginUser");
-//
-//	node.style.display = "block";
-//}
+function checkCookie() {
+
+	var status = getCookie("status_graopara");
+
+	if(status == 2) {
+		window.location.replace("/GraoPara/protected/admin/indexAdmin.jsp");
+	}
+	else if(status == 1) {
+		window.location.replace("/GraoPara/protected/user/indexUser.jsp");
+	}
+}
+
+function getName() {
+	var name = getCookie("nome_graopara");
+	return name;	
+}

@@ -38,5 +38,12 @@ public class AuthBean {
 		else
 			return LoginFail;
 	}
+	
+	public static String getNomeUser(String email) throws UnreachableDataBaseException {
+		
+		UserDTO check = loginDAO.findUserByEmail(email);
+		return check.getName();
+		
+	}
 
 }

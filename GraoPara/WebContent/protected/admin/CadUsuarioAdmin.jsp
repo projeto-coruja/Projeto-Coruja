@@ -30,7 +30,8 @@
 	<div class="container">
 		<div class="header">
 			<!-- Começo do banner -->
-				<a href="/GraoPara/index.jsp" class="banner"><img src="/GraoPara/images/header.png"/></a>		</div>
+				<a href="/GraoPara/index.jsp" class="banner"><img src="/GraoPara/images/header.png"/></a>
+			</div>
 		<!-- Fim do Banner -->
 		<!-- Começo do menu lateral -->
 		<div class="sidebar1">
@@ -58,7 +59,7 @@
 			<input class="buttonEntrar" type="submit" name="Entrar" value="Entrar"/>
 			</div>
 			<fieldset>
-				<a href="/GraoPara/pages/public/CadUsuario.jsp"><input type="button" class="buttonRegistrar" name="Registrar" value="Registrar"></a>
+				<a href="/GraoPara/CadUsuario.jsp"><input type="button" class="buttonRegistrar" name="Registrar" value="Registrar"></a>
 			</fieldset>
 			<!-- Fim da área de login -->
 
@@ -68,12 +69,6 @@
 				<li><a href="/GraoPara/pesquisa.jsp"><span>P</span>esquisar</a></li>
 				<li><a href="/GraoPara/sobre.jsp"><span>S</span>obre</a></li>
 				
-				<!-- Botão que precisa, ou não, ser escondido para visitantes -->
-				<li><a href="/GraoPara/protected/user/cadastroDocumentos.jsp">Cadastrar Documento</a></li>
-				
-				<!-- Botões temporários para testes -->
-				<li><a href="/GraoPara/protected/user/UserControle.jsp">Painel User</a></li>
-				<li><a href="/GraoPara/protected/admin/AdminControle.jsp">Painel Admin</a></li>
 			</ul>
 			</article>
 			
@@ -84,15 +79,79 @@
 			<p></p>
 		</div>
 		<!-- Fim do Menu Lateral -->
-		<div class="content" id="content">TESTE DE CARREGAMENTO</div>
+		<div class="content" id="content">
+				<h2>Cadastro Usuário</h2>
+				<form action="/GraoPara/doRegister" method="POST" name="cadastro">
+					<table class="tableForms" width="522" border="0" align="center" cellpadding="0" cellspacing="0">
+						<tr>
+							<td height="20" colspan="2">
+								<div align="left">
+									<font size="1" face="Verdana, Arial, Helvetica, sans-serif">
+										<b>PREENCHA TODOS OS CAMPOS COM ASTERÍSCO <font
+											color="#FF0000">*</font></b>
+									</font>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td height="20">
+								<label for="nome" class="labelForms">Nome Completo:<font color="#FF0000">*</font></label>
+							</td>
+							<td width="377" height="20">
+								 
+								<input class="input validate[required] mediumInput" name="nome" type="text" id="nome" maxlength="50">								
+							</td>
+						</tr>
+						<tr>
+							<td height="20">
+								<label for="email" class="labelForms">Email:<font color="#FF0000">*</font></label>
+							</td>
+							<td width="377" height="20">
+								
+									<input class="input validate[required] validate[custom[email]] mediumInput" name="email" id="email" maxlength="50">								
+							</td>
+						</tr>
+						<tr>
+							<td height="20">
+								<label for="senha" class="labelForms">Senha:<font color="#FF0000">*</font></label>
+							</td>
+							<td width="377" height="20">
+								<input class="input validate[required,minSize[6]]" id="senha" name="senha" type="password" maxlength="20">
+							</td>
+						</tr>
+						<tr>
+							<td height="20">
+								<label for="confsenha" class="labelForms">Confirme sua senha:<font color="#FF0000">*</font></label>
+							</td>
+							<td width="377" height="20">
+								<input class="input validate[required,equals[senha]]" id="confsenha" name="confsenha" type="password" maxlength="20">
+							</td>
+						</tr>
+						<tr>
+							<td height="20"></br><input type="submit" name="inserir" value="Enviar" class="buttonRegistrar"></td>
+							<td height="20"></td>
+						</tr>
+						<tr>
+							</br>
+						</tr>
+						<tr>
+							<td colspan="2"> <font class="labelForms">Obs. Novos usuários necessitam da aprovação do administrador. 
+							Aguarde o aprovamento de seu cadastro, e use o serviço de pesquisa como convidado.</font></td>
+						</tr>
+						
+					</table>
+				</form>	
+		</div>
+		
 		<!-- Começo do Rodapé -->
 		<div class="footer">
 			<p>Copyright © - Universidade Federal de São Paulo - UNIFESP 2012</p>
 			<p>Desenvolvido pelo grupo Coruja</p>
-			<a href="/GraoPara/pages/public/sobre.jsp">- Sobre -</a>
+			<a href="/GraoPara/sobre.jsp">- Sobre -</a>
 		</div>
 		<!-- Fim do Rodapé -->
 		<!-- end .container -->
 	</div>
 </body>
 </html>
+
