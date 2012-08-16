@@ -29,7 +29,6 @@ public class BuscaDocEJB {
 		logDao = new LoginDAO();
 	}
 	
-	@SuppressWarnings("null")
 	public List<DTO> busca(String identificacao, String codigo, String tipoAPEP_SEQ, String numAPEP_SEQ, String autor, 
 			String destinatario,String local, String data, String tipo, 
 			String palavra1, String palavra2, String palavra3) throws UnreachableDataBaseException, DocumentNotFoundException{
@@ -37,8 +36,8 @@ public class BuscaDocEJB {
 		boolean continue_query = false;
 		String query = "from Documento where ";
 		
-		if(!(identificacao == null && identificacao.isEmpty())){
-			query += "tipo_origem = '" + identificacao + "'";
+		if(identificacao != null && !identificacao.isEmpty()){
+			query += "tipo_origem like '%" + identificacao + "%'";
 			continue_query = true;
 		}
 		
@@ -46,7 +45,7 @@ public class BuscaDocEJB {
 			if(continue_query == true){
 				query += " and ";
 			}
-			query += "cod_origem = " + codigo;
+			query += "cod_origem like '%" + codigo + "%'";
 			continue_query = true;
 		}
 		
@@ -54,7 +53,7 @@ public class BuscaDocEJB {
 			if(continue_query == true){
 				query += " and ";
 			}
-			query += "tipo_id = " + tipoAPEP_SEQ;
+			query += "tipo_id like '%" + tipoAPEP_SEQ + "%'";
 			continue_query = true;
 		}
 		
@@ -62,7 +61,7 @@ public class BuscaDocEJB {
 			if(continue_query == true){
 				query += " and ";
 			}
-			query += "num_id = " + numAPEP_SEQ;
+			query += "num_id like '%" + numAPEP_SEQ + "%'";
 			continue_query = true;
 		}
 		
@@ -70,7 +69,7 @@ public class BuscaDocEJB {
 			if(continue_query == true){
 				query += " and ";
 			}
-			query += "autor = " + autor;
+			query += "autor like '%" + autor + "%'";
 			continue_query = true;
 		}
 		
@@ -78,7 +77,7 @@ public class BuscaDocEJB {
 			if(continue_query == true){
 				query += " and ";
 			}
-			query += "destinatario = " + destinatario;
+			query += "destinatario like '%" + destinatario + "%'";
 			continue_query = true;
 		}
 		
@@ -86,7 +85,7 @@ public class BuscaDocEJB {
 			if(continue_query == true){
 				query += " and ";
 			}
-			query += "local =" + local;
+			query += "local like '%" + local + "%'";
 			continue_query = true;
 		}
 		
@@ -94,7 +93,7 @@ public class BuscaDocEJB {
 			if(continue_query == true){
 				query += " and ";
 			}
-			query += "data_documento = " + data;	//TODO: Verificar padrão de data do java Calendar()
+			query += "data_documento like '%" + data + "%'";	// Notação: yyyy-mm-dd
 			continue_query = true;
 		}
 		
@@ -102,7 +101,7 @@ public class BuscaDocEJB {
 			if(continue_query == true){
 				query += " and ";
 			}
-			query += "tipo_documento = " + tipo;
+			query += "tipo_documento like '%" + tipo + "%'";
 			continue_query = true;
 		}
 		
@@ -110,7 +109,7 @@ public class BuscaDocEJB {
 			if(continue_query == true){
 				query += " and ";
 			}
-			query += "palavra_chave_1 = " + palavra1;
+			query += "palavra_chave_1 like '%" + palavra1 + "%'";
 			continue_query = true;
 		}
 		
@@ -118,7 +117,7 @@ public class BuscaDocEJB {
 			if(continue_query == true){
 				query += " and ";
 			}
-			query += "palavra_chave_2 = " + palavra2;
+			query += "palavra_chave_2 like '%" + palavra2 + "%'";
 			continue_query = true;
 		}
 		
@@ -126,7 +125,7 @@ public class BuscaDocEJB {
 			if(continue_query == true){
 				query += " and ";
 			}
-			query += "palavra_chave_3 = " + palavra3;
+			query += "palavra_chave_3 like '%" + palavra3 + "%'";
 			continue_query = true;
 		}
 		

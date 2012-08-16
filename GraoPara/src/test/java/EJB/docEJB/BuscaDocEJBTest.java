@@ -4,7 +4,6 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import persistence.PersistenceAccess;
@@ -51,7 +50,7 @@ public class BuscaDocEJBTest {
 	@Test
 	public void testBusca() {
 		try {
-			List<DTO> resultset = bde.busca("CODICE", null, null, null, null, null, null, null, null, null, null, null);
+			List<DTO> resultset = bde.busca("CODICE", "A", "APEP", null, null, null, null, "1500-04-29", null, null, null, null);
 			if(resultset != null)
 				System.out.println(((DocumentoDTO) resultset.get(0)).getResumo());
 		} catch (UnreachableDataBaseException e) {
