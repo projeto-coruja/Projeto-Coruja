@@ -35,7 +35,9 @@ public class CadastroEJB {
 		OrigemDTO origemDTO;
 		IdNumDocumentoDTO idDTO;
 		PalavraChaveDTO[] palavraChaveDTO;
-		
+
+		if(!(idNumDoc_tipoId.equals("APEP") && idNumDoc_tipoId.equals("SEQ")))	throw new IllegalArgumentException("Tipo do id de documento tem que ser \"APEP\" ou \"SEQ\"");
+		if(!(origem_codOrigem.equals("CAIXA") && origem_codOrigem.equals("CODICE")))	throw new IllegalArgumentException("Tipo da origem tem que ser \"CAIXA\" ou \"CODICE\"");
 		origemDTO = new OrigemDTO(origem_codOrigem, origem_tipoOrigem, origem_titulo);
 		
 		idDTO = new IdNumDocumentoDTO(idNumDoc_tipoId, idNumDoc_codId);

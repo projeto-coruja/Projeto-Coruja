@@ -5,6 +5,8 @@ import business.DAO.documents.DocumentTypeDAO;
 import business.DAO.documents.IdNumDocumentoDAO;
 import business.DAO.documents.KeyWordDAO;
 import business.DAO.documents.OrigemDAO;
+import business.exceptions.documents.DocumentNotFoundException;
+import business.exceptions.login.UnreachableDataBaseException;
 
 public class BuscaDocEJB {
 	DocumentDAO docDao;
@@ -22,8 +24,8 @@ public class BuscaDocEJB {
 	}
 	
 	public void busca(String identificacao, String codigo, String tipoAPEP_SEQ, String numAPEP_SEQ, String autor, 
-			String destinatario, String estado,	String cidade, String data, String tipo, 
-			String palavra1, String palavra2, String palavra3){
+			String destinatario,String local, String data, String tipo, 
+			String palavra1, String palavra2, String palavra3) throws UnreachableDataBaseException, DocumentNotFoundException{
 		
 		boolean lala = false;
 		String query = "select * from tbl_documentos where";
@@ -73,11 +75,11 @@ public class BuscaDocEJB {
 			lala = true;
 		}
 		
-		if(!(estado == null && estado.isEmpty()) || !(cidade == null && cidade.isEmpty())){
+		if(!(local == null && local.isEmpty())){
 			if(lala == true){
 				query += " and ";
 			}
-			query += "local like '%" + cidade + " - " + estado +"%'";
+			query += "local =" + local;
 			lala = true;
 		}
 		
@@ -120,5 +122,7 @@ public class BuscaDocEJB {
 			query += "palavra_chave_3 = " + palavra3;
 			lala = true;
 		}
+		
+		docDao.findDocumentByQuery(query);
 	}
 }

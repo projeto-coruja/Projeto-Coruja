@@ -240,4 +240,19 @@ public class DocumentDAO {
 			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
 		}
 	}
+	
+	public List<DTO> findDocumentByQuery(String query) throws DocumentNotFoundException, UnreachableDataBaseException{
+		List<DTO> resultSet = null;
+		try {
+			resultSet = manager.findEntities(query);
+			if(resultSet == null) {
+				throw new  DocumentNotFoundException("Nenhum documento levantado pelo usuário");
+			}
+			else return resultSet;
+		} catch (DataAccessLayerException e) {
+			e.printStackTrace();
+			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
+		}
+		
+	}
 }
