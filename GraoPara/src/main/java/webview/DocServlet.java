@@ -31,10 +31,10 @@ public class DocServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String tipoOrigem = request.getParameter("identificacao");
+		String tipoOrigem = request.getParameter("identificacao").toUpperCase();
 		String codOrigem = request.getParameter("codigo");
 		String titulo = request.getParameter("titulo");
-		String tipoId = request.getParameter("tipo_num");
+		String tipoId = request.getParameter("tipo_num").toUpperCase();
 		String numId = request.getParameter("numero");
 		String autor = request.getParameter("autor");
 		String destinatario = request.getParameter("destinatario");

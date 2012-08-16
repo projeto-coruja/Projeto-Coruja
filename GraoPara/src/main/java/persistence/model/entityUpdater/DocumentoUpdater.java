@@ -59,17 +59,21 @@ public class DocumentoUpdater implements EntityUpdate {
 	
 	private PalavraChave getPalavraChave1(DocumentoDTO entry, Entidade ent) {
 		EntityUpdate aux_factory = new PalavraChaveUpdater();
-		return (PalavraChave) aux_factory.updateEntity(entry.getPalavrasChaves1(), ((Documento) ent).getPalavrasChaves1());
-	}
+		DTO check = entry.getPalavrasChaves1();
+		if(check != null) return (PalavraChave) aux_factory.updateEntity(check, ((Documento) ent).getPalavrasChaves1());
+		else return null;	}
 	
 	private PalavraChave getPalavraChave2(DocumentoDTO entry, Entidade ent) {
 		EntityUpdate aux_factory = new PalavraChaveUpdater();
-		return (PalavraChave) aux_factory.updateEntity(entry.getPalavrasChaves2(), ((Documento) ent).getPalavrasChaves2());
-	}
+		DTO check = entry.getPalavrasChaves2();
+		if(check != null) return (PalavraChave) aux_factory.updateEntity(check, ((Documento) ent).getPalavrasChaves2());
+		else return null;	}
 	
 	private PalavraChave getPalavraChave3(DocumentoDTO entry, Entidade ent) {
 		EntityUpdate aux_factory = new PalavraChaveUpdater();
-		return (PalavraChave) aux_factory.updateEntity(entry.getPalavrasChaves3(), ((Documento) ent).getPalavrasChaves3());
+		DTO check = entry.getPalavrasChaves3();
+		if(check != null) return (PalavraChave) aux_factory.updateEntity(check, ((Documento) ent).getPalavrasChaves3());
+		else return null;
 	}
 
 

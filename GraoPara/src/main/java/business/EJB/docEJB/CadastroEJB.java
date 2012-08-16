@@ -39,10 +39,10 @@ public class CadastroEJB {
 		UserDTO uploaderDTO;
 		PalavraChaveDTO[] palavraChaveDTO = { null, null, null };
 
-		if (!(idNumDoc_tipoId.equals("APEP") || idNumDoc_tipoId.equals("SEQ")))
+		if (!( idNumDoc_tipoId.equals("APEP") || idNumDoc_tipoId.equals("SEQ") ))
 			throw new IllegalArgumentException(
 					"Tipo do id de documento tem que ser \"APEP\" ou \"SEQ\"");
-		if (!(origem_codOrigem.equals("CAIXA") || origem_codOrigem
+		if (!( origem_tipoOrigem.equals("CAIXA") || origem_tipoOrigem
 				.equals("CODICE")))
 			throw new IllegalArgumentException(
 					"Tipo da origem tem que ser \"CAIXA\" ou \"CODICE\"");
@@ -61,8 +61,8 @@ public class CadastroEJB {
 			
 		if(!palavraChave02.isEmpty()) {
 			palavraChaveDTO[1] = new PalavraChaveDTO(palavraChave02, false);
-
 		}
+		
 		if(!palavraChave03.isEmpty()) {
 			palavraChaveDTO[2] = new PalavraChaveDTO(palavraChave03, false);
 
