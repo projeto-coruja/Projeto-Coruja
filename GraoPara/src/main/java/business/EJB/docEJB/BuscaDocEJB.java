@@ -109,7 +109,9 @@ public class BuscaDocEJB {
 			if(continue_query == true){
 				query += " and ";
 			}
-			query += "palavra_chave_1 = '" + palavra1.toLowerCase() + "'";
+			query += "(palavra_chave_1 like '%" + palavra1.toLowerCase() + "%'";
+			query += "or palavra_chave_2 like '%" + palavra1.toLowerCase() + "%'";
+			query += "or palavra_chave_3 like '%" + palavra1.toLowerCase() + "%')";
 			continue_query = true;
 		}
 		
@@ -117,7 +119,9 @@ public class BuscaDocEJB {
 			if(continue_query == true){
 				query += " and ";
 			}
-			query += "palavra_chave_2 = '" + palavra2.toLowerCase() + "'";
+			query += "(palavra_chave_1 like '%" + palavra2.toLowerCase() + "%'";
+			query += "or palavra_chave_2 like '%" + palavra2.toLowerCase() + "%'";
+			query += "or palavra_chave_3 like '%" + palavra2.toLowerCase() + "%')";
 			continue_query = true;
 		}
 		
@@ -125,7 +129,9 @@ public class BuscaDocEJB {
 			if(continue_query == true){
 				query += " and ";
 			}
-			query += "palavra_chave_3 = '" + palavra3.toLowerCase() + "'";
+			query += "(palavra_chave_1 like '%" + palavra3.toLowerCase() + "%'";
+			query += "or palavra_chave_2 like '%" + palavra3.toLowerCase() + "%'";
+			query += "or palavra_chave_3 like '%" + palavra3.toLowerCase() + "%')";
 			continue_query = true;
 		}
 		
