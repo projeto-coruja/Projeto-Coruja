@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import business.EJB.userEJB.AuthBean;
+import business.EJB.userEJB.UserBean;
 
 /**
  * Servlet Filter implementation class AdminFilter
@@ -48,9 +49,9 @@ public class AdminFilter implements Filter {
 			chain.doFilter(request, response);
 		}
 		else {
-			Integer logType = WebUtility.cookieLogin(c_list);
-			if(logType > AuthBean.LoginSuccessUser) {
-				c_status = new Cookie(WebUtility.cookie_status, logType.toString());
+			UserBean user = WebUtility.cookieLogin(c_list);			
+			if(user.getLogType() > AuthBean.LoginSuccessUser) {
+				c_status = new Cookie(WebUtility.cookie_status, user.getLogType().toString());
 				c_status.setMaxAge(-1);
 				res.addCookie(c_status);
 				chain.doFilter(request, response);

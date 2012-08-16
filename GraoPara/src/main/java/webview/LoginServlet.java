@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import business.EJB.userEJB.AuthBean;
 import business.EJB.userEJB.Password;
+import business.EJB.userEJB.UserBean;
 import business.exceptions.login.UnreachableDataBaseException;
 
 /**
@@ -36,13 +37,13 @@ public class LoginServlet extends HttpServlet {
 		String user = request.getParameter("login");
 		String senha = request.getParameter("senha");
 		try {
-			Integer login_result = AuthBean.validarLogin(user, senha, AuthBean.NonHashedPwd);
-			if(login_result == AuthBean.LoginSuccessAdmin || login_result == AuthBean.LoginSuccessUser)
+			UserBean login_result = AuthBean.validarLogin(user, senha, AuthBean.NonHashedPwd);
+			if(login_result.getLogType() == AuthBean.LoginSuccessAdmin || login_result.getLogType() == AuthBean.LoginSuccessUser)
 			{
 				Cookie c_email = new Cookie(WebUtility.cookie_email, user);
 				Cookie c_pass = new Cookie(WebUtility.cookie_password, Password.getHash(senha));
-				Cookie c_status = new Cookie(WebUtility.cookie_status, login_result.toString());
-				Cookie c_nome = new Cookie(WebUtility.cookie_nome, AuthBean.getNomeUser(user));
+				Cookie c_status = new Cookie(WebUtility.cookie_status, login_result.getLogType().toString());
+				Cookie c_nome = new Cookie(WebUtility.cookie_nome, login_result.getUsername());
 				c_email.setMaxAge(WebUtility.cookie_expire);
 				c_pass.setMaxAge(WebUtility.cookie_expire);
 				c_status.setMaxAge(-1);
@@ -60,9 +61,9 @@ public class LoginServlet extends HttpServlet {
 			    out.println("alert('Login realizado com sucesso!');");  
 			    out.println("</script>");*/
 			    
-			    if(WebUtility.cookie_status.equals("1"))	// retorna para a página de USER
+			    if(login_result.getLogType() == AuthBean.LoginSuccessUser)	// retorna para a página de USER
 			    	response.sendRedirect("/GraoPara/protected/user/indexUser.jsp");
-			    else if(WebUtility.cookie_status.equals("2"))	// retorna para a página de ADMIN
+			    else if(login_result.getLogType() == AuthBean.LoginSuccessAdmin)	// retorna para a página de ADMIN
 			    	response.sendRedirect("/GraoPara/protected/admin/indexAdmin.jsp");
 			}
 			else

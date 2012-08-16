@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import business.EJB.userEJB.AuthBean;
+import business.EJB.userEJB.UserBean;
 
 /**
  * Servlet Filter implementation class LoginFilter
@@ -44,13 +45,13 @@ public class UserFilter implements Filter {
 		HttpServletResponse res = (HttpServletResponse) response;
 		Cookie[] c_list = req.getCookies();
 		Cookie c_status = WebUtility.selectCookie(c_list, WebUtility.cookie_status);
-		if(c_status != null && Integer.parseInt(c_status.getValue()) > AuthBean.LoginFail) {
+		if(c_status != null && Integer.parseInt(c_status.getValue()) > AuthBean.LoginFailOrDefault) {
 			chain.doFilter(request, response);
 		}
 		else {
-			Integer logType = WebUtility.cookieLogin(c_list);
-			if(logType > AuthBean.LoginFail) {
-				c_status = new Cookie(WebUtility.cookie_status, logType.toString());
+			UserBean user = WebUtility.cookieLogin(c_list);			
+			if(user.getLogType() > AuthBean.LoginFailOrDefault) {
+				c_status = new Cookie(WebUtility.cookie_status, user.getLogType().toString());
 				c_status.setMaxAge(-1);
 				res.addCookie(c_status);
 				chain.doFilter(request, response);
