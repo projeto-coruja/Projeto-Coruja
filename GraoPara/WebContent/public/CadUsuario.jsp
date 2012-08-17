@@ -6,58 +6,67 @@
 
 
 <!-- Import dos styles CSS -->
-<link rel="stylesheet" type="text/css" href="/GraoPara/css/principal.css" />
+<link rel="stylesheet" type="text/css"
+	href="/GraoPara/css/principal.css" />
 <link rel="stylesheet" type="text/css" href="/GraoPara/css/tabs.css" />
 <link rel="stylesheet" type="text/css" href="/GraoPara/css/controle.css" />
 
 <!-- CSS das validações -->
-<link rel="stylesheet" type="text/css" href="/GraoPara/css/validationEngine.jquery.css" />
+<link rel="stylesheet" type="text/css" media="screen"
+	href="/GraoPara/css/styleValidation.css" />
 
 <!-- Import dos javascripts -->
-<script type="text/javascript" src="/GraoPara/javascript/ajax.js" charset="utf-8"></script>
-<script type="text/javascript" src="/GraoPara/javascript/instrucao.js" charset="utf-8"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="/GraoPara/javascript/ajax.js"
+	charset="utf-8"></script>
+<script type="text/javascript" src="/GraoPara/javascript/instrucao.js"
+	charset="utf-8"></script>
+<script src="/GraoPara/javascript/chili-1.7.pack.js"
+	type="text/javascript"></script>
+<script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"
+	charset="utf-8"></script>
 
 <!-- Import dos scripts de validação de formulário -->
-<script type="text/javascript" src="/GraoPara/javascript/jquery.validationEngine.js" charset="utf-8"></script>
-<script type="text/javascript" src="/GraoPara/javascript/script.js" charset="utf-8"></script>
-<script type="text/javascript" src="/GraoPara/javascript/languages/jquery.validationEngine-pt.js" charset="utf-8"></script>
+<script src="/GraoPara/javascript/jquery.js" type="text/javascript"
+	charset="utf-8"></script>
+<script src="/GraoPara/javascript/validate.js" type="text/javascript"
+	charset="utf-8"></script>
+<script src="/GraoPara/javascript/validate_pt_br.js"
+	type="text/javascript" charset="utf-8"></script>
 
 </head>
 
 <body>
 
 	<div class="container">
-		<div class="header">
-			</div>
+		<div class="header"></div>
 		<!-- Fim do Banner -->
 		<!-- Começo do menu lateral -->
 		<div class="sidebar1">
 
 			<!--Começo da área de login -->
 			<div class="LoginArea" id="LoginArea">
-			<form method="post" action = "/GraoPara/doLogin">
-				<fieldset>
-					<label for="login">Login:</label>
-						<input class="inputLogin"
+				<form method="post" action="/GraoPara/doLogin">
+					<fieldset>
+						<label for="login">Login:</label> <input class="inputLogin"
 							type="text" name="login" height="30px" size="auto"
-							placeholder="Seu login" required>
-					<label for="senha">Senha:</label>
-						<input class="inputLogin"
-							type="password" name="senha" height="30px" size="auto"
-							placeholder="Sua senha" required>
-				</fieldset>
-				<fieldset>
-					<input class="buttonEntrar" type="submit" name="Entrar" value="Entrar"/>
-				</fieldset>
-			</form>
+							placeholder="Seu login" required> <label for="senha">Senha:</label>
+						<input class="inputLogin" type="password" name="senha"
+							height="30px" size="auto" placeholder="Sua senha" required>
+					</fieldset>
+					<fieldset>
+						<input class="buttonEntrar" type="submit" name="Entrar"
+							value="Entrar" />
+					</fieldset>
+				</form>
 			</div>
 			<div class="AfterLogin" id="AfterLogin" hidden="0">
-			Bem vindo #UserName
-			<input class="buttonEntrar" type="submit" name="Entrar" value="Entrar"/>
+				Bem vindo #UserName <input class="buttonEntrar" type="submit"
+					name="Entrar" value="Entrar" />
 			</div>
 			<fieldset>
-				<a href="/GraoPara/CadUsuario.jsp"><input type="button" class="buttonRegistrar" name="Registrar" value="Registrar"></a>
+				<a href="/GraoPara/CadUsuario.jsp"><input type="button"
+					class="buttonRegistrar" name="Registrar" value="Registrar"></a>
 			</fieldset>
 			<!-- Fim da área de login -->
 
@@ -71,69 +80,61 @@
 		</div>
 		<!-- Fim do Menu Lateral -->
 		<div class="content" id="content">
-				<h2>Cadastro Usuário</h2>
-				<form action="/GraoPara/doRegister" method="POST" name="cadastro">
-					<table class="tableForms" width="522" border="0" align="center" cellpadding="0" cellspacing="0">
-						<tr>
-							<td height="20" colspan="2">
-								<div align="left">
-									<font size="1" face="Verdana, Arial, Helvetica, sans-serif">
-										<b>PREENCHA TODOS OS CAMPOS COM ASTERÍSCO <font
-											color="#FF0000">*</font></b>
-									</font>
-								</div>
-							</td>
-						</tr>
-						<tr>
-							<td height="20">
-								<label for="nome" class="labelForms">Nome Completo:<font color="#FF0000">*</font></label>
-							</td>
-							<td width="377" height="20">
-								 
-								<input class="input validate[required] mediumInput" name="nome" type="text" id="nome" maxlength="50">								
-							</td>
-						</tr>
-						<tr>
-							<td height="20">
-								<label for="email" class="labelForms">Email:<font color="#FF0000">*</font></label>
-							</td>
-							<td width="377" height="20">
-								
-									<input class="input validate[required] validate[custom[email]] mediumInput" name="email" id="email" maxlength="50">								
-							</td>
-						</tr>
-						<tr>
-							<td height="20">
-								<label for="senha" class="labelForms">Senha:<font color="#FF0000">*</font></label>
-							</td>
-							<td width="377" height="20">
-								<input class="input validate[required,minSize[6]]" id="senha" name="senha" type="password" maxlength="20">
-							</td>
-						</tr>
-						<tr>
-							<td height="20">
-								<label for="confsenha" class="labelForms">Confirme sua senha:<font color="#FF0000">*</font></label>
-							</td>
-							<td width="377" height="20">
-								<input class="input validate[required,equals[senha]]" id="confsenha" name="confsenha" type="password" maxlength="20">
-							</td>
-						</tr>
-						<tr>
-							<td height="20"></br><input type="submit" name="inserir" value="Enviar" class="buttonRegistrar"></td>
-							<td height="20"></td>
-						</tr>
-						<tr>
-							</br>
-						</tr>
-						<tr>
-							<td colspan="2"> <font class="labelForms">Obs. Novos usuários necessitam da aprovação do administrador. 
-							Aguarde o aprovamento de seu cadastro, e use o serviço de pesquisa como convidado.</font></td>
-						</tr>
-						
-					</table>
-				</form>	
+			<h2>Cadastro Usuário</h2>
+
+			<form id="signupform" autocomplete="off" method="get" action="">
+				<table class="tableForms">
+					<tr>
+						<td height="20" colspan="3">
+							<div align="left">
+								<font size="1" face="Verdana, Arial, Helvetica, sans-serif">
+									<b>PREENCHA TODOS OS CAMPOS COM ASTERÍSCO <font
+										color="#FF0000">*</font></b>
+								</font>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="labelForms"><label id="lfirstname" for="nome">Nome
+								Completo:<font color="#FF0000">*</font>
+						</label></td>
+						<td class="field"><input class="input" id="nome" name="nome"
+							type="text" value="" maxlength="100" /></td>
+						<td class="status"></td>
+					</tr>
+
+					<tr>
+						<td class="labelForms"><label id="lemail" for="email">Email:<font
+								color="#FF0000">*</font></label></td>
+						<td class="field"><input class="input" id="email"
+							name="email" type="text" value="" maxlength="150" /></td>
+						<td class="status"></td>
+					</tr>
+					<tr>
+						<td class="labelForms"><label id="lpassword" for="password">Senha:<font
+								color="#FF0000">*</font></label></td>
+						<td class="field"><input id="password" class="input"
+							name="senha" type="password" maxlength="50" value="" /></td>
+						<td class="status"></td>
+					</tr>
+					<tr>
+						<td class="labelForms"><label id="lpassword_confirm"
+							for="password_confirm">Confirme sua Senha:<font
+								color="#FF0000">*</font></label></td>
+						<td class="field"><input class="input" id="password_confirm"
+							name="confsenha" type="password" maxlength="50" value="" /></td>
+						<td class="status"></td>
+					</tr>
+					<tr>
+						<td class="field" colspan="3"><input class="buttonRegistrar"
+							id="signupsubmit" name="Enviar" type="submit" value="Enviar" />
+						</td>
+					</tr>
+
+				</table>
+			</form>
 		</div>
-		
+
 		<!-- Começo do Rodapé -->
 		<div class="footer">
 			<p>Copyright © - Universidade Federal de São Paulo - UNIFESP 2012</p>

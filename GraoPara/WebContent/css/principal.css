@@ -377,7 +377,9 @@ apagado quando o usuário digitar algo dentro, para isso use o atributo placehol
 
 .tableForms{
 	text-align:left;
-	margin: 0 0 0 30%;
+	margin: 40px 0 0 30%;
+	width: 600px;
+	border: 0px;
 }
 
 /* Banner rules xD */

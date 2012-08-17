@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
 <title>Navegador desatualizado!</title>
-<link type="text/css" href="../css/ie.css" rel="stylesheet" />
+<link type="text/css" href="GraoPara/css/ie.css" rel="stylesheet" />
 <style type="text/css">
 <!--
 a:link {
