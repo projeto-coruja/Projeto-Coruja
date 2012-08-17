@@ -75,6 +75,13 @@ public class InitServlet extends HttpServlet {
 			pa.saveEntity(new UserDTO("Admin", Password.getHash("null"), (ProfileDTO) (pa.findEntities("from Profile where profile = 'admin'").get(0)),
 				"admin@graopara.com", new Date()));
 		}
+		List<DTO> user = pa.findEntities("from User where email = 'outlook@gmail.com'");
+		if(user == null)
+		{
+			log.info("Criando usuário de teste...");
+			pa.saveEntity(new UserDTO("Outlook", Password.getHash("null"), (ProfileDTO) (pa.findEntities("from Profile where profile = 'user'").get(0)),
+				"outlook@gmail.com", new Date()));
+		}
 	}
 
 	private void initLogger(ServletConfig config) {

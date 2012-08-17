@@ -1,23 +1,20 @@
 package DAO;
 
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 import java.util.List;
 
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
 import persistence.dto.DTO;
-import persistence.dto.ProfileDTO;
 import persistence.dto.UserDTO;
-
 import business.DAO.login.LoginDAO;
 import business.EJB.userEJB.AdminBean;
 import business.EJB.userEJB.AuthBean;
 import business.EJB.userEJB.CadastroBean;
+import business.EJB.userEJB.UserBean;
 import business.exceptions.login.DuplicateUserException;
 import business.exceptions.login.IncorrectLoginInformationException;
 import business.exceptions.login.IncorrectProfileInformationException;
@@ -37,8 +34,8 @@ public class LoginDAOTest {
 		CadastroBean cf = new CadastroBean();
 		try {
 			cf.adicionarUsuario(email, "gmail", pass);
-
-			assertTrue(AuthBean.validarLogin(email, pass, AuthBean.NonHashedPwd) > AuthBean.LoginFail);
+			UserBean ub = AuthBean.validarLogin(email, pass, AuthBean.NonHashedPwd);
+			assertTrue(ub.getLogType() > AuthBean.LoginFailOrDefault);
 
 		} catch (UnreachableDataBaseException e) {
 			System.out.println("DEU ERRO EM MIM GALVÃO!!!! db");

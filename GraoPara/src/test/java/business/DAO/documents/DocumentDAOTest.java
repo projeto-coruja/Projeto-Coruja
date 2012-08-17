@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.List;
 
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -14,7 +13,6 @@ import business.DAO.login.LoginDAO;
 import business.exceptions.login.UnreachableDataBaseException;
 
 import persistence.PersistenceAccess;
-import persistence.dto.DTO;
 import persistence.dto.DocumentoDTO;
 import persistence.dto.IdNumDocumentoDTO;
 import persistence.dto.OrigemDTO;
@@ -24,58 +22,44 @@ import persistence.dto.UserDTO;
 import webview.WebUtility;
 
 public class DocumentDAOTest {
-	
+
 	private static DocumentDAO DA;
 	private static LoginDAO LA;
 	private static UserDTO UO;
-	
+
 	@BeforeClass
 	public static void setUp() throws UnreachableDataBaseException {
-		
+
 		PersistenceAccess pa = new PersistenceAccess();
-		String[] profiles_names = {"default", "user", "admin"};
-		
-		List<DTO> profile;
-		for (String p : profiles_names) {
-			profile = pa.findEntities("from Profile where profile = '" + p + "'");
-			if(profile == null) {
-				if(p.equals("default")) {
-					pa.saveEntity(WebUtility.default_profile);
-				}
-				else if(p.equals("user")) {
-					pa.saveEntity(WebUtility.user_profile);
-				}
-				else if(p.equals("admin")) {
-					pa.saveEntity(WebUtility.admin_profile);
-				}
-			}
-		}
-		
+
+		pa.saveEntity(WebUtility.default_profile);
+		pa.saveEntity(WebUtility.user_profile);
+		pa.saveEntity(WebUtility.admin_profile);
+
 		LA = new LoginDAO();
 		DA = new DocumentDAO();
 		UO = LA.findUserByEmail("outlook@gmail.com");
-		if(UO == null) {
+		if (UO == null) {
 			LA.addUser("outlook@gmail.com", "Outlook", "password");
 			UO = LA.findUserByEmail("outlook@gmail.com");
 		}
 	}
-	
+
 	@Before
 	public void testDocumentDAO() {
 		assertNotNull(DA);
 	}
 
-	@Before
 	@Test
 	public void testAddDocument() throws UnreachableDataBaseException {
-		DocumentoDTO carta = new DocumentoDTO(null, 
-				new OrigemDTO("A362", "APEP", "histórias do conde de notre dame"), 
-				new IdNumDocumentoDTO("APEP", "10202"),
-				new TipoDocumentoDTO("carta"),
-				"pero vaz", "pará", "vaz pero", "loren ipsum loren ipsum loren ipsum loren ipsum", 
-				new GregorianCalendar(1500, 3, 29), new Date(), 
-				LA.findUserByEmail("outlook@gmail.com"),
-				new PalavraChaveDTO("cabral", false), null, null);
+		DocumentoDTO carta = new DocumentoDTO(null, new OrigemDTO("A362",
+				"APEP", "histórias do conde de notre dame"),
+				new IdNumDocumentoDTO("APEP", "10202"), new TipoDocumentoDTO(
+						"carta"), "pero vaz", "pará", "vaz pero",
+				"loren ipsum loren ipsum loren ipsum loren ipsum",
+				new GregorianCalendar(1500, 3, 29), new Date(),
+				LA.findUserByEmail("outlook@gmail.com"), new PalavraChaveDTO(
+						"cabral", false), null, null);
 		DA.addDocument(carta);
 	}
 

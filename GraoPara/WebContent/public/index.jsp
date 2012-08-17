@@ -38,17 +38,16 @@
 <body onloadstart="checkCookie()">
 	<div class="container">
 		<div class="header">
+			<a href="/GraoPara/index.jsp" class="banner"><img
+				src="/GraoPara/images/header.png" /></a>
 			<!--  <a href="/GraoPara/index.jsp" class="banner"><img src="/GraoPara/images/header.png"/></a> -->
 		</div>
 		<!-- Fim do Banner -->
 		<!-- Começo do menu lateral -->
 		<div class="sidebar1">
-		
-
-			<!-- ----------------------------------------------------------------------- começa-->
 
 			<!--Começo da área de login -->
-			<div class="LoginArea" id="loginDefault" display = "block">
+			<div class="LoginArea" id="loginDefault" style="display:block;">
 				<form method="post" action="/GraoPara/doLogin">
 					<fieldset>
 						<label for="login">Login:</label> <input class="inputLogin"
@@ -61,53 +60,19 @@
 						<input class="buttonEntrar" type="submit" name="Entrar"
 							value="Entrar" />
 					</fieldset>
-				</form>
-			</div>
-			
-			
-			<!-- ----------------------------------------------------------------------- -->
-			
- 			<!--Depois de logado, sendo permissão tipo USER-->
- 			<div class="LoginArea" id="loginUser" display = "none">
- 				<form method="post" action="/GraoPara/doLogin">
- 					<fieldset>
- 						<label for="login">Bem vindo USER</label>
-					</fieldset>
 					<fieldset>
-						<input class="buttonSair" type="submit" name="Sair"
-							value="Sair" />
+						<a href="/GraoPara/CadUsuario.jsp"><input type="button"
+							class="buttonRegistrar" name="Registrar" value="Registrar"></a>
 					</fieldset>
 				</form>
 			</div>
-
- 			<!-- ----------------------------------------------------------------------- -->
-			
- 			<!--Depois de logado, sendo permissão tipo ADMIN-->
-			<div class="LoginArea" id="loginAdmin" display = "none">
-				<form method="post" action="/GraoPara/doLogin">
-					<fieldset>
-						<label for="login">Bem vindo ADMIN</label>
-					</fieldset>
-					<fieldset>
-						<input class="buttonSair" type="submit" name="Sair"
-							value="Sair" />
-					</fieldset>
-				</form>
-			</div>
-			
-			<!-- ----------------------------------------------------------------------- termina-->
-			
-			<fieldset>
-				<a href="/GraoPara/CadUsuario.jsp"><input type="button"
-					class="buttonRegistrar" name="Registrar" value="Registrar"></a>
-			</fieldset>
 			<!-- Fim da área de login -->
 
 			<article class="menuLateral">
 				<ul class="nav" id="menu">
-					<li><a href="/GraoPara/index.jsp"><span>H</span>ome</a></li>
-					<li><a href="/GraoPara/pesquisa.jsp"><span>P</span>esquisar</a></li>
-					<li><a href="/GraoPara/sobre.jsp"><span>S</span>obre</a></li>
+					<li><a href="/GraoPara/public/index.jsp">Home</a></li>
+					<li><a href="/GraoPara/public/pesquisa.jsp">Pesquisar</a></li>
+					<li><a href="/GraoPara/public/sobre.jsp">Sobre</a></li>
 				</ul>
 			</article>
 
@@ -123,7 +88,6 @@
 		<div class="footer">
 			<p>Copyright © - Universidade Federal de São Paulo - UNIFESP 2012</p>
 			<p>Desenvolvido pelo grupo Coruja</p>
-			<a href="/GraoPara/sobre.jsp">- Sobre -</a>
 		</div>
 		<!-- Fim do Rodapé -->
 		<!-- end .container -->

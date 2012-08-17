@@ -60,49 +60,6 @@
 					</fieldset>
 				</form>
 			</div>
-
-
-			<!-- ----------------------------------------------------------------------- -->
-
-			<!--Depois de logado, sendo permissão tipo USER-->
-			<!-- <div class="LoginArea" id="loginUser">
-			<form method="post" action="/GraoPara/doLogin">
-					<fieldset>
-						<label for="login">Login:</label> <input class="inputLogin"
-							type="text" name="login" height="30px" size="auto"
-							placeholder="Seu login" required> <label for="senha">Senha:</label>
-						<input class="inputLogin" type="password" name="senha"
-							height="30px" size="auto" placeholder="Sua senha" required>
-					</fieldset>
-					<fieldset>
-						<input class="buttonEntrar" type="submit" name="Entrar"
-							value="Entrar" />
-					</fieldset>
-				</form>				
-			</div> -->
-
-			<!-- ----------------------------------------------------------------------- -->
-
-			<!--Depois de logado, sendo permissão tipo ADMIN-->
-			<!-- 	<div class="LoginArea" id="loginAdmin">
-				<form method="post" action="/GraoPara/doLogin">
-					<fieldset>
-						<label for="login">Bem vindo</label>
-					</fieldset>
-					<fieldset><input class="buttonSair" type="submit" name="Sair"
-							value="Sair" />
-					</fieldset>
-				</form>
-			</div> -->
-
-			<!-- ----------------------------------------------------------------------- termina-->
-
-			<div class="AfterLogin" id="AfterLogin" hidden="0">
-				<form method="post" action="/GraoPara/doLogout">
-					Bem vindo #UserName <input class="buttonEntrar" type="submit"
-						name="Sair" value="Sair" />
-				</form>
-			</div>
 			<fieldset>
 				<a href="/GraoPara/CadUsuario.jsp"><input type="button"
 					class="buttonRegistrar" name="Registrar" value="Registrar"></a>
@@ -111,9 +68,9 @@
 
 			<article class="menuLateral">
 				<ul class="nav" id="menu">
-					<li><a href="/GraoPara/index.jsp"><span>H</span>ome</a></li>
-					<li><a href="/GraoPara/pesquisa.jsp"><span>P</span>esquisar</a></li>
-					<li><a href="/GraoPara/sobre.jsp"><span>S</span>obre</a></li>
+					<li><a href="/GraoPara/public/index.jsp">Home</a></li>
+					<li><a href="/GraoPara/public/pesquisa.jsp">Pesquisar</a></li>
+					<li><a href="/GraoPara/public/sobre.jsp">Sobre</a></li>
 				</ul>
 			</article>
 
@@ -204,8 +161,7 @@
 		<!-- Começo do Rodapé -->
 		<div class="footer">
 			<p>Copyright © - Universidade Federal de São Paulo - UNIFESP 2012</p>
-			<p>Desenvolvido pelo grupo Coruja</p>
-			<a href="/GraoPara/sobre.jsp">- Sobre -</a>
+			<p>Desenvolvido pelo grupo Coruja</p> 
 		</div>
 		<!-- Fim do Rodapé -->
 		<!-- end .container -->

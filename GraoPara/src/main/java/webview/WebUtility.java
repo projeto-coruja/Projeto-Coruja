@@ -5,22 +5,24 @@ import javax.servlet.http.Cookie;
 import persistence.dto.ProfileDTO;
 
 import business.EJB.userEJB.AuthBean;
+import business.EJB.userEJB.UserBean;
 import business.exceptions.login.UnreachableDataBaseException;
 
 public final class WebUtility {
 	
 	public static String cookie_email = "email_graopara";
 	public static String cookie_password = "senha_graopara";
+	public static String cookie_nome = "nome_graopara";
 	public static String cookie_status = "status_graopara";
 	
 	public static ProfileDTO admin_profile = new ProfileDTO("admin", true, true, true);
 	public static ProfileDTO user_profile = new ProfileDTO("user", true, true, false);
 	public static ProfileDTO default_profile = new ProfileDTO("default", false, true, false);
 	
-	public static int cookie_expire = (60 * 60 * 24) * 100; //100 dias
+	public static int cookie_expire = -1; //1 sessão dias
 	
-	public static int cookieLogin(Cookie[] cookie_list) {
-		if(cookie_list == null || cookie_list.length < 2) return AuthBean.LoginFail;
+	public static UserBean cookieLogin(Cookie[] cookie_list) {
+		if(cookie_list == null) return null;
 		
 		String email = null;
 		String password = null;
@@ -34,15 +36,15 @@ public final class WebUtility {
 		}
 		if(email != null && password != null) {
 			try {
-				int result = AuthBean.validarLogin(email, password, AuthBean.HashedPwd);
+				UserBean result = AuthBean.validarLogin(email, password, AuthBean.HashedPwd);
 				return result;
 			} catch (UnreachableDataBaseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-				return AuthBean.LoginFail;
+				return null;
 			}
 		}
-		return AuthBean.LoginFail;
+		return null;
 	}
 	
 	public static Cookie selectCookie(Cookie[] c_list, String c_name) {
