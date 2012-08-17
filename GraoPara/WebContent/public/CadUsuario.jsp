@@ -40,7 +40,7 @@
 
 	<div class="container">
 		<div class="header"></div>
-		<!-- Fim do Banner -->
+		
 		<!-- Começo do menu lateral -->
 		<div class="sidebar1">
 
