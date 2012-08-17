@@ -38,6 +38,7 @@
 <body onloadstart="checkCookie()">
 	<div class="container">
 		<div class="header"></div>
+
 		<!-- Começo do menu lateral -->
 		<div class="sidebar1">
 
@@ -56,7 +57,7 @@
 							value="Entrar" />
 					</fieldset>
 					<fieldset>
-						<a href="/GraoPara/public/CadUsuario.jsp"><input type="button"
+						<a href="/GraoPara/CadUsuario.jsp"><input type="button"
 							class="buttonRegistrar" name="Registrar" value="Registrar"></a>
 					</fieldset>
 				</form>
@@ -70,6 +71,12 @@
 					<li><a href="/GraoPara/public/sobre.jsp">Sobre</a></li>
 				</ul>
 			</article>
+
+			<!-- Área para texto na barra lateral, a barra cresce ao inserir conteudo... -->
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
 		</div>
 		<!-- Fim do Menu Lateral -->
 		<div class="content" id="content">TESTE DE CARREGAMENTO</div>
