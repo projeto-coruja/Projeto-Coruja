@@ -60,9 +60,9 @@
 
 			<article class="menuLateral">
 				<ul class="nav" id="menu">
-					<li><a href="/GraoPara/index.jsp"><span>H</span>ome</a></li>
-					<li><a href="/GraoPara/pesquisa.jsp"><span>P</span>esquisar</a></li>
-					<li><a href="/GraoPara/sobre.jsp"><span>S</span>obre</a></li>
+					<li><a href="/GraoPara/public/index.jsp">Home</a></li>
+					<li><a href="/GraoPara/public/pesquisa.jsp">Pesquisar</a></li>
+					<li><a href="/GraoPara/public/sobre.jsp">Sobre</a></li>
 				</ul>
 			</article>
 

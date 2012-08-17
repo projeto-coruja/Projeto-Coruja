@@ -62,19 +62,13 @@
 
 			<article class="menuLateral">  
 				<ul class="nav" id="menu">
-				<li><a href="/GraoPara/protected/admin/indexAdmin.jsp">Home</a></li>
-				<li><a href="/GraoPara/protected/admin/pesquisaAdmin.jsp">Pesquisar</a></li>
-				<li><a href="/GraoPara/protected/admin/cadastroDocumentosAdmin.jsp">Cadastrar Documento</a></li>
-				<li><a href="/GraoPara/protected/admin/painelAdmin.jsp">Painel Admin</a></li>
-				<li><a href="/GraoPara/protected/admin/sobreAdmin.jsp">Sobre</a></li>
+					<li><a href="/GraoPara/protected/admin/indexAdmin.jsp">Home</a></li>
+					<li><a href="/GraoPara/protected/admin/pesquisaAdmin.jsp">Pesquisar</a></li>
+					<li><a href="/GraoPara/protected/admin/cadastroDocumentosAdmin.jsp">Cadastrar Documento</a></li>
+					<li><a href="/GraoPara/protected/admin/painelAdmin.jsp">Painel Admin</a></li>
+					<li><a href="/GraoPara/protected/admin/sobreAdmin.jsp">Sobre</a></li>
 				</ul>
 			</article>
-
-			<!-- Área para texto na barra lateral, a barra cresce ao inserir conteudo... -->
-			<p></p>
-			<p></p>
-			<p></p>
-			<p></p>
 		</div>
 		<!-- Fim do Menu Lateral -->
 		<div class="content" id="content">TESTE DE CARREGAMENTO</div>
