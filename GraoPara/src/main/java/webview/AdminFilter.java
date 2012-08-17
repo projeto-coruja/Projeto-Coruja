@@ -45,12 +45,12 @@ public class AdminFilter implements Filter {
 		HttpServletResponse res = (HttpServletResponse) response;
 		Cookie[] c_list = req.getCookies();
 		Cookie c_status = WebUtility.selectCookie(c_list, WebUtility.cookie_status);
-		if(c_status != null && Integer.parseInt(c_status.getValue()) > AuthBean.LoginSuccessUser) {
+		if(c_status != null && Integer.parseInt(c_status.getValue()) == AuthBean.LoginSuccessAdmin) {
 			chain.doFilter(request, response);
 		}
 		else {
 			UserBean user = WebUtility.cookieLogin(c_list);			
-			if(user.getLogType() > AuthBean.LoginSuccessUser) {
+			if(user.getLogType() == AuthBean.LoginSuccessAdmin) {
 				c_status = new Cookie(WebUtility.cookie_status, user.getLogType().toString());
 				c_status.setMaxAge(-1);
 				res.addCookie(c_status);
