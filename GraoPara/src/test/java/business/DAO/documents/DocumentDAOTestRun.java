@@ -13,7 +13,7 @@ import persistence.dto.OrigemDTO;
 import persistence.dto.PalavraChaveDTO;
 import persistence.dto.TipoDocumentoDTO;
 import persistence.dto.UserDTO;
-import webview.servlets.WebUtility;
+import webview.WebUtility;
 
 public class DocumentDAOTestRun {
 

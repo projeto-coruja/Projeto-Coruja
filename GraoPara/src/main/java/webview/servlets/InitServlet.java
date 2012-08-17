@@ -21,6 +21,7 @@ import persistence.PersistenceAccess;
 import persistence.dto.DTO;
 import persistence.dto.ProfileDTO;
 import persistence.dto.UserDTO;
+import webview.WebUtility;
 
 /**
  * Servlet implementation class InitServlet

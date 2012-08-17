@@ -14,7 +14,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import webview.servlets.WebUtility;
+import webview.WebUtility;
 
 import business.EJB.userEJB.AuthBean;
 import business.EJB.userEJB.UserBean;

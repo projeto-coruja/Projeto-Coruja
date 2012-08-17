@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import webview.WebUtility;
+
 import business.EJB.userEJB.AuthBean;
 import business.EJB.userEJB.Password;
 import business.EJB.userEJB.UserBean;

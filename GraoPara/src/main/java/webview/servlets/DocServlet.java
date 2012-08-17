@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import webview.WebUtility;
+
 import business.EJB.docEJB.CadastroEJB;
 import business.exceptions.login.UnreachableDataBaseException;
 

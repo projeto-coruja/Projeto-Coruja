@@ -11,7 +11,7 @@ import persistence.PersistenceAccess;
 import persistence.dto.DTO;
 import persistence.dto.DocumentoDTO;
 import persistence.dto.UserDTO;
-import webview.servlets.WebUtility;
+import webview.WebUtility;
 import business.DAO.login.LoginDAO;
 import business.EJB.docEJB.BuscaDocEJB;
 import business.EJB.docEJB.CadastroEJB;

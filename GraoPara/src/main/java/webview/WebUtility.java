@@ -1,4 +1,4 @@
-package webview.servlets;
+package webview;
 
 import javax.servlet.http.Cookie;
 

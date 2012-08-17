@@ -16,8 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import webview.servlets.InitServlet;
-import webview.servlets.WebUtility;
+import webview.WebUtility;
 
 import business.EJB.userEJB.AuthBean;
 import business.EJB.userEJB.UserBean;
@@ -28,7 +27,7 @@ import business.EJB.userEJB.UserBean;
 @WebFilter({"/"})
 public class StartFilter implements Filter {
 	
-	private static final Log log = LogFactory.getLog(InitServlet.class);
+	private static final Log log = LogFactory.getLog(StartFilter.class);
 
     /**
      * Default constructor. 
