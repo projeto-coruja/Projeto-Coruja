@@ -53,5 +53,6 @@ public class DocumentDAOTestRun {
 				LA.findUserByEmail("outlook@gmail.com"), new PalavraChaveDTO(
 						"cabral", false), null, null);
 		DA.addDocument(carta);
+		System.out.println(DA.countDocumentsByCriteria("tipo_id = 'APEP'"));
 	}
 }

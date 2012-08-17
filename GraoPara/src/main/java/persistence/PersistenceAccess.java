@@ -58,12 +58,16 @@ public class PersistenceAccess {
 		sharedManager.delete(target);
 	}
 
-
 	public List<DTO> findEntities(String query) throws DataAccessLayerException{
 		List<DTO> resultSet = dtoGen.generateDTOSet(sharedManager.find(query));
 		sharedManager.finishOperation();
 		return resultSet;
-		
+	}
+	
+	public Long countRows(String table, String criteria){
+		if(table == null)	throw new IllegalArgumentException("Tabela não pode ser null");
+		if(criteria == null)	return sharedManager.count(table, "1=1");
+		else	return sharedManager.count(table, criteria);
 	}
 	
 	private Entidade findTarget(DTO dto) throws DataAccessLayerException{

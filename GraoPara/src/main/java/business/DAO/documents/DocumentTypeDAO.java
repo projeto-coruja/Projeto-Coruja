@@ -41,7 +41,8 @@ public class DocumentTypeDAO {
 	public void updateDocumentType(TipoDocumentoDTO docType) throws UnreachableDataBaseException {
 		if(docType == null) throw new IllegalArgumentException("Tipo de documento inexistente!");
 		try { 
-			manager.updateEntity(docType);
+			if(docType.getId() == null)	addDocumentType(docType.getTipoDocumento());
+			else	manager.updateEntity(docType);
 		} catch (DataAccessLayerException e) {
 			e.printStackTrace();
 			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");

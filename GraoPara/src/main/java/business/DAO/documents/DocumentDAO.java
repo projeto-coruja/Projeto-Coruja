@@ -134,7 +134,8 @@ public class DocumentDAO {
 	public void updateDocument(DocumentoDTO doc) throws UnreachableDataBaseException {
 		if(doc == null) throw new IllegalArgumentException("Documento inexistente!");
 		try { 
-			manager.updateEntity(doc);
+			if(doc.getId() == null) addDocument(doc);	
+			else manager.updateEntity(doc);
 		} catch (DataAccessLayerException e) {
 			e.printStackTrace();
 			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
@@ -157,6 +158,7 @@ public class DocumentDAO {
 		
 	public List<DTO> findDocumentByQuery(String query) throws DocumentNotFoundException, UnreachableDataBaseException{
 		List<DTO> resultSet = null;
+		if(query == null)	throw new IllegalArgumentException("Query não pode ser null");
 		try {
 			resultSet = manager.findEntities(query);
 			if(resultSet == null) {
@@ -167,6 +169,9 @@ public class DocumentDAO {
 			e.printStackTrace();
 			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
 		}
-		
+	}
+	
+	public Long countDocumentsByCriteria(String criteria) throws IllegalArgumentException{
+		return manager.countRows("Documento", criteria);
 	}
 }
