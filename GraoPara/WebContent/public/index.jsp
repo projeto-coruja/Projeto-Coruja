@@ -37,9 +37,7 @@
 </head>
 <body onloadstart="checkCookie()">
 	<div class="container">
-		<div class="header">			
-		</div>
-		<!-- Fim do Banner -->
+		<div class="header"></div>
 		<!-- Começo do menu lateral -->
 		<div class="sidebar1">
 
