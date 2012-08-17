@@ -140,6 +140,10 @@ public class BuscaDocEJB {
 		return docDao.findDocumentByQuery(query);
 	}
 	
+	public Long countRowsByCriteria(String criteria){
+		return docDao.countDocumentsByCriteria(criteria);
+	}
+	
 	public List<DTO> buscaPorUsuario(String email) throws UnreachableDataBaseException, DocumentNotFoundException {
 		return docDao.findDocumentsByUploader(logDao.findUserByEmail(email));
 	}

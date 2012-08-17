@@ -100,7 +100,25 @@ public class EntityManager {
 	private void startOperation() {
 		session = PersistenceUtility.openSession();
 		transaction = session.beginTransaction();
-
+	}
+	
+	/**
+	 * 
+	 * @param table	- Tabela que será feito a pesquisa. 
+	 * @param criteria - String do critério (ex: profile = 'admin'). Usar "1=1" para retornar o número de entradas.
+	 * @return	Quantidade de entradas correspondente ao critério.
+	 */
+	public Long count(String table, String criteria){
+		Query query = null;
+		try{
+			startOperation();
+			String queryString = "select count(*) from " + table + " where " + criteria;
+			query = session.createQuery(queryString);
+			transaction.commit();
+		}catch(HibernateException e){
+			handleException(e);
+		}
+		return (Long) query.list().get(0);
 	}
 
 }
