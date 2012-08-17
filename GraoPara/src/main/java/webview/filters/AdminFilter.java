@@ -55,7 +55,7 @@ public class AdminFilter implements Filter {
 		    PrintWriter out=res.getWriter();   
 			out.println("<script>");  
 		    out.println("alert('Você não possuí permissão para acessar esta área!');");  
-		    out.println("document.location=('/GraoPara/protected/user');");  
+		    out.println("document.location=('/GraoPara/protected/user/indexUser.jsp');");  
 		    out.println("</script>");
 		}
 		else if(c_status != null && Integer.parseInt(c_status.getValue()) == AuthBean.LoginFailOrDefault) {
@@ -63,7 +63,7 @@ public class AdminFilter implements Filter {
 		    PrintWriter out=res.getWriter();   
 			out.println("<script>");  
 		    out.println("alert('Você não possuí permissão para acessar esta área!');");  
-		    out.println("document.location=('/GraoPara/public');");  
+		    out.println("document.location=('/GraoPara/public/index.jsp');");  
 		    out.println("</script>");
 		}
 		else {
@@ -82,7 +82,7 @@ public class AdminFilter implements Filter {
 			    PrintWriter out=res.getWriter();   
 				out.println("<script>");  
 			    out.println("alert('Você não possuí permissão para acessar esta área!');");  
-			    out.println("document.location=('/GraoPara/protected/user');");  
+			    out.println("document.location=('/GraoPara/protected/user/indexUser.jsp');");  
 			    out.println("</script>");
 			}
 			else {
@@ -90,7 +90,7 @@ public class AdminFilter implements Filter {
 			    PrintWriter out=res.getWriter();   
 				out.println("<script>");  
 			    out.println("alert('Você não possuí permissão para acessar esta área!');");  
-			    out.println("document.location=('/GraoPara/public/');");  
+			    out.println("document.location=('/GraoPara/public/index.jsp');");  
 			    out.println("</script>");
 			}
 		}

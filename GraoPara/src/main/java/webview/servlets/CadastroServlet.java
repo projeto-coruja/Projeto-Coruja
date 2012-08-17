@@ -44,8 +44,14 @@ public class CadastroServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String senha = request.getParameter("senha");
 		
-		if(!senha.equals(request.getParameter("confsenha")))
-			response.sendRedirect("NOPE.jsp");
+		if(!senha.equals(request.getParameter("confsenha"))){
+			response.setContentType("text/html");  
+		    PrintWriter out=response.getWriter();   
+		    out.println("<script>");  
+		    out.println("alert('Senha inválida! Tente novamente.');");  
+		    out.println("document.location=('/GraoPara/public/index.jsp');");  
+		    out.println("</script>");
+		}
 		else
 		{
 			CadastroBean cf = new CadastroBean();
@@ -55,14 +61,14 @@ public class CadastroServlet extends HttpServlet {
 			    PrintWriter out=response.getWriter();   
 			    out.println("<script>");  
 			    out.println("alert('Usuário adicionado! Aguarde a aprovação dos seus direitos de edição.');");  
-			    out.println("document.location=('/GraoPara/');");  
+			    out.println("document.location=('/GraoPara/public/index.jsp');");  
 			    out.println("</script>");
 			} catch (UnreachableDataBaseException e) {
 				response.setContentType("text/html");  
 			    PrintWriter out=response.getWriter();   
 			    out.println("<script>");  
 			    out.println("alert('Erro no banco de dados! Contate o suporte e tente novamente mais tarde. ');");  
-			    out.println("document.location=('/GraoPara/');");  
+			    out.println("document.location=('/GraoPara/public/index.jsp');");  
 			    out.println("</script>");
 				e.printStackTrace();
 			} catch (IncorrectLoginInformationException e) {
@@ -71,14 +77,14 @@ public class CadastroServlet extends HttpServlet {
 			    PrintWriter out=response.getWriter();   
 				out.println("<script>");  
 			    out.println("alert('Email inválido! Por favor acesse a área de cadastro e tente novamente.');");  
-			    out.println("document.location=('/GraoPara/');");  
+			    out.println("document.location=('/GraoPara/public/index.jsp');");  
 			    out.println("</script>");
 			} catch (DuplicateUserException e) {
 				response.setContentType("text/html");  
 			    PrintWriter out=response.getWriter();   
 				out.println("<script>");  
 			    out.println("alert('Email já em uso! Por favor acesse a área de cadastro e tente novamente.');");  
-			    out.println("document.location=('/GraoPara/');");  
+			    out.println("document.location=('/GraoPara/public/index.jsp');");  
 			    out.println("</script>");
 			}
 		}

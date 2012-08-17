@@ -58,4 +58,11 @@
 		<nature>org.hibernate.eclipse.console.hibernateNature</nature>
 		<nature>org.jboss.tools.jsf.jsfnature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>WebContent</name>
+			<type>2</type>
+			<location>/home/hueho/git/Projeto-Coruja/GraoPara/src/main/webapp</location>
+		</link>
+	</linkedResources>
 </projectDescription>

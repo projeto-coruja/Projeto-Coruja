@@ -67,7 +67,7 @@ public class LoginServlet extends HttpServlet {
 			    PrintWriter out=response.getWriter();   
 			    out.println("<script>");  
 			    out.println("alert('Login incorreto! Verifique seu email e senha, e tente de novo. ');");  
-			    out.println("document.location=('/GraoPara/');");  
+			    out.println("document.location=('/GraoPara/public/index.jsp');");  
 			    out.println("</script>");
 			}
 			

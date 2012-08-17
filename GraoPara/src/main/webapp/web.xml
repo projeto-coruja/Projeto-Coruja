@@ -9,13 +9,9 @@
    <param-name>log4j.properties-location</param-name>
    <param-value>WEB-INF/log4j.properties</param-value>
   </init-param>
+  <load-on-startup>1</load-on-startup>
  </servlet>
  <session-config>
   <tracking-mode>COOKIE</tracking-mode>
  </session-config>
- <welcome-file-list>
-  <welcome-file>/public/index.jsp</welcome-file>
-  <welcome-file>/protected/user/indexUser.jsp</welcome-file>
-  <welcome-file>/protected/admin/indexAdmin.jsp</welcome-file>
- </welcome-file-list>
 </web-app>

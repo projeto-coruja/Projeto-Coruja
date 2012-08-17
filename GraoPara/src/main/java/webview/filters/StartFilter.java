@@ -24,7 +24,7 @@ import business.EJB.userEJB.UserBean;
 /**
  * Servlet Filter implementation class DefaultFilter
  */
-@WebFilter({"/"})
+@WebFilter("/")
 public class StartFilter implements Filter {
 	
 	private static final Log log = LogFactory.getLog(StartFilter.class);
@@ -53,13 +53,13 @@ public class StartFilter implements Filter {
 		Cookie[] c_list = req.getCookies();
 		Cookie c_status = WebUtility.selectCookie(c_list, WebUtility.cookie_status);
 		if(c_status != null && Integer.parseInt(c_status.getValue()) == AuthBean.LoginFailOrDefault) {
-			res.sendRedirect(req.getContextPath() + "/public");
+			res.sendRedirect(req.getContextPath() + "/public/index.jsp");
 		}
 		else if(c_status != null && Integer.parseInt(c_status.getValue()) == AuthBean.LoginSuccessUser) {
-			res.sendRedirect(req.getContextPath() + "/protected/user");
+			res.sendRedirect(req.getContextPath() + "/protected/user/indexUser.jsp");
 		}
 		else if(c_status != null && Integer.parseInt(c_status.getValue()) == AuthBean.LoginSuccessAdmin) {
-			res.sendRedirect(req.getContextPath() + "/protected/admin");
+			res.sendRedirect(req.getContextPath() + "/protected/admin/indexAdmin.jsp");
 		}
 		else {
 			UserBean user = WebUtility.cookieLogin(c_list);			
@@ -71,17 +71,17 @@ public class StartFilter implements Filter {
 				c_status = new Cookie(WebUtility.cookie_status, user.getLogType().toString());
 				c_status.setMaxAge(-1);
 				res.addCookie(c_status);
-				res.sendRedirect(req.getContextPath() + "/public");
+				res.sendRedirect(req.getContextPath() + "/public/index.jsp");
 			}
 			else if(user.getLogType() == AuthBean.LoginSuccessUser){
 				c_status = new Cookie(WebUtility.cookie_status, user.getLogType().toString());
 				c_status.setMaxAge(-1);
-				res.sendRedirect(req.getContextPath() + "/protected/user");
+				res.sendRedirect(req.getContextPath() + "/protected/user/indexUser.jsp");
 			}
 			else if(user.getLogType() == AuthBean.LoginSuccessAdmin){
 				c_status = new Cookie(WebUtility.cookie_status, user.getLogType().toString());
 				c_status.setMaxAge(-1);
-				res.sendRedirect(req.getContextPath() + "/protected/admin");
+				res.sendRedirect(req.getContextPath() + "/protected/admin/indexAdmin.jsp");
 			}
 		}
 	}
