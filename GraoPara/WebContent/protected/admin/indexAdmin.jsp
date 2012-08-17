@@ -45,8 +45,6 @@
 		<!-- Começo do menu lateral -->
 		<div class="sidebar1">
 
-			<!-- ----------------------------------------------------------------------- começa-->
-
 			<!--Depois de logado-->
 			<div class="LoginArea" id="logado" style="display:block;">
 				<form method="post" action="/GraoPara/doLogin">
@@ -60,16 +58,15 @@
 					</fieldset>
 				</form>
 			</div>
-			<!-- ----------------------------------------------------------------------- termina-->
-			<!-- Fim da área de login -->
+			<!-- ----------------------------------------------------------------------- -->
 
 			<article class="menuLateral">  
 				<ul class="nav" id="menu">
-					<li><a href="/GraoPara/protected/admin/indexAdmin.jsp">Home</a></li>
-					<li><a href="/GraoPara/protected/admin/pesquisaAdmin.jsp">Pesquisar</a></li>
-					<li><a href="/GraoPara/protected/admin/sobreAdmin.jsp">Sobre</a></li>
-					<li><a href="/GraoPara/protected/admin/cadastroDocumentosAdmin.jsp">Cadastrar Documento</a></li>
-					<li><a href="/GraoPara/protected/admin/painelAdmin.jsp">Painel Admin</a></li>
+				<li><a href="/GraoPara/protected/admin/indexAdmin.jsp">Home</a></li>
+				<li><a href="/GraoPara/protected/admin/pesquisaAdmin.jsp">Pesquisar</a></li>
+				<li><a href="/GraoPara/protected/admin/cadastroDocumentosAdmin.jsp">Cadastrar Documento</a></li>
+				<li><a href="/GraoPara/protected/admin/painelAdmin.jsp">Painel Admin</a></li>
+				<li><a href="/GraoPara/protected/admin/sobreAdmin.jsp">Sobre</a></li>
 				</ul>
 			</article>
 
