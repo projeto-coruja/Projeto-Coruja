@@ -29,6 +29,8 @@
 		<!-- Começo do menu lateral -->
 		<div class="sidebar1">
 			
+			<div class="sidebar1">
+
 			<!--Depois de logado-->
 			<div class="LoginArea" id="logado" style="display:block;">
 				<form method="post" action="/GraoPara/doLogin">
@@ -42,36 +44,15 @@
 					</fieldset>
 				</form>
 			</div>
-
-
 			<!-- ----------------------------------------------------------------------- -->
-			
-			<!--Depois de logado, sendo permissão tipo ADMIN-->
-			<div class="LoginArea" id="loginAdmin">
-				<form method="post" action="/GraoPara/doLogin">
-					<fieldset>
-						<label for="login">Bem vindo</label>
-					</fieldset>
-					<fieldset>
-						<input class="buttonSair" type="submit" name="Sair"
-							value="Sair" />
-					</fieldset>
-				</form>
-			</div>
-			
-			<!-- ----------------------------------------------------------------------- termina-->
-			
-			<fieldset>
-				<a href="/GraoPara/CadUsuario.jsp"><input type="button"
-					class="buttonRegistrar" name="Registrar" value="Registrar"></a>
-			</fieldset>
-			<!-- Fim da área de login -->
 
 			<article class="menuLateral">
 				<ul class="nav" id="menu">
-					<li><a href="/GraoPara/index.jsp">Home</a></li>
-					<li><a href="/GraoPara/pesquisa.jsp">Pesquisar</a></li>
-					<li><a href="/GraoPara/sobre.jsp">Sobre</a></li>
+					<li><a href="/GraoPara/protected/user/indexUser.jsp">Home</a></li>
+					<li><a href="/GraoPara/protected/user/pesquisaUser.jsp">Pesquisar</a></li>
+					<li><a href="/GraoPara/protected/user/cadastroDocumentosUser.jsp">Cadastrar Documento</a></li>
+					<li><a href="/GraoPara/protected/user/painelUser.jsp">Painel User</a></li>
+					<li><a href="/GraoPara/protected/user/sobreUser.jsp">Sobre</a></li>
 				</ul>
 			</article>
 

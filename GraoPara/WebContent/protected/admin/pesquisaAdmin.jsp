@@ -35,40 +35,30 @@
 		<!-- Começo do menu lateral -->
 		<div class="sidebar1">
 
-			<!--Começo da área de login -->
-			<div class="LoginArea" id="LoginArea">
-			<form method="post" action = "LoginServlet">
-				<fieldset>
-					<label for="login">Login:</label>
-						<input class="inputLogin"
-							type="text" name="login" height="30px" size="auto"
-							placeholder="Seu login" required>
-					<label for="senha">Senha:</label>
-						<input class="inputLogin"
-							type="password" name="senha" height="30px" size="auto"
-							placeholder="Sua senha" required>
-				</fieldset>
-				<fieldset>
-					<input class="buttonEntrar" type="submit" name="Entrar" value="Entrar"/>
-				</fieldset>
-			</form>
+			<div class="sidebar1">
+
+			<!--Depois de logado-->
+			<div class="LoginArea" id="logado" style="display:block;">
+				<form method="post" action="/GraoPara/doLogin">
+					<fieldset>
+						<label for="login">Bem vindo</label>
+						<label onload="getName()"></label>
+					</fieldset>
+					<fieldset>
+						<a href="/GraoPara/protected/admin/indexAdmin.jsp">
+						<input class="buttonSair" type="submit" name="Sair" value="Sair" /></a>
+					</fieldset>
+				</form>
 			</div>
-			<div class="AfterLogin" id="AfterLogin" hidden="0">
-			Bem vindo #UserName
-			<input class="buttonEntrar" type="submit" name="Entrar" value="Entrar"/>
-			</div>
-			<fieldset>
-				<a href="/GraoPara/CadUsuario.jsp"><input type="button" class="buttonRegistrar" name="Registrar" value="Registrar"></a>
-			</fieldset>
-			<!-- Fim da área de login -->
+			<!-- ----------------------------------------------------------------------- -->
 
 			<article class="menuLateral">  
 				<ul class="nav" id="menu">
 					<li><a href="/GraoPara/protected/admin/indexAdmin.jsp">Home</a></li>
 					<li><a href="/GraoPara/protected/admin/pesquisaAdmin.jsp">Pesquisar</a></li>
-					<li><a href="/GraoPara/protected/admin/sobreAdmin.jsp">Sobre</a></li>
 					<li><a href="/GraoPara/protected/admin/cadastroDocumentosAdmin.jsp">Cadastrar Documento</a></li>
 					<li><a href="/GraoPara/protected/admin/painelAdmin.jsp">Painel Admin</a></li>
+					<li><a href="/GraoPara/protected/admin/sobreAdmin.jsp">Sobre</a></li>
 				</ul>
 			</article>
 		</div>
