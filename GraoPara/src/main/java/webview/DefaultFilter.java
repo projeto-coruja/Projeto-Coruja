@@ -1,7 +1,6 @@
 package webview;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -18,15 +17,15 @@ import business.EJB.userEJB.AuthBean;
 import business.EJB.userEJB.UserBean;
 
 /**
- * Servlet Filter implementation class LoginFilter
+ * Servlet Filter implementation class DefaultFilter
  */
-@WebFilter("/protected/user/*")
-public class UserFilter implements Filter {
+@WebFilter("/public")
+public class DefaultFilter implements Filter {
 
     /**
      * Default constructor. 
      */
-    public UserFilter() {
+    public DefaultFilter() {
         // TODO Auto-generated constructor stub
     }
 
@@ -45,28 +44,27 @@ public class UserFilter implements Filter {
 		HttpServletResponse res = (HttpServletResponse) response;
 		Cookie[] c_list = req.getCookies();
 		Cookie c_status = WebUtility.selectCookie(c_list, WebUtility.cookie_status);
-		if(c_status != null && Integer.parseInt(c_status.getValue()) == AuthBean.LoginSuccessUser) {
+		if(c_status != null && Integer.parseInt(c_status.getValue()) == AuthBean.LoginFailOrDefault) {
 			chain.doFilter(request, response);
 		}
 		else {
 			UserBean user = WebUtility.cookieLogin(c_list);			
-			if(user != null && user.getLogType() == AuthBean.LoginSuccessUser) {
+			if(user == null)
+			{
+				chain.doFilter(request, response);
+			}
+			else if(user.getLogType() == AuthBean.LoginFailOrDefault) {
 				c_status = new Cookie(WebUtility.cookie_status, user.getLogType().toString());
 				c_status.setMaxAge(-1);
 				res.addCookie(c_status);
 				chain.doFilter(request, response);
 			}
 			else {
-				res.setContentType("text/html");  
-			    PrintWriter out=res.getWriter();   
-				out.println("<script>");  
-			    out.println("alert('Você não possuí permissão para acessar esta área!');");  
-			    out.println("document.location=('/GraoPara/protected/user/');");  
-			    out.println("</script>");
-				//res.sendRedirect(req.getContextPath() + "/faces/pages/public/index.jsp");
+				res.sendRedirect(req.getContextPath() + "/protected/user");
 			}
 		}
 	}
+
 
 	/**
 	 * @see Filter#init(FilterConfig)

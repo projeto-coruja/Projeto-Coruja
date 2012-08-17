@@ -2,7 +2,8 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Grão-Pará</title>
+<title>Grão-Pará - Sobre</title>
+
 
 <!-- Import dos styles CSS -->
 <link rel="stylesheet" type="text/css" href="/GraoPara/css/principal.css" />
@@ -23,7 +24,6 @@
 <script type="text/javascript" src="/GraoPara/javascript/languages/jquery.validationEngine-pt.js" charset="utf-8"></script>
 
 </head>
-
 <body>
 
 	<div class="container">
@@ -48,79 +48,25 @@
 			<!-- ----------------------------------------------------------------------- -->
 
 			<article class="menuLateral">  
-			<ul class="nav" id="menu">
-				<li><a href="/GraoPara/protected/user/indexUser.jsp">Home</a></li>
+				<ul class="nav" id="menu">
+					<li><a href="/GraoPara/protected/user/indexUser.jsp">Home</a></li>
 					<li><a href="/GraoPara/protected/user/pesquisaUser.jsp">Pesquisar</a></li>
 					<li><a href="/GraoPara/protected/user/cadastroDocumentosUser.jsp">Cadastrar Documento</a></li>
 					<li><a href="/GraoPara/protected/user/painelUser.jsp">Painel User</a></li>
 					<li><a href="/GraoPara/protected/user/sobreUser.jsp">Sobre</a></li>
-			</ul>
+				</ul>
 			</article>
-			
-			<!-- Área para texto na barra lateral, a barra cresce ao inserir conteudo... --> 
-			<p></p>
-			<p></p>
-			<p></p>
-			<p></p>
 		</div>
 		<!-- Fim do Menu Lateral -->
-		<div class="content" id="content">
-				<form>
-				<table class="tableControle">
-				<tr>
-					<th colspan="3" align="center">Painel de controle </th>
-				</tr>
-				
-				<tr>
-					<td><label for="documentos">Meus documentos: </label></td>
-					<td colspan="2"><select class="inputControle" name="documentos">
-					<option selected>Selecione...</option>
-					<option value="Script"> Script </option>
-					</select>
-					</td>
-					
-				</tr>
-				<tr>
-					<td><input type="button" class="buttonDocumento" value="Visualizar" name="Visualizar" alt="Verificar campos de cadastro desse documento"></td>
-					<td><input type="button" class="buttonDocumento" value="Alterar" name="Alterar" alt="Alterar os campos de cadastro desse documento"></td>
-					<td><input type="button" class="buttonDocumento" value="Deletar" name="Deletar" alt="Deletar o registro desse documento"></td>
-				</tr>
-				</table>
-				</form>
-				<!-- Novo formulário para mudança de senha -->
-				<form>
-				<table class="tableControle">
-				<tr>
-					<th colspan="3" align="center"> Mudar Senha Atual </th>
-				</tr>
-				<tr>
-					<td><label for="senhaAtual">Senha atual: </label></td>
-					<td colspan="2"><input class="inputControle validate[required]" type="password" name="senhaAtual" id="senhaAtual"/>
-				</tr>
-				<tr>
-					<td><label for="senhaNova">Nova senha: </label></td>
-					<td colspan="2"><input class="inputControle validate[required,minSize[6]]" id="senhaNova" type="password" name="senhaNova" />
-				</tr>
-				<tr>
-					<td><label for="senhaConfirme">Confirme nova senha: </label></td>
-					<td colspan="2"><input class="inputControle validate[required,equals[senhaNova]]" type="password" name="senhaConfirme" id="senhaConfirme" />
-				</tr>
-				<tr>			
-					<td><input type="button" class="buttonDocumento" value="Mudar" name="Mudar" alt="Mudar a senha atual."></td>
-					<td></td>
-					<td></td>
-				</tr>
-				</table>
-				</form>
-		
-		
-		
-		</div>
+
+		<!-- Começo Conteudo -->
+		<div class="content" id="content">SOBRE</div>
+		<!-- Fim do Conteudo -->
+
 		<!-- Começo do Rodapé -->
 		<div class="footer">
 			<p>Copyright © - Universidade Federal de São Paulo - UNIFESP 2012</p>
 			<p>Desenvolvido pelo grupo Coruja</p>
-			<a href="/GraoPara/sobre.jsp">- Sobre -</a>
 		</div>
 		<!-- Fim do Rodapé -->
 		<!-- end .container -->

@@ -93,8 +93,13 @@ public class BuscaDocEJBTest {
 			List<DTO> resultset = bde.busca(origem_tipoOrigem, origem_codOrigem, idNumDoc_tipoId, idNumDoc_codId, autor,
 					destinatario, local, "1500-05-29", tipoDocumento_tipoDocumento, 
 					palavraChave01, palavraChave02, palavraChave03);
-			if(resultset != null)
+//			ce.deletarDocumento(resultset.get(0).getId());
+			((DocumentoDTO)resultset.get(0)).setAutor("EU DE NOVO");
+			ce.atualizarDocumento((DocumentoDTO) resultset.get(0));
+			if(resultset != null){
 				System.out.println(((DocumentoDTO) resultset.get(0)).getResumo());
+				System.out.println(bde.countRowsByCriteria("tipo_id = 'APEP'"));
+			}
 		} catch (UnreachableDataBaseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

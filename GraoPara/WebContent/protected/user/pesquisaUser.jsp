@@ -33,8 +33,6 @@
 		<!-- Começo do menu lateral -->
 		<div class="sidebar1">
 
-			<div class="sidebar1">
-
 			<!--Depois de logado-->
 			<div class="LoginArea" id="logado" style="display:block;">
 				<form method="post" action="/GraoPara/doLogin">
@@ -43,7 +41,7 @@
 						<label onload="getName()"></label>
 					</fieldset>
 					<fieldset>
-						<a href="/GraoPara/protected/admin/indexAdmin.jsp">
+						<a href="/GraoPara/protected/user/indexUser.jsp">
 						<input class="buttonSair" type="submit" name="Sair" value="Sair" /></a>
 					</fieldset>
 				</form>
@@ -52,11 +50,11 @@
 
 			<article class="menuLateral">  
 				<ul class="nav" id="menu">
-					<li><a href="/GraoPara/protected/admin/indexAdmin.jsp">Home</a></li>
-					<li><a href="/GraoPara/protected/admin/pesquisaAdmin.jsp">Pesquisar</a></li>
-					<li><a href="/GraoPara/protected/admin/cadastroDocumentosAdmin.jsp">Cadastrar Documento</a></li>
-					<li><a href="/GraoPara/protected/admin/painelAdmin.jsp">Painel Admin</a></li>
-					<li><a href="/GraoPara/protected/admin/sobreAdmin.jsp">Sobre</a></li>
+					<li><a href="/GraoPara/protected/user/indexUser.jsp">Home</a></li>
+					<li><a href="/GraoPara/protected/user/pesquisaUser.jsp">Pesquisar</a></li>
+					<li><a href="/GraoPara/protected/user/cadastroDocumentosUser.jsp">Cadastrar Documento</a></li>
+					<li><a href="/GraoPara/protected/user/painelUser.jsp">Painel User</a></li>
+					<li><a href="/GraoPara/protected/user/sobreUser.jsp">Sobre</a></li>
 				</ul>
 			</article>
 		</div>

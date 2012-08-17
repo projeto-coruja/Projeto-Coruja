@@ -12,8 +12,10 @@ import persistence.dto.PalavraChaveDTO;
 import persistence.dto.TipoDocumentoDTO;
 import persistence.dto.UserDTO;
 import business.DAO.documents.DocumentDAO;
+import business.DAO.documents.DocumentTypeDAO;
 import business.DAO.documents.KeyWordDAO;
 import business.DAO.login.LoginDAO;
+import business.exceptions.documents.DocumentNotFoundException;
 import business.exceptions.documents.KeywordNotFoundException;
 import business.exceptions.login.UnreachableDataBaseException;
 
@@ -30,7 +32,7 @@ public class CadastroEJB {
 			String tipoDocumento_tipoDocumento, String palavraChave01,
 			String palavraChave02, String palavraChave03, String autor,
 			String local, String destinatario, String resumo,
-			Calendar dataDocumento, String uploader) {
+			Calendar dataDocumento, String uploader) throws UnreachableDataBaseException {
 
 		DocumentoDTO docDTO;
 		TipoDocumentoDTO tipoDTO;
@@ -39,6 +41,9 @@ public class CadastroEJB {
 		UserDTO uploaderDTO;
 		PalavraChaveDTO[] palavraChaveDTO = { null, null, null };
 
+		idNumDoc_tipoId = idNumDoc_tipoId.toUpperCase();
+		origem_tipoOrigem = origem_tipoOrigem.toUpperCase();
+		
 		if (!( idNumDoc_tipoId.equals("APEP") || idNumDoc_tipoId.equals("SEQ") ))
 			throw new IllegalArgumentException(
 					"Tipo do id de documento tem que ser \"APEP\" ou \"SEQ\"");
@@ -67,21 +72,18 @@ public class CadastroEJB {
 			palavraChaveDTO[2] = new PalavraChaveDTO(palavraChave03, false);
 
 		}
+	
+		uploaderDTO = (new LoginDAO()).findUserByEmail(uploader);
+		docDTO = new DocumentoDTO(null, origemDTO, idDTO, tipoDTO, autor,
+				local, destinatario, resumo, dataDocumento, new Date(),
+				uploaderDTO, palavraChaveDTO[0], palavraChaveDTO[1],
+				palavraChaveDTO[2]);
+		docDTO = docDao.addDocument(docDTO);
 		
-		try {
-			uploaderDTO = (new LoginDAO()).findUserByEmail(uploader);
-			docDTO = new DocumentoDTO(null, origemDTO, idDTO, tipoDTO, autor,
-					local, destinatario, resumo, dataDocumento, new Date(),
-					uploaderDTO, palavraChaveDTO[0], palavraChaveDTO[1],
-					palavraChaveDTO[2]);
-			docDTO = docDao.addDocument(docDTO);
-		} catch (UnreachableDataBaseException e) {
-			e.printStackTrace();
-		}
 	}
 
 	public void cadastrarPalavraChave(String palavra)
-			throws IllegalArgumentException {
+			throws IllegalArgumentException, UnreachableDataBaseException {
 		KeyWordDAO kwDao = new KeyWordDAO();
 		try {
 			List<DTO> check = kwDao.findKeyWordByString(palavra);
@@ -94,8 +96,6 @@ public class CadastroEJB {
 			} catch (UnreachableDataBaseException e1) {
 				e1.printStackTrace();
 			}
-		} catch (UnreachableDataBaseException e) {
-			e.printStackTrace();
 		} catch (KeywordNotFoundException e) {
 			try {
 				kwDao.addKeyWord(palavra);
@@ -104,5 +104,39 @@ public class CadastroEJB {
 			}
 			// e.printStackTrace();
 		}
+	}
+	
+	public void deletarDocumento(Long id) throws UnreachableDataBaseException, DocumentNotFoundException{
+		DocumentoDTO docDto;
+		TipoDocumentoDTO tdDto;
+		Long count;
+		DocumentTypeDAO dtDao = new DocumentTypeDAO();
+		String query = "from Documento where id = '" + id + "'";
+			
+		docDto = (DocumentoDTO) docDao.findDocumentByQuery(query).get(0);
+		tdDto = docDto.getTipoDocumento();
+		docDao.removeDocument(docDto);
+		count = docDao.countDocumentsByCriteria("tipo_documento = '" + tdDto.getTipoDocumento() + "'");
+		if(count == 0){
+			dtDao.removeDocumentType(tdDto);
+		}
+	}
+	
+	public void deletarDocumento(DocumentoDTO docDto) throws UnreachableDataBaseException{
+		TipoDocumentoDTO tdDto;
+		Long count;
+		DocumentTypeDAO dtDao = new DocumentTypeDAO();
+		
+		tdDto = docDto.getTipoDocumento();
+		docDao.removeDocument(docDto);
+		count = docDao.countDocumentsByCriteria("tipo_documento = '" + tdDto.getTipoDocumento() + "'");
+		if(count == 0){
+			dtDao.removeDocumentType(tdDto);
+		}
+		
+	}
+	
+	public void atualizarDocumento(DocumentoDTO docDTO) throws UnreachableDataBaseException{
+		docDao.updateDocument(docDTO);
 	}
 }

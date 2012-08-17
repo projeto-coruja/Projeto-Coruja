@@ -37,35 +37,50 @@
 </head>
 <body onloadstart="checkCookie()">
 	<div class="container">
-		<div class="header"></div>
-
+		<div class="header">
+			<a href="/GraoPara/index.jsp" class="banner"><img
+				src="/GraoPara/images/header.png" /></a>
+			<!--  <a href="/GraoPara/index.jsp" class="banner"><img src="/GraoPara/images/header.png"/></a> -->
+		</div>
+		<!-- Fim do Banner -->
 		<!-- Começo do menu lateral -->
 		<div class="sidebar1">
 
-			<!--Depois de logado-->
-			<div class="LoginArea" id="logado" style="display:block;">
+			<!--Começo da área de login -->
+			<div class="LoginArea" id="loginDefault" style="display:block;">
 				<form method="post" action="/GraoPara/doLogin">
 					<fieldset>
-						<label for="login">Bem vindo</label>
-						<label onload="getName()"></label>
+						<label for="login">Login:</label> <input class="inputLogin"
+							type="text" name="login" height="30px" size="auto"
+							placeholder="Seu login" required> <label for="senha">Senha:</label>
+						<input class="inputLogin" type="password" name="senha"
+							height="30px" size="auto" placeholder="Sua senha" required>
 					</fieldset>
 					<fieldset>
-						<a href="/GraoPara/protected/admin/indexAdmin.jsp">
-						<input class="buttonSair" type="submit" name="Sair" value="Sair" /></a>
+						<input class="buttonEntrar" type="submit" name="Entrar"
+							value="Entrar" />
+					</fieldset>
+					<fieldset>
+						<a href="/GraoPara/CadUsuario.jsp"><input type="button"
+							class="buttonRegistrar" name="Registrar" value="Registrar"></a>
 					</fieldset>
 				</form>
 			</div>
-			<!-- ----------------------------------------------------------------------- -->
+			<!-- Fim da área de login -->
 
-			<article class="menuLateral">  
+			<article class="menuLateral">
 				<ul class="nav" id="menu">
-					<li><a href="/GraoPara/protected/admin/indexAdmin.jsp">Home</a></li>
-					<li><a href="/GraoPara/protected/admin/pesquisaAdmin.jsp">Pesquisar</a></li>
-					<li><a href="/GraoPara/protected/admin/cadastroDocumentosAdmin.jsp">Cadastrar Documento</a></li>
-					<li><a href="/GraoPara/protected/admin/painelAdmin.jsp">Painel Admin</a></li>
-					<li><a href="/GraoPara/protected/admin/sobreAdmin.jsp">Sobre</a></li>
+					<li><a href="/GraoPara/public/index.jsp">Home</a></li>
+					<li><a href="/GraoPara/public/pesquisa.jsp">Pesquisar</a></li>
+					<li><a href="/GraoPara/public/sobre.jsp">Sobre</a></li>
 				</ul>
 			</article>
+
+			<!-- Área para texto na barra lateral, a barra cresce ao inserir conteudo... -->
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
 		</div>
 		<!-- Fim do Menu Lateral -->
 		<div class="content" id="content">TESTE DE CARREGAMENTO</div>
