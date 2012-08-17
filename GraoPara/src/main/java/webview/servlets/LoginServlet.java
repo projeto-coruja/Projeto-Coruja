@@ -1,4 +1,4 @@
-package webview;
+package webview.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -38,7 +38,7 @@ public class LoginServlet extends HttpServlet {
 		String senha = request.getParameter("senha");
 		try {
 			UserBean login_result = AuthBean.validarLogin(user, senha, AuthBean.NonHashedPwd);
-			if(login_result.getLogType() == AuthBean.LoginSuccessAdmin || login_result.getLogType() == AuthBean.LoginSuccessUser)
+			if(login_result != null && (login_result.getLogType() == AuthBean.LoginSuccessAdmin || login_result.getLogType() == AuthBean.LoginSuccessUser))
 			{
 				Cookie c_email = new Cookie(WebUtility.cookie_email, user);
 				Cookie c_pass = new Cookie(WebUtility.cookie_password, Password.getHash(senha));
@@ -52,14 +52,6 @@ public class LoginServlet extends HttpServlet {
 				response.addCookie(c_pass);
 				response.addCookie(c_status);
 				response.addCookie(c_nome);
-				//Qualquer coisa que mude a página, ou redirecionar para uma nova página só para usuários logados, provisório
-				//response.sendRedirect(request.getContextPath() + "/pages/public/Error.jsp");
-				
-				/*response.setContentType("text/html");  
-			    PrintWriter out=response.getWriter();   
-			    out.println("<script>");  
-			    out.println("alert('Login realizado com sucesso!');");  
-			    out.println("</script>");*/
 			    
 			    if(login_result.getLogType() == AuthBean.LoginSuccessUser)	// retorna para a página de USER
 			    	response.sendRedirect("/GraoPara/protected/user/indexUser.jsp");

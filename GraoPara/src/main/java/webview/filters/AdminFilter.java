@@ -1,4 +1,4 @@
-package webview;
+package webview.filters;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,6 +13,8 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import webview.servlets.WebUtility;
 
 import business.EJB.userEJB.AuthBean;
 import business.EJB.userEJB.UserBean;
@@ -48,6 +50,22 @@ public class AdminFilter implements Filter {
 		if(c_status != null && Integer.parseInt(c_status.getValue()) == AuthBean.LoginSuccessAdmin) {
 			chain.doFilter(request, response);
 		}
+		else if(c_status != null && Integer.parseInt(c_status.getValue()) == AuthBean.LoginSuccessUser) {
+			res.setContentType("text/html");  
+		    PrintWriter out=res.getWriter();   
+			out.println("<script>");  
+		    out.println("alert('Você não possuí permissão para acessar esta área!');");  
+		    out.println("document.location=('/GraoPara/protected/user');");  
+		    out.println("</script>");
+		}
+		else if(c_status != null && Integer.parseInt(c_status.getValue()) == AuthBean.LoginFailOrDefault) {
+			res.setContentType("text/html");  
+		    PrintWriter out=res.getWriter();   
+			out.println("<script>");  
+		    out.println("alert('Você não possuí permissão para acessar esta área!');");  
+		    out.println("document.location=('/GraoPara/public');");  
+		    out.println("</script>");
+		}
 		else {
 			UserBean user = WebUtility.cookieLogin(c_list);			
 			if(user != null && user.getLogType() == AuthBean.LoginSuccessAdmin) {
@@ -56,17 +74,26 @@ public class AdminFilter implements Filter {
 				res.addCookie(c_status);
 				chain.doFilter(request, response);
 			}
+			else if(user != null && user.getLogType() == AuthBean.LoginSuccessUser) {
+				c_status = new Cookie(WebUtility.cookie_status, user.getLogType().toString());
+				c_status.setMaxAge(-1);
+				res.addCookie(c_status);
+				res.setContentType("text/html");  
+			    PrintWriter out=res.getWriter();   
+				out.println("<script>");  
+			    out.println("alert('Você não possuí permissão para acessar esta área!');");  
+			    out.println("document.location=('/GraoPara/protected/user');");  
+			    out.println("</script>");
+			}
 			else {
 				res.setContentType("text/html");  
 			    PrintWriter out=res.getWriter();   
 				out.println("<script>");  
 			    out.println("alert('Você não possuí permissão para acessar esta área!');");  
-			    out.println("document.location=('/GraoPara/protected/admin/');");  
+			    out.println("document.location=('/GraoPara/public/');");  
 			    out.println("</script>");
-				//res.sendRedirect(req.getContextPath() + "/faces/pages/public/index.jsp");
 			}
 		}
-
 	}
 
 	/**

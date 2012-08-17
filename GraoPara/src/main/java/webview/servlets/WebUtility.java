@@ -1,4 +1,4 @@
-package webview;
+package webview.servlets;
 
 import javax.servlet.http.Cookie;
 
@@ -48,6 +48,8 @@ public final class WebUtility {
 	}
 	
 	public static Cookie selectCookie(Cookie[] c_list, String c_name) {
+		if(c_list == null) return null;
+		
 		for(int i = 0; i < c_list.length; i++) {
 			Cookie cookie = c_list[i];
 			String cName = cookie.getName();

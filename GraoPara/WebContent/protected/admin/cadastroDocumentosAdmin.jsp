@@ -115,8 +115,8 @@
 						<td width="377" height="20">
 								<select name="tipo_num" class="inputTipoNum validate[required] smallInput" id="tipo_num">
 									<option value="" selected>Selecione...</option>
-									<option value="0">APEP</option>
-									<option value="1">Sequencial</option>
+									<option value="apep">APEP</option>
+									<option value="seq">Sequencial</option>
 								</select>
 								<input class="inputShort validate[required,custom[onlyNumberSp]]" name="numero" id="numero" type="text" maxlength="4"> 
 						</td>
@@ -138,51 +138,12 @@
 						    	<input class="input validate[required]" name="destinatario" id="destinatario" type="text" size="20" maxlength="48">
 						</td>
 					</tr>
-					<tr>
-						<td height="20">
-							<label for="estado" class="labelForms">Estado:<font color="#FF0000">*</font></label>
-		                
-						</td>
-		                <td>
-		                    <select class="inputEstado validate[required] smallInput" name="estado" id="estado">
-									<option value="">---</option>
-									<option value="AC">AC</option>
-									<option value="AL">AL</option>
-									<option value="AP">AP</option>
-									<option value="AM">AM</option>
-									<option value="BA">BA</option>
-									<option value="CE">CE</option>
-									<option value="ES">ES</option>
-									<option value="DF">DF</option>
-									<option value="MA">MA</option>
-									<option value="MT">MT</option>
-									<option value="MS">MS</option>
-									<option value="MG">MG</option>
-									<option value="PA">PA</option>
-									<option value="PB">PB</option>
-									<option value="PR">PR</option>
-									<option value="PE">PE</option>
-									<option value="PI">PI</option>
-									<option value="RJ">RJ</option>
-									<option value="RN">RN</option>
-									<option value="RS">RS</option>
-									<option value="RO">RO</option>
-									<option value="RR">RR</option>
-									<option value="SC">SC</option>
-									<option value="SP">SP</option>
-									<option value="SE">SE</option>
-									<option value="TO">TO</option>
-							</select>
-		                </td>
-						
-					</tr>
 		            <tr>
 		            	<td height="20">
-							<label for="cidade" class="labelForms">Cidade:<font color="#FF0000">*</font></label>
-								
+							<label for="local" class="labelForms">Local:<font color="#FF0000">*</font></label>	
 						</td>
 		                <td>
-		                <input class="input validate[required]" name="cidade" id="cidade" type="text" maxlength="43">
+		                <input class="input validate[required]" name="local" id="local" type="text" maxlength="43">
 		            </tr>
 					<tr>
 						<td height="20">
@@ -199,11 +160,12 @@
 						<td height="20">
 						 	<select class="input validate[required] smallInput" name="tipoDoc" id="tipoDoc"> <!-- Pegar do Banco de dados os tipos e, caso o usuÃ¡rio selecione outro, exibir campo para cadastrar outro tipo -->
 									<option value="">Selecione...</option>
-									<option value="codice">Ofícios</option>
-									<option value="caixa">Relatórios</option>
-									<option value="caixa">Impressos</option>
-									<option value="caixa">Processos</option>
-									<option value="caixa">Outro</option>
+									<option value="oficio">Ofícios</option>
+									<option value="relatorio">Relatórios</option>
+									<option value="impresso">Impressos</option>
+									<option value="processo">Processos</option>
+									<option value="carta">Cartas</option>
+									<option value="carta">Outros</option>
 							</select>
 						</td>
 					</tr>			
@@ -245,7 +207,7 @@
 		<div class="footer">
 			<p>Copyright © - Universidade Federal de São Paulo - UNIFESP 2012</p>
 			<p>Desenvolvido pelo grupo Coruja</p>
-			<a href="/GraoPara/sobre.jsp">- Sobre -</a>
+			<a href="/GraoPara/protected/admin/sobre.jsp">- Sobre -</a>
 		</div>
 		<!-- Fim do Rodapé -->
 		<!-- end .container -->

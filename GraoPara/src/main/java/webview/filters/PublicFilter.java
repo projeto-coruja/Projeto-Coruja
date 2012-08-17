@@ -1,7 +1,6 @@
-package webview;
+package webview.filters;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -14,19 +13,21 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import webview.servlets.WebUtility;
+
 import business.EJB.userEJB.AuthBean;
 import business.EJB.userEJB.UserBean;
 
 /**
- * Servlet Filter implementation class LoginFilter
+ * Servlet Filter implementation class PublicFilter
  */
-@WebFilter("/protected/user/*")
-public class UserFilter implements Filter {
+@WebFilter("/public/*")
+public class PublicFilter implements Filter {
 
     /**
      * Default constructor. 
      */
-    public UserFilter() {
+    public PublicFilter() {
         // TODO Auto-generated constructor stub
     }
 
@@ -45,8 +46,14 @@ public class UserFilter implements Filter {
 		HttpServletResponse res = (HttpServletResponse) response;
 		Cookie[] c_list = req.getCookies();
 		Cookie c_status = WebUtility.selectCookie(c_list, WebUtility.cookie_status);
-		if(c_status != null && Integer.parseInt(c_status.getValue()) == AuthBean.LoginSuccessUser) {
+		if(c_status != null && Integer.parseInt(c_status.getValue()) == AuthBean.LoginFailOrDefault) {
 			chain.doFilter(request, response);
+		}
+		else if(c_status != null && Integer.parseInt(c_status.getValue()) == AuthBean.LoginSuccessUser) {
+			res.sendRedirect(req.getContextPath() + "/protected/user");
+		}
+		else if(c_status != null && Integer.parseInt(c_status.getValue()) == AuthBean.LoginSuccessAdmin) {
+			res.sendRedirect(req.getContextPath() + "/protected/admin");
 		}
 		else {
 			UserBean user = WebUtility.cookieLogin(c_list);			
@@ -54,16 +61,16 @@ public class UserFilter implements Filter {
 				c_status = new Cookie(WebUtility.cookie_status, user.getLogType().toString());
 				c_status.setMaxAge(-1);
 				res.addCookie(c_status);
-				chain.doFilter(request, response);
+				res.sendRedirect(req.getContextPath() + "/protected/user");
+			}
+			else if(user != null && user.getLogType() == AuthBean.LoginSuccessAdmin) {
+				c_status = new Cookie(WebUtility.cookie_status, user.getLogType().toString());
+				c_status.setMaxAge(-1);
+				res.addCookie(c_status);
+				res.sendRedirect(req.getContextPath() + "/protected/admin");
 			}
 			else {
-				res.setContentType("text/html");  
-			    PrintWriter out=res.getWriter();   
-				out.println("<script>");  
-			    out.println("alert('Você não possuí permissão para acessar esta área!');");  
-			    out.println("document.location=('/GraoPara/protected/user/');");  
-			    out.println("</script>");
-				//res.sendRedirect(req.getContextPath() + "/faces/pages/public/index.jsp");
+				chain.doFilter(request, response);
 			}
 		}
 	}

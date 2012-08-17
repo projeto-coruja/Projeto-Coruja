@@ -1,6 +1,7 @@
-package webview;
+package webview.servlets;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.GregorianCalendar;
 
 import javax.servlet.ServletException;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import business.EJB.docEJB.CadastroEJB;
+import business.exceptions.login.UnreachableDataBaseException;
 
 /**
  * Servlet implementation class DocServlet
@@ -58,14 +60,23 @@ public class DocServlet extends HttpServlet {
 				data_parse[2], data_parse[1], data_parse[0]);
 		
 		CadastroEJB CB = new CadastroEJB();
-		CB.cadastrarDocumento(
-				codOrigem, tipoOrigem, titulo, 
-				tipoId, numId,
-				tipoDoc,
-				palChave1, palChave2, palChave3,
-				autor, local, destinatario, resumo,
-				dataDoc, email);
-		//Provisório
+		try {
+			CB.cadastrarDocumento(
+					codOrigem, tipoOrigem, titulo, 
+					tipoId, numId,
+					tipoDoc,
+					palChave1, palChave2, palChave3,
+					autor, local, destinatario, resumo,
+					dataDoc, email);
+		} catch (UnreachableDataBaseException e) {
+			response.setContentType("text/html");  
+		    PrintWriter out=response.getWriter();   
+			out.println("<script>");  
+		    out.println("alert('Erro no banco de dados! Contate o suporte e tente novamente mais tarde." + e.getStackTrace() + "');");  
+		    out.println("document.location=('/GraoPara/protected/user/');");  
+		    out.println("</script>");
+			e.printStackTrace();
+		}
 		response.sendRedirect("/GraoPara/");
 		
 	}
