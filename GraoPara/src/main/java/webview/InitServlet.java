@@ -82,6 +82,8 @@ public class InitServlet extends HttpServlet {
 			pa.saveEntity(new UserDTO("Outlook", Password.getHash("null"), (ProfileDTO) (pa.findEntities("from Profile where profile = 'user'").get(0)),
 				"outlook@gmail.com", new Date()));
 		}
+		
+		log.info("Finalizando inicialização...");
 	}
 
 	private void initLogger(ServletConfig config) {
