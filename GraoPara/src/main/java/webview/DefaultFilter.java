@@ -1,7 +1,6 @@
 package webview;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -50,20 +49,18 @@ public class DefaultFilter implements Filter {
 		}
 		else {
 			UserBean user = WebUtility.cookieLogin(c_list);			
-			if(user.getLogType() == AuthBean.LoginFailOrDefault) {
+			if(user == null)
+			{
+				chain.doFilter(request, response);
+			}
+			else if(user.getLogType() == AuthBean.LoginFailOrDefault) {
 				c_status = new Cookie(WebUtility.cookie_status, user.getLogType().toString());
 				c_status.setMaxAge(-1);
 				res.addCookie(c_status);
 				chain.doFilter(request, response);
 			}
 			else {
-				res.setContentType("text/html");  
-			    PrintWriter out=res.getWriter();   
-				out.println("<script>");  
-			    out.println("alert('Você não possuí permissão para acessar esta área!');");  
-			    out.println("document.location=('/GraoPara/public');");  
-			    out.println("</script>");
-				//res.sendRedirect(req.getContextPath() + "/faces/pages/public/index.jsp");
+				res.sendRedirect(req.getContextPath() + "/protected/user");
 			}
 		}
 	}

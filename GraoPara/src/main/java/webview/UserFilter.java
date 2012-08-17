@@ -50,7 +50,7 @@ public class UserFilter implements Filter {
 		}
 		else {
 			UserBean user = WebUtility.cookieLogin(c_list);			
-			if(user.getLogType() == AuthBean.LoginSuccessUser) {
+			if(user != null && user.getLogType() == AuthBean.LoginSuccessUser) {
 				c_status = new Cookie(WebUtility.cookie_status, user.getLogType().toString());
 				c_status.setMaxAge(-1);
 				res.addCookie(c_status);
@@ -61,7 +61,7 @@ public class UserFilter implements Filter {
 			    PrintWriter out=res.getWriter();   
 				out.println("<script>");  
 			    out.println("alert('Você não possuí permissão para acessar esta área!');");  
-			    out.println("document.location=('/GraoPara/');");  
+			    out.println("document.location=('/GraoPara/protected/user/');");  
 			    out.println("</script>");
 				//res.sendRedirect(req.getContextPath() + "/faces/pages/public/index.jsp");
 			}
