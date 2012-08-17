@@ -18,17 +18,17 @@ import business.EJB.userEJB.AuthBean;
 import business.EJB.userEJB.UserBean;
 
 /**
- * Servlet Filter implementation class AdminFilter
+ * Servlet Filter implementation class DefaultFilter
  */
-@WebFilter("/protected/admin/*")
-public class AdminFilter implements Filter {
+@WebFilter("/public")
+public class DefaultFilter implements Filter {
 
-	/**
-	 * Default constructor. 
-	 */
-	public AdminFilter() {
-		// TODO Auto-generated constructor stub
-	}
+    /**
+     * Default constructor. 
+     */
+    public DefaultFilter() {
+        // TODO Auto-generated constructor stub
+    }
 
 	/**
 	 * @see Filter#destroy()
@@ -45,12 +45,12 @@ public class AdminFilter implements Filter {
 		HttpServletResponse res = (HttpServletResponse) response;
 		Cookie[] c_list = req.getCookies();
 		Cookie c_status = WebUtility.selectCookie(c_list, WebUtility.cookie_status);
-		if(c_status != null && Integer.parseInt(c_status.getValue()) == AuthBean.LoginSuccessAdmin) {
+		if(c_status != null && Integer.parseInt(c_status.getValue()) == AuthBean.LoginFailOrDefault) {
 			chain.doFilter(request, response);
 		}
 		else {
 			UserBean user = WebUtility.cookieLogin(c_list);			
-			if(user.getLogType() == AuthBean.LoginSuccessAdmin) {
+			if(user.getLogType() == AuthBean.LoginFailOrDefault) {
 				c_status = new Cookie(WebUtility.cookie_status, user.getLogType().toString());
 				c_status.setMaxAge(-1);
 				res.addCookie(c_status);
@@ -61,13 +61,13 @@ public class AdminFilter implements Filter {
 			    PrintWriter out=res.getWriter();   
 				out.println("<script>");  
 			    out.println("alert('Você não possuí permissão para acessar esta área!');");  
-			    out.println("document.location=('/GraoPara/');");  
+			    out.println("document.location=('/GraoPara/public');");  
 			    out.println("</script>");
 				//res.sendRedirect(req.getContextPath() + "/faces/pages/public/index.jsp");
 			}
 		}
-
 	}
+
 
 	/**
 	 * @see Filter#init(FilterConfig)
