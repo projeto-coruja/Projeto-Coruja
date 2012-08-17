@@ -40,7 +40,7 @@
 
 	<div class="container">
 		<div class="header"></div>
-		<!-- Fim do Banner -->
+		
 		<!-- Começo do menu lateral -->
 		<div class="sidebar1">
 
@@ -65,7 +65,7 @@
 					name="Entrar" value="Entrar" />
 			</div>
 			<fieldset>
-				<a href="/GraoPara/CadUsuario.jsp"><input type="button"
+				<a href="/GraoPara/public/CadUsuario.jsp"><input type="button"
 					class="buttonRegistrar" name="Registrar" value="Registrar"></a>
 			</fieldset>
 			<!-- Fim da área de login -->
@@ -82,7 +82,7 @@
 		<div class="content" id="content">
 			<h2>Cadastro Usuário</h2>
 
-			<form id="signupform" autocomplete="off" method="get" action="">
+			<form id="signupform" autocomplete="off" method="post" action="/GraoPara/doLogin">
 				<table class="tableForms">
 					<tr>
 						<td height="20" colspan="3">

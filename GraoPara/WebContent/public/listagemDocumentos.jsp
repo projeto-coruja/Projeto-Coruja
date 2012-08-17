@@ -39,6 +39,7 @@
 	<div class="container">
 		<div class="header"></div>
 		<!-- Fim do Banner -->
+		
 		<!-- Começo do menu lateral -->
 		<div class="sidebar1">
 
@@ -61,7 +62,7 @@
 				</form>
 			</div>
 			<fieldset>
-				<a href="/GraoPara/CadUsuario.jsp"><input type="button"
+				<a href="/GraoPara/public/CadUsuario.jsp"><input type="button"
 					class="buttonRegistrar" name="Registrar" value="Registrar"></a>
 			</fieldset>
 			<!-- Fim da área de login -->
@@ -73,12 +74,6 @@
 					<li><a href="/GraoPara/public/sobre.jsp">Sobre</a></li>
 				</ul>
 			</article>
-
-			<!-- Área para texto na barra lateral, a barra cresce ao inserir conteudo... -->
-			<p></p>
-			<p></p>
-			<p></p>
-			<p></p>
 		</div>
 		<!-- Fim do Menu Lateral -->
 		<div class="contentListagem" id="content">
@@ -112,7 +107,7 @@
 						<label class="labelExibe">Data</label>
 					</td>
 					<td>
-						<label class="labelExibe" style="FONT-FAMILY: 'Bitstream Charter';">Documento</label>
+						<label class="labelExibe">Documento</label>
 					</td>
 					<td>
 						<label class="labelExibe">Ações</label>

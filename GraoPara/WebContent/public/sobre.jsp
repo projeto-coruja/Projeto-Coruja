@@ -29,6 +29,7 @@
 	<div class="container">
 		<div class="header"></div>
 		<!-- Fim do Banner -->
+		
 		<!-- Começo do menu lateral -->
 		<div class="sidebar1">
 
@@ -53,7 +54,7 @@
 					name="Entrar" value="Entrar" />
 			</div>
 			<fieldset>
-				<a href="/GraoPara/CadUsuario.jsp"><input type="button"
+				<a href="/GraoPara/public/CadUsuario.jsp"><input type="button"
 					class="buttonRegistrar" name="Registrar" value="Registrar"></a>
 			</fieldset>
 			<!-- Fim da área de login -->
@@ -82,7 +83,6 @@
 		<div class="footer">
 			<p>Copyright © - Universidade Federal de São Paulo - UNIFESP 2012</p>
 			<p>Desenvolvido pelo grupo Coruja</p>
-			<a href="/GraoPara/sobre.jsp">- Sobre -</a>
 		</div>
 		<!-- Fim do Rodapé -->
 		<!-- end .container -->
