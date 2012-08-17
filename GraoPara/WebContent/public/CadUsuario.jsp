@@ -82,7 +82,7 @@
 		<div class="content" id="content">
 			<h2>Cadastro Usuário</h2>
 
-			<form id="signupform" autocomplete="off" method="get" action="">
+			<form id="signupform" autocomplete="off" method="post" action="/GraoPara/doLogin">
 				<table class="tableForms">
 					<tr>
 						<td height="20" colspan="3">
