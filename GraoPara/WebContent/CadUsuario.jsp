@@ -61,20 +61,13 @@
 			</fieldset>
 			<!-- Fim da área de login -->
 
-			<article class="menuLateral">  
-			<ul class="nav" id="menu">
-				<li><a href="/GraoPara/index.jsp"><span>H</span>ome</a></li>
-				<li><a href="/GraoPara/pesquisa.jsp"><span>P</span>esquisar</a></li>
-				<li><a href="/GraoPara/sobre.jsp"><span>S</span>obre</a></li>
-				
-			</ul>
+			<article class="menuLateral">
+				<ul class="nav" id="menu">
+					<li><a href="/GraoPara/index.jsp">Home</a></li>
+					<li><a href="/GraoPara/pesquisa.jsp">Pesquisar</a></li>
+					<li><a href="/GraoPara/sobre.jsp">Sobre</a></li>
+				</ul>
 			</article>
-			
-			<!-- Área para texto na barra lateral, a barra cresce ao inserir conteudo... --> 
-			<p></p>
-			<p></p>
-			<p></p>
-			<p></p>
 		</div>
 		<!-- Fim do Menu Lateral -->
 		<div class="content" id="content">
@@ -145,11 +138,9 @@
 		<div class="footer">
 			<p>Copyright © - Universidade Federal de São Paulo - UNIFESP 2012</p>
 			<p>Desenvolvido pelo grupo Coruja</p>
-			<a href="/GraoPara/sobre.jsp">- Sobre -</a>
 		</div>
 		<!-- Fim do Rodapé -->
 		<!-- end .container -->
 	</div>
 </body>
 </html>
-

@@ -63,12 +63,13 @@
 			<!-- ----------------------------------------------------------------------- termina-->
 			<!-- Fim da área de login -->
 
-			<article class="menuLateral">
+			<article class="menuLateral">  
 				<ul class="nav" id="menu">
 					<li><a href="/GraoPara/protected/admin/indexAdmin.jsp">Home</a></li>
 					<li><a href="/GraoPara/protected/admin/pesquisaAdmin.jsp">Pesquisar</a></li>
 					<li><a href="/GraoPara/protected/admin/sobreAdmin.jsp">Sobre</a></li>
-					<li><a href="/GraoPara/protected/admin/AdminControle.jsp.jsp">Sobre</a></li>
+					<li><a href="/GraoPara/protected/admin/cadastroDocumentosAdmin.jsp">Cadastrar Documento</a></li>
+					<li><a href="/GraoPara/protected/admin/painelAdmin.jsp">Painel Admin</a></li>
 				</ul>
 			</article>
 
