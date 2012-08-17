@@ -138,53 +138,14 @@
 						    	<input class="input" name="destinatario" type="text" size="20" maxlength="48">
 						</td>
 					</tr>
-					<tr>
-						<td height="20">
-							<label for="estado" class="labelForms">Estado:</label>
-		                
-						</td>
-		                <td>
-		                    <select class="inputEstado" name="estado" id="estado">
-									<option selected>---</option>
-									<option value="AC">AC</option>
-									<option value="AL">AL</option>
-									<option value="AP">AP</option>
-									<option value="AM">AM</option>
-									<option value="BA">BA</option>
-									<option value="CE">CE</option>
-									<option value="ES">ES</option>
-									<option value="DF">DF</option>
-									<option value="MA">MA</option>
-									<option value="MT">MT</option>
-									<option value="MS">MS</option>
-									<option value="MG">MG</option>
-									<option value="PA">PA</option>
-									<option value="PB">PB</option>
-									<option value="PR">PR</option>
-									<option value="PE">PE</option>
-									<option value="PI">PI</option>
-									<option value="RJ">RJ</option>
-									<option value="RN">RN</option>
-									<option value="RS">RS</option>
-									<option value="RO">RO</option>
-									<option value="RR">RR</option>
-									<option value="SC">SC</option>
-									<option value="SP">SP</option>
-									<option value="SE">SE</option>
-									<option value="TO">TO</option>
-							</select>
-		                </td>
-						
-					</tr>
-		            <tr>
+					 <tr>
 		            	<td height="20">
-							<label for="cidade" class="labelForms">Cidade:</label>
+							<label for="local" class="labelForms">Local:<font color="#FF0000">*</font></label>
 								
 						</td>
 		                <td>
-		                <input class="input" name="cidade" type="text" size="15" maxlength="43">
-		                </td>
-		            </tr>
+		                <input class="input validate[required]" name="local" id="local" type="text" maxlength="43">
+		            </tr>				
 					<tr>
 						<td height="20">
 							<label for="dataDocumento" class="labelForms">Data do Documento:</label>
