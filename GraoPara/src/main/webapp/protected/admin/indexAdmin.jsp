@@ -44,13 +44,12 @@
 
 			<!--Depois de logado-->
 			<div class="LoginArea" id="logado" style="display:block;">
-				<form method="post" action="/GraoPara/doLogin">
+				<form method="post" action="/GraoPara/doLogout">
 					<fieldset>
 						<label for="login">Bem vindo</label>
 						<label onload="getName()"></label>
 					</fieldset>
 					<fieldset>
-						<a href="/GraoPara/protected/admin/indexAdmin.jsp">
 						<input class="buttonSair" type="submit" name="Sair" value="Sair" /></a>
 					</fieldset>
 				</form>
