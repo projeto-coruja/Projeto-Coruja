@@ -66,7 +66,7 @@
 		<div class="content" id="content">
 				
 			<h2>Cadastro de Documentos</h2>
-			<form action="#" method="POST" name="cadastro">
+			<form action="/GraoPara/addDoc" method="POST" name="cadastro">
 				<table class="tableForms">
 					<tr>
 						<td height="20" colspan="3">
