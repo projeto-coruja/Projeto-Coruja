@@ -29,6 +29,15 @@ public class OrigemDAO {
 		return newId;
 	}
 	
+	public void removeOrigin(OrigemDTO origin) throws UnreachableDataBaseException{
+		try{
+			manager.deleteEntity(origin);
+		} catch(DataAccessLayerException e){
+			e.printStackTrace();
+			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
+		}
+	}
+	
 	public List<DTO> findOriginByCod(String cod) throws  UnreachableDataBaseException, OriginNotFoundException  {
 		List<DTO> resultSet = null;
 		try {

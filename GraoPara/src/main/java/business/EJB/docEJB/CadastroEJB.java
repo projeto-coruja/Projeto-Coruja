@@ -13,7 +13,9 @@ import persistence.dto.TipoDocumentoDTO;
 import persistence.dto.UserDTO;
 import business.DAO.documents.DocumentDAO;
 import business.DAO.documents.DocumentTypeDAO;
+import business.DAO.documents.IdNumDocumentoDAO;
 import business.DAO.documents.KeyWordDAO;
+import business.DAO.documents.OrigemDAO;
 import business.DAO.login.LoginDAO;
 import business.exceptions.documents.DocumentNotFoundException;
 import business.exceptions.documents.KeywordNotFoundException;
@@ -108,18 +110,30 @@ public class CadastroEJB {
 	
 	public void deletarDocumento(Long id) throws UnreachableDataBaseException, DocumentNotFoundException{
 		DocumentoDTO docDto;
-		TipoDocumentoDTO tdDto;
 		Long count;
 		DocumentTypeDAO dtDao = new DocumentTypeDAO();
+		IdNumDocumentoDAO indDao = new IdNumDocumentoDAO();
+		OrigemDAO originDao = new OrigemDAO();
 		String query = "from Documento where id = '" + id + "'";
 			
 		docDto = (DocumentoDTO) docDao.findDocumentByQuery(query).get(0);
-		tdDto = docDto.getTipoDocumento();
 		docDao.removeDocument(docDto);
-		count = docDao.countDocumentsByCriteria("tipo_documento = '" + tdDto.getTipoDocumento() + "'");
+		
+		count = docDao.countDocumentsByCriteria("tipo_documento = '" + docDto.getTipoDocumento().getTipoDocumento() + "'");
 		if(count == 0){
-			dtDao.removeDocumentType(tdDto);
+			dtDao.removeDocumentType(docDto.getTipoDocumento());
 		}
+		
+		count = docDao.countDocumentsByCriteria("tipo_id = '" + docDto.getIdNumDocumento().getTipoId() + "' and cod_id = '" + docDto.getIdNumDocumento().getCodId() + "'");
+		if(count == 0){
+			indDao.removeIdNumDocument(docDto.getIdNumDocumento());
+		}
+		
+		count = docDao.countDocumentsByCriteria("tipo_origem = '" + docDto.getOrigemDocumento().getTipoOrigem() + "' and cod_origem = '" + docDto.getOrigemDocumento().getCodOrigem() + "'");
+		if(count == 0){
+			originDao.removeOrigin(docDto.getOrigemDocumento());
+		}
+		
 	}
 	
 	public void deletarDocumento(DocumentoDTO docDto) throws UnreachableDataBaseException{
