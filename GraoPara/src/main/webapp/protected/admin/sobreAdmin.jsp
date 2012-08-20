@@ -13,16 +13,6 @@
 <!-- CSS das validações -->
 <link rel="stylesheet" type="text/css" href="/GraoPara/css/validationEngine.jquery.css" />
 
-<!-- Import dos javascripts -->
-<script type="text/javascript" src="/GraoPara/javascript/ajax.js" charset="utf-8"></script>
-<script type="text/javascript" src="/GraoPara/javascript/instrucao.js" charset="utf-8"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" charset="utf-8"></script>
-
-<!-- Import dos scripts de validação de formulário -->
-<script type="text/javascript" src="/GraoPara/javascript/jquery.validationEngine.js" charset="utf-8"></script>
-<script type="text/javascript" src="/GraoPara/javascript/script.js" charset="utf-8"></script>
-<script type="text/javascript" src="/GraoPara/javascript/languages/jquery.validationEngine-pt.js" charset="utf-8"></script>
-
 </head>
 <body>
 
@@ -32,18 +22,15 @@
 		<!-- Começo do menu lateral -->
 		<div class="sidebar1">
 
-			<div class="sidebar1">
-
 			<!--Depois de logado-->
 			<div class="LoginArea" id="logado" style="display:block;">
-				<form method="post" action="/GraoPara/doLogin">
+				<form method="post" action="/GraoPara/doLogout">
 					<fieldset>
 						<label for="login">Bem vindo</label>
 						<label onload="getName()"></label>
 					</fieldset>
 					<fieldset>
-						<a href="/GraoPara/protected/admin/indexAdmin.jsp">
-						<input class="buttonSair" type="submit" name="Sair" value="Sair" /></a>
+						<input class="buttonSair" type="submit" name="Sair" value="Sair" />
 					</fieldset>
 				</form>
 			</div>

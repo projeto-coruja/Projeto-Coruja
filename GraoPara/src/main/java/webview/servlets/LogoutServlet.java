@@ -1,6 +1,8 @@
 package webview.servlets;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -11,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class LogoutServlet
  */
-@WebServlet("/LogoutServlet")
+@WebServlet("/doLogout")
 public class LogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -28,9 +30,16 @@ public class LogoutServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Cookie[] c_list = request.getCookies();
-		for(Cookie c : c_list)
+		for(Cookie c : c_list){
 			c.setMaxAge(0);
-		response.sendRedirect(request.getContextPath() + "/public");
+			response.addCookie(c);
+		}
+		
+		PrintWriter out=response.getWriter();   
+	    out.println("<script>");  
+	    out.println("alert('Logout feito com sucesso!');");  
+	    out.println("</script>");
+		response.sendRedirect("/GraoPara/public/index.jsp");
 	}
 
 }

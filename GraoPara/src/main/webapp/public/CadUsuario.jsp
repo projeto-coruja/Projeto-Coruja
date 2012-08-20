@@ -31,8 +31,8 @@
 	charset="utf-8"></script>
 <script src="/GraoPara/javascript/validate.js" type="text/javascript"
 	charset="utf-8"></script>
-<script src="/GraoPara/javascript/validate_pt_br.js"
-	type="text/javascript" charset="utf-8"></script>
+<!-- <script src="/GraoPara/javascript/validate_pt_br.js"
+	type="text/javascript" charset="utf-8"></script> -->
 
 </head>
 
@@ -82,7 +82,7 @@
 		<div class="content" id="content">
 			<h2>Cadastro Usuário</h2>
 
-			<form id="signupform" autocomplete="off" method="post" action="/GraoPara/doLogin">
+			<form id="signupform" autocomplete="off" method="post" action="/GraoPara/doRegister">
 				<table class="tableForms">
 					<tr>
 						<td height="20" colspan="3">

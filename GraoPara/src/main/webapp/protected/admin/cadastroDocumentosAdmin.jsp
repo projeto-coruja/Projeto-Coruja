@@ -40,8 +40,7 @@
 						<label onload="getName()"></label>
 					</fieldset>
 					<fieldset>
-						<a href="/GraoPara/protected/admin/indexAdmin.jsp">
-						<input class="buttonSair" type="submit" name="Sair" value="Sair" /></a>
+						<input class="buttonSair" type="submit" name="Sair" value="Sair" />
 					</fieldset>
 				</form>
 			</div>
