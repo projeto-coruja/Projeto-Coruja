@@ -1,4 +1,7 @@
 <!doctype html>
+<%@page import="java.io.PrintWriter"%>
+<%@page import="webview.WebUtility"%>
+<%@page import="business.EJB.userEJB.AuthBean"%>
 <html>
 <head>
 <meta charset="utf-8">
@@ -47,10 +50,14 @@
 				<form method="post" action="/GraoPara/doLogout">
 					<fieldset>
 						<label for="login">Bem vindo</label>
-						<label onload="getName()"></label>
+						
+						<%
+							String name = (String) session.getAttribute("nome_graopara");
+							out.println("<label>" + name + "</label>");
+						%>
 					</fieldset>
 					<fieldset>
-						<input class="buttonSair" type="submit" name="Sair" value="Sair" /></a>
+						<input class="buttonSair" type="submit" name="Sair" value="Sair" />
 					</fieldset>
 				</form>
 			</div>
