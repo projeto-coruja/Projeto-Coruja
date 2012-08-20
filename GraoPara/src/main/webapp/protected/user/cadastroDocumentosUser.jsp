@@ -29,8 +29,6 @@
 		
 		<!-- Começo do menu lateral -->
 		<div class="sidebar1">
-			
-			<div class="sidebar1">
 
 			<!--Depois de logado-->
 			<div class="LoginArea" id="logado" style="display:block;">
