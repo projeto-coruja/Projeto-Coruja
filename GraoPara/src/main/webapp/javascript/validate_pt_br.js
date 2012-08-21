@@ -5,7 +5,9 @@ $(document).ready(function() {
 			/* ----------------------------------
 			 *  Cadastro de Documentos
 			 * ---------------------------------- */
-			identificacao: "required",
+			identificacao: {
+				required: true
+			},
 			codigo: {
 				required: true,
 				minlength: 3,				
@@ -18,7 +20,9 @@ $(document).ready(function() {
 				required: true,
 				minlength: 3
 			},
-			tipo_num: required,
+			tiponum: {
+				required: true			
+			},
 			autor: {
 				required: true,
 				minlength: 5,				
@@ -35,8 +39,12 @@ $(document).ready(function() {
 				required: true,
 				date: true
 			},
-			tipoDoc: required,
-			resumo: required,
+			tipoDoc: {
+				required: true
+			},
+			resumo: {
+				required: true
+			},
 			chave1: {
 				required: true,
 				minlength: 3
@@ -61,14 +69,20 @@ $(document).ready(function() {
 				required: true,
 				email: true,
 			},
-			
+			permissao:{
+				required: true
+			},			
 		},
 		messages: {
 			/* ----------------------------------
 			 *  Cadastro de Documentos
 			 * ---------------------------------- */
-			identificacao: "Selecione a identificação.",
-			tipo_num: "Selecione o tipo de número.",
+			identificacao: {
+				required: "Selecione a identificação."
+			},
+			tiponum: {
+				required: "Selecione o tipo de número."
+			},
 			codigo: {
 				required: "Digite o código do documento.",
 				minlength: jQuery.format("Digite no mínimo {0} caracteres.")
@@ -97,8 +111,12 @@ $(document).ready(function() {
 				required: "Entre com uma data válida.",
 				date: "Entre com uma data válida."					
 			},
-			tipoDoc: "Selecione o tipo de Documento.",
-			resumo: "Digite o resumo do Documento",
+			tipoDoc: {
+				required: "Selecione o tipo de Documento."
+			},
+			resumo: {
+				required: "Digite o resumo do Documento"
+			},
 			chave1: {
 				required: "Informe a primeira palavra chave.",
 				minlength: jQuery.format("Digite no mínimo {0} caracteres.")
@@ -122,6 +140,9 @@ $(document).ready(function() {
 			email: {
 				required: "Entre com um email válido.",
 				email: "Entre com um email válido."
+			},
+			permissao: {
+				required: "Selecione a Permissão do Usuário."
 			}
 		},
 		// the errorPlacement has to take the table layout into account
@@ -132,24 +153,6 @@ $(document).ready(function() {
 				error.appendTo ( element.next() );
 			else
 				error.appendTo( element.parent().next() );
-		},
-		// specifying a submitHandler prevents the default submit, good for the demo
-		submitHandler: function() {
-			alert("Cadastro Realizado com Sucesso!");
-		},
-		// set this class to error-labels to indicate valid fields
-		success: function(label) {
-			// set &nbsp; as text for IE
-			label.html("&nbsp;").addClass("checked");
-		}
-	});
-	
-	// propose username by combining first- and lastname
-	$("#username").focus(function() {
-		var firstname = $("#nome").val();
-		var lastname = $("#lastname").val();
-		if(firstname && lastname && !this.value) {
-			this.value = firstname + "." + lastname;
 		}
 	});
 
