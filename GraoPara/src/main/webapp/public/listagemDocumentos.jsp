@@ -10,29 +10,10 @@
 <link rel="stylesheet" type="text/css" href="/GraoPara/css/tabs.css" />
 <link rel="stylesheet" type="text/css" href="/GraoPara/css/controle.css" />
 
-<!-- CSS das validações -->
-<link rel="stylesheet" type="text/css"
-	href="/GraoPara/css/validationEngine.jquery.css" />
-
 <!-- Import dos javascripts -->
 <script type="text/javascript" src="/GraoPara/javascript/cookie.js"
 	charset="utf-8"></script>
-<script type="text/javascript" src="/GraoPara/javascript/ajax.js"
-	charset="utf-8"></script>
-<script type="text/javascript" src="/GraoPara/javascript/instrucao.js"
-	charset="utf-8"></script>
-<script type="text/javascript"
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"
-	charset="utf-8"></script>
 
-<!-- Import dos scripts de validação de formulário -->
-<script type="text/javascript"
-	src="/GraoPara/javascript/jquery.validationEngine.js" charset="utf-8"></script>
-<script type="text/javascript" src="/GraoPara/javascript/script.js"
-	charset="utf-8"></script>
-<script type="text/javascript"
-	src="/GraoPara/javascript/languages/jquery.validationEngine-pt.js"
-	charset="utf-8"></script>
 
 </head>
 <body onloadstart="checkCookie()">

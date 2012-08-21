@@ -20,7 +20,7 @@ $(document).ready(function() {
 				required: true,
 				minlength: 3
 			},
-			tiponum: {
+			tipo_num: {
 				required: true			
 			},
 			autor: {
@@ -35,9 +35,16 @@ $(document).ready(function() {
 				required: true,
 				minlength: 5,				
 			},
-			data:{
+			dia: {
+				required: true				
+			},
+			mes: {
+				required: true				
+			},
+			ano: {
 				required: true,
-				date: true
+				minlength: 4,
+				number: true
 			},
 			tipoDoc: {
 				required: true
@@ -80,7 +87,7 @@ $(document).ready(function() {
 			identificacao: {
 				required: "Selecione a identificação."
 			},
-			tiponum: {
+			tipo_num: {
 				required: "Selecione o tipo de número."
 			},
 			codigo: {
@@ -107,9 +114,16 @@ $(document).ready(function() {
 				required: "Digite o local do documento.",
 				minlength: jQuery.format("Digite no mínimo {0} caracteres.")
 			},
-			data: {
-				required: "Entre com uma data válida.",
-				date: "Entre com uma data válida."					
+			dia: {
+				required: "Selecione o dia."				
+			},
+			mes: {
+				required: "Selecione o mês."				
+			},
+			ano: {
+				required: "Informe o Ano.",
+				minlength: jQuery.format("Informe o ano com {0} dígitos."),
+				number: "Digite apenas números"
 			},
 			tipoDoc: {
 				required: "Selecione o tipo de Documento."

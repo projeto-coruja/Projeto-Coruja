@@ -1,5 +1,4 @@
 <!doctype html>
-<%@page import="webview.WebUtility"%>
 <html>
 <head>
 <meta charset="utf-8">
@@ -7,22 +6,32 @@
 
 
 <!-- Import dos styles CSS -->
-<link rel="stylesheet" type="text/css" href="/GraoPara/css/principal.css" />
+<link rel="stylesheet" type="text/css"
+	href="/GraoPara/css/principal.css" />
 <link rel="stylesheet" type="text/css" href="/GraoPara/css/tabs.css" />
 <link rel="stylesheet" type="text/css" href="/GraoPara/css/controle.css" />
 
 <!-- CSS das validações -->
-<link rel="stylesheet" type="text/css" href="/GraoPara/css/validationEngine.jquery.css" />
+<link rel="stylesheet" type="text/css"
+	href="/GraoPara/css/validationEngine.jquery.css" />
 
 <!-- Import dos javascripts -->
-<script type="text/javascript" src="/GraoPara/javascript/ajax.js" charset="utf-8"></script>
-<script type="text/javascript" src="/GraoPara/javascript/instrucao.js" charset="utf-8"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="/GraoPara/javascript/ajax.js"
+	charset="utf-8"></script>
+<script type="text/javascript" src="/GraoPara/javascript/instrucao.js"
+	charset="utf-8"></script>
+<script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"
+	charset="utf-8"></script>
 
 <!-- Import dos scripts de validação de formulário -->
-<script type="text/javascript" src="/GraoPara/javascript/jquery.validationEngine.js" charset="utf-8"></script>
-<script type="text/javascript" src="/GraoPara/javascript/script.js" charset="utf-8"></script>
-<script type="text/javascript" src="/GraoPara/javascript/languages/jquery.validationEngine-pt.js" charset="utf-8"></script>
+<script type="text/javascript"
+	src="/GraoPara/javascript/jquery.validationEngine.js" charset="utf-8"></script>
+<script type="text/javascript" src="/GraoPara/javascript/script.js"
+	charset="utf-8"></script>
+<script type="text/javascript"
+	src="/GraoPara/javascript/languages/jquery.validationEngine-pt.js"
+	charset="utf-8"></script>
 
 </head>
 
@@ -34,29 +43,33 @@
 		<!-- Começo do menu lateral -->
 		<div class="sidebar1">
 
-			<!--Depois de logado-->
-			<div class="LoginArea" id="logado" style="display:block;">
-				<form method="post" action="/GraoPara/doLogout">
+			<!--Começo da área de login -->
+			<div class="LoginArea" id="LoginArea">
+				<form method="post" action="/GraoPara/doLogin">
 					<fieldset>
-						<label for="login">Bem vindo</label>
-						<%
-							WebUtility.printHTML(request, out);
-						%>
+						<label for="login">Login:</label> <input class="inputLogin"
+							type="text" name="login" height="30px" size="auto"
+							placeholder="Seu login" required> <label for="senha">Senha:</label>
+						<input class="inputLogin" type="password" name="senha"
+							height="30px" size="auto" placeholder="Sua senha" required>
 					</fieldset>
 					<fieldset>
-						<input class="buttonSair" type="submit" name="Sair" value="Sair" />
+						<input class="buttonEntrar" type="submit" name="Entrar"
+							value="Entrar" />
 					</fieldset>
 				</form>
 			</div>
-			<!-- ----------------------------------------------------------------------- -->
+			<fieldset>
+				<a href="/GraoPara/public/CadUsuario.jsp"><input type="button"
+					class="buttonRegistrar" name="Registrar" value="Registrar"></a>
+			</fieldset>
+			<!-- Fim da área de login -->
 
-			<article class="menuLateral">  
+			<article class="menuLateral">
 				<ul class="nav" id="menu">
-					<li><a href="/GraoPara/protected/admin/indexAdmin.jsp">Home</a></li>
-					<li><a href="/GraoPara/protected/admin/pesquisaAdmin.jsp">Pesquisar</a></li>
-					<li><a href="/GraoPara/protected/admin/cadastroDocumentosAdmin.jsp">Cadastrar Documento</a></li>
-					<li><a href="/GraoPara/protected/admin/painelAdmin.jsp">Painel Admin</a></li>
-					<li><a href="/GraoPara/protected/admin/sobreAdmin.jsp">Sobre</a></li>
+					<li><a href="/GraoPara/public/index.jsp">Home</a></li>
+					<li><a href="/GraoPara/public/pesquisa.jsp">Pesquisar</a></li>
+					<li><a href="/GraoPara/public/sobre.jsp">Sobre</a></li>
 				</ul>
 			</article>
 		</div>
@@ -64,7 +77,7 @@
 		<div class="content" id="content">
 			<h2>Pesquisa de Documento</h2>
 			<form action="/GraoPara/doSearch" method="POST" name="cadastro">
-				<table class="tableForms" width="600" border="0" align="center" cellpadding="0" cellspacing="0">
+				<table class="tableForms">
 								<tr>
 						<td height="20">
 							<label for="identificacao" class="labelForms">Identifição:</label>
@@ -101,29 +114,29 @@
 						<td height="20">
 							<label for="numeroAPEP" class="labelForms">Número APEP ou Sequencial:</label>
 						</td>
-						<td width="377" height="20">
+						<td>
 								<input class="input" name="numeroAPEP" type="text" size="10" maxlength="4">
 						</td>
 					</tr>
 					<tr>
-						<td height="20">
+						<td>
 							<label for="autor" class="labelForms">Autor do Documento:</label>
 						</td>
-						<td width="377" height="20">
+						<td>
 						 		<input class="input" name="autor" type="text" size="20" maxlength="48">
 						</td>
 					</tr>
 					<tr>
-						<td height="20">
+						<td>
 							<label for="destinario" class="labelForms">Destinatário do Documento:</label>
 						</td>
-						<td width="377" height="20">
+						<td>
 						     
 						    	<input class="input" name="destinatario" type="text" size="20" maxlength="48">
 						</td>
 					</tr>
 		            <tr>
-		            	<td height="20">
+		            	<td>
 							<label for="local" class="labelForms">Cidade:</label>
 								
 						</td>
@@ -132,10 +145,10 @@
 		                </td>
 		            </tr>
 					<tr>
-						<td height="20">
+						<td>
 							<label for="dataDocumento" class="labelForms">Data do Documento:</label>
 						</td>
-						<td height="20">
+						<td>
 						<input class="input validate[custom[date]]" type="text" name="data" id="data" maxlength="10"/>
 						</td>
 					</tr>
@@ -157,7 +170,7 @@
 					</tr>			
 					
 					<tr>
-						<td height="20" colspan="2">
+						<td  colspan="2">
 							<div align="left"> </br>
 								<label for="palavrasChaves" class="labelForms">Palavra Chaves:<font color="#990000"></font></label>
 							</div>
@@ -171,7 +184,7 @@
 						</td>
 					</tr>
 					<tr>
-						<td colspan="2" height="20"><input class="buttonPesquisa" type="submit" name="inserir" value="Enviar"></td>
+						<td><p></p><input class="buttonPesquisa" type="submit" name="inserir" value="Enviar"></td>
 					</tr>
 				</table>
 			</form>
@@ -182,8 +195,10 @@
 			<p>Desenvolvido pelo grupo Coruja</p>
 		</div>
 		<!-- Fim do Rodapé -->
-		<!-- end .container -->
+
 	</div>
+	<!-- end .container -->
+
 </body>
 </html>
 
