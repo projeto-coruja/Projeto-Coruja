@@ -51,8 +51,7 @@
 					<fieldset>
 						<label for="login">Bem vindo</label>
 						<%
-							String name = (String) WebUtility.selectCookie(request.getCookies(), WebUtility.cookie_nome).getValue();
-							out.println("<label>" + name + "!</label>");
+							WebUtility.printHTML(request, out);
 						%>
 					</fieldset>
 					<fieldset>

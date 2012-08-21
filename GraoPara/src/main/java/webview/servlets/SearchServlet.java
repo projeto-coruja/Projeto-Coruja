@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import persistence.dto.DTO;
 import persistence.dto.DocumentoDTO;
+import webview.WebUtility;
 
 import business.EJB.docEJB.BuscaDocEJB;
 import business.exceptions.documents.DocumentNotFoundException;
@@ -58,7 +59,7 @@ public class SearchServlet extends HttpServlet {
 		    PrintWriter out=response.getWriter();
 			resultados = busca.busca(identificacao, codigo, tipoAPEP_SEQ, numAPEP, autor, destinatario, local, data, tipoDoc, palavraChave1, palavraChave2, palavraChave3);
 			for(DTO result : resultados){
-				out.println(((DocumentoDTO)result).toString());
+				out.println(WebUtility.docToString((DocumentoDTO) result));
 			}
 			
 		} catch (UnreachableDataBaseException e) {
