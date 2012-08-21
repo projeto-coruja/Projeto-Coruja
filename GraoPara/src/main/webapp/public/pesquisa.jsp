@@ -1,4 +1,5 @@
 <!doctype html>
+<%@page import="webview.WebUtility"%>
 <html>
 <head>
 <meta charset="utf-8">
@@ -6,33 +7,15 @@
 
 
 <!-- Import dos styles CSS -->
-<link rel="stylesheet" type="text/css"
-	href="/GraoPara/css/principal.css" />
+<link rel="stylesheet" type="text/css" href="/GraoPara/css/principal.css" />
 <link rel="stylesheet" type="text/css" href="/GraoPara/css/tabs.css" />
 <link rel="stylesheet" type="text/css" href="/GraoPara/css/controle.css" />
 
-<!-- CSS das validações -->
-<link rel="stylesheet" type="text/css"
-	href="/GraoPara/css/validationEngine.jquery.css" />
-
 <!-- Import dos javascripts -->
-<script type="text/javascript" src="/GraoPara/javascript/ajax.js"
+<script type="text/javascript" src="/GraoPara/javascript/cookie.js"
 	charset="utf-8"></script>
-<script type="text/javascript" src="/GraoPara/javascript/instrucao.js"
-	charset="utf-8"></script>
-<script type="text/javascript"
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"
-	charset="utf-8"></script>
-
-<!-- Import dos scripts de validação de formulário -->
-<script type="text/javascript"
-	src="/GraoPara/javascript/jquery.validationEngine.js" charset="utf-8"></script>
-<script type="text/javascript" src="/GraoPara/javascript/script.js"
-	charset="utf-8"></script>
-<script type="text/javascript"
-	src="/GraoPara/javascript/languages/jquery.validationEngine-pt.js"
-	charset="utf-8"></script>
-
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" charset="utf-8"></script>
+	
 </head>
 
 <body>
@@ -43,33 +26,29 @@
 		<!-- Começo do menu lateral -->
 		<div class="sidebar1">
 
-			<!--Começo da área de login -->
-			<div class="LoginArea" id="LoginArea">
-				<form method="post" action="/GraoPara/doLogin">
+			<!--Depois de logado-->
+			<div class="LoginArea" id="logado" style="display:block;">
+				<form method="post" action="/GraoPara/doLogout">
 					<fieldset>
-						<label for="login">Login:</label> <input class="inputLogin"
-							type="text" name="login" height="30px" size="auto"
-							placeholder="Seu login" required> <label for="senha">Senha:</label>
-						<input class="inputLogin" type="password" name="senha"
-							height="30px" size="auto" placeholder="Sua senha" required>
+						<label for="login">Bem vindo</label>
+						<%
+							WebUtility.printHTML(request, out);
+						%>
 					</fieldset>
 					<fieldset>
-						<input class="buttonEntrar" type="submit" name="Entrar"
-							value="Entrar" />
+						<input class="buttonSair" type="submit" name="Sair" value="Sair" />
 					</fieldset>
 				</form>
 			</div>
-			<fieldset>
-				<a href="/GraoPara/public/CadUsuario.jsp"><input type="button"
-					class="buttonRegistrar" name="Registrar" value="Registrar"></a>
-			</fieldset>
-			<!-- Fim da área de login -->
+			<!-- ----------------------------------------------------------------------- -->
 
-			<article class="menuLateral">
+			<article class="menuLateral">  
 				<ul class="nav" id="menu">
-					<li><a href="/GraoPara/public/index.jsp">Home</a></li>
-					<li><a href="/GraoPara/public/pesquisa.jsp">Pesquisar</a></li>
-					<li><a href="/GraoPara/public/sobre.jsp">Sobre</a></li>
+					<li><a href="/GraoPara/protected/user/indexUser.jsp">Home</a></li>
+					<li><a href="/GraoPara/protected/user/pesquisaUser.jsp">Pesquisar</a></li>
+					<li><a href="/GraoPara/protected/user/cadastroDocumentosUser.jsp">Cadastrar Documento</a></li>
+					<li><a href="/GraoPara/protected/user/painelUser.jsp">Painel User</a></li>
+					<li><a href="/GraoPara/protected/user/sobreUser.jsp">Sobre</a></li>
 				</ul>
 			</article>
 		</div>

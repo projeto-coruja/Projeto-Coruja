@@ -108,9 +108,7 @@
 					<td></td>
 				</tr>
 				</table>
-				</form>
-		
-		
+				</form>				
 		
 		</div>
 		<!-- Começo do Rodapé -->
