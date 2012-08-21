@@ -399,6 +399,11 @@ span.asterisco {
 	text-align:center;
 }
 
+.coluna {
+	width : 120; 
+	height : 20;
+}
+
 .digitosTexts {
 	font-size: 60%;
 }
