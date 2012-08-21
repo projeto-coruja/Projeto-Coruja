@@ -1,18 +1,28 @@
 <!doctype html>
+<%@page import="java.io.PrintWriter"%>
 <%@page import="webview.WebUtility"%>
+<%@page import="business.EJB.userEJB.AuthBean"%>
 <html>
 <head>
 <meta charset="utf-8">
-<title>Grão-Pará - Sobre</title>
-
+<title>Grão-Pará</title>
 
 <!-- Import dos styles CSS -->
-<link rel="stylesheet" type="text/css" href="/GraoPara/css/principal.css" />
+<link rel="stylesheet" type="text/css"
+	href="/GraoPara/css/principal.css" />
 <link rel="stylesheet" type="text/css" href="/GraoPara/css/tabs.css" />
 <link rel="stylesheet" type="text/css" href="/GraoPara/css/controle.css" />
 
 <!-- CSS das validações -->
-<link rel="stylesheet" type="text/css" href="/GraoPara/css/validationEngine.jquery.css" />
+<link rel="stylesheet" type="text/css"
+	href="/GraoPara/css/validationEngine.jquery.css" />
+
+<!-- Import dos javascripts -->
+<script type="text/javascript" src="/GraoPara/javascript/cookie.js"
+	charset="utf-8"></script>
+<script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"
+	charset="utf-8"></script>
 
 </head>
 <body>

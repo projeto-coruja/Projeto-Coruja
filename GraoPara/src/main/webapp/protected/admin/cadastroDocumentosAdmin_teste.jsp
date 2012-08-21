@@ -107,7 +107,7 @@
 					</tr>
 					<tr>
 						<td>
-							<label id="ltitulo" for="titulo">Título:<span class="asterisco">*</span></label>
+							<label class="labelForms" id="ltitulo" for="titulo">Título:<span class="asterisco">*</span></label>
 						</td>
 						<td class="field"><input class="input" name="titulo" id="titulo" type="text" size="20" maxlength="48"></td>
 						<td class="status"></td>
@@ -137,7 +137,7 @@
 					</tr>
 					<tr>
 						<td>
-							<label id="ldestinatario" for="destinatario">Destinatário do Documento:<span class="asterisco">*</span></label>
+							<label class="labelForms" id="ldestinatario" for="destinatario">Destinatário do Documento:<span class="asterisco">*</span></label>
 						</td>
 						<td class="field">
 							<input class="input" name="destinatario" id="destinatario" type="text" size="20" maxlength="48">

@@ -16,16 +16,14 @@
 	href="/GraoPara/css/styleValidation.css" />
 
 <!-- Import dos javascripts -->
-<script type="text/javascript" src="/GraoPara/javascript/ajax.js"
+<script type="text/javascript" src="/GraoPara/javascript/cookie.js"
 	charset="utf-8"></script>
-<script type="text/javascript" src="/GraoPara/javascript/instrucao.js"
-	charset="utf-8"></script>
-<script src="/GraoPara/javascript/chili-1.7.pack.js"
-	type="text/javascript"></script>
 <script type="text/javascript"
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"
 	charset="utf-8"></script>
-
+<script src="/GraoPara/javascript/chili-1.7.pack.js"
+	type="text/javascript"></script>
+	
 <!-- Import dos scripts de validação de formulário -->
 <script src="/GraoPara/javascript/jquery.js" type="text/javascript"
 	charset="utf-8"></script>
@@ -45,7 +43,7 @@
 		<div class="sidebar1">
 
 			<!--Depois de logado-->
-			<div class="LoginArea" id="logado" style="display:block;">
+			<div class="LoginArea" id="logado">
 				<form method="post" action="/GraoPara/doLogout">
 					<fieldset>
 						<label for="login">Bem vindo</label>
@@ -117,6 +115,7 @@
 					</tr>
 					<tr>
 						<td class="field" colspan="3">
+							<p></p>
 							<input class="buttonRegistrar" id="signupsubmit" name="Enviar" type="submit" value="Enviar" />
 						</td>
 					</tr>
