@@ -60,7 +60,7 @@
 		<!-- Fim do Menu Lateral -->
 		<div class="content" id="content">
 			<h2>Pesquisa de Documento</h2>
-			<form action="#" method="POST" name="cadastro" onSubmit="return valida();">
+			<form action="doSearch" method="POST" name="cadastro" onSubmit="return valida();">
 				<table class="tableForms" width="600" border="0" align="center" cellpadding="0" cellspacing="0">
 								<tr>
 						<td height="20">
@@ -84,18 +84,22 @@
 					</tr>
 					<tr>
 						<td height="20">
-							<label for="titulo" class="labelForms">Título:</label>
+							<label for="tipoAPEP_SEQ" class="labelForms">Tipo APEP ou Sequencial:</label>
 						</td>
-						<td width="377" height="20">
-								<input class="input" name="titulo" type="text" size="20" maxlength="48">
-						</td> 
+						<td height="20">
+						 	<select name="tipoAPEP_SEQ" class="input">
+									<option selected>Selecione...</option>
+									<option value="APEP">APEP</option>
+									<option value="SEQ">Sequencial</option>
+							</select>
+						</td>
 					</tr>
 					<tr>
 						<td height="20">
 							<label for="numeroAPEP" class="labelForms">Número APEP ou Sequencial:</label>
 						</td>
 						<td width="377" height="20">
-								<input class="input" name="numero" type="text" size="10" maxlength="4">
+								<input class="input" name="numeroAPEP" type="text" size="10" maxlength="4">
 						</td>
 					</tr>
 					<tr>
@@ -115,51 +119,13 @@
 						    	<input class="input" name="destinatario" type="text" size="20" maxlength="48">
 						</td>
 					</tr>
-					<tr>
-						<td height="20">
-							<label for="estado" class="labelForms">Estado:</label>
-		                
-						</td>
-		                <td>
-		                    <select class="inputEstado" name="estado" id="estado">
-									<option selected>---</option>
-									<option value="AC">AC</option>
-									<option value="AL">AL</option>
-									<option value="AP">AP</option>
-									<option value="AM">AM</option>
-									<option value="BA">BA</option>
-									<option value="CE">CE</option>
-									<option value="ES">ES</option>
-									<option value="DF">DF</option>
-									<option value="MA">MA</option>
-									<option value="MT">MT</option>
-									<option value="MS">MS</option>
-									<option value="MG">MG</option>
-									<option value="PA">PA</option>
-									<option value="PB">PB</option>
-									<option value="PR">PR</option>
-									<option value="PE">PE</option>
-									<option value="PI">PI</option>
-									<option value="RJ">RJ</option>
-									<option value="RN">RN</option>
-									<option value="RS">RS</option>
-									<option value="RO">RO</option>
-									<option value="RR">RR</option>
-									<option value="SC">SC</option>
-									<option value="SP">SP</option>
-									<option value="SE">SE</option>
-									<option value="TO">TO</option>
-							</select>
-		                </td>
-						
-					</tr>
 		            <tr>
 		            	<td height="20">
-							<label for="cidade" class="labelForms">Cidade:</label>
+							<label for="local" class="labelForms">Cidade:</label>
 								
 						</td>
 		                <td>
-		                <input class="input" name="cidade" type="text" size="15" maxlength="43">
+		                <input class="input" name="local" type="text" size="15" maxlength="43">
 		                </td>
 		            </tr>
 					<tr>

@@ -30,7 +30,7 @@ public class BuscaDocEJB {
 	}
 	
 	public List<DTO> busca(String identificacao, String codigo, String tipoAPEP_SEQ, String numAPEP_SEQ, String autor, 
-			String destinatario,String local, String data, String tipo, 
+			String destinatario, String local, String data, String tipo, 
 			String palavra1, String palavra2, String palavra3) throws UnreachableDataBaseException, DocumentNotFoundException{
 		
 		boolean continue_query = false;
