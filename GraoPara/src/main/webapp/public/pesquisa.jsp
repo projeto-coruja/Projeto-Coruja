@@ -45,7 +45,7 @@
 
 			<!--Começo da área de login -->
 			<div class="LoginArea" id="LoginArea">
-				<form method="post" action="LoginServlet">
+				<form method="post" action="/GraoPara/doLogin">
 					<fieldset>
 						<label for="login">Login:</label> <input class="inputLogin"
 							type="text" name="login" height="30px" size="auto"

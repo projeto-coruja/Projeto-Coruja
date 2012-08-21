@@ -31,8 +31,8 @@
 	charset="utf-8"></script>
 <script src="/GraoPara/javascript/validate.js" type="text/javascript"
 	charset="utf-8"></script>
-<!-- <script src="/GraoPara/javascript/validate_pt_br.js"
-	type="text/javascript" charset="utf-8"></script> -->
+<script src="/GraoPara/javascript/validate_pt_br.js"
+	type="text/javascript" charset="utf-8"></script> 
 
 </head>
 
@@ -110,7 +110,7 @@
 							name="email" type="text" value="" maxlength="150" /></td>
 						<td class="status"></td>
 					</tr>
-					<tr>
+					<tr style="FONT-FAMILY: 'Bitstream Charter';">
 						<td class="labelForms"><label id="lpassword" for="password">Senha:<font
 								color="#FF0000">*</font></label></td>
 						<td class="field"><input id="password" class="input"
