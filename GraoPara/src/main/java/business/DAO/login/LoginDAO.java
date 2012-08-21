@@ -84,6 +84,19 @@ public class LoginDAO {
 		}
 		return resultSet;
 	}
+	
+	public List<DTO> listAllUsers() throws UnreachableDataBaseException, UserNotFoundException {
+		List<DTO> resultSet;
+		try{
+			resultSet = null;
+			resultSet = manager.findEntities("from User");
+			if(resultSet == null)	throw new UserNotFoundException("Nenhum usuário encontrado");
+		}catch(DataAccessLayerException e){
+			e.printStackTrace();
+			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
+		}
+		return resultSet;
+	}
 
 	public void addUser(String email, String name, String password) throws UnreachableDataBaseException {
 		UserDTO newUser = new UserDTO(name, password, LoginDAO.defaultProfile, email, new Date());

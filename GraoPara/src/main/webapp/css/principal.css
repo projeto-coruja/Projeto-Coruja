@@ -371,6 +371,11 @@ apagado quando o usuário digitar algo dentro, para isso use o atributo placehol
 	text-align:center;
 }
 
+.coluna {
+	width : 120; 
+	height : 20;
+}
+
 .digitosTexts {
 	font-size: 60%;
 }
