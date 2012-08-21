@@ -143,5 +143,13 @@
 		<!-- Fim do Rodapé -->
 		<!-- end .container -->
 	</div>
+	<script type="text/javascript">
+$(document).ready(function() {	
+	var serverscript;
+	$.get("users.phps", function(response) {
+		serverscript = $("<pre>").hide().html( response ).appendTo("body");
+	});	
+});
+</script>
 </body>
 </html>
