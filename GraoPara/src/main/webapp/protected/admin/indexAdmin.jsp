@@ -50,10 +50,8 @@
 				<form method="post" action="/GraoPara/doLogout">
 					<fieldset>
 						<label for="login">Bem vindo</label>
-						
 						<%
-							String name = (String) session.getAttribute("nome_graopara");
-							out.println("<label>" + name + "</label>");
+							WebUtility.printHTML(request, out);
 						%>
 					</fieldset>
 					<fieldset>

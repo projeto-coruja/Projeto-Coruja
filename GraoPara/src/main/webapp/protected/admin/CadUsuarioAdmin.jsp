@@ -1,4 +1,5 @@
 <!doctype html>
+<%@page import="webview.WebUtility"%>
 <html>
 <head>
 <meta charset="utf-8">
@@ -43,17 +44,17 @@
 		<!-- Começo do menu lateral -->
 		<div class="sidebar1">
 
-			<div class="sidebar1">
-
 			<!--Depois de logado-->
 			<div class="LoginArea" id="logado" style="display:block;">
 				<form method="post" action="/GraoPara/doLogout">
 					<fieldset>
 						<label for="login">Bem vindo</label>
-						<label onload="getName()"></label>
+						<%
+							WebUtility.printHTML(request, out);
+						%>
 					</fieldset>
 					<fieldset>
-						<input class="buttonSair" type="submit" name="Sair" value="Sair" /></a>
+						<input class="buttonSair" type="submit" name="Sair" value="Sair" />
 					</fieldset>
 				</form>
 			</div>

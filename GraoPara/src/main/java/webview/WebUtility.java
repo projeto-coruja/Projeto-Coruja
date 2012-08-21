@@ -1,7 +1,12 @@
 package webview;
 
-import javax.servlet.http.Cookie;
+import java.io.IOException;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.jsp.JspWriter;
+
+import persistence.dto.DocumentoDTO;
 import persistence.dto.ProfileDTO;
 
 import business.EJB.userEJB.AuthBean;
@@ -64,6 +69,28 @@ public final class WebUtility {
 	      return str1.substring(str2.length());
 	    }
 	    else return str1;
+	}
+	
+	public static String docToString(DocumentoDTO doc) {
+		return
+				doc.getAutor()
+				+ doc.getDestinatario() + " "
+				+ doc.getLocal() + " "
+				+ doc.getResumo() + " "
+				+ doc.getDataDocumento().toString()
+				+ " --- "
+				+ doc.getUploader().getEmail() + " "
+				+ doc.getDataInclusao().toString()
+				+ " --- "
+				+ doc.getIdNumDocumento().getTipoId() + " "
+				+ doc.getIdNumDocumento().getCodId() + " "
+				+ doc.getOrigemDocumento().getTipoOrigem() + " "
+				+ doc.getOrigemDocumento().getCodOrigem() + " ";
+	}
+	
+	public static void printHTML(HttpServletRequest request, JspWriter out) throws IOException {
+		String name = WebUtility.selectCookie(request.getCookies(), WebUtility.cookie_nome).getValue();
+		out.println("<label>" + name + "!</label>");
 	}
 
 }

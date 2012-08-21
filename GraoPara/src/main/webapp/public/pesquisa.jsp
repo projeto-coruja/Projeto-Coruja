@@ -76,7 +76,7 @@
 		<!-- Fim do Menu Lateral -->
 		<div class="content" id="content">
 			<h2>Pesquisa de Documento</h2>
-			<form action="doSearch" method="POST" name="cadastro" onSubmit="return valida();">
+			<form action="/GraoPara/doSearch" method="POST" name="cadastro" onSubmit="return valida();">
 				<table class="tableForms" width="600" border="0" align="center" cellpadding="0" cellspacing="0">
 								<tr>
 						<td height="20">
@@ -84,7 +84,7 @@
 						</td>
 						<td height="20">
 						 	<select name="identificacao" class="input">
-									<option selected>Selecione...</option>
+									<option value="">Selecione...</option>
 									<option value="codice">Número de Códice</option>
 									<option value="caixa">Número da Caixa</option>
 							</select>
@@ -104,7 +104,7 @@
 						</td>
 						<td height="20">
 						 	<select name="tipoAPEP_SEQ" class="input">
-									<option selected>Selecione...</option>
+						 			<option value="">Selecione...</option>
 									<option value="APEP">APEP</option>
 									<option value="SEQ">Sequencial</option>
 							</select>
@@ -157,13 +157,14 @@
 							<label for="dataDocumento" class="labelForms">Tipo do Documento:</label>
 						</td>
 						<td height="20">
-						 	<select class="input" name="tipoDoc"> <!-- Pegar do Banco de dados os tipos e, caso o usuÃ¡rio selecione outro, exibir campo para cadastrar outro tipo -->
-									<option selected>Selecione...</option>
-									<option value="codice">Ofí­cios</option>
-									<option value="caixa">Relatórios</option>
-									<option value="caixa">Impressos</option>
-									<option value="caixa">Processos</option>
-									<option value="caixa">Outro</option>
+						 	<select name="tipoDoc" id="tipoDoc"> <!-- Pegar do Banco de dados os tipos e, caso o usuÃ¡rio selecione outro, exibir campo para cadastrar outro tipo -->
+									<option value="">Selecione...</option>
+									<option value="oficio">Ofícios</option>
+									<option value="relatorio">Relatórios</option>
+									<option value="impresso">Impressos</option>
+									<option value="processo">Processos</option>
+									<option value="carta">Cartas</option>
+									<option value="carta">Outros</option>
 							</select>
 						</td>
 					</tr>			

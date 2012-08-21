@@ -37,7 +37,7 @@ public class BuscaDocEJB {
 		String query = "from Documento where ";
 		
 		if(identificacao != null && !identificacao.isEmpty()){
-			query += "tipo_origem = '" + identificacao + "'";
+			query += "tipo_origem = '" + identificacao.toUpperCase() + "'";
 			continue_query = true;
 		}
 		
@@ -53,7 +53,7 @@ public class BuscaDocEJB {
 			if(continue_query == true){
 				query += " and ";
 			}
-			query += "tipo_id = '" + tipoAPEP_SEQ + "'";
+			query += "tipo_id = '" + tipoAPEP_SEQ.toUpperCase() + "'";
 			continue_query = true;
 		}
 		
