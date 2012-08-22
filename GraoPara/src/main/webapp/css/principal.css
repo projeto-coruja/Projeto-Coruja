@@ -419,6 +419,12 @@ span.asterisco {
 	border: 0px;
 }
 
+.tablePainel{
+	text-align:center;	
+	width: 600px;
+	border: 1px;
+}
+
 /* Banner rules xD */
 
 .banner {
