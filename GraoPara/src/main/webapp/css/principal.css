@@ -116,7 +116,23 @@ a:hover, a:active, a:focus { /* this group of selectors will give a keyboard nav
 	-moz-border-radius: 0.4em;
 	border-radius: 0.4em;	
 	border: 1;
-	width: 120px;
+	width: 140px;
+	height: 20px;
+	margin: 5px 0;
+	color: #000;
+	padding: 0 0 0 10px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 1em;
+	letter-spacing: 1px;
+}
+
+.inputShort{
+	background-color: #ffffff;
+	-webkit-border-radius: 0.4em;
+	-moz-border-radius: 0.4em;
+	border-radius: 0.4em;	
+	border: 1;
+	width: 80px;
 	height: 20px;
 	margin: 5px 0;
 	color: #000;
@@ -283,8 +299,14 @@ label{
 
 /* Div do conteúdo interno do site, onde as outras páginas estão sendo carregadas dentro */
 .content {
-	padding: 10px 0;
+	padding: 30px 10px 10px 10px;
 	width: 725px;
+	float: left;
+	
+}
+
+.content2 {
+	padding: 50px 0 800px 90px;
 	float: left;
 	
 }
@@ -361,14 +383,25 @@ ul.nav a:hover, ul.nav a:active, ul.nav a:focus { /* this changes the background
 /* Parametros para personalizar mais fácil o texto de descrição dos formulários, em alguns sites eles substituem o label por um texto dentro do input que é
 apagado quando o usuário digitar algo dentro, para isso use o atributo placeholder="texto" dentro da tag do input no html */
 .labelForms {
-	font-size: 80%;
+	font-size: 11px;
 	text-align:left;
+}
+
+span.asterisco {
+	font-size: 11px;
+	text-align:left;
+	color: red;
 }
 
 .labelExibe {
 	font-size: 10px;
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	text-align:center;
+}
+
+.coluna {
+	width : 120; 
+	height : 20;
 }
 
 .digitosTexts {

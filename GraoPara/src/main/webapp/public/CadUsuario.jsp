@@ -37,10 +37,10 @@
 </head>
 
 <body>
-
 	<div class="container">
+	
 		<div class="header"></div>
-		
+				
 		<!-- Começo do menu lateral -->
 		<div class="sidebar1">
 
@@ -77,64 +77,62 @@
 					<li><a href="/GraoPara/public/sobre.jsp">Sobre</a></li>
 				</ul>
 			</article>
-		</div>
-		<!-- Fim do Menu Lateral -->
+		</div>	<!-- Fim do Menu Lateral -->
 		<div class="content" id="content">
+		
 			<h2>Cadastro Usuário</h2>
-
+			
 			<form id="signupform" autocomplete="off" method="post" action="/GraoPara/doRegister">
 				<table class="tableForms">
 					<tr>
-						<td height="20" colspan="3">
-							<div align="left">
-								<font size="1" face="Verdana, Arial, Helvetica, sans-serif">
-									<b>PREENCHA TODOS OS CAMPOS COM ASTERÍSCO <font
-										color="#FF0000">*</font></b>
-								</font>
-							</div>
+						<td class="labelForms" colspan="3">
+							<strong>PREENCHA TODOS OS CAMPOS COM ASTERÍSCO <span class="asterisco">*</span></strong>
 						</td>
 					</tr>
 					<tr>
-						<td class="labelForms"><label id="lfirstname" for="nome">Nome
-								Completo:<font color="#FF0000">*</font>
-						</label></td>
-						<td class="field"><input class="input" id="nome" name="nome"
-							type="text" value="" maxlength="100" /></td>
-						<td class="status"></td>
-					</tr>
-
-					<tr>
-						<td class="labelForms"><label id="lemail" for="email">Email:<font
-								color="#FF0000">*</font></label></td>
-						<td class="field"><input class="input" id="email"
-							name="email" type="text" value="" maxlength="150" /></td>
-						<td class="status"></td>
-					</tr>
-					<tr style="FONT-FAMILY: 'Bitstream Charter';">
-						<td class="labelForms"><label id="lpassword" for="password">Senha:<font
-								color="#FF0000">*</font></label></td>
-						<td class="field"><input id="password" class="input"
-							name="senha" type="password" maxlength="50" value="" /></td>
+						<td>
+							<label class="labelForms" id="lfirstname" for="nome">Nome Completo:<span class="asterisco">*</span></label>
+						</td>
+						<td class="field">
+							<input class="input" id="nome" name="nome" type="text" value="" maxlength="100" />
+						</td>
 						<td class="status"></td>
 					</tr>
 					<tr>
-						<td class="labelForms"><label id="lpassword_confirm"
-							for="password_confirm">Confirme sua Senha:<font
-								color="#FF0000">*</font></label></td>
-						<td class="field"><input class="input" id="password_confirm"
-							name="confsenha" type="password" maxlength="50" value="" /></td>
+						<td>
+							<label class="labelForms"  id="lemail" for="email">Email:<span class="asterisco">*</span></label>
+						</td>
+						<td class="field">
+							<input class="input" id="email" name="email" type="text" value="" maxlength="150" />
+						</td>
 						<td class="status"></td>
 					</tr>
 					<tr>
-						<td class="field" colspan="3"><input class="buttonRegistrar"
-							id="signupsubmit" name="Enviar" type="submit" value="Enviar" />
+						<td>
+							<label class="labelForms"  id="lpassword" for="password">Senha:<span class="asterisco">*</span></label></td>
+						<td class="field">
+							<input id="password" class="input" name="senha" type="password" maxlength="50" value="" />
+						</td>
+						<td class="status"></td>
+					</tr>
+					<tr>
+						<td>
+							<label class="labelForms"  id="lpassword_confirm" for="password_confirm">Confirme sua Senha:<span class="asterisco">*</span></label>
+						</td>
+						<td class="field">
+							<input class="input" id="password_confirm" name="confsenha" type="password" maxlength="50" value="" />
+						</td>
+						<td class="status"></td>
+					</tr>
+					<tr>
+						<td class="field" colspan="3">
+						<p></p>
+							<input class="buttonRegistrar" id="signupsubmit" name="Enviar" type="submit" value="Enviar" />
 						</td>
 					</tr>
-
 				</table>
 			</form>
 		</div>
-
 		<!-- Começo do Rodapé -->
 		<div class="footer">
 			<p>Copyright © - Universidade Federal de São Paulo - UNIFESP 2012</p>

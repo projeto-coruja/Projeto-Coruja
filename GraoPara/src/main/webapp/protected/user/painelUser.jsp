@@ -57,13 +57,8 @@
 					<li><a href="/GraoPara/protected/user/painelUser.jsp">Painel User</a></li>
 					<li><a href="/GraoPara/protected/user/sobreUser.jsp">Sobre</a></li>
 			</ul>
-			</article>
+			</article>			
 			
-			<!-- Área para texto na barra lateral, a barra cresce ao inserir conteudo... --> 
-			<p></p>
-			<p></p>
-			<p></p>
-			<p></p>
 		</div>
 		<!-- Fim do Menu Lateral -->
 		<div class="content" id="content">
@@ -113,9 +108,7 @@
 					<td></td>
 				</tr>
 				</table>
-				</form>
-		
-		
+				</form>				
 		
 		</div>
 		<!-- Começo do Rodapé -->

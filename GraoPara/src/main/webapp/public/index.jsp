@@ -17,22 +17,6 @@
 <!-- Import dos javascripts -->
 <script type="text/javascript" src="/GraoPara/javascript/cookie.js"
 	charset="utf-8"></script>
-<script type="text/javascript" src="/GraoPara/javascript/ajax.js"
-	charset="utf-8"></script>
-<script type="text/javascript" src="/GraoPara/javascript/instrucao.js"
-	charset="utf-8"></script>
-<script type="text/javascript"
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"
-	charset="utf-8"></script>
-
-<!-- Import dos scripts de validação de formulário -->
-<script type="text/javascript"
-	src="/GraoPara/javascript/jquery.validationEngine.js" charset="utf-8"></script>
-<script type="text/javascript" src="/GraoPara/javascript/script.js"
-	charset="utf-8"></script>
-<script type="text/javascript"
-	src="/GraoPara/javascript/languages/jquery.validationEngine-pt.js"
-	charset="utf-8"></script>
 
 </head>
 <body onloadstart="checkCookie()">
@@ -71,12 +55,6 @@
 					<li><a href="/GraoPara/public/sobre.jsp">Sobre</a></li>
 				</ul>
 			</article>
-
-			<!-- Área para texto na barra lateral, a barra cresce ao inserir conteudo... -->
-			<p></p>
-			<p></p>
-			<p></p>
-			<p></p>
 		</div>
 		<!-- Fim do Menu Lateral -->
 		<div class="content" id="content">TESTE DE CARREGAMENTO</div>

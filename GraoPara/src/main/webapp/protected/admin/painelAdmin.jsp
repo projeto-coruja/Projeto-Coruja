@@ -1,4 +1,5 @@
 <!doctype html>
+<%@page import="webview.servlets.PainelServlet"%>
 <%@page import="webview.WebUtility"%>
 <html>
 <head>
@@ -230,38 +231,44 @@
 						<a href="#tab3">Usuários</a>
 					</h2>
 					<br>
-					<table width="90%" border="0" align="center" cellpadding="0"
-						cellspacing="0">
+					<table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
 						<tr>
-							<td height="20" colspan="4">
+							<td  colspan="4">
+<!-- 							<label for="identificacao" class="labelExibe"></label> -->
+							<!-- td height="20" colspan="4">
 								<div align="left">
 									<strong><label for="identificacao" class="labelExibe">LISTAGEM
 											DE USUARIOS</label></strong>
-								</div>
-							</td>
+								</div>-->
+							</td> 
 						</tr>
 						<tr>
-							<td width="120" height="20"><label for="identificacao"
-								class="labelExibe">Nome</label></td>
-							<td width="120" height="20"><label for="identificacao"
+							<td class="coluna">
+								<label for="identificacao"	class="labelExibe">Nome</label></td>
+							<td class="coluna">
+								<label for="identificacao"
 								class="labelExibe">Email</label></td>
-							<td width="120" height="20"><label for="identificacao"
+							<td class="coluna">
+								<label for="identificacao"
 								class="labelExibe">Permissão</label></td>
-							<td width="120" height="20"><label for="identificacao"
+							<td class="coluna">
+								<label for="identificacao"
 								class="labelExibe">Ação</label></td>
 							<!-- Exemplo de cadastro -->
 						</tr>
 						<tr>
-							<td width="120" height="20"><label for="identificacao"
-								class="labelExibe">Usuario Teste</label></td>
-							<td width="120" height="20"><label for="identificacao"
-								class="labelExibe">teste@teste.com.br</label></td>
-							<td width="120" height="20"><label for="identificacao"
-								class="labelExibe">Aluno</label></td>
-							<td width="120" height="20"><a href="#"><img
-									src="/GraoPara/images/edit.png" title="Editar" alt="Editar" /></a>
-								<a href="#"><img src="/GraoPara/images/remove.png"
-									title="Remover" alt="Remover" /></a></td>
+							<% PainelServlet.listAllUsers(request, response);%>
+						
+<!-- 							<td width="120" height="20"><label for="identificacao" -->
+<!-- 								class="labelExibe">Usuario Teste</label></td> -->
+<!-- 							<td width="120" height="20"><label for="identificacao" -->
+<!-- 								class="labelExibe">teste@teste.com.br</label></td> -->
+<!-- 							<td width="120" height="20"><label for="identificacao" -->
+<!-- 								class="labelExibe">Aluno</label></td> -->
+<!-- 							<td width="120" height="20"><a href="#"><img -->
+<!-- 									src="/GraoPara/images/edit.png" title="Editar" alt="Editar" /></a> -->
+<!-- 								<a href="#"><img src="/GraoPara/images/remove.png" -->
+<!-- 									title="Remover" alt="Remover" /></a></td> -->
 						</tr>
 					</table>
 
