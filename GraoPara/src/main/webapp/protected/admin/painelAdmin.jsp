@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Gr„o-Par·</title>
+<title>Gr√£o-Par√°</title>
 
 
 <!-- Import dos styles CSS -->
@@ -13,7 +13,7 @@
 <link rel="stylesheet" type="text/css" href="/GraoPara/css/tabs.css" />
 <link rel="stylesheet" type="text/css" href="/GraoPara/css/controle.css" />
 
-<!-- CSS das validaÁıes -->
+<!-- CSS das valida√ß√µes -->
 <link rel="stylesheet" type="text/css"
 	href="/GraoPara/css/validationEngine.jquery.css" />
 
@@ -26,7 +26,7 @@
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"
 	charset="utf-8"></script>
 
-<!-- Import dos scripts de validaÁ„o de formul·rio -->
+<!-- Import dos scripts de valida√ß√£o de formul√°rio -->
 <script type="text/javascript"
 	src="/GraoPara/javascript/jquery.validationEngine.js" charset="utf-8"></script>
 <script type="text/javascript" src="/GraoPara/javascript/script.js"
@@ -42,7 +42,7 @@
 	<div class="container">
 		<div class="header"></div>
 
-		<!-- ComeÁo do menu lateral -->
+		<!-- Come√ßo do menu lateral -->
 		<div class="sidebar1">
 
 			<!--Depois de logado-->
@@ -105,7 +105,7 @@
 					</tr>
 				</table>
 			</form>
-			<!-- Novo formul·rio para mudanÁa de senha -->
+			<!-- Novo formul√°rio para mudan√ßa de senha -->
 			<form class="control">
 				<table class="tableControle">
 					<tr>
@@ -138,7 +138,7 @@
 					</tr>
 				</table>
 			</form>
-			<!-- Novo formul·rio para novos usu·rios -->
+			<!-- Novo formul√°rio para novos usu√°rios -->
 
 			<br>
 
@@ -166,7 +166,7 @@
 							<td width="120" height="20"><label for="identificacao"
 								class="labelExibe">Status</label></td>
 							<td width="120" height="20"><label for="identificacao"
-								class="labelExibe">AÁ„o</label></td>
+								class="labelExibe">A√ß√£o</label></td>
 							<!-- Exemplo de cadastro -->
 						</tr>
 						<tr>
@@ -187,7 +187,7 @@
 				</section>
 				<section id="tab2">
 					<h2>
-						<a href="#tab2">Novos Usu·rios</a>
+						<a href="#tab2">Novos Usu√°rios</a>
 					</h2>
 					<br>
 					<table width="90%" border="0" align="center" cellpadding="0"
@@ -206,9 +206,9 @@
 							<td width="120" height="20"><label for="identificacao"
 								class="labelExibe">Email</label></td>
 							<td width="120" height="20"><label for="identificacao"
-								class="labelExibe">Permiss„o</label></td>
+								class="labelExibe">Permiss√£o</label></td>
 							<td width="120" height="20"><label for="identificacao"
-								class="labelExibe">AÁ„o</label></td>
+								class="labelExibe">A√ß√£o</label></td>
 							<!-- Exemplo de cadastro -->
 						</tr>
 						<tr>
@@ -228,7 +228,7 @@
 				</section>
 				<section id="tab3">
 					<h2>
-						<a href="#tab3">Usu·rios</a>
+						<a href="#tab3">Usu√°rios</a>
 					</h2>
 					<br>
 					<table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
@@ -250,10 +250,10 @@
 								class="labelExibe">Email</label></td>
 							<td class="coluna">
 								<label for="identificacao"
-								class="labelExibe">Permiss„o</label></td>
+								class="labelExibe">Permiss√£o</label></td>
 							<td class="coluna">
 								<label for="identificacao"
-								class="labelExibe">AÁ„o</label></td>
+								class="labelExibe">A√ß√£o</label></td>
 							Exemplo de cadastro
 						</tr> -->
 						
@@ -296,7 +296,7 @@
 							<td width="120" height="20"><label for="identificacao"
 								class="labelExibe">Status</label></td>
 							<td width="120" height="20"><label for="identificacao"
-								class="labelExibe">AÁ„o</label></td>
+								class="labelExibe">A√ß√£o</label></td>
 							<!-- Exemplo de cadastro -->
 						</tr>
 						<tr>
@@ -321,28 +321,28 @@
 					<table width="100%" border="1" align="center" cellpadding="0"
 						cellspacing="0">
 						<tr>
-							<td><label class="labelExibe">IdentificaÁ„o</label></td>
-							<td><label class="labelExibe">CÛdigo</label></td>
-							<td><label class="labelExibe">TÌtulo</label></td>
-							<td><label class="labelExibe">Tipo de N˙mero</label></td>
-							<td><label class="labelExibe">N˙mero</label></td>
+							<td><label class="labelExibe">Identifica√ß√£o</label></td>
+							<td><label class="labelExibe">C√≥digo</label></td>
+							<td><label class="labelExibe">T√≠tulo</label></td>
+							<td><label class="labelExibe">Tipo de N√∫mero</label></td>
+							<td><label class="labelExibe">N√∫mero</label></td>
 							<td><label class="labelExibe">Autor</label></td>
-							<td><label class="labelExibe">Destinat·rio</label></td>
+							<td><label class="labelExibe">Destinat√°rio</label></td>
 							<td><label class="labelExibe">Local</label></td>
 							<td><label class="labelExibe">Data</label></td>
 							<td><label class="labelExibe">Documento</label></td>
-							<td><label class="labelExibe">AÁıes</label></td>
+							<td><label class="labelExibe">A√ß√µes</label></td>
 						</tr>
 						<!-- Exemplo de Documento inserido -->
 						<tr>
-							<td><label class="labelExibe">CÛdice</label></td>
+							<td><label class="labelExibe">C√≥dice</label></td>
 							<td><label class="labelExibe">1234</label></td>
 							<td><label class="labelExibe">Documento de Exemplo</label></td>
 							<td><label class="labelExibe">APEP</label></td>
 							<td><label class="labelExibe">2531</label></td>
-							<td><label class="labelExibe">JosÈ Maria</label></td>
-							<td><label class="labelExibe">Maria Jo„o</label></td>
-							<td><label class="labelExibe">S„o Paulo - SP</label></td>
+							<td><label class="labelExibe">Jos√© Maria</label></td>
+							<td><label class="labelExibe">Maria Jo√£o</label></td>
+							<td><label class="labelExibe">S√£o Paulo - SP</label></td>
 							<td><label class="labelExibe">11/10/1900</label></td>
 							<td><label class="labelExibe">Carta</label></td>
 							<td><a href="#"><img src="/GraoPara/images/approve.png"
@@ -357,14 +357,15 @@
 			</article>
 
 		</div>
-		<!-- ComeÁo do RodapÈ -->
+		<!-- Come√ßo do Rodap√© -->
 		<div class="footer">
-			<p>Copyright © - Universidade Federal de S„o Paulo - UNIFESP 2012</p>
+			<p>Copyright ¬© - Universidade Federal de S√£o Paulo - UNIFESP 2012</p>
 			<p>Desenvolvido pelo grupo Coruja</p>
 		</div>
-		<!-- Fim do RodapÈ -->
+		<!-- Fim do Rodap√© -->
 		<!-- end .container -->
 	</div>
 </body>
 </html>
+
 

@@ -19,7 +19,7 @@ public class BuscaDocEJB {
 	OrigemDAO origemDao;
 	DocumentTypeDAO dtDao;
 	LoginDAO logDao;
-	
+
 	public BuscaDocEJB() {
 		docDao = new DocumentDAO();
 		kwDao = new KeyWordDAO();
@@ -28,7 +28,7 @@ public class BuscaDocEJB {
 		dtDao = new DocumentTypeDAO();
 		logDao = new LoginDAO();
 	}
-	
+
 	public List<DTO> busca(String identificacao, String codigo, String tipoAPEP_SEQ, String numAPEP_SEQ, String autor, 
 			String destinatario, String local, String data, String tipo, 
 			String palavra1, String palavra2, String palavra3) throws UnreachableDataBaseException, DocumentNotFoundException{
@@ -135,16 +135,16 @@ public class BuscaDocEJB {
 			continue_query = true;
 		}
 		
-		System.out.println(query);
-		
-		return docDao.findDocumentByQuery(query);
+		if(!continue_query) throw new DocumentNotFoundException();
+		else return docDao.findDocumentByQuery(query);
 	}
-	
-	public Long countRowsByCriteria(String criteria){
+
+	public Long countRowsByCriteria(String criteria) {
 		return docDao.countDocumentsByCriteria(criteria);
 	}
-	
-	public List<DTO> buscaPorUsuario(String email) throws UnreachableDataBaseException, DocumentNotFoundException {
+
+	public List<DTO> buscaPorUsuario(String email)
+			throws UnreachableDataBaseException, DocumentNotFoundException {
 		return docDao.findDocumentsByUploader(logDao.findUserByEmail(email));
 	}
 }
