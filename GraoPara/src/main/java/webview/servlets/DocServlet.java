@@ -43,7 +43,9 @@ public class DocServlet extends HttpServlet {
 		String autor = request.getParameter("autor");
 		String destinatario = request.getParameter("destinatario");
 		String local = request.getParameter("local");
-		String data = request.getParameter("data");
+		String dataDia = request.getParameter("dia");
+		String dataMes = request.getParameter("mes");
+		String dataAno = request.getParameter("ano");
 		String tipoDoc = request.getParameter("tipoDoc");
 		String resumo = request.getParameter("resumo");
 		String palChave1 = request.getParameter("chave1");
@@ -53,13 +55,7 @@ public class DocServlet extends HttpServlet {
 				request.getCookies(), WebUtility.cookie_email);
 		String email = c_user.getValue();
 		
-		//Fazendo parse da data
-		String[] data_split = data.split("/");
-		int[] data_parse = new int[3];
-		for(int i = 0; i < 3; i++)
-			data_parse[i] = Integer.parseInt(data_split[i]);
-		GregorianCalendar dataDoc = new GregorianCalendar(
-				data_parse[2], data_parse[1], data_parse[0]);
+		GregorianCalendar dataDoc = new GregorianCalendar(Integer.parseInt(dataAno), Integer.parseInt(dataMes), Integer.parseInt(dataDia));
 		
 		CadastroEJB CB = new CadastroEJB();
 		try {
