@@ -299,7 +299,7 @@ label{
 
 /* Div do conteúdo interno do site, onde as outras páginas estão sendo carregadas dentro */
 .content {
-	padding: 30px 10px 10px 80px;
+	padding: 30px 10px 10px 10px;
 	width: 725px;
 	float: left;
 	
