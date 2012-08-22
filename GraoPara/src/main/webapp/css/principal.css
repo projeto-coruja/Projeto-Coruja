@@ -292,7 +292,7 @@ label{
 .sidebar1 {
 	float: left;
 	width: 220px;
-	height: 900px;
+	height: 920px;
 	background-color: #93A5C4;
 	padding-bottom: 10px;
 }
@@ -348,6 +348,10 @@ ul.nav a:hover, ul.nav a:active, ul.nav a:focus { /* this changes the background
 .active{
 	background-color: #6F7D94;
 	color: #FFF;
+}
+
+p.left{
+text-align: left;
 }
 
 
