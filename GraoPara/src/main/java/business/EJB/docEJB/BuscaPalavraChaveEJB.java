@@ -1,5 +1,9 @@
 package business.EJB.docEJB;
 
+import java.util.List;
+
+import persistence.dto.DTO;
+
 import business.DAO.documents.KeyWordDAO;
 
 public class BuscaPalavraChaveEJB {
@@ -11,7 +15,7 @@ public class BuscaPalavraChaveEJB {
 	}
 	
 	public List<DTO> buscaPalavrasChaves(){
-		
+		return null;
 	}
 
 }
