@@ -88,7 +88,7 @@ $(document).ready(function() {
 				required: "Selecione a identificação."
 			},
 			tipo_num: {
-				required: "Selecione o tipo de número."
+				required: "Selecione o tipo de número. </br>"
 			},
 			codigo: {
 				required: "Digite o código do documento.",
@@ -118,7 +118,7 @@ $(document).ready(function() {
 				required: "Selecione o dia."				
 			},
 			mes: {
-				required: "Selecione o mês."				
+				required: "Selecione o mês.</br>"				
 			},
 			ano: {
 				required: "Informe o Ano.",
