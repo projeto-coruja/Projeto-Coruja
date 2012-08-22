@@ -47,13 +47,21 @@ public class PainelServlet extends HttpServlet {
 		try {
 			users = busca.listUsers();
 			
+			out.println("<tr>");
+			out.println("<td class=\"coluna\"> <label for=\"identificacao\" class=\"labelExibe\">Nome</label></td>");
+			out.println("<td class=\"coluna\"> <label for=\"identificacao\"	class=\"labelExibe\">Email</label></td>");
+			out.println("<td class=\"coluna\"> <label for=\"identificacao\"	class=\"labelExibe\">Permissão</label></td>");
+			out.println("<td class=\"coluna\"> <label for=\"identificacao\"	class=\"labelExibe\">Ação</label></td>");
+			out.println("</tr>");
+			
 			for(DTO u : users){
 				out.println("<tr>");
 				
 				UserDTO user = (UserDTO) u;
-				out.println("<td width=\"120\" height=\"20\">" + user.getName() + "</td>");
-				out.println("<td width=\"120\" height=\"20\">" + user.getEmail() + "</td>");
-				out.println("<td width=\"120\" height=\"20\">" + user.getUserProfile().getProfile() + "</td>");
+				out.println("<td >" + user.getName() + "</td>");
+				out.println("<td >" + user.getEmail() + "</td>");
+				out.println("<td >" + user.getUserProfile().getProfile() + "</td>");
+				out.println("<td> COLOCAR AÇÃO </td>");
 				
 				out.println("</tr>");
 			}
@@ -69,4 +77,6 @@ public class PainelServlet extends HttpServlet {
 		}
 		
 	}
+
+	
 }

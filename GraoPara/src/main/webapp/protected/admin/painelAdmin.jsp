@@ -242,9 +242,9 @@
 								</div>-->
 							</td> 
 						</tr>
-						<tr>
+						<!-- <tr>
 							<td class="coluna">
-								<label for="identificacao"	class="labelExibe">Nome</label></td>
+								<label for="identificacao" class="labelExibe">Nome</label></td>
 							<td class="coluna">
 								<label for="identificacao"
 								class="labelExibe">Email</label></td>
@@ -254,9 +254,9 @@
 							<td class="coluna">
 								<label for="identificacao"
 								class="labelExibe">Ação</label></td>
-							<!-- Exemplo de cadastro -->
-						</tr>
-						<tr>
+							Exemplo de cadastro
+						</tr> -->
+						
 							<% PainelServlet.listAllUsers(request, response);%>
 						
 <!-- 							<td width="120" height="20"><label for="identificacao" -->
@@ -269,7 +269,7 @@
 <!-- 									src="/GraoPara/images/edit.png" title="Editar" alt="Editar" /></a> -->
 <!-- 								<a href="#"><img src="/GraoPara/images/remove.png" -->
 <!-- 									title="Remover" alt="Remover" /></a></td> -->
-						</tr>
+
 					</table>
 
 				</section>
