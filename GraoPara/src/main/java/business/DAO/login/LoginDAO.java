@@ -89,7 +89,7 @@ public class LoginDAO {
 		List<DTO> resultSet;
 		try{
 			resultSet = null;
-			resultSet = manager.findEntities("from User");
+			resultSet = manager.findEntities("from User order by name");
 			if(resultSet == null)	throw new UserNotFoundException("Nenhum usuário encontrado");
 		}catch(DataAccessLayerException e){
 			e.printStackTrace();

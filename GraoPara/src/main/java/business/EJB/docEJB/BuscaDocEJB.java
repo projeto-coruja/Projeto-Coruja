@@ -30,7 +30,7 @@ public class BuscaDocEJB {
 		logDao = new LoginDAO();
 	}
 	
-	public List<DTO> busca(String identificacao, String codigo, String tipoAPEP_SEQ, String numAPEP_SEQ, String autor, 
+	public List<DTO> busca(String identificacao, String codigo, String titulo , String tipoAPEP_SEQ, String numAPEP_SEQ, String autor, 
 			String destinatario, String local, String data, String tipo, 
 			String palavra1, String palavra2, String palavra3) throws UnreachableDataBaseException, DocumentNotFoundException{
 		
@@ -39,6 +39,14 @@ public class BuscaDocEJB {
 		
 		if(identificacao != null && !identificacao.isEmpty()){
 			query += "tipo_origem = '" + identificacao + "'";
+			continue_query = true;
+		}
+		
+		if(titulo != null && !titulo.isEmpty()){
+			if(continue_query == true){
+				query += " and ";
+			}
+			query += "titulo_origem like '%" + titulo + "%'";
 			continue_query = true;
 		}
 		
@@ -110,9 +118,9 @@ public class BuscaDocEJB {
 			if(continue_query == true){
 				query += " and ";
 			}
-			query += "(palavra_chave_1 like '%" + palavra1.toLowerCase() + "%'";
-			query += "or palavra_chave_2 like '%" + palavra1.toLowerCase() + "%'";
-			query += "or palavra_chave_3 like '%" + palavra1.toLowerCase() + "%')";
+			query += "((palavra_chave_1 like '%" + palavra1.toLowerCase() + "%'" + " and (palavra_chave_1 in (select palavra from PalavraChave where aprovada = TRUE))) ";
+			query += "or (palavra_chave_2 like '%" + palavra1.toLowerCase() + "%'" + " and (palavra_chave_2 in (select palavra from PalavraChave where aprovada = TRUE))) ";
+			query += "or (palavra_chave_3 like '%" + palavra1.toLowerCase() + "%'"+ " and (palavra_chave_3 in (select palavra from PalavraChave where aprovada = TRUE)))) ";
 			continue_query = true;
 		}
 		
@@ -120,9 +128,9 @@ public class BuscaDocEJB {
 			if(continue_query == true){
 				query += " and ";
 			}
-			query += "(palavra_chave_1 like '%" + palavra2.toLowerCase() + "%'";
-			query += "or palavra_chave_2 like '%" + palavra2.toLowerCase() + "%'";
-			query += "or palavra_chave_3 like '%" + palavra2.toLowerCase() + "%')";
+			query += "((palavra_chave_1 like '%" + palavra2.toLowerCase() + "%'" + " and (palavra_chave_1 in (select palavra from PalavraChave where aprovada = TRUE))) ";
+			query += "or (palavra_chave_2 like '%" + palavra2.toLowerCase() + "%'" + " and (palavra_chave_2 in (select palavra from PalavraChave where aprovada = TRUE))) ";
+			query += "or (palavra_chave_3 like '%" + palavra2.toLowerCase() + "%'"+ " and (palavra_chave_3 in (select palavra from PalavraChave where aprovada = TRUE)))) ";
 			continue_query = true;
 		}
 		
@@ -130,16 +138,14 @@ public class BuscaDocEJB {
 			if(continue_query == true){
 				query += " and ";
 			}
-			query += "(palavra_chave_1 like '%" + palavra3.toLowerCase() + "%'";
-			query += "or palavra_chave_2 like '%" + palavra3.toLowerCase() + "%'";
-			query += "or palavra_chave_3 like '%" + palavra3.toLowerCase() + "%')";
+			query += "((palavra_chave_1 like '%" + palavra3.toLowerCase() + "%'" + " and (palavra_chave_1 in (select palavra from PalavraChave where aprovada = TRUE))) ";
+			query += "or (palavra_chave_2 like '%" + palavra3.toLowerCase() + "%'" + " and (palavra_chave_2 in (select palavra from PalavraChave where aprovada = TRUE))) ";
+			query += "or (palavra_chave_3 like '%" + palavra3.toLowerCase() + "%'"+ " and (palavra_chave_3 in (select palavra from PalavraChave where aprovada = TRUE)))) ";
 			continue_query = true;
 		}
 		
-		query += "and palavra_chave_1 in (select palavra from tbl_palavra_chave where aprovada = TRUE))";
-		query += "and palavra_chave_2 in (select palavra from tbl_palavra_chave where aprovada = TRUE))";
-		query += "and palavra_chave_3 in (select palavra from tbl_palavra_chave where aprovada = TRUE))";
 		
+		query += "order by titulo_origem";
 //		System.out.println(query);
 		
 		return docDao.findDocumentByQuery(query);

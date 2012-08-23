@@ -36,7 +36,8 @@ public class Documento implements Serializable,Entidade{
 	@Cascade(CascadeType.SAVE_UPDATE)
 	@JoinColumns({
 		@JoinColumn(name = "tipo_origem", referencedColumnName = "tipo_origem"),
-		@JoinColumn(name = "cod_origem", referencedColumnName = "cod_origem")
+		@JoinColumn(name = "cod_origem", referencedColumnName = "cod_origem"),
+		@JoinColumn(name = "titulo_origem", referencedColumnName = "titulo")
 	})
 	private Origem origemDocumento;
 
