@@ -110,7 +110,7 @@ article.tabsCSS
 article.tabsCSS section  
 {  
     position: absolute;
-    width: 790px; 
+    width: 560px; 
     display: block;  
     top: 1.8em;  
     left: 2em;  
@@ -132,7 +132,7 @@ article.tabsCSS section h2
     position: absolute;  
     font-size: 80%;   
     font-weight: normal;  
-    width: 200px;  
+    width: 140px;  
     height: 1.8em;  
     top: -1.8em;  
     left: 10px;  
@@ -144,15 +144,15 @@ article.tabsCSS section h2
 }  
 article.tabsCSS section:nth-child(2) h2  
 {  
-    left: 200px;  
+    left: 140px;  
 }  
 article.tabsCSS section:nth-child(3) h2  
 {  
-    left: 390px;  
+    left: 280px;  
 }
 article.tabsCSS section:nth-child(4) h2  
 {  
-    left: 580px;  
+    left: 420px;  
 } 
 article.tabsCSS section h2 a  
 {  
