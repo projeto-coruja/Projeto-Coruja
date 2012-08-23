@@ -41,13 +41,13 @@ public class LoginDAO {
 	
 	}
 	
-	public UserDTO findUserByEmail(String email) throws UnreachableDataBaseException {
+	public UserDTO findUserByEmail(String email) throws UnreachableDataBaseException, UserNotFoundException {
 		List<DTO> resultSet = null;
 		try {
 			resultSet = manager.findEntities("from User where email = '" + email +"'");
 			if(resultSet == null) {
-				//throw new UserNotFoundException("Email não encontrado");
-				return null;
+				throw new UserNotFoundException("Email não encontrado");
+//				return null;
 			}
 			else return (UserDTO) resultSet.get(0);
 		} catch (DataAccessLayerException e) {

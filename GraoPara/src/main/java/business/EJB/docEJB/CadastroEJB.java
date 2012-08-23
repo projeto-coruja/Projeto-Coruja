@@ -20,6 +20,7 @@ import business.DAO.login.LoginDAO;
 import business.exceptions.documents.DocumentNotFoundException;
 import business.exceptions.documents.KeywordNotFoundException;
 import business.exceptions.login.UnreachableDataBaseException;
+import business.exceptions.login.UserNotFoundException;
 
 public class CadastroEJB {
 	DocumentDAO docDao;
@@ -34,7 +35,7 @@ public class CadastroEJB {
 			String tipoDocumento_tipoDocumento, String palavraChave01,
 			String palavraChave02, String palavraChave03, String autor,
 			String local, String destinatario, String resumo,
-			Calendar dataDocumento, String uploader) throws UnreachableDataBaseException {
+			Calendar dataDocumento, String uploader) throws UnreachableDataBaseException, UserNotFoundException {
 
 		DocumentoDTO docDTO;
 		TipoDocumentoDTO tipoDTO;

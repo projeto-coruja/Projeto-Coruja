@@ -2,6 +2,7 @@ package business.EJB.userEJB;
 
 import business.DAO.login.LoginDAO;
 import business.exceptions.login.UnreachableDataBaseException;
+import business.exceptions.login.UserNotFoundException;
 
 import persistence.dto.UserDTO;
 
@@ -16,7 +17,7 @@ public class AuthBean {
 	public final static int LoginSuccessUser = 1;
 	public final static int LoginSuccessAdmin = 2;
 
-	public static UserBean validarLogin(String email, String password, boolean hashed) throws UnreachableDataBaseException {
+	public static UserBean validarLogin(String email, String password, boolean hashed) throws UnreachableDataBaseException, UserNotFoundException {
 
 		UserDTO check = loginDAO.findUserByEmail(email);
 		if(check == null)
