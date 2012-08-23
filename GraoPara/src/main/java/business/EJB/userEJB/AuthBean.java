@@ -1,6 +1,7 @@
 package business.EJB.userEJB;
 
 import business.DAO.login.LoginDAO;
+import business.EJB.util.EJBUtility;
 import business.exceptions.login.UnreachableDataBaseException;
 import business.exceptions.login.UserNotFoundException;
 
@@ -25,7 +26,7 @@ public class AuthBean {
 		
 		String hashedPassword = null;
 		if(hashed == NonHashedPwd)
-			hashedPassword = Password.getHash(password);
+			hashedPassword = EJBUtility.getHash(password);
 		else
 			hashedPassword = password;
 		

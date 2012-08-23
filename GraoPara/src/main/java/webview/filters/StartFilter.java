@@ -47,7 +47,7 @@ public class StartFilter implements Filter {
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		log.info("Entrei");
+//		log.info("Entrei");
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response;
 		Cookie[] c_list = req.getCookies();

@@ -2,6 +2,7 @@ package business.EJB.userEJB;
 
 import business.DAO.login.LoginDAO;
 import business.EJB.RegularExpression;
+import business.EJB.util.EJBUtility;
 import business.exceptions.login.DuplicateUserException;
 import business.exceptions.login.IncorrectLoginInformationException;
 import business.exceptions.login.UnreachableDataBaseException;
@@ -28,7 +29,7 @@ public class CadastroBean {
 				check = loginDAO.findUserByEmail(email);
 				if(check != null)	throw new DuplicateUserException();
 			} catch (UserNotFoundException e) {
-				loginDAO.addUser(email, name, Password.getHash(password));
+				loginDAO.addUser(email, name, EJBUtility.getHash(password));
 			}
 		} catch (UnreachableDataBaseException e) {
 			e.printStackTrace();
@@ -37,8 +38,8 @@ public class CadastroBean {
 
 	public String recuperarSenha(String email) throws UnreachableDataBaseException, UserNotFoundException {
 		UserDTO user = loginDAO.findUserByEmail(email);
-		String newPassword = Password.genNewRandomPassword(6);
-		user.setPassword(Password.getHash(newPassword));
+		String newPassword = EJBUtility.genNewRandomPassword(6);
+		user.setPassword(EJBUtility.getHash(newPassword));
 		loginDAO.updateUser(user);
 		return newPassword;
 	}
