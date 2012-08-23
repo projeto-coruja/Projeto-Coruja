@@ -12,6 +12,7 @@ import persistence.dto.ProfileDTO;
 import business.EJB.userEJB.AuthBean;
 import business.EJB.userEJB.UserBean;
 import business.exceptions.login.UnreachableDataBaseException;
+import business.exceptions.login.UserNotFoundException;
 
 public final class WebUtility {
 	
@@ -44,8 +45,9 @@ public final class WebUtility {
 				UserBean result = AuthBean.validarLogin(email, password, AuthBean.HashedPwd);
 				return result;
 			} catch (UnreachableDataBaseException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
+				return null;
+			} catch (UserNotFoundException e) {
 				return null;
 			}
 		}
@@ -73,7 +75,8 @@ public final class WebUtility {
 	
 	public static String docToString(DocumentoDTO doc) {
 		return
-				doc.getAutor()
+				doc.getOrigemDocumento().getTitulo() + "\n"
+				+ doc.getAutor() + " "
 				+ doc.getDestinatario() + " "
 				+ doc.getLocal() + " "
 				+ doc.getResumo() + " "

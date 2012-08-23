@@ -87,7 +87,10 @@ public class PanelWorker {
 					out.println("<td> <label for=\"identificacao\" class=\"labelExibe\">" + user.getName() + "</label> </td>");
 					out.println("<td> <label for=\"identificacao\" class=\"labelExibe\">" + user.getEmail() + " </label> </td>");
 					out.println("<td> <label for=\"identificacao\" class=\"labelExibe\">" + user.getUserProfile().getProfile() + "</label> </td>");
-					out.println("<td><a href=\"#\"><img src=\"/GraoPara/images/edit.png\" title=\"Editar\" alt=\"Editar\" /></a><a href=\"#\"><img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\" /></a></td>");
+					out.println("<td>"
+							+ "<a href=\"editarServlet.java?email=<%user.getEmail%>\" onclick=\"\"><img src=\"/GraoPara/images/edit.png\" title=\"Editar\" alt=\"Editar\" /></a>" 
+							+ "<a href=\"removerServlet.java?email=<%user.getEmail%>\"><img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\" /></a>"
+							+ "</td>");
 					out.println("</tr>");
 				}
 			}
@@ -103,4 +106,8 @@ public class PanelWorker {
 		}
 	}
 	
+	public static void removeUser(HttpServletRequest request, JspWriter out) throws IOException{
+		  
+		
+	}
 }

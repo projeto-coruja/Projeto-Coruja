@@ -17,6 +17,7 @@ import business.EJB.docEJB.BuscaDocEJB;
 import business.EJB.docEJB.CadastroEJB;
 import business.exceptions.documents.DocumentNotFoundException;
 import business.exceptions.login.UnreachableDataBaseException;
+import business.exceptions.login.UserNotFoundException;
 
 public class BuscaDocEJBTest {
 	
@@ -53,10 +54,16 @@ public class BuscaDocEJBTest {
 		pa.saveEntity(WebUtility.admin_profile);
 		
 		LA = new LoginDAO();
-		UO = LA.findUserByEmail("outlook@gmail.com");
-		if (UO == null) {
-			LA.addUser("outlook@gmail.com", "Outlook", "password");
+		try {
 			UO = LA.findUserByEmail("outlook@gmail.com");
+		} catch (UserNotFoundException e) {
+			LA.addUser("outlook@gmail.com", "Outlook", "password");
+			try {
+				UO = LA.findUserByEmail("outlook@gmail.com");
+			} catch (UserNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 		
 		origem_codOrigem = "ABC";
@@ -76,10 +83,15 @@ public class BuscaDocEJBTest {
 		uploader = "outlook@gmail.com";
 		
 		
-		ce.cadastrarDocumento(origem_codOrigem, origem_tipoOrigem, origem_titulo,
-				idNumDoc_tipoId, idNumDoc_codId,
-				tipoDocumento_tipoDocumento, palavraChave01, palavraChave02, palavraChave03,
-				autor, local, destinatario, resumo, dataDocumento, uploader);
+		try {
+			ce.cadastrarDocumento(origem_codOrigem, origem_tipoOrigem, origem_titulo,
+					idNumDoc_tipoId, idNumDoc_codId,
+					tipoDocumento_tipoDocumento, palavraChave01, palavraChave02, palavraChave03,
+					autor, local, destinatario, resumo, dataDocumento, uploader);
+		} catch (UserNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		
 	}

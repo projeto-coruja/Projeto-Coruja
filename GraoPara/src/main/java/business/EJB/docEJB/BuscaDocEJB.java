@@ -11,6 +11,7 @@ import business.DAO.documents.OrigemDAO;
 import business.DAO.login.LoginDAO;
 import business.exceptions.documents.DocumentNotFoundException;
 import business.exceptions.login.UnreachableDataBaseException;
+import business.exceptions.login.UserNotFoundException;
 
 public class BuscaDocEJB {
 	DocumentDAO docDao;
@@ -19,7 +20,7 @@ public class BuscaDocEJB {
 	OrigemDAO origemDao;
 	DocumentTypeDAO dtDao;
 	LoginDAO logDao;
-
+	
 	public BuscaDocEJB() {
 		docDao = new DocumentDAO();
 		kwDao = new KeyWordDAO();
@@ -28,8 +29,8 @@ public class BuscaDocEJB {
 		dtDao = new DocumentTypeDAO();
 		logDao = new LoginDAO();
 	}
-
-	public List<DTO> busca(String identificacao, String codigo, String tipoAPEP_SEQ, String numAPEP_SEQ, String autor, 
+	
+	public List<DTO> busca(String identificacao, String codigo, String titulo , String tipoAPEP_SEQ, String numAPEP_SEQ, String autor, 
 			String destinatario, String local, String data, String tipo, 
 			String palavra1, String palavra2, String palavra3) throws UnreachableDataBaseException, DocumentNotFoundException{
 		
@@ -37,7 +38,15 @@ public class BuscaDocEJB {
 		String query = "from Documento where ";
 		
 		if(identificacao != null && !identificacao.isEmpty()){
-			query += "tipo_origem = '" + identificacao.toUpperCase() + "'";
+			query += "tipo_origem = '" + identificacao + "'";
+			continue_query = true;
+		}
+		
+		if(titulo != null && !titulo.isEmpty()){
+			if(continue_query == true){
+				query += " and ";
+			}
+			query += "titulo_origem like '%" + titulo + "%'";
 			continue_query = true;
 		}
 		
@@ -53,7 +62,7 @@ public class BuscaDocEJB {
 			if(continue_query == true){
 				query += " and ";
 			}
-			query += "tipo_id = '" + tipoAPEP_SEQ.toUpperCase() + "'";
+			query += "tipo_id = '" + tipoAPEP_SEQ + "'";
 			continue_query = true;
 		}
 		
@@ -109,9 +118,9 @@ public class BuscaDocEJB {
 			if(continue_query == true){
 				query += " and ";
 			}
-			query += "(palavra_chave_1 like '%" + palavra1.toLowerCase() + "%'";
-			query += "or palavra_chave_2 like '%" + palavra1.toLowerCase() + "%'";
-			query += "or palavra_chave_3 like '%" + palavra1.toLowerCase() + "%')";
+			query += "((palavra_chave_1 like '%" + palavra1.toLowerCase() + "%'" + " and (palavra_chave_1 in (select palavra from PalavraChave where aprovada = TRUE))) ";
+			query += "or (palavra_chave_2 like '%" + palavra1.toLowerCase() + "%'" + " and (palavra_chave_2 in (select palavra from PalavraChave where aprovada = TRUE))) ";
+			query += "or (palavra_chave_3 like '%" + palavra1.toLowerCase() + "%'"+ " and (palavra_chave_3 in (select palavra from PalavraChave where aprovada = TRUE)))) ";
 			continue_query = true;
 		}
 		
@@ -119,9 +128,9 @@ public class BuscaDocEJB {
 			if(continue_query == true){
 				query += " and ";
 			}
-			query += "(palavra_chave_1 like '%" + palavra2.toLowerCase() + "%'";
-			query += "or palavra_chave_2 like '%" + palavra2.toLowerCase() + "%'";
-			query += "or palavra_chave_3 like '%" + palavra2.toLowerCase() + "%')";
+			query += "((palavra_chave_1 like '%" + palavra2.toLowerCase() + "%'" + " and (palavra_chave_1 in (select palavra from PalavraChave where aprovada = TRUE))) ";
+			query += "or (palavra_chave_2 like '%" + palavra2.toLowerCase() + "%'" + " and (palavra_chave_2 in (select palavra from PalavraChave where aprovada = TRUE))) ";
+			query += "or (palavra_chave_3 like '%" + palavra2.toLowerCase() + "%'"+ " and (palavra_chave_3 in (select palavra from PalavraChave where aprovada = TRUE)))) ";
 			continue_query = true;
 		}
 		
@@ -129,22 +138,24 @@ public class BuscaDocEJB {
 			if(continue_query == true){
 				query += " and ";
 			}
-			query += "(palavra_chave_1 like '%" + palavra3.toLowerCase() + "%'";
-			query += "or palavra_chave_2 like '%" + palavra3.toLowerCase() + "%'";
-			query += "or palavra_chave_3 like '%" + palavra3.toLowerCase() + "%')";
+			query += "((palavra_chave_1 like '%" + palavra3.toLowerCase() + "%'" + " and (palavra_chave_1 in (select palavra from PalavraChave where aprovada = TRUE))) ";
+			query += "or (palavra_chave_2 like '%" + palavra3.toLowerCase() + "%'" + " and (palavra_chave_2 in (select palavra from PalavraChave where aprovada = TRUE))) ";
+			query += "or (palavra_chave_3 like '%" + palavra3.toLowerCase() + "%'"+ " and (palavra_chave_3 in (select palavra from PalavraChave where aprovada = TRUE)))) ";
 			continue_query = true;
 		}
 		
-		if(!continue_query) throw new DocumentNotFoundException();
-		else return docDao.findDocumentByQuery(query);
+		
+		query += "order by titulo_origem";
+//		System.out.println(query);
+		
+		return docDao.findDocumentByQuery(query);
 	}
-
-	public Long countRowsByCriteria(String criteria) {
+	
+	public Long countRowsByCriteria(String criteria){
 		return docDao.countDocumentsByCriteria(criteria);
 	}
-
-	public List<DTO> buscaPorUsuario(String email)
-			throws UnreachableDataBaseException, DocumentNotFoundException {
+	
+	public List<DTO> buscaPorUsuario(String email) throws UnreachableDataBaseException, DocumentNotFoundException, UserNotFoundException {
 		return docDao.findDocumentsByUploader(logDao.findUserByEmail(email));
 	}
 }

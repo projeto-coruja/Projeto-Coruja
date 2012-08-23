@@ -254,7 +254,10 @@ a:hover, a:active, a:focus { /* this group of selectors will give a keyboard nav
 	cursor:pointer;
 	
 }
-
+.scroll{
+	height: 25em;
+	overflow: auto;
+}
 .buttonPesquisa{
 	width:185px;
 	height:24px;
@@ -387,7 +390,7 @@ text-align: left;
 /* Parametros para personalizar mais fácil o texto de descrição dos formulários, em alguns sites eles substituem o label por um texto dentro do input que é
 apagado quando o usuário digitar algo dentro, para isso use o atributo placeholder="texto" dentro da tag do input no html */
 .labelForms {
-	font-size: 11px;
+	font-size: 12px;
 	text-align:left;
 }
 
@@ -414,14 +417,14 @@ span.asterisco {
 
 .tableForms{
 	text-align:left;
-	margin: 40px 0 0 30%;
-	width: 600px;
+	margin: 40px 0 0 10px;
+	width: 700px;
 	border: 0px;
 }
 
 .tablePainel{
 	text-align:center;	
-	width: 600px;
+	width: 700px;
 	border: 1px;
 }
 
