@@ -82,7 +82,7 @@ public class PanelWorker {
 			for(DTO u : users){
 				UserDTO user = (UserDTO) u;
 				
-				if(user.getUserProfile().getProfile() == "default"){
+				if(user.getUserProfile().getProfile().equals("default")){
 					out.println("<tr>");
 					out.println("<td> <label for=\"identificacao\" class=\"labelExibe\">" + user.getName() + "</label> </td>");
 					out.println("<td> <label for=\"identificacao\" class=\"labelExibe\">" + user.getEmail() + " </label> </td>");
