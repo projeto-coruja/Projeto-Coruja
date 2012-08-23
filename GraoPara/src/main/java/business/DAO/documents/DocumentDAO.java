@@ -25,7 +25,7 @@ public class DocumentDAO {
 		manager = new PersistenceAccess();
 	}
 	
-	public synchronized DocumentoDTO addDocument(DocumentoDTO newDoc) throws UnreachableDataBaseException {
+	public void addDocument(DocumentoDTO newDoc) throws UnreachableDataBaseException {
 		
 		List<DTO> check;
 		DocumentTypeDAO dtd = new DocumentTypeDAO();
@@ -117,8 +117,6 @@ public class DocumentDAO {
 			e.printStackTrace();
 			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
 		}
-		
-		return newDoc;
 	}
 	
 	public void removeDocument(DocumentoDTO doc) throws UnreachableDataBaseException {

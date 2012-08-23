@@ -81,7 +81,7 @@ public class CadastroEJB {
 				local, destinatario, resumo, dataDocumento, new Date(),
 				uploaderDTO, palavraChaveDTO[0], palavraChaveDTO[1],
 				palavraChaveDTO[2]);
-		docDTO = docDao.addDocument(docDTO);
+		docDao.addDocument(docDTO);
 		
 	}
 

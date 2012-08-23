@@ -52,6 +52,7 @@ public class SearchServlet extends HttpServlet {
 		String palavraChave1 = request.getParameter("chave1");
 		String palavraChave2 = request.getParameter("chave2");
 		String palavraChave3 = request.getParameter("chave3");
+		String titulo = request.getParameter("titulo");
 		Cookie cookie_status = WebUtility.selectCookie(
 				request.getCookies(), WebUtility.cookie_status);
 		int c_status;
@@ -64,11 +65,12 @@ public class SearchServlet extends HttpServlet {
 		try {
 			response.setContentType("text/html");
 			PrintWriter out = response.getWriter();
-			resultados = busca.busca(identificacao, codigo, tipoAPEP_SEQ,
+			resultados = busca.busca(identificacao, codigo, titulo, tipoAPEP_SEQ,
 					numAPEP, autor, destinatario, local, data, tipoDoc,
 					palavraChave1, palavraChave2, palavraChave3);
 			for (DTO result : resultados) {
 				out.println(WebUtility.docToString((DocumentoDTO) result));
+				out.println("<br>------------------------------------------------------<br>");
 			}
 
 		} catch (UnreachableDataBaseException e) {

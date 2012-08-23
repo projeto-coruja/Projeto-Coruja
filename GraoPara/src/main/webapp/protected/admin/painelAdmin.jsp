@@ -192,6 +192,7 @@
 						<a href="#tab2">Novos Usuários</a>
 					</h2>
 					<div class="scroll">
+										<form action="">
 					<table class="tablePainel">
 						<thead>
 							<tr>
@@ -208,6 +209,7 @@
 							%>
 						</tbody>
 					</table>
+					</form>
 				</div>
 
 				</section>

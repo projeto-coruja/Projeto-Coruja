@@ -67,7 +67,7 @@ public class EntityManager {
 		}catch(HibernateException e){
 			handleException(e);
 		}finally{
-			PersistenceUtility.close(session);
+			finishOperation();
 		}
 		return obj;
 	}
@@ -110,15 +110,19 @@ public class EntityManager {
 	 */
 	public Long count(String table, String criteria){
 		Query query = null;
+		Long result = null;
 		try{
 			startOperation();
 			String queryString = "select count(*) from " + table + " where " + criteria;
 			query = session.createQuery(queryString);
+			result = (Long) query.list().get(0);
 			transaction.commit();
 		}catch(HibernateException e){
 			handleException(e);
+		}finally{
+			finishOperation();
 		}
-		return (Long) query.list().get(0);
+		return result;
 	}
 
 }
