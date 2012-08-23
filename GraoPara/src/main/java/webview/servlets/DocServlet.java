@@ -15,6 +15,7 @@ import webview.WebUtility;
 
 import business.EJB.docEJB.CadastroEJB;
 import business.exceptions.login.UnreachableDataBaseException;
+import business.exceptions.login.UserNotFoundException;
 
 /**
  * Servlet implementation class DocServlet
@@ -73,6 +74,9 @@ public class DocServlet extends HttpServlet {
 		    out.println("alert('Erro no banco de dados! Contate o suporte e tente novamente mais tarde." + e.getStackTrace() + "');");  
 		    out.println("document.location=('/GraoPara/protected/user/');");  
 		    out.println("</script>");
+			e.printStackTrace();
+		} catch (UserNotFoundException e) {
+			System.err.println("Erro ao indentificar um usuário no cadastro de documento!");
 			e.printStackTrace();
 		}
 		response.sendRedirect("/GraoPara/");

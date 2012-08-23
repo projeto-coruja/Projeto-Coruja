@@ -16,6 +16,7 @@ import business.EJB.userEJB.AuthBean;
 import business.EJB.userEJB.Password;
 import business.EJB.userEJB.UserBean;
 import business.exceptions.login.UnreachableDataBaseException;
+import business.exceptions.login.UserNotFoundException;
 
 /**
  * Servlet implementation class LoginServlet
@@ -73,6 +74,13 @@ public class LoginServlet extends HttpServlet {
 			
 		} catch (UnreachableDataBaseException e) {
 			e.printStackTrace();
+		} catch (UserNotFoundException e) {
+			response.setContentType("text/html");  
+		    PrintWriter out=response.getWriter();   
+		    out.println("<script>");  
+		    out.println("alert('Login incorreto! Verifique seu email e senha, e tente de novo. ');");  
+		    out.println("document.location=('/GraoPara/public/index.jsp');");  
+		    out.println("</script>");
 		}
 	}
 

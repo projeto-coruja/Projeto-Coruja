@@ -11,6 +11,7 @@ import business.DAO.documents.OrigemDAO;
 import business.DAO.login.LoginDAO;
 import business.exceptions.documents.DocumentNotFoundException;
 import business.exceptions.login.UnreachableDataBaseException;
+import business.exceptions.login.UserNotFoundException;
 
 public class BuscaDocEJB {
 	DocumentDAO docDao;
@@ -148,7 +149,7 @@ public class BuscaDocEJB {
 		return docDao.countDocumentsByCriteria(criteria);
 	}
 	
-	public List<DTO> buscaPorUsuario(String email) throws UnreachableDataBaseException, DocumentNotFoundException {
+	public List<DTO> buscaPorUsuario(String email) throws UnreachableDataBaseException, DocumentNotFoundException, UserNotFoundException {
 		return docDao.findDocumentsByUploader(logDao.findUserByEmail(email));
 	}
 }

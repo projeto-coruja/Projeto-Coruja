@@ -23,11 +23,13 @@ public class CadastroBean {
 	public void adicionarUsuario(String email, String name, String password) throws UnreachableDataBaseException, IncorrectLoginInformationException, DuplicateUserException {
 		try {
 			if(!emailChecker.check(email))	throw new IncorrectLoginInformationException("Email inválido");	
-			UserDTO check = loginDAO.findUserByEmail(email);
-			if(check != null)
-				throw new DuplicateUserException();
-			else
+			UserDTO check;
+			try {
+				check = loginDAO.findUserByEmail(email);
+				if(check != null)	throw new DuplicateUserException();
+			} catch (UserNotFoundException e) {
 				loginDAO.addUser(email, name, Password.getHash(password));
+			}
 		} catch (UnreachableDataBaseException e) {
 			e.printStackTrace();
 		}
