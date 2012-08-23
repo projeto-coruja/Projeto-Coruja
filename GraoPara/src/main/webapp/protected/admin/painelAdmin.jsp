@@ -161,6 +161,11 @@
 									class="labelExibe">Ação</label></td>
 							</tr>
 						</thead>
+						<tbody>
+							<%
+								PanelWorker.listAllNewKeyWords(request, out);
+							%>
+						</tbody>
 					</table>
 					</div>
 				</section>
