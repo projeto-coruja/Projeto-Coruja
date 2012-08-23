@@ -120,17 +120,27 @@ public class CadastroEJB {
 		docDto = (DocumentoDTO) docDao.findDocumentByQuery(query).get(0);
 		docDao.removeDocument(docDto);
 		
-		count = docDao.countDocumentsByCriteria("tipo_documento = '" + docDto.getTipoDocumento().getTipoDocumento() + "'");
+		count = docDao.countDocumentsByCriteria("tipo_documento = '" 
+				+ docDto.getTipoDocumento().getTipoDocumento() 
+				+ "'");
 		if(count == 0){
 			dtDao.removeDocumentType(docDto.getTipoDocumento());
 		}
 		
-		count = docDao.countDocumentsByCriteria("tipo_id = '" + docDto.getIdNumDocumento().getTipoId() + "' and cod_id = '" + docDto.getIdNumDocumento().getCodId() + "'");
+		count = docDao.countDocumentsByCriteria("tipo_id = '" 
+				+ docDto.getIdNumDocumento().getTipoId() 
+				+ "' and cod_id = '" 
+				+ docDto.getIdNumDocumento().getCodId() 
+				+ "'");
 		if(count == 0){
 			indDao.removeIdNumDocument(docDto.getIdNumDocumento());
 		}
 		
-		count = docDao.countDocumentsByCriteria("tipo_origem = '" + docDto.getOrigemDocumento().getTipoOrigem() + "' and cod_origem = '" + docDto.getOrigemDocumento().getCodOrigem() + "'");
+		count = docDao.countDocumentsByCriteria("tipo_origem = '" 
+				+ docDto.getOrigemDocumento().getTipoOrigem() 
+				+ "' and cod_origem = '" 
+				+ docDto.getOrigemDocumento().getCodOrigem() 
+				+ "'");
 		if(count == 0){
 			originDao.removeOrigin(docDto.getOrigemDocumento());
 		}

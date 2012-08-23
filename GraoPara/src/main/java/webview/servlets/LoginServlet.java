@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import webview.WebUtility;
 
 import business.EJB.userEJB.AuthBean;
-import business.EJB.userEJB.Password;
 import business.EJB.userEJB.UserBean;
+import business.EJB.util.EJBUtility;
 import business.exceptions.login.UnreachableDataBaseException;
 import business.exceptions.login.UserNotFoundException;
 
@@ -44,7 +44,7 @@ public class LoginServlet extends HttpServlet {
 			if(login_result != null && (login_result.getLogType() == AuthBean.LoginSuccessAdmin || login_result.getLogType() == AuthBean.LoginSuccessUser))
 			{
 				Cookie c_email = new Cookie(WebUtility.cookie_email, user);
-				Cookie c_pass = new Cookie(WebUtility.cookie_password, Password.getHash(senha));
+				Cookie c_pass = new Cookie(WebUtility.cookie_password, EJBUtility.getHash(senha));
 				Cookie c_status = new Cookie(WebUtility.cookie_status, login_result.getLogType().toString());
 				Cookie c_nome = new Cookie(WebUtility.cookie_nome, login_result.getUsername());
 				c_email.setMaxAge(WebUtility.cookie_expire);

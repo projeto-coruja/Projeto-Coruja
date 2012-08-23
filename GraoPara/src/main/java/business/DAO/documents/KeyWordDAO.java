@@ -8,7 +8,6 @@ import business.exceptions.login.UserNotFoundException;
 import persistence.PersistenceAccess;
 import persistence.dto.DTO;
 import persistence.dto.PalavraChaveDTO;
-import persistence.dto.TipoDocumentoDTO;
 import persistence.utility.DataAccessLayerException;
 
 public class KeyWordDAO {
@@ -41,16 +40,6 @@ public class KeyWordDAO {
 		}
 	}
 	
-	public void updateDocumentType(TipoDocumentoDTO docType) throws UnreachableDataBaseException {
-		if(docType == null) throw new IllegalArgumentException("Tipo de documento inexistente!");
-		try { 
-			manager.updateEntity(docType);
-		} catch (DataAccessLayerException e) {
-			e.printStackTrace();
-			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
-		}
-	}
-	
 	public List<DTO> findKeyWordByString(String key) throws  UnreachableDataBaseException, KeywordNotFoundException  {
 		List<DTO> resultSet = null;
 		try {
@@ -65,10 +54,10 @@ public class KeyWordDAO {
 		}
 	}
 	
-	public List<DTO> getAllApprovedKeys() throws  UnreachableDataBaseException, KeywordNotFoundException  {
+	public List<DTO> getAllKeys() throws  UnreachableDataBaseException, KeywordNotFoundException  {
 		List<DTO> resultSet = null;
 		try {
-			resultSet = manager.findEntities("from PalavraChave where aprovada like TRUE");
+			resultSet = manager.findEntities("from PalavraChave");
 			if(resultSet == null) {
 				throw new KeywordNotFoundException ("Nenhuma palavra aprovada");
 			}
@@ -82,7 +71,7 @@ public class KeyWordDAO {
 	public List<DTO> getAllPendentKeys() throws  UnreachableDataBaseException, KeywordNotFoundException  {
 		List<DTO> resultSet = null;
 		try {
-			resultSet = manager.findEntities("from PalavraChave where aprovada like FALSE");
+			resultSet = manager.findEntities("from PalavraChave where aprovada = false");
 			if(resultSet == null) {
 				throw new KeywordNotFoundException ("Nenhuma palavra esperando por aprovação");
 			}

@@ -5,6 +5,8 @@ import java.util.List;
 import persistence.dto.DTO;
 
 import business.DAO.documents.KeyWordDAO;
+import business.exceptions.documents.KeywordNotFoundException;
+import business.exceptions.login.UnreachableDataBaseException;
 
 public class BuscaPalavraChaveEJB {
 	
@@ -14,8 +16,12 @@ public class BuscaPalavraChaveEJB {
 		key = new KeyWordDAO();
 	}
 	
-	public List<DTO> buscaPalavrasChaves(){
-		return null;
+	public List<DTO> buscaPalavrasChaves() throws UnreachableDataBaseException, KeywordNotFoundException  {
+		return key.getAllKeys();
+	}
+	
+	public List<DTO> buscaPalavrasChavesPendentes() throws UnreachableDataBaseException, KeywordNotFoundException  {
+		return key.getAllPendentKeys();
 	}
 
 }

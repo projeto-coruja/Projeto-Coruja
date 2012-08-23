@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import business.EJB.userEJB.Password;
+import business.EJB.util.EJBUtility;
 
 public class PasswordTest {
 	
@@ -16,15 +16,15 @@ public class PasswordTest {
 	@Before
 	@Test
 	public void genPassword(){
-		for(int i = 0; i < 100; i++) System.out.println(Password.genNewRandomPassword(6));
-		pass = Password.genNewRandomPassword(6);
+		for(int i = 0; i < 100; i++) System.out.println(EJBUtility.genNewRandomPassword(6));
+		pass = EJBUtility.genNewRandomPassword(6);
 		System.out.println(pass);
 		assertNotNull(pass);
 	}
 	
 	@Test
 	public void getHash() {
-		hash = Password.getHash(pass);
+		hash = EJBUtility.getHash(pass);
 		System.out.println(hash);
 		assertNotNull(hash);
 	}
