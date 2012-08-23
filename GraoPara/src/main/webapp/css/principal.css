@@ -307,7 +307,7 @@ label{
 /*Se eu não me engano, é a barra onde está os botões e o painelzinho de login */
 .sidebar1 {
 	float: left;
-	width: 220px;
+	width: 200px;
 	height: 920px;
 	background-color: #93A5C4;
 	padding-bottom: 10px;
