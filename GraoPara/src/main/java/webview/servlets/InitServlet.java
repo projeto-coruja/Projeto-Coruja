@@ -21,6 +21,7 @@ import persistence.PersistenceAccess;
 import persistence.dto.DTO;
 import persistence.dto.ProfileDTO;
 import persistence.dto.UserDTO;
+import persistence.utility.PersistenceUtility;
 import webview.WebUtility;
 
 /**
@@ -29,7 +30,7 @@ import webview.WebUtility;
 @WebServlet("/InitServlet")
 public class InitServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final Log log = LogFactory.getLog(InitServlet.class);
+	private static Log log = LogFactory.getLog(InitServlet.class);
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -117,7 +118,12 @@ public class InitServlet extends HttpServlet {
 
 	@Override
 	public void destroy() {
-
+		log.info("Encerrando o sistema...");
+		log.info("Encerrando a SessionFactory do Hibernate...");
+		PersistenceUtility.closeSessionFactory();
+		log.info("Encerrando o logging...");
+		log = null;
+		LogFactory.releaseAll();
 	}
 
 }

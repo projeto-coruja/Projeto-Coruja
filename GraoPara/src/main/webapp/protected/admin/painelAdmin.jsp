@@ -147,52 +147,30 @@
 					<h2>
 						<a href="#tab1">Palavras-Chaves Pendentes</a>
 					</h2>
-					<br>
 					<div class="scroll">
-					<table width="90%" border="0" align="center" cellpadding="0"
-						cellspacing="0">
-						<tr>
-							<td height="20" colspan="4">
-								<div align="left">
-									<strong><label for="identificacao" class="labelExibe">LISTAGEM
-											DE PALAVRAS-CHAVES</label></strong>
-								</div>
-							</td>
-						</tr>
-						<tr>
-							<td width="120" height="20"><label for="identificacao"
-								class="labelExibe">id</label></td>
-							<td width="120" height="20"><label for="identificacao"
-								class="labelExibe">Palavra-Chave</label></td>
-							<td width="120" height="20"><label for="identificacao"
-								class="labelExibe">Status</label></td>
-							<td width="120" height="20"><label for="identificacao"
-								class="labelExibe">Ação</label></td>
-							<!-- Exemplo de cadastro -->
-						</tr>
-						<tr>
-							<td width="120" height="20"><label for="identificacao"
-								class="labelExibe">2012</label></td>
-							<td width="120" height="20"><label for="identificacao"
-								class="labelExibe">Palavra Teste</label></td>
-							<td width="120" height="20"><label for="identificacao"
-								class="labelExibe">Aprovada</label></td>
-							<td width="120" height="20"><a href="#"><img
-									src="/GraoPara/images/approve.png" title="Aprovar"
-									alt="Aprovarr" /></a> <a href="#"><img
-									src="/GraoPara/images/edit.png" title="Editar" alt="Editar" /></a>
-								<a href="#"><img src="/GraoPara/images/remove.png"
-									title="Remover" alt="Remover" /></a></td>
-						</tr>
+					<table  class="tablePainel">
+						<thead>
+							<tr>
+								<td width="120" height="20"><label for="identificacao"
+									class="labelExibe">ID</label></td>
+								<td width="120" height="20"><label for="identificacao"
+									class="labelExibe">Palavra-Chave</label></td>
+								<td width="120" height="20"><label for="identificacao"
+									class="labelExibe">Status</label></td>
+								<td width="120" height="20"><label for="identificacao"
+									class="labelExibe">Ação</label></td>
+							</tr>
+						</thead>
 					</table>
 					</div>
 				</section>
+				
 				<section id="tab2">
 					<h2>
 						<a href="#tab2">Novos Usuários</a>
 					</h2>
 					<div class="scroll">
-										<form action="">
+					<form action="">
 					<table class="tablePainel">
 						<thead>
 							<tr>
@@ -202,8 +180,7 @@
 								<td><label for="identificacao" class="labelExibe">Ação</label></td>
 							</tr>
 						</thead>
-						<tbody>
-					
+						<tbody>					
 							<%
 								PanelWorker.listAllNewUsers(request, out);
 							%>
@@ -211,8 +188,8 @@
 					</table>
 					</form>
 				</div>
-
 				</section>
+				
 				<section id="tab3">
 					<h2>
 						<a href="#tab3">Usuários</a>
@@ -232,27 +209,20 @@
 								PanelWorker.listAllUsers(request, out);
 							%>
 						</tbody>
-					</table> </div>
-
+					</table>
+					</div>
 				</section>
+				
 				<section id="tab4">
 					<h2>
 						<a href="#tab4">Palavras-Chaves</a>
 					</h2>
-					<br>
 					<div class="scroll">
 					<table  class="tablePainel">
-						<tr>
-							<td height="20" colspan="4">
-								<div align="left">
-									<strong><label for="identificacao" class="labelExibe">LISTAGEM
-											DE PALAVRAS-CHAVES</label></strong>
-								</div>
-							</td>
-						</tr>
+					<thead>
 						<tr>
 							<td width="120" height="20"><label for="identificacao"
-								class="labelExibe">id</label></td>
+								class="labelExibe">ID</label></td>
 							<td width="120" height="20"><label for="identificacao"
 								class="labelExibe">Palavra-Chave</label></td>
 							<td width="120" height="20"><label for="identificacao"
@@ -261,21 +231,15 @@
 								class="labelExibe">Ação</label></td>
 							<!-- Exemplo de cadastro -->
 						</tr>
-						<tr>
-							<td width="120" height="20"><label for="identificacao"
-								class="labelExibe">2012</label></td>
-							<td width="120" height="20"><label for="identificacao"
-								class="labelExibe">Palavra Teste</label></td>
-							<td width="120" height="20"><label for="identificacao"
-								class="labelExibe">Aprovada</label></td>
-							<td width="120" height="20"><a href="#"><img
-									src="/GraoPara/images/edit.png" title="Editar" alt="Editar" /></a>
-								<a href="#"><img src="/GraoPara/images/remove.png"
-									title="Remover" alt="Remover" /></a></td>
-						</tr>
+					</thead>
+					
+					<tbody>
+					</tbody>
+											
 					</table>
 				</div>
 				</section>
+				
 				<section id="tab5">
 					<h2>
 						<a href="#tab5">Documentos</a>
