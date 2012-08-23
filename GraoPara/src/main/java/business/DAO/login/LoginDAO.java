@@ -157,5 +157,20 @@ public class LoginDAO {
 			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
 		}
 	}
+	
+	public void updateUser(UserDTO user) throws UnreachableDataBaseException, UserNotFoundException{
+		if(user.getId() == null){
+			user = this.findUserByEmail(user.getEmail());
+			if(user == null)	throw new UserNotFoundException("Usuário não encontrado");
+		}
+		else{
+			try{
+				manager.updateEntity(user);
+			}catch(DataAccessLayerException e){
+				e.printStackTrace();
+				throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
+			}
+		}
+	}
 
 }

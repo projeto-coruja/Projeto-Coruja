@@ -5,6 +5,7 @@ import business.EJB.RegularExpression;
 import business.exceptions.login.DuplicateUserException;
 import business.exceptions.login.IncorrectLoginInformationException;
 import business.exceptions.login.UnreachableDataBaseException;
+import business.exceptions.login.UserNotFoundException;
 import persistence.dto.UserDTO;
 
 public class CadastroBean {
@@ -32,4 +33,11 @@ public class CadastroBean {
 		}
 	}
 
+	public String recuperarSenha(String email) throws UnreachableDataBaseException, UserNotFoundException {
+		UserDTO user = loginDAO.findUserByEmail(email);
+		String newPassword = Password.genNewRandomPassword(6);
+		user.setPassword(Password.getHash(newPassword));
+		loginDAO.updateUser(user);
+		return newPassword;
+	}
 }
