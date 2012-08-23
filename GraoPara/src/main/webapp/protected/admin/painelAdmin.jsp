@@ -106,7 +106,7 @@
 				</table>
 			</form>
 			<!-- Novo formulário para mudança de senha -->
-			<form class="control">
+			<form action="/GraoPara/doChangesToAccount" method="post" class="control">
 				<table class="tableControle">
 					<tr>
 						<th colspan="3" align="center">Mudar Senha Atual</th>
@@ -131,7 +131,7 @@
 					</tr>
 					<tr>
 
-						<td><input type="button" class="buttonDocumento"
+						<td><input type="submit" class="buttonDocumento"
 							value="Mudar" name="Mudar" alt="Mudar a senha atual."></td>
 						<td></td>
 						<td></td>

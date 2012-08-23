@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.JspWriter;
 
 import business.EJB.userEJB.BuscaUserEJB;
+import business.EJB.userEJB.Password;
 import business.exceptions.login.UnreachableDataBaseException;
 import business.exceptions.login.UserNotFoundException;
 
@@ -58,7 +59,13 @@ public class PanelWorker {
 				out.println("<td> <label for=\"identificacao\" class=\"labelExibe\">" + user.getName() + "</label> </td>");
 				out.println("<td> <label for=\"identificacao\" class=\"labelExibe\">" + user.getEmail() + " </label> </td>");
 				out.println("<td> <label for=\"identificacao\" class=\"labelExibe\">" + user.getUserProfile().getProfile() + "</label> </td>");
-				out.println("<td><a href=\"#\"><img src=\"/GraoPara/images/edit.png\" title=\"Editar\" alt=\"Editar\" /></a><a href=\"#\"><img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\" /></a></td>");
+				out.println("<td>"
+						+ "<a href=\"/GraoPara/doChangesToAccount?" + Password.getHash("email") + "=" + user.getEmail() + 
+						"&"+ Password.getHash("action") + "=" + Password.getHash("edit") + "&tab=3\" ><img src=\"/GraoPara/images/edit.png\" title=\"Editar\" alt=\"Editar\" /></a>" 
+						+ "<a href=\"/GraoPara/doChangesToAccount?" + Password.getHash("email") + "=" + user.getEmail() + 
+						"&"+ Password.getHash("action") + "=" + Password.getHash("delete") + "&tab=3\"><img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\" /></a>"
+						+ "</td>");
+				out.println("</tr>");
 				out.println("</tr>");
 			}
 				
@@ -88,8 +95,10 @@ public class PanelWorker {
 					out.println("<td> <label for=\"identificacao\" class=\"labelExibe\">" + user.getEmail() + " </label> </td>");
 					out.println("<td> <label for=\"identificacao\" class=\"labelExibe\">" + user.getUserProfile().getProfile() + "</label> </td>");
 					out.println("<td>"
-							+ "<a href=\"editarServlet.java?email=<%user.getEmail%>\" onclick=\"\"><img src=\"/GraoPara/images/edit.png\" title=\"Editar\" alt=\"Editar\" /></a>" 
-							+ "<a href=\"removerServlet.java?email=<%user.getEmail%>\"><img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\" /></a>"
+							+ "<a href=\"/GraoPara/doChangesToAccount?" + Password.getHash("email") + "=" + user.getEmail() + 
+							"&"+ Password.getHash("action") + "=" + Password.getHash("approve") + "&tab=2\" ><img src=\"/GraoPara/images/approve.png\" title=\"Editar\" alt=\"Editar\" /></a>" 
+							+ "<a href=\"/GraoPara/doChangesToAccount?" + Password.getHash("email") + "=" + user.getEmail() + 
+							"&"+ Password.getHash("action") + "=" + Password.getHash("delete") + "&tab=2\"><img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\" /></a>"
 							+ "</td>");
 					out.println("</tr>");
 				}

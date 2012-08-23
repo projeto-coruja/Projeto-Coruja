@@ -42,4 +42,8 @@ public class CadastroBean {
 		loginDAO.updateUser(user);
 		return newPassword;
 	}
+	
+	public void atualizarUsuario(UserDTO user) throws UnreachableDataBaseException, UserNotFoundException{
+		loginDAO.updateUser(user);
+	}
 }
