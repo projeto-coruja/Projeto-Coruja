@@ -93,7 +93,7 @@ public final class WebUtility {
 	
 	public static void printHTML(HttpServletRequest request, JspWriter out) throws IOException {
 		String name = WebUtility.selectCookie(request.getCookies(), WebUtility.cookie_nome).getValue();
-		out.println("<label>" + name + "!</label>");
+		out.write("<label>" + name + "!</label>");
 	}
 
 }

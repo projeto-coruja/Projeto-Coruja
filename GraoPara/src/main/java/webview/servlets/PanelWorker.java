@@ -24,15 +24,17 @@ public class PanelWorker {
 		List<DTO> keys = null;	    
 		keys = busca.buscaPalavrasChaves();
 
-		for(DTO k : keys){
-			PalavraChaveDTO key = (PalavraChaveDTO) k;
-
-			out.write("<tr>");
-			out.write("<td> <label for=\"identificacao\" class=\"labelExibe\">" + key.getId() + "</label> </td>");
-			out.write("<td> <label for=\"identificacao\" class=\"labelExibe\">" + key.getPalavra() + " </label> </td>");
-			out.write("<td> <label for=\"identificacao\" class=\"labelExibe\">" + key.isAprovada() + "</label> </td>");
-			out.write("<td><a href=\"#\"><img src=\"/GraoPara/images/edit.png\" title=\"Editar\" alt=\"Editar\" /></a><a href=\"#\"><img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\" /></a></td>");
-			out.write("</tr>");
+		if(keys != null) {
+			for(DTO k : keys){
+				PalavraChaveDTO key = (PalavraChaveDTO) k;
+	
+				out.write("<tr>");
+				out.write("<td> <label for=\"identificacao\" class=\"labelExibe\">" + key.getId() + "</label> </td>");
+				out.write("<td> <label for=\"identificacao\" class=\"labelExibe\">" + key.getPalavra() + " </label> </td>");
+				out.write("<td> <label for=\"identificacao\" class=\"labelExibe\">" + key.isAprovada() + "</label> </td>");
+				out.write("<td><a href=\"#\"><img src=\"/GraoPara/images/edit.png\" title=\"Editar\" alt=\"Editar\" /></a><a href=\"#\"><img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\" /></a></td>");
+				out.write("</tr>");
+			}
 		}
 	}
 
@@ -40,17 +42,19 @@ public class PanelWorker {
 		BuscaPalavraChaveEJB busca = new BuscaPalavraChaveEJB();
 		List<DTO> keys = null;	    
 		keys = busca.buscaPalavrasChaves();
-
-		for(DTO k : keys){
-			PalavraChaveDTO key = (PalavraChaveDTO) k;
-
-			if(key.isAprovada() == false) {
-				out.write("<tr>");
-				out.write("<td> <label for=\"identificacao\" class=\"labelExibe\">" + key.getId() + "</label> </td>");
-				out.write("<td> <label for=\"identificacao\" class=\"labelExibe\">" + key.getPalavra() + " </label> </td>");
-				out.write("<td> <label for=\"identificacao\" class=\"labelExibe\">" + key.isAprovada() + "</label> </td>");
-				out.write("<td><a href=\"#\"><img src=\"/GraoPara/images/edit.png\" title=\"Editar\" alt=\"Editar\" /></a><a href=\"#\"><img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\" /></a></td>");
-				out.write("</tr>");
+		
+		if(keys != null) {
+			for(DTO k : keys){
+				PalavraChaveDTO key = (PalavraChaveDTO) k;
+	
+				if(key.isAprovada() == false) {
+					out.write("<tr>");
+					out.write("<td> <label for=\"identificacao\" class=\"labelExibe\">" + key.getId() + "</label> </td>");
+					out.write("<td> <label for=\"identificacao\" class=\"labelExibe\">" + key.getPalavra() + " </label> </td>");
+					out.write("<td> <label for=\"identificacao\" class=\"labelExibe\">" + key.isAprovada() + "</label> </td>");
+					out.write("<td><a href=\"#\"><img src=\"/GraoPara/images/edit.png\" title=\"Editar\" alt=\"Editar\" /></a><a href=\"#\"><img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\" /></a></td>");
+					out.write("</tr>");
+				}
 			}
 		}
 	}	
@@ -80,10 +84,10 @@ public class PanelWorker {
 			}
 				
 		} catch (UnreachableDataBaseException e) {
-		    out.println("<script>");  
-		    out.println("alert('Problemas ao acessar o banco de dados. Contate o suporte técnico e tente novamente mais tarde ');");  
-		    out.println("document.location=('/GraoPara/public/index.jsp');");  
-		    out.println("</script>");
+			out.write("<script>");  
+			out.write("alert('Problemas ao acessar o banco de dados. Contate o suporte técnico e tente novamente mais tarde ');");  
+			//out.write("document.location=('/GraoPara/public/index.jsp');");  
+			out.write("</script>");
 			e.printStackTrace();
 		} catch (UserNotFoundException e) {
 			out.println("<td colspan=\"3\">Nenhum usuário encontrado</td>");
@@ -115,10 +119,10 @@ public class PanelWorker {
 			}
 				
 		} catch (UnreachableDataBaseException e) {
-		    out.println("<script>");  
-		    out.println("alert('Problemas ao acessar o banco de dados. Contate o suporte técnico e tente novamente mais tarde ');");  
-		    out.println("document.location=('/GraoPara/public/index.jsp');");  
-		    out.println("</script>");
+			out.write("<script>");  
+			out.write("alert('Problemas ao acessar o banco de dados. Contate o suporte técnico e tente novamente mais tarde ');");  
+			//out.write("document.location=('/GraoPara/public/index.jsp');");  
+			out.write("</script>");
 			e.printStackTrace();
 		} catch (UserNotFoundException e) {
 			out.println("<td colspan=\"3\">Nenhum usuário encontrado</td>");
