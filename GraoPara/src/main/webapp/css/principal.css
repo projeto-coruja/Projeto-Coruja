@@ -254,7 +254,10 @@ a:hover, a:active, a:focus { /* this group of selectors will give a keyboard nav
 	cursor:pointer;
 	
 }
-
+.scroll{
+	height: 30em;
+	overflow: auto;
+}
 .buttonPesquisa{
 	width:185px;
 	height:24px;

@@ -210,6 +210,7 @@
 					<h2>
 						<a href="#tab3">Usuários</a>
 					</h2>
+					<div class="scroll">
 					<table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
 						<thead>
 							<tr>
@@ -224,7 +225,7 @@
 								PanelWorker.listAllUsers(request, out);
 							%>
 						</tbody>
-					</table>
+					</table> </div>
 
 				</section>
 				<section id="tab4">
