@@ -148,6 +148,7 @@
 						<a href="#tab1">Palavras-Chaves Pendentes</a>
 					</h2>
 					<br>
+					<div class="scroll">
 					<table width="90%" border="0" align="center" cellpadding="0"
 						cellspacing="0">
 						<tr>
@@ -184,12 +185,14 @@
 									title="Remover" alt="Remover" /></a></td>
 						</tr>
 					</table>
+					</div>
 				</section>
 				<section id="tab2">
 					<h2>
 						<a href="#tab2">Novos Usuários</a>
 					</h2>
-					<table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
+					<div class="scroll">
+					<table class="tablePainel">
 						<thead>
 							<tr>
 								<td><label for="identificacao" class="labelExibe">Nome</label></td>
@@ -199,11 +202,13 @@
 							</tr>
 						</thead>
 						<tbody>
+					
 							<%
 								PanelWorker.listAllNewUsers(request, out);
 							%>
 						</tbody>
 					</table>
+				</div>
 
 				</section>
 				<section id="tab3">
@@ -211,7 +216,7 @@
 						<a href="#tab3">Usuários</a>
 					</h2>
 					<div class="scroll">
-					<table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
+					<table class="tablePainel">
 						<thead>
 							<tr>
 								<td><label for="identificacao" class="labelExibe">Nome</label></td>
@@ -233,8 +238,8 @@
 						<a href="#tab4">Palavras-Chaves</a>
 					</h2>
 					<br>
-					<table width="90%" border="0" align="center" cellpadding="0"
-						cellspacing="0">
+					<div class="scroll">
+					<table  class="tablePainel">
 						<tr>
 							<td height="20" colspan="4">
 								<div align="left">
@@ -267,14 +272,15 @@
 									title="Remover" alt="Remover" /></a></td>
 						</tr>
 					</table>
+				</div>
 				</section>
 				<section id="tab5">
 					<h2>
 						<a href="#tab5">Documentos</a>
 					</h2>
 					<br>
-					<table width="100%" border="1" align="center" cellpadding="0"
-						cellspacing="0">
+					<div class="scroll">
+					<table class="tablePainel">
 						<tr>
 							<td><label class="labelExibe">Identificação</label></td>
 							<td><label class="labelExibe">Código</label></td>
@@ -307,7 +313,7 @@
 									title="Remover" alt="Remover" /></a></td>
 						</tr>
 					</table>
-
+				</div>
 				</section>
 			</article>
 
