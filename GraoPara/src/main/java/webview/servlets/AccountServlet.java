@@ -18,8 +18,8 @@ import business.EJB.userEJB.AdminBean;
 import business.EJB.userEJB.AuthBean;
 import business.EJB.userEJB.BuscaUserEJB;
 import business.EJB.userEJB.CadastroBean;
-import business.EJB.userEJB.Password;
 import business.EJB.userEJB.UserBean;
+import business.EJB.util.EJBUtility;
 import business.exceptions.login.IncorrectProfileInformationException;
 import business.exceptions.login.ProfileNotFoundException;
 import business.exceptions.login.UnreachableDataBaseException;
@@ -45,13 +45,13 @@ public class AccountServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		AdminBean adm = new AdminBean();
-		String email = request.getParameter(Password.getHash("email"));
-		String action = request.getParameter(Password.getHash("action"));
+		String email = request.getParameter(EJBUtility.getHash("email"));
+		String action = request.getParameter(EJBUtility.getHash("action"));
 		String previous = request.getParameter("tab");
 		
 		try {
-			if(action.equals(Password.getHash("approve"))) adm.alterarPermissoesUsuario(email, "user");
-			else if(action.equals(Password.getHash("delete")))	adm.deletarUsuario(email);
+			if(action.equals(EJBUtility.getHash("approve"))) adm.alterarPermissoesUsuario(email, "user");
+			else if(action.equals(EJBUtility.getHash("delete")))	adm.deletarUsuario(email);
 		} catch (IncorrectProfileInformationException e) {
 			e.printStackTrace();
 		} catch (UnreachableDataBaseException e) {
@@ -90,8 +90,8 @@ public class AccountServlet extends HttpServlet {
 		
 		try {
 			user = busca.findUser(email);
-			if(user.getPassword().equals(Password.getHash(senhaVelha))){
-				user.setPassword(Password.getHash(senhaNova));
+			if(user.getPassword().equals(EJBUtility.getHash(senhaVelha))){
+				user.setPassword(EJBUtility.getHash(senhaNova));
 				cadastro.atualizarUsuario(user);  
 			    out.println("<script>");  
 			    out.println("alert('Senha trocada com sucesso. ');");  

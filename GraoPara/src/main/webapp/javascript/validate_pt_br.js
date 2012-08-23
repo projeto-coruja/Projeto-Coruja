@@ -78,7 +78,22 @@ $(document).ready(function() {
 			},
 			permissao:{
 				required: true
-			},			
+			},	
+			/* ----------------------------------
+			 *  Painel de trocar senha
+			 * ---------------------------------- */
+			senhaAtual: {
+				required: true,
+			},
+			senhaNova: {
+				required: true,
+				minlength: 6
+			},
+			senhaConfirme: {
+				required: true,
+				minlength: 6,
+				equalTo: "#senhaNova"
+			},
 		},
 		messages: {
 			/* ----------------------------------
@@ -157,6 +172,18 @@ $(document).ready(function() {
 			},
 			permissao: {
 				required: "Selecione a Permissão do Usuário."
+			},
+			senhaAtual: {
+				required: "Digite sua senha cadastrada"
+			},
+			senhaNova: {
+				required: "Digite uma senha nova",
+				minlength: jQuery.format("Digite no mínimo {0} caracteres.")
+			},
+			senhaConfirme: {
+				required:  "Confirme sua senha",
+				minlength: jQuery.format("Digite no mínimo {0} caracteres."),
+				equalTo: "Digite uma senha igual a anterior."
 			}
 		},
 		// the errorPlacement has to take the table layout into account

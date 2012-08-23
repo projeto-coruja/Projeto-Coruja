@@ -1,11 +1,11 @@
-package business.EJB.userEJB;
+package business.EJB.util;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Random;
 
-public class Password {
-	private Password (){}
+public class EJBUtility {
+	private EJBUtility (){}
 
 	private static String byteArrayToHexString(byte[] b){
 		StringBuffer sb = new StringBuffer(b.length * 2);
