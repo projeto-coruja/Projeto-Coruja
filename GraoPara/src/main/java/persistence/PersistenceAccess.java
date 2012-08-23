@@ -65,9 +65,12 @@ public class PersistenceAccess {
 	}
 	
 	public Long countRows(String table, String criteria){
-		if(table == null)	throw new IllegalArgumentException("Tabela não pode ser null");
-		if(criteria == null)	return sharedManager.count(table, "1=1");
-		else	return sharedManager.count(table, criteria);
+		if(table == null)	
+			throw new IllegalArgumentException("Tabela não pode ser null");
+		
+		if(criteria == null)	
+			return sharedManager.count(table, "1=1");
+		else return sharedManager.count(table, criteria);
 	}
 	
 	private Entidade findTarget(DTO dto) throws DataAccessLayerException{
