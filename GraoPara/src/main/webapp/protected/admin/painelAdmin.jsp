@@ -14,26 +14,27 @@
 <link rel="stylesheet" type="text/css" href="/GraoPara/css/controle.css" />
 
 <!-- CSS das validações -->
-<link rel="stylesheet" type="text/css"
-	href="/GraoPara/css/validationEngine.jquery.css" />
+<link rel="stylesheet" type="text/css" media="screen"
+	href="/GraoPara/css/styleValidation.css" />
 
 <!-- Import dos javascripts -->
 <script type="text/javascript" src="/GraoPara/javascript/ajax.js"
 	charset="utf-8"></script>
 <script type="text/javascript" src="/GraoPara/javascript/instrucao.js"
 	charset="utf-8"></script>
+<script src="/GraoPara/javascript/chili-1.7.pack.js"
+	type="text/javascript"></script>
 <script type="text/javascript"
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"
-	charset="utf-8"></script>
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"charset="utf-8"></script>
 
-<!-- Import dos scripts de validação de formulário -->
-<script type="text/javascript"
-	src="/GraoPara/javascript/jquery.validationEngine.js" charset="utf-8"></script>
-<script type="text/javascript" src="/GraoPara/javascript/script.js"
-	charset="utf-8"></script>
-<script type="text/javascript"
-	src="/GraoPara/javascript/languages/jquery.validationEngine-pt.js"
-	charset="utf-8"></script>
+	<!-- Import dos scripts de validação de formulário -->
+	<script src="/GraoPara/javascript/jquery.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="/GraoPara/javascript/validate.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="/GraoPara/javascript/validate_pt_br.js"
+		type="text/javascript" charset="utf-8"></script> 
+
 
 </head>
 
@@ -106,38 +107,43 @@
 				</table>
 			</form>
 			<!-- Novo formulário para mudança de senha -->
-			<form action="/GraoPara/doChangesToAccount" method="post" class="control">
-				<table class="tableControle">
+							<form id="signupform" autocomplete="off" action="/GraoPara/doChangesToAccount" method="post">
+					<table class="tableControle">
 					<tr>
-						<th colspan="3" align="center">Mudar Senha Atual</th>
+						<th colspan="3" align="center"> Mudar Senha Atual </th>
 					</tr>
 					<tr>
-						<td><label for="senhaAtual">Senha atual: </label></td>
-						<td colspan="2"><input
-							class="inputControle validate[required]" type="password"
-							name="senhaAtual" id="senhaAtual" />
+						<td>
+							<label class="labelForms"  id="lpassword" for="password">Senha Atual:<span class="asterisco">*</span></label></td>
+						<td class="field">
+							<input id="senhaAtual" class="input" name="senhaAtual" type="password" maxlength="50" value="" />
+						</td>
+						<td class="status"></td>
 					</tr>
 					<tr>
-						<td><label for="senhaNova">Nova senha: </label></td>
-						<td colspan="2"><input
-							class="inputControle validate[required,minSize[6]]"
-							id="senhaNova" type="password" name="senhaNova" />
+						<td>
+							<label class="labelForms"  id="lpassword" for="password">Nova Senha:<span class="asterisco">*</span></label></td>
+						<td class="field">
+							<input id="senhaNova" class="input" name="senhaNova" type="password" maxlength="50" value="" />
+						</td>
+						<td class="status"></td>
 					</tr>
 					<tr>
-						<td><label for="senhaConfirme">Confirme nova senha: </label></td>
-						<td colspan="2"><input
-							class="inputControle validate[required,equals[senhaNova]]"
-							type="password" name="senhaConfirme" id="senhaConfirme" />
+						<td>
+							<label class="labelForms"  id="lpassword" for="password">Confirme Nova Senha:<span class="asterisco">*</span></label></td>
+						<td class="field">
+							<input id="senhaConfirme" class="input" name="senhaConfirme" type="password" maxlength="50" value="" />
+						</td>
+						<td class="status"></td>
 					</tr>
 					<tr>
-
-						<td><input type="submit" class="buttonDocumento"
-							value="Mudar" name="Mudar" alt="Mudar a senha atual."></td>
-						<td></td>
-						<td></td>
+						<td class="field" colspan="3">
+						<p></p>
+							<input class="buttonRegistrar" id="signupsubmit" name="Alterar" type="submit" value="Alterar" />
+						</td>
 					</tr>
-				</table>
-			</form>
+					</table>
+				</form>	
 			<!-- Novo formulário para novos usuários -->
 
 			<br>
