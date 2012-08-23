@@ -14,8 +14,6 @@ body {
 	background: -ms-linear-gradient(left,  #f6f8f9 0%,#e5ebee 15%,#e5ebee 85%,#f5f7f9 100%); /* IE10+ */
 	background: linear-gradient(to right,  #f6f8f9 0%,#e5ebee 15%,#e5ebee 85%,#f5f7f9 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f6f8f9', endColorstr='#f5f7f9',GradientType=1 ); /* IE6-9 */
-
-
 	margin: 0;
 	padding: 0;
 	color: #000;
@@ -214,8 +212,7 @@ a:hover, a:active, a:focus { /* this group of selectors will give a keyboard nav
 	height:24px;
 	text-align:center;
 	border: none;
-	float: inherit;
-	
+	float: inherit;	
 	background: #6F7D94;
 	background: -webkit-gradient(linear, left top);
 	
@@ -230,7 +227,24 @@ a:hover, a:active, a:focus { /* this group of selectors will give a keyboard nav
 	
 	cursor:pointer;
 }
-
+.buttonShort{
+	width:90px;
+	height:24px;
+	text-align:center;
+	border: none;
+	float: inherit;	
+	background: #6F7D94;
+	background: -webkit-gradient(linear, left top);	
+	-webkit-border-radius: .6em;
+	-moz-border-radius: .6em;
+	border-radius: .6em;
+	
+	-webkit-box-shadow: 0 0px 1px rgba( 255, 255, 255);
+	-moz-box-shadow: 0 0px 1px rgba(255, 255, 255);
+	box-shadow: 0 0px 1px rgba(255, 255, 255);
+	color: #fff;	
+	cursor:pointer;
+}
 /* Para evitar colocar código de estilo dentro do código html, afim de sobrescrever o botão acima, foi criado um outro grupo de parametros só para o botão registrar */
 .buttonRegistrar{
 	width:185px;

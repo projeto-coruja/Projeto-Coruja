@@ -37,8 +37,10 @@
 							height="30px" size="auto" placeholder="Sua senha" required>
 					</fieldset>
 					<fieldset>
-						<input class="buttonEntrar" type="submit" name="Entrar"
+						<input class="buttonShort" type="submit" name="Entrar"
 							value="Entrar" />
+							<br>
+						<a class="linkRecuperar" href="/GraoPara/public/recuperarSenha.jsp">Recuperar Senha</a>					
 					</fieldset>
 					<fieldset>
 						<a href="/GraoPara/public/CadUsuario.jsp"><input type="button"
