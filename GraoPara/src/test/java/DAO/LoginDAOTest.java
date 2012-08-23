@@ -69,29 +69,30 @@ public class LoginDAOTest {
 			String pass = "password";
 			try {
 				ld.addUser(email, name, pass);
-				ab.alterarPermissoesUsuario(email, "teste");
+//				ab.alterarPermissoesUsuario(email, "teste");
 			} catch (UnreachableDataBaseException e) {
 				e.printStackTrace();
-			} catch (IncorrectProfileInformationException e) {
-				e.printStackTrace();
-			} catch (UserNotFoundException e) {
-				e.printStackTrace();
-			} catch (ProfileNotFoundException e) {
-				e.printStackTrace();
 			}
+//			} catch (IncorrectProfileInformationException e) {
+//				e.printStackTrace();
+//			} catch (UserNotFoundException e) {
+//				e.printStackTrace();
+//			} catch (ProfileNotFoundException e) {
+//				e.printStackTrace();
+//			}
 		}
 		List<DTO> urs = null;
 		try {
 			urs = ld.listUsersByProfile("teste");
+			for(DTO userTest : urs){
+				System.out.println(((UserDTO)userTest).getEmail());
+			}
 		} catch (UnreachableDataBaseException e) {
 			e.printStackTrace();
 		} catch (ProfileNotFoundException e) {
 			e.printStackTrace();
 		} catch (UserNotFoundException e) {
 			e.printStackTrace();
-		}
-		for(DTO userTest : urs){
-			System.out.println(((UserDTO)userTest).getEmail());
 		}
 	}
 	

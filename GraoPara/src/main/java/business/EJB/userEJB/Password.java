@@ -39,7 +39,7 @@ public class Password {
 
 		String hashword = null;
 		hashword = byteArrayToHexString(genHash(password));
-		System.out.println(hashword);
+//		System.out.println(hashword);
 		return hashword;
 	}
 	

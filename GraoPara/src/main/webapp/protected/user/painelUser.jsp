@@ -85,29 +85,29 @@
 				</table>
 				</form>
 				<!-- Novo formulário para mudança de senha -->
-				<form>
-				<table class="tableControle">
-				<tr>
-					<th colspan="3" align="center"> Mudar Senha Atual </th>
-				</tr>
-				<tr>
-					<td><label for="senhaAtual">Senha atual: </label></td>
-					<td colspan="2"><input class="inputControle validate[required]" type="password" name="senhaAtual" id="senhaAtual"/>
-				</tr>
-				<tr>
-					<td><label for="senhaNova">Nova senha: </label></td>
-					<td colspan="2"><input class="inputControle validate[required,minSize[6]]" id="senhaNova" type="password" name="senhaNova" />
-				</tr>
-				<tr>
-					<td><label for="senhaConfirme">Confirme nova senha: </label></td>
-					<td colspan="2"><input class="inputControle validate[required,equals[senhaNova]]" type="password" name="senhaConfirme" id="senhaConfirme" />
-				</tr>
-				<tr>			
-					<td><input type="button" class="buttonDocumento" value="Mudar" name="Mudar" alt="Mudar a senha atual."></td>
-					<td></td>
-					<td></td>
-				</tr>
-				</table>
+				<form action="/GraoPara/doChangesToAccount" method="post" class="control">
+					<table class="tableControle">
+					<tr>
+						<th colspan="3" align="center"> Mudar Senha Atual </th>
+					</tr>
+					<tr>
+						<td><label for="senhaAtual">Senha atual: </label></td>
+						<td colspan="2"><input class="inputControle validate[required]" type="password" name="senhaAtual" id="senhaAtual"/>
+					</tr>
+					<tr>
+						<td><label for="senhaNova">Nova senha: </label></td>
+						<td colspan="2"><input class="inputControle validate[required,minSize[6]]" id="senhaNova" type="password" name="senhaNova" />
+					</tr>
+					<tr>
+						<td><label for="senhaConfirme">Confirme nova senha: </label></td>
+						<td colspan="2"><input class="inputControle validate[required,equals[senhaNova]]" type="password" name="senhaConfirme" id="senhaConfirme" />
+					</tr>
+					<tr>			
+						<td><input type="submit" class="buttonDocumento" value="Mudar" name="Mudar" alt="Mudar a senha atual."></td>
+						<td></td>
+						<td></td>
+					</tr>
+					</table>
 				</form>				
 		
 		</div>
