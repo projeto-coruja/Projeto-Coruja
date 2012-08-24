@@ -51,9 +51,15 @@
 
 			<article class="menuLateral">
 				<ul class="nav" id="menu">
-					<li><a href="/GraoPara/public/index.jsp">Home</a></li>
-					<li><a href="/GraoPara/public/pesquisa.jsp">Pesquisar</a></li>
-					<li><a href="/GraoPara/public/sobre.jsp">Sobre</a></li>
+					<li><a href="/GraoPara/protected/admin/indexAdmin.jsp">Home</a></li>
+					<li><a href="/GraoPara/protected/admin/pesquisaAdmin.jsp">Pesquisar</a></li>
+					<li><a href="/GraoPara/protected/admin/cadastroDocumentosAdmin.jsp">Cadastrar Documento</a></li>
+					<li><a href="/GraoPara/protected/admin/painelAdmin.jsp">Painel Admin</a></li>
+					<li><a href="/GraoPara/protected/admin/gerarSenha.jsp">Gerar Senha</a></li>
+					<li><a href="/GraoPara/protected/admin/sobreAdmin.jsp">Sobre</a></li>
+					
+					<li><a href="/GraoPardocToStringa/protected/admin/listagemDocumentos.jsp">Lista</a></li>
+								
 				</ul>
 			</article>
 		</div>
@@ -61,45 +67,22 @@
 		<div class="content" id="content">
 		<h2>Listagem de Documentos</h2>
 			<table>
-				<tr><td>
-						<label class="labelExibe">Identificação</label>
-					</td>
-					<td>
-						<label class="labelExibe">Código</label>
-					</td>
-					<td>
-						<label class="labelExibe">Título</label>
-					</td>
-					<td>
-						<label class="labelExibe">Tipo de Número</label>
-					</td>
-					<td>
-						<label class="labelExibe">Número</label>
-					</td>
-					<td>
-						<label class="labelExibe">Autor</label>
-					</td>
-					<td>
-						<label class="labelExibe">Destinatário</label>
-					</td>
-					<td>
-						<label class="labelExibe">Local</label>
-					</td>
-					<td>
-						<label class="labelExibe">Data</label>
-					</td>
-					<td>
-						<label class="labelExibe">Documento</label>
-					</td>
-					<td>
-						<label class="labelExibe">Palavras-Chaves</label>
-					</td>
-					<td>
-						<label class="labelExibe">Ações</label>
-					</td>
+				<tr>
+					<td><label class="labelExibe">Identificação</label></td>
+					<td><label class="labelExibe">Código</label></td>
+					<td><label class="labelExibe">Título</label></td>
+					<td><label class="labelExibe">Tipo de Número</label></td>
+					<td><label class="labelExibe">Número</label></td>
+					<td><label class="labelExibe">Autor</label></td>
+					<td><label class="labelExibe">Destinatário</label></td>
+					<td><label class="labelExibe">Local</label></td>
+					<td><label class="labelExibe">Data</label></td>
+					<td><label class="labelExibe">Documento</label></td>
+					<td><label class="labelExibe">Palavras-Chaves</label></td>
+					<td><label class="labelExibe">Ações</label></td>
 				</tr>
 
-				<% SearchServlet.listAllDocuments(request, out); %>
+				<%SearchServlet.listAllDocuments(request, out); %>
 				
 			</table>
 		</div>
