@@ -111,10 +111,5 @@ public class AccountServlet extends HttpServlet {
 			e.printStackTrace();
 		}	
 	}
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doRecovery(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-	}
+
 }
