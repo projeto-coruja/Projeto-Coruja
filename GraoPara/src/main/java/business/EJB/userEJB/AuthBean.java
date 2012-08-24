@@ -14,9 +14,9 @@ public class AuthBean {
 	public final static boolean HashedPwd = true;
 	public final static boolean NonHashedPwd = false;
 	
-	public final static int LoginFailOrDefault = 0;
-	public final static int LoginSuccessUser = 1;
-	public final static int LoginSuccessAdmin = 2;
+	public final static String LoginFailOrDefault = "f7904905535ed808ce600ea013c1ec4e471507ef0563adcd1d93f87d38608c47";
+	public final static String LoginSuccessUser = "4f077f41bf2610da31dc152a26bd950fe2a55dfe51a8e2968c581ef151c9df08";
+	public final static String LoginSuccessAdmin = "ccdb36d8fe6fbecdec96b11f3c776987688d43ea2293576f20af7b54351c6e65";
 
 	public static UserBean validarLogin(String email, String password, boolean hashed) throws UnreachableDataBaseException, UserNotFoundException {
 

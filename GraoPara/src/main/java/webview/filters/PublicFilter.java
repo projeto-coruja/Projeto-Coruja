@@ -46,13 +46,13 @@ public class PublicFilter implements Filter {
 		HttpServletResponse res = (HttpServletResponse) response;
 		Cookie[] c_list = req.getCookies();
 		Cookie c_status = WebUtility.selectCookie(c_list, WebUtility.cookie_status);
-		if(c_status != null && Integer.parseInt(c_status.getValue()) == AuthBean.LoginFailOrDefault) {
+		if(c_status != null && (c_status.getValue().equals(AuthBean.LoginFailOrDefault))) {
 			chain.doFilter(request, response);
 		}
-		else if(c_status != null && Integer.parseInt(c_status.getValue()) == AuthBean.LoginSuccessUser) {
+		else if(c_status != null && (c_status.getValue().equals(AuthBean.LoginSuccessUser))) {
 			res.sendRedirect(req.getContextPath() + "/protected/user");
 		}
-		else if(c_status != null && Integer.parseInt(c_status.getValue()) == AuthBean.LoginSuccessAdmin) {
+		else if(c_status != null && (c_status.getValue().equals(AuthBean.LoginSuccessAdmin))) {
 			res.sendRedirect(req.getContextPath() + "/protected/admin");
 		}
 		else {

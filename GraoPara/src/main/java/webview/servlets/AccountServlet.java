@@ -83,9 +83,9 @@ public class AccountServlet extends HttpServlet {
 		String status = WebUtility.selectCookie(request.getCookies(), WebUtility.cookie_status).getValue();
 		
 		
-		if(Integer.parseInt(status) == AuthBean.LoginSuccessUser)	// retorna para a página de USER
+		if(status.equals(AuthBean.LoginSuccessUser))	// retorna para a página de USER
 	    	redirect = "/GraoPara/protected/user/painelUser.jsp";
-	    else if(Integer.parseInt(status) == AuthBean.LoginSuccessAdmin)	// retorna para a página de ADMIN
+	    else if(status.equals(AuthBean.LoginSuccessAdmin))	// retorna para a página de ADMIN
 	    	redirect = "/GraoPara/protected/admin/painelAdmin.jsp";
 		
 		try {
@@ -110,8 +110,11 @@ public class AccountServlet extends HttpServlet {
 		} catch (UserNotFoundException e) {
 			e.printStackTrace();
 		}	
-		
-
+	}
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doRecovery(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 	}
 }

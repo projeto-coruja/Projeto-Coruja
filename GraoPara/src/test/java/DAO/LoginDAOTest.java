@@ -35,7 +35,7 @@ public class LoginDAOTest {
 		try {
 			cf.adicionarUsuario(email, "gmail", pass);
 			UserBean ub = AuthBean.validarLogin(email, pass, AuthBean.NonHashedPwd);
-			assertTrue(ub.getLogType() > AuthBean.LoginFailOrDefault);
+			assertTrue(!ub.getLogType().equals(AuthBean.LoginFailOrDefault));
 
 		} catch (UnreachableDataBaseException e) {
 			System.out.println("DEU ERRO EM MIM GALVÃO!!!! db");
