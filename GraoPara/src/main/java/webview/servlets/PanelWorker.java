@@ -86,10 +86,10 @@ public class PanelWorker {
 				out.println("<td> <label for=\"identificacao\" class=\"labelExibe\">" + user.getEmail() + " </label> </td>");
 				out.println("<td> <label for=\"identificacao\" class=\"labelExibe\">" + user.getUserProfile().getProfile() + "</label> </td>");
 				out.println("<td>"
-						+ "<a href=\"/GraoPara/doChangesToAccount?" + EJBUtility.getHash("email") + "=" + user.getEmail() + 
-						"&"+ EJBUtility.getHash("action") + "=" + EJBUtility.getHash("edit") + "&tab=3\" ><img src=\"/GraoPara/images/edit.png\" title=\"Editar\" alt=\"Editar\" /></a>" 
-						+ "<a href=\"/GraoPara/doChangesToAccount?" + EJBUtility.getHash("email") + "=" + user.getEmail() + 
-						"&"+ EJBUtility.getHash("action") + "=" + EJBUtility.getHash("delete") + "&tab=3\"><img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\" /></a>"
+						+ "<a href=\"/GraoPara/doChangesToAccount?" + EJBUtility.getHash("email", "SHA-256") + "=" + user.getEmail() + 
+						"&"+ EJBUtility.getHash("action", "SHA-256") + "=" + EJBUtility.getHash("edit", "SHA-256") + "&tab=3\" ><img src=\"/GraoPara/images/edit.png\" title=\"Editar\" alt=\"Editar\" /></a>" 
+						+ "<a href=\"/GraoPara/doChangesToAccount?" + EJBUtility.getHash("email", "SHA-256") + "=" + user.getEmail() + 
+						"&"+ EJBUtility.getHash("action", "SHA-256") + "=" + EJBUtility.getHash("delete", "SHA-256") + "&tab=3\"><img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\" /></a>"
 						+ "</td>");
 				out.println("</tr>");
 				out.println("</tr>");
@@ -121,10 +121,10 @@ public class PanelWorker {
 					out.println("<td> <label for=\"identificacao\" class=\"labelExibe\">" + user.getEmail() + " </label> </td>");
 					out.println("<td> <label for=\"identificacao\" class=\"labelExibe\">" + user.getUserProfile().getProfile() + "</label> </td>");
 					out.println("<td>"
-							+ "<a href=\"/GraoPara/doChangesToAccount?" + EJBUtility.getHash("email") + "=" + user.getEmail() + 
-							"&"+ EJBUtility.getHash("action") + "=" + EJBUtility.getHash("approve") + "&tab=2\" ><img src=\"/GraoPara/images/approve.png\" title=\"Editar\" alt=\"Editar\" /></a>" 
-							+ "<a href=\"/GraoPara/doChangesToAccount?" + EJBUtility.getHash("email") + "=" + user.getEmail() + 
-							"&"+ EJBUtility.getHash("action") + "=" + EJBUtility.getHash("delete") + "&tab=2\"><img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\" /></a>"
+							+ "<a href=\"/GraoPara/doChangesToAccount?" + EJBUtility.getHash("email", "SHA-256") + "=" + user.getEmail() + 
+							"&"+ EJBUtility.getHash("action", "SHA-256") + "=" + EJBUtility.getHash("approve", "SHA-256") + "&tab=2\" ><img src=\"/GraoPara/images/approve.png\" title=\"Editar\" alt=\"Editar\" /></a>" 
+							+ "<a href=\"/GraoPara/doChangesToAccount?" + EJBUtility.getHash("email", "SHA-256") + "=" + user.getEmail() + 
+							"&"+ EJBUtility.getHash("action", "SHA-256") + "=" + EJBUtility.getHash("delete", "SHA-256") + "&tab=2\"><img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\" /></a>"
 							+ "</td>");
 					out.println("</tr>");
 				}

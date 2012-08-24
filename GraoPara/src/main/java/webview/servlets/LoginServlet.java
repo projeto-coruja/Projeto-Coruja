@@ -44,7 +44,7 @@ public class LoginServlet extends HttpServlet {
 			if(login_result != null && (login_result.getLogType().equals(AuthBean.LoginSuccessAdmin) || login_result.getLogType().equals(AuthBean.LoginSuccessUser)))
 			{
 				Cookie c_email = new Cookie(WebUtility.cookie_email, user);
-				Cookie c_pass = new Cookie(WebUtility.cookie_password, EJBUtility.getHash(senha));
+				Cookie c_pass = new Cookie(WebUtility.cookie_session, EJBUtility.getHash(login_result.getUsername() + login_result.getEmail() + login_result.getLogType(), "SHA-256"));
 				Cookie c_status = new Cookie(WebUtility.cookie_status, login_result.getLogType().toString());
 				Cookie c_nome = new Cookie(WebUtility.cookie_nome, login_result.getUsername());
 				c_email.setMaxAge(WebUtility.cookie_expire);

@@ -17,7 +17,7 @@ import business.exceptions.login.UserNotFoundException;
 public final class WebUtility {
 	
 	public static String cookie_email = "email_graopara";
-	public static String cookie_password = "senha_graopara";
+	public static String cookie_session = "sessao_graopara";
 	public static String cookie_nome = "nome_graopara";
 	public static String cookie_status = "status_graopara";
 	
@@ -37,7 +37,7 @@ public final class WebUtility {
 			String cName = cookie.getName();
 			if(cName.equals(WebUtility.cookie_email))
 				email = cookie.getValue();
-			if(cName.equals(WebUtility.cookie_password))
+			if(cName.equals(WebUtility.cookie_session))
 				password = cookie.getValue();
 		}
 		if(email != null && password != null) {
