@@ -52,13 +52,16 @@ public class StartFilter implements Filter {
 		HttpServletResponse res = (HttpServletResponse) response;
 		Cookie[] c_list = req.getCookies();
 		Cookie c_status = WebUtility.selectCookie(c_list, WebUtility.cookie_status);
-		if(c_status != null && Integer.parseInt(c_status.getValue()) == AuthBean.LoginFailOrDefault) {
+		Cookie c_email = WebUtility.selectCookie(c_list, WebUtility.cookie_email);
+		Cookie c_username = WebUtility.selectCookie(c_list, WebUtility.cookie_nome);
+		Cookie c_session = WebUtility.selectCookie(c_list, WebUtility.cookie_session);
+		if(c_status != null && (c_status.getValue().equals(AuthBean.LoginFailOrDefault))) {
 			res.sendRedirect(req.getContextPath() + "/public/index.jsp");
 		}
-		else if(c_status != null && Integer.parseInt(c_status.getValue()) == AuthBean.LoginSuccessUser) {
+		else if(c_status != null && (c_status.getValue().equals(AuthBean.LoginSuccessUser) && AuthBean.allowOperation(c_session.getValue(), c_email.getValue(), c_username.getValue(), c_status.getValue()))) {
 			res.sendRedirect(req.getContextPath() + "/protected/user/indexUser.jsp");
 		}
-		else if(c_status != null && Integer.parseInt(c_status.getValue()) == AuthBean.LoginSuccessAdmin) {
+		else if(c_status != null && (c_status.getValue().equals(AuthBean.LoginSuccessAdmin))) {
 			res.sendRedirect(req.getContextPath() + "/protected/admin/indexAdmin.jsp");
 		}
 		else {
@@ -67,18 +70,18 @@ public class StartFilter implements Filter {
 			{
 				res.sendRedirect(req.getContextPath() + "/public");
 			}
-			else if(user.getLogType() == AuthBean.LoginFailOrDefault) {
+			else if(user.getLogType().equals(AuthBean.LoginFailOrDefault)) {
 				c_status = new Cookie(WebUtility.cookie_status, user.getLogType().toString());
 				c_status.setMaxAge(-1);
 				res.addCookie(c_status);
 				res.sendRedirect(req.getContextPath() + "/public/index.jsp");
 			}
-			else if(user.getLogType() == AuthBean.LoginSuccessUser){
+			else if(user.getLogType().equals(AuthBean.LoginSuccessUser)){
 				c_status = new Cookie(WebUtility.cookie_status, user.getLogType().toString());
 				c_status.setMaxAge(-1);
 				res.sendRedirect(req.getContextPath() + "/protected/user/indexUser.jsp");
 			}
-			else if(user.getLogType() == AuthBean.LoginSuccessAdmin){
+			else if(user.getLogType().equals(AuthBean.LoginSuccessAdmin)){
 				c_status = new Cookie(WebUtility.cookie_status, user.getLogType().toString());
 				c_status.setMaxAge(-1);
 				res.sendRedirect(req.getContextPath() + "/protected/admin/indexAdmin.jsp");

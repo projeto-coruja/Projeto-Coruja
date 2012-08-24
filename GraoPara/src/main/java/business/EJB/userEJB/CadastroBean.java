@@ -29,7 +29,7 @@ public class CadastroBean {
 				check = loginDAO.findUserByEmail(email);
 				if(check != null)	throw new DuplicateUserException();
 			} catch (UserNotFoundException e) {
-				loginDAO.addUser(email, name, EJBUtility.getHash(password));
+				loginDAO.addUser(email, name, EJBUtility.getHash(password, "MD5"));
 			}
 		} catch (UnreachableDataBaseException e) {
 			e.printStackTrace();
@@ -39,7 +39,7 @@ public class CadastroBean {
 	public String recuperarSenha(String email) throws UnreachableDataBaseException, UserNotFoundException {
 		UserDTO user = loginDAO.findUserByEmail(email);
 		String newPassword = EJBUtility.genNewRandomPassword(6);
-		user.setPassword(EJBUtility.getHash(newPassword));
+		user.setPassword(EJBUtility.getHash(newPassword, "MD5"));
 		loginDAO.updateUser(user);
 		return newPassword;
 	}

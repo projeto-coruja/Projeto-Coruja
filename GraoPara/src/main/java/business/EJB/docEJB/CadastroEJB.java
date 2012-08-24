@@ -23,13 +23,15 @@ import business.exceptions.login.UnreachableDataBaseException;
 import business.exceptions.login.UserNotFoundException;
 
 public class CadastroEJB {
-	DocumentDAO docDao;
+	private final DocumentDAO docDao;
+	private final KeyWordDAO keyDao;
 
 	public CadastroEJB() {
 		docDao = new DocumentDAO();
+		keyDao = new KeyWordDAO();
 	}
 
-	public void cadastrarDocumento(String origem_codOrigem,
+	public synchronized void cadastrarDocumento(String origem_codOrigem,
 			String origem_tipoOrigem, String origem_titulo,
 			String idNumDoc_tipoId, String idNumDoc_codId,
 			String tipoDocumento_tipoDocumento, String palavraChave01,
@@ -85,7 +87,7 @@ public class CadastroEJB {
 		
 	}
 
-	public void cadastrarPalavraChave(String palavra)
+	public synchronized void cadastrarPalavraChave(String palavra)
 			throws IllegalArgumentException, UnreachableDataBaseException {
 		KeyWordDAO kwDao = new KeyWordDAO();
 		try {
@@ -109,7 +111,7 @@ public class CadastroEJB {
 		}
 	}
 	
-	public void deletarDocumento(Long id) throws UnreachableDataBaseException, DocumentNotFoundException{
+	public synchronized void deletarDocumento(Long id) throws UnreachableDataBaseException, DocumentNotFoundException{
 		DocumentoDTO docDto;
 		Long count;
 		DocumentTypeDAO dtDao = new DocumentTypeDAO();
@@ -147,7 +149,7 @@ public class CadastroEJB {
 		
 	}
 	
-	public void deletarDocumento(DocumentoDTO docDto) throws UnreachableDataBaseException{
+	public synchronized void deletarDocumento(DocumentoDTO docDto) throws UnreachableDataBaseException{
 		TipoDocumentoDTO tdDto;
 		Long count;
 		DocumentTypeDAO dtDao = new DocumentTypeDAO();
@@ -161,7 +163,43 @@ public class CadastroEJB {
 		
 	}
 	
-	public void atualizarDocumento(DocumentoDTO docDTO) throws UnreachableDataBaseException{
+	public synchronized void atualizarDocumento(DocumentoDTO docDTO) throws UnreachableDataBaseException{
 		docDao.updateDocument(docDTO);
+	}
+	
+	public synchronized void deletarPalavraChave(String keyWord) throws UnreachableDataBaseException, KeywordNotFoundException{
+		BuscaDocEJB busca = new BuscaDocEJB();
+		CadastroEJB cad = new CadastroEJB();
+		List<DTO> results = null;
+		
+		keyWord = keyWord.toLowerCase();
+		
+		try {
+			results = busca.buscaDocPorPalavraChave(keyWord);
+			for(DTO dto : results){
+				DocumentoDTO doc = (DocumentoDTO) dto;
+				if(doc.getPalavrasChaves1().getPalavra().equals(keyWord)){
+					doc.setPalavrasChaves1(doc.getPalavrasChaves2());
+					doc.setPalavrasChaves2(doc.getPalavrasChaves3());
+					doc.setPalavrasChaves3(null);
+				}
+				if(doc.getPalavrasChaves2().getPalavra().equals(keyWord)){
+					doc.setPalavrasChaves2(doc.getPalavrasChaves3());
+					doc.setPalavrasChaves3(null);
+				}
+				if(doc.getPalavrasChaves3().getPalavra().equals(keyWord)){
+					doc.setPalavrasChaves3(null);
+				}
+				cad.atualizarDocumento(doc);
+			}
+		} catch (DocumentNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			keyDao.removeKeyWord(keyWord);
+		}
+	}
+	
+	public synchronized void atualizarPalavraChave(String oldKey, String newKey, boolean newStatus) throws UnreachableDataBaseException, KeywordNotFoundException{
+		keyDao.updateKeyWord(oldKey, newKey, newStatus);
 	}
 }

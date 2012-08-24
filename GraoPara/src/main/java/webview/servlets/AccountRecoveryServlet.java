@@ -9,7 +9,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import persistence.dto.UserDTO;
+
+import webview.WebUtility;
+
+import business.EJB.userEJB.AuthBean;
+import business.EJB.userEJB.BuscaUserEJB;
 import business.EJB.userEJB.CadastroBean;
+import business.EJB.util.EJBUtility;
 import business.exceptions.login.UnreachableDataBaseException;
 import business.exceptions.login.UserNotFoundException;
 
@@ -32,29 +39,33 @@ public class AccountRecoveryServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		CadastroBean recovery = new CadastroBean();
+		BuscaUserEJB busca = new BuscaUserEJB();
+		CadastroBean cadastro = new CadastroBean();
+		String newPassword = null;
 		String email = request.getParameter("email");
-		String newPassword;
-	    PrintWriter out=response.getWriter();
-		response.setContentType("text/html");     
+		response.setContentType("text/html");  
+	    PrintWriter out=response.getWriter(); 
+		
 		try {
-			newPassword = recovery.recuperarSenha(email);
-			out.println("<script>");  
-		    out.println("alert('Anote sua nova senha: " + newPassword + ". Você pode trocar a sua senha após o login.');");  
-		    out.println("document.location=('/GraoPara/protected/user/');");  
+			UserDTO user = busca.findUser(email);
+			newPassword = EJBUtility.genNewRandomPassword(6);
+			user.setPassword(EJBUtility.getHash(newPassword, "MD5"));
+			cadastro.atualizarUsuario(user);
+		    out.println("<script>");  
+		    out.println("alert('Nova senha gerado para "+ email +": "+ newPassword +" ');");  
+		    out.println("document.location=('/GraoPara/protected/admin/gerarSenha.jsp');");  
 		    out.println("</script>");
 		} catch (UnreachableDataBaseException e) {
-			out.println("<script>");  
-		    out.println("alert('Erro no banco de dados! Contate o suporte e tente novamente mais tarde." + e.getStackTrace() + "');");  
-		    out.println("document.location=('/GraoPara/protected/user/');");  
+		    out.println("<script>");  
+		    out.println("alert('Provblema ao se conectar ao banco de dados. ');");  
+		    out.println("document.location=('/GraoPara/protected/admin/gerarSenha.jsp');");  
 		    out.println("</script>");
 			e.printStackTrace();
-		} catch (UserNotFoundException e) { 
+		} catch (UserNotFoundException e) {
 		    out.println("<script>");  
-		    out.println("alert('Email não encontrado. Verifique o email e tente novamente. ');");  
-		    out.println("document.location=('/GraoPara/public/index.jsp');");  
+		    out.println("alert('Usuário não encontrado. ');");  
+		    out.println("document.location=('/GraoPara/protected/admin/gerarSenha.jsp');");  
 		    out.println("</script>");
 		}
-		
 	}
 }

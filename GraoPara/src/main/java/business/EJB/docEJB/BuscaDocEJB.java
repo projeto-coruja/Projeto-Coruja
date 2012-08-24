@@ -151,6 +151,19 @@ public class BuscaDocEJB {
 		return docDao.findDocumentByQuery(query);
 	}
 	
+	public List<DTO> buscaDocPorPalavraChave(String palavra) throws UnreachableDataBaseException, DocumentNotFoundException{
+		
+		String query = "from Documento where ";
+						
+		if(palavra != null && !palavra.isEmpty()){
+			query += "(palavra_chave_1 like '%" + palavra.toLowerCase() + "%'";
+			query += "or palavra_chave_2 like '%" + palavra.toLowerCase() + "%'";
+			query += "or palavra_chave_3 like '%" + palavra.toLowerCase() + "%')";
+		}
+		
+		return docDao.findDocumentByQuery(query);
+	}
+	
 	public Long countRowsByCriteria(String criteria){
 		return docDao.countDocumentsByCriteria(criteria);
 	}

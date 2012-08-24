@@ -4,7 +4,7 @@ public class UserBean {
 	
 	private String email;
 	private String username;
-	private Integer logType;
+	private String logType;
 	
 	public String getEmail() {
 		return email;
@@ -18,10 +18,10 @@ public class UserBean {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	public Integer getLogType() {
+	public String getLogType() {
 		return logType;
 	}
-	public void setLogType(Integer logType) {
+	public void setLogType(String logType) {
 		this.logType = logType;
 	}
 

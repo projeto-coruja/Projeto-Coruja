@@ -5,20 +5,16 @@ import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import persistence.dto.UserDTO;
-
 import webview.WebUtility;
-
 import business.EJB.userEJB.AdminBean;
 import business.EJB.userEJB.AuthBean;
 import business.EJB.userEJB.BuscaUserEJB;
 import business.EJB.userEJB.CadastroBean;
-import business.EJB.userEJB.UserBean;
 import business.EJB.util.EJBUtility;
 import business.exceptions.login.IncorrectProfileInformationException;
 import business.exceptions.login.ProfileNotFoundException;
@@ -45,13 +41,13 @@ public class AccountServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		AdminBean adm = new AdminBean();
-		String email = request.getParameter(EJBUtility.getHash("email"));
-		String action = request.getParameter(EJBUtility.getHash("action"));
+		String email = request.getParameter(EJBUtility.getHash("email", "SHA-256"));
+		String action = request.getParameter(EJBUtility.getHash("action", "SHA-256"));
 		String previous = request.getParameter("tab");
 		
 		try {
-			if(action.equals(EJBUtility.getHash("approve"))) adm.alterarPermissoesUsuario(email, "user");
-			else if(action.equals(EJBUtility.getHash("delete")))	adm.deletarUsuario(email);
+			if(action.equals(EJBUtility.getHash("approve", "SHA-256"))) adm.alterarPermissoesUsuario(email, "user");
+			else if(action.equals(EJBUtility.getHash("delete", "SHA-256")))	adm.deletarUsuario(email);
 		} catch (IncorrectProfileInformationException e) {
 			e.printStackTrace();
 		} catch (UnreachableDataBaseException e) {
@@ -83,15 +79,15 @@ public class AccountServlet extends HttpServlet {
 		String status = WebUtility.selectCookie(request.getCookies(), WebUtility.cookie_status).getValue();
 		
 		
-		if(Integer.parseInt(status) == AuthBean.LoginSuccessUser)	// retorna para a página de USER
+		if(status.equals(AuthBean.LoginSuccessUser))	// retorna para a página de USER
 	    	redirect = "/GraoPara/protected/user/painelUser.jsp";
-	    else if(Integer.parseInt(status) == AuthBean.LoginSuccessAdmin)	// retorna para a página de ADMIN
+	    else if(status.equals(AuthBean.LoginSuccessAdmin))	// retorna para a página de ADMIN
 	    	redirect = "/GraoPara/protected/admin/painelAdmin.jsp";
 		
 		try {
 			user = busca.findUser(email);
-			if(user.getPassword().equals(EJBUtility.getHash(senhaVelha))){
-				user.setPassword(EJBUtility.getHash(senhaNova));
+			if(user.getPassword().equals(EJBUtility.getHash(senhaVelha, "MD5"))){
+				user.setPassword(EJBUtility.getHash(senhaNova, "MD5"));
 				cadastro.atualizarUsuario(user);  
 			    out.println("<script>");  
 			    out.println("alert('Senha trocada com sucesso. ');");  
@@ -110,8 +106,6 @@ public class AccountServlet extends HttpServlet {
 		} catch (UserNotFoundException e) {
 			e.printStackTrace();
 		}	
-		
-
-		
 	}
+
 }
