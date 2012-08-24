@@ -52,8 +52,8 @@ a:hover, a:active, a:focus { /* this group of selectors will give a keyboard nav
 
 /* Originalmente as divs tinham layout líquido (porcentagem) mas falando com o Arlindo, foi decidido deixar mais estático */
 .container {
-	width: auto;
-	max-width: 900px;/* a max-width may be desirable to keep this layout from getting too wide on a large monitor. This keeps line length more readable. IE6 does not respect this declaration. */
+	max-width: 1000px;/* a max-width may be desirable to keep this layout from getting too wide on a large monitor. This keeps line length more readable. IE6 does not respect this declaration. */
+	min-width: 810px;
 	background-color: #FFF;
 	margin: 0 auto; /* the auto value on the sides, coupled with the width, centers the layout. It is not needed if you set the .container's width to 100%. */
 	font-size: 100%;
@@ -79,7 +79,7 @@ a:hover, a:active, a:focus { /* this group of selectors will give a keyboard nav
 	-webkit-box-shadow: 0 -1px 0 0px #000;
 	box-shadow: 0 -1px 0 0px #000;
 	border: none;
-	width: 180px;
+	width: 160px;
 	height: 27px;
 	margin: 0px 0;
 	color: #000;
@@ -206,26 +206,24 @@ a:hover, a:active, a:focus { /* this group of selectors will give a keyboard nav
 }
 
 /* Estilo do botão de entrar do painel de login, está sendo reaproveitado para vários outros botões */
-.buttonEntrar{
-	width:185px;
-	height:24px;
-	text-align:center;
+.buttonEntrar, .buttonRegistrar {
+	width: 140px;
+	height: 24px;
+	margin-left: 10px;
+	text-align: center;
 	border: none;
-	float: inherit;	
+	float: inherit;
 	background: #6F7D94;
-	background: -webkit-gradient(linear, left top);
-	
 	-webkit-border-radius: .6em;
 	-moz-border-radius: .6em;
 	border-radius: .6em;
-	
-	-webkit-box-shadow: 0 0px 1px rgba( 255, 255, 255);
+	-webkit-box-shadow: 0 0px 1px rgba( 255, 255, 255, );
 	-moz-box-shadow: 0 0px 1px rgba(255, 255, 255);
-	box-shadow: 0 0px 1px rgba(255, 255, 255);
-	color: #fff;
-	
-	cursor:pointer;
+	box-shadow: 0 0px 1px rgba(255, 255, 255, );
+	color: white;
+	cursor: pointer;
 }
+
 .buttonShort{
 	width:90px;
 	height:24px;
@@ -244,29 +242,7 @@ a:hover, a:active, a:focus { /* this group of selectors will give a keyboard nav
 	color: #fff;	
 	cursor:pointer;
 }
-/* Para evitar colocar código de estilo dentro do código html, afim de sobrescrever o botão acima, foi criado um outro grupo de parametros só para o botão registrar */
-.buttonRegistrar{
-	width:185px;
-	height:24px;
-	text-align:center;
-	border: none;
-	float: inherit;
-	
-	background: #6F7D94;
-	background: -webkit-gradient(linear, left top);
-	
-	-webkit-border-radius: .6em;
-	-moz-border-radius: .6em;
-	border-radius: .6em;
-	
-	-webkit-box-shadow: 0 0px 1px rgba( 255, 255, 255);
-	-moz-box-shadow: 0 0px 1px rgba(255, 255, 255);
-	box-shadow: 0 0px 1px rgba(255, 255, 255);
-	color: #fff;
-	
-	cursor:pointer;
-	
-}
+
 .scroll{
 	height: 25em;
 	overflow: auto;
@@ -307,7 +283,7 @@ label{
 /*Se eu não me engano, é a barra onde está os botões e o painelzinho de login */
 .sidebar1 {
 	float: left;
-	width: 200px;
+	width: 180px;
 	height: 920px;
 	background-color: #93A5C4;
 	padding-bottom: 10px;
@@ -315,7 +291,7 @@ label{
 
 /* Div do conteúdo interno do site, onde as outras páginas estão sendo carregadas dentro */
 .content {
-	padding: 30px 10px 10px 10px;
+	padding: 30px 10px 10px 20px;
 	width: 600px;
 	float: left;
 	
@@ -430,7 +406,7 @@ span.asterisco {
 
 .tableForms{
 	text-align:left;
-	margin: 40px 0 0 10px;
+	margin: 40px 0 0 0px;
 	width: 700px;
 	border: 0px;
 }
