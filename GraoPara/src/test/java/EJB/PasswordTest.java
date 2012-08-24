@@ -24,7 +24,7 @@ public class PasswordTest {
 	
 	@Test
 	public void getHash() {
-		hash = EJBUtility.getHash(pass);
+		hash = EJBUtility.getHash(pass,"MD5");
 		System.out.println(hash);
 		assertNotNull(hash);
 	}

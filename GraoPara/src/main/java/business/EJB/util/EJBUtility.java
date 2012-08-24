@@ -5,8 +5,9 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Random;
 
 public class EJBUtility {
+	
 	private EJBUtility (){}
-
+	
 	private static String byteArrayToHexString(byte[] b){
 		StringBuffer sb = new StringBuffer(b.length * 2);
 		for (int i = 0; i < b.length; i++){
@@ -19,26 +20,30 @@ public class EJBUtility {
 		return sb.toString().toUpperCase();
 	}
 
-	private static byte[] genHash(String s){
-		try{
-			MessageDigest md5 = MessageDigest.getInstance("MD5");
-			md5.reset();
-			md5.update(s.getBytes(),0,s.length());
-			return md5.digest();
-		}catch(NoSuchAlgorithmException e){
-		}
-		return null;
+	private static byte[] genHash(String s, String algorithm) throws NoSuchAlgorithmException{
+		if(algorithm.isEmpty())	throw new NoSuchAlgorithmException("Nenhum algoritmo passado");
+		MessageDigest md5 = MessageDigest.getInstance(algorithm);
+		md5.reset();
+		md5.update(s.getBytes(),0,s.length());
+		return md5.digest();
 	}
 
 	/**
 	 * Transforma uma senha em hash.
-	 * @param password - String que será transformado em hash.
+	 * @param s - String que será transformado em hash.
 	 * @return hashword - Hash da senha.
 	 */
-	public static String getHash(String password){
+	public static String getHash(String s, String algorithm){
 
 		String hashword = null;
-		hashword = byteArrayToHexString(genHash(password));
+		try {
+			hashword = byteArrayToHexString(genHash(s, algorithm));
+		} catch (NoSuchAlgorithmException e) {
+			try {
+				hashword = byteArrayToHexString(genHash(s, "MD5"));
+			} catch (NoSuchAlgorithmException e1) {
+			}
+		}
 //		System.out.println(hashword);
 		return hashword;
 	}

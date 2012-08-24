@@ -26,7 +26,7 @@ public class AuthBean {
 		
 		String hashedPassword = null;
 		if(hashed == NonHashedPwd)
-			hashedPassword = EJBUtility.getHash(password);
+			hashedPassword = EJBUtility.getHash(password, "MD5");
 		else
 			hashedPassword = password;
 		
@@ -48,6 +48,13 @@ public class AuthBean {
 		}
 		else
 			return null;
+	}
+	
+	public static boolean allowOperation(String sessionCode, String email, String username, String status) {
+		String hashcode = EJBUtility.getHash(username + email + status, "SHA-256");
+		if(sessionCode.equals(hashcode))	return true;
+		return false;
+		
 	}
 
 }

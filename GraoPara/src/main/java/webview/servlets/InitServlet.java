@@ -74,7 +74,7 @@ public class InitServlet extends HttpServlet {
 		if(admin == null)
 		{
 			log.info("Criando usuário de admin...");
-			pa.saveEntity(new UserDTO("Admin", EJBUtility.getHash("null"), (ProfileDTO) (pa.findEntities("from Profile where profile = 'admin'").get(0)),
+			pa.saveEntity(new UserDTO("Admin", EJBUtility.getHash("null","MD5"), (ProfileDTO) (pa.findEntities("from Profile where profile = 'admin'").get(0)),
 				"admin@graopara.com", new Date()));
 		}
 		else admin = null;
@@ -83,7 +83,7 @@ public class InitServlet extends HttpServlet {
 		if(user == null)
 		{
 			log.info("Criando usuário de teste...");
-			pa.saveEntity(new UserDTO("Outlook", EJBUtility.getHash("null"), (ProfileDTO) (pa.findEntities("from Profile where profile = 'user'").get(0)),
+			pa.saveEntity(new UserDTO("Outlook", EJBUtility.getHash("null","MD5"), (ProfileDTO) (pa.findEntities("from Profile where profile = 'user'").get(0)),
 				"outlook@gmail.com", new Date()));
 		}
 		else user = null;
@@ -92,7 +92,7 @@ public class InitServlet extends HttpServlet {
 		if(visit == null)
 		{
 			log.info("Criando usuário sem privilégios de teste...");
-			pa.saveEntity(new UserDTO("Anonimo", EJBUtility.getHash("null"), (ProfileDTO) (pa.findEntities("from Profile where profile = 'default'").get(0)),
+			pa.saveEntity(new UserDTO("Anonimo", EJBUtility.getHash("null","MD5"), (ProfileDTO) (pa.findEntities("from Profile where profile = 'default'").get(0)),
 				"default@graopara.com", new Date()));
 		}
 		else visit = null;
