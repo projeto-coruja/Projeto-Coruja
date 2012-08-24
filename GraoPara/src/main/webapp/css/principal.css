@@ -206,7 +206,7 @@ a:hover, a:active, a:focus { /* this group of selectors will give a keyboard nav
 }
 
 /* Estilo do botão de entrar do painel de login, está sendo reaproveitado para vários outros botões */
-.buttonEntrar, .buttonRegistrar {
+.buttonEntrar, .buttonRegistrar, .buttonCancelar {
 	width: 140px;
 	height: 24px;
 	margin-left: 10px;
@@ -222,6 +222,11 @@ a:hover, a:active, a:focus { /* this group of selectors will give a keyboard nav
 	box-shadow: 0 0px 1px rgba(255, 255, 255, );
 	color: white;
 	cursor: pointer;
+}
+
+.buttonCancelar {
+margin-right: 60px;
+margin-left: 0px;
 }
 
 .buttonShort{
@@ -299,8 +304,7 @@ label{
 
 .content2 {
 	padding: 50px 0 800px 90px;
-	float: left;
-	
+	float: left;	
 }
 
 .contentListagem {
@@ -407,6 +411,13 @@ span.asterisco {
 .tableForms{
 	text-align:left;
 	margin: 40px 0 0 0px;
+	width: 700px;
+	border: 0px;
+}
+
+.tableEditar{
+	text-align:left;
+	margin: 40px 0 0 30px;
 	width: 700px;
 	border: 0px;
 }

@@ -94,6 +94,13 @@ $(document).ready(function() {
 				minlength: 6,
 				equalTo: "#senhaNova"
 			},
+			/* ----------------------------------
+			 *  Painel de editar Palavra Chave
+			 * ---------------------------------- */
+			palavraNova:{
+				required: true,
+				minlength: 3
+			},
 		},
 		messages: {
 			/* ----------------------------------
@@ -173,6 +180,9 @@ $(document).ready(function() {
 			permissao: {
 				required: "Selecione a Permissão do Usuário."
 			},
+			/* ----------------------------------
+			 *  Painel de trocar senha
+			 * ---------------------------------- */
 			senhaAtual: {
 				required: "Digite sua senha cadastrada"
 			},
@@ -184,7 +194,14 @@ $(document).ready(function() {
 				required:  "Confirme sua senha",
 				minlength: jQuery.format("Digite no mínimo {0} caracteres."),
 				equalTo: "Digite uma senha igual a anterior."
-			}
+			},
+			/* ----------------------------------
+			 *  Painel de editar Palavra Chave
+			 * ---------------------------------- */
+			palavraNova: {
+				required: "Digite uma palavra nova",
+				minlength: jQuery.format("Digite no mínimo {0} caracteres.")
+			},
 		},
 		// the errorPlacement has to take the table layout into account
 		errorPlacement: function(error, element) {
