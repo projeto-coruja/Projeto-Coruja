@@ -4,7 +4,6 @@ import java.util.List;
 
 import business.exceptions.documents.KeywordNotFoundException;
 import business.exceptions.login.UnreachableDataBaseException;
-import business.exceptions.login.UserNotFoundException;
 import persistence.PersistenceAccess;
 import persistence.dto.DTO;
 import persistence.dto.PalavraChaveDTO;
@@ -29,11 +28,35 @@ public class KeyWordDAO {
 		return newKey;
 	}
 
-	public void removeKeyWord(String key) throws UnreachableDataBaseException, UserNotFoundException, KeywordNotFoundException{
-		PalavraChaveDTO check = null;
+	public void removeKeyWord(String key) throws UnreachableDataBaseException, KeywordNotFoundException{
+		List<DTO> check = null;
+		PalavraChaveDTO select = null;
 		try{
-			check = (PalavraChaveDTO) findKeyWordByString(key);
-			manager.deleteEntity(check);
+			check = findKeyWordByString(key);
+			for(DTO dto : check){
+				if (((PalavraChaveDTO) dto).getPalavra().equals(key))
+					select = (PalavraChaveDTO) dto;
+			}
+			if(select == null)	throw new KeywordNotFoundException("Palavra-chave não encontrado.");
+			manager.deleteEntity(select);
+		} catch(DataAccessLayerException e){
+			e.printStackTrace();
+			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
+		}
+	}	
+	
+	public void updateKeyWord(String oldKey, String newKey, Boolean newStatus) throws UnreachableDataBaseException, KeywordNotFoundException{
+		List<DTO> check = null;
+		PalavraChaveDTO select = null;
+		try{
+			check = findKeyWordByString(oldKey);
+			for(DTO dto : check){
+				if (((PalavraChaveDTO) dto).getPalavra().equals(oldKey))
+					select = (PalavraChaveDTO) dto;
+			}
+			select.setPalavra(newKey);
+			select.setAprovada(newStatus);
+			manager.updateEntity(select);
 		} catch(DataAccessLayerException e){
 			e.printStackTrace();
 			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
@@ -43,7 +66,7 @@ public class KeyWordDAO {
 	public List<DTO> findKeyWordByString(String key) throws  UnreachableDataBaseException, KeywordNotFoundException  {
 		List<DTO> resultSet = null;
 		try {
-			resultSet = manager.findEntities("from PalavraChave where palavra = '" + key + "'");
+			resultSet = manager.findEntities("from PalavraChave where palavra like '" + key.toLowerCase() + "'");
 			if(resultSet == null) {
 				throw new KeywordNotFoundException ("Palavra não encontrada");
 			}

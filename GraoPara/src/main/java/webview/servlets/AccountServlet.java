@@ -5,20 +5,16 @@ import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import persistence.dto.UserDTO;
-
 import webview.WebUtility;
-
 import business.EJB.userEJB.AdminBean;
 import business.EJB.userEJB.AuthBean;
 import business.EJB.userEJB.BuscaUserEJB;
 import business.EJB.userEJB.CadastroBean;
-import business.EJB.userEJB.UserBean;
 import business.EJB.util.EJBUtility;
 import business.exceptions.login.IncorrectProfileInformationException;
 import business.exceptions.login.ProfileNotFoundException;

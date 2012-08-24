@@ -80,7 +80,6 @@ public class Documento implements Serializable,Entidade{
 	@Temporal(TemporalType.DATE)
 	private Calendar dataDocumento;
 
-	@NotNull
 	@ManyToOne
 	@Cascade(CascadeType.SAVE_UPDATE)
 	@JoinColumn(name = "palavra_chave_1", referencedColumnName = "palavra")
