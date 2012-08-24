@@ -59,7 +59,7 @@
 		<!-- Fim do Menu Lateral -->
 		<div class="content" id="content">
 			<h2>Pesquisa de Documento</h2>
-			<form action="/GraoPara/doSearch" method="POST" name="cadastro" autocomplete="off">
+			<form action="/GraoPara/doSearch" method="post" name="cadastro" autocomplete="off">
 				<table class="tableForms">
 					<tr>
 						<td>
@@ -185,5 +185,4 @@
 	</div>
 </body>
 </html>
-
 

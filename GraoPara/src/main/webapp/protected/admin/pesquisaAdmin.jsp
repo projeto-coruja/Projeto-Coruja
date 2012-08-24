@@ -48,14 +48,17 @@
 					<li><a href="/GraoPara/protected/admin/cadastroDocumentosAdmin.jsp">Cadastrar Documento</a></li>
 					<li><a href="/GraoPara/protected/admin/painelAdmin.jsp">Painel Admin</a></li>
 					<li><a href="/GraoPara/protected/admin/gerarSenha.jsp">Gerar Senha</a></li>
-					<li><a href="/GraoPara/protected/admin/sobreAdmin.jsp">Sobre</a></li>					
+					<li><a href="/GraoPara/protected/admin/sobreAdmin.jsp">Sobre</a></li>
+					
+					<li><a href="/GraoPara/protected/admin/listagemDocumentos.jsp">Lista</a></li>
+								
 				</ul>
 			</article>
 		</div>
 		<!-- Fim do Menu Lateral -->
 		<div class="content" id="content">
 			<h2>Pesquisa de Documento</h2>
-			<form action="/GraoPara/doSearch" method="POST" name="cadastro" autocomplete="off">
+			<form action="/GraoPara/doSearch" method="post" name="cadastro" autocomplete="off">
 				<table class="tableForms">
 					<tr>
 						<td>

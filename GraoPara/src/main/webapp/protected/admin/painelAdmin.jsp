@@ -25,15 +25,16 @@
 <script src="/GraoPara/javascript/chili-1.7.pack.js"
 	type="text/javascript"></script>
 <script type="text/javascript"
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"charset="utf-8"></script>
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"
+	charset="utf-8"></script>
 
-	<!-- Import dos scripts de validação de formulário -->
-	<script src="/GraoPara/javascript/jquery.js" type="text/javascript"
-		charset="utf-8"></script>
-	<script src="/GraoPara/javascript/validate.js" type="text/javascript"
-		charset="utf-8"></script>
-	<script src="/GraoPara/javascript/validate_pt_br.js"
-		type="text/javascript" charset="utf-8"></script> 
+<!-- Import dos scripts de validação de formulário -->
+<script src="/GraoPara/javascript/jquery.js" type="text/javascript"
+	charset="utf-8"></script>
+<script src="/GraoPara/javascript/validate.js" type="text/javascript"
+	charset="utf-8"></script>
+<script src="/GraoPara/javascript/validate_pt_br.js"
+	type="text/javascript" charset="utf-8"></script>
 
 
 </head>
@@ -66,10 +67,14 @@
 				<ul class="nav" id="menu">
 					<li><a href="/GraoPara/protected/admin/indexAdmin.jsp">Home</a></li>
 					<li><a href="/GraoPara/protected/admin/pesquisaAdmin.jsp">Pesquisar</a></li>
-					<li><a href="/GraoPara/protected/admin/cadastroDocumentosAdmin.jsp">Cadastrar Documento</a></li>
-					<li><a href="/GraoPara/protected/admin/painelAdmin.jsp">Painel Admin</a></li>
-					<li><a href="/GraoPara/protected/admin/gerarSenha.jsp">Gerar Senha</a></li>
-					<li><a href="/GraoPara/protected/admin/sobreAdmin.jsp">Sobre</a></li>					
+					<li><a
+						href="/GraoPara/protected/admin/cadastroDocumentosAdmin.jsp">Cadastrar
+							Documento</a></li>
+					<li><a href="/GraoPara/protected/admin/painelAdmin.jsp">Painel
+							Admin</a></li>
+					<li><a href="/GraoPara/protected/admin/gerarSenha.jsp">Gerar
+							Senha</a></li>
+					<li><a href="/GraoPara/protected/admin/sobreAdmin.jsp">Sobre</a></li>
 				</ul>
 			</article>
 		</div>
@@ -105,43 +110,45 @@
 				</table>
 			</form>
 			<!-- Novo formulário para mudança de senha -->
-							<form id="signupform" autocomplete="off" action="/GraoPara/doChangesToAccount" method="post">
-					<table class="tableControle">
+			<form id="signupform" autocomplete="off"
+				action="/GraoPara/doChangesToAccount" method="post">
+				<table class="tableControle">
 					<tr>
-						<th colspan="3" align="center"> Mudar Senha Atual </th>
+						<th colspan="3" align="center">Mudar Senha Atual</th>
 					</tr>
 					<tr>
-						<td>
-							<label class="labelForms"  id="lpassword" for="password">Senha Atual:<span class="asterisco">*</span></label></td>
-						<td class="field">
-							<input id="senhaAtual" class="input" name="senhaAtual" type="password" maxlength="50" value="" />
-						</td>
+						<td><label class="labelForms" id="lpassword" for="password">Senha
+								Atual:<span class="asterisco">*</span>
+						</label></td>
+						<td class="field"><input id="senhaAtual" class="input"
+							name="senhaAtual" type="password" maxlength="50" value="" /></td>
 						<td class="status"></td>
 					</tr>
 					<tr>
-						<td>
-							<label class="labelForms"  id="lpassword" for="password">Nova Senha:<span class="asterisco">*</span></label></td>
-						<td class="field">
-							<input id="senhaNova" class="input" name="senhaNova" type="password" maxlength="50" value="" />
-						</td>
+						<td><label class="labelForms" id="lpassword" for="password">Nova
+								Senha:<span class="asterisco">*</span>
+						</label></td>
+						<td class="field"><input id="senhaNova" class="input"
+							name="senhaNova" type="password" maxlength="50" value="" /></td>
 						<td class="status"></td>
 					</tr>
 					<tr>
-						<td>
-							<label class="labelForms"  id="lpassword" for="password">Confirme Nova Senha:<span class="asterisco">*</span></label></td>
-						<td class="field">
-							<input id="senhaConfirme" class="input" name="senhaConfirme" type="password" maxlength="50" value="" />
+						<td><label class="labelForms" id="lpassword" for="password">Confirme
+								Nova Senha:<span class="asterisco">*</span>
+						</label></td>
+						<td class="field"><input id="senhaConfirme" class="input"
+							name="senhaConfirme" type="password" maxlength="50" value="" />
 						</td>
 						<td class="status"></td>
 					</tr>
 					<tr>
 						<td class="field" colspan="3">
-						<p></p>
-							<input class="buttonRegistrar" id="signupsubmit" name="Alterar" type="submit" value="Alterar" />
+							<p></p> <input class="buttonRegistrar" id="signupsubmit"
+							name="Alterar" type="submit" value="Alterar" />
 						</td>
 					</tr>
-					</table>
-				</form>	
+				</table>
+			</form>
 			<!-- Novo formulário para novos usuários -->
 
 			<br>
@@ -152,104 +159,104 @@
 						<a href="#tab1">Palavras-Chaves Pendentes</a>
 					</h2>
 					<div class="scroll">
-					<table  class="tablePainel">
-						<thead>
-							<tr>
-								<td width="120" height="20"><label for="identificacao"
-									class="labelExibe">ID</label></td>
-								<td width="120" height="20"><label for="identificacao"
-									class="labelExibe">Palavra-Chave</label></td>
-								<td width="120" height="20"><label for="identificacao"
-									class="labelExibe">Status</label></td>
-								<td width="120" height="20"><label for="identificacao"
-									class="labelExibe">Ação</label></td>
-							</tr>
-						</thead>
-						<tbody>
-							<%
-								PanelWorker.listAllNewKeyWords(request, out);
-							%>
-						</tbody>
-					</table>
+						<table class="tablePainel">
+							<thead>
+								<tr>
+									<td width="120" height="20"><label for="identificacao"
+										class="labelExibe">ID</label></td>
+									<td width="120" height="20"><label for="identificacao"
+										class="labelExibe">Palavra-Chave</label></td>
+									<td width="120" height="20"><label for="identificacao"
+										class="labelExibe">Status</label></td>
+									<td width="120" height="20"><label for="identificacao"
+										class="labelExibe">Ação</label></td>
+								</tr>
+							</thead>
+							<tbody>
+								<%
+									PanelWorker.listAllNewKeyWords(request, out);
+								%>
+							</tbody>
+						</table>
 					</div>
 				</section>
-				
+
 				<section id="tab2">
 					<h2>
 						<a href="#tab2">Novos Usuários</a>
 					</h2>
 					<div class="scroll">
-					<form action="">
-					<table class="tablePainel">
-						<thead>
-							<tr>
-								<td><label for="identificacao" class="labelExibe">Nome</label></td>
-								<td><label for="identificacao" class="labelExibe">Email</label></td>
-								<td><label for="identificacao" class="labelExibe">Permissão</label></td>
-								<td><label for="identificacao" class="labelExibe">Ação</label></td>
-							</tr>
-						</thead>
-						<tbody>					
-							<%
-								PanelWorker.listAllNewUsers(request, out);
-							%>
-						</tbody>
-					</table>
-					</form>
-				</div>
+						<form action="">
+							<table class="tablePainel">
+								<thead>
+									<tr>
+										<td><label for="identificacao" class="labelExibe">Nome</label></td>
+										<td><label for="identificacao" class="labelExibe">Email</label></td>
+										<td><label for="identificacao" class="labelExibe">Permissão</label></td>
+										<td><label for="identificacao" class="labelExibe">Ação</label></td>
+									</tr>
+								</thead>
+								<tbody>
+									<%
+										PanelWorker.listAllNewUsers(request, out);
+									%>
+								</tbody>
+							</table>
+						</form>
+					</div>
 				</section>
-				
+
 				<section id="tab3">
 					<h2>
 						<a href="#tab3">Usuários</a>
 					</h2>
 					<div class="scroll">
-					<table class="tablePainel">
-						<thead>
-							<tr>
-								<td><label for="identificacao" class="labelExibe">Nome</label></td>
-								<td><label for="identificacao" class="labelExibe">Email</label></td>
-								<td><label for="identificacao" class="labelExibe">Permissão</label></td>
-								<td><label for="identificacao" class="labelExibe">Ação</label></td>
-							</tr>
-						</thead>
-						<tbody>
-							<%
-								PanelWorker.listAllUsers(request, out);
-							%>
-						</tbody>
-					</table>
+						<table class="tablePainel">
+							<thead>
+								<tr>
+									<td><label for="identificacao" class="labelExibe">Nome</label></td>
+									<td><label for="identificacao" class="labelExibe">Email</label></td>
+									<td><label for="identificacao" class="labelExibe">Permissão</label></td>
+									<td><label for="identificacao" class="labelExibe">Ação</label></td>
+								</tr>
+							</thead>
+							<tbody>
+								<%
+									PanelWorker.listAllUsers(request, out);
+								%>
+							</tbody>
+						</table>
 					</div>
 				</section>
-				
+
 				<section id="tab4">
 					<h2>
 						<a href="#tab4">Palavras-Chaves</a>
 					</h2>
 					<div class="scroll">
-					<table  class="tablePainel">
-					<thead>
-						<tr>
-							<td width="120" height="20"><label for="identificacao"
-								class="labelExibe">ID</label></td>
-							<td width="120" height="20"><label for="identificacao"
-								class="labelExibe">Palavra-Chave</label></td>
-							<td width="120" height="20"><label for="identificacao"
-								class="labelExibe">Status</label></td>
-							<td width="120" height="20"><label for="identificacao"
-								class="labelExibe">Ação</label></td>
-							<!-- Exemplo de cadastro -->
-						</tr>
-					</thead>
-					<tbody>
-							<%
-								PanelWorker.listAllKeyWords(request, out);
-							%>
-					</tbody>				
-					</table>
-				</div>
+						<table class="tablePainel">
+							<thead>
+								<tr>
+									<td width="120" height="20"><label for="identificacao"
+										class="labelExibe">ID</label></td>
+									<td width="120" height="20"><label for="identificacao"
+										class="labelExibe">Palavra-Chave</label></td>
+									<td width="120" height="20"><label for="identificacao"
+										class="labelExibe">Status</label></td>
+									<td width="120" height="20"><label for="identificacao"
+										class="labelExibe">Ação</label></td>
+									<!-- Exemplo de cadastro -->
+								</tr>
+							</thead>
+							<tbody>
+								<%
+									PanelWorker.listAllKeyWords(request, out);
+								%>
+							</tbody>
+						</table>
+					</div>
 				</section>
-				
+
 			</article>
 
 		</div>

@@ -214,7 +214,6 @@
 		<div class="footer">
 			<p>Copyright © - Universidade Federal de São Paulo - UNIFESP 2012</p>
 			<p>Desenvolvido pelo grupo Coruja</p>
-			<a href="/GraoPara/protected/admin/sobre.jsp">- Sobre -</a>
 		</div>
 		<!-- Fim do Rodapé -->
 		<!-- end .container -->
