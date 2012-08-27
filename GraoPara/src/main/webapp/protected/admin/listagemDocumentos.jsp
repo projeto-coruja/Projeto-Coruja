@@ -80,7 +80,7 @@
 					<td><label class="labelExibe">Ações</label></td>
 				</tr>
 
-				<%SearchServlet.listAllDocuments(request, out); %>
+				<% SearchWorker.listAllDocuments(request, out); %>
 				
 			</table>
 		</div>
