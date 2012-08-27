@@ -34,7 +34,8 @@ public class SearchWorker {
 		
 		try {
 			
-			docs = search.busca(identificacao, codigo, titulo, tipoAPEP_SEQ, numAPEP_SEQ, autor, destinatario, local, data, tipoDoc, palavra1, palavra2, palavra3); 
+			docs = search.busca(identificacao,	//indenm 
+					codigo, titulo, tipoAPEP_SEQ, numAPEP_SEQ, autor, destinatario, local, data, tipoDoc, palavra1, palavra2, palavra3); 
 
 			for(DTO d : docs){
 				

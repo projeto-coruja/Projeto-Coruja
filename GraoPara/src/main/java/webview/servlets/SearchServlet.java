@@ -23,6 +23,10 @@ public class SearchServlet extends HttpServlet {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -42,8 +46,6 @@ public class SearchServlet extends HttpServlet {
 		String palavra2 = request.getParameter("chave2");
 		String palavra3 = request.getParameter("chave3");
 		String titulo = request.getParameter("titulo");
-		
-		
 	}
 
 }

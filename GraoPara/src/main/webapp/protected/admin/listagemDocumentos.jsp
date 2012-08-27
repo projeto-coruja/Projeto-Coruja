@@ -1,5 +1,5 @@
 <!doctype html>
-<%@page import="webview.servlets.SearchServlet"%>
+<%@page import="webview.servlets.SearchWorker"%>
 <html>
 <head>
 <meta charset="utf-8">
