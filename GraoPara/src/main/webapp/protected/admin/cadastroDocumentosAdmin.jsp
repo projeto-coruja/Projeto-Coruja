@@ -57,15 +57,17 @@
 				</form>
 			</div>
 			<!-- ----------------------------------------------------------------------- -->
-
-				<article class="menuLateral">
+	<article class="menuLateral">
 				<ul class="nav" id="menu">
 					<li><a href="/GraoPara/protected/admin/indexAdmin.jsp">Home</a></li>
+					<li><a href="/GraoPara/protected/admin/listagemDocumentos.jsp">Documentos</a></li>	
 					<li><a href="/GraoPara/protected/admin/pesquisaAdmin.jsp">Pesquisar</a></li>
 					<li><a href="/GraoPara/protected/admin/cadastroDocumentosAdmin.jsp">Cadastrar Documento</a></li>
+					<li><a href="/GraoPara/protected/admin/cadUserAdmin.jsp">Cadastrar Usuário</a></li>					
 					<li><a href="/GraoPara/protected/admin/painelAdmin.jsp">Painel Admin</a></li>
 					<li><a href="/GraoPara/protected/admin/gerarSenha.jsp">Gerar Senha</a></li>
-					<li><a href="/GraoPara/protected/admin/sobreAdmin.jsp">Sobre</a></li>					
+					<li><a href="/GraoPara/protected/admin/sobreAdmin.jsp">Sobre</a></li>				
+												
 				</ul>
 			</article>
 		</div>

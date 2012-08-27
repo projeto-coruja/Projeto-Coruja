@@ -101,6 +101,12 @@ $(document).ready(function() {
 				required: true,
 				minlength: 3
 			},
+			/* ----------------------------------
+			 *  Cadastro de usuários pelo Admin
+			 * ---------------------------------- */
+			permissao:{
+				required: true
+			},
 		},
 		messages: {
 			/* ----------------------------------
@@ -201,6 +207,12 @@ $(document).ready(function() {
 			palavraNova: {
 				required: "Digite uma palavra nova",
 				minlength: jQuery.format("Digite no mínimo {0} caracteres.")
+			},
+			/* ----------------------------------
+			 *  Cadastro de usuários pelo Admin
+			 * ---------------------------------- */
+			permissao:{
+				required: "Selecione uma permissão para o usuário"
 			},
 		},
 		// the errorPlacement has to take the table layout into account
