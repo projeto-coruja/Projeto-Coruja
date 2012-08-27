@@ -136,8 +136,37 @@ a:hover, a:active, a:focus { /* this group of selectors will give a keyboard nav
 	width: 58px;
 	height: 20px;
 	margin: 5px 0;
-	color: #000;
-	padding: 0 0 0 10px;
+	color: #000;	
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 1em;
+	letter-spacing: 1px;
+}
+
+.inputDia{
+	background-color: #ffffff;
+	-webkit-border-radius: 0.4em;
+	-moz-border-radius: 0.4em;
+	border-radius: 0.4em;	
+	border: 1;
+	width: 51px;
+	height: 20px;
+	margin: 5px 0;
+	color: #000;	
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 1em;
+	letter-spacing: 1px;
+}
+
+.inputAno{
+	background-color: #ffffff;
+	-webkit-border-radius: 0.4em;
+	-moz-border-radius: 0.4em;
+	border-radius: 0.4em;	
+	border: 1;
+	width: 40px;
+	height: 20px;
+	margin: 5px 0;
+	color: #000;	
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 1em;
 	letter-spacing: 1px;
@@ -419,7 +448,7 @@ span.asterisco {
 .tableForms{
 	text-align:left;
 	margin: 40px 0 0 0px;
-	width: 580px;
+	width: 420px;
 	border: 0px;
 }
 
