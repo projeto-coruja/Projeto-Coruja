@@ -435,10 +435,14 @@ span.asterisco {
 	width: 700px;
 	border: 0px;
 }
-
-.tablePainel, .tr, .td{
+.tablePainel{
 	text-align:center;	
 	width: 540px;
+}
+
+.tableList, .trList, .tdList{
+	text-align:center;	
+	width: 590px;
 	border-collapse: collapse;
 	border: 1px solid;
 }
