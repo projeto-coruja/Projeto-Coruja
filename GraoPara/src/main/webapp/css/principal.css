@@ -89,6 +89,10 @@ a:hover, a:active, a:focus { /* this group of selectors will give a keyboard nav
 	letter-spacing: 1px;
 }
 
+.iconeAjuda{
+	margin-top: 5px;
+}
+
 .input{
 	background-color: #ffffff;
 	/* Proximos três atributos definem a borda arredondada dos inputs, cada linha é para um tipo de navegador */
@@ -129,7 +133,7 @@ a:hover, a:active, a:focus { /* this group of selectors will give a keyboard nav
 	-moz-border-radius: 0.4em;
 	border-radius: 0.4em;	
 	border: 1;
-	width: 80px;
+	width: 58px;
 	height: 20px;
 	margin: 5px 0;
 	color: #000;
@@ -187,21 +191,7 @@ a:hover, a:active, a:focus { /* this group of selectors will give a keyboard nav
 	letter-spacing: 1px;
 }
 
-.inputShort{
-	background-color: #ffffff;
-	-webkit-border-radius: .4em;
-	-moz-border-radius: .4em;
-	border-radius: .4em;	
-	border: 1;
-	width: 70px;
-	height: 20px;
-	margin: 0px 0;
-	color: #000;
-	padding: 0 0 0 0px;
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 1em;
-	letter-spacing: 1px;
-}
+
 
 .inputLong{
 	background-color: #ffffff;
@@ -429,7 +419,13 @@ span.asterisco {
 .tableForms{
 	text-align:left;
 	margin: 40px 0 0 0px;
-	width: 700px;
+	width: 580px;
+	border: 0px;
+}
+
+.tdForms{
+	text-align:left;
+	width: 200px;
 	border: 0px;
 }
 
