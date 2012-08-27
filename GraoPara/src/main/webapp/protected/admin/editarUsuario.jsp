@@ -1,4 +1,5 @@
 <!doctype html>
+<%@page import="webview.servlets.PanelWorker"%>
 <%@page import="webview.WebUtility"%>
 <html>
 <head>
@@ -75,7 +76,7 @@
 		<!-- Fim do Menu Lateral -->
 		<div class="content" id="content">
 				<h2>Cadastro Usuário</h2>
-			<form id="signupform" autocomplete="off" method="post" action="/GraoPara/doRegister">
+			<form id="signupform" autocomplete="off" method="post" action="/GraoPara/doChangesToAccount?action=editPermission">
 				<table class="tableForms">
 					<tr>
 						<td class="labelForms" colspan="3">
@@ -87,7 +88,7 @@
 							<label class="labelForms" id="lfirstname" for="nome">Nome Completo:<span class="asterisco">*</span></label>
 						</td>
 						<td class="field">
-							<input class="inputLong" id="nome" name="nome" type="text" value="" maxlength="100" readonly="readonly" />
+							<input class="inputLong" id="nome" name="nome" type="text" value="<%= request.getParameter("paramName") %>" maxlength="100" readonly="readonly" />
 						</td>
 						<td class="status"></td>
 					</tr>
@@ -96,7 +97,7 @@
 							<label class="labelForms"  id="lemail" for="email" >Email:<span class="asterisco">*</span></label>
 						</td>
 						<td class="field">
-							<input class="inputLong" id="email" name="email" type="text" value="" maxlength="150" readonly="readonly"/>
+							<input class="inputLong" id="email" name="email" type="text" value="<%= request.getParameter("paramEmail") %>" maxlength="150" readonly="readonly"/>
 						</td>
 						<td class="status"></td>
 					</tr>
@@ -107,8 +108,7 @@
 						<td class="field">
 							<select name="permissao" class="input" id="permissao">
 									<option value="">Selecione...</option>
-									<option value="admin">Administrador</option>
-									<option value="user">Usuário Comum</option>
+									<% PanelWorker.listAllAvailablePofile(request, out); %>
 							</select>
 						</td>
 						<td class="status"></td>

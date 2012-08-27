@@ -66,46 +66,80 @@ public class AccountServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		CadastroBean cadastro = new CadastroBean();
 		BuscaUserEJB busca = new BuscaUserEJB();
-		
-		String senhaVelha = request.getParameter("senhaAtual");
-		String senhaNova = request.getParameter("senhaNova");
+		AdminBean admin = new AdminBean();
+		String action = request.getParameter("action");
+		String permissaoNova;
+		String senhaVelha;
+		String senhaNova;
 		UserDTO user = null;
 		String redirect = null;
-		
+
 		response.setContentType("text/html");  
-	    PrintWriter out=response.getWriter(); 
+		PrintWriter out=response.getWriter(); 
 
 		String email = WebUtility.selectCookie(request.getCookies(), WebUtility.cookie_email).getValue();
 		String status = WebUtility.selectCookie(request.getCookies(), WebUtility.cookie_status).getValue();
-		
-		
+
+
 		if(status.equals(AuthBean.LoginSuccessUser))	// retorna para a página de USER
-	    	redirect = "/GraoPara/protected/user/painelUser.jsp";
-	    else if(status.equals(AuthBean.LoginSuccessAdmin))	// retorna para a página de ADMIN
-	    	redirect = "/GraoPara/protected/admin/painelAdmin.jsp";
+			redirect = "/GraoPara/protected/user/painelUser.jsp";
+		else if(status.equals(AuthBean.LoginSuccessAdmin))	// retorna para a página de ADMIN
+			redirect = "/GraoPara/protected/admin/painelAdmin.jsp";
 		
-		try {
-			user = busca.findUser(email);
-			if(user.getPassword().equals(EJBUtility.getHash(senhaVelha, "MD5"))){
-				user.setPassword(EJBUtility.getHash(senhaNova, "MD5"));
-				cadastro.atualizarUsuario(user);  
+		if(action.equals("editPermission")){
+			permissaoNova = request.getParameter("permissao");
+			email = request.getParameter("email");
+			out.println("<script>");  
+			out.println("alert('Permissão trocado com sucesso. ');");  
+			out.println("document.location=('" + redirect + "');");  
+			out.println("</script>");
+			try {
+				admin.alterarPermissoesUsuario(email, permissaoNova);
+			} catch (UnreachableDataBaseException e) {
 			    out.println("<script>");  
-			    out.println("alert('Senha trocada com sucesso. ');");  
-			    out.println("document.location=('" + redirect + "');");  
+			    out.println("alert('Não foi possível conectar com o banco de dados.');");  
+			    out.println("document.location=('/GraoPara/public/index.jsp');");  
 			    out.println("</script>");
+				e.printStackTrace();
+			} catch (UserNotFoundException e) {
+				e.printStackTrace();
+			} catch (IncorrectProfileInformationException e) {
+				e.printStackTrace();
+			} catch (ProfileNotFoundException e) {
+				e.printStackTrace();
 			}
-			else{
+		}
+		
+		else if(action.equals("editPassword")){
+			senhaVelha = request.getParameter("senhaAtual");
+			senhaNova = request.getParameter("senhaNova");
+			try {
+				user = busca.findUser(email);
+				if(user.getPassword().equals(EJBUtility.getHash(senhaVelha, "MD5"))){
+					user.setPassword(EJBUtility.getHash(senhaNova, "MD5"));
+					cadastro.atualizarUsuario(user);  
+					out.println("<script>");  
+					out.println("alert('Senha trocada com sucesso. ');");  
+					out.println("document.location=('" + redirect + "');");  
+					out.println("</script>");
+				}
+				else{
+					out.println("<script>");  
+					out.println("alert('Erro ao trocar a senha, senha informada diferente da cadastrada. ');");  
+					out.println("document.location=('" + redirect + "');");  
+					out.println("</script>");
+				}
+			} catch (UnreachableDataBaseException e) {
 			    out.println("<script>");  
-			    out.println("alert('Erro ao trocar a senha, senha informada diferente da cadastrada. ');");  
-			    out.println("document.location=('" + redirect + "');");  
+			    out.println("alert('Não foi possível conectar com o banco de dados.');");  
+			    out.println("document.location=('/GraoPara/public/index.jsp');");  
 			    out.println("</script>");
-			}
-		} catch (UnreachableDataBaseException e) {
-			// msg
-			e.printStackTrace();
-		} catch (UserNotFoundException e) {
-			e.printStackTrace();
-		}	
+				e.printStackTrace();
+				e.printStackTrace();
+			} catch (UserNotFoundException e) {
+				e.printStackTrace();
+			}	
+		}
 	}
 
 }

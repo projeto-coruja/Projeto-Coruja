@@ -1,11 +1,14 @@
 package business.EJB.userEJB;
 
+import java.util.List;
+
 import business.DAO.login.LoginDAO;
 import business.EJB.RegularExpression;
 import business.exceptions.login.IncorrectProfileInformationException;
 import business.exceptions.login.ProfileNotFoundException;
 import business.exceptions.login.UnreachableDataBaseException;
 import business.exceptions.login.UserNotFoundException;
+import persistence.dto.DTO;
 import persistence.dto.ProfileDTO;
 
 public class AdminBean {
@@ -41,4 +44,7 @@ public class AdminBean {
 		loginDAO.removeUser(email);
 	}
 
+	public List<DTO> getAllAvailableProfiles() throws UnreachableDataBaseException, ProfileNotFoundException{
+		return loginDAO.getAllProfiles();
+	}
 }

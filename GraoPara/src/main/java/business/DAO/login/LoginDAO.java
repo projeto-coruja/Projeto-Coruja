@@ -172,4 +172,16 @@ public class LoginDAO {
 			}
 		}
 	}
+	
+	public List<DTO> getAllProfiles() throws UnreachableDataBaseException, ProfileNotFoundException{
+		List<DTO> resultSet = null;
+		try{
+			resultSet = manager.findEntities("from Profile order by profile");
+			if(resultSet == null)	throw new ProfileNotFoundException("Nenhum profile encontrado");
+			else return resultSet;
+		} catch(DataAccessLayerException e) {
+			e.printStackTrace();
+			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
+		}
+	}
 }

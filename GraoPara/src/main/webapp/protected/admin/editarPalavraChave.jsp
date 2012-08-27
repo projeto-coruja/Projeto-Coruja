@@ -67,9 +67,7 @@
 					<li><a href="/GraoPara/protected/admin/painelAdmin.jsp">Painel Admin</a></li>
 					<li><a href="/GraoPara/protected/admin/gerarSenha.jsp">Gerar Senha</a></li>
 					<li><a href="/GraoPara/protected/admin/sobreAdmin.jsp">Sobre</a></li>
-					<li><a href="#">Créditos</a></li>						
-					<li><a href="/GraoPara/protected/admin/sobreAdmin.jsp">Sobre</a></li>		
-					<li><a href="#">Créditos</a></li>		
+					<li><a href="#">Créditos</a></li>
 				</ul>
 			</article>
 		</div>
@@ -85,7 +83,7 @@
 							<label class="labelForms" id="lpalavraAntiga" for="palavraAntiga">Palavra Chave Antiga:</label>
 						</td>
 						<td class="field">
-							<input class="input" id="palavraAntiga" name="palavraAntiga" type="text" value="<%= request.getParameter("palavra") %>" maxlength="32"/>
+							<input class="input" id="palavraAntiga" name="palavraAntiga" type="text" value="<%= request.getParameter("palavra") %>" maxlength="32" readonly="readonly"/>
 						</td>
 						<td class="status"></td>
 					</tr>					
