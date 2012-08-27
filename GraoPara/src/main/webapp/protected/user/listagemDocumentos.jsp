@@ -49,55 +49,35 @@
 			</fieldset>
 			<!-- Fim da área de login -->
 
-			<article class="menuLateral">
-				<ul class="nav" id="menu">
-					<li><a href="/GraoPara/public/index.jsp">Home</a></li>
-					<li><a href="/GraoPara/public/pesquisa.jsp">Pesquisar</a></li>
-					<li><a href="/GraoPara/public/sobre.jsp">Sobre</a></li>
+			<article class="menuLateral">  
+			<ul class="nav" id="menu">
+				<li><a href="/GraoPara/protected/user/indexUser.jsp">Home</a></li>
+					<li><a href="/GraoPara/protected/user/pesquisaUser.jsp">Pesquisar</a></li>
+					<li><a href="/GraoPara/protected/user/cadastroDocumentosUser.jsp">Cadastrar Documento</a></li>
+					<li><a href="/GraoPara/protected/user/painelUser.jsp">Painel User</a></li>
+					<li><a href="/GraoPara/protected/user/sobreUser.jsp">Sobre</a></li>
 					<li><a href="#">Créditos</a></li>
-				</ul>
-			</article>
+			</ul>
+			</article>			
+			
 		</div>
 		<!-- Fim do Menu Lateral -->
 		<div class="content" id="content">
 		<h2>Listagem de Documentos</h2>
-			<table>
-				<tr><td>
-						<label class="labelExibe">Identificação</label>
-					</td>
-					<td>
-						<label class="labelExibe">Código</label>
-					</td>
-					<td>
-						<label class="labelExibe">Título</label>
-					</td>
-					<td>
-						<label class="labelExibe">Tipo de Número</label>
-					</td>
-					<td>
-						<label class="labelExibe">Número</label>
-					</td>
-					<td>
-						<label class="labelExibe">Autor</label>
-					</td>
-					<td>
-						<label class="labelExibe">Destinatário</label>
-					</td>
-					<td>
-						<label class="labelExibe">Local</label>
-					</td>
-					<td>
-						<label class="labelExibe">Data</label>
-					</td>
-					<td>
-						<label class="labelExibe">Documento</label>
-					</td>
-					<td>
-						<label class="labelExibe">Palavras-Chaves</label>
-					</td>
-					<td>
-						<label class="labelExibe">Ações</label>
-					</td>
+			<table class="tableList">
+				<tr class="trList">
+					<td class="tdList"><label class="labelExibe">Identificação</label></td>
+					<td class="tdList"><label class="labelExibe">Código</label></td>
+					<td class="tdList"><label class="labelExibe">Título</label></td>
+					<td class="tdList"><label class="labelExibe">Tipo de Número</label></td>
+					<td class="tdList"><label class="labelExibe">Número</label></td>
+					<td class="tdList"><label class="labelExibe">Autor</label></td>
+					<td class="tdList"><label class="labelExibe">Destinatário</label></td>
+					<td class="tdList"><label class="labelExibe">Local</label></td>
+					<td class="tdList"><label class="labelExibe">Data</label></td>
+					<td class="tdList"><label class="labelExibe">Documento</label></td>
+					<td class="tdList"><label class="labelExibe">Palavras-Chaves</label></td>
+					<td class="tdList"><label class="labelExibe">Ações</label></td>
 				</tr>
 
 				<% SearchWorker.listAllDocuments(request, out); %>
