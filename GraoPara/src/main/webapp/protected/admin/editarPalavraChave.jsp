@@ -66,14 +66,10 @@
 					<li><a href="/GraoPara/protected/admin/cadUserAdmin.jsp">Cadastrar Usuário</a></li>					
 					<li><a href="/GraoPara/protected/admin/painelAdmin.jsp">Painel Admin</a></li>
 					<li><a href="/GraoPara/protected/admin/gerarSenha.jsp">Gerar Senha</a></li>
-<<<<<<< HEAD
 					<li><a href="/GraoPara/protected/admin/sobreAdmin.jsp">Sobre</a></li>
 					<li><a href="#">Créditos</a></li>						
-=======
 					<li><a href="/GraoPara/protected/admin/sobreAdmin.jsp">Sobre</a></li>		
 					<li><a href="#">Créditos</a></li>		
-												
->>>>>>> branch 'master' of https://github.com/projeto-coruja/Projeto-Coruja.git
 				</ul>
 			</article>
 		</div>
