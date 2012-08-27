@@ -1,5 +1,5 @@
 <!doctype html>
-<%@page import="webview.servlets.SearchServlet"%>
+<%@page import="webview.servlets.SearchWorker"%>
 <html>
 <head>
 <meta charset="utf-8">
@@ -54,6 +54,7 @@
 					<li><a href="/GraoPara/public/index.jsp">Home</a></li>
 					<li><a href="/GraoPara/public/pesquisa.jsp">Pesquisar</a></li>
 					<li><a href="/GraoPara/public/sobre.jsp">Sobre</a></li>
+					<li><a href="#">Créditos</a></li>
 				</ul>
 			</article>
 		</div>
@@ -99,7 +100,7 @@
 					</td>
 				</tr>
 
-				<% SearchServlet.listAllDocuments(request, out); %>
+				<% SearchWorker.listAllDocuments(request, out); %>
 				
 			</table>
 		</div>

@@ -50,17 +50,16 @@
 			<!-- Fim da área de login -->
 
 			<article class="menuLateral">  
-				<ul class="nav" id="menu">
-					<li><a href="/GraoPara/protected/admin/indexAdmin.jsp">Home</a></li>
-					<li><a href="/GraoPara/protected/admin/pesquisaAdmin.jsp">Pesquisar</a></li>
-					<li><a href="/GraoPara/protected/admin/cadastroDocumentosAdmin.jsp">Cadastrar Documento</a></li>
-					<li><a href="/GraoPara/protected/admin/cadUserAdmin.jsp">Cadastrar Usuário</a></li>
-					<li><a href="/GraoPara/protected/admin/painelAdmin.jsp">Painel Admin</a></li>
-					<li><a href="/GraoPara/protected/admin/gerarSenha.jsp">Gerar Senha</a></li>
-					<li><a href="/GraoPara/protected/admin/sobreAdmin.jsp">Sobre</a></li>
+			<ul class="nav" id="menu">
+				<li><a href="/GraoPara/protected/user/indexUser.jsp">Home</a></li>
+					<li><a href="/GraoPara/protected/user/pesquisaUser.jsp">Pesquisar</a></li>
+					<li><a href="/GraoPara/protected/user/cadastroDocumentosUser.jsp">Cadastrar Documento</a></li>
+					<li><a href="/GraoPara/protected/user/painelUser.jsp">Painel User</a></li>
+					<li><a href="/GraoPara/protected/user/sobreUser.jsp">Sobre</a></li>
 					<li><a href="#">Créditos</a></li>
-				</ul>
-			</article>
+			</ul>
+			</article>			
+			
 		</div>
 		<!-- Fim do Menu Lateral -->
 		<div class="content" id="content">

@@ -43,23 +43,23 @@ public class SearchWorker {
 				SimpleDateFormat s = new SimpleDateFormat("dd/MM/yyyy");
 				Calendar c = doc.getDataDocumento();
 				
-				out.println("<tr>");
-				out.println("<td><label class=\"labelExibe\">"+ doc.getOrigemDocumento().getTipoOrigem()+"</label></td>");
-				out.println("<td><label class=\"labelExibe\">"+ doc.getOrigemDocumento().getCodOrigem() +"</label></td>");
-				out.println("<td><label class=\"labelExibe\">"+ doc.getOrigemDocumento().getTitulo() 	+"</label></td>");
-				out.println("<td><label class=\"labelExibe\">"+ doc.getIdNumDocumento().getTipoId()		+"</label></td>");
-				out.println("<td><label class=\"labelExibe\">"+ doc.getIdNumDocumento().getCodId()		+"</label></td>");
-				out.println("<td><label class=\"labelExibe\">"+ doc.getAutor() 							+"</label></td>");
-				out.println("<td><label class=\"labelExibe\">"+ doc.getDestinatario()					+"</label></td>");
-				out.println("<td><label class=\"labelExibe\">"+ doc.getLocal()							+"</label></td>");
-				out.println("<td><label class=\"labelExibe\">"+ s.format(c.getTime())					+"</label></td>");
-				out.println("<td><label class=\"labelExibe\">"+ doc.getTipoDocumento().getTipoDocumento()	+"</label></td>");
-				out.println("<td><label class=\"labelExibe\">"
+				out.println("<tr  class=\"trList\">");
+				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getOrigemDocumento().getTipoOrigem()+"</label></td>");
+				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getOrigemDocumento().getCodOrigem() +"</label></td>");
+				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getOrigemDocumento().getTitulo() 	+"</label></td>");
+				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getIdNumDocumento().getTipoId()		+"</label></td>");
+				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getIdNumDocumento().getCodId()		+"</label></td>");
+				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getAutor() 							+"</label></td>");
+				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getDestinatario()					+"</label></td>");
+				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getLocal()							+"</label></td>");
+				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ s.format(c.getTime())					+"</label></td>");
+				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getTipoDocumento().getTipoDocumento()	+"</label></td>");
+				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"
 						+ doc.getPalavrasChaves1().getPalavra() + " - " 
 						+ doc.getPalavrasChaves2().getPalavra() + " - "
 						+ doc.getPalavrasChaves3().getPalavra() + " - "
 						+ "</label></td>");
-				out.println("<td>"
+				out.println("<td class=\"tdList\">"
 						+ "<a href=\"#\"><img src=\"/GraoPara/images/edit.png\" title=\"Editar\" alt=\"Editar\"/></a> "
 						+ "<br>"
 						+ "<a href=\"#\"><img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\"/></a> "

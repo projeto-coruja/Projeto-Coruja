@@ -53,13 +53,14 @@
 					<li><a href="/GraoPara/public/index.jsp">Home</a></li>
 					<li><a href="/GraoPara/public/pesquisa.jsp">Pesquisar</a></li>
 					<li><a href="/GraoPara/public/sobre.jsp">Sobre</a></li>
+					<li><a href="#">Créditos</a></li>
 				</ul>
 			</article>
 		</div>
 		<!-- Fim do Menu Lateral -->
 		<div class="content" id="content">
 			<h2>Pesquisa de Documento</h2>
-			<form action="/GraoPara/doSearch" method="post" name="cadastro" autocomplete="off">
+			<form action="/GraoPara/public/listagemDocumentos.jsp" method="get" name="cadastro" autocomplete="off">
 				<table class="tableForms">
 					<tr>
 						<td>
