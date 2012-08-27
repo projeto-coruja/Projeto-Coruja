@@ -14,6 +14,8 @@ public class PalavraChaveUpdater implements EntityUpdate {
 	public Entidade updateEntity(DTO dto, Entidade ent) {
 		PalavraChaveDTO entry = (PalavraChaveDTO) dto;
 		
+		if(ent == null)	ent = new PalavraChave();
+		
 
 		((PalavraChave) ent).setId(entry.getId());
 		((PalavraChave) ent).setPalavra(entry.getPalavra());

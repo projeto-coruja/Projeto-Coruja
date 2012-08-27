@@ -49,14 +49,17 @@
 			</fieldset>
 			<!-- Fim da área de login -->
 
-			<article class="menuLateral">
-				<ul class="nav" id="menu">
-					<li><a href="/GraoPara/public/index.jsp">Home</a></li>
-					<li><a href="/GraoPara/public/pesquisa.jsp">Pesquisar</a></li>
-					<li><a href="/GraoPara/public/sobre.jsp">Sobre</a></li>
+			<article class="menuLateral">  
+			<ul class="nav" id="menu">
+				<li><a href="/GraoPara/protected/user/indexUser.jsp">Home</a></li>
+					<li><a href="/GraoPara/protected/user/pesquisaUser.jsp">Pesquisar</a></li>
+					<li><a href="/GraoPara/protected/user/cadastroDocumentosUser.jsp">Cadastrar Documento</a></li>
+					<li><a href="/GraoPara/protected/user/painelUser.jsp">Painel User</a></li>
+					<li><a href="/GraoPara/protected/user/sobreUser.jsp">Sobre</a></li>
 					<li><a href="#">Créditos</a></li>
-				</ul>
-			</article>
+			</ul>
+			</article>			
+			
 		</div>
 		<!-- Fim do Menu Lateral -->
 		<div class="content" id="content">
