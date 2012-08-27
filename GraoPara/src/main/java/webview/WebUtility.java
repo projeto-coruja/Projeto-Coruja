@@ -95,5 +95,11 @@ public final class WebUtility {
 		Cookie name = selectCookie(request.getCookies(), WebUtility.cookie_nome);
 		if(name != null) out.write("<label>" + name.getValue() + "!</label>");
 	}
+	
+	public static String printLabel(HttpServletRequest request, String parameter) throws IOException {
+		String label = request.getParameter(parameter);
+		if(label == null) return "";
+		else return label;
+	}
 
 }

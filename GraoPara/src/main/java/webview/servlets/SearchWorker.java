@@ -19,6 +19,7 @@ public class SearchWorker {
 	public static void listAllDocuments(HttpServletRequest request, JspWriter out) throws IOException{
 		String identificacao = request.getParameter("identificacao");
 		String codigo = request.getParameter("codigo");
+		String titulo = request.getParameter("titulo");
 		String tipoAPEP_SEQ = request.getParameter("tipoAPEP_SEQ");
 		String numAPEP_SEQ = request.getParameter("numeroAPEP");
 		String autor = request.getParameter("autor");
@@ -29,7 +30,6 @@ public class SearchWorker {
 		String palavra1 = request.getParameter("chave1");
 		String palavra2 = request.getParameter("chave2");
 		String palavra3 = request.getParameter("chave3");
-		String titulo = request.getParameter("titulo");
 		
 		BuscaDocEJB search = new BuscaDocEJB();
 		List<DTO> docs = null;    
@@ -47,9 +47,9 @@ public class SearchWorker {
 				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getOrigemDocumento().getTipoOrigem()+"</label></td>");
 				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getOrigemDocumento().getCodOrigem() +"</label></td>");
 				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getOrigemDocumento().getTitulo() 	+"</label></td>");
-				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getIdNumDocumento().getTipoId()		+"</label></td>");
+				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getIdNumDocumento().getTipoId()	+"</label></td>");
 				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getIdNumDocumento().getCodId()		+"</label></td>");
-				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getAutor() 							+"</label></td>");
+				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getAutor() 						+"</label></td>");
 				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getDestinatario()					+"</label></td>");
 				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getLocal()							+"</label></td>");
 				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ s.format(c.getTime())					+"</label></td>");
@@ -60,9 +60,28 @@ public class SearchWorker {
 						+ doc.getPalavrasChaves3().getPalavra() + " - "
 						+ "</label></td>");
 				out.println("<td class=\"tdList\">"
-						+ "<a href=\"#\"><img src=\"/GraoPara/images/edit.png\" title=\"Editar\" alt=\"Editar\"/></a> "
+						+ "<a href=\"/GraoPara/protected/admin/detalhesDocumentosAdmin.jsp?"
+							+"identificacao=" + doc.getOrigemDocumento().getTipoOrigem()
+							+"&codigo=" + doc.getOrigemDocumento().getCodOrigem()
+							+"&titulo=" + doc.getOrigemDocumento().getTitulo()
+							+"&tipoAPEP_SEQ=" + doc.getIdNumDocumento().getTipoId()
+							+"&numeroAPEP=" + doc.getIdNumDocumento().getCodId()
+							+"&autor=" + doc.getAutor()
+							+"&destinatario=" + doc.getDestinatario()
+							+"&local=" + doc.getLocal()
+							+"&tipoDoc=" + doc.getTipoDocumento().getTipoDocumento()
+							+"&resumo=" + doc.getResumo()
+							+"&chave1=" + doc.getPalavrasChaves1().getPalavra()
+							+"&chave2=" + doc.getPalavrasChaves2().getPalavra()
+							+"&chave3=" + doc.getPalavrasChaves3().getPalavra()
+							+ "\">"
+							+ "<img src=\"/GraoPara/images/edit.png\" title=\"Editar\" alt=\"Editar\"/></a> "
 						+ "<br>"
-						+ "<a href=\"#\"><img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\"/></a> "
+						+ "<a href=\"/GraoPara/addDoc?"
+							+"tipoAPEP_SEQ=" + doc.getIdNumDocumento().getTipoId()
+							+"&numeroAPEP=" + doc.getIdNumDocumento().getCodId()
+							+ "\">"
+							+ "<img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\"/></a> "
 						+ "</td>");
 				out.println("</tr>");
 			}

@@ -34,9 +34,13 @@ public class PanelWorker {
 				out.write("<td> <label for=\"identificacao\" class=\"labelExibe\">" + key.getPalavra() + " </label> </td>");
 				out.write("<td> <label for=\"identificacao\" class=\"labelExibe\">" + key.isAprovada() + "</label> </td>");
 				out.println("<td>"
-						+ "<a href=\"/GraoPara/protected/admin/editarPalavraChave.jsp?palavra="+ key.getPalavra() +"\" ><img src=\"/GraoPara/images/edit.png\" title=\"Editar\" alt=\"Editar\" /></a>" 
-						+ "<a href=\"/GraoPara/doChangesToKeyWord?" + EJBUtility.getHash("palavra", "SHA-256") + "=" + key.getPalavra() + 
-						"&"+ EJBUtility.getHash("action", "SHA-256") + "=" + EJBUtility.getHash("delete", "SHA-256") + "&tab=4\"><img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\" /></a>"
+						+ "<a href=\"/GraoPara/protected/admin/editarPalavraChave.jsp?"
+							+ "palavra="+ key.getPalavra() +"\" >"
+							+ "<img src=\"/GraoPara/images/edit.png\" title=\"Editar\" alt=\"Editar\" /></a>" 
+						+ "<a href=\"/GraoPara/doChangesToKeyWord?" 
+							+ EJBUtility.getHash("palavra", "SHA-256") + "=" + key.getPalavra() + 
+							"&"+ EJBUtility.getHash("action", "SHA-256") + "=" + EJBUtility.getHash("delete", "SHA-256") 
+							+ "&tab=4\"><img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\" /></a>"
 						+ "</td>");
 				out.write("</tr>");
 			}
@@ -65,7 +69,7 @@ public class PanelWorker {
 					out.write("<td> <label for=\"identificacao\" class=\"labelExibe\">" + key.isAprovada() + "</label> </td>");
 					out.println("<td>"
 							+ "<a href=\"/GraoPara/doChangesToKeyWord?" + EJBUtility.getHash("palavra", "SHA-256") + "=" + key.getPalavra() + 
-							"&"+ EJBUtility.getHash("action", "SHA-256") + "=" + EJBUtility.getHash("approve", "SHA-256") + "&tab=1\" ><img src=\"/GraoPara/images/approve.png\" title=\"Editar\" alt=\"Aprovar\" /></a>" 
+							"&"+ EJBUtility.getHash("action", "SHA-256") + "=" + EJBUtility.getHash("approve", "SHA-256") + "&tab=1\" ><img src=\"/GraoPara/images/approve.png\" title=\"Aprovar\" alt=\"Aprovar\" /></a>" 
 							+ "<a href=\"/GraoPara/doChangesToKeyWord?" + EJBUtility.getHash("palavra", "SHA-256") + "=" + key.getPalavra() + 
 							"&"+ EJBUtility.getHash("action", "SHA-256") + "=" + EJBUtility.getHash("delete", "SHA-256") + "&tab=1\"><img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\" /></a>"
 							+ "</td>");

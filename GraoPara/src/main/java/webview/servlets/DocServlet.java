@@ -11,9 +11,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import persistence.dto.DTO;
+import persistence.dto.DocumentoDTO;
+
 import webview.WebUtility;
 
+import business.EJB.docEJB.BuscaDocEJB;
 import business.EJB.docEJB.CadastroEJB;
+import business.exceptions.documents.DocumentNotFoundException;
 import business.exceptions.login.UnreachableDataBaseException;
 import business.exceptions.login.UserNotFoundException;
 
@@ -80,7 +85,24 @@ public class DocServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		response.sendRedirect("/GraoPara/");
+	}
+	
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String tipoAPEP_SEQ = request.getParameter("tipoAPEP_SEQ");
+		String numAPEP_SEQ = request.getParameter("numeroAPEP");
 		
+		BuscaDocEJB search = new BuscaDocEJB();
+		try {
+			DocumentoDTO docs = search.busca(tipoAPEP_SEQ, numAPEP_SEQ);
+			CadastroEJB delete = new CadastroEJB();
+			delete.deletarDocumento(docs);
+		} catch (UnreachableDataBaseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (DocumentNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

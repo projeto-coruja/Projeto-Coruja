@@ -3,6 +3,7 @@ package business.EJB.docEJB;
 import java.util.List;
 
 import persistence.dto.DTO;
+import persistence.dto.DocumentoDTO;
 import business.DAO.documents.DocumentDAO;
 import business.DAO.login.LoginDAO;
 import business.exceptions.documents.DocumentNotFoundException;
@@ -139,6 +140,33 @@ public class BuscaDocEJB {
 			query += "order by titulo_origem";
 			return docDao.findDocumentByQuery(query);
 		}
+	}
+	
+	public DocumentoDTO busca(String tipoAPEP_SEQ, String numAPEP_SEQ) throws UnreachableDataBaseException, DocumentNotFoundException{
+		
+		boolean continue_query = false;
+		String query = new String(default_query);
+		
+		if(tipoAPEP_SEQ != null && !tipoAPEP_SEQ.isEmpty()){
+			if(continue_query == true){
+				query += " and ";
+			}
+			query += "tipo_id = '" + tipoAPEP_SEQ + "'";
+			continue_query = true;
+		}
+		
+		if(numAPEP_SEQ != null && !numAPEP_SEQ.isEmpty()){
+			if(continue_query == true){
+				query += " and ";
+			}
+			query += "cod_id = '" + numAPEP_SEQ + "'";
+			continue_query = true;
+		}
+		
+		List<DTO> list = docDao.findDocumentByQuery(query);
+		if(list == null) throw new DocumentNotFoundException();
+		return (DocumentoDTO) list.get(0);
+			
 	}
 	
 	public List<DTO> buscaDocPorPalavraChave(String palavra) throws UnreachableDataBaseException, DocumentNotFoundException{

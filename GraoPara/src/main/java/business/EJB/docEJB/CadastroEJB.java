@@ -127,15 +127,23 @@ public class CadastroEJB {
 	
 	public synchronized void deletarDocumento(DocumentoDTO docDto) throws UnreachableDataBaseException{
 		TipoDocumentoDTO tdDto;
-		Long count;
+//		OrigemDTO origemDTO;
+		Long countTipoDocumentoDTO;
+//		Long countOrigemDTO;
 		DocumentTypeDAO dtDao = new DocumentTypeDAO();
 		
 		tdDto = docDto.getTipoDocumento();
+//		origemDTO = docDto.getOrigemDocumento();
 		docDao.removeDocument(docDto);
-		count = docDao.countDocumentsByCriteria("tipo_documento = '" + tdDto.getTipoDocumento() + "'");
-		if(count == 0){
+		countTipoDocumentoDTO = docDao.countDocumentsByCriteria("tipo_documento = '" + tdDto.getTipoDocumento() + "'");
+		if(countTipoDocumentoDTO == 0){
 			dtDao.removeDocumentType(tdDto);
 		}
+		
+//		countOrigemDTO = docDao.countDocumentsByCriteria("cod_origem = '" + origemDTO.getCodOrigem() + "'");
+//		if(countOrigemDTO == 0){
+//			dtDao.remove
+//		}
 		
 	}
 	
