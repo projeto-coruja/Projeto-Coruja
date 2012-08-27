@@ -74,38 +74,73 @@
 		</div>
 		<!-- Fim do Menu Lateral -->
 		<div class="content" id="content">
-		
-			<h2>Editar Palavra Chave</h2>
-			
+				<h2>Cadastro Usuário</h2>
 			<form id="signupform" autocomplete="off" method="post" action="/GraoPara/doRegister">
-				<table class="tableEditar">					
+				<table class="tableForms">
+					<tr>
+						<td class="labelForms" colspan="3">
+							<strong>PREENCHA TODOS OS CAMPOS COM ASTERÍSCO <span class="asterisco">*</span></strong>
+						</td>
+					</tr>
 					<tr>
 						<td>
-							<label class="labelForms" id="lpalavraAntiga" for="palavraAntiga">Palavra Chave Antiga:</label>
+							<label class="labelForms" id="lfirstname" for="nome">Nome Completo:<span class="asterisco">*</span></label>
 						</td>
 						<td class="field">
-							<input class="input" id="palavraAntiga" name="palavraAntiga" type="text" value="" maxlength="32" readonly="readonly"/>
+							<input class="inputLong" id="nome" name="nome" type="text" value="" maxlength="100"/>
 						</td>
 						<td class="status"></td>
-					</tr>					
+					</tr>
 					<tr>
 						<td>
-							<label class="labelForms" id="lpalavraNova" for="palavraNova">Palavra Chave Nova:<span class="asterisco">*</span></label>
+							<label class="labelForms"  id="lemail" for="email" >Email:<span class="asterisco">*</span></label>
 						</td>
 						<td class="field">
-							<input class="input" id="palavraNova" name="palavraNova" type="text" value="" maxlength="32" />
+							<input class="inputLong" id="email" name="email" type="text" value="" maxlength="150"/>
+						</td>
+						<td class="status"></td>
+					</tr>
+					<tr>
+						<td>
+							<label class="labelForms"  id="lpassword" for="password">Senha:<span class="asterisco">*</span></label></td>
+						<td class="field">
+							<input id="password" class="input" name="senha" type="password" maxlength="50" value="" />
+						</td>
+						<td class="status"></td>
+					</tr>
+					<tr>
+						<td>
+							<label class="labelForms"  id="lpassword_confirm" for="password_confirm">Confirmar Senha:<span class="asterisco">*</span></label>
+						</td>
+						<td class="field">
+							<input class="input" id="password_confirm" name="confsenha" type="password" maxlength="50" value="" />
+						</td>
+						<td class="status"></td>
+					</tr>
+						<tr>
+						<td>
+							<label class="labelForms" id="lpermissao" for="permissao">Permissão<span class="asterisco">*</span></label>
+						</td>
+						<td class="field">
+							<select name="permissao" class="input" id="permissao">
+									<option value="">Selecione...</option>
+									<option value="admin">Administrador</option>
+									<option value="user">Usuário Comum</option>
+							</select>
 						</td>
 						<td class="status"></td>
 					</tr>
 					<tr>
 						<td class="field" colspan="3">
-						<p></p>
-							<input class="buttonCancelar" type="button" value="Cancelar" onClick="history.go(-1)"> <input class="buttonRegistrar" id="signupsubmit" name="Enviar" type="submit" value="Enviar" />
+							<p></p>
+							<input class="buttonRegistrar" id="signupsubmit" name="Enviar" type="submit" value="Enviar" />
 						</td>
 					</tr>
+					
 				</table>
 			</form>
 		</div>
+		
 		<!-- Começo do Rodapé -->
 		<div class="footer">
 			<p>Copyright © - Universidade Federal de São Paulo - UNIFESP 2012</p>
@@ -116,3 +151,4 @@
 	</div>
 </body>
 </html>
+
