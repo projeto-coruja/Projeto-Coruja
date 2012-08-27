@@ -436,9 +436,10 @@ span.asterisco {
 	border: 0px;
 }
 
-.tablePainel{
+.tablePainel, .tr, .td{
 	text-align:center;	
-	width: 500px;
+	width: 540px;
+	border-collapse: collapse;
 	border: 1px solid;
 }
 
