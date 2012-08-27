@@ -58,14 +58,17 @@
 			</div>
 			<!-- ----------------------------------------------------------------------- -->
 
-				<article class="menuLateral">
+						<article class="menuLateral">
 				<ul class="nav" id="menu">
 					<li><a href="/GraoPara/protected/admin/indexAdmin.jsp">Home</a></li>
 					<li><a href="/GraoPara/protected/admin/pesquisaAdmin.jsp">Pesquisar</a></li>
 					<li><a href="/GraoPara/protected/admin/cadastroDocumentosAdmin.jsp">Cadastrar Documento</a></li>
+					<li><a href="/GraoPara/protected/admin/cadUserAdmin.jsp">Cadastrar Usuário</a></li>					
 					<li><a href="/GraoPara/protected/admin/painelAdmin.jsp">Painel Admin</a></li>
 					<li><a href="/GraoPara/protected/admin/gerarSenha.jsp">Gerar Senha</a></li>
-					<li><a href="/GraoPara/protected/admin/sobreAdmin.jsp">Sobre</a></li>					
+					<li><a href="/GraoPara/protected/admin/sobreAdmin.jsp">Sobre</a></li>		
+					<li><a href="#">Créditos</a></li>		
+												
 				</ul>
 			</article>
 		</div>
@@ -84,33 +87,29 @@
 							<label class="labelForms" id="lfirstname" for="nome">Nome Completo:<span class="asterisco">*</span></label>
 						</td>
 						<td class="field">
-							<input class="input" id="nome" name="nome" type="text" value="" maxlength="100" />
+							<input class="inputLong" id="nome" name="nome" type="text" value="" maxlength="100" readonly="readonly" />
 						</td>
 						<td class="status"></td>
 					</tr>
 					<tr>
 						<td>
-							<label class="labelForms"  id="lemail" for="email">Email:<span class="asterisco">*</span></label>
+							<label class="labelForms"  id="lemail" for="email" >Email:<span class="asterisco">*</span></label>
 						</td>
 						<td class="field">
-							<input class="input" id="email" name="email" type="text" value="" maxlength="150" />
+							<input class="inputLong" id="email" name="email" type="text" value="" maxlength="150" readonly="readonly"/>
 						</td>
 						<td class="status"></td>
 					</tr>
-					<tr>
+						<tr>
 						<td>
-							<label class="labelForms"  id="lpassword" for="password">Senha:<span class="asterisco">*</span></label></td>
-						<td class="field">
-							<input id="password" class="input" name="senha" type="password" maxlength="50" value="" />
-						</td>
-						<td class="status"></td>
-					</tr>
-					<tr>
-						<td>
-							<label class="labelForms"  id="lpassword_confirm" for="password_confirm">Confirme sua Senha:<span class="asterisco">*</span></label>
+							<label class="labelForms" id="lpermissao" for="permissao">Permissão<span class="asterisco">*</span></label>
 						</td>
 						<td class="field">
-							<input class="input" id="password_confirm" name="confsenha" type="password" maxlength="50" value="" />
+							<select name="permissao" class="input" id="permissao">
+									<option value="">Selecione...</option>
+									<option value="admin">Administrador</option>
+									<option value="user">Usuário Comum</option>
+							</select>
 						</td>
 						<td class="status"></td>
 					</tr>
@@ -120,6 +119,7 @@
 							<input class="buttonRegistrar" id="signupsubmit" name="Enviar" type="submit" value="Enviar" />
 						</td>
 					</tr>
+					
 				</table>
 			</form>
 		</div>

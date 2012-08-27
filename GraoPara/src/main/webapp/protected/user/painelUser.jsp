@@ -67,6 +67,7 @@
 					<li><a href="/GraoPara/protected/user/cadastroDocumentosUser.jsp">Cadastrar Documento</a></li>
 					<li><a href="/GraoPara/protected/user/painelUser.jsp">Painel User</a></li>
 					<li><a href="/GraoPara/protected/user/sobreUser.jsp">Sobre</a></li>
+					<li><a href="#">Créditos</a></li>
 			</ul>
 			</article>			
 			
