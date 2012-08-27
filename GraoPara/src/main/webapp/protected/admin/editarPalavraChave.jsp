@@ -65,7 +65,8 @@
 					<li><a href="/GraoPara/protected/admin/cadastroDocumentosAdmin.jsp">Cadastrar Documento</a></li>
 					<li><a href="/GraoPara/protected/admin/painelAdmin.jsp">Painel Admin</a></li>
 					<li><a href="/GraoPara/protected/admin/gerarSenha.jsp">Gerar Senha</a></li>
-					<li><a href="/GraoPara/protected/admin/sobreAdmin.jsp">Sobre</a></li>					
+					<li><a href="/GraoPara/protected/admin/sobreAdmin.jsp">Sobre</a></li>
+					<li><a href="#">Créditos</a></li>						
 				</ul>
 			</article>
 		</div>
@@ -74,14 +75,14 @@
 		
 			<h2>Editar Palavra Chave</h2>
 			
-			<form id="signupform" autocomplete="off" method="post" action="/GraoPara/doRegister">
+			<form id="signupform" autocomplete="off" method="post" action="/GraoPara/doChangesToKeyWord">
 				<table class="tableEditar">					
 					<tr>
 						<td>
 							<label class="labelForms" id="lpalavraAntiga" for="palavraAntiga">Palavra Chave Antiga:</label>
 						</td>
 						<td class="field">
-							<input class="input" id="palavraAntiga" name="palavraAntiga" type="text" value="" maxlength="32" readonly="readonly"/>
+							<input class="input" id="palavraAntiga" name="palavraAntiga" type="text" value="<%= request.getParameter("palavra") %>" maxlength="32"/>
 						</td>
 						<td class="status"></td>
 					</tr>					

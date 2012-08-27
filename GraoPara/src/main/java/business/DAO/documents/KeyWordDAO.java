@@ -45,7 +45,7 @@ public class KeyWordDAO {
 		}
 	}	
 	
-	public void updateKeyWord(String oldKey, String newKey, Boolean newStatus) throws UnreachableDataBaseException, KeywordNotFoundException{
+	public PalavraChaveDTO updateKeyWord(String oldKey, String newKey, Boolean newStatus) throws UnreachableDataBaseException, KeywordNotFoundException{
 		List<DTO> check = null;
 		PalavraChaveDTO select = null;
 		try{
@@ -54,9 +54,17 @@ public class KeyWordDAO {
 				if (((PalavraChaveDTO) dto).getPalavra().equals(oldKey))
 					select = (PalavraChaveDTO) dto;
 			}
+			try{
+				check = findKeyWordByString(newKey);
+				for(DTO dto : check){
+					if (((PalavraChaveDTO) dto).getPalavra().equals(newKey))
+						throw new IllegalArgumentException("Palavra chave nova já existente");
+				}
+			} catch (KeywordNotFoundException e){}
 			select.setPalavra(newKey);
 			select.setAprovada(newStatus);
 			manager.updateEntity(select);
+			return select;
 		} catch(DataAccessLayerException e){
 			e.printStackTrace();
 			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");

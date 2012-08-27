@@ -86,30 +86,6 @@ public class CadastroEJB {
 		docDao.addDocument(docDTO);
 		
 	}
-
-	public synchronized void cadastrarPalavraChave(String palavra)
-			throws IllegalArgumentException, UnreachableDataBaseException {
-		KeyWordDAO kwDao = new KeyWordDAO();
-		try {
-			List<DTO> check = kwDao.findKeyWordByString(palavra);
-			for (DTO dto : check) {
-				if (((PalavraChaveDTO) dto).getPalavra().equals(palavra))
-					throw new IllegalArgumentException("Palavra já existe");
-			}
-			try {
-				kwDao.addKeyWord(palavra);
-			} catch (UnreachableDataBaseException e1) {
-				e1.printStackTrace();
-			}
-		} catch (KeywordNotFoundException e) {
-			try {
-				kwDao.addKeyWord(palavra);
-			} catch (UnreachableDataBaseException e1) {
-				e1.printStackTrace();
-			}
-			// e.printStackTrace();
-		}
-	}
 	
 	public synchronized void deletarDocumento(Long id) throws UnreachableDataBaseException, DocumentNotFoundException{
 		DocumentoDTO docDto;
@@ -167,9 +143,32 @@ public class CadastroEJB {
 		docDao.updateDocument(docDTO);
 	}
 	
+	public synchronized void cadastrarPalavraChave(String palavra)
+			throws IllegalArgumentException, UnreachableDataBaseException {
+		KeyWordDAO kwDao = new KeyWordDAO();
+		try {
+			List<DTO> check = kwDao.findKeyWordByString(palavra);
+			for (DTO dto : check) {
+				if (((PalavraChaveDTO) dto).getPalavra().equals(palavra))
+					throw new IllegalArgumentException("Palavra já existe");
+			}
+			try {
+				kwDao.addKeyWord(palavra);
+			} catch (UnreachableDataBaseException e1) {
+				e1.printStackTrace();
+			}
+		} catch (KeywordNotFoundException e) {
+			try {
+				kwDao.addKeyWord(palavra);
+			} catch (UnreachableDataBaseException e1) {
+				e1.printStackTrace();
+			}
+			// e.printStackTrace();
+		}
+	}
+	
 	public synchronized void deletarPalavraChave(String keyWord) throws UnreachableDataBaseException, KeywordNotFoundException{
 		BuscaDocEJB busca = new BuscaDocEJB();
-		CadastroEJB cad = new CadastroEJB();
 		List<DTO> results = null;
 		
 		keyWord = keyWord.toLowerCase();
@@ -178,28 +177,66 @@ public class CadastroEJB {
 			results = busca.buscaDocPorPalavraChave(keyWord);
 			for(DTO dto : results){
 				DocumentoDTO doc = (DocumentoDTO) dto;
-				if(doc.getPalavrasChaves1().getPalavra().equals(keyWord)){
+				if(doc.getPalavrasChaves1() != null && doc.getPalavrasChaves1().getPalavra().equals(keyWord)){
 					doc.setPalavrasChaves1(doc.getPalavrasChaves2());
 					doc.setPalavrasChaves2(doc.getPalavrasChaves3());
 					doc.setPalavrasChaves3(null);
 				}
-				if(doc.getPalavrasChaves2().getPalavra().equals(keyWord)){
+				if(doc.getPalavrasChaves2() != null && doc.getPalavrasChaves2().getPalavra().equals(keyWord)){
 					doc.setPalavrasChaves2(doc.getPalavrasChaves3());
 					doc.setPalavrasChaves3(null);
 				}
-				if(doc.getPalavrasChaves3().getPalavra().equals(keyWord)){
+				if(doc.getPalavrasChaves3() != null && doc.getPalavrasChaves3().getPalavra().equals(keyWord)){
 					doc.setPalavrasChaves3(null);
 				}
-				cad.atualizarDocumento(doc);
+				atualizarDocumento(doc);
 			}
 		} catch (DocumentNotFoundException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		} finally {
 			keyDao.removeKeyWord(keyWord);
 		}
 	}
 	
-	public synchronized void atualizarPalavraChave(String oldKey, String newKey, boolean newStatus) throws UnreachableDataBaseException, KeywordNotFoundException{
-		keyDao.updateKeyWord(oldKey, newKey, newStatus);
+	public synchronized void atualizarPalavraChave(String oldKey, String newKey, Boolean newStatus) throws UnreachableDataBaseException, KeywordNotFoundException , IllegalArgumentException {
+		if(oldKey == null || newKey == null || oldKey.equals("") || newKey.equals("") || newStatus == null)	throw new IllegalArgumentException("Argumentos não podem ser null/vazio");
+		
+		BuscaDocEJB busca = new BuscaDocEJB();
+		List<DTO> results = null;
+		
+		try {
+			results = busca.buscaDocPorPalavraChave(oldKey);
+			for(DTO dto : results){
+				DocumentoDTO doc = (DocumentoDTO) dto;
+				if(doc.getPalavrasChaves1() != null && doc.getPalavrasChaves1().getPalavra().equals(oldKey)){
+					doc.setPalavrasChaves1(doc.getPalavrasChaves2());
+					doc.setPalavrasChaves2(doc.getPalavrasChaves3());
+					doc.setPalavrasChaves3(null);
+				}
+				if(doc.getPalavrasChaves2() != null && doc.getPalavrasChaves2().getPalavra().equals(oldKey)){
+					doc.setPalavrasChaves2(doc.getPalavrasChaves3());
+					doc.setPalavrasChaves3(null);
+				}
+				if(doc.getPalavrasChaves3() != null && doc.getPalavrasChaves3().getPalavra().equals(oldKey)){
+					doc.setPalavrasChaves3(null);
+				}
+				atualizarDocumento(doc);
+			}
+		} catch (DocumentNotFoundException e) {	} 
+		PalavraChaveDTO keyWordDTO = keyDao.updateKeyWord(oldKey.toLowerCase(), newKey.toLowerCase(), newStatus);
+		
+		for(DTO dto : results){
+			DocumentoDTO doc = (DocumentoDTO) dto;
+			if(doc.getPalavrasChaves1() == null){
+				doc.setPalavrasChaves1(keyWordDTO);
+			}
+			else if(doc.getPalavrasChaves2() == null){
+				doc.setPalavrasChaves2(keyWordDTO);
+			}
+			else if(doc.getPalavrasChaves3() == null){
+				doc.setPalavrasChaves3(keyWordDTO);
+			}
+			atualizarDocumento(doc);
+		}
 	}
 }
