@@ -64,7 +64,7 @@
 		<!-- Fim do Menu Lateral -->
 		<div class="content" id="content">
 		<h2>Listagem de Documentos</h2>
-			<table>
+			<table class="tablePainel">
 				<tr>
 					<td><label class="labelExibe">Identificação</label></td>
 					<td><label class="labelExibe">Código</label></td>

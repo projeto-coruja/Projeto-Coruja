@@ -1,6 +1,8 @@
 package webview.servlets;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -34,12 +36,16 @@ public class SearchWorker {
 		
 		try {
 			
-			docs = search.busca(identificacao,	//indenm 
-					codigo, titulo, tipoAPEP_SEQ, numAPEP_SEQ, autor, destinatario, local, data, tipoDoc, palavra1, palavra2, palavra3); 
+			docs = search.busca(identificacao, codigo, titulo, tipoAPEP_SEQ, numAPEP_SEQ, autor, destinatario, local, data, tipoDoc, palavra1, palavra2, palavra3); 
 
 			for(DTO d : docs){
 				
+				
+				
 				DocumentoDTO doc = (DocumentoDTO) d;
+				SimpleDateFormat s = new SimpleDateFormat("dd/MM/yyyy");
+				
+				Calendar c = doc.getDataDocumento();
 				
 				out.println("<tr>");
 				out.println("<td><label class=\"labelExibe\">"+ doc.getOrigemDocumento().getTipoOrigem()+"</label></td>");
@@ -50,12 +56,12 @@ public class SearchWorker {
 				out.println("<td><label class=\"labelExibe\">"+ doc.getAutor() 							+"</label></td>");
 				out.println("<td><label class=\"labelExibe\">"+ doc.getDestinatario()					+"</label></td>");
 				out.println("<td><label class=\"labelExibe\">"+ doc.getLocal()							+"</label></td>");
-				out.println("<td><label class=\"labelExibe\">"+ doc.getDataDocumento()					+"</label></td>");
-				out.println("<td><label class=\"labelExibe\">"+ doc.getTipoDocumento()					+"</label></td>");
+				out.println("<td><label class=\"labelExibe\">"+ s.format(c.getTime())					+"</label></td>");
+				out.println("<td><label class=\"labelExibe\">"+ doc.getTipoDocumento().getTipoDocumento()	+"</label></td>");
 				out.println("<td><label class=\"labelExibe\">"
-						+ doc.getPalavrasChaves1() + " - " 
-						+ doc.getPalavrasChaves2() + " - "
-						+ doc.getPalavrasChaves3() + " - "
+						+ doc.getPalavrasChaves1().getPalavra() + " - " 
+						+ doc.getPalavrasChaves2().getPalavra() + " - "
+						+ doc.getPalavrasChaves3().getPalavra() + " - "
 						+ "</label></td>");
 				out.println("<td>"
 						+ "<a href=\"#\"><img src=\"/GraoPara/images/edit.png\" title=\"Editar\" alt=\"Editar\"/></a> "
@@ -72,7 +78,10 @@ public class SearchWorker {
 			out.write("</script>");
 			e.printStackTrace();
 		} catch (DocumentNotFoundException e) {
-			out.println("<td colspan=\"3\">Nenhum d encontrado</td>");
+			out.write("<script>");  
+			out.write("alert('Nenhum documento encontrado!');");  
+			out.write("history.go(-1)");  
+			out.write("</script>");
 		}
 	}
 
