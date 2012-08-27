@@ -35,16 +35,12 @@ public class SearchWorker {
 		List<DTO> docs = null;    
 		
 		try {
-			
 			docs = search.busca(identificacao, codigo, titulo, tipoAPEP_SEQ, numAPEP_SEQ, autor, destinatario, local, data, tipoDoc, palavra1, palavra2, palavra3); 
 
 			for(DTO d : docs){
 				
-				
-				
 				DocumentoDTO doc = (DocumentoDTO) d;
 				SimpleDateFormat s = new SimpleDateFormat("dd/MM/yyyy");
-				
 				Calendar c = doc.getDataDocumento();
 				
 				out.println("<tr>");
@@ -70,7 +66,6 @@ public class SearchWorker {
 						+ "</td>");
 				out.println("</tr>");
 			}
-		
 		} catch (UnreachableDataBaseException e) {
 			out.write("<script>");  
 			out.write("alert('Problemas ao acessar o banco de dados. Contate o suporte técnico e tente novamente mais tarde ');");  

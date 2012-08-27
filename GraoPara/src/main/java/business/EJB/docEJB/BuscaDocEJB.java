@@ -4,29 +4,19 @@ import java.util.List;
 
 import persistence.dto.DTO;
 import business.DAO.documents.DocumentDAO;
-import business.DAO.documents.DocumentTypeDAO;
-import business.DAO.documents.IdNumDocumentoDAO;
-import business.DAO.documents.KeyWordDAO;
-import business.DAO.documents.OrigemDAO;
 import business.DAO.login.LoginDAO;
 import business.exceptions.documents.DocumentNotFoundException;
 import business.exceptions.login.UnreachableDataBaseException;
 import business.exceptions.login.UserNotFoundException;
 
 public class BuscaDocEJB {
-	DocumentDAO docDao;
-	KeyWordDAO kwDao;
-	IdNumDocumentoDAO indDao;
-	OrigemDAO origemDao;
-	DocumentTypeDAO dtDao;
-	LoginDAO logDao;
+	
+	private DocumentDAO docDao;
+	private LoginDAO logDao;
+	private static String default_query = "from Documento where ";
 	
 	public BuscaDocEJB() {
 		docDao = new DocumentDAO();
-		kwDao = new KeyWordDAO();
-		indDao = new IdNumDocumentoDAO();
-		origemDao = new OrigemDAO();
-		dtDao = new DocumentTypeDAO();
 		logDao = new LoginDAO();
 	}
 	
@@ -35,7 +25,7 @@ public class BuscaDocEJB {
 			String palavra1, String palavra2, String palavra3) throws UnreachableDataBaseException, DocumentNotFoundException{
 		
 		boolean continue_query = false;
-		String query = "from Documento where ";
+		String query = new String(default_query);
 		
 		if(identificacao != null && !identificacao.isEmpty()){
 			query += "tipo_origem = '" + identificacao + "'";
@@ -144,11 +134,11 @@ public class BuscaDocEJB {
 			continue_query = true;
 		}
 		
-		
-		query += "order by titulo_origem";
-//		System.out.println(query);
-		
-		return docDao.findDocumentByQuery(query);
+		if(query.equals(default_query)) throw new DocumentNotFoundException();
+		else {
+			query += "order by titulo_origem";
+			return docDao.findDocumentByQuery(query);
+		}
 	}
 	
 	public List<DTO> buscaDocPorPalavraChave(String palavra) throws UnreachableDataBaseException, DocumentNotFoundException{

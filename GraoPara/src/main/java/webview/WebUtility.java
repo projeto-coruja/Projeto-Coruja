@@ -92,8 +92,8 @@ public final class WebUtility {
 	}
 	
 	public static void printHTML(HttpServletRequest request, JspWriter out) throws IOException {
-		String name = WebUtility.selectCookie(request.getCookies(), WebUtility.cookie_nome).getValue();
-		out.write("<label>" + name + "!</label>");
+		Cookie name = selectCookie(request.getCookies(), WebUtility.cookie_nome);
+		if(name != null) out.write("<label>" + name.getValue() + "!</label>");
 	}
 
 }
