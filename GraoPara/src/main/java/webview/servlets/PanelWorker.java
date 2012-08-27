@@ -7,14 +7,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.JspWriter;
 
 import business.EJB.docEJB.BuscaPalavraChaveEJB;
+import business.EJB.userEJB.AdminBean;
 import business.EJB.userEJB.BuscaUserEJB;
 import business.exceptions.documents.KeywordNotFoundException;
 import business.EJB.util.EJBUtility;
+import business.exceptions.login.ProfileNotFoundException;
 import business.exceptions.login.UnreachableDataBaseException;
 import business.exceptions.login.UserNotFoundException;
 
 import persistence.dto.DTO;
 import persistence.dto.PalavraChaveDTO;
+import persistence.dto.ProfileDTO;
 import persistence.dto.UserDTO;
 
 
@@ -98,8 +101,7 @@ public class PanelWorker {
 				out.println("<td> <label for=\"identificacao\" class=\"labelExibe\">" + user.getEmail() + " </label> </td>");
 				out.println("<td> <label for=\"identificacao\" class=\"labelExibe\">" + user.getUserProfile().getProfile() + "</label> </td>");
 				out.println("<td>"
-						+ "<a href=\"/GraoPara/doChangesToAccount?" + EJBUtility.getHash("email", "SHA-256") + "=" + user.getEmail() + 
-						"&"+ EJBUtility.getHash("action", "SHA-256") + "=" + EJBUtility.getHash("edit", "SHA-256") + "&tab=3\" ><img src=\"/GraoPara/images/edit.png\" title=\"Editar\" alt=\"Editar\" /></a>" 
+						+ "<a href=\"/GraoPara/protected/admin/editarUsuario.jsp?paramName="+user.getName()+"&paramEmail="+user.getEmail()+"\" ><img src=\"/GraoPara/images/edit.png\" title=\"Editar\" alt=\"Editar\" /></a>" 
 						+ "<a href=\"/GraoPara/doChangesToAccount?" + EJBUtility.getHash("email", "SHA-256") + "=" + user.getEmail() + 
 						"&"+ EJBUtility.getHash("action", "SHA-256") + "=" + EJBUtility.getHash("delete", "SHA-256") + "&tab=3\"><img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\" /></a>"
 						+ "</td>");
@@ -150,6 +152,23 @@ public class PanelWorker {
 			e.printStackTrace();
 		} catch (UserNotFoundException e) {
 			out.println("<td colspan=\"3\">Nenhum usuário encontrado</td>");
+		}
+	}
+	
+
+	public static void listAllAvailablePofile(HttpServletRequest request, JspWriter out) throws IOException{
+		AdminBean adm = new AdminBean();
+		List<DTO> list;
+		try {
+			list = adm.getAllAvailableProfiles();
+			for(DTO dto : list){
+				ProfileDTO profile = (ProfileDTO) dto;
+				out.println("<option value=\""+ profile.getProfile() +"\">"+ profile.getProfile() + "</option>");
+			}
+		} catch (UnreachableDataBaseException e) {
+			e.printStackTrace();
+		} catch (ProfileNotFoundException e) {
+			e.printStackTrace();
 		}
 	}
 	
