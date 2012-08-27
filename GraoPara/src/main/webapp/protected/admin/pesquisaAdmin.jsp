@@ -167,7 +167,7 @@
 					<tr>
 						<td>
 							<p></p>
-							<input class="buttonRegistrar" name="inserir" type="submit" value="Enviar" />
+							<input class="buttonLimpar" name="limpar" type="reset" value="Limpar" /><input class="buttonRegistrar" name="inserir" type="submit" value="Enviar" />
 						</td>
 					</tr>
 				</table>

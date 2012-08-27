@@ -220,7 +220,7 @@ a:hover, a:active, a:focus { /* this group of selectors will give a keyboard nav
 }
 
 /* Estilo do botão de entrar do painel de login, está sendo reaproveitado para vários outros botões */
-.buttonEntrar, .buttonRegistrar, .buttonCancelar {
+.buttonEntrar, .buttonRegistrar, .buttonCancelar, .buttonLimpar  {
 	width: 140px;
 	height: 24px;
 	margin-left: 10px;
@@ -243,6 +243,10 @@ margin-right: 60px;
 margin-left: 0px;
 }
 
+.buttonLimpar {
+margin-right: 10px;
+margin-left: 0px;
+}
 .buttonShort{
 	width:90px;
 	height:24px;
