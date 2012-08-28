@@ -155,7 +155,8 @@
 					<tr>
 						<td><label class="labelForms" id="ldata" for="data">Data do Documento:<span class="asterisco">*</span></label></td>
 						<td class="field"><select name="dia" id="dia"
-							class="inputShort"><option value="" selected="selected">Dia:</option>
+							class="inputShort">
+								<%=WebUtility.printSelectDia(request) %>
 								<option value="1">1</option>
 								<option value="2">2</option>
 								<option value="3">3</option>
@@ -187,7 +188,8 @@
 								<option value="29">29</option>
 								<option value="30">30</option>
 								<option value="31">31</option></select> <select name="mes" id="mes"
-							class="inputShort"><option value="" selected="selected">Mês:</option>
+							class="inputShort">
+								<%= %>
 								<option value="1">Janeiro</option>
 								<option value="2">Fevereiro</option>
 								<option value="3">Março</option>

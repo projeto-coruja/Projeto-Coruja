@@ -16,16 +16,17 @@ import business.exceptions.login.UserNotFoundException;
 
 public final class WebUtility {
 	
-	public static String cookie_email = "email_graopara";
-	public static String cookie_session = "sessao_graopara";
-	public static String cookie_nome = "nome_graopara";
-	public static String cookie_status = "status_graopara";
+	public static final String cookie_email = "email_graopara";
+	public static final String cookie_session = "sessao_graopara";
+	public static final String cookie_nome = "nome_graopara";
+	public static final String cookie_status = "status_graopara";
+	public static final String[] meses = {"Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"}; 
 	
 	public static ProfileDTO admin_profile = new ProfileDTO("admin", true, true, true);
 	public static ProfileDTO user_profile = new ProfileDTO("user", true, true, false);
 	public static ProfileDTO default_profile = new ProfileDTO("default", false, true, false);
 	
-	public static int cookie_expire = -1; //1 sessão dias
+	public static final int cookie_expire = -1; //1 sessão dias
 	
 	public static UserBean cookieLogin(Cookie[] cookie_list) {
 		if(cookie_list == null) return null;
@@ -134,6 +135,19 @@ public final class WebUtility {
 					"<option selected value=\"SEQ\">Sequencial</option>";
 		}
 		return output;
+	}
+	
+	public static String printSelectDia(HttpServletRequest request) {
+		String dia = request.getParameter("dia");
+		return "<option selected value=\"" + dia + "\">\"" + dia + "\"</option>" +
+				"<option value=\"\">--------</option>";
+	}
+	
+	public static String printSelectMes(HttpServletRequest request) {
+		String mes = request.getParameter("mes");
+		int num_mes = Integer.parseInt(mes);
+		return "<option selected value=\"" + mes + "\">\"" + meses[num_mes] + "\"</option>" +
+				"<option value=\"\">--------</option>";
 	}
 
 }
