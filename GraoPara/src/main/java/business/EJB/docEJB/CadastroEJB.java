@@ -182,7 +182,7 @@ public class CadastroEJB {
 		keyWord = keyWord.toLowerCase();
 		
 		try {
-			results = busca.buscaDocPorPalavraChave(keyWord);
+			results = busca.searchByKeyWord(keyWord);
 			for(DTO dto : results){
 				DocumentoDTO doc = (DocumentoDTO) dto;
 				if(doc.getPalavrasChaves1() != null && doc.getPalavrasChaves1().getPalavra().equals(keyWord)){
@@ -213,7 +213,7 @@ public class CadastroEJB {
 		List<DTO> results = null;
 		
 		try {
-			results = busca.buscaDocPorPalavraChave(oldKey);
+			results = busca.searchByKeyWord(oldKey);
 			for(DTO dto : results){
 				DocumentoDTO doc = (DocumentoDTO) dto;
 				if(doc.getPalavrasChaves1() != null && doc.getPalavrasChaves1().getPalavra().equals(oldKey)){

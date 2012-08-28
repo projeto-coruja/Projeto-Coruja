@@ -16,12 +16,6 @@
 		</dependency>
 		
 		<dependency>
-		    <groupId>net.tanesha.recaptcha4j</groupId>
-		    <artifactId>recaptcha4j</artifactId>
-		    <version>0.0.7</version>
-		</dependency>
-
-		<dependency>
 			<groupId>postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<version>9.1-901.jdbc4</version>

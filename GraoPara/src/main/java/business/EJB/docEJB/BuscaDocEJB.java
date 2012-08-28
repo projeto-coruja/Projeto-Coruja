@@ -169,7 +169,7 @@ public class BuscaDocEJB {
 			
 	}
 	
-	public List<DTO> buscaDocPorPalavraChave(String palavra) throws UnreachableDataBaseException, DocumentNotFoundException{
+	public List<DTO> searchByKeyWord(String palavra) throws UnreachableDataBaseException, DocumentNotFoundException{
 		
 		String query = "from Documento where ";
 						
@@ -177,6 +177,17 @@ public class BuscaDocEJB {
 			query += "(palavra_chave_1 like '%" + palavra.toLowerCase() + "%'";
 			query += "or palavra_chave_2 like '%" + palavra.toLowerCase() + "%'";
 			query += "or palavra_chave_3 like '%" + palavra.toLowerCase() + "%')";
+		}
+		
+		return docDao.findDocumentByQuery(query);
+	}
+	
+	public List<DTO> searchByYear(String year) throws UnreachableDataBaseException, DocumentNotFoundException{
+		
+		String query = "from Documento where ";
+						
+		if(year != null && !year.isEmpty()){
+			query += " YEAR(dataDocumento) = " + year;
 		}
 		
 		return docDao.findDocumentByQuery(query);
