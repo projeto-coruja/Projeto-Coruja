@@ -48,7 +48,7 @@
 					<fieldset>
 						<label for="login">Bem vindo</label>
 						<%
-							WebUtility.printHTML(request, out);
+							WebUtility.printName(request, out);
 						%>
 					</fieldset>
 					<fieldset>
@@ -94,9 +94,7 @@
 						</td>
 						<td class="field"><select name="identificacao" class="input"
 							id="identificacao">
-								<option value="">Selecione...</option>
-								<option value="codice">Número de Códice</option>
-								<option value="caixa">Número da Caixa</option>
+								<%=WebUtility.printSelectOrigem(request)%>
 						</select></td>
 						<td class="status"></td>
 					</tr>
@@ -122,9 +120,7 @@
 						</label></td>
 						<td class="field"><select name="tipo_num"
 							class="inputTipoNum" id="tipo_num">
-								<option value="" selected>Selecione...</option>
-								<option value="APEP">APEP</option>
-								<option value="SEQ">Sequencial</option>
+								<%= WebUtility.printSelectId(request)%>
 						</select> <input class="inputShort" name="numero" id="numero" type="text"
 							maxlength="4"></td>
 						<td class="status"></td>

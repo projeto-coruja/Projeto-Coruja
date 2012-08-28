@@ -91,7 +91,7 @@ public final class WebUtility {
 				+ doc.getOrigemDocumento().getCodOrigem() + " ";
 	}
 	
-	public static void printHTML(HttpServletRequest request, JspWriter out) throws IOException {
+	public static void printName(HttpServletRequest request, JspWriter out) throws IOException {
 		Cookie name = selectCookie(request.getCookies(), WebUtility.cookie_nome);
 		if(name != null) out.write("<label>" + name.getValue() + "!</label>");
 	}
@@ -100,6 +100,40 @@ public final class WebUtility {
 		String label = request.getParameter(parameter);
 		if(label == null) return "";
 		else return label;
+	}
+	
+	public static String printSelectOrigem(HttpServletRequest request) throws IOException {
+		String output = null;
+		if(request.getParameter("identificacao").equals("codice"))
+		{
+			output = 
+					"<option selected value=\"codice\">Número de Códice</option> " +
+					"<option value=\"caixa\">Número da Caixa</option>";
+		}
+		else if(request.getParameter("identificacao").equals("caixa"))
+		{
+			output = 
+					"<option value=\"codice\">Número de Códice</option> " +
+					"<option selected value=\"caixa\">Número da Caixa</option>";
+		}
+		return output;
+	}
+	
+	public static String printSelectId(HttpServletRequest request) throws IOException {
+		String output = null;
+		if(request.getParameter("tipo_num").equals("APEP"))
+		{
+			output = 
+					"<option selected value=\"APEP\">APEP</option> " +
+					"<option value=\"SEQ\">Sequencial</option>";
+		}
+		else if(request.getParameter("identificacao").equals("SEQ"))
+		{
+			output = 
+					"<option value=\"APEP\">APEP</option> " +
+					"<option selected value=\"SEQ\">Sequencial</option>";
+		}
+		return output;
 	}
 
 }

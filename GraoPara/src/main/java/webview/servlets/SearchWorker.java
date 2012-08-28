@@ -98,5 +98,75 @@ public class SearchWorker {
 			out.write("</script>");
 		}
 	}
+	
+	public static void listAllDocumentsByYear(HttpServletRequest request, JspWriter out) throws IOException{
+		String data = request.getParameter("dataDocumento");
+		
+		BuscaDocEJB search = new BuscaDocEJB();
+		List<DTO> docs = null;    
+		
+		try {
+			docs = search.searchByYear(data); 
 
+			for(DTO d : docs){
+				
+				DocumentoDTO doc = (DocumentoDTO) d;
+				SimpleDateFormat s = new SimpleDateFormat("dd/MM/yyyy");
+				Calendar c = doc.getDataDocumento();
+				
+				out.println("<tr  class=\"trList\">");
+				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getOrigemDocumento().getTipoOrigem()+"</label></td>");
+				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getOrigemDocumento().getCodOrigem() +"</label></td>");
+				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getOrigemDocumento().getTitulo() 	+"</label></td>");
+				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getIdNumDocumento().getTipoId()	+"</label></td>");
+				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getIdNumDocumento().getCodId()		+"</label></td>");
+				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getAutor() 						+"</label></td>");
+				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getDestinatario()					+"</label></td>");
+				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getLocal()							+"</label></td>");
+				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ s.format(c.getTime())					+"</label></td>");
+				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getTipoDocumento().getTipoDocumento()	+"</label></td>");
+				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"
+						+ doc.getPalavrasChaves1().getPalavra() + " - " 
+						+ doc.getPalavrasChaves2().getPalavra() + " - "
+						+ doc.getPalavrasChaves3().getPalavra() + " - "
+						+ "</label></td>");
+				out.println("<td class=\"tdList\">"
+						+ "<a href=\"/GraoPara/protected/admin/detalhesDocumentosAdmin.jsp?"
+							+"identificacao=" + doc.getOrigemDocumento().getTipoOrigem()
+							+"&codigo=" + doc.getOrigemDocumento().getCodOrigem()
+							+"&titulo=" + doc.getOrigemDocumento().getTitulo()
+							+"&tipoAPEP_SEQ=" + doc.getIdNumDocumento().getTipoId()
+							+"&numeroAPEP=" + doc.getIdNumDocumento().getCodId()
+							+"&autor=" + doc.getAutor()
+							+"&destinatario=" + doc.getDestinatario()
+							+"&local=" + doc.getLocal()
+							+"&tipoDoc=" + doc.getTipoDocumento().getTipoDocumento()
+							+"&resumo=" + doc.getResumo()
+							+"&chave1=" + doc.getPalavrasChaves1().getPalavra()
+							+"&chave2=" + doc.getPalavrasChaves2().getPalavra()
+							+"&chave3=" + doc.getPalavrasChaves3().getPalavra()
+							+ "\">"
+							+ "<img src=\"/GraoPara/images/edit.png\" title=\"Editar\" alt=\"Editar\"/></a> "
+						+ "<br>"
+						+ "<a href=\"/GraoPara/addDoc?"
+							+"tipoAPEP_SEQ=" + doc.getIdNumDocumento().getTipoId()
+							+"&numeroAPEP=" + doc.getIdNumDocumento().getCodId()
+							+ "\">"
+							+ "<img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\"/></a> "
+						+ "</td>");
+				out.println("</tr>");
+			}
+		} catch (UnreachableDataBaseException e) {
+			out.write("<script>");  
+			out.write("alert('Problemas ao acessar o banco de dados. Contate o suporte técnico e tente novamente mais tarde ');");  
+			//out.write("document.location=('/GraoPara/public/index.jsp');");  
+			out.write("</script>");
+			e.printStackTrace();
+		} catch (DocumentNotFoundException e) {
+			out.write("<script>");  
+			out.write("alert('Nenhum documento encontrado!');");  
+			out.write("history.go(-1)");  
+			out.write("</script>");
+		}
+	}
 }
