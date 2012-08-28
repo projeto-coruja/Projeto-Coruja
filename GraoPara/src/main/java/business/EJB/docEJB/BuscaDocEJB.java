@@ -93,6 +93,7 @@ public class BuscaDocEJB {
 			if(continue_query == true){
 				query += " and ";
 			}
+			System.out.println(data);
 			query += "data_documento = '" + data + "'";	// Notação: yyyy-mm-dd
 			continue_query = true;
 		}
