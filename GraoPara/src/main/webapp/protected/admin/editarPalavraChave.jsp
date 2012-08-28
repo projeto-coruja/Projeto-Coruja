@@ -48,7 +48,7 @@
 					<fieldset>
 						<label for="login">Bem vindo</label>
 						<%
-							WebUtility.printHTML(request, out);
+							WebUtility.printName(request, out);
 						%>
 					</fieldset>
 					<fieldset>
