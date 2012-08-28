@@ -3,30 +3,21 @@ package business.EJB.docEJB;
 import java.util.List;
 
 import persistence.dto.DTO;
+import persistence.dto.DocumentoDTO;
 import business.DAO.documents.DocumentDAO;
-import business.DAO.documents.DocumentTypeDAO;
-import business.DAO.documents.IdNumDocumentoDAO;
-import business.DAO.documents.KeyWordDAO;
-import business.DAO.documents.OrigemDAO;
 import business.DAO.login.LoginDAO;
 import business.exceptions.documents.DocumentNotFoundException;
 import business.exceptions.login.UnreachableDataBaseException;
 import business.exceptions.login.UserNotFoundException;
 
 public class BuscaDocEJB {
-	DocumentDAO docDao;
-	KeyWordDAO kwDao;
-	IdNumDocumentoDAO indDao;
-	OrigemDAO origemDao;
-	DocumentTypeDAO dtDao;
-	LoginDAO logDao;
+	
+	private DocumentDAO docDao;
+	private LoginDAO logDao;
+	private static String default_query = "from Documento where ";
 	
 	public BuscaDocEJB() {
 		docDao = new DocumentDAO();
-		kwDao = new KeyWordDAO();
-		indDao = new IdNumDocumentoDAO();
-		origemDao = new OrigemDAO();
-		dtDao = new DocumentTypeDAO();
 		logDao = new LoginDAO();
 	}
 	
@@ -35,7 +26,7 @@ public class BuscaDocEJB {
 			String palavra1, String palavra2, String palavra3) throws UnreachableDataBaseException, DocumentNotFoundException{
 		
 		boolean continue_query = false;
-		String query = "from Documento where ";
+		String query = new String(default_query);
 		
 		if(identificacao != null && !identificacao.isEmpty()){
 			query += "tipo_origem = '" + identificacao + "'";
@@ -144,11 +135,38 @@ public class BuscaDocEJB {
 			continue_query = true;
 		}
 		
+		if(query.equals(default_query)) throw new DocumentNotFoundException();
+		else {
+			query += "order by titulo_origem";
+			return docDao.findDocumentByQuery(query);
+		}
+	}
+	
+	public DocumentoDTO busca(String tipoAPEP_SEQ, String numAPEP_SEQ) throws UnreachableDataBaseException, DocumentNotFoundException{
 		
-		query += "order by titulo_origem";
-//		System.out.println(query);
+		boolean continue_query = false;
+		String query = new String(default_query);
 		
-		return docDao.findDocumentByQuery(query);
+		if(tipoAPEP_SEQ != null && !tipoAPEP_SEQ.isEmpty()){
+			if(continue_query == true){
+				query += " and ";
+			}
+			query += "tipo_id = '" + tipoAPEP_SEQ + "'";
+			continue_query = true;
+		}
+		
+		if(numAPEP_SEQ != null && !numAPEP_SEQ.isEmpty()){
+			if(continue_query == true){
+				query += " and ";
+			}
+			query += "cod_id = '" + numAPEP_SEQ + "'";
+			continue_query = true;
+		}
+		
+		List<DTO> list = docDao.findDocumentByQuery(query);
+		if(list == null) throw new DocumentNotFoundException();
+		return (DocumentoDTO) list.get(0);
+			
 	}
 	
 	public List<DTO> buscaDocPorPalavraChave(String palavra) throws UnreachableDataBaseException, DocumentNotFoundException{

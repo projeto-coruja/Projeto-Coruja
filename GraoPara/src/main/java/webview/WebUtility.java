@@ -92,8 +92,14 @@ public final class WebUtility {
 	}
 	
 	public static void printHTML(HttpServletRequest request, JspWriter out) throws IOException {
-		String name = WebUtility.selectCookie(request.getCookies(), WebUtility.cookie_nome).getValue();
-		out.write("<label>" + name + "!</label>");
+		Cookie name = selectCookie(request.getCookies(), WebUtility.cookie_nome);
+		if(name != null) out.write("<label>" + name.getValue() + "!</label>");
+	}
+	
+	public static String printLabel(HttpServletRequest request, String parameter) throws IOException {
+		String label = request.getParameter(parameter);
+		if(label == null) return "";
+		else return label;
 	}
 
 }

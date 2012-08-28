@@ -27,6 +27,7 @@ import business.EJB.userEJB.UserBean;
 @WebFilter("/")
 public class StartFilter implements Filter {
 	
+	@SuppressWarnings("unused")
 	private static final Log log = LogFactory.getLog(StartFilter.class);
 
     /**
@@ -68,7 +69,7 @@ public class StartFilter implements Filter {
 			UserBean user = WebUtility.cookieLogin(c_list);			
 			if(user == null)
 			{
-				res.sendRedirect(req.getContextPath() + "/public");
+				res.sendRedirect(req.getContextPath() + "/public/index.jsp");
 			}
 			else if(user.getLogType().equals(AuthBean.LoginFailOrDefault)) {
 				c_status = new Cookie(WebUtility.cookie_status, user.getLogType().toString());

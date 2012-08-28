@@ -51,7 +51,7 @@ public class UserFilter implements Filter {
 			chain.doFilter(request, response);
 		}
 		else if(c_status != null && c_status.getValue().equals(AuthBean.LoginSuccessAdmin)) {
-			res.sendRedirect(req.getContextPath() + "/protected/admin");
+			res.sendRedirect(req.getContextPath() + "/protected/admin/indexAdmin.jsp");
 		}
 		else if(c_status != null && c_status.getValue().equals(AuthBean.LoginFailOrDefault)) {
 			res.setContentType("text/html");  
@@ -80,7 +80,7 @@ public class UserFilter implements Filter {
 			    PrintWriter out=res.getWriter();   
 				out.println("<script>");  
 			    out.println("alert('Você não possuí permissão para acessar esta área!');");  
-			    out.println("document.location=('/GraoPara/public/');");  
+			    out.println("document.location=('/GraoPara/public/index.jsp');");  
 			    out.println("</script>");
 			}
 		}
