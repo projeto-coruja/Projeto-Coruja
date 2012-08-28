@@ -97,7 +97,7 @@
 				</table>
 				</form> -->
 				<!-- Novo formulário para mudança de senha --> 
-				<h2>Painel de Controle</h2>
+				<h1>Painel de Controle</h1>
 				<form id="signupform" autocomplete="off" action="/GraoPara/doChangesToAccount?action=editPassowrd" method="post">
 					<table class="tableControle">
 					<tr>

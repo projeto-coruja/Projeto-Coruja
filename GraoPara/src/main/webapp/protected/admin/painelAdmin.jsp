@@ -78,7 +78,7 @@
 		</div>
 		<!-- Fim do Menu Lateral -->
 		<div class="content" id="content">
-			<h2>Painel de Controle</h2>
+			<h1>Painel de Controle</h1>
 			<!-- <form class="control">
 				<table class="tableControle">
 					<tr>

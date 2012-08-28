@@ -74,7 +74,7 @@
 		<!-- Fim do Menu Lateral -->
 		<div class="content" id="content">
 				
-			<h2>Cadastro de Documentos</h2>
+			<h1>Cadastro de Documentos</h1>
 		<form id="signupform" autocomplete="off" method="POST" action="/GraoPara/addDoc">
 				<table class="tableForms">
 					<tr>

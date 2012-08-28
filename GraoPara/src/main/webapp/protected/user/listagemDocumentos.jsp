@@ -1,7 +1,7 @@
 <!doctype html>
-<html>
 <%@page import="webview.servlets.SearchWorker"%>
 <%@page import="webview.WebUtility"%>
+<html>
 <head>
 <meta charset="utf-8">
 <title>Grão-Pará</title>
@@ -13,8 +13,8 @@
 <link rel="stylesheet" type="text/css" href="/GraoPara/css/controle.css" />
 
 <!-- CSS das validações -->
-<link rel="stylesheet" type="text/css" media="screen"
-	href="/GraoPara/css/styleValidation.css" />
+<link rel="stylesheet" type="text/css"
+	href="/GraoPara/css/validationEngine.jquery.css" />
 
 <!-- Import dos javascripts -->
 <script type="text/javascript" src="/GraoPara/javascript/cookie.js"
@@ -22,17 +22,7 @@
 <script type="text/javascript"
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"
 	charset="utf-8"></script>
-<script src="/GraoPara/javascript/chili-1.7.pack.js"
-	type="text/javascript"></script>
-	
-<!-- Import dos scripts de validação de formulário -->
-<script src="/GraoPara/javascript/jquery.js" type="text/javascript"
-	charset="utf-8"></script>
-<script src="/GraoPara/javascript/validate.js" type="text/javascript"
-	charset="utf-8"></script>
-<script src="/GraoPara/javascript/validate_pt_br.js"
-	type="text/javascript" charset="utf-8"></script> 
-	
+
 </head>
 <body onloadstart="checkCookie()">
 	<div class="container">
@@ -47,7 +37,7 @@
 					<fieldset>
 						<label for="login">Bem vindo</label>
 						<%
-							WebUtility.printHTML(request, out);
+							WebUtility.printName(request, out);
 						%>
 					</fieldset>
 					<fieldset>
@@ -70,7 +60,7 @@
 		</div>
 		<!-- Fim do Menu Lateral -->
 		<div class="content" id="content">
-		<h2>Listagem de Documentos</h2>
+		<h1>Listagem de Documentos</h1>
 			<table class="tableList">
 				<tr class="trList">
 					<td class="tdList"><label class="labelExibe">Identificação</label></td>

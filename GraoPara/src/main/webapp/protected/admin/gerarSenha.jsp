@@ -78,7 +78,7 @@
 		</div>
 		<!-- Fim do Menu Lateral -->
 		<div class="content" id="content">
-		<h2> Gerar Nova Senha para Usuário</h2>
+		<h1> Gerar Nova Senha para Usuário</h1>
 		<form action="/GraoPara/doPasswordRecovery" id="signupform"  method="post" autocomplete="off">
 				<table class="tableControle">				
 				<tr>

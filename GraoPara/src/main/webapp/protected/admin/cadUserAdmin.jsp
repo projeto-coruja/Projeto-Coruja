@@ -74,7 +74,7 @@
 		</div>
 		<!-- Fim do Menu Lateral -->
 		<div class="content" id="content">
-				<h2>Cadastro Usuário</h2>
+				<h1>Cadastro Usuário</h1>
 			<form id="signupform" autocomplete="off" method="post" action="/GraoPara/doRegister">
 				<table class="tableForms">
 					<tr>

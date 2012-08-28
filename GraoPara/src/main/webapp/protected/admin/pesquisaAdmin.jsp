@@ -56,7 +56,7 @@
 		</div>
 		<!-- Fim do Menu Lateral -->
 		<div class="content" id="content">
-			<h2>Pesquisa de Documento</h2>
+			<h1>Pesquisa de Documento</h1>
 			<form action="/GraoPara/protected/admin/listagemDocumentos.jsp" method="get" name="cadastro" autocomplete="off">
 				<table class="tablePesquisa">
 					<tr>

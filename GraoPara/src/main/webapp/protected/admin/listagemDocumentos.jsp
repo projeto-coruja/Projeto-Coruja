@@ -1,7 +1,9 @@
 <!doctype html>
-<html>
-<%@page import="webview.servlets.SearchWorker"%>
+<%@page import="java.io.PrintWriter"%>
 <%@page import="webview.WebUtility"%>
+<%@page import="business.EJB.userEJB.AuthBean"%>
+<%@page import="webview.servlets.SearchWorker"%>
+<html>
 <head>
 <meta charset="utf-8">
 <title>Grão-Pará</title>
@@ -13,8 +15,8 @@
 <link rel="stylesheet" type="text/css" href="/GraoPara/css/controle.css" />
 
 <!-- CSS das validações -->
-<link rel="stylesheet" type="text/css" media="screen"
-	href="/GraoPara/css/styleValidation.css" />
+<link rel="stylesheet" type="text/css"
+	href="/GraoPara/css/validationEngine.jquery.css" />
 
 <!-- Import dos javascripts -->
 <script type="text/javascript" src="/GraoPara/javascript/cookie.js"
@@ -22,34 +24,23 @@
 <script type="text/javascript"
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"
 	charset="utf-8"></script>
-<script src="/GraoPara/javascript/chili-1.7.pack.js"
-	type="text/javascript"></script>
-	
-<!-- Import dos scripts de validação de formulário -->
-<script src="/GraoPara/javascript/jquery.js" type="text/javascript"
-	charset="utf-8"></script>
-<script src="/GraoPara/javascript/validate.js" type="text/javascript"
-	charset="utf-8"></script>
-<script src="/GraoPara/javascript/validate_pt_br.js"
-	type="text/javascript" charset="utf-8"></script> 
-	
+
+
 </head>
-
-<body>
-
+<body onloadstart="checkCookie()">
 	<div class="container">
 		<div class="header"></div>
-		
+
 		<!-- Começo do menu lateral -->
 		<div class="sidebar1">
 
 			<!--Depois de logado-->
-			<div class="LoginArea" id="logado">
+			<div class="LoginArea" id="logado" style="display:block;">
 				<form method="post" action="/GraoPara/doLogout">
 					<fieldset>
 						<label for="login">Bem vindo</label>
 						<%
-							WebUtility.printHTML(request, out);
+							WebUtility.printName(request, out);
 						%>
 					</fieldset>
 					<fieldset>
@@ -58,7 +49,8 @@
 				</form>
 			</div>
 			<!-- ----------------------------------------------------------------------- -->
-	<article class="menuLateral">
+
+			<article class="menuLateral">
 				<ul class="nav" id="menu">
 					<li><a href="/GraoPara/protected/admin/indexAdmin.jsp">Home</a></li>
 					<li><a href="/GraoPara/protected/admin/pesquisaAdmin.jsp">Pesquisar</a></li>
@@ -66,15 +58,14 @@
 					<li><a href="/GraoPara/protected/admin/cadUserAdmin.jsp">Cadastrar Usuário</a></li>					
 					<li><a href="/GraoPara/protected/admin/painelAdmin.jsp">Painel Admin</a></li>
 					<li><a href="/GraoPara/protected/admin/gerarSenha.jsp">Gerar Senha</a></li>
-					<li><a href="/GraoPara/protected/admin/sobreAdmin.jsp">Sobre</a></li>
-					<li><a href="#">Créditos</a></li>				
-												
+					<li><a href="/GraoPara/protected/admin/sobreAdmin.jsp">Sobre</a></li>	
+					<li><a href="#">Créditos</a></li>									
 				</ul>
 			</article>
 		</div>
 		<!-- Fim do Menu Lateral -->
 		<div class="content" id="content">
-		<h2>Listagem de Documentos</h2>
+		<h1>Listagem de Documentos</h1>
 			<table class="tableList">
 				<tr class="trList">
 					<td class="tdList"><label class="labelExibe">Identificação</label></td>
