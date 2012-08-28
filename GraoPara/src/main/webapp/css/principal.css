@@ -133,7 +133,7 @@ a:hover, a:active, a:focus { /* this group of selectors will give a keyboard nav
 	-moz-border-radius: 0.4em;
 	border-radius: 0.4em;	
 	border: 1;
-	width: 58px;
+	width: 57px;
 	height: 20px;
 	margin: 5px 0;
 	color: #000;	
@@ -448,13 +448,26 @@ span.asterisco {
 .tableForms{
 	text-align:left;
 	margin: 40px 0 0 0px;
+	width: 580px;
+	border: 0px;
+}
+
+.tablePesquisa{
+	text-align:left;
+	margin: 40px 0 0 0px;
 	width: 420px;
 	border: 0px;
 }
 
 .tdForms{
 	text-align:left;
-	width: 200px;
+	width: 130px;
+	border: 0px;
+}
+
+.tdForms2{
+	text-align:left;
+	width: 100px;
 	border: 0px;
 }
 

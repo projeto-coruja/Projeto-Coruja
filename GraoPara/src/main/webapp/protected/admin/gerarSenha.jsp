@@ -82,7 +82,7 @@
 		<form action="/GraoPara/doPasswordRecovery" id="signupform"  method="post" autocomplete="off">
 				<table class="tableControle">				
 				<tr>
-						<td>
+						<td class="tdControle">
 							<label class="labelForms"  id="lemail" for="email">Email do usuário Cadastrado:<span class="asterisco">*</span></label>
 						</td>
 						<td class="field">

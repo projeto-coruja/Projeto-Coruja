@@ -74,7 +74,7 @@
 		</div>
 		<!-- Fim do Menu Lateral -->
 		<div class="content" id="content">
-				<form>
+			<!-- 	<form>
 				<table class="tableControle">
 				<tr>
 					<th colspan="3" align="center">Painel de controle </th>
@@ -95,16 +95,16 @@
 					<td><input type="button" class="buttonDocumento" value="Deletar" name="Deletar" alt="Deletar o registro desse documento"></td>
 				</tr>
 				</table>
-				</form>
-				<!-- Novo formulário para mudança de senha -->
-				
+				</form> -->
+				<!-- Novo formulário para mudança de senha --> 
+				<h2>Painel de Controle</h2>
 				<form id="signupform" autocomplete="off" action="/GraoPara/doChangesToAccount?action=editPassowrd" method="post">
 					<table class="tableControle">
 					<tr>
 						<th colspan="3" align="center"> Mudar Senha Atual </th>
 					</tr>
 					<tr>
-						<td>
+						<td class="tdControle">
 							<label class="labelForms"  id="lpassword" for="password">Senha Atual:<span class="asterisco">*</span></label></td>
 						<td class="field">
 							<input id="senhaAtual" class="input" name="senhaAtual" type="password" maxlength="50" value="" />
@@ -112,7 +112,7 @@
 						<td class="status"></td>
 					</tr>
 					<tr>
-						<td>
+						<td class="tdControle">
 							<label class="labelForms"  id="lpassword" for="password">Nova Senha:<span class="asterisco">*</span></label></td>
 						<td class="field">
 							<input id="senhaNova" class="input" name="senhaNova" type="password" maxlength="50" value="" />
@@ -120,7 +120,7 @@
 						<td class="status"></td>
 					</tr>
 					<tr>
-						<td>
+						<td class="tdControle">
 							<label class="labelForms"  id="lpassword" for="password">Confirme Nova Senha:<span class="asterisco">*</span></label></td>
 						<td class="field">
 							<input id="senhaConfirme" class="input" name="senhaConfirme" type="password" maxlength="50" value="" />

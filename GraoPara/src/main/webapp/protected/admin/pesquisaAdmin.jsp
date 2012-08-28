@@ -58,10 +58,10 @@
 		<div class="content" id="content">
 			<h2>Pesquisa de Documento</h2>
 			<form action="/GraoPara/protected/admin/listagemDocumentos.jsp" method="get" name="cadastro" autocomplete="off">
-				<table class="tableForms">
+				<table class="tablePesquisa">
 					<tr>
 						<td colspan="3">
-							<label class="labelForms"><strong>PREENCHA UM OU MAIS CAMPOS A SEGUIR:</label>
+							<label class="labelForms"><strong>PREENCHA UM OU MAIS CAMPOS A SEGUIR:</strong></label>
 						</td>
 					</tr>
 					<tr>

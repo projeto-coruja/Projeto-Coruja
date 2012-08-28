@@ -83,25 +83,25 @@
 						</td>
 					</tr>
 					<tr>
-						<td>
+						<td class="tdForms2">
 							<label class="labelForms" id="lfirstname" for="nome">Nome Completo:<span class="asterisco">*</span></label>
 						</td>
 						<td class="field">
-							<input class="inputLong" id="nome" name="nome" type="text" value="" maxlength="100"/>
+							<input class="input" id="nome" name="nome" type="text" value="" maxlength="100"/>
 						</td>
 						<td class="status"></td>
 					</tr>
 					<tr>
-						<td>
+						<td class="tdForms2">
 							<label class="labelForms"  id="lemail" for="email" >Email:<span class="asterisco">*</span></label>
 						</td>
 						<td class="field">
-							<input class="inputLong" id="email" name="email" type="text" value="" maxlength="150"/>
+							<input class="input" id="email" name="email" type="text" value="" maxlength="150"/>
 						</td>
 						<td class="status"></td>
 					</tr>
 					<tr>
-						<td>
+						<td class="tdForms2">
 							<label class="labelForms"  id="lpassword" for="password">Senha:<span class="asterisco">*</span></label></td>
 						<td class="field">
 							<input id="password" class="input" name="senha" type="password" maxlength="50" value="" />
@@ -109,7 +109,7 @@
 						<td class="status"></td>
 					</tr>
 					<tr>
-						<td>
+						<td class="tdForms2">
 							<label class="labelForms"  id="lpassword_confirm" for="password_confirm">Confirmar Senha:<span class="asterisco">*</span></label>
 						</td>
 						<td class="field">
@@ -118,7 +118,7 @@
 						<td class="status"></td>
 					</tr>
 						<tr>
-						<td>
+						<td class="tdForms2">
 							<label class="labelForms" id="lpermissao" for="permissao">Permissão<span class="asterisco">*</span></label>
 						</td>
 						<td class="field">

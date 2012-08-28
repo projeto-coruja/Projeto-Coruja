@@ -79,7 +79,7 @@
 						</td>
 					</tr>
 					<tr>
-						<td>
+						<td class="tdForms">
 							<label class="labelForms" id="lidentificacao" for="identificacao">Identificação<span class="asterisco">*</span></label>
 						</td>
 						<td class="field">
@@ -92,7 +92,7 @@
 						<td class="status"></td>
 					</tr>
 					<tr>
-						<td>
+						<td class="tdForms">
 							<label class="labelForms" id="lcodigo" for="codigo">Código:<span class="asterisco">*</span></label>
 						</td>
 						<td class="field">
@@ -101,14 +101,14 @@
 						<td class="status"></td>
 					</tr>
 					<tr>
-						<td>
+						<td class="tdForms">
 							<label class="labelForms" id="ltitulo" for="titulo">Título:<span class="asterisco">*</span></label>
 						</td>
 						<td class="field"><input class="input" name="titulo" id="titulo" type="text" size="20" maxlength="48"></td>
 						<td class="status"></td>
 					</tr>
 					<tr>
-						<td>
+						<td class="tdForms">
 							<label class="labelForms" id="lnumero" for="numero">Número APEP ou Sequencial:<span class="asterisco">*</span></label>
 						</td>
 						<td class="field">
@@ -122,7 +122,7 @@
 						<td class="status"></td>
 					</tr>
 					<tr>
-						<td>
+						<td class="tdForms">
 							<label class="labelForms" id="lautor" for="autor">Autor do Documento:<span class="asterisco">*</span></label>
 						</td>
 						<td class="field">
@@ -131,7 +131,7 @@
 						<td class="status"></td>
 					</tr>
 					<tr>
-						<td>
+						<td class="tdForms">
 							<label class="labelForms" id="ldestinatario" for="destinatario">Destinatário do Documento:<span class="asterisco">*</span></label>
 						</td>
 						<td class="field">
@@ -140,7 +140,7 @@
 						<td class="status"></td>
 					</tr>
 					<tr>
-						<td>
+						<td class="tdForms">
 							<label class="labelForms" id="llocal" for="local">Local:<span class="asterisco">*</span></label>
 						</td>
 						<td class="field">
@@ -149,7 +149,7 @@
 						<td class="status"></td>
 					</tr>
 					<tr>
-						<td>
+						<td class="tdForms">
 							<label class="labelForms" id="ldata" for="data">Data do Documento:<span class="asterisco">*</span></label>
 						</td>
 						<td class="field">
@@ -160,7 +160,7 @@
 						<td class="status"></td>
 					</tr>
 					<tr>
-						<td>
+						<td class="tdForms">
 							<label class="labelForms" id="ltipoDoc" for="tipoDoc">Tipo do Documento:<span class="asterisco">*</span></label>
 						</td>
 						<td class="field">
@@ -200,7 +200,7 @@
 						<td class="status"></td>
 					</tr>
 					<tr>
-						<td>
+						<td class="tdForms">
 							<p></p>
 							<input class="buttonRegistrar" id="signupsubmit" name="inserir" type="submit" value="Enviar" />
 						</td>
