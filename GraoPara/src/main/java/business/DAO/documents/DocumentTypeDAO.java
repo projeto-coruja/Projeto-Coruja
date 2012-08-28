@@ -62,4 +62,18 @@ public class DocumentTypeDAO {
 			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
 		}
 	}
+	
+	public List<DTO> findAllDocumentTypes() throws  UnreachableDataBaseException, DocumentTypeNotFoundException  {
+		List<DTO> resultSet = null;
+		try {
+			resultSet = manager.findEntities("from TipoDocumento order by tipoDocumento");
+			if(resultSet == null) {
+				throw new DocumentTypeNotFoundException ("Tipo não encontrado");
+			}
+			else return resultSet;
+		} catch (DataAccessLayerException e) {
+			e.printStackTrace();
+			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
+		}
+	}
 }

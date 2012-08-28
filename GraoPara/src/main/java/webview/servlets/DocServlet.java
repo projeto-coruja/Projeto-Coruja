@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import persistence.dto.DTO;
 import persistence.dto.DocumentoDTO;
 
 import webview.WebUtility;
@@ -77,7 +76,7 @@ public class DocServlet extends HttpServlet {
 		    PrintWriter out=response.getWriter();   
 			out.println("<script>");  
 		    out.println("alert('Erro no banco de dados! Contate o suporte e tente novamente mais tarde." + e.getStackTrace() + "');");  
-		    out.println("document.location=('/GraoPara/protected/user/');");  
+		    out.println("document.location=('/GraoPara/protected/user/indexUser.jsp');");  
 		    out.println("</script>");
 			e.printStackTrace();
 		} catch (UserNotFoundException e) {

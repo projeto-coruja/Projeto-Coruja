@@ -206,6 +206,11 @@ public class CadastroEJB {
 		}
 	}
 	
+	public synchronized void aprovarPalavraChave(String key) throws UnreachableDataBaseException, KeywordNotFoundException {
+		KeyWordDAO kwd = new KeyWordDAO();
+		kwd.approveKeyWord(key);
+	}
+	
 	public synchronized void atualizarPalavraChave(String oldKey, String newKey, Boolean newStatus) throws UnreachableDataBaseException, KeywordNotFoundException , IllegalArgumentException {
 		if(oldKey == null || newKey == null || oldKey.equals("") || newKey.equals("") || newStatus == null)	throw new IllegalArgumentException("Argumentos não podem ser null/vazio");
 		
