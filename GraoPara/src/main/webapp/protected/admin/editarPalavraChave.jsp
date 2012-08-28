@@ -74,7 +74,7 @@
 		<!-- Fim do Menu Lateral -->
 		<div class="content" id="content">
 		
-			<h2>Editar Palavra Chave</h2>
+			<h1>Editar Palavra Chave</h1>
 			
 			<form id="signupform" autocomplete="off" method="post" action="/GraoPara/doChangesToKeyWord">
 				<table class="tableEditar">					

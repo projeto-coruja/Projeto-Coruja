@@ -78,11 +78,11 @@
 		</div>
 		<!-- Fim do Menu Lateral -->
 		<div class="content" id="content">
-		<h2> Gerar Nova Senha para Usuário</h2>
+		<h1> Gerar Nova Senha para Usuário</h1>
 		<form action="/GraoPara/doPasswordRecovery" id="signupform"  method="post" autocomplete="off">
 				<table class="tableControle">				
 				<tr>
-						<td>
+						<td class="tdControle">
 							<label class="labelForms"  id="lemail" for="email">Email do usuário Cadastrado:<span class="asterisco">*</span></label>
 						</td>
 						<td class="field">

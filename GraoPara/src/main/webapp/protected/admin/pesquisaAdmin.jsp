@@ -64,13 +64,12 @@
 		</div>
 		<!-- Fim do Menu Lateral -->
 		<div class="content" id="content">
-			<h2>Pesquisa de Documento</h2>
-			<form action="/GraoPara/protected/admin/listagemDocumentos.jsp"
-				method="get" name="cadastro" autocomplete="off">
-				<table class="tableForms">
+			<h1>Pesquisa de Documento</h1>
+			<form action="/GraoPara/protected/admin/listagemDocumentos.jsp" method="get" name="cadastro" autocomplete="off">
+				<table class="tablePesquisa">
 					<tr>
 						<td colspan="3"><label class="labelForms"><strong>PREENCHA
-									UM OU MAIS CAMPOS A SEGUIR:</label></td>
+									UM OU MAIS CAMPOS A SEGUIR:</strong></label></td>
 					</tr>
 					<tr>
 						<td class="tdForms"><label class="labelForms"
