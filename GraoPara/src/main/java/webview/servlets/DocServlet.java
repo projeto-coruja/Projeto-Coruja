@@ -77,7 +77,7 @@ public class DocServlet extends HttpServlet {
 						tipoDoc,
 						palChave1, palChave2, palChave3,
 						autor, local, destinatario, resumo,
-						dataDoc, email);
+						dataDoc, email);						
 			} catch (UnreachableDataBaseException e) {
 				out.println("<script>");  
 			    out.println("alert('Erro no banco de dados! Contate o suporte e tente novamente mais tarde." + e.getStackTrace() + "');");  
@@ -98,10 +98,14 @@ public class DocServlet extends HttpServlet {
 						palChave1, palChave2, palChave3,
 						autor, local, destinatario, resumo,
 						dataDoc, email);
+				out.println("<script>");  
+			    out.println("alert('Documento Atualizado com sucesso!');");  
+			    out.println("document.location=('/GraoPara/public/index.jsp');");  
+			    out.println("</script>");
 			} catch (UnreachableDataBaseException e) {
 				out.println("<script>");  
 			    out.println("alert('Erro no banco de dados! Contate o suporte e tente novamente mais tarde." + e.getStackTrace() + "');");  
-			    out.println("document.location=('/GraoPara/protected/user/indexUser.jsp');");  
+			    out.println("history.go(-1)");  
 			    out.println("</script>");
 				e.printStackTrace();
 			} catch (DocumentNotFoundException e) {

@@ -57,7 +57,7 @@ public class AccountRecoveryServlet extends HttpServlet {
 		    out.println("</script>");
 		} catch (UnreachableDataBaseException e) {
 		    out.println("<script>");  
-		    out.println("alert('Provblema ao se conectar ao banco de dados. ');");  
+		    out.println("alert('Problema ao se conectar ao banco de dados. ');");  
 		    out.println("document.location=('/GraoPara/protected/admin/gerarSenha.jsp');");  
 		    out.println("</script>");
 			e.printStackTrace();
