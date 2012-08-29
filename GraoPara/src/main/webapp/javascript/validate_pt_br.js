@@ -111,7 +111,7 @@ $(document).ready(function() {
 			/* ----------------------------------
 			 *  Cadastro de novos tipos de documentos pelo Admin
 			 * ---------------------------------- */
-			tpDoc:{
+			docType:{
 				required: true,
 				minlength: 3
 			},
@@ -233,7 +233,7 @@ $(document).ready(function() {
 			/* ----------------------------------
 			 *  Cadastro de novos tipos de documentos pelo Admin
 			 * ---------------------------------- */
-			tpDoc:{
+			docType:{
 				required: "Informe o tipo de documento que deseja cadastrar",
 				minlength: jQuery.format("Digite no mínimo {0} caracteres.")
 			},
