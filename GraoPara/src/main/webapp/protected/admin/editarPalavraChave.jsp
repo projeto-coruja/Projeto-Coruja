@@ -68,7 +68,7 @@
 					<li><a href="/GraoPara/protected/admin/cadastrarTipoDocumento.jsp">Cadastrar Tipo de Documento</a></li>					
 					<li><a href="/GraoPara/protected/admin/gerarSenha.jsp">Gerar Senha</a></li>
 					<li><a href="/GraoPara/protected/admin/sobreAdmin.jsp">Sobre</a></li>	
-					<li><a href="#">Créditos</a></li>									
+					<li><a href="/GraoPara/protected/admin/creditosAdmin.jsp">Créditos</a></li>				
 				</ul>
 			</article>
 		</div>

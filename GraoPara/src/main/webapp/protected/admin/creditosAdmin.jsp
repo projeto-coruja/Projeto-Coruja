@@ -1,11 +1,9 @@
 <!doctype html>
-<%@page import="webview.servlets.PanelWorker"%>
 <%@page import="webview.WebUtility"%>
 <html>
 <head>
 <meta charset="utf-8">
 <title>Grão-Pará</title>
-
 
 <!-- Import dos styles CSS -->
 <link rel="stylesheet" type="text/css"
@@ -23,19 +21,29 @@
 <script type="text/javascript"
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"
 	charset="utf-8"></script>
-
+<script src="/GraoPara/javascript/chili-1.7.pack.js"
+	type="text/javascript"></script>
+	
+<!-- Import dos scripts de validação de formulário -->
+<script src="/GraoPara/javascript/jquery.js" type="text/javascript"
+	charset="utf-8"></script>
+<script src="/GraoPara/javascript/validate.js" type="text/javascript"
+	charset="utf-8"></script>
+<script src="/GraoPara/javascript/validate_pt_br.js"
+	type="text/javascript" charset="utf-8"></script> 
+	
 </head>
 
 <body>
 
 	<div class="container">
 		<div class="header"></div>
-
+		
 		<!-- Começo do menu lateral -->
 		<div class="sidebar1">
 
 			<!--Depois de logado-->
-			<div class="LoginArea" id="logado" style="display: block;">
+			<div class="LoginArea" id="logado">
 				<form method="post" action="/GraoPara/doLogout">
 					<fieldset>
 						<label for="login">Bem vindo</label>
@@ -67,10 +75,10 @@
 		<!-- Fim do Menu Lateral -->
 		<!-- Começo Conteudo -->
 		<div class="content" id="content">
-		<h1> Sobre Grão Pará</h1>
-			<p class="left">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-			<p class="left">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-			<p class="left">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		<h1> Créditos</h1>
+			<p class="left">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultrices consequat nunc, vitae semper nulla egestas ac. Aliquam viverra mauris at augue iaculis varius. In in pulvinar turpis. Sed pulvinar tincidunt aliquam. Morbi porttitor leo sit amet massa interdum ut vulputate magna fermentum. Quisque volutpat, orci in pretium congue, erat neque rutrum ante, vitae pharetra felis lorem quis urna. Proin quis dui ante, sed faucibus nunc. Duis tempus dui non libero scelerisque id sollicitudin magna accumsan. Quisque elementum pretium purus, mollis sagittis mi blandit at. Sed tristique placerat lobortis. Aliquam id quam non eros faucibus laoreet vel eget sapien. Cras vehicula nunc sem, vel sollicitudin leo. Donec at metus neque. Cras commodo ante vel purus sagittis tempor. Vivamus ullamcorper sollicitudin interdum. Cras massa massa, suscipit a tempor et, malesuada vel mauris.</p>
+			<p class="left">Nullam venenatis nisl in massa mollis eu congue quam facilisis. Sed tempor ipsum sit amet quam commodo vulputate. Etiam eget turpis ipsum. Ut ac lectus nisi, eu feugiat mi. Donec viverra adipiscing lorem eget consectetur. Etiam in fringilla purus. Aliquam erat volutpat..</p>
+			<p class="left">Donec est nisi, euismod sed dapibus nec, vulputate ac nisi. Ut varius luctus ipsum, eget pulvinar tellus rutrum ac. Fusce non diam a nibh aliquet eleifend vel faucibus mi. In porttitor urna ac ante placerat id mollis enim ornare. Nulla fringilla est et libero vehicula vulputate. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Ut auctor, leo et faucibus ultricies, mauris tellus vehicula dolor, eget sodales lacus ante eget erat. Ut vulputate lorem ipsum. Morbi tempus mattis urna, quis tincidunt velit pellentesque vel. Cras sagittis magna quis elit molestie dapibus. Suspendisse non fringilla libero. Cras aliquam, odio at condimentum mollis, nibh lorem pretium tellus, porta aliquet velit sem eu quam. Phasellus vehicula nulla sed risus interdum eu volutpat orci venenatis.</p>
 		</div>
 		<!-- Fim do Conteudo -->
 

@@ -60,7 +60,7 @@
 					<li><a href="/GraoPara/protected/admin/cadastrarTipoDocumento.jsp">Cadastrar Tipo de Documento</a></li>					
 					<li><a href="/GraoPara/protected/admin/gerarSenha.jsp">Gerar Senha</a></li>
 					<li><a href="/GraoPara/protected/admin/sobreAdmin.jsp">Sobre</a></li>	
-					<li><a href="#">Créditos</a></li>									
+					<li><a href="/GraoPara/protected/admin/creditosAdmin.jsp">Créditos</a></li>				
 				</ul>
 			</article>
 		</div>
@@ -78,8 +78,8 @@
 					<td class="tdList"><label class="labelExibe">Destinatário</label></td>
 					<td class="tdList"><label class="labelExibe">Local</label></td>
 					<td class="tdList"><label class="labelExibe">Data</label></td>
-					<td class="tdList"><label class="labelExibe">Documento</label></td>
-					<td class="tdList"><label class="labelExibe">Palavras-Chaves</label></td>
+					<td class="tdList"><label class="labelExibe">Tipo de Documento</label></td>
+					<td class="tdList"><label class="labelExibe">Palavras-Chave</label></td>
 					<td class="tdList"><label class="labelExibe">Ações</label></td>
 				</tr>
 
