@@ -79,11 +79,6 @@
 				action="/GraoPara/addDoc?action=update">
 				<table class="tableForms">
 					<tr>
-						<td colspan="3"><label class="labelForms"><strong>PREENCHA
-									TODOS OS CAMPOS COM ASTERÍSCO<span class="asterisco">*</span>
-							</strong></label></td>
-					</tr>
-					<tr>
 						<td class="tdForms"><label class="labelForms" id="lidentificacao"
 							for="identificacao">Identificação<span class="asterisco">*</span></label>
 						</td>
@@ -202,7 +197,7 @@
 						<td class="status"></td>
 					</tr>
 					<tr>
-						<td class="tdForms" style="FONT-FAMILY: 'Century Schoolbook L';"><label class="labelForms" id="ltipoDoc" for="tipoDoc">Tipo
+						<td class="tdForms"><label class="labelForms" id="ltipoDoc" for="tipoDoc">Tipo
 								do Documento:<span class="asterisco">*</span>
 						</label></td>
 						<td class="field"><select class="input" name="tipoDoc" id="tipoDoc">
@@ -227,14 +222,19 @@
 							<label for="palavrasChaves"class="labelForms">Palavra Chaves:<span class="asterisco">(Obrigatório pelo menos uma)</span></label>
 						</td>
 					</tr>
+					<!-- <tr>
+						<td class="field">
+							<select class="inputPalavraChave" id="chave1" name="chave1" ><%=WebUtility.printSelectKeyWords(request, "chave1") %></select>
+							<select class="inputPalavraChave" id="chave2" name="chave2" ><%=WebUtility.printSelectKeyWords(request, "chave2") %></select>
+							<select class="inputPalavraChave" id="chave3" name="chave3" ><%=WebUtility.printSelectKeyWords(request, "chave3") %></select>
+						</td>
+					</tr> -->
 					<tr>
 						<td class="field" colspan="2">
-							<input class="inputPalavraChave" id="chave1" name="chave1" type="text"	size="15" maxlength="32" value="<%=WebUtility.printLabel(request, "chave1")%>">
-							 - 
-							<input class="inputPalavraChave" id="chave2" name="chave2" type="text" size="15" maxlength="32" value="<%=WebUtility.printLabel(request, "chave2")%>">
-							 - 
-							<input class="inputPalavraChave" id="chave3" name="chave3" type="text" size="15" maxlength="32" value="<%=WebUtility.printLabel(request, "chave3")%>">
-						</td>
+							<input class="inputPalavraChave" id="chave1" name="chave1" type="text"size="12" maxlength="32">
+							<input class="inputPalavraChave" id="chave2" name="chave2" type="text" size="12" maxlength="32">
+							<input class="inputPalavraChave" id="chave3" name="chave3" type="text" size="12" maxlength="32">
+					 	</td>
 						<td class="status"></td>
 					</tr>
 					<tr>
