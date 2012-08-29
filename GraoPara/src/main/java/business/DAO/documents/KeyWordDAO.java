@@ -27,6 +27,17 @@ public class KeyWordDAO {
 		}
 		return newKey;
 	}
+	
+	public PalavraChaveDTO addKeyWord(String key, Boolean status) throws UnreachableDataBaseException{
+		PalavraChaveDTO newKey = new PalavraChaveDTO(key.toLowerCase(),status);
+		try{
+			manager.saveEntity(newKey);
+		}catch(DataAccessLayerException e){
+			e.printStackTrace();
+			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");			
+		}
+		return newKey;
+	}
 
 	public void removeKeyWord(String key) throws UnreachableDataBaseException, KeywordNotFoundException{
 		List<DTO> check = null;

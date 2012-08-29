@@ -81,7 +81,7 @@
 
 			<h2>Edição de Documentos</h2>
 			<form id="signupform" autocomplete="off" method="POST"
-				action="/GraoPara/addDoc">
+				action="/GraoPara/addDoc?action=update">
 				<table class="tableForms">
 					<tr>
 						<td colspan="3"><label class="labelForms"><strong>PREENCHA
