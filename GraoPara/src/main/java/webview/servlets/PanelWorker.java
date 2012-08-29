@@ -34,7 +34,7 @@ public class PanelWorker {
 				out.write("<tr>");
 				out.write("<td> <label for=\"identificacao\" class=\"labelExibe\">" + key.getId() + "</label> </td>");
 				out.write("<td> <label for=\"identificacao\" class=\"labelExibe\">" + key.getPalavra() + " </label> </td>");
-				out.write("<td> <label for=\"identificacao\" class=\"labelExibe\">" + key.isAprovada() + "</label> </td>");
+				out.write("<td> <label for=\"identificacao\" class=\"labelExibe\">" + (key.isAprovada()==true ? "Aprovada" : "Pendente") + "</label> </td>");
 				out.println("<td>"
 						+ "<a href=\"/GraoPara/protected/admin/editarPalavraChave.jsp?"
 							+ "palavra="+ key.getPalavra() +"\" >"
@@ -52,7 +52,7 @@ public class PanelWorker {
 			//out.write("document.location=('/GraoPara/public/index.jsp');");  
 			out.write("</script>");
 		} catch (KeywordNotFoundException e) {
-			out.println("<td colspan=\"3\">Nenhuma palavra-chave encontrada</td>");
+			out.println("<td colspan=\"4\"><label class=\"labelExibe\">Nenhuma palavra-chave encontrada</label></td>");
 		}
 	}
 
@@ -68,7 +68,7 @@ public class PanelWorker {
 					out.write("<tr>");
 					out.write("<td> <label for=\"identificacao\" class=\"labelExibe\">" + key.getId() + "</label> </td>");
 					out.write("<td> <label for=\"identificacao\" class=\"labelExibe\">" + key.getPalavra() + " </label> </td>");
-					out.write("<td> <label for=\"identificacao\" class=\"labelExibe\">" + key.isAprovada() + "</label> </td>");
+					out.write("<td> <label for=\"identificacao\" class=\"labelExibe\">" + "Aprovada" + "</label> </td>");
 					out.println("<td>"
 							+ "<a href=\"/GraoPara/doChangesToKeyWord?" 
 								+ "palavra=" + key.getPalavra() 
@@ -90,7 +90,7 @@ public class PanelWorker {
 			//out.write("document.location=('/GraoPara/public/index.jsp');");  
 			out.write("</script>");
 		} catch (KeywordNotFoundException e) {
-			out.println("<td colspan=\"3\">Nenhuma palavra-chave encontrada</td>");
+			out.println("<td colspan=\"4\"><label class=\"labelExibe\">Nenhuma palavra-chave encontrada.</label></td>");
 		}
 	}	
 	
@@ -122,12 +122,12 @@ public class PanelWorker {
 				
 		} catch (UnreachableDataBaseException e) {
 			out.write("<script>");  
-			out.write("alert('Problemas ao acessar o banco de dados. Contate o suporte técnico e tente novamente mais tarde ');");  
+			out.write("alert('Problemas ao acessar o banco de dados. Contate o suporte técnico e tente novamente mais tarde.');");  
 			//out.write("document.location=('/GraoPara/public/index.jsp');");  
 			out.write("</script>");
 			e.printStackTrace();
 		} catch (UserNotFoundException e) {
-			out.println("<td colspan=\"3\">Nenhum usuário encontrado</td>");
+			out.println("<td colspan=\"4\"><label class=\"labelExibe\">Nenhum usuário encontrado.</label></td>");
 		}
 	}
 	
@@ -159,12 +159,12 @@ public class PanelWorker {
 				
 		} catch (UnreachableDataBaseException e) {
 			out.write("<script>");  
-			out.write("alert('Problemas ao acessar o banco de dados. Contate o suporte técnico e tente novamente mais tarde ');");  
+			out.write("alert('Problemas ao acessar o banco de dados. Contate o suporte técnico e tente novamente mais tarde.');");  
 			//out.write("document.location=('/GraoPara/public/index.jsp');");  
 			out.write("</script>");
 			e.printStackTrace();
 		} catch (UserNotFoundException e) {
-			out.println("<td colspan=\"3\">Nenhum usuário encontrado</td>");
+			out.println("<td colspan=\"4\"><label class=\"labelExibe\">Nenhum usuário encontrado.</label></td>");
 		}
 	}
 	
