@@ -64,6 +64,7 @@
 					<li><a href="/GraoPara/protected/user/painelUser.jsp">Painel User</a></li>
 					<li><a href="/GraoPara/protected/user/sobreUser.jsp">Sobre</a></li>
 					<li><a href="/GraoPara/protected/user/creditosUser.jsp">Créditos</a></li>
+					<li><a href="/GraoPara/protected/user/tutorialPesquisaUser.jsp">Como pesquisar no acervo</a>
 				</ul>
 			</article>
 		</div>
