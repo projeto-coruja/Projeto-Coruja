@@ -170,24 +170,29 @@ public class CadastroEJB {
 		
 		docDTO.getTipoDocumento().setTipoDocumento(tipoDocumento_tipoDocumento);
 		
-		if(docDTO.getPalavrasChaves1() != null)	docDTO.getPalavrasChaves1().setPalavra(palavraChave01);
+		List<DTO> check = null;
+		if(palavraChave01 == null || palavraChave01.equals("")){
+			docDTO.setPalavrasChaves1(null);
+		}
 		else{
-			List<DTO> check;
 			try {
 				check = kwDao.findKeyWordByString(palavraChave01);
 				for (DTO dto : check) {
 					if (((PalavraChaveDTO) dto).getPalavra().equals(palavraChave01))
 						docDTO.setPalavrasChaves1((PalavraChaveDTO) dto);
 				}
+				
 			} catch (KeywordNotFoundException e) {
 				PalavraChaveDTO palavra = kwDao.addKeyWord(palavraChave01, true);
 				docDTO.setPalavrasChaves1(palavra);
 			}
 		}
 		
-		if(docDTO.getPalavrasChaves2() != null)	docDTO.getPalavrasChaves2().setPalavra(palavraChave02);
+		check = null;
+		if(palavraChave02 == null || palavraChave02.equals("")){
+			docDTO.setPalavrasChaves2(null);
+		}
 		else{
-			List<DTO> check;
 			try {
 				check = kwDao.findKeyWordByString(palavraChave02);
 				for (DTO dto : check) {
@@ -200,12 +205,14 @@ public class CadastroEJB {
 			}
 		}
 		
-		if(docDTO.getPalavrasChaves3() != null)	docDTO.getPalavrasChaves3().setPalavra(palavraChave03);
+		check = null;
+		if(palavraChave03 == null || palavraChave03.equals("")){
+			docDTO.setPalavrasChaves3(null);
+		}
 		else{
-			List<DTO> check;
-			try {
+			try {	
 				check = kwDao.findKeyWordByString(palavraChave03);
-				for (DTO dto : check) {
+				for(DTO dto : check) {
 					if (((PalavraChaveDTO) dto).getPalavra().equals(palavraChave03))
 						docDTO.setPalavrasChaves3((PalavraChaveDTO) dto);
 				}
@@ -213,6 +220,16 @@ public class CadastroEJB {
 				PalavraChaveDTO palavra = kwDao.addKeyWord(palavraChave03, true);
 				docDTO.setPalavrasChaves3(palavra);
 			}
+		}
+		
+		if(docDTO.getPalavrasChaves1() == null){
+			docDTO.setPalavrasChaves1(docDTO.getPalavrasChaves2());
+			docDTO.setPalavrasChaves2(docDTO.getPalavrasChaves3());
+			docDTO.setPalavrasChaves3(null);
+		}
+		if(docDTO.getPalavrasChaves2() == null){
+			docDTO.setPalavrasChaves2(docDTO.getPalavrasChaves3());
+			docDTO.setPalavrasChaves3(null);
 		}
 		
 		docDTO.setAutor(autor);

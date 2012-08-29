@@ -1,6 +1,8 @@
 package business.EJB.docEJB;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import persistence.dto.DTO;
 import persistence.dto.TipoDocumentoDTO;
@@ -23,14 +25,28 @@ public class TipoDocumentoEJB {
 		return typeDoc.findAllDocumentTypes();
 	}
 	
-	public void removeTypeDocument(String type) throws UnreachableDataBaseException, DocumentTypeNotFoundException, DocumentNotFoundException{
+	public void addNewDocumentType(String type) throws UnreachableDataBaseException{
+		DocumentTypeDAO dao = new DocumentTypeDAO();
+		TipoDocumentoDTO dto;
+		
+		try{
+			dto = dao.findSingleDocumentTypeByString(type);
+		}catch(DocumentTypeNotFoundException e){
+			dao.addDocumentType(type);
+		}
+		
+	}
+	
+	public void removeTypeDocument(String deletingType) throws UnreachableDataBaseException, DocumentTypeNotFoundException{
 		BuscaDocEJB search = new BuscaDocEJB();
 		
-		List<DTO> documentTypeDTO = typeDoc.findDocumentTypeByString(type);
-		List<DTO> documentList = search.buscaPorTipoDocumento(type);
-		
-		for (DTO dto : documentList) {
-			
+		TipoDocumentoDTO type = typeDoc.findSingleDocumentTypeByString(deletingType);
+		List<DTO> documentList;
+		try {
+			documentList = search.buscaPorTipoDocumento(deletingType);
+			throw new IllegalArgumentException("Tentativa de remoção de tipo de documento que possue associação a algum documento.");
+		} catch (DocumentNotFoundException e) {
+			typeDoc.removeDocumentType(type);
 		}
 		
 	}

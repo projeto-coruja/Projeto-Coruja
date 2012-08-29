@@ -90,7 +90,7 @@ public class AccountServlet extends HttpServlet {
 			permissaoNova = request.getParameter("permissao");
 			email = request.getParameter("email");
 			out.println("<script>");  
-			out.println("alert('Permissão trocada com sucesso. ');");  
+			out.println("alert('Permissão trocado com sucesso. ');");  
 			out.println("document.location=('" + redirect + "');");  
 			out.println("</script>");
 			try {
