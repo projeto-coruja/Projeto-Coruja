@@ -68,7 +68,7 @@ public class PanelWorker {
 					out.write("<tr>");
 					out.write("<td> <label for=\"identificacao\" class=\"labelExibe\">" + key.getId() + "</label> </td>");
 					out.write("<td> <label for=\"identificacao\" class=\"labelExibe\">" + key.getPalavra() + " </label> </td>");
-					out.write("<td> <label for=\"identificacao\" class=\"labelExibe\">" + "Aprovada" + "</label> </td>");
+					out.write("<td> <label for=\"identificacao\" class=\"labelExibe\">" + (key.isAprovada()==true ? "Aprovada" : "Pendente") + "</label> </td>");
 					out.println("<td>"
 							+ "<a href=\"/GraoPara/doChangesToKeyWord?" 
 								+ "palavra=" + key.getPalavra() 
@@ -133,7 +133,7 @@ public class PanelWorker {
 	
 	public static void listAllNewUsers(HttpServletRequest request, JspWriter out) throws IOException{
 		BuscaUserEJB busca = new BuscaUserEJB();
-		List<DTO> users = null;	    
+		List<DTO> users = null;
 		try {
 			users = busca.listUsers();
 			
