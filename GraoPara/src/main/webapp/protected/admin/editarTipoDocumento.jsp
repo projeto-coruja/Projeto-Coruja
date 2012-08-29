@@ -81,7 +81,7 @@
 		<div class="content" id="content">
 		<h1> Editar Tipos de Documentos</h1>
 		<form action="/GraoPara/doPasswordRecovery" id="signupform"  method="post" autocomplete="off">
-				<table class="tableControle">	
+				<table class="tableForms">	
 				<tr>
 						<td class="tdControle">
 							<label class="labelForms"  id="ltpDocAntigo" for="tpDocAntigo">Tipo de documento Antigo:<span class="asterisco">*</span></label>
@@ -102,11 +102,11 @@
 						<td class="status"></td>
 					</tr>				
 				<tr>
-						<td class="tdForms">
-							<p></p>
-							<input class="buttonRegistrar" id="signupsubmit" name="inserir" type="submit" value="Enviar" />
+						<td class="tdControle" colspan="3">
+						<p></p>
+							<input class="buttonCancelar" type="button" value="Cancelar" onClick="history.go(-1)"> <input class="buttonRegistrar" id="signupsubmit" name="Enviar" type="submit" value="Enviar" />
 						</td>
-					</tr>
+				</tr>
 				</table>
 				</form>	
 			</div>

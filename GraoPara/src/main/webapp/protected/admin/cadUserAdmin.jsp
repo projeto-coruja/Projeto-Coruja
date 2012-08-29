@@ -131,12 +131,11 @@
 						<td class="status"></td>
 					</tr>
 					<tr>
-						<td class="field" colspan="3">
+						<td class="tdForms">
 							<p></p>
-							<input class="buttonRegistrar" id="signupsubmit" name="Enviar" type="submit" value="Enviar" />
+							<input class="buttonRegistrar" id="signupsubmit" name="inserir" type="submit" value="Enviar" />
 						</td>
 					</tr>
-					
 				</table>
 			</form>
 		</div>

@@ -63,7 +63,7 @@
 		</div>
 		<!-- Fim do Menu Lateral -->
 		<div class="content" id="content">
-			<h1>Pesquisa de Documento</h1>
+			<h1>Editar Documentos</h1>
 			<form action="/GraoPara/doSearch" method="POST" name="cadastro" autocomplete="off">
 				<table class="tableForms">
 					<tr>
@@ -172,9 +172,9 @@
 						<td class="status"></td>
 					</tr>
 					<tr>
-						<td>
-							<p></p>
-							<input class="buttonRegistrar" name="inserir" type="submit" value="Enviar" />
+						<td class="tdControle" colspan="3">
+						<p></p>
+							<input class="buttonCancelar" type="button" value="Cancelar" onClick="history.go(-1)"> <input class="buttonRegistrar" id="signupsubmit" name="Enviar" type="submit" value="Enviar" />
 						</td>
 					</tr>
 				</table>

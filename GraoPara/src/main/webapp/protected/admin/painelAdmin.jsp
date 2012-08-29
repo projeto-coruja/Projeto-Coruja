@@ -141,9 +141,9 @@
 						<td class="status"></td>
 					</tr>
 					<tr>
-						<td class="field" colspan="3">
-							<p></p> <input class="buttonRegistrar" id="signupsubmit"
-							name="Alterar" type="submit" value="Alterar" />
+						<td class="tdForms">
+							<p></p>
+							<input class="buttonRegistrar" id="signupsubmit" name="Alterar" type="submit" value="Alterar" />
 						</td>
 					</tr>
 				</table>

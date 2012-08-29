@@ -78,9 +78,9 @@
 			<h1>Editar Palavra Chave</h1>
 			
 			<form id="signupform" autocomplete="off" method="post" action="/GraoPara/doChangesToKeyWord">
-				<table class="tableEditar">					
+				<table class="tableControle">					
 					<tr>
-						<td>
+						<td class="tdControle">
 							<label class="labelForms" id="lpalavraAntiga" for="palavraAntiga">Palavra Chave Antiga:</label>
 						</td>
 						<td class="field">
@@ -89,7 +89,7 @@
 						<td class="status"></td>
 					</tr>					
 					<tr>
-						<td>
+						<td class="tdControle">
 							<label class="labelForms" id="lpalavraNova" for="palavraNova">Palavra Chave Nova:<span class="asterisco">*</span></label>
 						</td>
 						<td class="field">
@@ -98,7 +98,7 @@
 						<td class="status"></td>
 					</tr>
 					<tr>
-						<td class="field" colspan="3">
+						<td class="tdControle" colspan="3">
 						<p></p>
 							<input class="buttonCancelar" type="button" value="Cancelar" onClick="history.go(-1)"> <input class="buttonRegistrar" id="signupsubmit" name="Enviar" type="submit" value="Enviar" />
 						</td>
