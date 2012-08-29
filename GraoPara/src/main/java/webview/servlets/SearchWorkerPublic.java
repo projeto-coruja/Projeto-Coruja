@@ -14,7 +14,7 @@ import business.EJB.docEJB.BuscaDocEJB;
 import business.exceptions.documents.DocumentNotFoundException;
 import business.exceptions.login.UnreachableDataBaseException;
 
-public class SearchWorker {
+public class SearchWorkerPublic {
 	
 	public static void listAllDocuments(HttpServletRequest request, JspWriter out) throws IOException{
 		String identificacao = request.getParameter("identificacao");
@@ -71,33 +71,6 @@ public class SearchWorker {
 						+ palchave2 + " - "
 						+ palchave3
 						+ "</label></td>");
-				out.println("<td class=\"tdList\">"
-						+ "<a href=\"/GraoPara/protected/admin/detalhesDocumentosAdmin.jsp?"
-							+"identificacao=" + doc.getOrigemDocumento().getTipoOrigem()
-							+"&codigo=" + doc.getOrigemDocumento().getCodOrigem()
-							+"&titulo=" + doc.getOrigemDocumento().getTitulo()
-							+"&tipoAPEP_SEQ=" + doc.getIdNumDocumento().getTipoId()
-							+"&numeroAPEP=" + doc.getIdNumDocumento().getCodId()
-							+"&dia=" + String.valueOf(c_dia)
-							+"&mes=" + String.valueOf(c_mes)
-							+"&ano=" + String.valueOf(c_ano)
-							+"&autor=" + doc.getAutor()
-							+"&destinatario=" + doc.getDestinatario()
-							+"&local=" + doc.getLocal()
-							+"&tipoDoc=" + doc.getTipoDocumento().getTipoDocumento()
-							+"&resumo=" + doc.getResumo()
-							+"&chave1=" + palchave1
-							+"&chave2=" + palchave2
-							+"&chave3=" + palchave3
-							+ "\">"
-							+ "<img src=\"/GraoPara/images/edit.png\" title=\"Editar\" alt=\"Editar\"/></a> "
-						+ "<br>"
-						+ "<a href=\"/GraoPara/addDoc?"
-							+"tipoAPEP_SEQ=" + doc.getIdNumDocumento().getTipoId()
-							+"&numeroAPEP=" + doc.getIdNumDocumento().getCodId()
-							+ "\">"
-							+ "<img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\"/></a> "
-						+ "</td>");
 				out.println("</tr>");
 			}
 		} catch (UnreachableDataBaseException e) {
@@ -152,7 +125,7 @@ public class SearchWorker {
 				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"
 						+ palchave1 + " - " 
 						+ palchave2 + " - "
-						+ palchave3
+						+ palchave3 + " - "
 						+ "</label></td>");
 				out.println("<td class=\"tdList\">"
 						+ "<a href=\"/GraoPara/protected/admin/detalhesDocumentosAdmin.jsp?"
@@ -173,13 +146,6 @@ public class SearchWorker {
 						+"&chave2=" + palchave2
 						+"&chave3=" + palchave3
 						+ "\">"
-						+ "<img src=\"/GraoPara/images/edit.png\" title=\"Editar\" alt=\"Editar\"/></a> "
-						+ "<br>"
-						+ "<a href=\"/GraoPara/addDoc?"
-						+"tipoAPEP_SEQ=" + doc.getIdNumDocumento().getTipoId()
-						+"&numeroAPEP=" + doc.getIdNumDocumento().getCodId()
-						+ "\">"
-						+ "<img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\"/></a> "
 						+ "</td>");
 				out.println("</tr>");
 			}
