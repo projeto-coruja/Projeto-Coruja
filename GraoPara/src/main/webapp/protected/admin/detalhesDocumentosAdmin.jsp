@@ -202,7 +202,7 @@
 						<td class="status"></td>
 					</tr>
 					<tr>
-						<td class="tdForms"><label class="labelForms" id="ltipoDoc" for="tipoDoc">Tipo
+						<td class="tdForms" style="FONT-FAMILY: 'Century Schoolbook L';"><label class="labelForms" id="ltipoDoc" for="tipoDoc">Tipo
 								do Documento:<span class="asterisco">*</span>
 						</label></td>
 						<td class="field"><select class="input" name="tipoDoc" id="tipoDoc">

@@ -74,7 +74,7 @@
 					<li><a href="/GraoPara/public/index.jsp">Home</a></li>
 					<li><a href="/GraoPara/public/pesquisa.jsp">Pesquisar</a></li>
 					<li><a href="/GraoPara/public/sobre.jsp">Sobre</a></li>
-					<li><a href="#">Créditos</a></li>
+					<li><a href="/GraoPara/public/creditos.jsp">Créditos</a></li>
 				</ul>
 			</article>
 		</div>
