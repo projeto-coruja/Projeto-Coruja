@@ -44,6 +44,7 @@ $(document).ready(function() {
 			ano: {
 				required: true,
 				minlength: 4,
+				max: 2012,
 				number: true
 			},
 			tipoDoc: {
@@ -165,6 +166,7 @@ $(document).ready(function() {
 			ano: {
 				required: "Informe o Ano.",
 				minlength: jQuery.format("Informe o ano com {0} dígitos."),
+				max: jQuery.format("Informe um ano anterior a {0}"),
 				number: "Digite apenas números"
 			},
 			tipoDoc: {
