@@ -1,31 +1,40 @@
 package webview;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.JspWriter;
 
+import persistence.dto.DTO;
 import persistence.dto.DocumentoDTO;
+import persistence.dto.PalavraChaveDTO;
 import persistence.dto.ProfileDTO;
+import persistence.dto.TipoDocumentoDTO;
 
+import business.DAO.documents.DocumentTypeDAO;
+import business.DAO.documents.KeyWordDAO;
 import business.EJB.userEJB.AuthBean;
 import business.EJB.userEJB.UserBean;
+import business.exceptions.documents.DocumentTypeNotFoundException;
+import business.exceptions.documents.KeywordNotFoundException;
 import business.exceptions.login.UnreachableDataBaseException;
 import business.exceptions.login.UserNotFoundException;
 
 public final class WebUtility {
 	
-	public static String cookie_email = "email_graopara";
-	public static String cookie_session = "sessao_graopara";
-	public static String cookie_nome = "nome_graopara";
-	public static String cookie_status = "status_graopara";
+	public static final String cookie_email = "email_graopara";
+	public static final String cookie_session = "sessao_graopara";
+	public static final String cookie_nome = "nome_graopara";
+	public static final String cookie_status = "status_graopara";
+	public static final String[] meses = {"Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"}; 
 	
 	public static ProfileDTO admin_profile = new ProfileDTO("admin", true, true, true);
 	public static ProfileDTO user_profile = new ProfileDTO("user", true, true, false);
 	public static ProfileDTO default_profile = new ProfileDTO("default", false, true, false);
 	
-	public static int cookie_expire = -1; //1 sessão dias
+	public static final int cookie_expire = -1; //1 sessão dias
 	
 	public static UserBean cookieLogin(Cookie[] cookie_list) {
 		if(cookie_list == null) return null;
@@ -104,13 +113,13 @@ public final class WebUtility {
 	
 	public static String printSelectOrigem(HttpServletRequest request) throws IOException {
 		String output = null;
-		if(request.getParameter("identificacao").equals("codice"))
+		if(request.getParameter("identificacao").equals("CODICE"))
 		{
 			output = 
 					"<option selected value=\"codice\">Número de Códice</option> " +
 					"<option value=\"caixa\">Número da Caixa</option>";
 		}
-		else if(request.getParameter("identificacao").equals("caixa"))
+		else if(request.getParameter("identificacao").equals("CAIXA"))
 		{
 			output = 
 					"<option value=\"codice\">Número de Códice</option> " +
@@ -121,19 +130,84 @@ public final class WebUtility {
 	
 	public static String printSelectId(HttpServletRequest request) throws IOException {
 		String output = null;
-		if(request.getParameter("tipo_num").equals("APEP"))
+		String parameter = request.getParameter("tipoAPEP_SEQ");
+		if(parameter == null)
+		{
+			output = "<option value=\"\">\"Erro\"</option>";
+		}
+		else if(parameter.equals("APEP"))
 		{
 			output = 
 					"<option selected value=\"APEP\">APEP</option> " +
 					"<option value=\"SEQ\">Sequencial</option>";
 		}
-		else if(request.getParameter("identificacao").equals("SEQ"))
+		else if(parameter.equals("SEQ"))
 		{
 			output = 
 					"<option value=\"APEP\">APEP</option> " +
 					"<option selected value=\"SEQ\">Sequencial</option>";
 		}
 		return output;
+	}
+	
+	public static String printSelectDia(HttpServletRequest request) {
+		String dia = request.getParameter("dia");
+		return "<option selected value=\"" + dia + "\">" + dia + "</option>" +
+				"<option value=\"\">--------</option>";
+	}
+	
+	public static String printSelectMes(HttpServletRequest request) {
+		String mes = request.getParameter("mes");
+		int num_mes = Integer.parseInt(mes);
+		return "<option selected value=\"" + mes + "\">" + meses[num_mes - 1] + "</option>" +
+				"<option value=\"\">--------</option>";
+	}
+	
+	public static String printSelectTipoDoc(HttpServletRequest request) {
+		DocumentTypeDAO dtd = new DocumentTypeDAO();
+		String result = "";
+		String tipoDoc = null;
+		try {
+			List<DTO> list = dtd.findAllDocumentTypes();
+			for(DTO d : list){
+				tipoDoc = ((TipoDocumentoDTO) d).getTipoDocumento();
+				if(tipoDoc.equals(request.getParameter("tipoDoc")))
+					result += "<option selected value=\"" + tipoDoc + "\">" + tipoDoc + "</option> ";
+				else
+					result += "<option value=\"" + tipoDoc + "\">" + tipoDoc + "</option> ";
+			}
+		} catch (UnreachableDataBaseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (DocumentTypeNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	public static String printSelectKeyWords(HttpServletRequest request, String key_pos) {
+		KeyWordDAO word = new KeyWordDAO();
+		String result = "";
+		String key = null;
+		try {
+			List<DTO> list = word.getAllKeys();
+			
+			for(DTO d : list){
+				key = ((PalavraChaveDTO) d).getPalavra();
+				if(key.equals(request.getParameter(key_pos)))
+					result += "<option selected value=\"" + key + "\">" + key + "</option> ";
+				else
+					result += "<option value=\"" + key + "\">" + key + "</option> ";
+			}
+		} catch (UnreachableDataBaseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (KeywordNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
 	}
 
 }

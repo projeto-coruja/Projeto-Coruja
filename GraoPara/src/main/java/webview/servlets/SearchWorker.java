@@ -25,23 +25,35 @@ public class SearchWorker {
 		String autor = request.getParameter("autor");
 		String destinatario = request.getParameter("destinatario");
 		String local = request.getParameter("local");
-		String data = request.getParameter("dataDocumento");
+		String dia = request.getParameter("dia");
+		String mes = request.getParameter("mes");
+		String ano = request.getParameter("ano");
 		String tipoDoc = request.getParameter("tipoDoc");
 		String palavra1 = request.getParameter("chave1");
 		String palavra2 = request.getParameter("chave2");
 		String palavra3 = request.getParameter("chave3");
 		
+		String data_concat = ano.concat(mes.concat(dia));
+		
 		BuscaDocEJB search = new BuscaDocEJB();
 		List<DTO> docs = null;    
 		
 		try {
-			docs = search.busca(identificacao, codigo, titulo, tipoAPEP_SEQ, numAPEP_SEQ, autor, destinatario, local, data, tipoDoc, palavra1, palavra2, palavra3); 
+			docs = search.busca(identificacao, codigo, titulo, tipoAPEP_SEQ, numAPEP_SEQ, autor, destinatario, local, data_concat, tipoDoc, palavra1, palavra2, palavra3); 
 
 			for(DTO d : docs){
 				
 				DocumentoDTO doc = (DocumentoDTO) d;
 				SimpleDateFormat s = new SimpleDateFormat("dd/MM/yyyy");
 				Calendar c = doc.getDataDocumento();
+				int c_dia = c.get(Calendar.DAY_OF_MONTH);
+				int c_mes = c.get(Calendar.MONTH) + 1;
+				int c_ano = c.get(Calendar.YEAR);
+				String palchave1 = doc.getPalavrasChaves1().getPalavra();
+				String palchave2 = "";
+				String palchave3 = "";
+				if(doc.getPalavrasChaves2() != null) palchave2 = doc.getPalavrasChaves2().getPalavra();
+				if(doc.getPalavrasChaves3() != null) palchave3 = doc.getPalavrasChaves3().getPalavra();
 				
 				out.println("<tr  class=\"trList\">");
 				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getOrigemDocumento().getTipoOrigem()+"</label></td>");
@@ -55,9 +67,9 @@ public class SearchWorker {
 				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ s.format(c.getTime())					+"</label></td>");
 				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getTipoDocumento().getTipoDocumento()	+"</label></td>");
 				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"
-						+ doc.getPalavrasChaves1().getPalavra() + " - " 
-						+ doc.getPalavrasChaves2().getPalavra() + " - "
-						+ doc.getPalavrasChaves3().getPalavra() + " - "
+						+ palchave1 + " - " 
+						+ palchave2 + " - "
+						+ palchave3 + " - "
 						+ "</label></td>");
 				out.println("<td class=\"tdList\">"
 						+ "<a href=\"/GraoPara/protected/admin/detalhesDocumentosAdmin.jsp?"
@@ -66,14 +78,17 @@ public class SearchWorker {
 							+"&titulo=" + doc.getOrigemDocumento().getTitulo()
 							+"&tipoAPEP_SEQ=" + doc.getIdNumDocumento().getTipoId()
 							+"&numeroAPEP=" + doc.getIdNumDocumento().getCodId()
+							+"&dia=" + String.valueOf(c_dia)
+							+"&mes=" + String.valueOf(c_mes)
+							+"&ano=" + String.valueOf(c_ano)
 							+"&autor=" + doc.getAutor()
 							+"&destinatario=" + doc.getDestinatario()
 							+"&local=" + doc.getLocal()
 							+"&tipoDoc=" + doc.getTipoDocumento().getTipoDocumento()
 							+"&resumo=" + doc.getResumo()
-							+"&chave1=" + doc.getPalavrasChaves1().getPalavra()
-							+"&chave2=" + doc.getPalavrasChaves2().getPalavra()
-							+"&chave3=" + doc.getPalavrasChaves3().getPalavra()
+							+"&chave1=" + palchave1
+							+"&chave2=" + palchave2
+							+"&chave3=" + palchave3
 							+ "\">"
 							+ "<img src=\"/GraoPara/images/edit.png\" title=\"Editar\" alt=\"Editar\"/></a> "
 						+ "<br>"
@@ -109,11 +124,20 @@ public class SearchWorker {
 			docs = search.searchByYear(data); 
 
 			for(DTO d : docs){
-				
+
 				DocumentoDTO doc = (DocumentoDTO) d;
 				SimpleDateFormat s = new SimpleDateFormat("dd/MM/yyyy");
 				Calendar c = doc.getDataDocumento();
-				
+				int c_dia = c.get(Calendar.DAY_OF_MONTH);
+				int c_mes = c.get(Calendar.MONTH) + 1;
+				int c_ano = c.get(Calendar.YEAR);
+
+				String palchave1 = doc.getPalavrasChaves1().getPalavra();
+				String palchave2 = "";
+				String palchave3 = "";
+				if(doc.getPalavrasChaves2() != null) palchave2 = doc.getPalavrasChaves2().getPalavra();
+				if(doc.getPalavrasChaves3() != null) palchave3 = doc.getPalavrasChaves3().getPalavra();
+
 				out.println("<tr  class=\"trList\">");
 				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getOrigemDocumento().getTipoOrigem()+"</label></td>");
 				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getOrigemDocumento().getCodOrigem() +"</label></td>");
@@ -126,33 +150,36 @@ public class SearchWorker {
 				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ s.format(c.getTime())					+"</label></td>");
 				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getTipoDocumento().getTipoDocumento()	+"</label></td>");
 				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"
-						+ doc.getPalavrasChaves1().getPalavra() + " - " 
-						+ doc.getPalavrasChaves2().getPalavra() + " - "
-						+ doc.getPalavrasChaves3().getPalavra() + " - "
+						+ palchave1 + " - " 
+						+ palchave2 + " - "
+						+ palchave3 + " - "
 						+ "</label></td>");
 				out.println("<td class=\"tdList\">"
 						+ "<a href=\"/GraoPara/protected/admin/detalhesDocumentosAdmin.jsp?"
-							+"identificacao=" + doc.getOrigemDocumento().getTipoOrigem()
-							+"&codigo=" + doc.getOrigemDocumento().getCodOrigem()
-							+"&titulo=" + doc.getOrigemDocumento().getTitulo()
-							+"&tipoAPEP_SEQ=" + doc.getIdNumDocumento().getTipoId()
-							+"&numeroAPEP=" + doc.getIdNumDocumento().getCodId()
-							+"&autor=" + doc.getAutor()
-							+"&destinatario=" + doc.getDestinatario()
-							+"&local=" + doc.getLocal()
-							+"&tipoDoc=" + doc.getTipoDocumento().getTipoDocumento()
-							+"&resumo=" + doc.getResumo()
-							+"&chave1=" + doc.getPalavrasChaves1().getPalavra()
-							+"&chave2=" + doc.getPalavrasChaves2().getPalavra()
-							+"&chave3=" + doc.getPalavrasChaves3().getPalavra()
-							+ "\">"
-							+ "<img src=\"/GraoPara/images/edit.png\" title=\"Editar\" alt=\"Editar\"/></a> "
+						+"identificacao=" + doc.getOrigemDocumento().getTipoOrigem()
+						+"&codigo=" + doc.getOrigemDocumento().getCodOrigem()
+						+"&titulo=" + doc.getOrigemDocumento().getTitulo()
+						+"&tipoAPEP_SEQ=" + doc.getIdNumDocumento().getTipoId()
+						+"&numeroAPEP=" + doc.getIdNumDocumento().getCodId()
+						+"&dia=" + String.valueOf(c_dia)
+						+"&mes=" + String.valueOf(c_mes)
+						+"&ano=" + String.valueOf(c_ano)
+						+"&autor=" + doc.getAutor()
+						+"&destinatario=" + doc.getDestinatario()
+						+"&local=" + doc.getLocal()
+						+"&tipoDoc=" + doc.getTipoDocumento().getTipoDocumento()
+						+"&resumo=" + doc.getResumo()
+						+"&chave1=" + palchave1
+						+"&chave2=" + palchave2
+						+"&chave3=" + palchave3
+						+ "\">"
+						+ "<img src=\"/GraoPara/images/edit.png\" title=\"Editar\" alt=\"Editar\"/></a> "
 						+ "<br>"
 						+ "<a href=\"/GraoPara/addDoc?"
-							+"tipoAPEP_SEQ=" + doc.getIdNumDocumento().getTipoId()
-							+"&numeroAPEP=" + doc.getIdNumDocumento().getCodId()
-							+ "\">"
-							+ "<img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\"/></a> "
+						+"tipoAPEP_SEQ=" + doc.getIdNumDocumento().getTipoId()
+						+"&numeroAPEP=" + doc.getIdNumDocumento().getCodId()
+						+ "\">"
+						+ "<img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\"/></a> "
 						+ "</td>");
 				out.println("</tr>");
 			}

@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import persistence.dto.DTO;
 import persistence.dto.DocumentoDTO;
 
 import webview.WebUtility;
@@ -57,6 +56,12 @@ public class DocServlet extends HttpServlet {
 		String palChave1 = request.getParameter("chave1");
 		String palChave2 = request.getParameter("chave2");
 		String palChave3 = request.getParameter("chave3");
+		
+		String action = request.getParameter("action");
+		
+		response.setContentType("text/html");  
+	    PrintWriter out=response.getWriter();   
+		
 		Cookie c_user = WebUtility.selectCookie(
 				request.getCookies(), WebUtility.cookie_email);
 		String email = c_user.getValue();
@@ -64,25 +69,44 @@ public class DocServlet extends HttpServlet {
 		GregorianCalendar dataDoc = new GregorianCalendar(Integer.parseInt(dataAno), Integer.parseInt(dataMes), Integer.parseInt(dataDia));
 		
 		CadastroEJB CB = new CadastroEJB();
-		try {
-			CB.cadastrarDocumento(
-					codOrigem, tipoOrigem, titulo, 
-					tipoId, numId,
-					tipoDoc,
-					palChave1, palChave2, palChave3,
-					autor, local, destinatario, resumo,
-					dataDoc, email);
-		} catch (UnreachableDataBaseException e) {
-			response.setContentType("text/html");  
-		    PrintWriter out=response.getWriter();   
-			out.println("<script>");  
-		    out.println("alert('Erro no banco de dados! Contate o suporte e tente novamente mais tarde." + e.getStackTrace() + "');");  
-		    out.println("document.location=('/GraoPara/protected/user/');");  
-		    out.println("</script>");
-			e.printStackTrace();
-		} catch (UserNotFoundException e) {
-			System.err.println("Erro ao indentificar um usuário no cadastro de documento!");
-			e.printStackTrace();
+		if(action.equals("add")){
+			try {
+				CB.cadastrarDocumento(
+						codOrigem, tipoOrigem, titulo, 
+						tipoId, numId,
+						tipoDoc,
+						palChave1, palChave2, palChave3,
+						autor, local, destinatario, resumo,
+						dataDoc, email);
+			} catch (UnreachableDataBaseException e) {
+				out.println("<script>");  
+			    out.println("alert('Erro no banco de dados! Contate o suporte e tente novamente mais tarde." + e.getStackTrace() + "');");  
+			    out.println("document.location=('/GraoPara/protected/user/indexUser.jsp');");  
+			    out.println("</script>");
+				e.printStackTrace();
+			} catch (UserNotFoundException e) {
+				System.err.println("Erro ao indentificar um usuário no cadastro de documento!");
+				e.printStackTrace();
+			}
+		}
+
+		if(action.equals("update")){
+			try {
+				CB.atualizarDocumento(codOrigem, tipoOrigem, titulo, 
+						tipoId, numId,
+						tipoDoc,
+						palChave1, palChave2, palChave3,
+						autor, local, destinatario, resumo,
+						dataDoc, email);
+			} catch (UnreachableDataBaseException e) {
+				out.println("<script>");  
+			    out.println("alert('Erro no banco de dados! Contate o suporte e tente novamente mais tarde." + e.getStackTrace() + "');");  
+			    out.println("document.location=('/GraoPara/protected/user/indexUser.jsp');");  
+			    out.println("</script>");
+				e.printStackTrace();
+			} catch (DocumentNotFoundException e) {
+				e.printStackTrace();
+			}
 		}
 		response.sendRedirect("/GraoPara/");
 	}

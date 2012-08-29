@@ -79,9 +79,9 @@
 		<!-- Fim do Menu Lateral -->
 		<div class="content" id="content">
 
-			<h1>Cadastro de Documentos</h1>
+			<h2>Edição de Documentos</h2>
 			<form id="signupform" autocomplete="off" method="POST"
-				action="/GraoPara/addDoc">
+				action="/GraoPara/addDoc?action=update">
 				<table class="tableForms">
 					<tr>
 						<td colspan="3"><label class="labelForms"><strong>PREENCHA
@@ -122,7 +122,7 @@
 							class="inputTipoNum" id="tipo_num">
 								<%= WebUtility.printSelectId(request)%>
 						</select> <input class="inputShort" name="numero" id="numero" type="text"
-							maxlength="4"></td>
+							maxlength="4" value=<%=WebUtility.printLabel(request, "numeroAPEP")%>></td>
 						<td class="status"></td>
 					</tr>
 					<tr>
@@ -155,7 +155,8 @@
 					<tr>
 						<td><label class="labelForms" id="ldata" for="data">Data do Documento:<span class="asterisco">*</span></label></td>
 						<td class="field"><select name="dia" id="dia"
-							class="inputShort"><option value="" selected="selected">Dia:</option>
+							class="inputShort">
+								<%=WebUtility.printSelectDia(request) %>
 								<option value="1">1</option>
 								<option value="2">2</option>
 								<option value="3">3</option>
@@ -187,7 +188,8 @@
 								<option value="29">29</option>
 								<option value="30">30</option>
 								<option value="31">31</option></select> <select name="mes" id="mes"
-							class="inputShort"><option value="" selected="selected">Mês:</option>
+							class="inputShort">
+								<%= WebUtility.printSelectMes(request) %>
 								<option value="1">Janeiro</option>
 								<option value="2">Fevereiro</option>
 								<option value="3">Março</option>
@@ -201,7 +203,7 @@
 								<option value="11">Novembro</option>
 								<option value="12">Dezembro</option></select> <label class="labelForms"
 							id="ldata" for="data">Ano:</label><input class="inputShort"
-							type="text" name="ano" id="ano" maxlength="4" /></td>
+							type="text" name="ano" id="ano" maxlength="4" value="<%=WebUtility.printLabel(request, "ano")%>"/></td>
 						<td class="status"></td>
 					</tr>
 					<tr>
@@ -210,12 +212,7 @@
 						</label></td>
 						<td class="field"><select class="input" name="tipoDoc" id="tipoDoc">
 								<!-- Pegar do Banco de dados os tipos e, caso o usuÃ¡rio selecione outro, exibir campo para cadastrar outro tipo -->
-								<option value="">Selecione...</option>
-								<option value="ofícios">Ofícios</option>
-								<option value="relatórios">Relatórios</option>
-								<option value="impressos">Impressos</option>
-								<option value="processos">Processos</option>
-								<option value="cartas">Cartas</option>
+								<%= WebUtility.printSelectTipoDoc(request) %>
 						</select></td>
 						<td class="status"></td>
 					</tr>

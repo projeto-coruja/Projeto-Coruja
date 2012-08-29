@@ -27,6 +27,17 @@ public class KeyWordDAO {
 		}
 		return newKey;
 	}
+	
+	public PalavraChaveDTO addKeyWord(String key, Boolean status) throws UnreachableDataBaseException{
+		PalavraChaveDTO newKey = new PalavraChaveDTO(key.toLowerCase(),status);
+		try{
+			manager.saveEntity(newKey);
+		}catch(DataAccessLayerException e){
+			e.printStackTrace();
+			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");			
+		}
+		return newKey;
+	}
 
 	public void removeKeyWord(String key) throws UnreachableDataBaseException, KeywordNotFoundException{
 		List<DTO> check = null;
@@ -44,6 +55,24 @@ public class KeyWordDAO {
 			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
 		}
 	}	
+	
+	public PalavraChaveDTO approveKeyWord(String key) throws UnreachableDataBaseException, KeywordNotFoundException{
+		List<DTO> check = null;
+		PalavraChaveDTO select = null;
+		try{
+			check = findKeyWordByString(key);
+			for(DTO dto : check){
+				if (((PalavraChaveDTO) dto).getPalavra().equals(key))
+					select = (PalavraChaveDTO) dto;
+			}
+			select.setAprovada(true);
+			manager.updateEntity(select);
+			return select;
+		} catch(DataAccessLayerException e){
+			e.printStackTrace();
+			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
+		}
+	}
 	
 	public PalavraChaveDTO updateKeyWord(String oldKey, String newKey, Boolean newStatus) throws UnreachableDataBaseException, KeywordNotFoundException{
 		List<DTO> check = null;
@@ -74,7 +103,7 @@ public class KeyWordDAO {
 	public List<DTO> findKeyWordByString(String key) throws  UnreachableDataBaseException, KeywordNotFoundException  {
 		List<DTO> resultSet = null;
 		try {
-			resultSet = manager.findEntities("from PalavraChave where palavra like '" + key.toLowerCase() + "'");
+			resultSet = manager.findEntities("from PalavraChave where palavra like '%" + key.toLowerCase() + "%'");
 			if(resultSet == null) {
 				throw new KeywordNotFoundException ("Palavra não encontrada");
 			}

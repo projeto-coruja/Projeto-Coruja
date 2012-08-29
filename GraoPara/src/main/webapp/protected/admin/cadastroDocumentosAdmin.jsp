@@ -76,7 +76,7 @@
 		<div class="content" id="content">
 				
 			<h1>Cadastro de Documentos</h1>
-		<form id="signupform" autocomplete="off" method="POST" action="/GraoPara/addDoc">
+		<form id="signupform" autocomplete="off" method="POST" action="/GraoPara/addDoc?action=add">
 				<table class="tableForms">
 					<tr>
 						<td colspan="3">

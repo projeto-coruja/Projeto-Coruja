@@ -151,6 +151,79 @@ public class CadastroEJB {
 		docDao.updateDocument(docDTO);
 	}
 	
+	public synchronized void atualizarDocumento(String origem_codOrigem,
+			String origem_tipoOrigem, String origem_titulo,
+			String idNumDoc_tipoId, String idNumDoc_codId,
+			String tipoDocumento_tipoDocumento, String palavraChave01,
+			String palavraChave02, String palavraChave03, String autor,
+			String local, String destinatario, String resumo,
+			Calendar dataDocumento, String uploader) throws UnreachableDataBaseException, DocumentNotFoundException{
+		
+		KeyWordDAO kwDao = new KeyWordDAO();
+		
+		BuscaDocEJB busca = new BuscaDocEJB();
+		DocumentoDTO docDTO = busca.busca(idNumDoc_tipoId, idNumDoc_codId);
+		
+		docDTO.getOrigemDocumento().setCodOrigem(origem_codOrigem);
+		docDTO.getOrigemDocumento().setTipoOrigem(origem_tipoOrigem);
+		docDTO.getOrigemDocumento().setTitulo(origem_titulo);
+		
+		docDTO.getTipoDocumento().setTipoDocumento(tipoDocumento_tipoDocumento);
+		
+		if(docDTO.getPalavrasChaves1() != null)	docDTO.getPalavrasChaves1().setPalavra(palavraChave01);
+		else{
+			List<DTO> check;
+			try {
+				check = kwDao.findKeyWordByString(palavraChave01);
+				for (DTO dto : check) {
+					if (((PalavraChaveDTO) dto).getPalavra().equals(palavraChave01))
+						docDTO.setPalavrasChaves1((PalavraChaveDTO) dto);
+				}
+			} catch (KeywordNotFoundException e) {
+				PalavraChaveDTO palavra = kwDao.addKeyWord(palavraChave01, true);
+				docDTO.setPalavrasChaves1(palavra);
+			}
+		}
+		
+		if(docDTO.getPalavrasChaves2() != null)	docDTO.getPalavrasChaves2().setPalavra(palavraChave02);
+		else{
+			List<DTO> check;
+			try {
+				check = kwDao.findKeyWordByString(palavraChave02);
+				for (DTO dto : check) {
+					if (((PalavraChaveDTO) dto).getPalavra().equals(palavraChave02))
+						docDTO.setPalavrasChaves2((PalavraChaveDTO) dto);
+				}
+			} catch (KeywordNotFoundException e) {
+				PalavraChaveDTO palavra = kwDao.addKeyWord(palavraChave02, true);
+				docDTO.setPalavrasChaves2(palavra);
+			}
+		}
+		
+		if(docDTO.getPalavrasChaves3() != null)	docDTO.getPalavrasChaves3().setPalavra(palavraChave03);
+		else{
+			List<DTO> check;
+			try {
+				check = kwDao.findKeyWordByString(palavraChave03);
+				for (DTO dto : check) {
+					if (((PalavraChaveDTO) dto).getPalavra().equals(palavraChave03))
+						docDTO.setPalavrasChaves3((PalavraChaveDTO) dto);
+				}
+			} catch (KeywordNotFoundException e) {
+				PalavraChaveDTO palavra = kwDao.addKeyWord(palavraChave03, true);
+				docDTO.setPalavrasChaves3(palavra);
+			}
+		}
+		
+		docDTO.setAutor(autor);
+		docDTO.setLocal(local);
+		docDTO.setDestinatario(destinatario);
+		docDTO.setResumo(resumo);
+		docDTO.setDataDocumento(dataDocumento);
+		
+		docDao.updateDocument(docDTO);
+	}
+	
 	public synchronized void cadastrarPalavraChave(String palavra)
 			throws IllegalArgumentException, UnreachableDataBaseException {
 		KeyWordDAO kwDao = new KeyWordDAO();
@@ -204,6 +277,11 @@ public class CadastroEJB {
 		} finally {
 			keyDao.removeKeyWord(keyWord);
 		}
+	}
+	
+	public synchronized void aprovarPalavraChave(String key) throws UnreachableDataBaseException, KeywordNotFoundException {
+		KeyWordDAO kwd = new KeyWordDAO();
+		kwd.approveKeyWord(key);
 	}
 	
 	public synchronized void atualizarPalavraChave(String oldKey, String newKey, Boolean newStatus) throws UnreachableDataBaseException, KeywordNotFoundException , IllegalArgumentException {

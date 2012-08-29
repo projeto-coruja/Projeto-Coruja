@@ -20,6 +20,7 @@ import business.EJB.util.EJBUtility;
 import persistence.PersistenceAccess;
 import persistence.dto.DTO;
 import persistence.dto.ProfileDTO;
+import persistence.dto.TipoDocumentoDTO;
 import persistence.dto.UserDTO;
 import persistence.utility.PersistenceUtility;
 import webview.WebUtility;
@@ -97,6 +98,27 @@ public class InitServlet extends HttpServlet {
 		}
 		else visit = null;
 		
+		List<DTO> doc = pa.findEntities("from TipoDocumento where tipoDocumento = 'Ofícios'");
+		if(doc == null)
+		{
+			log.info("Criando um tipo de documento...");
+			pa.saveEntity(new TipoDocumentoDTO("Ofícios"));
+		}
+		
+		doc = pa.findEntities("from TipoDocumento where tipoDocumento = 'Cartas'");
+		if(doc == null)
+		{
+			log.info("Criando um tipo de documento...");
+			pa.saveEntity(new TipoDocumentoDTO("Cartas"));
+		}
+		
+		doc = pa.findEntities("from TipoDocumento where tipoDocumento = 'Relatórios'");
+		if(doc == null)
+		{
+			log.info("Criando um tipo de documento...");
+			pa.saveEntity(new TipoDocumentoDTO("Relatórios"));
+		}
+		doc = null;
 		
 		log.info("Finalizando inicialização...");
 	}
