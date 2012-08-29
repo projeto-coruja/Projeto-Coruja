@@ -247,8 +247,7 @@ a:hover, a:active, a:focus { /* this group of selectors will give a keyboard nav
 /* Estilo do botão de entrar do painel de login, está sendo reaproveitado para vários outros botões */
 .buttonEntrar, .buttonRegistrar, .buttonCancelar, .buttonLimpar, .buttonSair  {
 	width: 140px;
-	height: 24px;
-	margin-left: 10px;
+	height: 24px;	
 	text-align: center;
 	border: none;
 	float: inherit;
@@ -264,8 +263,7 @@ a:hover, a:active, a:focus { /* this group of selectors will give a keyboard nav
 }
 
 .buttonCancelar {
-margin-right: 60px;
-margin-left: 0px;
+margin-right: 80px;
 }
 
 .buttonSair {
@@ -476,6 +474,11 @@ span.asterisco {
 	border: 0px;
 }
 
+.tdPesquisa{
+	text-align:left;
+	width: 200px;
+	border: 0px;
+}
 .tdForms2{
 	text-align:left;
 	width: 100px;

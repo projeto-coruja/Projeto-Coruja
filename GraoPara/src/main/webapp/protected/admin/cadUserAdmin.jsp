@@ -58,17 +58,17 @@
 			</div>
 			<!-- ----------------------------------------------------------------------- -->
 
-					<article class="menuLateral">
+			<article class="menuLateral">
 				<ul class="nav" id="menu">
 					<li><a href="/GraoPara/protected/admin/indexAdmin.jsp">Home</a></li>
 					<li><a href="/GraoPara/protected/admin/pesquisaAdmin.jsp">Pesquisar</a></li>
 					<li><a href="/GraoPara/protected/admin/cadastroDocumentosAdmin.jsp">Cadastrar Documento</a></li>
 					<li><a href="/GraoPara/protected/admin/cadUserAdmin.jsp">Cadastrar Usuário</a></li>					
 					<li><a href="/GraoPara/protected/admin/painelAdmin.jsp">Painel Admin</a></li>
+					<li><a href="/GraoPara/protected/admin/cadastrarTipoDocumento.jsp">Cadastrar Tipo de Documento</a></li>					
 					<li><a href="/GraoPara/protected/admin/gerarSenha.jsp">Gerar Senha</a></li>
 					<li><a href="/GraoPara/protected/admin/sobreAdmin.jsp">Sobre</a></li>	
-					<li><a href="#">Créditos</a></li>			
-												
+					<li><a href="#">Créditos</a></li>									
 				</ul>
 			</article>
 		</div>
@@ -131,12 +131,11 @@
 						<td class="status"></td>
 					</tr>
 					<tr>
-						<td class="field" colspan="3">
+						<td class="tdForms">
 							<p></p>
-							<input class="buttonRegistrar" id="signupsubmit" name="Enviar" type="submit" value="Enviar" />
+							<input class="buttonRegistrar" id="signupsubmit" name="inserir" type="submit" value="Enviar" />
 						</td>
 					</tr>
-					
 				</table>
 			</form>
 		</div>

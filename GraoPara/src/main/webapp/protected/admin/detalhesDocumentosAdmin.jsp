@@ -61,18 +61,13 @@
 				<ul class="nav" id="menu">
 					<li><a href="/GraoPara/protected/admin/indexAdmin.jsp">Home</a></li>
 					<li><a href="/GraoPara/protected/admin/pesquisaAdmin.jsp">Pesquisar</a></li>
-					<li><a
-						href="/GraoPara/protected/admin/cadastroDocumentosAdmin.jsp">Cadastrar
-							Documento</a></li>
-					<li><a href="/GraoPara/protected/admin/cadUserAdmin.jsp">Cadastrar
-							Usuário</a></li>
-					<li><a href="/GraoPara/protected/admin/painelAdmin.jsp">Painel
-							Admin</a></li>
-					<li><a href="/GraoPara/protected/admin/gerarSenha.jsp">Gerar
-							Senha</a></li>
-					<li><a href="/GraoPara/protected/admin/sobreAdmin.jsp">Sobre</a></li>
-					<li><a href="#">Créditos</a></li>
-
+					<li><a href="/GraoPara/protected/admin/cadastroDocumentosAdmin.jsp">Cadastrar Documento</a></li>
+					<li><a href="/GraoPara/protected/admin/cadUserAdmin.jsp">Cadastrar Usuário</a></li>					
+					<li><a href="/GraoPara/protected/admin/painelAdmin.jsp">Painel Admin</a></li>
+					<li><a href="/GraoPara/protected/admin/cadastrarTipoDocumento.jsp">Cadastrar Tipo de Documento</a></li>					
+					<li><a href="/GraoPara/protected/admin/gerarSenha.jsp">Gerar Senha</a></li>
+					<li><a href="/GraoPara/protected/admin/sobreAdmin.jsp">Sobre</a></li>	
+					<li><a href="#">Créditos</a></li>									
 				</ul>
 			</article>
 		</div>
@@ -89,7 +84,7 @@
 							</strong></label></td>
 					</tr>
 					<tr>
-						<td><label class="labelForms" id="lidentificacao"
+						<td class="tdForms"><label class="labelForms" id="lidentificacao"
 							for="identificacao">Identificação<span class="asterisco">*</span></label>
 						</td>
 						<td class="field"><select name="identificacao" class="input"
@@ -99,7 +94,7 @@
 						<td class="status"></td>
 					</tr>
 					<tr>
-						<td><label class="labelForms" id="lcodigo" for="codigo">Código:<span
+						<td class="tdForms"><label class="labelForms" id="lcodigo" for="codigo">Código:<span
 								class="asterisco">*</span></label></td>
 						<td class="field"><input class="inputShort" name="codigo"
 							size="10" id="codigo" type="text" maxlength="5"
@@ -107,7 +102,7 @@
 						<td class="status"></td>
 					</tr>
 					<tr>
-						<td><label class="labelForms" id="ltitulo" for="titulo">Título:<span
+						<td class="tdForms"><label class="labelForms" id="ltitulo" for="titulo">Título:<span
 								class="asterisco">*</span></label></td>
 						<td class="field"><input class="input" name="titulo"
 							id="titulo" type="text" size="20" maxlength="48"
@@ -115,7 +110,7 @@
 						<td class="status"></td>
 					</tr>
 					<tr>
-						<td><label class="labelForms" id="lnumero" for="numero">Número
+						<td class="tdForms"><label class="labelForms" id="lnumero" for="numero">Número
 								APEP ou Sequencial:<span class="asterisco">*</span>
 						</label></td>
 						<td class="field"><select name="tipo_num"
@@ -126,7 +121,7 @@
 						<td class="status"></td>
 					</tr>
 					<tr>
-						<td><label class="labelForms" id="lautor" for="autor">Autor
+						<td class="tdForms"><label class="labelForms" id="lautor" for="autor">Autor
 								do Documento:<span class="asterisco">*</span>
 						</label></td>
 						<td class="field"><input class="input" name="autor"
@@ -135,7 +130,7 @@
 						<td class="status"></td>
 					</tr>
 					<tr>
-						<td><label class="labelForms" id="ldestinatario"
+						<td class="tdForms"><label class="labelForms" id="ldestinatario"
 							for="destinatario">Destinatário do Documento:<span
 								class="asterisco">*</span></label></td>
 						<td class="field"><input class="input" name="destinatario"
@@ -145,7 +140,7 @@
 						<td class="status"></td>
 					</tr>
 					<tr>
-						<td><label class="labelForms" id="llocal" for="local">Local:<span
+						<td class="tdForms"><label class="labelForms" id="llocal" for="local">Local:<span
 								class="asterisco">*</span></label></td>
 						<td class="field"><input class="input" name="local"
 							id="local" type="text" maxlength="48"
@@ -153,7 +148,7 @@
 						<td class="status"></td>
 					</tr>
 					<tr>
-						<td><label class="labelForms" id="ldata" for="data">Data do Documento:<span class="asterisco">*</span></label></td>
+						<td class="tdForms"><label class="labelForms" id="ldata" for="data">Data do Documento:<span class="asterisco">*</span></label></td>
 						<td class="field"><select name="dia" id="dia"
 							class="inputShort">
 								<%=WebUtility.printSelectDia(request) %>
@@ -207,7 +202,7 @@
 						<td class="status"></td>
 					</tr>
 					<tr>
-						<td><label class="labelForms" id="ltipoDoc" for="tipoDoc">Tipo
+						<td class="tdForms" style="FONT-FAMILY: 'Century Schoolbook L';"><label class="labelForms" id="ltipoDoc" for="tipoDoc">Tipo
 								do Documento:<span class="asterisco">*</span>
 						</label></td>
 						<td class="field"><select class="input" name="tipoDoc" id="tipoDoc">
@@ -243,9 +238,9 @@
 						<td class="status"></td>
 					</tr>
 					<tr>
-						<td>
-							<p></p> <input class="buttonRegistrar" id="signupsubmit"
-							name="inserir" type="submit" value="Enviar" />
+						<td class="tdControle" colspan="3">
+						<p></p>
+							<input class="buttonCancelar" type="button" value="Cancelar" onClick="history.go(-1)"> <input class="buttonRegistrar" id="signupsubmit" name="Enviar" type="submit" value="Enviar" />
 						</td>
 					</tr>
 				</table>

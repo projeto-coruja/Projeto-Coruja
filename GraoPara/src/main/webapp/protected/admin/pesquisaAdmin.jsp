@@ -48,17 +48,13 @@
 				<ul class="nav" id="menu">
 					<li><a href="/GraoPara/protected/admin/indexAdmin.jsp">Home</a></li>
 					<li><a href="/GraoPara/protected/admin/pesquisaAdmin.jsp">Pesquisar</a></li>
-					<li><a
-						href="/GraoPara/protected/admin/cadastroDocumentosAdmin.jsp">Cadastrar
-							Documento</a></li>
-					<li><a href="/GraoPara/protected/admin/cadUserAdmin.jsp">Cadastrar
-							Usuário</a></li>
-					<li><a href="/GraoPara/protected/admin/painelAdmin.jsp">Painel
-							Admin</a></li>
-					<li><a href="/GraoPara/protected/admin/gerarSenha.jsp">Gerar
-							Senha</a></li>
-					<li><a href="/GraoPara/protected/admin/sobreAdmin.jsp">Sobre</a></li>
-					<li><a href="#">Créditos</a></li>
+					<li><a href="/GraoPara/protected/admin/cadastroDocumentosAdmin.jsp">Cadastrar Documento</a></li>
+					<li><a href="/GraoPara/protected/admin/cadUserAdmin.jsp">Cadastrar Usuário</a></li>					
+					<li><a href="/GraoPara/protected/admin/painelAdmin.jsp">Painel Admin</a></li>
+					<li><a href="/GraoPara/protected/admin/cadastrarTipoDocumento.jsp">Cadastrar Tipo de Documento</a></li>					
+					<li><a href="/GraoPara/protected/admin/gerarSenha.jsp">Gerar Senha</a></li>
+					<li><a href="/GraoPara/protected/admin/sobreAdmin.jsp">Sobre</a></li>	
+					<li><a href="#">Créditos</a></li>									
 				</ul>
 			</article>
 		</div>
@@ -72,7 +68,7 @@
 									UM OU MAIS CAMPOS A SEGUIR:</strong></label></td>
 					</tr>
 					<tr>
-						<td class="tdForms"><label class="labelForms"
+						<td class="tdPesquisa"><label class="labelForms"
 							id="lidentificacao" for="identificacao">Identificação:</label></td>
 						<td class="field"><select name="identificacao" class="input"
 							id="identificacao">
@@ -87,7 +83,7 @@
 						</td>
 					</tr>
 					<tr>
-						<td class="tdForms"><label class="labelForms" id="lcodigo"
+						<td class="tdPesquisa"><label class="labelForms" id="lcodigo"
 							for="codigo">Código:</label></td>
 						<td class="field"><input class="input" name="codigo"
 							id="codigo" type="text" maxlength="5"></td>
@@ -96,7 +92,7 @@
 								title="Informe o código do documento que deseja pesquisar" /></a></td>
 					</tr>
 					<tr>
-						<td class="tdForms"><label class="labelForms" id="ltitulo"
+						<td class="tdPesquisa"><label class="labelForms" id="ltitulo"
 							for="titulo">Título:</label></td>
 						<td class="field"><input class="input" name="titulo"
 							id="titulo" type="text" size="20" maxlength="48"></td>
@@ -106,7 +102,7 @@
 								title="Cada caixa ou códice tem um título, geralmente longo." /></a></td>
 					</tr>
 					<tr>
-						<td class="tdForms"><label class="labelForms" id="lnumero"
+						<td class="tdPesquisa"><label class="labelForms" id="lnumero"
 							for="numero">Número APEP ou Sequencial:</label></td>
 						<td class="field"><input class="input" name="numero"
 							id="numero" type="text" maxlength="4"></td>
@@ -116,7 +112,7 @@
 								title="O número APEP é o número do documento dentro da caixa ou códice que o arquivista atribuiu. Muitos documentos possuem já essa numeração que facilita encontrar o documento dentro do conjunto. Quando existir esse número será com esse que identificaremos o documento. Em alguns casos, porém, o documento não está identificado. Aí você tem, às vezes, duzentos documentos sem nenhum tipo de numeração, o que torna impossível para o pesquisador que ler os verbetes saber rapidamente de que texto está se falando. Nestes casos, usaremos o que estamos chamando de número sequencial." /></a></td>
 					</tr>
 					<tr>
-						<td class="tdForms"><label class="labelForms" id="lautor"
+						<td class="tdPesquisa"><label class="labelForms" id="lautor"
 							for="autor">Autor do Documento:</label></td>
 						<td class="field"><input class="input" name="autor"
 							id="autor" type="text" size="20" maxlength="48"></td>
@@ -126,7 +122,7 @@
 								title="Autor do Documento que deseja pesquisar" /></a></td>
 					</tr>
 					<tr>
-						<td class="tdForms"><label class="labelForms"
+						<td class="tdPesquisa"><label class="labelForms"
 							id="ldestinatario" for="destinatario">Destinatário do
 								Documento:</label></td>
 						<td class="field"><input class="input" name="destinatario"
@@ -137,7 +133,7 @@
 								title="Esse campo descreve para quem era destinado o documento. Por exemplo, o governo no Rio de Janeiro, a autoridade fulano de tal. Trata-se de um campo textual, assim como autor ou verbete." /></a></td>
 					</tr>
 					<tr>
-						<td class="tdForms"><label class="labelForms" id="llocal"
+						<td class="tdPesquisa"><label class="labelForms" id="llocal"
 							for="local">Local:</label></td>
 						<td class="field"><input class="input" name="local"
 							id="local" type="text" maxlength="48"></td>
@@ -147,7 +143,7 @@
 								title="Trata-se do local em que foi escrito o documento, normalmente a cidade. Por exemplo, Belém." /></a></td>
 					</tr>
 					<tr>
-						<td class="tdForms"><label class="labelForms" id="ldata"
+						<td class="tdPesquisa"><label class="labelForms" id="ldata"
 							for="data">Data do Documento:</label></td>
 						<td class="field"><select name="dia" id="dia"
 							class="inputDia"><option value="" selected="selected">Dia</option>
@@ -203,7 +199,7 @@
 								title="Informe somente o ano se quiser filtrar a pesquisa por período." /></a></td>
 					</tr>
 					<tr>
-						<td class="tdForms"><label class="labelForms" id="ltipoDoc"
+						<td class="tdPesquisa"><label class="labelForms" id="ltipoDoc"
 							for="tipoDoc">Tipo do Documento:</label></td>
 						<td class="field"><select class="input" name="tipoDoc"
 							id="tipoDoc">

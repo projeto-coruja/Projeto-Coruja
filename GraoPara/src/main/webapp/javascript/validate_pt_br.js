@@ -114,6 +114,13 @@ $(document).ready(function() {
 				required: true,
 				minlength: 3
 			},
+			/* ----------------------------------
+			 * Editar tipos de documentos pelo Admin
+			 * ---------------------------------- */
+			tpDocNovo:{
+				required: true,
+				minlength: 3
+			},
 		},
 		messages: {
 			/* ----------------------------------
@@ -226,7 +233,14 @@ $(document).ready(function() {
 			 * ---------------------------------- */
 			tpDoc:{
 				required: "Informe o tipo de documento que deseja cadastrar",
-				minlength: jQuery.format("Digite no mínimo {0} caracteres."),
+				minlength: jQuery.format("Digite no mínimo {0} caracteres.")
+			},
+			/* ----------------------------------
+			 *  Cadastro de novos tipos de documentos pelo Admin
+			 * ---------------------------------- */
+			tpDocNovo:{
+				required: "Informe o tipo de Documento novo",
+				minlength: jQuery.format("Digite no mínimo {0} caracteres.")
 			},
 		},
 		// the errorPlacement has to take the table layout into account
