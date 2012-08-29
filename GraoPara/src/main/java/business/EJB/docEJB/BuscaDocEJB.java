@@ -170,6 +170,17 @@ public class BuscaDocEJB {
 			
 	}
 	
+	public List<DTO> buscaPorTipoDocumento(String tipoDocumento) throws UnreachableDataBaseException, DocumentNotFoundException{
+		
+		String query = new String(default_query);
+		
+		query += "tipo_documento = '" + tipoDocumento + "'";
+		
+		List<DTO> list = docDao.findDocumentByQuery(query);
+		if(list == null) throw new DocumentNotFoundException();
+		return list;
+	}
+	
 	public List<DTO> searchByKeyWord(String palavra) throws UnreachableDataBaseException, DocumentNotFoundException{
 		
 		String query = "from Documento where ";

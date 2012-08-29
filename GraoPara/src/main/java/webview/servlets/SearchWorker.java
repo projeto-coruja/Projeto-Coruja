@@ -196,4 +196,8 @@ public class SearchWorker {
 			out.write("</script>");
 		}
 	}
+	
+	public static void listAllDocumentsTypes(HttpServletRequest request, JspWriter out) throws IOException{
+		
+	}
 }

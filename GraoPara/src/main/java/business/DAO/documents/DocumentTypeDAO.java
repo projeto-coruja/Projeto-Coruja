@@ -63,6 +63,20 @@ public class DocumentTypeDAO {
 		}
 	}
 	
+	public TipoDocumentoDTO findSingleDocumentTypeByString(String type) throws  UnreachableDataBaseException, DocumentTypeNotFoundException  {
+		List<DTO> resultSet = null;
+		try {
+			resultSet = manager.findEntities("from TipoDocumento where tipoDocumento = '" + type +"'");
+			if(resultSet == null) {
+				throw new DocumentTypeNotFoundException ("Tipo não encontrado");
+			}
+			else return (TipoDocumentoDTO) resultSet.get(0);
+		} catch (DataAccessLayerException e) {
+			e.printStackTrace();
+			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
+		}
+	}
+	
 	public List<DTO> findAllDocumentTypes() throws  UnreachableDataBaseException, DocumentTypeNotFoundException  {
 		List<DTO> resultSet = null;
 		try {
