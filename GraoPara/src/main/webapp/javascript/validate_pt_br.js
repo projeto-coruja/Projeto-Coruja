@@ -107,6 +107,13 @@ $(document).ready(function() {
 			permissao:{
 				required: true
 			},
+			/* ----------------------------------
+			 *  Cadastro de novos tipos de documentos pelo Admin
+			 * ---------------------------------- */
+			tpDoc:{
+				required: true,
+				minlength: 3
+			},
 		},
 		messages: {
 			/* ----------------------------------
@@ -213,6 +220,13 @@ $(document).ready(function() {
 			 * ---------------------------------- */
 			permissao:{
 				required: "Selecione uma permissão para o usuário"
+			},
+			/* ----------------------------------
+			 *  Cadastro de novos tipos de documentos pelo Admin
+			 * ---------------------------------- */
+			tpDoc:{
+				required: "Informe o tipo de documento que deseja cadastrar",
+				minlength: jQuery.format("Digite no mínimo {0} caracteres."),
 			},
 		},
 		// the errorPlacement has to take the table layout into account

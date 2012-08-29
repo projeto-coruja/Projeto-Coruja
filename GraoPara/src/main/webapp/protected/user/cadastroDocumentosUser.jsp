@@ -50,7 +50,7 @@
 						%>
 					</fieldset>
 					<fieldset>
-						<input class="buttonSair" type="submit" name="Sair" value="" />
+						<input class="buttonSair" type="submit" name="Sair" value="Sair" />
 					</fieldset>
 				</form>
 			</div>
