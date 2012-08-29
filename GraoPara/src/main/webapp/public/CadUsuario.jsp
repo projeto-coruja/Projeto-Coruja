@@ -76,6 +76,7 @@
 					<li><a href="/GraoPara/public/pesquisa.jsp">Pesquisar</a></li>
 					<li><a href="/GraoPara/public/sobre.jsp">Sobre</a></li>
 					<li><a href="/GraoPara/public/creditos.jsp">Créditos</a></li>
+					<li><a href="/GraoPara/public/tutorialPesquisa.jsp">Como pesquisar no acervo</a>
 				</ul>
 			</article>
 		</div>	<!-- Fim do Menu Lateral -->

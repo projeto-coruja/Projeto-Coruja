@@ -1,5 +1,5 @@
 <!doctype html>
-<%@page import="webview.servlets.SearchWorker"%>
+<%@page import="webview.servlets.SearchWorkerPublic"%>
 <html>
 <head>
 <meta charset="utf-8">
@@ -55,6 +55,7 @@
 					<li><a href="/GraoPara/public/pesquisa.jsp">Pesquisar</a></li>
 					<li><a href="/GraoPara/public/sobre.jsp">Sobre</a></li>
 					<li><a href="/GraoPara/public/creditos.jsp">Créditos</a></li>
+					<li><a href="/GraoPara/public/tutorialPesquisa.jsp">Como pesquisar no acervo</a>	
 				</ul>
 			</article>
 		</div>
@@ -72,12 +73,11 @@
 					<td class="tdList"><label class="labelExibe">Destinatário</label></td>
 					<td class="tdList"><label class="labelExibe">Local</label></td>
 					<td class="tdList"><label class="labelExibe">Data</label></td>
-					<td class="tdList"><label class="labelExibe">Documento</label></td>
-					<td class="tdList"><label class="labelExibe">Palavras-Chaves</label></td>
-					<td class="tdList"><label class="labelExibe">Ações</label></td>
+					<td class="tdList"><label class="labelExibe">Tipo de Documento</label></td>
+					<td class="tdList"><label class="labelExibe">Palavras-Chave</label></td>
 				</tr>
 
-				<% SearchWorker.listAllDocuments(request, out); %>
+				<% SearchWorkerPublic.listAllDocuments(request, out); %>
 				
 			</table>
 		</div>

@@ -44,6 +44,7 @@ $(document).ready(function() {
 			ano: {
 				required: true,
 				minlength: 4,
+				max: 2012,
 				number: true
 			},
 			tipoDoc: {
@@ -110,7 +111,7 @@ $(document).ready(function() {
 			/* ----------------------------------
 			 *  Cadastro de novos tipos de documentos pelo Admin
 			 * ---------------------------------- */
-			tpDoc:{
+			docType:{
 				required: true,
 				minlength: 3
 			},
@@ -165,6 +166,7 @@ $(document).ready(function() {
 			ano: {
 				required: "Informe o Ano.",
 				minlength: jQuery.format("Informe o ano com {0} dígitos."),
+				max: jQuery.format("Informe um ano anterior a {0}"),
 				number: "Digite apenas números"
 			},
 			tipoDoc: {
@@ -231,7 +233,7 @@ $(document).ready(function() {
 			/* ----------------------------------
 			 *  Cadastro de novos tipos de documentos pelo Admin
 			 * ---------------------------------- */
-			tpDoc:{
+			docType:{
 				required: "Informe o tipo de documento que deseja cadastrar",
 				minlength: jQuery.format("Digite no mínimo {0} caracteres.")
 			},

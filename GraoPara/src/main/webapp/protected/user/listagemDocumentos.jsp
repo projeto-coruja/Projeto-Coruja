@@ -1,5 +1,5 @@
 <!doctype html>
-<%@page import="webview.servlets.SearchWorker"%>
+<%@page import="webview.servlets.SearchWorkerPublic"%>
 <%@page import="webview.WebUtility"%>
 <html>
 <head>
@@ -54,7 +54,8 @@
 					<li><a href="/GraoPara/protected/user/cadastroDocumentosUser.jsp">Cadastrar Documento</a></li>
 					<li><a href="/GraoPara/protected/user/painelUser.jsp">Painel User</a></li>
 					<li><a href="/GraoPara/protected/user/sobreUser.jsp">Sobre</a></li>
-					<li><a href="#">Créditos</a></li>
+					<li><a href="/GraoPara/protected/user/creditosUser.jsp">Créditos</a></li>
+					<li><a href="/GraoPara/protected/user/tutorialPesquisaUser.jsp">Como pesquisar no acervo</a>
 				</ul>
 			</article>
 		</div>
@@ -72,12 +73,11 @@
 					<td class="tdList"><label class="labelExibe">Destinatário</label></td>
 					<td class="tdList"><label class="labelExibe">Local</label></td>
 					<td class="tdList"><label class="labelExibe">Data</label></td>
-					<td class="tdList"><label class="labelExibe">Documento</label></td>
-					<td class="tdList"><label class="labelExibe">Palavras-Chaves</label></td>
-					<td class="tdList"><label class="labelExibe">Ações</label></td>
+					<td class="tdList"><label class="labelExibe">Tipo de Documento</label></td>
+					<td class="tdList"><label class="labelExibe">Palavras-Chave</label></td>
 				</tr>
 
-				<% SearchWorker.listAllDocuments(request, out); %>
+				<% SearchWorkerPublic.listAllDocuments(request, out); %>
 				
 			</table>
 		</div>
