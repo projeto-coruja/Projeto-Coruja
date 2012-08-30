@@ -76,7 +76,7 @@
 		<!-- Fim do Menu Lateral -->
 		<div class="content" id="content">
 				<h1>Cadastro Usuário</h1>
-			<form id="signupform" autocomplete="off" method="post" action="/GraoPara/doRegister">
+			<form id="signupform" autocomplete="off" method="post" action="/GraoPara/protected/admin/doAdminRegister">
 				<table class="tableForms">
 					<tr>
 						<td class="labelForms" colspan="3">
