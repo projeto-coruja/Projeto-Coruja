@@ -11,9 +11,12 @@ import javax.servlet.jsp.JspWriter;
 import persistence.dto.DTO;
 import persistence.dto.DocumentoDTO;
 import webview.WebUtility;
+import persistence.dto.TipoDocumentoDTO;
 import business.EJB.docEJB.BuscaDocEJB;
 import business.EJB.userEJB.AuthBean;
+import business.EJB.docEJB.TipoDocumentoEJB;
 import business.exceptions.documents.DocumentNotFoundException;
+import business.exceptions.documents.DocumentTypeNotFoundException;
 import business.exceptions.login.UnreachableDataBaseException;
 
 public class SearchWorker {
@@ -210,6 +213,32 @@ public class SearchWorker {
 	}
 	
 	public static void listAllDocumentsTypes(HttpServletRequest request, JspWriter out) throws IOException{
+		List<DTO> lista;
+		TipoDocumentoEJB tipoEjb = new TipoDocumentoEJB();
+		
+		try {
+			lista = tipoEjb.listAllTypeDocuments();
+			
+			for(DTO dto : lista){
+				TipoDocumentoDTO tipoDoc = (TipoDocumentoDTO) dto;
+				out.println("<tr  class=\"trList\">");
+				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ tipoDoc.getTipoDocumento()+"</label></td>");
+				out.println("<td class=\"tdList\">"
+						+ "<a href=\"/GraoPara/protected/admin/doDocType?docType="+ tipoDoc.getTipoDocumento() + "\">"
+							+"<img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\"/>"
+						+ "</a>"
+					+ "</td> ");
+				out.println("</tr>");
+			}
+			
+		} catch (UnreachableDataBaseException e) {
+			e.printStackTrace();
+		} catch (DocumentTypeNotFoundException e) {
+			out.println("<tr  class=\"trList\">");
+			out.println("<td colspan=\"2\" class=\"tdList\"><label class=\"labelExibe\">Nenhum tipo de documento encontrado.</label></td>");
+			out.println("</tr>");
+		}
+		
 		
 	}
 }

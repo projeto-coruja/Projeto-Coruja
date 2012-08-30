@@ -298,6 +298,12 @@ margin-left: 0px;
 	height: 25em;
 	overflow: auto;
 }
+
+.scrollLong{
+	height: 40em;
+	overflow: auto;
+}
+
 .buttonPesquisa{
 	width:185px;
 	height:24px;
@@ -498,7 +504,7 @@ span.asterisco {
 
 .tableList, .trList, .tdList{
 	text-align:center;	
-	width: 590px;
+	width: 585px;
 	border-collapse: collapse;
 	border: 1px solid;
 }

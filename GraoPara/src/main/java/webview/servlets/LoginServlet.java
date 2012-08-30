@@ -46,7 +46,7 @@ public class LoginServlet extends HttpServlet {
 				Cookie c_email = new Cookie(WebUtility.cookie_email, user);
 				Cookie c_pass = new Cookie(WebUtility.cookie_session, EJBUtility.getHash(login_result.getUsername() + login_result.getEmail() + login_result.getLogType(), "SHA-256"));
 				Cookie c_status = new Cookie(WebUtility.cookie_status, login_result.getLogType().toString());
-				Cookie c_nome = new Cookie(WebUtility.cookie_nome, login_result.getUsername());
+				Cookie c_nome = new Cookie(WebUtility.cookie_nome, WebUtility.removeAccents(login_result.getUsername()));
 				c_email.setMaxAge(WebUtility.cookie_expire);
 				c_pass.setMaxAge(WebUtility.cookie_expire);
 				c_status.setMaxAge(-1);

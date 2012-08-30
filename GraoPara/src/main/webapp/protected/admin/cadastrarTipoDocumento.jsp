@@ -1,5 +1,5 @@
 <!doctype html>
-<%@page import="webview.servlets.PanelWorker"%>
+<%@page import="webview.servlets.SearchWorker"%>
 <%@page import="webview.WebUtility"%>
 <html>
 <head>
@@ -25,15 +25,16 @@
 <script src="/GraoPara/javascript/chili-1.7.pack.js"
 	type="text/javascript"></script>
 <script type="text/javascript"
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"charset="utf-8"></script>
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"
+	charset="utf-8"></script>
 
-	<!-- Import dos scripts de validação de formulário -->
-	<script src="/GraoPara/javascript/jquery.js" type="text/javascript"
-		charset="utf-8"></script>
-	<script src="/GraoPara/javascript/validate.js" type="text/javascript"
-		charset="utf-8"></script>
-	<script src="/GraoPara/javascript/validate_pt_br.js"
-		type="text/javascript" charset="utf-8"></script> 
+<!-- Import dos scripts de validação de formulário -->
+<script src="/GraoPara/javascript/jquery.js" type="text/javascript"
+	charset="utf-8"></script>
+<script src="/GraoPara/javascript/validate.js" type="text/javascript"
+	charset="utf-8"></script>
+<script src="/GraoPara/javascript/validate_pt_br.js"
+	type="text/javascript" charset="utf-8"></script>
 
 
 </head>
@@ -62,7 +63,7 @@
 			</div>
 			<!-- ----------------------------------------------------------------------- -->
 
-					<article class="menuLateral">
+			<article class="menuLateral">
 				<ul class="nav" id="menu">
 					<li><a href="/GraoPara/protected/admin/indexAdmin.jsp">Home</a></li>
 					<li><a href="/GraoPara/protected/admin/pesquisaAdmin.jsp">Pesquisar</a></li>
@@ -79,37 +80,40 @@
 		</div>
 		<!-- Fim do Menu Lateral -->
 		<div class="content" id="content">
-		<h1> Cadastrar Tipos de Documentos</h1>
-		<form action="/GraoPara/doPasswordRecovery" id="signupform"  method="post" autocomplete="off">
-				<table class="tableControle">				
-				<tr>
-						<td class="tdControle">
-							<label class="labelForms"  id="ltpDoc" for="tpDoc">Cadastrar novo Tipo:<span class="asterisco">*</span></label>
+			<h1>Cadastrar Tipos de Documentos</h1>
+			<form action="/GraoPara/doDocType" id="signupform"
+				method="post" autocomplete="off">
+				<table class="tableControle">
+					<tr>
+						<td class="tdControle"><label class="labelForms" id="ltpDoc"
+							for="tpDoc">Cadastrar novo Tipo:<span class="asterisco">*</span></label>
 						</td>
-						<td class="field">
-							<input class="input" id="tpDoc" name="tpDoc" type="text" value="" maxlength="20" />
-						</td>
+						<td class="field"><input class="input" id="tpDoc"
+							name="docType" type="text" value="" maxlength="20" /></td>
 						<td class="status"></td>
-					</tr>				
-				<tr>
+					</tr>
+					<tr>
 						<td class="tdForms">
-							<p></p>
-							<input class="buttonRegistrar" id="signupsubmit" name="inserir" type="submit" value="Enviar" />
+							<p></p> <input class="buttonRegistrar" id="signupsubmit"
+							name="inserir" type="submit" value="Enviar" />
 						</td>
 					</tr>
 				</table>
-				</form>	
-				<br><br>
+			</form>
+			<br> <br>
+			<div class="scrollLong">
 				<table class="tableList">
-				<tr class="trList">
-					<td class="tdList"><label class="labelExibe">Tipos de Documentos</label></td>
-					<td class="tdList"><label class="labelExibe">Ações</label></td>
-				</tr>
-
-					<% /*SearchWorker.listAllDocuments(request, out);*/ %>
-				
+					<tr class="trList">
+						<td class="tdList"><label class="labelExibe">Tipos de
+								Documentos</label></td>
+						<td class="tdList"><label class="labelExibe">Ações</label></td>
+					</tr>
+	
+					<% SearchWorker.listAllDocumentsTypes(request, out); %>
+	
 				</table>
 			</div>
+		</div>
 		<!-- Começo do Rodapé -->
 		<div class="footer">
 			<p>Copyright © - Universidade Federal de São Paulo - UNIFESP 2012</p>

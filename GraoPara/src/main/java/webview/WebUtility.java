@@ -1,6 +1,7 @@
 package webview;
 
 import java.io.IOException;
+import java.text.Normalizer;
 import java.util.List;
 
 import javax.servlet.http.Cookie;
@@ -200,5 +201,11 @@ public final class WebUtility {
 			e.printStackTrace();
 		}
 		return result;
+	}
+	
+	public static String removeAccents(String str) {
+	    str = Normalizer.normalize(str, Normalizer.Form.NFD);
+	    str = str.replaceAll("[^\\p{ASCII}]", "");
+	    return str;
 	}
 }
