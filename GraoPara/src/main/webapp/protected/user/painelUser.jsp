@@ -99,7 +99,7 @@
 				</form> -->
 				<!-- Novo formulário para mudança de senha --> 
 				<h1>Painel de Controle</h1>
-				<form id="signupform" autocomplete="off" action="/GraoPara/doChangesToAccount?action=editPassowrd" method="post">
+				<form id="signupform" autocomplete="off" action="/GraoPara/doChangesToAccount?action=editPassword" method="post">
 					<table class="tableControle">
 					<tr>
 						<th colspan="3" align="center"> Mudar Senha Atual </th>
