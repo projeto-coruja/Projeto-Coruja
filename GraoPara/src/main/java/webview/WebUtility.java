@@ -163,10 +163,11 @@ public final class WebUtility {
 		String tipoDoc = null;
 		try {
 			List<DTO> list = dtd.findAllDocumentTypes();
+			result = "<option selected=\"selected\"value=\"\">------</option> ";
 			for(DTO d : list){
 				tipoDoc = ((TipoDocumentoDTO) d).getTipoDocumento();
 				if(tipoDoc.equals(request.getParameter("tipoDoc")))
-					result += "<option selected value=\"" + tipoDoc + "\">" + tipoDoc + "</option> ";
+					result += "<option value=\"" + tipoDoc + "\">" + tipoDoc + "</option> ";
 				else
 					result += "<option value=\"" + tipoDoc + "\">" + tipoDoc + "</option> ";
 			}

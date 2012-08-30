@@ -279,7 +279,6 @@ public class CadastroEJB {
 			} catch (UnreachableDataBaseException e1) {
 				e1.printStackTrace();
 			}
-			// e.printStackTrace();
 		}
 	}
 	
