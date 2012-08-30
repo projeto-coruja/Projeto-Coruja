@@ -63,19 +63,37 @@ public class CadastroEJB {
 
 		tipoDTO = new TipoDocumentoDTO(tipoDocumento_tipoDocumento);
 		
-
+		BuscaPalavraChaveEJB buscaPalavraChave =  new BuscaPalavraChaveEJB();
+		
 		if(!palavraChave01.isEmpty()) {
-			palavraChaveDTO[0] = new PalavraChaveDTO(palavraChave01, false);
+			try {
+				palavraChaveDTO[0] = buscaPalavraChave.buscarPalavraChave(palavraChave01);
+			} catch (IllegalArgumentException e) {
+				e.printStackTrace();
+			} catch (KeywordNotFoundException e) {
+				palavraChaveDTO[0] = new PalavraChaveDTO(palavraChave01, false);
+			}
 		}
 		else throw new IllegalArgumentException("Palavra-chave principal não pode ser vazia!");
 			
 		if(!palavraChave02.isEmpty()) {
-			palavraChaveDTO[1] = new PalavraChaveDTO(palavraChave02, false);
+			try {
+				palavraChaveDTO[1] = buscaPalavraChave.buscarPalavraChave(palavraChave02);
+			} catch (IllegalArgumentException e) {
+				e.printStackTrace();
+			} catch (KeywordNotFoundException e) {
+				palavraChaveDTO[1] = new PalavraChaveDTO(palavraChave02, false);
+			}
 		}
 		
 		if(!palavraChave03.isEmpty()) {
-			palavraChaveDTO[2] = new PalavraChaveDTO(palavraChave03, false);
-
+			try {
+				palavraChaveDTO[2] = buscaPalavraChave.buscarPalavraChave(palavraChave03);
+			} catch (IllegalArgumentException e) {
+				e.printStackTrace();
+			} catch (KeywordNotFoundException e) {
+				palavraChaveDTO[2] = new PalavraChaveDTO(palavraChave03, false);
+			}
 		}
 	
 		uploaderDTO = (new LoginDAO()).findUserByEmail(uploader);
