@@ -105,7 +105,7 @@ public class DocumentDAO {
 				if(((OrigemDTO) dto).getTitulo().equals(((OrigemDTO) dto).getTitulo()) &&
 						((OrigemDTO) dto).getTipoOrigem().equals(((OrigemDTO) dto).getTipoOrigem()) &&
 						((OrigemDTO) dto).getCodOrigem().equals(((OrigemDTO) dto).getCodOrigem()))
-					newDoc.setOrigemDocumento((OrigemDTO) check);
+					newDoc.setOrigemDocumento((OrigemDTO) dto);
 			}
 		} catch (OriginNotFoundException e1) {
 			newDoc.setOrigemDocumento(od.addOrigem(newDoc.getOrigemDocumento().getCodOrigem(), newDoc.getOrigemDocumento().getTipoOrigem(), newDoc.getOrigemDocumento().getTitulo()));

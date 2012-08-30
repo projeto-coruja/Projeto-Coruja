@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import webview.WebUtility;
+
 import business.EJB.userEJB.CadastroBean;
 import business.exceptions.login.DuplicateUserException;
 import business.exceptions.login.IncorrectLoginInformationException;
@@ -40,7 +42,7 @@ public class CadastroServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String nome = request.getParameter("nome");
+		String nome = WebUtility.removeAccents(request.getParameter("nome"));
 		String email = request.getParameter("email");
 		String senha = request.getParameter("senha");
 		

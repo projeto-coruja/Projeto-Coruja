@@ -112,7 +112,7 @@ public class PanelWorker {
 					+ "<a href=\"/GraoPara/protected/admin/editarUsuario.jsp?"
 						+ "paramName=" + user.getName()
 						+"&paramEmail="+user.getEmail()+"\" ><img src=\"/GraoPara/images/edit.png\" title=\"Editar\" alt=\"Editar\" /></a>" 
-					+ "<a href=\"/GraoPara/doChangesToAccount?" 
+					+ "<a href=\"/GraoPara/protected/admin/removeAccount?" 
 						+ "email=" + user.getEmail()
 						+ "&action=delete" + "&tab=3\"><img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\" /></a>"
 						+ "</td>");

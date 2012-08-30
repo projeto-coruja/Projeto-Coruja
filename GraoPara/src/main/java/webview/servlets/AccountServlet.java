@@ -37,30 +37,6 @@ public class AccountServlet extends HttpServlet {
     }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		AdminBean adm = new AdminBean();
-		String email = request.getParameter(EJBUtility.getHash("email", "SHA-256"));
-		String action = request.getParameter(EJBUtility.getHash("action", "SHA-256"));
-		String previous = request.getParameter("tab");
-		
-		try {
-			if(action.equals(EJBUtility.getHash("approve", "SHA-256"))) adm.alterarPermissoesUsuario(email, "user");
-			else if(action.equals(EJBUtility.getHash("delete", "SHA-256")))	adm.deletarUsuario(email);
-		} catch (IncorrectProfileInformationException e) {
-			e.printStackTrace();
-		} catch (UnreachableDataBaseException e) {
-			e.printStackTrace();
-		} catch (UserNotFoundException e) {
-			e.printStackTrace();
-		} catch (ProfileNotFoundException e) {
-			e.printStackTrace();
-		} 
-		response.sendRedirect("/GraoPara/protected/admin/painelAdmin.jsp#tab"+previous);
-	}
-
-	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -134,7 +110,6 @@ public class AccountServlet extends HttpServlet {
 			    out.println("alert('Não foi possível conectar com o banco de dados.');");  
 			    out.println("document.location=('/GraoPara/public/index.jsp');");  
 			    out.println("</script>");
-				e.printStackTrace();
 				e.printStackTrace();
 			} catch (UserNotFoundException e) {
 				e.printStackTrace();
