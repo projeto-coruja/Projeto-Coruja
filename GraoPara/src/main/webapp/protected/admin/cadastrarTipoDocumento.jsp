@@ -101,16 +101,18 @@
 				</table>
 			</form>
 			<br> <br>
-			<table class="tableList">
-				<tr class="trList">
-					<td class="tdList"><label class="labelExibe">Tipos de
-							Documentos</label></td>
-					<td class="tdList"><label class="labelExibe">Ações</label></td>
-				</tr>
-
-				<% SearchWorker.listAllDocumentsTypes(request, out); %>
-
-			</table>
+			<div class="scrollLong">
+				<table class="tableList">
+					<tr class="trList">
+						<td class="tdList"><label class="labelExibe">Tipos de
+								Documentos</label></td>
+						<td class="tdList"><label class="labelExibe">Ações</label></td>
+					</tr>
+	
+					<% SearchWorker.listAllDocumentsTypes(request, out); %>
+	
+				</table>
+			</div>
 		</div>
 		<!-- Começo do Rodapé -->
 		<div class="footer">
