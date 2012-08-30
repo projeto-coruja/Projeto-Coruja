@@ -165,13 +165,9 @@
 							<label class="labelForms" id="ltipoDoc" for="tipoDoc">Tipo do Documento:<span class="asterisco">*</span></label>
 						</td>
 						<td class="field">
-							<select class="input" name="tipoDoc" id="tipoDoc"> <!-- Pegar do Banco de dados os tipos e, caso o usuÃ¡rio selecione outro, exibir campo para cadastrar outro tipo -->
-									<option value="">Selecione...</option>
-									<option value="ofícios">Ofícios</option>
-									<option value="relatórios">Relatórios</option>
-									<option value="impressos">Impressos</option>
-									<option value="processos">Processos</option>
-									<option value="cartas">Cartas</option>
+							<select class="input" name="tipoDoc" id="tipoDoc"> 
+							<!-- Pegar do Banco de dados os tipos e, caso o usuÃ¡rio selecione outro, exibir campo para cadastrar outro tipo -->
+									<%= WebUtility.printSelectTipoDoc(request) %>
 							</select>
 						</td>
 						<td class="status"></td>
