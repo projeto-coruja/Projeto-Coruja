@@ -114,7 +114,7 @@ public class PanelWorker {
 						+"&paramEmail="+user.getEmail()+"\" ><img src=\"/GraoPara/images/edit.png\" title=\"Editar\" alt=\"Editar\" /></a>" 
 					+ "<a href=\"/GraoPara/protected/admin/removeAccount?" 
 						+ "email=" + user.getEmail()
-						+ "&action=delete" + "&tab=3\"><img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\" /></a>"
+						+ "&tab=3\"><img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\" /></a>"
 						+ "</td>");
 				out.println("</tr>");
 				out.println("</tr>");
@@ -154,7 +154,7 @@ public class PanelWorker {
 							+"&paramEmail="+user.getEmail()+"\" ><img src=\"/GraoPara/images/edit.png\" title=\"Editar\" alt=\"Editar\" /></a>" 
 						+ "<a href=\"/GraoPara/protected/admin/removeAccount?" 
 							+ "email=" + user.getEmail()
-							+ "&action=delete" + "&tab=3\"><img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\" /></a>"
+							+ "&tab=3\"><img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\" /></a>"
 							+ "</td>");
 					out.println("</tr>");
 				}
@@ -186,10 +186,5 @@ public class PanelWorker {
 		} catch (ProfileNotFoundException e) {
 			e.printStackTrace();
 		}
-	}
-	
-	public static void removeUser(HttpServletRequest request, JspWriter out) throws IOException{
-		  
-		
 	}
 }

@@ -39,10 +39,7 @@ public class AccountApprovalServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		try {
 			ab.alterarPermissoesUsuario(request.getParameter("email"), "user");
-			out.println("<script>");
-			out.println("alert('Usuário aprovado!');");
-			out.println("document.location=('/GraoPara/protected/admin/painelAdmin.jsp');");
-			out.println("</script>");
+			response.sendRedirect(request.getContextPath() + "/protected/admin/painelAdmin.jsp#tab2");
 		} catch (IncorrectProfileInformationException e) {
 			out.println("<script>");  
 		    out.println("alert('Erro de profile inválido, contate o suporte.');");  
