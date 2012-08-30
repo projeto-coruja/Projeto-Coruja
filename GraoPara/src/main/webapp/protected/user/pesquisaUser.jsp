@@ -72,9 +72,7 @@
 							id="lidentificacao" for="identificacao">Identificação:</label></td>
 						<td class="field"><select name="identificacao" class="input"
 							id="identificacao">
-								<option value="">Selecione...</option>
-								<option value="codice">Número de Códice</option>
-								<option value="caixa">Número da Caixa</option>
+								<%= WebUtility.printSelectOrigem(request) %>
 						</select></td>
 						<td class="status"><a href="#"><img
 								src="/GraoPara/images/icone_ajuda.png"

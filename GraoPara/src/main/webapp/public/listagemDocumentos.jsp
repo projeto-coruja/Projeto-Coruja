@@ -1,5 +1,5 @@
 <!doctype html>
-<%@page import="webview.servlets.SearchWorkerPublic"%>
+<%@page import="webview.servlets.SearchWorker"%>
 <html>
 <head>
 <meta charset="utf-8">
@@ -77,7 +77,7 @@
 					<td class="tdList"><label class="labelExibe">Palavras-Chave</label></td>
 				</tr>
 
-				<% SearchWorkerPublic.listAllDocuments(request, out); %>
+				<% SearchWorker.listAllDocuments(request, out); %>
 				
 			</table>
 		</div>

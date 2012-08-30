@@ -10,8 +10,10 @@ import javax.servlet.jsp.JspWriter;
 
 import persistence.dto.DTO;
 import persistence.dto.DocumentoDTO;
+import webview.WebUtility;
 import persistence.dto.TipoDocumentoDTO;
 import business.EJB.docEJB.BuscaDocEJB;
+import business.EJB.userEJB.AuthBean;
 import business.EJB.docEJB.TipoDocumentoEJB;
 import business.exceptions.documents.DocumentNotFoundException;
 import business.exceptions.documents.DocumentTypeNotFoundException;
@@ -38,11 +40,19 @@ public class SearchWorker {
 		
 		String data_concat = ano.concat(mes.concat(dia));
 		
+
+		String c_status = null;
+		
+		if(request.getCookies().length > 1){
+			c_status = WebUtility.selectCookie(request.getCookies(), WebUtility.cookie_status).getValue();
+		}
+		
+		
 		BuscaDocEJB search = new BuscaDocEJB();
 		List<DTO> docs = null;    
-		
+
 		try {
-			docs = search.busca(identificacao, codigo, titulo, tipoAPEP_SEQ, numAPEP_SEQ, autor, destinatario, local, data_concat, tipoDoc, palavra1, palavra2, palavra3); 
+			docs = search.busca(identificacao.toUpperCase(), codigo, titulo, tipoAPEP_SEQ, numAPEP_SEQ, autor, destinatario, local, data_concat, tipoDoc, palavra1, palavra2, palavra3); 
 
 			for(DTO d : docs){
 				
@@ -74,33 +84,34 @@ public class SearchWorker {
 						+ palchave2 + " - "
 						+ palchave3
 						+ "</label></td>");
-				out.println("<td class=\"tdList\">"
-						+ "<a href=\"/GraoPara/protected/admin/detalhesDocumentosAdmin.jsp?"
-							+"identificacao=" + doc.getOrigemDocumento().getTipoOrigem()
-							+"&codigo=" + doc.getOrigemDocumento().getCodOrigem()
-							+"&titulo=" + doc.getOrigemDocumento().getTitulo()
-							+"&tipoAPEP_SEQ=" + doc.getIdNumDocumento().getTipoId()
-							+"&numeroAPEP=" + doc.getIdNumDocumento().getCodId()
-							+"&dia=" + String.valueOf(c_dia)
-							+"&mes=" + String.valueOf(c_mes)
-							+"&ano=" + String.valueOf(c_ano)
-							+"&autor=" + doc.getAutor()
-							+"&destinatario=" + doc.getDestinatario()
-							+"&local=" + doc.getLocal()
-							+"&tipoDoc=" + doc.getTipoDocumento().getTipoDocumento()
-							+"&resumo=" + doc.getResumo()
-							+"&chave1=" + palchave1
-							+"&chave2=" + palchave2
-							+"&chave3=" + palchave3
-							+ "\">"
-							+ "<img src=\"/GraoPara/images/edit.png\" title=\"Editar\" alt=\"Editar\"/></a> "
-						+ "<br>"
-						+ "<a href=\"/GraoPara/addDoc?"
-							+"tipoAPEP_SEQ=" + doc.getIdNumDocumento().getTipoId()
-							+"&numeroAPEP=" + doc.getIdNumDocumento().getCodId()
-							+ "\">"
-							+ "<img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\"/></a> "
-						+ "</td>");
+				if(c_status != null && c_status.equals(AuthBean.LoginSuccessAdmin)){
+					 out.println( "<td class=\"tdList\">"
+								+ "<a href=\"/GraoPara/protected/admin/detalhesDocumentosAdmin.jsp?"
+								+"identificacao=" + doc.getOrigemDocumento().getTipoOrigem()
+								+"&codigo=" + doc.getOrigemDocumento().getCodOrigem()
+								+"&titulo=" + doc.getOrigemDocumento().getTitulo()
+								+"&tipoAPEP_SEQ=" + doc.getIdNumDocumento().getTipoId()
+								+"&numeroAPEP=" + doc.getIdNumDocumento().getCodId()
+								+"&dia=" + String.valueOf(c_dia)
+								+"&mes=" + String.valueOf(c_mes)
+								+"&ano=" + String.valueOf(c_ano)
+								+"&autor=" + doc.getAutor()
+								+"&destinatario=" + doc.getDestinatario()
+								+"&local=" + doc.getLocal()
+								+"&tipoDoc=" + doc.getTipoDocumento().getTipoDocumento()
+								+"&resumo=" + doc.getResumo()
+								+"&chave1=" + palchave1
+								+"&chave2=" + palchave2
+								+"&chave3=" + palchave3
+								+ "\">"
+								+ "<img src=\"/GraoPara/images/edit.png\" title=\"Editar\" alt=\"Editar\"/></a> "
+								+ "<br>"
+								+ "<a href=\"/GraoPara/addDoc?"
+								+"tipoAPEP_SEQ=" + doc.getIdNumDocumento().getTipoId()
+								+"&numeroAPEP=" + doc.getIdNumDocumento().getCodId()
+								+ "\">" 
+								+ "<img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\"/></a></td> ");
+				}
 				out.println("</tr>");
 			}
 		} catch (UnreachableDataBaseException e) {
@@ -115,6 +126,7 @@ public class SearchWorker {
 			out.write("history.go(-1)");  
 			out.write("</script>");
 		}
+	
 	}
 	
 	public static void listAllDocumentsByYear(HttpServletRequest request, JspWriter out) throws IOException{
