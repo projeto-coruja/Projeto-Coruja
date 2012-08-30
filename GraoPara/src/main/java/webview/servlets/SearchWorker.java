@@ -30,16 +30,11 @@ public class SearchWorker {
 		String autor = request.getParameter("autor");
 		String destinatario = request.getParameter("destinatario");
 		String local = request.getParameter("local");
-		String dia = request.getParameter("dia");
-		String mes = request.getParameter("mes");
 		String ano = request.getParameter("ano");
 		String tipoDoc = request.getParameter("tipoDoc");
 		String palavra1 = request.getParameter("chave1");
 		String palavra2 = request.getParameter("chave2");
 		String palavra3 = request.getParameter("chave3");
-		
-		String data_concat = ano.concat(mes.concat(dia));
-		
 
 		String c_status = null;
 		
@@ -52,7 +47,7 @@ public class SearchWorker {
 		List<DTO> docs = null;    
 
 		try {
-			docs = search.busca(identificacao.toUpperCase(), codigo, titulo, tipoAPEP_SEQ, numAPEP_SEQ, autor, destinatario, local, data_concat, tipoDoc, palavra1, palavra2, palavra3); 
+			docs = search.busca(identificacao.toUpperCase(), codigo, titulo, tipoAPEP_SEQ, numAPEP_SEQ, autor, destinatario, local, ano, tipoDoc, palavra1, palavra2, palavra3); 
 
 			for(DTO d : docs){
 				

@@ -115,6 +115,7 @@ public final class WebUtility {
 	public static String printSelectOrigem(HttpServletRequest request) throws IOException {
 		String output = null;
 		output = 
+				"<option name=\"\" selected value=\"\">Selecione...</option> " +
 				"<option name=\"CODICE\" selected value=\"CODICE\">CODICE</option> " +
 				"<option name=\"CAIXA\" value=\"CAIXA\">CAIXA</option>";
 

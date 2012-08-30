@@ -1,5 +1,7 @@
 package business.EJB.docEJB;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import persistence.dto.DTO;
@@ -22,7 +24,7 @@ public class BuscaDocEJB {
 	}
 	
 	public List<DTO> busca(String identificacao, String codigo, String titulo , String tipoAPEP_SEQ, String numAPEP_SEQ, String autor, 
-			String destinatario, String local, String data, String tipo, 
+			String destinatario, String local, String ano, String tipo, 
 			String palavra1, String palavra2, String palavra3) throws UnreachableDataBaseException, DocumentNotFoundException{
 		
 		boolean continue_query = false;
@@ -88,16 +90,7 @@ public class BuscaDocEJB {
 			query += "local like '%" + local + "%'";
 			continue_query = true;
 		}
-		
-		if(data != null && !data.isEmpty()){
-			if(continue_query == true){
-				query += " and ";
-			}
-			System.out.println(data);
-			query += "data_documento = '" + data + "'";	// Notação: yyyy-mm-dd
-			continue_query = true;
-		}
-		
+
 		if(tipo != null && !tipo.isEmpty()){
 			if(continue_query == true){
 				query += " and ";
@@ -135,10 +128,18 @@ public class BuscaDocEJB {
 			query += "or (palavra_chave_3 like '%" + palavra3.toLowerCase() + "%'"+ " and (palavra_chave_3 in (select palavra from PalavraChave where aprovada = TRUE)))) ";
 			continue_query = true;
 		}
+
+		if(ano != null && !ano.isEmpty()){
+			if(continue_query == true){
+				query += " and ";
+			}
+			int year = Integer.parseInt(ano);
+			query = " data_documento BETWEEN date('" + year + "-1-1') AND date('"+ ++year +"-1-1')";
+		}
 		
 		if(query.equals(default_query)) throw new DocumentNotFoundException();
 		else {
-			query += "order by titulo_origem";
+			query += " order by titulo_origem";
 			return docDao.findDocumentByQuery(query);
 		}
 	}
@@ -195,11 +196,12 @@ public class BuscaDocEJB {
 	}
 	
 	public List<DTO> searchByYear(String year) throws UnreachableDataBaseException, DocumentNotFoundException{
-		
-		String query = "from Documento where ";
-						
+		String query = null;
 		if(year != null && !year.isEmpty()){
-			query += " YEAR(dataDocumento) = " + year;
+			int ano = Integer.parseInt(year);
+			Calendar data1 = new GregorianCalendar(ano, 1, 1);
+			Calendar data2 = new GregorianCalendar(ano+1, 1, 1);
+			query = "from Documento where data_documento BETWEEN date('" + data1 + "') AND date('"+ data2 +"') ";
 		}
 		
 		return docDao.findDocumentByQuery(query);
