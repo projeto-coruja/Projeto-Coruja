@@ -134,7 +134,7 @@ public class BuscaDocEJB {
 				query += " and ";
 			}
 			int year = Integer.parseInt(ano);
-			query = " data_documento BETWEEN date('" + year + "-1-1') AND date('"+ ++year +"-1-1')";
+			query += " data_documento BETWEEN date('" + year + "-1-1') AND date('"+ ++year +"-1-1')";
 		}
 		
 		if(query.equals(default_query)) throw new DocumentNotFoundException();
