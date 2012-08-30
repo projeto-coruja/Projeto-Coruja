@@ -114,9 +114,9 @@
 						<td class="status"></td>
 					</tr>
 					<tr>
-						<td class="field" colspan="3">
-							<p></p>
-							<input class="buttonRegistrar" id="signupsubmit" name="Enviar" type="submit" value="Enviar" />
+						<td class="tdControle" colspan="3">
+						<p></p>
+							<input class="buttonCancelar" type="button" value="Cancelar" onClick="history.go(-1)"> <input class="buttonRegistrar" id="signupsubmit" name="Enviar" type="submit" value="Enviar" />
 						</td>
 					</tr>
 					
