@@ -223,21 +223,15 @@
 							<label for="palavrasChaves"class="labelForms">Palavra Chaves:<span class="asterisco">(Obrigatório pelo menos uma)</span></label>
 						</td>
 					</tr>
-					<!-- <tr>
-						<td class="field">
-							<select class="inputPalavraChave" id="chave1" name="chave1" ><%=WebUtility.printSelectKeyWords(request, "chave1") %></select>
-							<select class="inputPalavraChave" id="chave2" name="chave2" ><%=WebUtility.printSelectKeyWords(request, "chave2") %></select>
-							<select class="inputPalavraChave" id="chave3" name="chave3" ><%=WebUtility.printSelectKeyWords(request, "chave3") %></select>
-						</td>
-					</tr> -->
+				
 					<tr>
 						<td class="field" colspan="2">
-							<input class="inputPalavraChave" id="chave1" name="chave1" type="text"size="12" maxlength="32">
-							<input class="inputPalavraChave" id="chave2" name="chave2" type="text" size="12" maxlength="32">
-							<input class="inputPalavraChave" id="chave3" name="chave3" type="text" size="12" maxlength="32">
-					 	</td>
-						<td class="status"></td>
+							<%=WebUtility.printSelectKeyWords(request, "chave1") %>
+							<%=WebUtility.printSelectKeyWords(request, "chave2") %>
+							<%=WebUtility.printSelectKeyWords(request, "chave3") %>
+						</td>
 					</tr>
+					
 					<tr>
 						<td class="tdControle" colspan="3">
 						<p></p>

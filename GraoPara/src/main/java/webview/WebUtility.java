@@ -113,18 +113,10 @@ public final class WebUtility {
 	
 	public static String printSelectOrigem(HttpServletRequest request) throws IOException {
 		String output = null;
-		if(request.getParameter("identificacao").equals("CODICE"))
-		{
-			output = 
-					"<option selected value=\"codice\">Número de Códice</option> " +
-					"<option value=\"caixa\">Número da Caixa</option>";
-		}
-		else if(request.getParameter("identificacao").equals("CAIXA"))
-		{
-			output = 
-					"<option value=\"codice\">Número de Códice</option> " +
-					"<option selected value=\"caixa\">Número da Caixa</option>";
-		}
+		output = 
+				"<option name=\"CODICE\" selected value=\"CODICE\">CODICE</option> " +
+				"<option name=\"CAIXA\" value=\"CAIXA\">CAIXA</option>";
+
 		return output;
 	}
 	
@@ -196,9 +188,9 @@ public final class WebUtility {
 			for(DTO d : list){
 				key = ((PalavraChaveDTO) d).getPalavra();
 				if(key.equals(request.getParameter(key_pos)))
-					result += "<option selected value=\"" + key + "\">" + key + "</option> ";
-				else
-					result += "<option value=\"" + key + "\">" + key + "</option> ";
+					result += "<input type=\"text\" size=\"12\" maxlength=\"32\" class=\"inputPalavraChave\" id=\"chave1\" name=\"chave1\" value=\"" + key + "\"/>";
+//				else
+//					result += "<input class=\"inputPalavraChave\" id=\"chave1\" name=\"chave1\" value=\"" + key + "\">" + key + "</input> ";
 			}
 		} catch (UnreachableDataBaseException e) {
 			// TODO Auto-generated catch block
@@ -209,5 +201,4 @@ public final class WebUtility {
 		}
 		return result;
 	}
-
 }
