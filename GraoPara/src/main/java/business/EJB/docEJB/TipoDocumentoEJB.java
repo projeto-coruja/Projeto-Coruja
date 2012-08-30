@@ -25,7 +25,7 @@ public class TipoDocumentoEJB {
 		return typeDoc.findAllDocumentTypes();
 	}
 	
-	public void addNewDocumentType(String type) throws UnreachableDataBaseException{
+	public synchronized void addNewDocumentType(String type) throws UnreachableDataBaseException{
 		DocumentTypeDAO dao = new DocumentTypeDAO();
 		TipoDocumentoDTO dto;
 		
@@ -37,7 +37,7 @@ public class TipoDocumentoEJB {
 		
 	}
 	
-	public void removeTypeDocument(String deletingType) throws UnreachableDataBaseException, DocumentTypeNotFoundException{
+	public synchronized void removeTypeDocument(String deletingType) throws UnreachableDataBaseException, DocumentTypeNotFoundException{
 		BuscaDocEJB search = new BuscaDocEJB();
 		
 		TipoDocumentoDTO type = typeDoc.findSingleDocumentTypeByString(deletingType);
