@@ -14,7 +14,7 @@ $(document).ready(function() {
 			},
 			titulo: {
 				required: true,
-				minlength: 5,				
+				minlength: 3,				
 			},
 			numero: {
 				required: true,
@@ -25,15 +25,15 @@ $(document).ready(function() {
 			},
 			autor: {
 				required: true,
-				minlength: 5,				
+				minlength: 3,				
 			},
 			destinatario: {
 				required: true,
-				minlength: 5,				
+				minlength: 3,				
 			},
 			local: {
 				required: true,
-				minlength: 5,				
+				minlength: 3,				
 			},
 			dia: {
 				required: true				
@@ -62,7 +62,7 @@ $(document).ready(function() {
 			 * ---------------------------------- */
 			nome: {
 				required: true,
-				minlength: 5
+				minlength: 3
 			},
 			senha: {
 				required: true,
