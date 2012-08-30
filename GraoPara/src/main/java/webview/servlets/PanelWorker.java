@@ -146,10 +146,13 @@ public class PanelWorker {
 					out.println("<td> <label for=\"identificacao\" class=\"labelExibe\">" + user.getEmail() + " </label> </td>");
 					out.println("<td> <label for=\"identificacao\" class=\"labelExibe\">" + user.getUserProfile().getProfile() + "</label> </td>");
 					out.println("<td>"
+						+ "<a href=\"/GraoPara/protected/admin/approveAccount?" 
+							+ "email=" + user.getEmail()
+							+ "&action=delete" + "&tab=3\"><img src=\"/GraoPara/images/approve.png\" title=\"Aprovar\" alt=\"Aprovar\" /></a>"
 						+ "<a href=\"/GraoPara/protected/admin/editarUsuario.jsp?"
 							+ "paramName=" + user.getName()
 							+"&paramEmail="+user.getEmail()+"\" ><img src=\"/GraoPara/images/edit.png\" title=\"Editar\" alt=\"Editar\" /></a>" 
-						+ "<a href=\"/GraoPara/doChangesToAccount?" 
+						+ "<a href=\"/GraoPara/protected/admin/removeAccount?" 
 							+ "email=" + user.getEmail()
 							+ "&action=delete" + "&tab=3\"><img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\" /></a>"
 							+ "</td>");
