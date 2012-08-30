@@ -29,7 +29,7 @@ public class CadastroBean {
 				check = loginDAO.findUserByEmail(email);
 				if(check != null)	throw new DuplicateUserException();
 			} catch (UserNotFoundException e) {
-				loginDAO.addUser(email, name, EJBUtility.getHash(password, "MD5"));
+				loginDAO.addUser(email, name, EJBUtility.getHash(password, "MD5"), null);
 			}
 		} catch (UnreachableDataBaseException e) {
 			e.printStackTrace();

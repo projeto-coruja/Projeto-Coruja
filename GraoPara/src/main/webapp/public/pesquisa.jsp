@@ -203,12 +203,7 @@
 						<td class="field"><select class="input" name="tipoDoc"
 							id="tipoDoc">
 								<!-- Pegar do Banco de dados os tipos e, caso o usuÃ¡rio selecione outro, exibir campo para cadastrar outro tipo -->
-								<option value="">Selecione...</option>
-								<option value="ofícios">Ofícios</option>
-								<option value="relatórios">Relatórios</option>
-								<option value="impressos">Impressos</option>
-								<option value="processos">Processos</option>
-								<option value="cartas">Cartas</option>
+								<%= WebUtility.printSelectTipoDoc(request) %>
 						</select></td>
 						<td class="status"><a href="#"><img
 								src="/GraoPara/images/icone_ajuda.png"

@@ -98,8 +98,14 @@ public class LoginDAO {
 		return resultSet;
 	}
 
-	public void addUser(String email, String name, String password) throws UnreachableDataBaseException {
-		UserDTO newUser = new UserDTO(name, password, LoginDAO.defaultProfile, email, new Date());
+	public void addUser(String email, String name, String password, ProfileDTO profile) throws UnreachableDataBaseException {
+		UserDTO newUser;
+		if(profile == null){
+			newUser = new UserDTO(name, password, LoginDAO.defaultProfile, email, new Date());
+		}
+		else{
+			newUser = new UserDTO(name, password, profile, email, new Date());
+		}
 		try {
 			manager.saveEntity(newUser);
 		} catch(DataAccessLayerException e){
