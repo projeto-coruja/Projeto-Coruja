@@ -58,7 +58,7 @@ public class BuscaDocEJBTest {
 		try {
 			UO = LA.findUserByEmail("outlook@gmail.com");
 		} catch (UserNotFoundException e) {
-			LA.addUser("outlook@gmail.com", "Outlook", "password");
+			LA.addUser("outlook@gmail.com", "Outlook", "password", null);
 			try {
 				UO = LA.findUserByEmail("outlook@gmail.com");
 			} catch (UserNotFoundException e1) {

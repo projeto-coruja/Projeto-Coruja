@@ -68,7 +68,7 @@ public class LoginDAOTest {
 			String name = "user"+i;
 			String pass = "password";
 			try {
-				ld.addUser(email, name, pass);
+				ld.addUser(email, name, pass, null);
 //				ab.alterarPermissoesUsuario(email, "teste");
 			} catch (UnreachableDataBaseException e) {
 				e.printStackTrace();
