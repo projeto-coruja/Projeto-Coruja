@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -15,7 +16,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 //@Indexed
-@Table(name = "tbl_origem")
+@Table(name = "tbl_origem", uniqueConstraints=@UniqueConstraint(columnNames = {"cod_origem", "tipo_origem"}))
 public class Origem implements Serializable,Entidade {
 
 	/**
