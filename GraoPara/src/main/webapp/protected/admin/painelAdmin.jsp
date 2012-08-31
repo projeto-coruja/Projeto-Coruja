@@ -66,15 +66,16 @@
 			<article class="menuLateral">
 				<ul class="nav" id="menu">
 					<li><a href="/GraoPara/protected/admin/indexAdmin.jsp">Home</a></li>
-					<li><a href="/GraoPara/protected/admin/pesquisaAdmin.jsp">Pesquisar</a></li>
-					<li><a href="/GraoPara/protected/admin/cadastroDocumentosAdmin.jsp">Cadastrar Documento</a></li>
-					<li><a href="/GraoPara/protected/admin/cadUserAdmin.jsp">Cadastrar Usuário</a></li>					
 					<li><a href="/GraoPara/protected/admin/painelAdmin.jsp">Painel Admin</a></li>
-					<li><a href="/GraoPara/protected/admin/cadastrarTipoDocumento.jsp">Cadastrar Tipo de Documento</a></li>					
+					<li><a href="/GraoPara/protected/admin/pesquisaAdmin.jsp">Pesquisar</a></li>
+					<li><a href="/GraoPara/protected/admin/cadastroDocumentosAdmin.jsp">Cadastrar Documento</a></li>					
+					<li><a href="/GraoPara/protected/admin/cadastrarPalavrasChave.jsp">Cadastrar Palavras-Chave</a></li>						
+					<li><a href="/GraoPara/protected/admin/cadastrarTipoDocumento.jsp">Cadastrar Tipo de Documento</a></li>	
+					<li><a href="/GraoPara/protected/admin/cadUserAdmin.jsp">Cadastrar Usuário</a></li>					
 					<li><a href="/GraoPara/protected/admin/gerarSenha.jsp">Gerar Senha</a></li>
-					<li><a href="/GraoPara/protected/admin/sobreAdmin.jsp">Sobre</a></li>	
-					<li><a href="/GraoPara/protected/admin/creditosAdmin.jsp">Créditos</a></li>
-					<li><a href="/GraoPara/protected/admin/tutorialPesquisaAdmin.jsp">Como pesquisar no acervo</a>				
+					<li><a href="/GraoPara/protected/admin/sobreAdmin.jsp">Sobre</a></li>		
+					<li><a href="/GraoPara/protected/admin/creditosAdmin.jsp">Créditos</a></li>	
+					<li><a href="/GraoPara/protected/admin/tutorialPesquisaAdmin.jsp">Como pesquisar no acervo</a>			
 				</ul>
 			</article>
 		</div>
@@ -154,7 +155,7 @@
 			<br>
 
 			<article class="tabsCSS">
-				<section id="tab1">
+				<!-- <section id="tab1">
 					<h2>
 						<a href="#tab1">Palavras-Chaves Pendentes</a>
 					</h2>
@@ -179,11 +180,11 @@
 							</tbody>
 						</table>
 					</div>
-				</section>
+				</section> -->
 
-				<section id="tab2">
+				<section id="tab1">
 					<h2>
-						<a href="#tab2">Novos Usuários</a>
+						<a href="#tab1">Novos Usuários</a>
 					</h2>
 					<div class="scroll">
 						<form action="">
@@ -206,9 +207,9 @@
 					</div>
 				</section>
 
-				<section id="tab3">
+				<section id="tab2">
 					<h2>
-						<a href="#tab3">Usuários</a>
+						<a href="#tab2">Usuários</a>
 					</h2>
 					<div class="scroll">
 						<table class="tablePainel">
@@ -229,9 +230,9 @@
 					</div>
 				</section>
 
-				<section id="tab4">
+				<section id="tab3">
 					<h2>
-						<a href="#tab4">Palavras-Chaves</a>
+						<a href="#tab3">Palavras-Chaves</a>
 					</h2>
 					<div class="scroll">
 						<table class="tablePainel">
@@ -241,8 +242,8 @@
 										class="labelExibe">ID</label></td>
 									<td width="120" height="20"><label for="identificacao"
 										class="labelExibe">Palavra-Chave</label></td>
-									<td width="120" height="20"><label for="identificacao"
-										class="labelExibe">Status</label></td>
+									<!-- <td width="120" height="20"><label for="identificacao"
+										class="labelExibe">Status</label></td> -->
 									<td width="120" height="20"><label for="identificacao"
 										class="labelExibe">Ação</label></td>
 									<!-- Exemplo de cadastro -->
