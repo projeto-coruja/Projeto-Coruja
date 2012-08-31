@@ -1,4 +1,4 @@
-package business.EJB;
+package business.EJB.util;
 
 import java.util.regex.Pattern;
 

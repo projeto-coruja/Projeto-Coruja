@@ -17,6 +17,7 @@ import business.DAO.documents.IdNumDocumentoDAO;
 import business.DAO.documents.KeyWordDAO;
 import business.DAO.documents.OrigemDAO;
 import business.DAO.login.LoginDAO;
+import business.EJB.util.RegularExpression;
 import business.exceptions.documents.DocumentNotFoundException;
 import business.exceptions.documents.DocumentTypeNotFoundException;
 import business.exceptions.documents.KeywordNotFoundException;
@@ -278,6 +279,8 @@ public class CadastroEJB {
 	public synchronized void cadastrarPalavraChave(String palavra)
 			throws IllegalArgumentException, UnreachableDataBaseException {
 		KeyWordDAO kwDao = new KeyWordDAO();
+		
+		
 		try {
 			List<DTO> check = kwDao.findKeyWordByString(palavra);
 			for (DTO dto : check) {
