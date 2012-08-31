@@ -17,13 +17,13 @@ public class BuscaPalavraChaveEJB {
 		key = new KeyWordDAO();
 	}
 	
-	public PalavraChaveDTO buscarPalavraChave(String oldKeyWord) throws UnreachableDataBaseException, KeywordNotFoundException, IllegalArgumentException  {
-		if(oldKeyWord.isEmpty())	throw new IllegalArgumentException("Nenhuma palavra chave informado");
-		List<DTO> list = key.findKeyWordByString(oldKeyWord);
+	public PalavraChaveDTO buscarPalavraChave(String searchKeyWord) throws UnreachableDataBaseException, KeywordNotFoundException, IllegalArgumentException  {
+		if(searchKeyWord == null || searchKeyWord.isEmpty())	throw new IllegalArgumentException("Nenhuma palavra chave informado");
+		List<DTO> list = key.findKeyWordByString(searchKeyWord);
 		PalavraChaveDTO keyWord;
 		for(DTO dto : list){
 			keyWord = (PalavraChaveDTO) dto;
-			if(oldKeyWord.equals(keyWord.getPalavra()))	return keyWord;
+			if(keyWord != null && searchKeyWord.equals(keyWord.getPalavra()))	return keyWord;
 		}
 		throw new KeywordNotFoundException("Palavra chave não encontrado.");
 	}	

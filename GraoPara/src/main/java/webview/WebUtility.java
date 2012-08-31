@@ -15,7 +15,7 @@ import persistence.dto.ProfileDTO;
 import persistence.dto.TipoDocumentoDTO;
 
 import business.DAO.documents.DocumentTypeDAO;
-import business.DAO.documents.KeyWordDAO;
+import business.EJB.docEJB.BuscaPalavraChaveEJB;
 import business.EJB.userEJB.AuthBean;
 import business.EJB.userEJB.UserBean;
 import business.exceptions.documents.DocumentTypeNotFoundException;
@@ -163,10 +163,11 @@ public final class WebUtility {
 		String tipoDoc = null;
 		try {
 			List<DTO> list = dtd.findAllDocumentTypes();
+			result = "<option selected=\"selected\"value=\"\">------</option> ";
 			for(DTO d : list){
 				tipoDoc = ((TipoDocumentoDTO) d).getTipoDocumento();
 				if(tipoDoc.equals(request.getParameter("tipoDoc")))
-					result += "<option selected value=\"" + tipoDoc + "\">" + tipoDoc + "</option> ";
+					result += "<option value=\"" + tipoDoc + "\">" + tipoDoc + "</option> ";
 				else
 					result += "<option value=\"" + tipoDoc + "\">" + tipoDoc + "</option> ";
 			}
@@ -181,25 +182,19 @@ public final class WebUtility {
 	}
 	
 	public static String printSelectKeyWords(HttpServletRequest request, String key_pos) {
-		KeyWordDAO word = new KeyWordDAO();
+		BuscaPalavraChaveEJB busca = new BuscaPalavraChaveEJB();
 		String result = "";
-		String key = null;
+		String key = request.getParameter(key_pos);
 		try {
-			List<DTO> list = word.getAllKeys();
+			PalavraChaveDTO palavra = busca.buscarPalavraChave(key);
+			return "<input type=\"text\" size=\"12\" maxlength=\"32\" class=\"inputPalavraChave\" id=\""+ key_pos +"\" name=\""+ key_pos +"\" value=\"" + palavra.getPalavra() + "\"/>";
 			
-			for(DTO d : list){
-				key = ((PalavraChaveDTO) d).getPalavra();
-				if(key.equals(request.getParameter(key_pos)))
-					result += "<input type=\"text\" size=\"12\" maxlength=\"32\" class=\"inputPalavraChave\" id=\"chave1\" name=\"chave1\" value=\"" + key + "\"/>";
-//				else
-//					result += "<input class=\"inputPalavraChave\" id=\"chave1\" name=\"chave1\" value=\"" + key + "\">" + key + "</input> ";
-			}
 		} catch (UnreachableDataBaseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (KeywordNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return "<input type=\"text\" size=\"12\" maxlength=\"32\" class=\"inputPalavraChave\" id=\""+ key_pos +"\" name=\""+ key_pos +"\" value=\"\"></input> ";
+		} catch (IllegalArgumentException e){
+			return "<input type=\"text\" size=\"12\" maxlength=\"32\" class=\"inputPalavraChave\" id=\""+ key_pos +"\" name=\""+ key_pos +"\" value=\"\"></input> ";
 		}
 		return result;
 	}
