@@ -42,10 +42,10 @@ public class Origem implements Serializable,Entidade {
 	@Column(name = "tipo_origem", length = 7)
 	private String tipoOrigem;
 
-	// Título do códice
+	// Título do códice e caixa
 	//@Field
 	@NotNull
-	@Column(name = "titulo")
+	@Column(name = "titulo", length = 500)
 	private String titulo;
 
 	public Long getId() {
