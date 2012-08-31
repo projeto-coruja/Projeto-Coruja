@@ -16,7 +16,7 @@ import business.exceptions.login.UnreachableDataBaseException;
 /**
  * Servlet implementation class KeyWordServlet
  */
-@WebServlet("/doChangesToKeyWord")
+@WebServlet("/protected/admin/doChangesToKeyWord")
 public class KeyWordServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -41,8 +41,8 @@ public class KeyWordServlet extends HttpServlet {
 		String previous = request.getParameter("tab");
 		
 		try {
-			if(action!= null && action.equals("approve")) 
-				cad.aprovarPalavraChave(key);
+			if(action!= null && action.equals("add")) 
+				cad.cadastrarPalavraChave(key);
 			else if(action != null && action.equals("delete"))	
 				cad.deletarPalavraChave(key);
 

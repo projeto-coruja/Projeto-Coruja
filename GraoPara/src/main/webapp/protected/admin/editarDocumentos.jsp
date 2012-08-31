@@ -1,4 +1,5 @@
 <!doctype html>
+<%@page import="webview.WebUtility"%>
 <html>
 <head>
 <meta charset="utf-8">
@@ -74,9 +75,7 @@
 						</td>
 						<td class="field">
 							<select name="identificacao" class="input" id="identificacao">
-									<option value="">Selecione...</option>
-									<option value="codice">Número de Códice</option>
-									<option value="caixa">Número da Caixa</option>
+									<%= WebUtility.printSelectOrigem(request) %>
 							</select>
 						</td>
 						<td class="status"></td>
@@ -150,12 +149,7 @@
 						</td>
 						<td class="field">
 							<select class="input" name="tipoDoc" id="tipoDoc"> <!-- Pegar do Banco de dados os tipos e, caso o usuÃ¡rio selecione outro, exibir campo para cadastrar outro tipo -->
-									<option value="">Selecione...</option>
-									<option value="ofícios">Ofícios</option>
-									<option value="relatórios">Relatórios</option>
-									<option value="impressos">Impressos</option>
-									<option value="processos">Processos</option>
-									<option value="cartas">Cartas</option>
+									<%= WebUtility.printSelectTipoDoc(request) %>
 							</select>
 						</td>
 						<td class="status"></td>

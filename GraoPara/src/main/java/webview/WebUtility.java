@@ -114,10 +114,23 @@ public final class WebUtility {
 	
 	public static String printSelectOrigem(HttpServletRequest request) throws IOException {
 		String output = null;
-		output = 
-				"<option name=\"\" selected=\"selected\" value=\"\">Selecione...</option> " +
-				"<option name=\"CODICE\" value=\"CODICE\">CODICE</option> " +
-				"<option name=\"CAIXA\" value=\"CAIXA\">CAIXA</option>";
+		String parameter = request.getParameter("identificacao");
+		if(parameter == null)
+		{
+			output = "<option value=\"\">\"----\"</option>";
+		}
+		else if(parameter.equals("CODICE"))
+		{
+			output = 
+					"<option selected value=\"CODICE\">Códice</option> " +
+					"<option value=\"CAIXA\">Caixa</option>";
+		}
+		else if(parameter.equals("CAIXA"))
+		{
+			output = 
+					"<option value=\"CODICE\">Códice</option> " +
+					"<option selected value=\"CAIXA\">Caixa</option>";
+		}
 
 		return output;
 	}
@@ -163,11 +176,11 @@ public final class WebUtility {
 		String tipoDoc = null;
 		try {
 			List<DTO> list = dtd.findAllDocumentTypes();
-			result = "<option selected=\"selected\"value=\"\">------</option> ";
+			result = "<option value=\"\">------</option> ";
 			for(DTO d : list){
 				tipoDoc = ((TipoDocumentoDTO) d).getTipoDocumento();
 				if(tipoDoc.equals(request.getParameter("tipoDoc")))
-					result += "<option value=\"" + tipoDoc + "\">" + tipoDoc + "</option> ";
+					result += "<option selected value=\"" + tipoDoc + "\">" + tipoDoc + "</option> ";
 				else
 					result += "<option value=\"" + tipoDoc + "\">" + tipoDoc + "</option> ";
 			}

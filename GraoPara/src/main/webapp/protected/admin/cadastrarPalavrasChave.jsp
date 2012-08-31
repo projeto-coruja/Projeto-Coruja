@@ -82,15 +82,17 @@
 		<!-- Fim do Menu Lateral -->
 		<div class="content" id="content">
 			<h1>Cadastro de Palavras-Chave</h1>
-			<form action="/GraoPara/doDocType" id="signupform"
-				method="post" autocomplete="off">
+			<form action="/GraoPara/protected/admin/doChangesToKeyWord" id="signupform"
+				method="get" autocomplete="off">
 				<table class="tableControle">
 					<tr>
 						<td class="tdControle"><label class="labelForms" id="lchave"
 							for="chave">Cadastrar nova Palavra:<span class="asterisco">*</span></label>
 						</td>
-						<td class="field"><input class="input" id="chave"
-							name="chave" type="text" value="" maxlength="20" /></td>
+						<td class="field"><input class="input" id="palavra"
+							name="palavra" type="text" value="" maxlength="20" /></td>
+						<td class="field"><input class="input" id="action"
+							name="action" type="hidden" value="add" maxlength="20" /></td>
 						<td class="status"></td>
 					</tr>
 					<tr>
