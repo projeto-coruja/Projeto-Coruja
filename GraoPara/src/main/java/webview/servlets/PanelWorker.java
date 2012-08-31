@@ -34,8 +34,42 @@ public class PanelWorker {
 				out.write("<tr>");
 				out.write("<td> <label for=\"identificacao\" class=\"labelExibe\">" + key.getId() + "</label> </td>");
 				out.write("<td> <label for=\"identificacao\" class=\"labelExibe\">" + key.getPalavra() + " </label> </td>");
-				out.write("<td> <label for=\"identificacao\" class=\"labelExibe\">" + (key.isAprovada()==true ? "Aprovada" : "Pendente") + "</label> </td>");
+				/*out.write("<td> <label for=\"identificacao\" class=\"labelExibe\">" + (key.isAprovada()==true ? "Aprovada" : "Pendente") + "</label> </td>");*/
 				out.println("<td>"
+						+ "<a href=\"/GraoPara/protected/admin/editarPalavraChave.jsp?"
+							+ "palavra="+ key.getPalavra() +"\" >"
+							+ "<img src=\"/GraoPara/images/edit.png\" title=\"Editar\" alt=\"Editar\" /></a>" 
+						+ "<a href=\"/GraoPara/doChangesToKeyWord?" 
+							+ "palavra=" + key.getPalavra() + 
+							"&action=delete"
+							+ "&tab=4\"><img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\" /></a>"
+						+ "</td>");
+				out.write("</tr>");
+			}
+		} catch (UnreachableDataBaseException e) {
+			out.write("<script>");  
+			out.write("alert('Problemas ao acessar o banco de dados. Contate o suporte técnico e tente novamente mais tarde ');");  
+			//out.write("document.location=('/GraoPara/public/index.jsp');");  
+			out.write("</script>");
+		} catch (KeywordNotFoundException e) {
+			out.println("<td colspan=\"4\"><label class=\"labelExibe\">Nenhuma palavra-chave encontrada</label></td>");
+		}
+	}
+	
+	public static void listAllKeyWordsCadastro(HttpServletRequest request, JspWriter out) throws IOException{
+		BuscaPalavraChaveEJB busca = new BuscaPalavraChaveEJB();
+		List<DTO> keys = null;	    
+		try{ 
+			keys = busca.buscaPalavrasChaves();
+
+			for(DTO k : keys){
+				PalavraChaveDTO key = (PalavraChaveDTO) k;
+
+				out.write("<tr>");
+				out.write("<td class=\"tdList\"> <label for=\"identificacao\" class=\"labelExibe\">" + key.getId() + "</label> </td>");
+				out.write("<td class=\"tdList\"> <label for=\"identificacao\" class=\"labelExibe\">" + key.getPalavra() + " </label> </td>");
+				/*out.write("<td class=\"tdList\"> <label for=\"identificacao\" class=\"labelExibe\">" + (key.isAprovada()==true ? "Aprovada" : "Pendente") + "</label> </td>");*/
+				out.println("<td class=\"tdList\">"
 						+ "<a href=\"/GraoPara/protected/admin/editarPalavraChave.jsp?"
 							+ "palavra="+ key.getPalavra() +"\" >"
 							+ "<img src=\"/GraoPara/images/edit.png\" title=\"Editar\" alt=\"Editar\" /></a>" 

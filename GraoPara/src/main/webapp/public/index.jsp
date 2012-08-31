@@ -5,8 +5,7 @@
 <title>Grão-Pará</title>
 
 <!-- Import dos styles CSS -->
-<link rel="stylesheet" type="text/css"
-	href="/GraoPara/css/principal.css" />
+<link rel="stylesheet" type="text/css"	href="/GraoPara/css/principal.css" />
 <link rel="stylesheet" type="text/css" href="/GraoPara/css/tabs.css" />
 <link rel="stylesheet" type="text/css" href="/GraoPara/css/controle.css" />
 

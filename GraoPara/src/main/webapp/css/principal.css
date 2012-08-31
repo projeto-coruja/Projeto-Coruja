@@ -301,6 +301,7 @@ margin-left: 0px;
 
 .scrollLong{
 	height: 40em;
+	width:600px;
 	overflow: auto;
 }
 
@@ -502,9 +503,12 @@ span.asterisco {
 	width: 540px;
 }
 
-.tableList, .trList, .tdList{
+.tableList{
 	text-align:center;	
-	width: 570px;
+	width: 550px;
+}
+
+.tableList, .trList, .tdList{	
 	border-collapse: collapse;
 	border: 1px solid;
 }

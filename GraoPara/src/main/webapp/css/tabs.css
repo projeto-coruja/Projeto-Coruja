@@ -141,21 +141,21 @@ article.tabsCSS section h2
     background-color: #6F7D94;  
     border-radius: 5px 5px 0 0;  
 }
-article.tabsCSS section:nth-child(1) h2  
+/*article.tabsCSS section:nth-child(1) h2  
 {
-	width: 200px;
-}
+	width: 130px;
+}*/
 article.tabsCSS section:nth-child(2) h2  
 {  
-    left: 200px;  
+    left: 140px;  
 }  
 article.tabsCSS section:nth-child(3) h2  
 {  
-    left: 330px;  
+    left: 270px;  
 }
 article.tabsCSS section:nth-child(4) h2  
 {  
-    left: 460px;  
+    left: 400px;  
 } 
 article.tabsCSS section h2 a  
 {  

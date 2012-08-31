@@ -116,6 +116,13 @@ $(document).ready(function() {
 				minlength: 3
 			},
 			/* ----------------------------------
+			 *  Cadastro de novas palavras-chave pelo Admin
+			 * ---------------------------------- */
+			chave:{
+				required: true,
+				minlength: 3
+			},
+			/* ----------------------------------
 			 * Editar tipos de documentos pelo Admin
 			 * ---------------------------------- */
 			tpDocNovo:{
@@ -235,7 +242,14 @@ $(document).ready(function() {
 			 * ---------------------------------- */
 			docType:{
 				required: "Informe o tipo de documento que deseja cadastrar",
-				minlength: jQuery.format("Digite no mínimo {0} caracteres.")
+				minlength: jQuery.format("Digite no mínimo {0} caracteres.")				
+			},
+			/* ----------------------------------
+			 *  Cadastro de novas palavras-chave pelo Admin
+			 * ---------------------------------- */
+			chave:{
+				required: "Informe a palavra-chave que deseja cadastrar",
+				minlength: jQuery.format("Digite no mínimo {0} caracteres.")				
 			},
 			/* ----------------------------------
 			 *  Cadastro de novos tipos de documentos pelo Admin
