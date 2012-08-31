@@ -80,7 +80,7 @@ public class DocServlet extends HttpServlet {
 						dataDoc, email);
 				out.println("<script>");  
 			    out.println("alert('Documento cadastrado com sucesso!')");  
-			    out.println("history.go(-1);");  
+			    out.println("document.location=('/GraoPara/public/index.jsp');");  
 			    out.println("</script>");
 			} catch (UnreachableDataBaseException e) {
 				out.println("<script>");  
@@ -125,32 +125,27 @@ public class DocServlet extends HttpServlet {
 		response.setContentType("text/html");  
 	    PrintWriter out=response.getWriter(); 
 	    DocumentoDTO docs = null;
+		CadastroEJB delete = new CadastroEJB();
 		try {
 			docs = search.busca(tipoAPEP_SEQ, numAPEP_SEQ);
+			delete.deletarDocumento(docs);
+		    out.println("<script>");  
+		    out.println("alert('Documento deletado com sucesso. ');");  
+		    out.println("document.location=('/GraoPara/public/index.jsp');");  
+		    out.println("</script>");
 		} catch (UnreachableDataBaseException e) {
 		    out.println("<script>");  
 		    out.println("alert('Erro no banco de dados. ');");  
-		    out.println("history.go(-1);");  
+		    out.println("document.location=('/GraoPara/public/index.jsp');");  
 		    out.println("</script>");
 			e.printStackTrace();
 		} catch (DocumentNotFoundException e) {
-			CadastroEJB delete = new CadastroEJB();
-			try {
-				delete.deletarDocumento(docs);
-			} catch (UnreachableDataBaseException e1) {
-			    out.println("<script>");  
-			    out.println("alert('Erro no banco de dados. ');");  
-			    out.println("history.go(-1);");  
-			    out.println("</script>");
-				e1.printStackTrace();
-			}
+			e.printStackTrace();
 		} catch (IllegalArgumentException e){
 		    out.println("<script>");  
 		    out.println("alert('"+ e.getMessage() +" ');");  
 		    out.println("history.go(-1);");  
 		    out.println("</script>");
-			
 		}
 	}
-
 }

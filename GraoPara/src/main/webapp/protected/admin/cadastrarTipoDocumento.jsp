@@ -83,8 +83,7 @@
 		<!-- Fim do Menu Lateral -->
 		<div class="content" id="content">
 			<h1>Cadastrar Tipos de Documentos</h1>
-			<form action="/GraoPara/doDocType" id="signupform"
-				method="post" autocomplete="off">
+			<form action="/GraoPara/doDocType" id="signupform" method="post" autocomplete="off">
 				<table class="tableControle">
 					<tr>
 						<td class="tdControle"><label class="labelForms" id="ltpDoc"
