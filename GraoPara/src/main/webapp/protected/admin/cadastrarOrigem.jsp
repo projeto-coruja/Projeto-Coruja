@@ -1,9 +1,11 @@
 <!doctype html>
+<%@page import="webview.servlets.PanelWorker"%>
 <%@page import="webview.WebUtility"%>
 <html>
 <head>
 <meta charset="utf-8">
 <title>Grão-Pará</title>
+
 
 <!-- Import dos styles CSS -->
 <link rel="stylesheet" type="text/css"
@@ -16,34 +18,37 @@
 	href="/GraoPara/css/styleValidation.css" />
 
 <!-- Import dos javascripts -->
-<script type="text/javascript" src="/GraoPara/javascript/cookie.js"
+<script type="text/javascript" src="/GraoPara/javascript/ajax.js"
 	charset="utf-8"></script>
-<script type="text/javascript"
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"
+<script type="text/javascript" src="/GraoPara/javascript/instrucao.js"
 	charset="utf-8"></script>
 <script src="/GraoPara/javascript/chili-1.7.pack.js"
 	type="text/javascript"></script>
-	
+<script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"
+	charset="utf-8"></script>
+
 <!-- Import dos scripts de validação de formulário -->
 <script src="/GraoPara/javascript/jquery.js" type="text/javascript"
 	charset="utf-8"></script>
 <script src="/GraoPara/javascript/validate.js" type="text/javascript"
 	charset="utf-8"></script>
 <script src="/GraoPara/javascript/validate_pt_br.js"
-	type="text/javascript" charset="utf-8"></script> 
-	
+	type="text/javascript" charset="utf-8"></script>
+
+
 </head>
 
 <body>
 
 	<div class="container">
 		<div class="header"></div>
-		
+
 		<!-- Começo do menu lateral -->
 		<div class="sidebar1">
 
 			<!--Depois de logado-->
-			<div class="LoginArea" id="logado">
+			<div class="LoginArea" id="logado" style="display: block;">
 				<form method="post" action="/GraoPara/doLogout">
 					<fieldset>
 						<label for="login">Bem vindo</label>
@@ -77,37 +82,71 @@
 		</div>
 		<!-- Fim do Menu Lateral -->
 		<div class="content" id="content">
-		
-			<h1>Editar Palavra Chave</h1>
-			
-			<form id="signupform" autocomplete="off" method="post" action="/GraoPara/doChangesToKeyWord">
-				<table class="tableControle">					
+			<h1>Cadastro de Códices/Caixas</h1>
+			<form action="/GraoPara/doDocType" id="signupform"
+				method="post" autocomplete="off">
+				<table class="tableForms">
 					<tr>
-						<td class="tdControle">
-							<label class="labelForms" id="lpalavraAntiga" for="palavraAntiga">Palavra Chave Antiga:</label>
+						<td class="tdForms">
+							<label class="labelForms" id="lidentificacao" for="identificacao">Identificação<span class="asterisco">*</span></label>
 						</td>
 						<td class="field">
-							<input class="input" id="palavraAntiga" name="palavraAntiga" type="text" value="<%= request.getParameter("palavra") %>" maxlength="32" readonly="readonly"/>
-						</td>
-						<td class="status"></td>
-					</tr>					
-					<tr>
-						<td class="tdControle">
-							<label class="labelForms" id="lpalavraNova" for="palavraNova">Palavra Chave Nova:<span class="asterisco">*</span></label>
-						</td>
-						<td class="field">
-							<input class="input" id="palavraNova" name="palavraNova" type="text" value="" maxlength="32" />
+							<select name="identificacao" class="input" id="identificacao">
+									<option value="">Selecione...</option>
+									<option value="codice">Número de Códice</option>
+									<option value="caixa">Número da Caixa</option>
+							</select>
 						</td>
 						<td class="status"></td>
 					</tr>
 					<tr>
-						<td class="tdControle" colspan="3">
-						<p></p>
-							<input class="buttonCancelar" type="button" value="Cancelar" onClick="history.go(-1)"> <input class="buttonRegistrar" id="signupsubmit" name="Enviar" type="submit" value="Enviar" />
+						<td class="tdForms">
+							<label class="labelForms" id="lcodigo" for="codigo">Código:<span class="asterisco">*</span></label>
+						</td>
+						<td class="field">
+							<input class="input" name="codigo" size="10" id="codigo" type="text" maxlength="5">
+						</td>
+						<td class="status"></td>
+					</tr>
+					<tr>
+						<td class="tdForms">
+							<label class="labelForms" id="ltitulo" for="titulo">Título:<span class="asterisco">*</span></label>
+						</td>
+						<td class="field"><input class="input" name="titulo" id="titulo" type="text" size="20" maxlength="48"></td>
+						<td class="status"></td>
+					</tr>
+					<tr>
+						<td class="tdForms">
+							<p></p> <input class="buttonRegistrar" id="signupsubmit"
+							name="inserir" type="submit" value="Enviar" />
 						</td>
 					</tr>
 				</table>
 			</form>
+			<br> <br>
+			<div class="scrollLong">
+				<table class="tableList">
+					<tr class="trList">
+						<thead>
+								<tr>
+									<td class="tdList"><label for="identificacao"
+										class="labelExibe">Identificação</label></td>
+									<td class="tdList"><label for="codigo"
+										class="labelExibe">Código</label></td>
+									<td class="tdList"><label for="titulo"
+										class="labelExibe">Títulos</label></td>
+									<td class="tdList"><label for="acao"
+										class="labelExibe">Ação</label></td>
+									<!-- Exemplo de cadastro -->
+								</tr>
+							</thead>
+							<tbody>
+								<%
+									//PanelWorker.listAllKeyWordsCadastro(request, out);
+								%>
+							</tbody>
+						</table>
+			</div>
 		</div>
 		<!-- Começo do Rodapé -->
 		<div class="footer">
