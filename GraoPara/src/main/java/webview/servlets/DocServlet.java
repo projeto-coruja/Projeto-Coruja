@@ -121,18 +121,35 @@ public class DocServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String tipoAPEP_SEQ = request.getParameter("tipoAPEP_SEQ");
 		String numAPEP_SEQ = request.getParameter("numeroAPEP");
-		
 		BuscaDocEJB search = new BuscaDocEJB();
+		response.setContentType("text/html");  
+	    PrintWriter out=response.getWriter(); 
+	    DocumentoDTO docs = null;
 		try {
-			DocumentoDTO docs = search.busca(tipoAPEP_SEQ, numAPEP_SEQ);
-			CadastroEJB delete = new CadastroEJB();
-			delete.deletarDocumento(docs);
+			docs = search.busca(tipoAPEP_SEQ, numAPEP_SEQ);
 		} catch (UnreachableDataBaseException e) {
-			// TODO Auto-generated catch block
+		    out.println("<script>");  
+		    out.println("alert('Erro no banco de dados. ');");  
+		    out.println("history.go(-1);");  
+		    out.println("</script>");
 			e.printStackTrace();
 		} catch (DocumentNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			CadastroEJB delete = new CadastroEJB();
+			try {
+				delete.deletarDocumento(docs);
+			} catch (UnreachableDataBaseException e1) {
+			    out.println("<script>");  
+			    out.println("alert('Erro no banco de dados. ');");  
+			    out.println("history.go(-1);");  
+			    out.println("</script>");
+				e1.printStackTrace();
+			}
+		} catch (IllegalArgumentException e){
+		    out.println("<script>");  
+		    out.println("alert('"+ e.getMessage() +" ');");  
+		    out.println("history.go(-1);");  
+		    out.println("</script>");
+			
 		}
 	}
 

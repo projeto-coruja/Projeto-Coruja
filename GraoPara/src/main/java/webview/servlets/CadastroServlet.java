@@ -51,7 +51,7 @@ public class CadastroServlet extends HttpServlet {
 		    PrintWriter out=response.getWriter();   
 		    out.println("<script>");  
 		    out.println("alert('Senha inválida! Tente novamente.');");  
-		    out.println("document.location=('/GraoPara/public/index.jsp');");  
+		    out.println("history.go(-1);");  
 		    out.println("</script>");
 		}
 		else
@@ -78,15 +78,15 @@ public class CadastroServlet extends HttpServlet {
 				response.setContentType("text/html");  
 			    PrintWriter out=response.getWriter();   
 				out.println("<script>");  
-			    out.println("alert('Email inválido! Por favor acesse a área de cadastro e tente novamente.');");  
-			    out.println("document.location=('/GraoPara/public/index.jsp');");  
+			    out.println("alert('Email inválido! Por favor tente novamente.');");  
+			    out.println("document.location=('/GraoPara/public/CadUsuario.jsp');");  
 			    out.println("</script>");
 			} catch (DuplicateUserException e) {
 				response.setContentType("text/html");  
 			    PrintWriter out=response.getWriter();   
 				out.println("<script>");  
-			    out.println("alert('Email já em uso! Por favor acesse a área de cadastro e tente novamente.');");  
-			    out.println("document.location=('/GraoPara/public/index.jsp');");  
+			    out.println("alert('Email já em uso! Por favor tente novamente.');");  
+			    out.println("document.location=('/GraoPara/public/CadUsuario.jsp');");  
 			    out.println("</script>");
 			}
 		}

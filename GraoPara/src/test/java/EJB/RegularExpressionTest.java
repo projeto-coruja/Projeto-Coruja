@@ -4,12 +4,12 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import business.EJB.RegularExpression;
+import business.EJB.util.RegularExpression;
 
 
 public class RegularExpressionTest {
 	
-	String expressao = "([A-Za-z0-9])([A-Za-z0-9]|_|-|.)*@([A-Za-z0-9]+)(\\.[A-Za-z0-9]+)+";
+	String expressao = "([A-Za-z0-9])([A-Za-z0-9]|_|-|\\.)*@([A-Za-z0-9]+)(\\.[A-Za-z0-9]+)+";
 	
 	RegularExpression p = new RegularExpression( expressao );
 	
@@ -30,6 +30,7 @@ public class RegularExpressionTest {
 		assertFalse(p.check("asb@gac"));
 		assertFalse(p.check("asb@gac."));
 		assertFalse(p.check("asb@gac.ae."));
+		assertFalse(p.check("aéç@gac.ae.com"));
 		assertFalse(p.check("@gac"));
 		assertFalse(p.check("asb@.co"));
 		assertFalse(p.check("as.b@gac"));
