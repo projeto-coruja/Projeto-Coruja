@@ -50,7 +50,8 @@
 					<li><a href="/GraoPara/protected/admin/painelAdmin.jsp">Painel Admin</a></li>
 					<li><a href="/GraoPara/protected/admin/pesquisaAdmin.jsp">Pesquisar</a></li>
 					<li><a href="/GraoPara/protected/admin/cadastroDocumentosAdmin.jsp">Cadastrar Documento</a></li>					
-					<li><a href="/GraoPara/protected/admin/cadastrarPalavrasChave.jsp">Cadastrar Palavras-Chave</a></li>						
+					<li><a href="/GraoPara/protected/admin/cadastrarPalavrasChave.jsp">Cadastrar Palavras-Chave</a></li>									
+					<li><a href="/GraoPara/protected/admin/cadastrarOrigem.jsp">Cadastrar Códices/Caixas</a></li>					
 					<li><a href="/GraoPara/protected/admin/cadastrarTipoDocumento.jsp">Cadastrar Tipo de Documento</a></li>	
 					<li><a href="/GraoPara/protected/admin/cadUserAdmin.jsp">Cadastrar Usuário</a></li>					
 					<li><a href="/GraoPara/protected/admin/gerarSenha.jsp">Gerar Senha</a></li>
@@ -95,7 +96,7 @@
 						<td class="tdPesquisa"><label class="labelForms" id="ltitulo"
 							for="titulo">Título:</label></td>
 						<td class="field"><input class="input" name="titulo"
-							id="titulo" type="text" size="20" maxlength="48"></td>
+							id="titulo" type="text" size="20" maxlength="500"></td>
 						<td class="status"><a href="#"><img
 								src="/GraoPara/images/icone_ajuda.png"
 								alt="Cada caixa ou códice tem um título, geralmente longo."

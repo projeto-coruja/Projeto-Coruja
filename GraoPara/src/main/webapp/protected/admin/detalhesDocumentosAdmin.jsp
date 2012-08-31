@@ -63,7 +63,8 @@
 					<li><a href="/GraoPara/protected/admin/painelAdmin.jsp">Painel Admin</a></li>
 					<li><a href="/GraoPara/protected/admin/pesquisaAdmin.jsp">Pesquisar</a></li>
 					<li><a href="/GraoPara/protected/admin/cadastroDocumentosAdmin.jsp">Cadastrar Documento</a></li>					
-					<li><a href="/GraoPara/protected/admin/cadastrarPalavrasChave.jsp">Cadastrar Palavras-Chave</a></li>						
+					<li><a href="/GraoPara/protected/admin/cadastrarPalavrasChave.jsp">Cadastrar Palavras-Chave</a></li>									
+					<li><a href="/GraoPara/protected/admin/cadastrarOrigem.jsp">Cadastrar Códices/Caixas</a></li>					
 					<li><a href="/GraoPara/protected/admin/cadastrarTipoDocumento.jsp">Cadastrar Tipo de Documento</a></li>	
 					<li><a href="/GraoPara/protected/admin/cadUserAdmin.jsp">Cadastrar Usuário</a></li>					
 					<li><a href="/GraoPara/protected/admin/gerarSenha.jsp">Gerar Senha</a></li>
@@ -102,7 +103,7 @@
 						<td class="tdForms"><label class="labelForms" id="ltitulo" for="titulo">Título:<span
 								class="asterisco">*</span></label></td>
 						<td class="field"><input class="input" name="titulo"
-							id="titulo" type="text" size="20" maxlength="48"
+							id="titulo" type="text" size="20" maxlength="500"
 							value="<%=WebUtility.printLabel(request, "titulo")%>"></td>
 						<td class="status"></td>
 					</tr>
