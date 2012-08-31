@@ -76,7 +76,7 @@ public class DocTypeServlet extends HttpServlet {;
 			tdEjb.addNewDocumentType(tipo);
 			out.println("<script>");  
 		    out.println("alert('Tipo de documento adicionado com sucesso.');"); 
-			response.sendRedirect("/GraoPara/protected/admin/cadastrarTipoDocumento.jsp");
+		    out.println("/GraoPara/protected/admin/cadastrarTipoDocumento.jsp");
 		    out.println("</script>");
 		} catch (UnreachableDataBaseException e) {
 			out.println("<script>");  
