@@ -157,7 +157,6 @@
 						<td class="field"><select class="input" name="tipoDoc"
 							id="tipoDoc">
 								<!-- Pegar do Banco de dados os tipos e, caso o usuário selecione outro, exibir campo para cadastrar outro tipo -->
-								<option value="">Selecione...</option>
 								<%=WebUtility.printSelectTipoDoc(request) %>
 						</select></td>
 						<td class="status"><a href="#"><img
