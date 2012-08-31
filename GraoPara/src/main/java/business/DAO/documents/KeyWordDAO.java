@@ -65,6 +65,7 @@ public class KeyWordDAO {
 				if (((PalavraChaveDTO) dto).getPalavra().equals(key))
 					select = (PalavraChaveDTO) dto;
 			}
+			if(select == null)	throw new KeywordNotFoundException();
 			select.setAprovada(true);
 			manager.updateEntity(select);
 			return select;
