@@ -18,7 +18,9 @@ import business.DAO.documents.KeyWordDAO;
 import business.DAO.documents.OrigemDAO;
 import business.DAO.login.LoginDAO;
 import business.exceptions.documents.DocumentNotFoundException;
+import business.exceptions.documents.DocumentTypeNotFoundException;
 import business.exceptions.documents.KeywordNotFoundException;
+import business.exceptions.documents.OriginNotFoundException;
 import business.exceptions.login.UnreachableDataBaseException;
 import business.exceptions.login.UserNotFoundException;
 
@@ -179,14 +181,28 @@ public class CadastroEJB {
 		
 		KeyWordDAO kwDao = new KeyWordDAO();
 		
-		BuscaDocEJB busca = new BuscaDocEJB();
-		DocumentoDTO docDTO = busca.busca(idNumDoc_tipoId, idNumDoc_codId);
+		BuscaDocEJB buscaDocumento = new BuscaDocEJB();
+		DocumentoDTO docDTO = buscaDocumento.busca(idNumDoc_tipoId, idNumDoc_codId);
 		
-		docDTO.getOrigemDocumento().setCodOrigem(origem_codOrigem);
-		docDTO.getOrigemDocumento().setTipoOrigem(origem_tipoOrigem);
-		docDTO.getOrigemDocumento().setTitulo(origem_titulo);
+		OrigemDAO buscaOrigem = new OrigemDAO();
+		DocumentTypeDAO buscaTipo = new DocumentTypeDAO();
 		
-		docDTO.getTipoDocumento().setTipoDocumento(tipoDocumento_tipoDocumento);
+		try {
+			OrigemDTO novaOrigem = buscaOrigem.findExactOrigin(origem_codOrigem, origem_tipoOrigem, origem_titulo);
+			docDTO.setOrigemDocumento(novaOrigem);
+			
+		} catch (OriginNotFoundException e1) {
+			docDTO.getOrigemDocumento().setCodOrigem(origem_codOrigem);
+			docDTO.getOrigemDocumento().setTipoOrigem(origem_tipoOrigem);
+			docDTO.getOrigemDocumento().setTitulo(origem_titulo);
+		}
+		
+		try {
+			TipoDocumentoDTO docType = buscaTipo.findSingleDocumentTypeByString(tipoDocumento_tipoDocumento);
+			docDTO.setTipoDocumento(docType);
+		} catch (DocumentTypeNotFoundException e1) {
+			docDTO.getTipoDocumento().setTipoDocumento(tipoDocumento_tipoDocumento);
+		}
 		
 		List<DTO> check = null;
 		if(palavraChave01 == null || palavraChave01.equals("")){
