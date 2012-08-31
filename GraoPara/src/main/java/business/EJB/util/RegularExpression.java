@@ -10,7 +10,7 @@ public class RegularExpression {
 	public RegularExpression(String pattern){
 		if(pattern.charAt(0) != '^')	pattern = "^" + pattern;
 		if(pattern.charAt(pattern.length()-1) != '$')	pattern = pattern + "$";
-		System.out.println(pattern);
+//		System.out.println(pattern);
 		p = Pattern.compile(pattern, Pattern.CASE_INSENSITIVE);
 	}
 	

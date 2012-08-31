@@ -22,7 +22,7 @@ public class AdminBean {
 	private final String profileNamePattern = "([a-z0-9]){3,}";
 	private final RegularExpression profileNameChecker = new RegularExpression(profileNamePattern);
 	
-	private final String emailPattern = "([A-Za-z0-9])([A-Za-z0-9]|_|-|.)*@([A-Za-z0-9]+)(\\.[A-Za-z0-9]+)+";
+	private final String emailPattern = "([A-Za-z0-9])([_.-]?[A-Za-z0-9])*@([A-Za-z0-9]+)(\\.[A-Za-z0-9]+)+";
 	private final RegularExpression emailChecker = new RegularExpression(emailPattern);
 	
 	public AdminBean() {

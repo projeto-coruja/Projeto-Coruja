@@ -10,10 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import persistence.dto.UserDTO;
-
-import webview.WebUtility;
-
-import business.EJB.userEJB.AuthBean;
 import business.EJB.userEJB.BuscaUserEJB;
 import business.EJB.userEJB.CadastroBean;
 import business.EJB.util.EJBUtility;

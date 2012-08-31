@@ -40,6 +40,10 @@ public class DocTypeServlet extends HttpServlet {
 		
 		try {
 			tdEjb.removeTypeDocument(tipo);
+			out.println("<script>");  
+		    out.println("alert('Tipo de documento removido com sucesso');");    
+		    out.println("document.location=('/GraoPara/protected/admin/cadastrarTipoDocumento.jsp');");
+		    out.println("</script>");		
 		} catch (UnreachableDataBaseException e) {
 			out.println("<script>");  
 		    out.println("alert('Erro no banco de dados! Contate o suporte e tente novamente mais tarde." + e.getStackTrace() + "');");  
@@ -48,6 +52,11 @@ public class DocTypeServlet extends HttpServlet {
 			e.printStackTrace();
 		} catch (DocumentTypeNotFoundException e) {
 			e.printStackTrace();
+		} catch (IllegalArgumentException e){
+			out.println("<script>");  
+		    out.println("alert('Erro ao tentar deletar o tipo de documento, Existem documentos atrelados a este tipo');");  
+		    out.println("history.go(-1);");  
+		    out.println("</script>");			
 		}
 		
 	}
