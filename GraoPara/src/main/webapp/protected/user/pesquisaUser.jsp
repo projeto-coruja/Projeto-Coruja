@@ -93,7 +93,7 @@
 						<td class="tdPesquisa"><label class="labelForms" id="ltitulo"
 							for="titulo">Título:</label></td>
 						<td class="field"><input class="input" name="titulo"
-							id="titulo" type="text" size="20" maxlength="48"></td>
+							id="titulo" type="text" size="20" maxlength="500"></td>
 						<td class="status"><a href="#"><img
 								src="/GraoPara/images/icone_ajuda.png"
 								alt="Cada caixa ou códice tem um título, geralmente longo."

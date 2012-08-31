@@ -111,7 +111,7 @@
 						<td class="tdForms">
 							<label class="labelForms" id="ltitulo" for="titulo">Título:<span class="asterisco">*</span></label>
 						</td>
-						<td class="field"><input class="input" name="titulo" id="titulo" type="text" size="20" maxlength="48"></td>
+						<td class="field"><input class="input" name="titulo" id="titulo" type="text" size="20" maxlength="500"></td>
 						<td class="status"></td>
 					</tr>
 					<tr>
