@@ -102,7 +102,7 @@ public class SearchWorker {
 								+ "\">"
 								+ "<img src=\"/GraoPara/images/edit.png\" title=\"Editar\" alt=\"Editar\"/></a> "
 								+ "<br>"
-								+ "<a href=\"/GraoPara/addDoc?"
+								+ "<a href=\"/GraoPara/removeDoc?"
 								+"tipoAPEP_SEQ=" + doc.getIdNumDocumento().getTipoId()
 								+"&numeroAPEP=" + doc.getIdNumDocumento().getCodId()
 								+ "\">" 

@@ -55,7 +55,6 @@ $(document).ready(function() {
 			},
 			chave1: {
 				required: true,
-				minlength: 3
 			},
 			/* ----------------------------------
 			 *  Cadastro de Usuários

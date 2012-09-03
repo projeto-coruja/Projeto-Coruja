@@ -72,11 +72,14 @@
 		<div class="content" id="content">
 				
 			<h1>Cadastro de Documentos</h1>
-			<form id="signupform" autocomplete="off" method="POST" action="/GraoPara/addDoc?action=add">
+			<form id="signupform" autocomplete="off" method="GET" action="/GraoPara/protected/admin/addDoc">
 				<table class="tableForms">
 					<tr>
 						<td colspan="3">
 							<label class="labelForms"><strong>PREENCHA TODOS OS CAMPOS COM ASTERÍSCO<span class="asterisco">*</span></strong></label>
+						</td>
+						<td class="field">
+							<input type = "hidden" id="action" name="action" value="add"></input>
 						</td>
 					</tr>
 					<tr>
@@ -190,9 +193,21 @@
 					</tr>
 					<tr>
 						<td class="field" colspan="2">
-								<input class="inputPalavraChave" id="chave1" name="chave1" type="text" size="15" maxlength="32"> - 
-								<input class="inputPalavraChave" id="chave2" name="chave2" type="text" size="15" maxlength="32"> - 
-								<input class="inputPalavraChave" id="chave3" name="chave3" type="text" size="15" maxlength="32"> 
+							<select name="chave1" id="chave1" style="width: 120px" onchange="changeToInput(this);">
+								<option value = "">Nenhuma</option>
+								<%= WebUtility.printSelectKeyWords(request, "chave1") %>
+								<option value = "">Nova...</option>
+							</select>
+							<select name="chave2" id="chave2" style="width: 120px" onchange="changeToInput(this);">
+								<option value = "">Nenhuma</option>
+								<%= WebUtility.printSelectKeyWords(request, "chave2") %>
+								<option value = "">Novo...</option>
+							</select>
+							<select name="chave3" id="chave3" style="width: 120px" onchange="changeToInput(this);">
+								<option value = "">Nenhuma</option>
+								<%= WebUtility.printSelectKeyWords(request, "chave3") %>
+								<option value = "">Novo...</option>
+							</select>
 						</td>
 						<td class="status"></td>
 					</tr>
