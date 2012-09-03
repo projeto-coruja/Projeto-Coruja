@@ -80,7 +80,7 @@
 		<div class="content" id="content">
 				
 			<h1>Cadastro de Documentos</h1>
-		<form id="signupform" autocomplete="off" method="GET" action="/GraoPara/protected/admin/addDoc?action=add">
+		<form id="signupform" autocomplete="off" method="GET" action="/GraoPara/protected/admin/addDoc">
 				<table class="tableForms">
 					<tr>
 						<td colspan="3">

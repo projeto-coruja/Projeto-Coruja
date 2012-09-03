@@ -79,7 +79,7 @@
 
 			<h2>Edição de Documentos</h2>
 			<form id="signupform" autocomplete="off" method="POST"
-				action="/GraoPara/addDoc?action=update">
+				action="/GraoPara/protected/admin/updateDoc">
 				<table class="tableForms">
 					<tr>
 						<td class="tdForms"><label class="labelForms" id="lidentificacao"

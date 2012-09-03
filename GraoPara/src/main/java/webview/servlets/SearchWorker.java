@@ -60,7 +60,7 @@ public class SearchWorker {
 				String palchave1 = "";
 				String palchave2 = "";
 				String palchave3 = "";
-				if(doc.getPalavrasChaves1() != null) palchave2 = doc.getPalavrasChaves2().getPalavra();
+				if(doc.getPalavrasChaves1() != null) palchave1 = doc.getPalavrasChaves1().getPalavra();
 				if(doc.getPalavrasChaves2() != null) palchave2 = doc.getPalavrasChaves2().getPalavra();
 				if(doc.getPalavrasChaves3() != null) palchave3 = doc.getPalavrasChaves3().getPalavra();
 				
@@ -102,7 +102,7 @@ public class SearchWorker {
 								+ "\">"
 								+ "<img src=\"/GraoPara/images/edit.png\" title=\"Editar\" alt=\"Editar\"/></a> "
 								+ "<br>"
-								+ "<a href=\"/GraoPara/removeDoc?"
+								+ "<a href=\"/GraoPara/protected/admin/removeDoc?"
 								+"tipoAPEP_SEQ=" + doc.getIdNumDocumento().getTipoId()
 								+"&numeroAPEP=" + doc.getIdNumDocumento().getCodId()
 								+ "\">" 
@@ -143,9 +143,10 @@ public class SearchWorker {
 				int c_mes = c.get(Calendar.MONTH) + 1;
 				int c_ano = c.get(Calendar.YEAR);
 
-				String palchave1 = doc.getPalavrasChaves1().getPalavra();
+				String palchave1 = "";
 				String palchave2 = "";
 				String palchave3 = "";
+				if(doc.getPalavrasChaves1() != null) palchave1 = doc.getPalavrasChaves1().getPalavra();
 				if(doc.getPalavrasChaves2() != null) palchave2 = doc.getPalavrasChaves2().getPalavra();
 				if(doc.getPalavrasChaves3() != null) palchave3 = doc.getPalavrasChaves3().getPalavra();
 
