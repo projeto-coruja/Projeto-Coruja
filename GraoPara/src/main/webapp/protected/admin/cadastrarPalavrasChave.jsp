@@ -94,6 +94,8 @@
 							name="palavra" type="text" value="" maxlength="20" /></td>
 						<td class="field"><input class="input" id="action"
 							name="action" type="hidden" value="add" maxlength="20" /></td>
+						<td class="field"><input class="input" id="action"
+							name="from" type="hidden" value="cadastrarPalavrasChave.jsp" maxlength="20" /></td>
 						<td class="status"></td>
 					</tr>
 					<tr>
@@ -123,7 +125,8 @@
 							</thead>
 							<tbody>
 								<%
-									PanelWorker.listAllKeyWordsCadastro(request, out);
+									request.setAttribute("in", "cadastrarPalavrasChave.jsp");
+									PanelWorker.listAllKeyWords(request, out);
 								%>
 							</tbody>
 						</table>

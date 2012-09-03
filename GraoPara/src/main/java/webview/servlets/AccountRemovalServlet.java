@@ -40,7 +40,7 @@ public class AccountRemovalServlet extends HttpServlet {
 		} catch (UserNotFoundException e) {
 			e.printStackTrace();
 		} 
-		response.sendRedirect("/GraoPara/protected/admin/painelAdmin.jsp#tab3");
+		response.sendRedirect("/GraoPara/protected/admin/painelAdmin.jsp#tab2");
 	}
 
 }
