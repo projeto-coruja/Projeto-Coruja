@@ -36,11 +36,11 @@ public class AccountRemovalServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		LoginDAO loginDAO = new LoginDAO();
+		UserDTO userToRemove = null;
 		AdminBean adm = new AdminBean();
 		String email = request.getParameter("email");
 
-		LoginDAO loginDAO = new LoginDAO();
-		UserDTO userToRemove = null;
 		try {
 			userToRemove = loginDAO.findUserByEmail(email);
 		} catch (UnreachableDataBaseException e1) {
@@ -54,12 +54,11 @@ public class AccountRemovalServlet extends HttpServlet {
 		try {
 			adm.deletarUsuario(email);
 
-			System.out.println(userToRemove.getUserProfile().getProfile());
 			if(userToRemove.getUserProfile().getProfile().equals("default"))
-				response.sendRedirect("/GraoPara/protected/admin/painelAdmin.jsp#tab1");
+				response.sendRedirect("/GraoPara/protected/admin/painelAdmin.jsp#tab1"); 
 			else
 				response.sendRedirect("/GraoPara/protected/admin/painelAdmin.jsp#tab2");
-
+			
 		} catch (UnreachableDataBaseException e) {
 			e.printStackTrace();
 		} catch (UserNotFoundException e) {
