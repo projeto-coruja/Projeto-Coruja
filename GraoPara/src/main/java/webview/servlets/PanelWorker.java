@@ -18,6 +18,7 @@ import persistence.dto.DTO;
 import persistence.dto.PalavraChaveDTO;
 import persistence.dto.ProfileDTO;
 import persistence.dto.UserDTO;
+import webview.WebUtility;
 
 
 public class PanelWorker {
@@ -100,6 +101,7 @@ public class PanelWorker {
 	}	
 	
 	public static void listAllUsers(HttpServletRequest request, JspWriter out) throws IOException{
+		String c_email = WebUtility.selectCookie(request.getCookies(), WebUtility.cookie_email).getValue();
 		BuscaUserEJB busca = new BuscaUserEJB();
 		List<DTO> users = null;	    
 		try {
@@ -108,20 +110,22 @@ public class PanelWorker {
 			for(DTO u : users){
 				UserDTO user = (UserDTO) u;
 				
-				out.println("<tr>");
-				out.println("<td> <label for=\"identificacao\" class=\"labelExibe\">" + user.getName() + "</label> </td>");
-				out.println("<td> <label for=\"identificacao\" class=\"labelExibe\">" + user.getEmail() + " </label> </td>");
-				out.println("<td> <label for=\"identificacao\" class=\"labelExibe\">" + user.getUserProfile().getProfile() + "</label> </td>");
-				out.println("<td>"
-					+ "<a href=\"/GraoPara/protected/admin/editarUsuario.jsp?"
-						+ "paramName=" + user.getName()
-						+"&paramEmail="+user.getEmail()+"\" ><img src=\"/GraoPara/images/edit.png\" title=\"Editar\" alt=\"Editar\" /></a>" 
-					+ "<a href=\"/GraoPara/protected/admin/removeAccount?" 
-						+ "email=" + user.getEmail()
-						+ "&tab=3\"><img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\" /></a>"
-						+ "</td>");
-				out.println("</tr>");
-				out.println("</tr>");
+				if(!user.getEmail().equals(c_email)){
+					out.println("<tr>");
+					out.println("<td> <label for=\"identificacao\" class=\"labelExibe\">" + user.getName() + "</label> </td>");
+					out.println("<td> <label for=\"identificacao\" class=\"labelExibe\">" + user.getEmail() + " </label> </td>");
+					out.println("<td> <label for=\"identificacao\" class=\"labelExibe\">" + user.getUserProfile().getProfile() + "</label> </td>");
+					out.println("<td>"
+							+ "<a href=\"/GraoPara/protected/admin/editarUsuario.jsp?"
+							+ "paramName=" + user.getName()
+							+"&paramEmail="+user.getEmail()+"\" ><img src=\"/GraoPara/images/edit.png\" title=\"Editar\" alt=\"Editar\" /></a>" 
+							+ "<a href=\"/GraoPara/protected/admin/removeAccount?" 
+							+ "email=" + user.getEmail()
+							+ "&tab=3\"><img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\" /></a>"
+							+ "</td>");
+					out.println("</tr>");
+					out.println("</tr>");
+				}
 			}
 				
 		} catch (UnreachableDataBaseException e) {
