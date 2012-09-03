@@ -22,9 +22,13 @@ import persistence.dto.UserDTO;
 
 public class PanelWorker {
 
-	public static void listAllKeyWords(HttpServletRequest request, JspWriter out) throws IOException{
+	public static void listAllKeyWords(HttpServletRequest request, JspWriter out)  throws IOException{
 		BuscaPalavraChaveEJB busca = new BuscaPalavraChaveEJB();
 		List<DTO> keys = null;	    
+		String in = (String) request.getAttribute("in");
+		String td = null;
+		if(in.equals("cadastrarPalavrasChave.jsp"))		td =  "class=\"tdList\"";
+		else	td = "";
 		try{ 
 			keys = busca.buscaPalavrasChaves();
 
@@ -32,17 +36,18 @@ public class PanelWorker {
 				PalavraChaveDTO key = (PalavraChaveDTO) k;
 
 				out.write("<tr>");
-				out.write("<td> <label for=\"identificacao\" class=\"labelExibe\">" + key.getId() + "</label> </td>");
-				out.write("<td> <label for=\"identificacao\" class=\"labelExibe\">" + key.getPalavra() + " </label> </td>");
+				out.write("<td "+td+"> <label for=\"identificacao\" class=\"labelExibe\">" + key.getId() + "</label> </td>");
+				out.write("<td "+td+"> <label for=\"identificacao\" class=\"labelExibe\">" + key.getPalavra() + " </label> </td>");
 				/*out.write("<td> <label for=\"identificacao\" class=\"labelExibe\">" + (key.isAprovada()==true ? "Aprovada" : "Pendente") + "</label> </td>");*/
-				out.println("<td>"
+				out.println("<td "+td+">"
 						+ "<a href=\"/GraoPara/protected/admin/editarPalavraChave.jsp?"
 							+ "palavra="+ key.getPalavra() +"\" >"
 							+ "<img src=\"/GraoPara/images/edit.png\" title=\"Editar\" alt=\"Editar\" /></a>" 
 						+ "<a href=\"/GraoPara/protected/admin/doChangesToKeyWord?" 
-							+ "palavra=" + key.getPalavra() + 
-							"&action=delete"
-							+ "&tab=3\"><img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\" /></a>"
+							+ "palavra=" + key.getPalavra()  
+							+ "&action=delete"
+							+ "&from=" + in
+							+ "\"><img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\" /></a>"
 						+ "</td>");
 				out.write("</tr>");
 			}
@@ -56,38 +61,6 @@ public class PanelWorker {
 		}
 	}
 	
-	public static void listAllKeyWordsCadastro(HttpServletRequest request, JspWriter out) throws IOException{
-		BuscaPalavraChaveEJB busca = new BuscaPalavraChaveEJB();
-		List<DTO> keys = null;	    
-		try{ 
-			keys = busca.buscaPalavrasChaves();
-
-			for(DTO k : keys){
-				PalavraChaveDTO key = (PalavraChaveDTO) k;
-
-				out.write("<tr>");
-				out.write("<td class=\"tdList\"> <label for=\"identificacao\" class=\"labelExibe\">" + key.getId() + "</label> </td>");
-				out.write("<td class=\"tdList\"> <label for=\"identificacao\" class=\"labelExibe\">" + key.getPalavra() + " </label> </td>");
-				out.println("<td class=\"tdList\">"
-						+ "<a href=\"/GraoPara/protected/admin/editarPalavraChave.jsp?"
-							+ "palavra="+ key.getPalavra() +"\" >"
-							+ "<img src=\"/GraoPara/images/edit.png\" title=\"Editar\" alt=\"Editar\" /></a>" 
-						+ "<a href=\"/GraoPara/protected/admin/doChangesToKeyWord?" 
-							+ "palavra=" + key.getPalavra() + 
-							"&action=delete"
-							+ "&tab=3\"><img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\" /></a>"
-						+ "</td>");
-				out.write("</tr>");
-			}
-		} catch (UnreachableDataBaseException e) {
-			out.write("<script>");  
-			out.write("alert('Problemas ao acessar o banco de dados. Contate o suporte técnico e tente novamente mais tarde ');");  
-			out.write("</script>");
-		} catch (KeywordNotFoundException e) {
-			out.println("<td colspan=\"4\"><label class=\"labelExibe\">Nenhuma palavra-chave encontrada</label></td>");
-		}
-	}
-
 	public static void listAllNewKeyWords(HttpServletRequest request, JspWriter out) throws IOException{
 		BuscaPalavraChaveEJB busca = new BuscaPalavraChaveEJB();
 		List<DTO> keys = null;	    
@@ -125,7 +98,6 @@ public class PanelWorker {
 			out.println("<td colspan=\"4\"><label class=\"labelExibe\">Nenhuma palavra-chave encontrada.</label></td>");
 		}
 	}	
-	
 	
 	public static void listAllUsers(HttpServletRequest request, JspWriter out) throws IOException{
 		BuscaUserEJB busca = new BuscaUserEJB();

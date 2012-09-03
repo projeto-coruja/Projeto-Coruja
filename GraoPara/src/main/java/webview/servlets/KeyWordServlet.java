@@ -38,18 +38,28 @@ public class KeyWordServlet extends HttpServlet {
 		CadastroEJB cad = new CadastroEJB();
 		String key = request.getParameter("palavra");
 		String action = request.getParameter("action");
-		String previous = request.getParameter("tab");
-		
+		String previous = request.getParameter("from");
+		if(previous.equals("painelAdmin.jsp"))	previous += "#tab3";
 		try {
-			if(action!= null && action.equals("add")) 
+			if(action!= null && action.equals("add")) {
 				cad.cadastrarPalavraChave(key);
-			else if(action != null && action.equals("delete"))	
+			    out.write("<script>");  
+			    out.write("alert('Palavra chave adicionado com sucesso. ');");  
+			    out.write("document.location=('/GraoPara/protected/admin/"+ previous +"');");
+			    out.write("</script>");
+			}
+			else if(action != null && action.equals("delete")) {	
 				cad.deletarPalavraChave(key);
-
-		    out.println("<script>");  
-		    out.println("alert('Problema ao executar operação. ');");  
-		    out.println("history.go(-1);");  
-		    out.println("</script>");
+			    out.write("<script>");
+			    out.write("document.location=('/GraoPara/protected/admin/"+ previous+"');");
+			    out.write("</script>");
+			}
+			else {
+			    out.println("<script>");  
+			    out.println("alert('Problema ao executar operação. ');");  
+			    out.println("history.go(-1);");  
+			    out.println("</script>");
+			}
 		} catch (UnreachableDataBaseException e) {
 		    out.println("<script>");  
 		    out.println("alert('Erro no banco de dados! Contate o suporte e tente novamente mais tarde. ');");  
@@ -59,6 +69,5 @@ public class KeyWordServlet extends HttpServlet {
 		} catch (KeywordNotFoundException e) {
 			e.printStackTrace();
 		} 
-		response.sendRedirect("/GraoPara/protected/admin/painelAdmin.jsp#tab"+previous);
 	}
 }

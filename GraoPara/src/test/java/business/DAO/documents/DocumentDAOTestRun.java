@@ -13,15 +13,12 @@ import persistence.dto.IdNumDocumentoDTO;
 import persistence.dto.OrigemDTO;
 import persistence.dto.PalavraChaveDTO;
 import persistence.dto.TipoDocumentoDTO;
-import persistence.dto.UserDTO;
 import webview.WebUtility;
 
 public class DocumentDAOTestRun {
 
 	private static DocumentDAO DA;
 	private static LoginDAO LA;
-	private static UserDTO UO;
-
 	public static void main(String[] args) throws UnreachableDataBaseException, UserNotFoundException {
 		setUp();
 		testAddDocument();
@@ -38,11 +35,11 @@ public class DocumentDAOTestRun {
 		LA = new LoginDAO();
 		DA = new DocumentDAO();
 		try {
-			UO = LA.findUserByEmail("outlook@gmail.com");
+			LA.findUserByEmail("outlook@gmail.com");
 		} catch (UserNotFoundException e) {
 			LA.addUser("outlook@gmail.com", "Outlook", "password", null);
 			try {
-				UO = LA.findUserByEmail("outlook@gmail.com");
+				LA.findUserByEmail("outlook@gmail.com");
 			} catch (UserNotFoundException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

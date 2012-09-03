@@ -176,7 +176,7 @@
 							</thead>
 							<tbody>
 								<%
-									PanelWorker.listAllNewKeyWords(request, out);
+									//PanelWorker.listAllNewKeyWords(request, out);
 								%>
 							</tbody>
 						</table>
@@ -252,6 +252,7 @@
 							</thead>
 							<tbody>
 								<%
+									request.setAttribute("in", "painelAdmin.jsp");
 									PanelWorker.listAllKeyWords(request, out);
 								%>
 							</tbody>
