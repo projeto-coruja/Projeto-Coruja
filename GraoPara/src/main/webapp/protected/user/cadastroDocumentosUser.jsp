@@ -190,9 +190,18 @@
 					</tr>
 					<tr>
 						<td class="field" colspan="2">
-								<input class="inputPalavraChave" id="chave1" name="chave1" type="text" size="15" maxlength="32"> - 
-								<input class="inputPalavraChave" id="chave2" name="chave2" type="text" size="15" maxlength="32"> - 
-								<input class="inputPalavraChave" id="chave3" name="chave3" type="text" size="15" maxlength="32"> 
+							<select name="selectPalavraChave" style="width: 120px" onchange="changeToInput(this);">
+								<%= WebUtility.printSelectKeyWords(request, "chave1") %>
+								<option value = "">Novo...</option>
+							</select>
+							<select name="selectPalavraChave" style="width: 120px" onchange="changeToInput(this);">
+								<%= WebUtility.printSelectKeyWords(request, "chave2") %>
+								<option value = "">Novo...</option>
+							</select>
+							<select name="selectPalavraChave" style="width: 120px" onchange="changeToInput(this);">
+								<%= WebUtility.printSelectKeyWords(request, "chave3") %>
+								<option value = "">Novo...</option>
+							</select>
 						</td>
 						<td class="status"></td>
 					</tr>
