@@ -228,9 +228,9 @@
 				
 					<tr>
 						<td class="field" colspan="2">
-							<%=WebUtility.printSelectKeyWords(request, "chave1") %>
-							<%=WebUtility.printSelectKeyWords(request, "chave2") %>
-							<%=WebUtility.printSelectKeyWords(request, "chave3") %>
+							<%=WebUtility.printInputKeyWords(request, "chave1")%>
+							<%=WebUtility.printInputKeyWords(request, "chave2")%>
+							<%=WebUtility.printInputKeyWords(request, "chave3")%>
 						</td>
 					</tr>
 					

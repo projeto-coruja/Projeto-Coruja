@@ -15,6 +15,7 @@ import persistence.dto.ProfileDTO;
 import persistence.dto.TipoDocumentoDTO;
 
 import business.DAO.documents.DocumentTypeDAO;
+import business.DAO.documents.KeyWordDAO;
 import business.EJB.docEJB.BuscaPalavraChaveEJB;
 import business.EJB.userEJB.AuthBean;
 import business.EJB.userEJB.UserBean;
@@ -117,7 +118,10 @@ public final class WebUtility {
 		String parameter = request.getParameter("identificacao");
 		if(parameter == null)
 		{
-			output = "<option value=\"\">\"----\"</option>";
+			output = 
+					"<option selected value=\"\">Selecione...</option> " +
+					"<option value=\"CODICE\">Códice</option> " +
+					"<option value=\"CAIXA\">Caixa</option>";
 		}
 		else if(parameter.equals("CODICE"))
 		{
@@ -176,7 +180,7 @@ public final class WebUtility {
 		String tipoDoc = null;
 		try {
 			List<DTO> list = dtd.findAllDocumentTypes();
-			result = "<option value=\"\">------</option> ";
+			result = "<option value=\"\">Selecione...</option> ";
 			for(DTO d : list){
 				tipoDoc = ((TipoDocumentoDTO) d).getTipoDocumento();
 				if(tipoDoc.equals(request.getParameter("tipoDoc")))
@@ -194,7 +198,7 @@ public final class WebUtility {
 		return result;
 	}
 	
-	public static String printSelectKeyWords(HttpServletRequest request, String key_pos) {
+	public static String printInputKeyWords(HttpServletRequest request, String key_pos) {
 		BuscaPalavraChaveEJB busca = new BuscaPalavraChaveEJB();
 		String result = "";
 		String key = request.getParameter(key_pos);
@@ -208,6 +212,30 @@ public final class WebUtility {
 			return "<input type=\"text\" size=\"12\" maxlength=\"32\" class=\"inputPalavraChave\" id=\""+ key_pos +"\" name=\""+ key_pos +"\" value=\"\"></input> ";
 		} catch (IllegalArgumentException e){
 			return "<input type=\"text\" size=\"12\" maxlength=\"32\" class=\"inputPalavraChave\" id=\""+ key_pos +"\" name=\""+ key_pos +"\" value=\"\"></input> ";
+		}
+		return result;
+	}
+	
+	public static String printSelectKeyWords(HttpServletRequest request, String key_pos) {
+		KeyWordDAO word = new KeyWordDAO();
+		String result = "";
+		String key = null;
+		try {
+			List<DTO> list = word.getAllKeys();
+			
+			for(DTO d : list){
+				key = ((PalavraChaveDTO) d).getPalavra();
+				if(key.equals(request.getParameter(key_pos)))
+					result += "<option selected value=\"" + key + "\">" + key + "</option> ";
+				else
+					result += "<option value=\"" + key + "\">" + key + "</option> ";
+			}
+		} catch (UnreachableDataBaseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (KeywordNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		return result;
 	}

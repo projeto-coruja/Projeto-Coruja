@@ -30,8 +30,17 @@
 <script src="/GraoPara/javascript/validate.js" type="text/javascript"
 	charset="utf-8"></script>
 <script src="/GraoPara/javascript/validate_pt_br.js"
-	type="text/javascript" charset="utf-8"></script> 
-	
+	type="text/javascript" charset="utf-8"></script>
+<script>
+	function changeToInput(obj) {
+		tb = document.createElement('INPUT');
+		tb.type = 'text';
+		tb.value = obj.options[obj.selectedIndex].value;
+		obj.parentNode.insertBefore(tb, obj);
+		obj.parentNode.removeChild(obj);
+	}
+</script>
+
 </head>
 
 <body>
@@ -195,9 +204,15 @@
 					</tr>
 					<tr>
 						<td class="field" colspan="2">
-								<input class="inputPalavraChave" id="chave1" name="chave1" type="text" size="15" maxlength="32"> - 
-								<input class="inputPalavraChave" id="chave2" name="chave2" type="text" size="15" maxlength="32"> - 
-								<input class="inputPalavraChave" id="chave3" name="chave3" type="text" size="15" maxlength="32"> 
+							 <select name="selectPalavraChave" onchange="changeToInput(this);">
+								<%= WebUtility.printSelectKeyWords(request, "chave1") %>
+							</select>
+							<select name="selectPalavraChave" onchange="changeToInput(this);">
+								<%= WebUtility.printSelectKeyWords(request, "chave1") %>
+							</select>
+							<select name="selectPalavraChave" onchange="changeToInput(this);">
+								<%= WebUtility.printSelectKeyWords(request, "chave1") %>	
+							</select>
 						</td>
 						<td class="status"></td>
 					</tr>

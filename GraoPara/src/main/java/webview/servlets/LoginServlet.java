@@ -61,6 +61,15 @@ public class LoginServlet extends HttpServlet {
 			    else if(login_result.getLogType() == AuthBean.LoginSuccessAdmin)	// retorna para a página de ADMIN
 			    	response.sendRedirect("/GraoPara/protected/admin/indexAdmin.jsp");
 			}
+			else if(login_result != null && (login_result.getLogType().equals(AuthBean.LoginFailOrDefault)))
+			{
+				response.setContentType("text/html");  
+			    PrintWriter out=response.getWriter();   
+			    out.println("<script>");  
+			    out.println("alert('Sua conta ainda não foi aprovada pelo administrador, por favor aguarde e tente novamente mais tarde.');");  
+			    out.println("document.location=('/GraoPara/public/index.jsp');");  
+			    out.println("</script>");
+			}
 			else
 			{
 				//Exibir alerta e jogar de volta para o index, provisório

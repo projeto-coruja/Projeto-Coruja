@@ -30,7 +30,7 @@ public class IdNumDocumento implements Serializable,Entidade {
 
 	// Respectivo código alfanumérico APEP ou sequencial
 	//@Field(analyze=Analyze.NO)
-	@Column(name = "cod_id", length = 7, unique = true)
+	@Column(name = "cod_id", length = 7)
 	private String codId;
 	
 	public Long getId() {
