@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 
 
@@ -14,7 +15,7 @@ import javax.persistence.Table;
 
 @Entity
 //@Indexed
-@Table(name = "tbl_id_num_documento")
+@Table(name = "tbl_id_num_documento", uniqueConstraints=@UniqueConstraint(columnNames = {"tipo_id", "cod_id"}))
 public class IdNumDocumento implements Serializable,Entidade {
 
 	// Precisa ser serializável, então precisa ter
