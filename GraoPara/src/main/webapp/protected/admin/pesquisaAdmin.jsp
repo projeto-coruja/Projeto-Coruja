@@ -171,13 +171,20 @@
 							class="labelForms">Palavra Chaves:</label></td>
 					</tr>
 					<tr>
-						<td class="field" colspan="2"><input
-							class="inputPalavraChave" id="chave1" name="chave1" type="text"
-							size="15" maxlength="32"> - <input
-							class="inputPalavraChave" id="chave2" name="chave2" type="text"
-							size="15" maxlength="32"> - <input
-							class="inputPalavraChave" id="chave3" name="chave3" type="text"
-							size="15" maxlength="32"></td>
+						<td class="field" colspan="2">
+							<select name="chave1" id="chave1" style="width: 120px">
+								<option value = "">Nenhuma</option>
+								<%= WebUtility.printSelectKeyWords(request, "chave1") %>
+							</select>
+							<select name="chave2" id="chave2" style="width: 120px">
+								<option value = "">Nenhuma</option>
+								<%= WebUtility.printSelectKeyWords(request, "chave2") %>
+							</select>
+							<select name="chave3" id="chave3" style="width: 120px">
+								<option value = "">Nenhuma</option>
+								<%= WebUtility.printSelectKeyWords(request, "chave3") %>
+							</select>
+						</td>
 						<td class="status"><a href="#"><img
 								src="/GraoPara/images/icone_ajuda.png"
 								alt="Informe de uma a três palavras chaves para filtrar sua pesquisa"

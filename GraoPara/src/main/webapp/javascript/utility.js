@@ -6,6 +6,7 @@ function changeToInput(obj) {
 			tb.value = check;
 			tb.size = 8;
 			tb.name = obj.name;
+			tb.id = obj.id;
 			obj.parentNode.insertBefore(tb, obj);
 			obj.parentNode.removeChild(obj);
 		}
