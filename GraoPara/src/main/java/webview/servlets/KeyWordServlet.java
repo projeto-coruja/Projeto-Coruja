@@ -43,16 +43,16 @@ public class KeyWordServlet extends HttpServlet {
 		try {
 			if(action!= null && action.equals("add")) {
 				cad.cadastrarPalavraChave(key);
-			    out.write("<script>");  
-			    out.write("alert('Palavra chave adicionado com sucesso. ');");  
-			    out.write("document.location=('/GraoPara/protected/admin/"+ previous +"');");
-			    out.write("</script>");
+			    out.println("<script>");  
+			    out.println("alert('Palavra chave adicionado com sucesso. ');");  
+			    out.println("document.location=('/GraoPara/protected/admin/"+ previous +"');");
+			    out.println("</script>");
 			}
 			else if(action != null && action.equals("delete")) {	
 				cad.deletarPalavraChave(key);
-			    out.write("<script>");
-			    out.write("document.location=('/GraoPara/protected/admin/"+ previous+"');");
-			    out.write("</script>");
+			    out.println("<script>");
+			    out.println("document.location=('/GraoPara/protected/admin/"+ previous+"');");
+			    out.println("</script>");
 			}
 			else {
 			    out.println("<script>");  

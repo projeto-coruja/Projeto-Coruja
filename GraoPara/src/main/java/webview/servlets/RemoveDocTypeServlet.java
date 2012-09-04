@@ -10,40 +10,48 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import business.EJB.docEJB.TipoDocumentoEJB;
+import business.exceptions.documents.DocumentTypeNotFoundException;
 import business.exceptions.login.UnreachableDataBaseException;
 
 /**
- * Servlet implementation class DocTypeServlet
+ * Servlet implementation class RemoveDocTypeServlet
  */
-@WebServlet("/protected/admin/doDocType")
-public class DocTypeServlet extends HttpServlet {;
+@WebServlet("/protected/admin/removeDocType")
+public class RemoveDocTypeServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
        
-	private static final long serialVersionUID = 838811728644465716L;
-	
-	/**
+    /**
      * @see HttpServlet#HttpServlet()
      */
-    public DocTypeServlet() {
+    public RemoveDocTypeServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String tipo = request.getParameter("docType");
 		TipoDocumentoEJB tdEjb = new TipoDocumentoEJB();
-		response.setContentType("text/html");  
+		response.setContentType("text/html");
 	    PrintWriter out=response.getWriter();   
+		
 		try {
-			tdEjb.addNewDocumentType(tipo);
+			tdEjb.removeTypeDocument(tipo);
 			out.println("<script>");  
 		    out.println("document.location=('/GraoPara/protected/admin/cadastrarTipoDocumento.jsp');");
-		    out.println("</script>");
+		    out.println("</script>");		
 		} catch (UnreachableDataBaseException e) {
 			out.println("<script>");  
-		    out.println("alert('Erro no banco de dados! Contate o suporte e tente novamente mais tarde.');");  
+		    out.println("alert('Erro no banco de dados! Contate o suporte e tente novamente mais tarde." + e.getStackTrace() + "');");  
 		    out.println("document.location=('/GraoPara/protected/admin/indexAdmin.jsp');");  
 		    out.println("</script>");
 			e.printStackTrace();
+		} catch (DocumentTypeNotFoundException e) {
+			e.printStackTrace();
+		} catch (IllegalArgumentException e){
+			out.println("<script>");  
+		    out.println("alert('Erro ao tentar deletar o tipo de documento, Existem documentos atrelados a este tipo');");  
+		    out.println("history.go(-1);");  
+		    out.println("</script>");			
 		}
 		
 	}
