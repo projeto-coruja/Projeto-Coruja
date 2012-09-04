@@ -210,7 +210,6 @@ public class Documento implements Serializable,Entidade{
 
 	public void setPalavrasChaves3(PalavraChave palavrasChaves3) {
 		this.palavrasChaves3 = palavrasChaves3;
-	}
-	
+	}	
 
 }

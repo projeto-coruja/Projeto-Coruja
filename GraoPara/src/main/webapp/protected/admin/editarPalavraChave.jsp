@@ -113,7 +113,7 @@
 		
 			<h1>Editar Palavra Chave</h1>
 			
-			<form id="signupform" autocomplete="off" method="post" action="/GraoPara/doChangesToKeyWord">
+			<form id="signupform" autocomplete="off" method="get" action="/GraoPara/protected/admin/doChangesToKeyWord">
 				<table class="tableControle">					
 					<tr>
 						<td class="tdControle">
@@ -129,7 +129,7 @@
 							<label class="labelForms" id="lpalavraNova" for="palavraNova">Palavra Chave Nova:<span class="asterisco">*</span></label>
 						</td>
 						<td class="field">
-							<input class="input" id="palavraNova" name="palavraNova" type="text" value="" maxlength="32" />
+							<input class="input" id="palavra" name="palavra" type="text" value="" maxlength="32" />
 						</td>
 						<td class="status"></td>
 					</tr>
@@ -137,6 +137,14 @@
 						<td class="tdControle" colspan="3">
 						<p></p>
 							<input class="buttonCancelar" type="button" value="Cancelar" onClick="history.go(-1)"> <input class="buttonRegistrar" id="signupsubmit" name="Enviar" type="submit" value="Enviar" />
+						</td>
+					</tr>
+					<tr>
+						<td class="field">
+							<input type="hidden" id="from" name="from" type="text" value="cadastrarPalavrasChave.jsp"/>
+						</td>
+						<td class="field">
+							<input type="hidden" id="action" name="action" type="text" value="edit"/>
 						</td>
 					</tr>
 				</table>

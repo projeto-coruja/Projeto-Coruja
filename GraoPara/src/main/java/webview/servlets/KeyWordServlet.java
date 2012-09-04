@@ -37,22 +37,30 @@ public class KeyWordServlet extends HttpServlet {
 	    PrintWriter out=response.getWriter();   
 		CadastroEJB cad = new CadastroEJB();
 		String key = request.getParameter("palavra");
+		String oldkey = request.getParameter("palavraAntiga");
 		String action = request.getParameter("action");
 		String previous = request.getParameter("from");
 		if(previous.equals("painelAdmin.jsp"))	previous += "#tab3";
 		try {
 			if(action!= null && action.equals("add")) {
 				cad.cadastrarPalavraChave(key);
-			    out.write("<script>");  
-			    out.write("alert('Palavra chave adicionado com sucesso. ');");  
-			    out.write("document.location=('/GraoPara/protected/admin/"+ previous +"');");
-			    out.write("</script>");
+			    out.println("<script>");  
+			    out.println("alert('Palavra chave adicionado com sucesso. ');");  
+			    out.println("document.location=('/GraoPara/protected/admin/"+ previous +"');");
+			    out.println("</script>");
+			}
+			else if(action!= null && action.equals("edit")) {
+				cad.atualizarPalavraChave(oldkey, key, true);
+			    out.println("<script>");  
+			    out.println("alert('Palavra chave atualizada com sucesso. ');");  
+			    out.println("document.location=('/GraoPara/protected/admin/"+ previous +"');");
+			    out.println("</script>");
 			}
 			else if(action != null && action.equals("delete")) {	
 				cad.deletarPalavraChave(key);
-			    out.write("<script>");
-			    out.write("document.location=('/GraoPara/protected/admin/"+ previous+"');");
-			    out.write("</script>");
+			    out.println("<script>");
+			    out.println("document.location=('/GraoPara/protected/admin/"+ previous+"');");
+			    out.println("</script>");
 			}
 			else {
 			    out.println("<script>");  
