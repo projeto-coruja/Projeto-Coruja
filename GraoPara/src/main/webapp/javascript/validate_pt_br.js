@@ -117,7 +117,7 @@ $(document).ready(function() {
 			/* ----------------------------------
 			 *  Cadastro de novas palavras-chave pelo Admin
 			 * ---------------------------------- */
-			chave:{
+			palavra:{
 				required: true,
 				minlength: 3
 			},
@@ -246,7 +246,7 @@ $(document).ready(function() {
 			/* ----------------------------------
 			 *  Cadastro de novas palavras-chave pelo Admin
 			 * ---------------------------------- */
-			chave:{
+			palavra:{
 				required: "Informe a palavra-chave que deseja cadastrar",
 				minlength: jQuery.format("Digite no mínimo {0} caracteres.")				
 			},

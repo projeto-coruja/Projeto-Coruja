@@ -84,10 +84,9 @@ a:hover, a:active, a:focus { /* this group of selectors will give a keyboard nav
 	-moz-box-shadow: 0 -1px 0 0px #000;
 	-webkit-box-shadow: 0 -1px 0 0px #000;
 	box-shadow: 0 -1px 0 0px #000;
-	border: none;
-	width: 160px;
+	width: 140px;
 	height: 27px;
-	margin: 0px 0;
+	margin-left: -5px;
 	color: #000;
 	padding: 0 0 0 5px; /* Se quiser mais espação entre os formularios, é aqui que você deve brincar, teste as 4 coordenadas */
 	font-family: Arial, Helvetica, sans-serif;
@@ -251,7 +250,7 @@ a:hover, a:active, a:focus { /* this group of selectors will give a keyboard nav
 	text-align: center;
 	border: none;
 	float: inherit;
-	background: #6F7D94;
+	background: #95B2F0;
 	-webkit-border-radius: .6em;
 	-moz-border-radius: .6em;
 	border-radius: .6em;
@@ -267,7 +266,7 @@ margin-right: 80px;
 }
 
 .buttonSair {
-margin-left: 30px;
+margin-left: 27px;
 width: 100px;
 }
 
@@ -343,7 +342,7 @@ label{
 	float: left;
 	width: 180px;
 	height: 940px;
-	background-color: #93A5C4;
+	background-color: #C3D9FF;
 	padding-bottom: 10px;
 }
 
@@ -375,43 +374,49 @@ text-align: center;
 /* ~~ The navigation list styles (can be removed if you choose to use a premade flyout menu like Spry) ~~ */
 ul.nav {
 	list-style: none; /* this removes the list marker */
-	border-top: 1px solid #666; /* this creates the top border for the links - all others are placed using a bottom border on the LI */
+	border-top: 1px solid #839AE6; /* this creates the top border for the links - all others are placed using a bottom border on the LI */
 	margin-bottom: 15px; /* this creates the space between the navigation on the content below */
 }
 ul.nav li {
-	border-bottom: 1px solid #666; /* this creates the button separation */
+	border-bottom: 1px solid #839AE6; /* this creates the button separation */
 	right: auto;
 }
 ul.nav a, ul.nav a:visited { /* grouping these selectors makes sure that your links retain their button look even after being visited */
 	padding: 5px 5px 5px 15px;
 	display: block; /* this gives the link block properties causing it to fill the whole LI containing it. This causes the entire area to react to a mouse click. */
 	text-decoration: none;
-	background-color: #8090AB;
-	color: #000;
+	background-color: #FFF;
+	color: #839AE6;
 }
 ul.nav a:hover, ul.nav a:active, ul.nav a:focus { /* this changes the background and text color for both mouse and keyboard navigators */
-	background-color: #6F7D94;
+	background-color: #C3D9FF;
 	color: #FFF;
 }
 
 .active{
-	background-color: #6F7D94;
-	color: #FFF;
+	background-color: #FFF;
+	color: #839AE6;
 }
 
 p.left{
 text-align: left;
 }
 
+.sidebar{
+text-align: center;
+color: #839AE6;
+}
+
 
 /* ~~ The footer ~~ */
 .footer {
 	padding: 10px 0;
-	background-color: #6F7D94;
+	background-color: #9DB3FF;
 	text-align: center;
 	text-shadow:#000;
 	position: relative;/* this gives IE6 hasLayout to properly clear */
 	clear: both; /* this clear property forces the .container to understand where the columns end and contain them */
+	color: #FFF;
 }
 
 /* ~~ miscellaneous float/clear classes ~~ */
@@ -536,4 +541,15 @@ article.menuLateral section h2
     -ms-transition: all 500ms ease;  
     -o-transition: all 500ms ease;  
     transition: all 500ms ease;  
-}  
+}
+
+/*Menu com borda arredondada*/
+.bordaBox {background: transparent;width: 174px;padding: 10px 3px;}
+.bordaBox .b1, .bordaBox .b2, .bordaBox .b3, .bordaBox .b4, .bordaBox .b1b, .bordaBox .b2b, .bordaBox .b3b, .bordaBox .b4b {display:block; overflow:hidden; font-size:1px;}
+.bordaBox .b1, .bordaBox .b2, .bordaBox .b3, .bordaBox .b1b, .bordaBox .b2b, .bordaBox .b3b {height:1px;}
+.bordaBox .b2, .bordaBox .b3, .bordaBox .b4 {background:#FFF; border-left:1px solid #839AE6; border-right:1px solid #839AE6;}
+.bordaBox .b1 {margin:0 5px; background:#839AE6;}
+.bordaBox .b2 {margin:0 3px; border-width:0 2px;}
+.bordaBox .b3 {margin:0 2px;}
+.bordaBox .b4 {height:2px; margin:0 1px;}
+.bordaBox .conteudo {padding:5px;display:block; background:#FFF; border-left:1px solid #839AE6; border-right:1px solid #839AE6;}

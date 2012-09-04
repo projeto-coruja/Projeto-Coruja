@@ -26,37 +26,48 @@
 		<div class="sidebar1">
 
 			<!--Começo da área de login -->
-			<div class="LoginArea" id="loginDefault" style="display:block;">
-				<form method="post" action="/GraoPara/doLogin">
-					<fieldset>
-						<label for="login">Login:</label> <input class="inputLogin"
-							type="text" name="login" height="30px" size="auto"
-							placeholder="Seu login" required> <label for="senha">Senha:</label>
-						<input class="inputLogin" type="password" name="senha"
-							height="30px" size="auto" placeholder="Sua senha" required>
-					</fieldset>
-					<fieldset>
-						<input class="buttonEntrar" type="submit" name="Entrar"
-							value="Entrar" />											
-					</fieldset>
-					<fieldset>
-						<a href="/GraoPara/public/CadUsuario.jsp"><input type="button"
-							class="buttonRegistrar" name="Registrar" value="Registrar"></a>
-					</fieldset>
-				</form>
+			<div class="bordaBox">
+				<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+				<div class="conteudo">
+					<div class="LoginArea" id="loginDefault" style="display:block;">
+						<form method="post" action="/GraoPara/doLogin">
+							<fieldset>
+								<label class="sidebar" for="login">Login:</label> <input class="inputLogin"
+									type="text" name="login" height="30px" size="auto"
+									placeholder="Seu login" required> <label class="sidebar" for="senha">Senha:</label>
+								<input class="inputLogin" type="password" name="senha"
+									height="30px" size="auto" placeholder="Sua senha" required>
+							</fieldset>
+							<fieldset>
+								<input class="buttonEntrar" type="submit" name="Entrar"
+									value="Entrar" />											
+							</fieldset>
+							<fieldset>
+								<a href="/GraoPara/public/CadUsuario.jsp"><input type="button"
+									class="buttonRegistrar" name="Registrar" value="Registrar"></a>
+							</fieldset>						
+							</form>
+						</div>
+				</div>
+				<b class="b4"></b><b class="b3"></b><b class="b2"></b><b class="b1"></b>
 			</div>
 			<!-- Fim da área de login -->
-
-			<article class="menuLateral">
-				<ul class="nav" id="menu">
-					<li><a href="/GraoPara/public/index.jsp">Home</a></li>
-					<li><a href="/GraoPara/public/pesquisa.jsp">Pesquisar</a></li>
-					<li><a href="/GraoPara/public/sobre.jsp">Sobre</a></li>
-					<li><a href="/GraoPara/public/creditos.jsp">Créditos</a></li>
-					<li><a href="/GraoPara/public/tutorialPesquisa.jsp">Como pesquisar no acervo</a></ul>
-			</article>
+			<div class="bordaBox">
+				<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+				<div class="conteudo">
+					<article class="menuLateral">
+						<ul class="nav" id="menu">
+							<li><a href="/GraoPara/public/index.jsp">Home</a></li>
+							<li><a href="/GraoPara/public/pesquisa.jsp">Pesquisar</a></li>
+							<li><a href="/GraoPara/public/sobre.jsp">Sobre</a></li>
+							<li><a href="/GraoPara/public/creditos.jsp">Créditos</a></li>
+							<li><a href="/GraoPara/public/tutorialPesquisa.jsp">Como pesquisar no acervo</a></ul>
+					</article>
+				</div>
+				<b class="b4"></b><b class="b3"></b><b class="b2"></b><b class="b1"></b>
+			</div>
 		</div>
-		<!-- Fim do Menu Lateral -->
+			<!-- Fim do Menu Lateral -->
 		<div class="content" id="content">
 		<h1> Grão-Pará: 1800-1850</h1>
 			<p class="left">Bem-vindo a esta ferramenta colaborativa para a criação de verbetes sobre documentos ligados à história da capitania/província do Pará na primeira metade do século XIX. Através desse site, qualquer pesquisador também pode ter acesso integral aos verbetes já redigidos a partir de diferentes formas de busca. </p>

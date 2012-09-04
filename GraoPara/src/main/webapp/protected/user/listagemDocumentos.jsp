@@ -28,36 +28,58 @@
 	<div class="container">
 		<div class="header"></div>
 		
-		<!-- Começo do menu lateral -->
+<!-- Começo do menu lateral -->
 		<div class="sidebar1">
 
 			<!--Depois de logado-->
-			<div class="LoginArea" id="logado" style="display:block;">
-				<form method="post" action="/GraoPara/doLogout">
-					<fieldset>
-						<label for="login">Bem vindo</label>
-						<%
-							WebUtility.printName(request, out);
-						%>
-					</fieldset>
-					<fieldset>
-						<input class="buttonSair" type="submit" name="Sair" value="Sair" />
-					</fieldset>
-				</form>
+			<div class="bordaBox">
+				<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+				<div class="conteudo">
+					<div class="LoginArea" id="logado" style="display:block;">
+						<form method="post" action="/GraoPara/doLogout">
+							<fieldset>
+								<label class="sidebar" for="login">Bem vindo
+								<%
+									WebUtility.printName(request, out);
+								%>
+								</label>
+							</fieldset>
+							<fieldset>
+								<input class="buttonSair" type="submit" name="Sair" value="Sair" />
+							</fieldset>
+						</form>
+					</div>
+				</div>
+				<b class="b4"></b><b class="b3"></b><b class="b2"></b><b class="b1"></b>
 			</div>
 			<!-- ----------------------------------------------------------------------- -->
-
-			<article class="menuLateral">  
-				<ul class="nav" id="menu">
-					<li><a href="/GraoPara/protected/user/indexUser.jsp">Home</a></li>
-					<li><a href="/GraoPara/protected/user/pesquisaUser.jsp">Pesquisar</a></li>
-					<li><a href="/GraoPara/protected/user/cadastroDocumentosUser.jsp">Cadastrar Documento</a></li>
-					<li><a href="/GraoPara/protected/user/painelUser.jsp">Painel User</a></li>
-					<li><a href="/GraoPara/protected/user/sobreUser.jsp">Sobre</a></li>
-					<li><a href="/GraoPara/protected/user/creditosUser.jsp">Créditos</a></li>
-					<li><a href="/GraoPara/protected/user/tutorialPesquisaUser.jsp">Como pesquisar no acervo</a>
-				</ul>
-			</article>
+			<div class="bordaBox">
+				<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+				<div class="conteudo">
+					<article class="menuLateral">  
+						<ul class="nav" id="menu">
+							<li><a href="/GraoPara/protected/user/indexUser.jsp">Home</a></li>
+							<li><a href="/GraoPara/protected/user/pesquisaUser.jsp">Pesquisar</a></li>
+							<li><a href="/GraoPara/protected/user/cadastroDocumentosUser.jsp">Cadastrar Documento</a></li>
+							<li><a href="/GraoPara/protected/user/painelUser.jsp">Painel User</a></li>
+						</ul>
+					</article>
+				</div>
+				<b class="b4"></b><b class="b3"></b><b class="b2"></b><b class="b1"></b>
+			</div>	
+			<div class="bordaBox">
+				<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+				<div class="conteudo">
+					<article class="menuLateral">
+						<ul class="nav" id="menu">
+							<li><a href="/GraoPara/protected/user/tutorialPesquisaUser.jsp">Como pesquisar no acervo</a>
+							<li><a href="/GraoPara/protected/user/sobreUser.jsp">Sobre</a></li>
+							<li><a href="/GraoPara/protected/user/creditosUser.jsp">Créditos</a></li>							
+						</ul>
+					</article>
+				</div>
+				<b class="b4"></b><b class="b3"></b><b class="b2"></b><b class="b1"></b>
+			</div>	
 		</div>
 		<!-- Fim do Menu Lateral -->
 		<div class="content" id="content">
