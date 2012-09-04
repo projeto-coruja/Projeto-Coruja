@@ -221,7 +221,7 @@ public class SearchWorker {
 				out.println("<tr  class=\"trList\">");
 				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ tipoDoc.getTipoDocumento()+"</label></td>");
 				out.println("<td class=\"tdList\">"
-						+ "<a href=\"/GraoPara/doDocType?docType="+ tipoDoc.getTipoDocumento() + "\">"
+						+ "<a href=\"/GraoPara/protected/admin/removeDocType?docType="+ tipoDoc.getTipoDocumento() + "\">"
 							+"<img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\"/>"
 						+ "</a>"
 					+ "</td> ");

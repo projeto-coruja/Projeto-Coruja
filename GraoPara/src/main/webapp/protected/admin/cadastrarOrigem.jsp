@@ -83,8 +83,8 @@
 		<!-- Fim do Menu Lateral -->
 		<div class="content" id="content">
 			<h1>Cadastro de Códices/Caixas</h1>
-			<form action="/GraoPara/doDocType" id="signupform"
-				method="post" autocomplete="off">
+			<form action="/GraoPara/protected/admin/addOrigin" id="signupform"
+				method="get" autocomplete="off">
 				<table class="tableForms">
 					<tr>
 						<td class="tdForms">
