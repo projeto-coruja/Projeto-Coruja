@@ -233,7 +233,7 @@
 					</tr>
 					<tr>
 						<td class="field" colspan="2">
-							 <select name="chave1" id="chave1" style="width: 120px" onchange="changeToInput(this);">
+							<select name="chave1" id="chave1" style="width: 120px" onchange="changeToInput(this);">
 								<option value = "">Nenhuma</option>
 								<%= WebUtility.printSelectKeyWords(request, "chave1") %>
 								<option value = "">Nova...</option>
