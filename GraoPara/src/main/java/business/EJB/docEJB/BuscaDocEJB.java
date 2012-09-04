@@ -16,7 +16,7 @@ public class BuscaDocEJB {
 	
 	private DocumentDAO docDao;
 	private LoginDAO logDao;
-	private static String default_query = "from Documento as d where ";
+	private static String default_query = "from Documento where ";
 	
 	public BuscaDocEJB() {
 		docDao = new DocumentDAO();
@@ -103,9 +103,9 @@ public class BuscaDocEJB {
 			if(continue_query == true){
 				query += " and ";
 			}
-			query += "((d.palavrasChaves1.palavra like '%" + palavra1.toLowerCase() + "%')";
-			query += "or (d.palavrasChaves2.palavra like '%" + palavra1.toLowerCase() + "%')";
-			query += "or (d.palavrasChaves3.palavra like '%" + palavra1.toLowerCase() + "%'))";
+			query += "(palavra_chave_1 like '%" + palavra1.toLowerCase() + "%'";
+			query += "or palavra_chave_2 like '%" + palavra1.toLowerCase() + "%'";
+			query += "or palavra_chave_3 like '%" + palavra1.toLowerCase() + "%')";
 			continue_query = true;
 		}
 		
@@ -113,9 +113,9 @@ public class BuscaDocEJB {
 			if(continue_query == true){
 				query += " and ";
 			}
-			query += "((d.palavrasChaves1.palavra like '%" + palavra2.toLowerCase() + "%')";
-			query += "or (d.palavrasChaves2.palavra like '%" + palavra2.toLowerCase() + "%')";
-			query += "or (d.palavrasChaves3.palavra like '%" + palavra2.toLowerCase() + "%'))";
+			query += "(palavra_chave_1 like '%" + palavra2.toLowerCase() + "%'";
+			query += "or palavra_chave_2 like '%" + palavra2.toLowerCase() + "%'";
+			query += "or palavra_chave_3 like '%" + palavra2.toLowerCase() + "%')";
 			continue_query = true;
 		}
 		
@@ -123,9 +123,9 @@ public class BuscaDocEJB {
 			if(continue_query == true){
 				query += " and ";
 			}
-			query += "((d.palavrasChaves1.palavra like '%" + palavra3.toLowerCase() + "%')";
-			query += "or (d.palavrasChaves2.palavra like '%" + palavra3.toLowerCase() + "%')";
-			query += "or (d.palavrasChaves3.palavra like '%" + palavra3.toLowerCase() + "%'))";
+			query += "(palavra_chave_1 like '%" + palavra3.toLowerCase() + "%'";
+			query += "or palavra_chave_2 like '%" + palavra3.toLowerCase() + "%'";
+			query += "or palavra_chave_3 like '%" + palavra3.toLowerCase() + "%')";
 			continue_query = true;
 		}
 		

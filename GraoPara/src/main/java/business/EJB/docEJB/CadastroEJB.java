@@ -360,21 +360,25 @@ public class CadastroEJB {
 				}
 				atualizarDocumento(doc);
 			}
-		} catch (DocumentNotFoundException e) {	} 
-		PalavraChaveDTO keyWordDTO = keyDao.updateKeyWord(oldKey.toLowerCase(), newKey.toLowerCase(), newStatus);
+			PalavraChaveDTO keyWordDTO = keyDao.updateKeyWord(oldKey.toLowerCase(), newKey.toLowerCase(), newStatus);
+
+			for(DTO dto : results){
+				DocumentoDTO doc = (DocumentoDTO) dto;
+				if(doc.getPalavrasChaves1() == null){
+					doc.setPalavrasChaves1(keyWordDTO);
+				}
+				else if(doc.getPalavrasChaves2() == null){
+					doc.setPalavrasChaves2(keyWordDTO);
+				}
+				else if(doc.getPalavrasChaves3() == null){
+					doc.setPalavrasChaves3(keyWordDTO);
+				}
+				atualizarDocumento(doc);
+			}
+		} catch (DocumentNotFoundException e) {
+			@SuppressWarnings("unused")
+			PalavraChaveDTO keyWordDTO = keyDao.updateKeyWord(oldKey.toLowerCase(), newKey.toLowerCase(), newStatus);
+		} 
 		
-		for(DTO dto : results){
-			DocumentoDTO doc = (DocumentoDTO) dto;
-			if(doc.getPalavrasChaves1() == null){
-				doc.setPalavrasChaves1(keyWordDTO);
-			}
-			else if(doc.getPalavrasChaves2() == null){
-				doc.setPalavrasChaves2(keyWordDTO);
-			}
-			else if(doc.getPalavrasChaves3() == null){
-				doc.setPalavrasChaves3(keyWordDTO);
-			}
-			atualizarDocumento(doc);
-		}
 	}
 }
