@@ -35,34 +35,70 @@
 		<div class="sidebar1">
 
 			<!--Depois de logado-->
-			<div class="LoginArea" id="logado">
+			<div class="bordaBox">
+				<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+				<div class="conteudo">
+			<div class="LoginArea" id="logado" style="display:block;">
 				<form method="post" action="/GraoPara/doLogout">
 					<fieldset>
-						<label for="login">Bem vindo</label>
-						<% WebUtility.printName(request, out); %>
+						<label class="sidebar" for="login">Bem vindo
+						<%
+							WebUtility.printName(request, out);
+						%>
+						</label>
 					</fieldset>
 					<fieldset>
 						<input class="buttonSair" type="submit" name="Sair" value="Sair" />
 					</fieldset>
 				</form>
 			</div>
+			</div>
+				<b class="b4"></b><b class="b3"></b><b class="b2"></b><b class="b1"></b>
+			</div>	
 			<!-- ----------------------------------------------------------------------- -->
-	<article class="menuLateral">
-				<ul class="nav" id="menu">
-					<li><a href="/GraoPara/protected/admin/indexAdmin.jsp">Home</a></li>
-					<li><a href="/GraoPara/protected/admin/painelAdmin.jsp">Painel Admin</a></li>
-					<li><a href="/GraoPara/protected/admin/pesquisaAdmin.jsp">Pesquisar</a></li>
-					<li><a href="/GraoPara/protected/admin/cadastroDocumentosAdmin.jsp">Cadastrar Documento</a></li>					
-					<li><a href="/GraoPara/protected/admin/cadastrarPalavrasChave.jsp">Cadastrar Palavras-Chave</a></li>									
-					<li><a href="/GraoPara/protected/admin/cadastrarOrigem.jsp">Cadastrar Códices/Caixas</a></li>					
-					<li><a href="/GraoPara/protected/admin/cadastrarTipoDocumento.jsp">Cadastrar Tipo de Documento</a></li>	
-					<li><a href="/GraoPara/protected/admin/cadUserAdmin.jsp">Cadastrar Usuário</a></li>					
-					<li><a href="/GraoPara/protected/admin/gerarSenha.jsp">Gerar Senha</a></li>
-					<li><a href="/GraoPara/protected/admin/sobreAdmin.jsp">Sobre</a></li>		
-					<li><a href="/GraoPara/protected/admin/creditosAdmin.jsp">Créditos</a></li>	
-					<li><a href="/GraoPara/protected/admin/tutorialPesquisaAdmin.jsp">Como pesquisar no acervo</a>			
-				</ul>
-			</article>
+
+			<div class="bordaBox">
+				<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+				<div class="conteudo">
+					<article class="menuLateral">
+						<ul class="nav" id="menu">
+							<li><a href="/GraoPara/protected/admin/indexAdmin.jsp">Home</a></li>
+							<li><a href="/GraoPara/protected/admin/pesquisaAdmin.jsp">Pesquisar</a></li>
+							<li><a href="/GraoPara/protected/admin/painelAdmin.jsp">Painel Admin</a></li>					
+							<li><a href="/GraoPara/protected/admin/gerarSenha.jsp">Gerar Senha</a></li>					
+						</ul>
+					</article>
+				</div>
+				<b class="b4"></b><b class="b3"></b><b class="b2"></b><b class="b1"></b>
+			</div>	
+			<div class="bordaBox">
+				<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+				<div class="conteudo">
+					<article class="menuLateral">
+						<ul class="nav" id="menu">
+							<li><a href="/GraoPara/protected/admin/cadastroDocumentosAdmin.jsp">Cadastrar Documento</a></li>					
+							<li><a href="/GraoPara/protected/admin/cadastrarPalavrasChave.jsp">Cadastrar Palavras-Chave</a></li>									
+							<li><a href="/GraoPara/protected/admin/cadastrarOrigem.jsp">Cadastrar Códices/Caixas</a></li>					
+							<li><a href="/GraoPara/protected/admin/cadastrarTipoDocumento.jsp">Cadastrar Tipo de Documento</a></li>	
+							<li><a href="/GraoPara/protected/admin/cadUserAdmin.jsp">Cadastrar Usuário</a></li>
+						</ul>
+					</article>
+				</div>
+				<b class="b4"></b><b class="b3"></b><b class="b2"></b><b class="b1"></b>
+			</div>	
+			<div class="bordaBox">
+				<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+				<div class="conteudo">
+					<article class="menuLateral">
+						<ul class="nav" id="menu">	
+							<li><a href="/GraoPara/protected/admin/tutorialPesquisaAdmin.jsp">Como pesquisar no acervo</a></li>					
+							<li><a href="/GraoPara/protected/admin/sobreAdmin.jsp">Sobre</a></li>		
+							<li><a href="/GraoPara/protected/admin/creditosAdmin.jsp">Créditos</a></li>								
+						</ul>
+					</article>
+					</div>
+					<b class="b4"></b><b class="b3"></b><b class="b2"></b><b class="b1"></b>
+				</div>
 		</div>
 		<!-- Fim do Menu Lateral -->
 		<div class="content" id="content">
@@ -233,17 +269,17 @@
 					</tr>
 					<tr>
 						<td class="field" colspan="2">
-							<select name="chave1" id="chave1" style="width: 120px" onchange="changeToInput(this);">
+							 <select class="input" name="chave1" id="chave1" style="width: 120px" onchange="changeToInput(this);">
 								<option value = "">Nenhuma</option>
 								<%= WebUtility.printSelectKeyWords(request, "chave1") %>
 								<option value = "">Nova...</option>
 							</select>
-							<select name="chave2" id="chave2" style="width: 120px" onchange="changeToInput(this);">
+							<select class="input" name="chave2" id="chave2" style="width: 120px" onchange="changeToInput(this);">
 								<option value = "">Nenhuma</option>
 								<%= WebUtility.printSelectKeyWords(request, "chave2") %>
 								<option value = "">Novo...</option>
 							</select>
-							<select name="chave3" id="chave3" style="width: 120px" onchange="changeToInput(this);">
+							<select  class="input" name="chave3" id="chave3" style="width: 120px" onchange="changeToInput(this);">
 								<option value = "">Nenhuma</option>
 								<%= WebUtility.printSelectKeyWords(request, "chave3") %>
 								<option value = "">Novo...</option>

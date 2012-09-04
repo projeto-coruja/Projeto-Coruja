@@ -27,43 +27,71 @@
 		<!-- Começo do menu lateral -->
 		<div class="sidebar1">
 
-			<!--Começo da área de login -->
-			<div class="LoginArea" id="loginDefault" style="display:block;">
-				<form method="post" action="/GraoPara/doLogin">
+			<!--Depois de logado-->
+			<div class="bordaBox">
+				<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+				<div class="conteudo">
+			<div class="LoginArea" id="logado" style="display:block;">
+				<form method="post" action="/GraoPara/doLogout">
 					<fieldset>
-						<label for="login">Login:</label> <input class="inputLogin"
-							type="text" name="login" height="30px" size="auto"
-							placeholder="Seu login" required> <label for="senha">Senha:</label>
-						<input class="inputLogin" type="password" name="senha"
-							height="30px" size="auto" placeholder="Sua senha" required>
+						<label class="sidebar" for="login">Bem vindo
+						<%
+							WebUtility.printName(request, out);
+						%>
+						</label>
 					</fieldset>
 					<fieldset>
-						<input class="buttonEntrar" type="submit" name="Entrar"
-							value="Entrar" />
-					</fieldset>
-					<fieldset>
-						<a href="/GraoPara/public/CadUsuario.jsp"><input type="button"
-							class="buttonRegistrar" name="Registrar" value="Registrar"></a>
+						<input class="buttonSair" type="submit" name="Sair" value="Sair" />
 					</fieldset>
 				</form>
 			</div>
-			<!-- Fim da área de login -->
-	<article class="menuLateral">
-				<ul class="nav" id="menu">
-					<li><a href="/GraoPara/protected/admin/indexAdmin.jsp">Home</a></li>
-					<li><a href="/GraoPara/protected/admin/painelAdmin.jsp">Painel Admin</a></li>
-					<li><a href="/GraoPara/protected/admin/pesquisaAdmin.jsp">Pesquisar</a></li>
-					<li><a href="/GraoPara/protected/admin/cadastroDocumentosAdmin.jsp">Cadastrar Documento</a></li>					
-					<li><a href="/GraoPara/protected/admin/cadastrarPalavrasChave.jsp">Cadastrar Palavras-Chave</a></li>									
-					<li><a href="/GraoPara/protected/admin/cadastrarOrigem.jsp">Cadastrar Códices/Caixas</a></li>					
-					<li><a href="/GraoPara/protected/admin/cadastrarTipoDocumento.jsp">Cadastrar Tipo de Documento</a></li>	
-					<li><a href="/GraoPara/protected/admin/cadUserAdmin.jsp">Cadastrar Usuário</a></li>					
-					<li><a href="/GraoPara/protected/admin/gerarSenha.jsp">Gerar Senha</a></li>
-					<li><a href="/GraoPara/protected/admin/sobreAdmin.jsp">Sobre</a></li>		
-					<li><a href="/GraoPara/protected/admin/creditosAdmin.jsp">Créditos</a></li>	
-					<li><a href="/GraoPara/protected/admin/tutorialPesquisaAdmin.jsp">Como pesquisar no acervo</a>			
-				</ul>
-			</article>
+			</div>
+				<b class="b4"></b><b class="b3"></b><b class="b2"></b><b class="b1"></b>
+			</div>	
+			<!-- ----------------------------------------------------------------------- -->
+
+			<div class="bordaBox">
+				<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+				<div class="conteudo">
+					<article class="menuLateral">
+						<ul class="nav" id="menu">
+							<li><a href="/GraoPara/protected/admin/indexAdmin.jsp">Home</a></li>
+							<li><a href="/GraoPara/protected/admin/pesquisaAdmin.jsp">Pesquisar</a></li>
+							<li><a href="/GraoPara/protected/admin/painelAdmin.jsp">Painel Admin</a></li>					
+							<li><a href="/GraoPara/protected/admin/gerarSenha.jsp">Gerar Senha</a></li>					
+						</ul>
+					</article>
+				</div>
+				<b class="b4"></b><b class="b3"></b><b class="b2"></b><b class="b1"></b>
+			</div>	
+			<div class="bordaBox">
+				<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+				<div class="conteudo">
+					<article class="menuLateral">
+						<ul class="nav" id="menu">
+							<li><a href="/GraoPara/protected/admin/cadastroDocumentosAdmin.jsp">Cadastrar Documento</a></li>					
+							<li><a href="/GraoPara/protected/admin/cadastrarPalavrasChave.jsp">Cadastrar Palavras-Chave</a></li>									
+							<li><a href="/GraoPara/protected/admin/cadastrarOrigem.jsp">Cadastrar Códices/Caixas</a></li>					
+							<li><a href="/GraoPara/protected/admin/cadastrarTipoDocumento.jsp">Cadastrar Tipo de Documento</a></li>	
+							<li><a href="/GraoPara/protected/admin/cadUserAdmin.jsp">Cadastrar Usuário</a></li>
+						</ul>
+					</article>
+				</div>
+				<b class="b4"></b><b class="b3"></b><b class="b2"></b><b class="b1"></b>
+			</div>	
+			<div class="bordaBox">
+				<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+				<div class="conteudo">
+					<article class="menuLateral">
+						<ul class="nav" id="menu">	
+							<li><a href="/GraoPara/protected/admin/tutorialPesquisaAdmin.jsp">Como pesquisar no acervo</a></li>					
+							<li><a href="/GraoPara/protected/admin/sobreAdmin.jsp">Sobre</a></li>		
+							<li><a href="/GraoPara/protected/admin/creditosAdmin.jsp">Créditos</a></li>								
+						</ul>
+					</article>
+					</div>
+					<b class="b4"></b><b class="b3"></b><b class="b2"></b><b class="b1"></b>
+				</div>
 		</div>
 		<!-- Fim do Menu Lateral -->
 		<div class="content" id="content">

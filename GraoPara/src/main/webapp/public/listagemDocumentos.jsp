@@ -25,41 +25,49 @@
 		<!-- Começo do menu lateral -->
 		<div class="sidebar1">
 
-			<!-- ----------------------------------------------------------------------- começa-->
-
 			<!--Começo da área de login -->
-			<div class="LoginArea" id="loginDefault">
-				<form method="post" action="/GraoPara/doLogin">
-					<fieldset>
-						<label for="login">Login:</label> <input class="inputLogin"
-							type="text" name="login" height="30px" size="auto"
-							placeholder="Seu login" required> <label for="senha">Senha:</label>
-						<input class="inputLogin" type="password" name="senha"
-							height="30px" size="auto" placeholder="Sua senha" required>
-					</fieldset>
-					<fieldset>
-						<input class="buttonEntrar" type="submit" name="Entrar"
-							value="Entrar" />
-					</fieldset>
-				</form>
+			<div class="bordaBox">
+				<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+				<div class="conteudo">
+					<div class="LoginArea" id="loginDefault" style="display:block;">
+						<form method="post" action="/GraoPara/doLogin">
+							<fieldset>
+								<label class="sidebar" for="login">Login:</label> <input class="inputLogin"
+									type="text" name="login" height="30px" size="auto"
+									placeholder="Seu login" required> <label class="sidebar" for="senha">Senha:</label>
+								<input class="inputLogin" type="password" name="senha"
+									height="30px" size="auto" placeholder="Sua senha" required>
+							</fieldset>
+							<fieldset>
+								<input class="buttonEntrar" type="submit" name="Entrar"
+									value="Entrar" />											
+							</fieldset>
+							<fieldset>
+								<a href="/GraoPara/public/CadUsuario.jsp"><input type="button"
+									class="buttonRegistrar" name="Registrar" value="Registrar"></a>
+							</fieldset>						
+							</form>
+						</div>
+				</div>
+				<b class="b4"></b><b class="b3"></b><b class="b2"></b><b class="b1"></b>
 			</div>
-			<fieldset>
-				<a href="/GraoPara/public/CadUsuario.jsp"><input type="button"
-					class="buttonRegistrar" name="Registrar" value="Registrar"></a>
-			</fieldset>
 			<!-- Fim da área de login -->
-
-			<article class="menuLateral">
-				<ul class="nav" id="menu">
-					<li><a href="/GraoPara/public/index.jsp">Home</a></li>
-					<li><a href="/GraoPara/public/pesquisa.jsp">Pesquisar</a></li>
-					<li><a href="/GraoPara/public/sobre.jsp">Sobre</a></li>
-					<li><a href="/GraoPara/public/creditos.jsp">Créditos</a></li>
-					<li><a href="/GraoPara/public/tutorialPesquisa.jsp">Como pesquisar no acervo</a>	
-				</ul>
-			</article>
+			<div class="bordaBox">
+				<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+				<div class="conteudo">
+					<article class="menuLateral">
+						<ul class="nav" id="menu">
+							<li><a href="/GraoPara/public/index.jsp">Home</a></li>
+							<li><a href="/GraoPara/public/pesquisa.jsp">Pesquisar</a></li>
+							<li><a href="/GraoPara/public/sobre.jsp">Sobre</a></li>
+							<li><a href="/GraoPara/public/creditos.jsp">Créditos</a></li>
+							<li><a href="/GraoPara/public/tutorialPesquisa.jsp">Como pesquisar no acervo</a></ul>
+					</article>
+				</div>
+				<b class="b4"></b><b class="b3"></b><b class="b2"></b><b class="b1"></b>
+			</div>
 		</div>
-		<!-- Fim do Menu Lateral -->
+			<!-- Fim do Menu Lateral -->
 		<div class="content" id="content">
 		<h2>Listagem de Documentos</h2>
 			<table class="tableList">
