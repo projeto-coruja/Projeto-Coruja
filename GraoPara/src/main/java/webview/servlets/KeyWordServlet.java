@@ -37,6 +37,7 @@ public class KeyWordServlet extends HttpServlet {
 	    PrintWriter out=response.getWriter();   
 		CadastroEJB cad = new CadastroEJB();
 		String key = request.getParameter("palavra");
+		String oldkey = request.getParameter("palavraAntiga");
 		String action = request.getParameter("action");
 		String previous = request.getParameter("from");
 		if(previous.equals("painelAdmin.jsp"))	previous += "#tab3";
@@ -45,6 +46,13 @@ public class KeyWordServlet extends HttpServlet {
 				cad.cadastrarPalavraChave(key);
 			    out.println("<script>");  
 			    out.println("alert('Palavra chave adicionado com sucesso. ');");  
+			    out.println("document.location=('/GraoPara/protected/admin/"+ previous +"');");
+			    out.println("</script>");
+			}
+			else if(action!= null && action.equals("edit")) {
+				cad.atualizarPalavraChave(oldkey, key, true);
+			    out.println("<script>");  
+			    out.println("alert('Palavra chave atualizada com sucesso. ');");  
 			    out.println("document.location=('/GraoPara/protected/admin/"+ previous +"');");
 			    out.println("</script>");
 			}
