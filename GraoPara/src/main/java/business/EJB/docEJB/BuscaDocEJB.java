@@ -16,7 +16,7 @@ public class BuscaDocEJB {
 	
 	private DocumentDAO docDao;
 	private LoginDAO logDao;
-	private static String default_query = "from Documento where ";
+	private static String default_query = "from Documento as d where ";
 	
 	public BuscaDocEJB() {
 		docDao = new DocumentDAO();
@@ -103,6 +103,36 @@ public class BuscaDocEJB {
 			if(continue_query == true){
 				query += " and ";
 			}
+			query += "((d.palavrasChaves1.palavra like '%" + palavra1.toLowerCase() + "%'";
+			query += "or (d.palavrasChaves2.palavra like '%" + palavra1.toLowerCase() + "%'";
+			query += "or (d.palavrasChaves3.palavra like '%" + palavra1.toLowerCase() + "%'";
+			continue_query = true;
+		}
+		
+		if(palavra2 != null && !palavra2.isEmpty()){
+			if(continue_query == true){
+				query += " and ";
+			}
+			query += "((d.palavrasChaves1.palavra like '%" + palavra2.toLowerCase() + "%'";
+			query += "or (d.palavrasChaves2.palavra like '%" + palavra2.toLowerCase() + "%'";
+			query += "or (d.palavrasChaves3.palavra like '%" + palavra2.toLowerCase() + "%'";
+			continue_query = true;
+		}
+		
+		if(palavra3 != null && !palavra3.isEmpty()){
+			if(continue_query == true){
+				query += " and ";
+			}
+			query += "((d.palavrasChaves1.palavra like '%" + palavra3.toLowerCase() + "%'";
+			query += "or (d.palavrasChaves2.palavra like '%" + palavra3.toLowerCase() + "%'";
+			query += "or (d.palavrasChaves3.palavra like '%" + palavra3.toLowerCase() + "%'";
+			continue_query = true;
+		}
+		
+		/*if(palavra1 != null && !palavra1.isEmpty()){
+			if(continue_query == true){
+				query += " and ";
+			}
 			query += "((palavra_chave_1 like '%" + palavra1.toLowerCase() + "%'" + " and (palavra_chave_1 in (select palavra from PalavraChave where aprovada = TRUE))) ";
 			query += "or (palavra_chave_2 like '%" + palavra1.toLowerCase() + "%'" + " and (palavra_chave_2 in (select palavra from PalavraChave where aprovada = TRUE))) ";
 			query += "or (palavra_chave_3 like '%" + palavra1.toLowerCase() + "%'"+ " and (palavra_chave_3 in (select palavra from PalavraChave where aprovada = TRUE)))) ";
@@ -127,7 +157,7 @@ public class BuscaDocEJB {
 			query += "or (palavra_chave_2 like '%" + palavra3.toLowerCase() + "%'" + " and (palavra_chave_2 in (select palavra from PalavraChave where aprovada = TRUE))) ";
 			query += "or (palavra_chave_3 like '%" + palavra3.toLowerCase() + "%'"+ " and (palavra_chave_3 in (select palavra from PalavraChave where aprovada = TRUE)))) ";
 			continue_query = true;
-		}
+		}*/
 
 		if(ano != null && !ano.isEmpty()){
 			if(continue_query == true){
