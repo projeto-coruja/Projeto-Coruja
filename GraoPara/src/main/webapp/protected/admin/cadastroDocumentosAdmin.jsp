@@ -6,33 +6,23 @@
 <title>Grão-Pará</title>
 
 <!-- Import dos styles CSS -->
-<link rel="stylesheet" type="text/css"
-	href="/GraoPara/css/principal.css" />
+<link rel="stylesheet" type="text/css" href="/GraoPara/css/principal.css" />
 <link rel="stylesheet" type="text/css" href="/GraoPara/css/tabs.css" />
 <link rel="stylesheet" type="text/css" href="/GraoPara/css/controle.css" />
 
 <!-- CSS das validações -->
-<link rel="stylesheet" type="text/css" media="screen"
-	href="/GraoPara/css/styleValidation.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="/GraoPara/css/styleValidation.css" />
 
 <!-- Import dos javascripts -->
-<script type="text/javascript" src="/GraoPara/javascript/cookie.js"
-	charset="utf-8"></script>
-<script type="text/javascript"
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"
-	charset="utf-8"></script>
-<script src="/GraoPara/javascript/chili-1.7.pack.js"
-	type="text/javascript"></script>
+<script type="text/javascript" src="/GraoPara/javascript/cookie.js" charset="utf-8"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" charset="utf-8"></script>
+<script src="/GraoPara/javascript/chili-1.7.pack.js" type="text/javascript"></script>
 	
 <!-- Import dos scripts de validação de formulário -->
-<script src="/GraoPara/javascript/jquery.js" type="text/javascript"
-	charset="utf-8"></script>
-<script src="/GraoPara/javascript/validate.js" type="text/javascript"
-	charset="utf-8"></script>
-<script src="/GraoPara/javascript/validate_pt_br.js"
-	type="text/javascript" charset="utf-8"></script>
-<script src="/GraoPara/javascript/utility.js"
-	type="text/javascript" charset="utf-8"></script>
+<script src="/GraoPara/javascript/jquery.js" type="text/javascript" charset="utf-8"></script>
+<script src="/GraoPara/javascript/validate.js" type="text/javascript" charset="utf-8"></script>
+<script src="/GraoPara/javascript/validate_pt_br.js" type="text/javascript" charset="utf-8"></script>
+<script src="/GraoPara/javascript/utility.js" type="text/javascript" charset="utf-8"></script>
 
 </head>
 
@@ -49,9 +39,7 @@
 				<form method="post" action="/GraoPara/doLogout">
 					<fieldset>
 						<label for="login">Bem vindo</label>
-						<%
-							WebUtility.printName(request, out);
-						%>
+						<% WebUtility.printName(request, out); %>
 					</fieldset>
 					<fieldset>
 						<input class="buttonSair" type="submit" name="Sair" value="Sair" />
@@ -165,8 +153,53 @@
 							<label class="labelForms" id="ldata" for="data">Data do Documento:<span class="asterisco">*</span></label>
 						</td>
 						<td class="field">
-							<select name="dia" id="dia" class="inputShort"><option value="" selected="selected">Dia:</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option></select>
-							<select name="mes" id="mes" class="inputShort"><option value="" selected="selected">Mês:</option><option value="1">Jan</option><option value="2">Fev</option><option value="3">Mar</option><option value="4">Abr</option><option value="5">Mai</option><option value="6">Jun</option><option value="7">Jul</option><option value="8">Ago</option><option value="9">Set</option><option value="10">Out</option><option value="11">Nov</option><option value="12">Dez</option></select> 
+							<select name="dia" id="dia" class="inputShort"><option value="" selected="selected">Dia:</option>
+																				<option value="1">1</option>
+																				<option value="2">2</option>
+																				<option value="3">3</option>
+																				<option value="4">4</option>
+																				<option value="5">5</option>
+																				<option value="6">6</option>
+																				<option value="7">7</option>
+																				<option value="8">8</option>
+																				<option value="9">9</option>
+																				<option value="10">10</option>
+																				<option value="11">11</option>
+																				<option value="12">12</option>
+																				<option value="13">13</option>
+																				<option value="14">14</option>
+																				<option value="15">15</option>
+																				<option value="16">16</option>
+																				<option value="17">17</option>
+																				<option value="18">18</option>
+																				<option value="19">19</option>
+																				<option value="20">20</option>
+																				<option value="21">21</option>
+																				<option value="22">22</option>
+																				<option value="23">23</option>
+																				<option value="24">24</option>
+																				<option value="25">25</option>
+																				<option value="26">26</option>
+																				<option value="27">27</option>
+																				<option value="28">28</option>
+																				<option value="29">29</option>
+																				<option value="30">30</option>
+																				<option value="31">31</option>
+							</select>
+							<select name="mes" id="mes" class="inputShort"><option value="" selected="selected">Mês:</option>
+																				<option value="1">Jan</option>
+																				<option value="2">Fev</option>
+																				<option value="3">Mar</option>
+																				<option value="4">Abr</option>
+																				<option value="5">Mai</option>
+																				<option value="6">Jun</option>
+																				<option value="7">Jul</option>
+																				<option value="8">Ago</option>
+																				<option value="9">Set</option>
+																				<option value="10">Out</option>
+																				<option value="11">Nov</option>
+																				<option value="12">Dez</option>
+							</select> 
 							<label class="labelForms" id="ldata" for="data">Ano:</label><input class="inputShort" type="text" name="ano" id="ano" maxlength="4"/>
 						</td>
 						<td class="status"></td>
