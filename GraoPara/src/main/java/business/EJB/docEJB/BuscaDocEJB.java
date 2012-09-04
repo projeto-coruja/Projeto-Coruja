@@ -212,6 +212,17 @@ public class BuscaDocEJB {
 		return list;
 	}
 	
+	public List<DTO> buscaPorOrigem(String identificacao, String codigo) throws UnreachableDataBaseException, DocumentNotFoundException{
+		
+		String query = new String(default_query);
+		
+		query += "tipo_origem = '" + identificacao + "' and cod_origem = '" + codigo + "'";
+		
+		List<DTO> list = docDao.findDocumentByQuery(query);
+		if(list == null) throw new DocumentNotFoundException();
+		return list;
+	}
+	
 	public List<DTO> searchByKeyWord(String palavra) throws UnreachableDataBaseException, DocumentNotFoundException{
 		
 		String query = "from Documento where ";

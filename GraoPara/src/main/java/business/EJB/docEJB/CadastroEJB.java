@@ -188,7 +188,7 @@ public class CadastroEJB {
 		DocumentTypeDAO buscaTipo = new DocumentTypeDAO();
 		
 		try {
-			OrigemDTO novaOrigem = buscaOrigem.findExactOrigin(origem_codOrigem, origem_tipoOrigem, origem_titulo);
+			OrigemDTO novaOrigem = buscaOrigem.findExactOrigin(origem_codOrigem, origem_tipoOrigem);
 			docDTO.setOrigemDocumento(novaOrigem);
 			
 		} catch (OriginNotFoundException e1) {
@@ -381,4 +381,40 @@ public class CadastroEJB {
 		} 
 		
 	}
+	
+	public synchronized void atualizarTituloOrigem(String identificacao, String codigo, String  novotitulo) throws UnreachableDataBaseException, IllegalArgumentException, OriginNotFoundException {
+		if(identificacao == null || codigo == null || novotitulo == null || identificacao.equals("") || codigo.equals("") || novotitulo.equals(""))	throw new IllegalArgumentException("Argumentos não podem ser null/vazio");
+		
+		OrigemDAO od = new OrigemDAO();
+		BuscaDocEJB busca = new BuscaDocEJB();
+		List<DTO> results = null;
+		
+		try {
+			results = busca.buscaPorOrigem(identificacao, codigo);
+			for(DTO dto : results){
+				DocumentoDTO doc = (DocumentoDTO) dto;
+				OrigemDTO ori = doc.getOrigemDocumento();
+				if(ori != null && ori.getTipoOrigem().equals(identificacao) && ori.getCodOrigem().equals(codigo)){
+					doc.setOrigemDocumento(null);
+					atualizarDocumento(doc);
+				}
+			}
+			
+			OrigemDTO odto = od.findExactOrigin(codigo, identificacao);
+			odto.setTitulo(novotitulo);
+			od.updateOrigin(odto);
+			
+			for(DTO dto : results){
+				DocumentoDTO doc = (DocumentoDTO) dto;
+				if(doc.getOrigemDocumento() == null){
+					doc.setOrigemDocumento(odto);
+				}
+				atualizarDocumento(doc);
+			}
+		} catch (DocumentNotFoundException e) {
+			
+		}
+		
+	}
+
 }

@@ -10,17 +10,20 @@ import javax.servlet.jsp.JspWriter;
 
 import persistence.dto.DTO;
 import persistence.dto.DocumentoDTO;
+import persistence.dto.OrigemDTO;
 import persistence.dto.PalavraChaveDTO;
 import persistence.dto.ProfileDTO;
 import persistence.dto.TipoDocumentoDTO;
 
 import business.DAO.documents.DocumentTypeDAO;
 import business.DAO.documents.KeyWordDAO;
+import business.DAO.documents.OrigemDAO;
 import business.EJB.docEJB.BuscaPalavraChaveEJB;
 import business.EJB.userEJB.AuthBean;
 import business.EJB.userEJB.UserBean;
 import business.exceptions.documents.DocumentTypeNotFoundException;
 import business.exceptions.documents.KeywordNotFoundException;
+import business.exceptions.documents.OriginNotFoundException;
 import business.exceptions.login.UnreachableDataBaseException;
 import business.exceptions.login.UserNotFoundException;
 
@@ -235,6 +238,20 @@ public final class WebUtility {
 			e.printStackTrace();
 		} catch (KeywordNotFoundException e) {
 			// TODO Auto-generated catch block
+		}
+		return result;
+	}
+	
+	public static String printOriginTitle(HttpServletRequest request) throws OriginNotFoundException {
+		OrigemDAO od = new OrigemDAO();
+		String result = "";
+		try {
+			OrigemDTO ori = od.findExactOrigin(request.getParameter("codigo"), request.getParameter("identificacao"));
+			result += ori.getTitulo();
+		} catch (UnreachableDataBaseException e) {
+			e.printStackTrace();
+		} catch (OriginNotFoundException e) {
+			throw e;
 		}
 		return result;
 	}

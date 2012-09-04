@@ -13,6 +13,8 @@ public class OrigemUpdater implements EntityUpdate {
 	 */
 	public Entidade updateEntity(DTO dto, Entidade ent) {
 		OrigemDTO entry = (OrigemDTO) dto;
+		
+		if(ent == null)	ent = new Origem();
 
 		((Origem) ent).setId(entry.getId());
 		((Origem) ent).setCodOrigem(entry.getCodOrigem());

@@ -38,16 +38,25 @@ public class OrigemDAO {
 		}
 	}
 	
-	public OrigemDTO findExactOrigin(String cod, String type, String title) throws  UnreachableDataBaseException, OriginNotFoundException  {
+	public void updateOrigin(OrigemDTO origin) throws UnreachableDataBaseException{
+		try{
+			manager.updateEntity(origin);
+		} catch(DataAccessLayerException e){
+			e.printStackTrace();
+			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
+		}
+	}
+	
+	public OrigemDTO findExactOrigin(String cod, String type) throws  UnreachableDataBaseException, OriginNotFoundException  {
 		List<DTO> resultSet = null;
 		try {
-			resultSet = manager.findEntities("from Origem where cod_origem like '" + cod +"' and tipo_origem like '" + type +"' and titulo like '%" + title +"%'");
+			resultSet = manager.findEntities("from Origem where cod_origem like '" + cod +"' and tipo_origem like '" + type +"'");
 			OrigemDTO select = null;
 			if(resultSet == null) {
 				throw new OriginNotFoundException ("Origem não encontrado");
 			}
 			for(DTO d : resultSet){
-				if(((OrigemDTO)d).getCodOrigem().equals(cod) && ((OrigemDTO)d).getTipoOrigem().equals(type) && ((OrigemDTO)d).getTitulo().equals(title))
+				if(((OrigemDTO)d).getCodOrigem().equals(cod) && ((OrigemDTO)d).getTipoOrigem().equals(type))
 					select = (OrigemDTO) d;
 			}
 			if(select == null)	throw new OriginNotFoundException ("Origem não encontrado");
@@ -92,6 +101,20 @@ public class OrigemDAO {
 			resultSet = manager.findEntities("from Origem where titulo like '%" + title +"%'");
 			if(resultSet == null) {
 				throw new OriginNotFoundException ("Título não encontrado");
+			}
+			else return resultSet;
+		} catch (DataAccessLayerException e) {
+			e.printStackTrace();
+			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
+		}
+	}
+	
+	public List<DTO> findAllOrigins() throws  UnreachableDataBaseException, OriginNotFoundException  {
+		List<DTO> resultSet = null;
+		try {
+			resultSet = manager.findEntities("from Origem");
+			if(resultSet == null) {
+				throw new OriginNotFoundException ("Tipo não encontrado");
 			}
 			else return resultSet;
 		} catch (DataAccessLayerException e) {

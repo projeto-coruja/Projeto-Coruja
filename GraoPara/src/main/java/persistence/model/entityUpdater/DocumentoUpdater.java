@@ -49,7 +49,9 @@ public class DocumentoUpdater implements EntityUpdate {
 
 	private Origem getOrigem(DocumentoDTO entry, Entidade ent) {
 		EntityUpdate aux_factory = new OrigemUpdater();
-		return (Origem) aux_factory.updateEntity(entry.getOrigemDocumento(), ((Documento) ent).getOrigemDocumento());
+		DTO check = entry.getOrigemDocumento();
+		if(check != null) return (Origem) aux_factory.updateEntity(entry.getOrigemDocumento(), ((Documento) ent).getOrigemDocumento());
+		else return null;
 	}
 
 	private IdNumDocumento getIdentDocumento(DocumentoDTO entry, Entidade ent) {

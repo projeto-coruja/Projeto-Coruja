@@ -6,15 +6,18 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.JspWriter;
 
+import business.DAO.documents.OrigemDAO;
 import business.EJB.docEJB.BuscaPalavraChaveEJB;
 import business.EJB.userEJB.AdminBean;
 import business.EJB.userEJB.BuscaUserEJB;
 import business.exceptions.documents.KeywordNotFoundException;
+import business.exceptions.documents.OriginNotFoundException;
 import business.exceptions.login.ProfileNotFoundException;
 import business.exceptions.login.UnreachableDataBaseException;
 import business.exceptions.login.UserNotFoundException;
 
 import persistence.dto.DTO;
+import persistence.dto.OrigemDTO;
 import persistence.dto.PalavraChaveDTO;
 import persistence.dto.ProfileDTO;
 import persistence.dto.UserDTO;
@@ -99,6 +102,37 @@ public class PanelWorker {
 			out.println("<td colspan=\"4\"><label class=\"labelExibe\">Nenhuma palavra-chave encontrada.</label></td>");
 		}
 	}	
+	
+	public static void listAllOrigins(HttpServletRequest request, JspWriter out) throws IOException{
+		OrigemDAO od = new OrigemDAO();
+		List<DTO> origens = null;	    
+		try{
+			origens = od.findAllOrigins();
+			for(DTO k : origens){
+				OrigemDTO ori = (OrigemDTO) k;				
+				out.write("<tr>");
+				out.write("<td> <label for=\"identificacao\" class=\"labelExibe\">" + ori.getTipoOrigem() + " </label> </td>");
+				out.write("<td> <label for=\"codigo\" class=\"labelExibe\">" + ori.getCodOrigem() + " </label> </td>");
+				out.write("<td> <label for=\"titulo\" class=\"labelExibe\">" + ori.getTitulo() + " </label> </td>");
+				out.println("<td>"
+						+ "<a href=\"/GraoPara/protected/admin/editarTituloOrigem.jsp?" 
+						+ "identificacao=" + ori.getTipoOrigem()
+						+ "&codigo=" + ori.getCodOrigem()
+						+ "\"><img src=\"/GraoPara/images/edit.png\" title=\"Editar título\" alt=\"Editar título\" /></a>"
+						+ "</td>");
+				out.write("</tr>");
+				
+				
+			}
+		} catch (UnreachableDataBaseException e) {
+			out.write("<script>");  
+			out.write("alert('Problemas ao acessar o banco de dados. Contate o suporte técnico e tente novamente mais tarde ');");  
+			//out.write("document.location=('/GraoPara/public/index.jsp');");  
+			out.write("</script>");
+		} catch (OriginNotFoundException e) {
+			out.println("<td colspan=\"4\"><label class=\"labelExibe\">Nenhuma palavra-chave encontrada.</label></td>");
+		}
+	}
 	
 	public static void listAllUsers(HttpServletRequest request, JspWriter out) throws IOException{
 		String c_email = WebUtility.selectCookie(request.getCookies(), WebUtility.cookie_email).getValue();
