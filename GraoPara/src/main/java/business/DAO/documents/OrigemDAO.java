@@ -2,6 +2,7 @@ package business.DAO.documents;
 
 import java.util.List;
 
+import business.exceptions.documents.DuplicateOriginException;
 import business.exceptions.documents.OriginNotFoundException;
 import business.exceptions.login.UnreachableDataBaseException;
 import persistence.PersistenceAccess;
@@ -18,16 +19,19 @@ public class OrigemDAO {
 		
 	}
 
-	public OrigemDTO addOrigem(String codOrigem, String tipoOrigem, String titulo) throws UnreachableDataBaseException {
+	public OrigemDTO addOrigem(String codOrigem, String tipoOrigem, String titulo) throws UnreachableDataBaseException, DuplicateOriginException {
 		tipoOrigem = tipoOrigem.toUpperCase();
 		OrigemDTO newId = new OrigemDTO(codOrigem, tipoOrigem, titulo);
 		try{
-			manager.saveEntity(newId);
+			findExactOrigin(codOrigem, tipoOrigem);
+			throw new DuplicateOriginException("Origem ja existe");
 		}catch(DataAccessLayerException e){
 			e.printStackTrace();
 			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");			
+		} catch (OriginNotFoundException e) {
+			manager.saveEntity(newId);
+			return newId;
 		}
-		return newId;
 	}
 	
 	public void removeOrigin(OrigemDTO origin) throws UnreachableDataBaseException{

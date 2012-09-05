@@ -66,6 +66,11 @@
 			<artifactId>hibernate-core</artifactId>
 			<version>4.1.6.Final</version>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.odftoolkit</groupId>
+			<artifactId>simple-odf</artifactId>
+			<version>0.7-incubating</version>
+		</dependency>
 	</dependencies>
 
 	<build>

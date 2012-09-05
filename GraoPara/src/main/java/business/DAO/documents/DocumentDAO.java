@@ -12,6 +12,7 @@ import persistence.dto.UserDTO;
 import persistence.utility.DataAccessLayerException;
 import business.exceptions.documents.DocumentNotFoundException;
 import business.exceptions.documents.DocumentTypeNotFoundException;
+import business.exceptions.documents.DuplicateOriginException;
 import business.exceptions.documents.IdNumDocumentNotFoundException;
 import business.exceptions.documents.KeywordNotFoundException;
 import business.exceptions.documents.OriginNotFoundException;
@@ -108,7 +109,12 @@ public class DocumentDAO {
 					newDoc.setOrigemDocumento((OrigemDTO) dto);
 			}
 		} catch (OriginNotFoundException e1) {
-			newDoc.setOrigemDocumento(od.addOrigem(newDoc.getOrigemDocumento().getCodOrigem(), newDoc.getOrigemDocumento().getTipoOrigem(), newDoc.getOrigemDocumento().getTitulo()));
+			try {
+				newDoc.setOrigemDocumento(od.addOrigem(newDoc.getOrigemDocumento().getCodOrigem(), newDoc.getOrigemDocumento().getTipoOrigem(), newDoc.getOrigemDocumento().getTitulo()));
+			} catch (DuplicateOriginException e) {
+				//Impossível
+				e.printStackTrace();
+			}
 		}
 		
 		try {

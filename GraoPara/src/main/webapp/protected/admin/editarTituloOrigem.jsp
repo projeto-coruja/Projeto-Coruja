@@ -138,9 +138,7 @@
 							<label class="labelForms" id="ltitulo" for="titulo">Título:<span class="asterisco">*</span></label>
 						</td>
 						<td class="field">
-							<textarea class="inputResumo" name="titulo" id="titulo" rows="5" cols="40" maxlength="512">
-								<%= WebUtility.printOriginTitle(request) %>
-							</textarea>
+							<textarea class="inputResumo" name="titulo" id="titulo" maxlength="512"><%= WebUtility.printOriginTitle(request) %></textarea>
 						</td>
 						<td class="status"></td>
 					</tr>

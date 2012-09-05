@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import business.DAO.documents.OrigemDAO;
+import business.exceptions.documents.DuplicateOriginException;
 import business.exceptions.login.UnreachableDataBaseException;
 
 /**
@@ -44,12 +45,17 @@ public class OriginServlet extends HttpServlet {
 			out.println("<script>");  
 		    out.println("document.location=('/GraoPara/protected/admin/cadastrarOrigem.jsp');");
 		    out.println("</script>");		
-		} catch (UnreachableDataBaseException e) {
+		} catch (DuplicateOriginException e) {
 			out.println("<script>");  
 			out.println("alert('Número de Códices/Caixas Já Existe.');");  
 		    out.println("history.go(-1);");  
 		    out.println("</script>");
 		    e.printStackTrace();
+		} catch (UnreachableDataBaseException e) {
+			out.println("<script>");  
+			out.println("alert('Erro no banco de dados, contate o suporte e tente novamente mais tarde.');");
+		    out.println("document.location=('/GraoPara/protected/admin/adminIndex.jsp');");
+		    out.println("</script>");
 		}
 	}
 
