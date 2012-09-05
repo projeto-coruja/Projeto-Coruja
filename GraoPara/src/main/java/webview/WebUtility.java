@@ -247,7 +247,7 @@ public final class WebUtility {
 		String result = "";
 		try {
 			OrigemDTO ori = od.findExactOrigin(request.getParameter("codigo"), request.getParameter("identificacao"));
-			result += ori.getTitulo();
+			result = ori.getTitulo().trim();
 		} catch (UnreachableDataBaseException e) {
 			e.printStackTrace();
 		} catch (OriginNotFoundException e) {

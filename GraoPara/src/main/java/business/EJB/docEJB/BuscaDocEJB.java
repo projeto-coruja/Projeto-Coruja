@@ -24,7 +24,7 @@ public class BuscaDocEJB {
 	}
 	
 	public List<DTO> busca(String identificacao, String codigo, String titulo , String tipoAPEP_SEQ, String numAPEP_SEQ, String autor, 
-			String destinatario, String local, String ano, String tipo, 
+			String destinatario, String local, String anoIni, String anoFim, String tipo, 
 			String palavra1, String palavra2, String palavra3) throws UnreachableDataBaseException, DocumentNotFoundException{
 		
 		boolean continue_query = false;
@@ -159,12 +159,15 @@ public class BuscaDocEJB {
 			continue_query = true;
 		}*/
 
-		if(ano != null && !ano.isEmpty()){
+		if(anoIni != null && !anoIni.isEmpty()){
 			if(continue_query == true){
 				query += " and ";
 			}
-			int year = Integer.parseInt(ano);
-			query += " data_documento BETWEEN date('" + year + "-1-1') AND date('"+ ++year +"-1-1')";
+			if(anoFim == null || anoFim.isEmpty()){
+				query += " data_documento BETWEEN date('" + anoIni + "-1-1') AND date('"+ anoIni +"-12-31')";
+			}
+			else
+				query += " data_documento BETWEEN date('" + anoIni + "-1-1') AND date('"+ anoFim +"-12-31')";
 		}
 		
 		if(query.equals(default_query)) throw new DocumentNotFoundException();

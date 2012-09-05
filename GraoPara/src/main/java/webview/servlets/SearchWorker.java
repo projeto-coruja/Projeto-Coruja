@@ -28,7 +28,8 @@ public class SearchWorker {
 		String autor = request.getParameter("autor");
 		String destinatario = request.getParameter("destinatario");
 		String local = request.getParameter("local");
-		String ano = request.getParameter("ano");
+		String anoIni = request.getParameter("anoIni");
+		String anoFim = request.getParameter("anoFim");
 		String tipoDoc = request.getParameter("tipoDoc");
 		String palavra1 = request.getParameter("chave1");
 		String palavra2 = request.getParameter("chave2");
@@ -45,7 +46,7 @@ public class SearchWorker {
 		List<DTO> docs = null;    
 
 		try {
-			docs = search.busca(identificacao.toUpperCase(), codigo, titulo, "", numAPEP_SEQ, autor, destinatario, local, ano, tipoDoc, palavra1, palavra2, palavra3); 
+			docs = search.busca(identificacao.toUpperCase(), codigo, titulo, "", numAPEP_SEQ, autor, destinatario, local, anoIni, anoFim, tipoDoc, palavra1, palavra2, palavra3); 
 
 			for(DTO d : docs){
 				

@@ -192,10 +192,13 @@
 								title="Trata-se do local em que foi escrito o documento, normalmente a cidade. Por exemplo, Belém." /></a></td>
 					</tr>
 					<tr>
-						<td class="tdPesquisa"><label class="labelForms" id="ldata"
-							for="data">Ano:</label></td>
-						<td class="field"><input class="input"
-							type="text" name="ano" id="ano" maxlength="4" /></td>
+						<td class="tdPesquisa"><label class="labelForms" id="ldata"	for="data">Ano:</label>
+						<label class="labelForms" id="ldata"	for="data">Desde</label></td>
+						<td class="field"><input class="inputShort" type="text" name="anoIni" id="ano" maxlength="4" /></td>
+						
+						<td class="tdPesquisa"><label class="labelForms" id="ldata"	for="data">Até</label></td>
+						<td class="field"><input class="inputShort" type="text" name="anoFim" id="ano" maxlength="4" /></td>
+						
 						<td class="status"><a href="#"><img
 								src="/GraoPara/images/icone_ajuda.png"
 								alt="Informe somente o ano se quiser filtrar a pesquisa por período."

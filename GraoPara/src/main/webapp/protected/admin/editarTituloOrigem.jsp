@@ -111,7 +111,7 @@
 		<!-- Fim do Menu Lateral -->
 		<div class="content" id="content">
 		
-			<h1>Editar Palavra Chave</h1>
+			<h1>Editar Códice/Caixa</h1>
 			
 			<form id="signupform" autocomplete="off" method="get" action="/GraoPara/protected/admin/editOrigin">
 				<table class="tableControle">					
@@ -138,9 +138,7 @@
 							<label class="labelForms" id="ltitulo" for="titulo">Título:<span class="asterisco">*</span></label>
 						</td>
 						<td class="field">
-							<textarea class="inputResumo" name="titulo" id="titulo" rows="5" cols="40" maxlength="512">
-								<%= WebUtility.printOriginTitle(request) %>
-							</textarea>
+							<textarea class="inputResumo" name="titulo" id="titulo" rows="5" cols="40" maxlength="512"><%= WebUtility.printOriginTitle(request) %></textarea>
 						</td>
 						<td class="status"></td>
 					</tr>
