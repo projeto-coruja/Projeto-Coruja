@@ -19,6 +19,7 @@ public class OrigemDAO {
 	}
 
 	public OrigemDTO addOrigem(String codOrigem, String tipoOrigem, String titulo) throws UnreachableDataBaseException {
+		tipoOrigem = tipoOrigem.toUpperCase();
 		OrigemDTO newId = new OrigemDTO(codOrigem, tipoOrigem, titulo);
 		try{
 			manager.saveEntity(newId);
