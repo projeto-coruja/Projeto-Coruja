@@ -1,6 +1,5 @@
 package persistence.dto;
 
-import java.util.Calendar;
 import java.util.Date;
 
 public class DocumentoDTO implements DTO {
@@ -13,7 +12,7 @@ public class DocumentoDTO implements DTO {
 	private String local;
 	private String destinatario;
 	private String resumo;
-	private Calendar dataDocumento;
+	private Date dataDocumento;
 	private Date dataInclusao;
 	private UserDTO uploader;
 	private PalavraChaveDTO palavrasChaves1;
@@ -23,7 +22,7 @@ public class DocumentoDTO implements DTO {
 	public DocumentoDTO(Long id, OrigemDTO origemDocumento,
 			IdNumDocumentoDTO idNumDocumento, TipoDocumentoDTO tipoDocumento,
 			String autor, String local, String destinatario, String resumo,
-			Calendar dataDocumento, Date dataInclusao, UserDTO uploader,
+			Date dataDocumento, Date dataInclusao, UserDTO uploader,
 			PalavraChaveDTO palavrasChaves1, PalavraChaveDTO palavrasChaves2,
 			PalavraChaveDTO palavrasChaves3) {
 		super();
@@ -115,11 +114,11 @@ public class DocumentoDTO implements DTO {
 		this.uploader = uploader;
 	}
 
-	public Calendar getDataDocumento() {
+	public Date getDataDocumento() {
 		return dataDocumento;
 	}
 
-	public void setDataDocumento(Calendar dataDocumento) {
+	public void setDataDocumento(Date dataDocumento) {
 		this.dataDocumento = dataDocumento;
 	}
 

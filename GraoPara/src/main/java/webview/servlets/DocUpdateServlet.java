@@ -2,7 +2,10 @@ package webview.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.GregorianCalendar;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -56,8 +59,14 @@ public class DocUpdateServlet extends HttpServlet {
 				request.getCookies(), WebUtility.cookie_email);
 		String email = c_user.getValue();
 		
-		GregorianCalendar dataDoc = new GregorianCalendar(Integer.parseInt(dataAno), Integer.parseInt(dataMes), Integer.parseInt(dataDia));
-		
+//		GregorianCalendar dataDoc = new GregorianCalendar(Integer.parseInt(dataAno), Integer.parseInt(dataMes), Integer.parseInt(dataDia));
+		Date dataDoc = null;
+		DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
+		try {
+			dataDoc = (Date) df.parse(dataAno+"-"+dataMes+"-"+dataDia);
+		} catch (ParseException e1) {
+			e1.printStackTrace();
+		}
 		CadastroEJB CB = new CadastroEJB();
 
 		

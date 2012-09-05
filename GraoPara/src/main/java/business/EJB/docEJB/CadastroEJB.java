@@ -1,6 +1,5 @@
 package business.EJB.docEJB;
 
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -39,7 +38,7 @@ public class CadastroEJB {
 			String tipoDocumento_tipoDocumento, String palavraChave01,
 			String palavraChave02, String palavraChave03, String autor,
 			String local, String destinatario, String resumo,
-			Calendar dataDocumento, String uploader) throws UnreachableDataBaseException, UserNotFoundException {
+			Date dataDocumento, String uploader) throws UnreachableDataBaseException, UserNotFoundException {
 
 		DocumentoDTO docDTO;
 		TipoDocumentoDTO tipoDTO;
@@ -177,7 +176,7 @@ public class CadastroEJB {
 			String tipoDocumento_tipoDocumento, String palavraChave01,
 			String palavraChave02, String palavraChave03, String autor,
 			String local, String destinatario, String resumo,
-			Calendar dataDocumento, String uploader) throws UnreachableDataBaseException, DocumentNotFoundException{
+			Date dataDocumento, String uploader) throws UnreachableDataBaseException, DocumentNotFoundException{
 		
 		KeyWordDAO kwDao = new KeyWordDAO();
 		
