@@ -23,7 +23,7 @@ public class BuscaDocEJB {
 		logDao = new LoginDAO();
 	}
 	
-	public List<DTO> busca(String identificacao, String codigo, String titulo , String tipoAPEP_SEQ, String numAPEP_SEQ, String autor, 
+	public List<DTO> busca(String identificacao, String codigoDe, String codigoAte, String titulo , String tipoAPEP_SEQ, String numAPEP_SEQ, String autor, 
 			String destinatario, String local, String anoIni, String anoFim, String tipo, 
 			String palavra1, String palavra2, String palavra3) throws UnreachableDataBaseException, DocumentNotFoundException{
 		
@@ -43,11 +43,11 @@ public class BuscaDocEJB {
 			continue_query = true;
 		}
 		
-		if(codigo != null && !codigo.isEmpty()){
+		if(codigoDe != null && !codigoDe.isEmpty()){
 			if(continue_query == true){
 				query += " and ";
 			}
-			query += "cod_origem = '" + codigo + "'";
+			query += "cod_origem = '" + codigoDe + "'";
 			continue_query = true;
 		}
 		

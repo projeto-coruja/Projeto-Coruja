@@ -115,30 +115,28 @@
 			<form action="/GraoPara/protected/admin/listagemDocumentos.jsp" id="signupform" method="get" name="cadastro">
 				<table class="tablePesquisa">
 					<tr>
-						<td colspan="3"><label class="labelForms"><strong>PREENCHA
-									UM OU MAIS CAMPOS A SEGUIR:</strong></label></td>
+						<td colspan="3"><label class="labelForms"><strong>PREENCHA UM OU MAIS CAMPOS A SEGUIR:</strong></label></td>
 					</tr>
 					<tr>
-						<td class="tdPesquisa"><label class="labelForms"
-							id="lidentificacao" for="identificacao">Identificação:</label></td>
-						<td class="field"><select name="identificacao" class="input"
-							id="identificacao">
-						<%= WebUtility.printSelectOrigem(request) %>
-						</select></td>
-						<td class="status"><a href="#"><img
-								src="/GraoPara/images/icone_ajuda.png"
+						<td class="tdPesquisa">
+							<label class="labelForms" id="lidentificacao" for="identificacao">Identificação:</label>
+						</td>
+						<td class="field">
+							<select name="identificacao" class="input" id="identificacao"><%= WebUtility.printSelectOrigem(request) %></select>
+						</td>
+						<td class="status"><a href="#"><img	src="/GraoPara/images/icone_ajuda.png"
 								alt="Todos os documentos do Arquivo Público do Pará que serão trabalhados aqui estão organizados em CÓDICE ou em CAIXAS. Portanto, se o documento está em um códice ou em uma caixa faz uma enorme diferença, pois se tratam de coleções diferentes. Tudo é organizado pelo fato de ser caixa ou códice e depois a informação de qual caixa ou códice está se falando é muito importante, pois atrelada a cada uma dessas caixas ou códices está, às vezes, centenas de documentos."
 								title="Todos os documentos do Arquivo Público do Pará que serão trabalhados aqui estão organizados em CÓDICE ou em CAIXAS. Portanto, se o documento está em um códice ou em uma caixa faz uma enorme diferença, pois se tratam de coleções diferentes. Tudo é organizado pelo fato de ser caixa ou códice e depois a informação de qual caixa ou códice está se falando é muito importante, pois atrelada a cada uma dessas caixas ou códices está, às vezes, centenas de documentos." /></a>
 						</td>
 					</tr>
 					<tr>
-						<td class="tdPesquisa"><label class="labelForms" id="lcodigo"
-							for="codigo">Código:</label></td>
-						<td class="field"><input class="input" name="codigo"
-							id="codigo" type="text" maxlength="5"></td>
-						<td class="status"><a href="#"><img
-								src="/GraoPara/images/icone_ajuda.png" alt="Código do documento"
-								title="Informe o código do documento que deseja pesquisar" /></a></td>
+						<td class="tdPesquisa"><label class="labelForms" id="lcodigo" for="codigo">Código de:</label></td>
+						<td class="field"><input class="input" name="codigoDe" id="codigo" type="text" maxlength="5"></td>
+						
+						<td class="tdPesquisa"><label class="labelForms" id="lcodigo" for="codigo">Até:</label></td>
+						<td class="field"><input class="input" name="codigoAte" id="codigo" type="text" maxlength="5"></td>
+
+						<td class="status"><a href="#"><img src="/GraoPara/images/icone_ajuda.png" alt="Código do documento" title="Informe o código do documento que deseja pesquisar" /></a></td>
 					</tr>
 					<tr>
 						<td class="tdPesquisa"><label class="labelForms" id="ltitulo"

@@ -22,7 +22,8 @@ public class SearchWorker {
 	
 	public static void listAllDocuments(HttpServletRequest request, JspWriter out) throws IOException{
 		String identificacao = request.getParameter("identificacao");
-		String codigo = request.getParameter("codigo");
+		String codigoDe = request.getParameter("codigoDe");
+		String codigoAte = request.getParameter("codigoAte");
 		String titulo = request.getParameter("titulo");
 		String numAPEP_SEQ = request.getParameter("numero");
 		String autor = request.getParameter("autor");
@@ -46,7 +47,7 @@ public class SearchWorker {
 		List<DTO> docs = null;    
 
 		try {
-			docs = search.busca(identificacao.toUpperCase(), codigo, titulo, "", numAPEP_SEQ, autor, destinatario, local, anoIni, anoFim, tipoDoc, palavra1, palavra2, palavra3); 
+			docs = search.busca(identificacao.toUpperCase(), codigoDe, codigoAte, titulo, "", numAPEP_SEQ, autor, destinatario, local, anoIni, anoFim, tipoDoc, palavra1, palavra2, palavra3); 
 
 			for(DTO d : docs){
 				
