@@ -3,7 +3,6 @@ package business.DAO.documents;
 import static org.junit.Assert.*;
 
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -66,11 +65,11 @@ public class DocumentDAOTest {
 				new IdNumDocumentoDTO("APEP", "10202"), new TipoDocumentoDTO(
 						"carta"), "pero vaz", "pará", "vaz pero",
 				"loren ipsum loren ipsum loren ipsum loren ipsum",
-				new GregorianCalendar(1500, 3, 29), new Date(),
+				new Date(), new Date(),
 				LA.findUserByEmail("outlook@gmail.com"), new PalavraChaveDTO(
 						"cabral", false), null, null);
 		DA.addDocument(carta);
-		System.out.println(DA.countDocumentsByCriteria("tipo_id = 'APEP'"));
+//		System.out.println(DA.countDocumentsByCriteria("tipo_id = 'APEP'"));
 	}
 
 	@Test

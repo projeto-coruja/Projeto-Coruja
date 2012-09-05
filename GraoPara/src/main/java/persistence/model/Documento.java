@@ -1,7 +1,6 @@
 package persistence.model;
 
 import java.io.Serializable;
-import java.util.Calendar;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -78,7 +77,8 @@ public class Documento implements Serializable,Entidade{
 	@NotNull
 	@Column(name = "data_documento")
 	@Temporal(TemporalType.DATE)
-	private Calendar dataDocumento;
+//	private Calendar dataDocumento;
+	private Date dataDocumento;
 
 	@ManyToOne
 	@Cascade(CascadeType.SAVE_UPDATE)
@@ -172,11 +172,19 @@ public class Documento implements Serializable,Entidade{
 		this.dataInclusao = dataInclusao;
 	}
 
-	public Calendar getDataDocumento() {
+//	public Calendar getDataDocumento() {
+//		return dataDocumento;
+//	}
+//
+//	public void setDataDocumento(Calendar dataDocumento) {
+//		this.dataDocumento = dataDocumento;
+//	}
+	
+	public Date getDataDocumento() {
 		return dataDocumento;
 	}
 
-	public void setDataDocumento(Calendar dataDocumento) {
+	public void setDataDocumento(Date dataDocumento) {
 		this.dataDocumento = dataDocumento;
 	}
 

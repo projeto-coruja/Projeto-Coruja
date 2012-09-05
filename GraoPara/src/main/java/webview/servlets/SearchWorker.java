@@ -2,7 +2,6 @@ package webview.servlets;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,11 +9,11 @@ import javax.servlet.jsp.JspWriter;
 
 import persistence.dto.DTO;
 import persistence.dto.DocumentoDTO;
-import webview.WebUtility;
 import persistence.dto.TipoDocumentoDTO;
+import webview.WebUtility;
 import business.EJB.docEJB.BuscaDocEJB;
-import business.EJB.userEJB.AuthBean;
 import business.EJB.docEJB.TipoDocumentoEJB;
+import business.EJB.userEJB.AuthBean;
 import business.exceptions.documents.DocumentNotFoundException;
 import business.exceptions.documents.DocumentTypeNotFoundException;
 import business.exceptions.login.UnreachableDataBaseException;
@@ -51,11 +50,12 @@ public class SearchWorker {
 			for(DTO d : docs){
 				
 				DocumentoDTO doc = (DocumentoDTO) d;
-				SimpleDateFormat s = new SimpleDateFormat("dd/MM/yyyy");
-				Calendar c = doc.getDataDocumento();
-				int c_dia = c.get(Calendar.DAY_OF_MONTH);
-				int c_mes = c.get(Calendar.MONTH) + 1;
-				int c_ano = c.get(Calendar.YEAR);
+				
+				String data[] = doc.getDataDocumento().toString().split("-");
+				
+//				int c_dia = c.get(Calendar.DAY_OF_MONTH);
+//				int c_mes = c.get(Calendar.MONTH) + 1;
+//				int c_ano = c.get(Calendar.YEAR);
 				String palchave1 = "";
 				String palchave2 = "";
 				String palchave3 = "";
@@ -72,7 +72,7 @@ public class SearchWorker {
 				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getAutor() 						+"</label></td>");
 				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getDestinatario()					+"</label></td>");
 				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getLocal()							+"</label></td>");
-				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ s.format(c.getTime())					+"</label></td>");
+				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ data[2]+"/"+data[1]+"/"+data[0]		+"</label></td>");
 				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getTipoDocumento().getTipoDocumento()	+"</label></td>");
 				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"
 						+ palchave1 + " - " 
@@ -87,9 +87,9 @@ public class SearchWorker {
 								+"&titulo=" + doc.getOrigemDocumento().getTitulo()
 								+"&tipoAPEP_SEQ=" + doc.getIdNumDocumento().getTipoId()
 								+"&numeroAPEP=" + doc.getIdNumDocumento().getCodId()
-								+"&dia=" + String.valueOf(c_dia)
-								+"&mes=" + String.valueOf(c_mes)
-								+"&ano=" + String.valueOf(c_ano)
+								+"&dia=" + data[2]
+								+"&mes=" + data[1]
+								+"&ano=" + data[0]
 								+"&autor=" + doc.getAutor()
 								+"&destinatario=" + doc.getDestinatario()
 								+"&local=" + doc.getLocal()
@@ -125,22 +125,21 @@ public class SearchWorker {
 	}
 	
 	public static void listAllDocumentsByYear(HttpServletRequest request, JspWriter out) throws IOException{
-		String data = request.getParameter("dataDocumento");
+		String ano = request.getParameter("dataDocumento");
 		
 		BuscaDocEJB search = new BuscaDocEJB();
 		List<DTO> docs = null;    
 		
 		try {
-			docs = search.searchByYear(data); 
+			docs = search.searchByYear(ano); 
 
 			for(DTO d : docs){
 
 				DocumentoDTO doc = (DocumentoDTO) d;
-				SimpleDateFormat s = new SimpleDateFormat("dd/MM/yyyy");
-				Calendar c = doc.getDataDocumento();
-				int c_dia = c.get(Calendar.DAY_OF_MONTH);
-				int c_mes = c.get(Calendar.MONTH) + 1;
-				int c_ano = c.get(Calendar.YEAR);
+				SimpleDateFormat data = new SimpleDateFormat("dd-mm-yyyy");
+				SimpleDateFormat dataAno = new SimpleDateFormat("yyyy");
+				SimpleDateFormat dataMes = new SimpleDateFormat("mm");
+				SimpleDateFormat dataDia = new SimpleDateFormat("dd");
 
 				String palchave1 = "";
 				String palchave2 = "";
@@ -158,7 +157,8 @@ public class SearchWorker {
 				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getAutor() 						+"</label></td>");
 				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getDestinatario()					+"</label></td>");
 				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getLocal()							+"</label></td>");
-				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ s.format(c.getTime())					+"</label></td>");
+//				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ s.format(c.getTime())					+"</label></td>");
+				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ data.format(doc.getDataDocumento())		+"</label></td>");
 				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getTipoDocumento().getTipoDocumento()	+"</label></td>");
 				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"
 						+ palchave1 + " - " 
@@ -172,9 +172,9 @@ public class SearchWorker {
 						+"&titulo=" + doc.getOrigemDocumento().getTitulo()
 						+"&tipoAPEP_SEQ=" + doc.getIdNumDocumento().getTipoId()
 						+"&numeroAPEP=" + doc.getIdNumDocumento().getCodId()
-						+"&dia=" + String.valueOf(c_dia)
-						+"&mes=" + String.valueOf(c_mes)
-						+"&ano=" + String.valueOf(c_ano)
+						+"&dia=" + dataDia.format(doc.getDataDocumento())
+						+"&mes=" + dataMes.format(doc.getDataDocumento())
+						+"&ano=" + dataAno.format(doc.getDataDocumento())
 						+"&autor=" + doc.getAutor()
 						+"&destinatario=" + doc.getDestinatario()
 						+"&local=" + doc.getLocal()

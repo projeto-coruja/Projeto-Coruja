@@ -1,7 +1,6 @@
 package EJB.docEJB;
 
-import java.util.Calendar;
-import java.util.GregorianCalendar;
+import java.util.Date;
 import java.util.List;
 
 import org.junit.BeforeClass;
@@ -40,9 +39,10 @@ public class BuscaDocEJBTest {
 	private static String local;
 	private static String destinatario; 
 	private static String resumo;
-	private static Calendar dataDocumento;
+	private static Date dataDocumento;
 	private static String uploader;
 	
+	@SuppressWarnings("deprecation")
 	@BeforeClass
 	public static void setUp() throws UnreachableDataBaseException{
 		ce = new CadastroEJB();
@@ -80,7 +80,7 @@ public class BuscaDocEJBTest {
 		local = "Pará";
 		destinatario = "VOCE";
 		resumo = "3R# UM# V%Z, 1M G#T& ÇHI~NÉ'S'\"\"\nNEH";
-		dataDocumento = new GregorianCalendar(1500, 4, 29);
+		dataDocumento = new Date(1500, 4, 29);
 		uploader = "outlook@gmail.com";
 		
 		
