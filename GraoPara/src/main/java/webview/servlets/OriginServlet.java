@@ -46,8 +46,8 @@ public class OriginServlet extends HttpServlet {
 		    out.println("</script>");		
 		} catch (UnreachableDataBaseException e) {
 			out.println("<script>");  
-		    out.println("alert('Erro no banco de dados! Contate o suporte e tente novamente mais tarde." + e.getStackTrace() + "');");  
-		    out.println("document.location=('/GraoPara/protected/admin/indexAdmin.jsp');");  
+			out.println("alert('Número de Códices/Caixas Já Existe.');");  
+		    out.println("history.go(-1);");  
 		    out.println("</script>");
 		    e.printStackTrace();
 		}
