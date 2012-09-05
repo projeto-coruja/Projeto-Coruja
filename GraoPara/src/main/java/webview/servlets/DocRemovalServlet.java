@@ -30,10 +30,7 @@ public class DocRemovalServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String tipoAPEP_SEQ = request.getParameter("tipoAPEP_SEQ");
 		String numAPEP_SEQ = request.getParameter("numeroAPEP");
 		BuscaDocEJB search = new BuscaDocEJB();
@@ -44,10 +41,8 @@ public class DocRemovalServlet extends HttpServlet {
 		try {
 			docs = search.busca(tipoAPEP_SEQ, numAPEP_SEQ);
 			delete.deletarDocumento(docs);
-		    out.println("<script>");  
-		    out.println("alert('Documento deletado com sucesso. ');");  
-		    out.println("document.location=('/GraoPara/public/index.jsp');");  
-		    out.println("</script>");
+			response.sendRedirect(request.getHeader("referer"));
+			response.setHeader("Refresh", "0");
 		} catch (UnreachableDataBaseException e) {
 		    out.println("<script>");  
 		    out.println("alert('Erro no banco de dados. ');");  
@@ -59,7 +54,7 @@ public class DocRemovalServlet extends HttpServlet {
 		} catch (IllegalArgumentException e){
 		    out.println("<script>");  
 		    out.println("alert('"+ e.getMessage() +" ');");  
-		    out.println("history.go(-1);");  
+		    out.println("document.location=('/GraoPara/public/index.jsp');");  
 		    out.println("</script>");
 		}
 	}
