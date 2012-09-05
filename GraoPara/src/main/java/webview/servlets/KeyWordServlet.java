@@ -76,6 +76,11 @@ public class KeyWordServlet extends HttpServlet {
 			e.printStackTrace();
 		} catch (KeywordNotFoundException e) {
 			e.printStackTrace();
-		} 
+		} catch (IllegalArgumentException e) {
+			out.println("<script>");  
+		    out.println("alert('Palavra chave já existe.');");  
+		    out.println("history.go(-1);");  
+		    out.println("</script>");
+		}
 	}
 }

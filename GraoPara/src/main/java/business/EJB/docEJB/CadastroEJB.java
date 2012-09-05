@@ -275,10 +275,8 @@ public class CadastroEJB {
 		docDao.updateDocument(docDTO);
 	}
 	
-	public synchronized void cadastrarPalavraChave(String palavra)
-			throws IllegalArgumentException, UnreachableDataBaseException {
-		KeyWordDAO kwDao = new KeyWordDAO();
-		
+	public synchronized void cadastrarPalavraChave(String palavra) throws IllegalArgumentException, UnreachableDataBaseException {
+		KeyWordDAO kwDao = new KeyWordDAO();		
 		
 		try {
 			List<DTO> check = kwDao.findKeyWordByString(palavra);
