@@ -44,11 +44,14 @@ public class BuscaDocEJB {
 		}
 		
 		if(codigoDe != null && !codigoDe.isEmpty()){
-			if(continue_query == true){
-				query += " and ";
-			}
-			query += "cod_origem = '" + codigoDe + "'";
-			continue_query = true;
+            if(continue_query == true){
+                    query += " and ";
+            }
+            if (codigoAte != null && !codigoAte.isEmpty())
+                    query += "cod_origem BETWEEN '" + codigoDe + "' AND '"+ codigoAte +"'";
+            else
+                    query += "cod_origem = '" + codigoDe + "'";
+            continue_query = true;
 		}
 		
 		if(tipoAPEP_SEQ != null && !tipoAPEP_SEQ.isEmpty()){
