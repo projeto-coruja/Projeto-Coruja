@@ -19,7 +19,7 @@ import business.exceptions.login.UnreachableDataBaseException;
 /**
  * Servlet implementation class DocUpdateServlet
  */
-@WebServlet("/protected/admin/editDoc")
+@WebServlet("/protected/admin/updateDoc")
 public class DocUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -70,7 +70,7 @@ public class DocUpdateServlet extends HttpServlet {
 					dataDoc, email);
 			out.println("<script>");  
 			out.println("alert('Documento Atualizado com sucesso!');");  
-			out.println("document.location=('/GraoPara/public/index.jsp');");  
+			out.println("document.location=('/GraoPara/protected/admin/indexAdmin.jsp');");  
 			out.println("</script>");
 		} catch (UnreachableDataBaseException e) {
 			out.println("<script>");  
