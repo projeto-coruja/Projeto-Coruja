@@ -50,10 +50,7 @@ public class DocServlet extends HttpServlet {
 		String palChave1 = request.getParameter("chave1");
 		String palChave2 = request.getParameter("chave2");
 		String palChave3 = request.getParameter("chave3");
-				
-		response.setContentType("text/html");  
-	    PrintWriter out=response.getWriter();   
-		
+						
 		Cookie c_user = WebUtility.selectCookie(
 				request.getCookies(), WebUtility.cookie_email);
 		String email = c_user.getValue();
@@ -63,11 +60,15 @@ public class DocServlet extends HttpServlet {
 		CadastroEJB CB = new CadastroEJB();
 		try {
 			CB.cadastrarDocumento(codOrigem, tipoOrigem, titulo, tipoId, numId,tipoDoc,palChave1, palChave2, palChave3, autor, local, destinatario, resumo, dataDoc, email);
-			out.println("<script>");  
-			out.println("alert('Documento cadastrado com sucesso!')");  
-			out.println("document.location=('/GraoPara/public/index.jsp');");  
-			out.println("</script>");
+			response.setContentType("text/html");  
+		    PrintWriter out=response.getWriter();   
+		    out.println("<script>");  
+		    out.println("alert('Documento adicionado com sucesso!');");  
+		    out.println("history.go(-1);");  
+		    out.println("</script>");
 		} catch (UnreachableDataBaseException e) {
+			response.setContentType("text/html");  
+		    PrintWriter out=response.getWriter();   
 			out.println("<script>");  
 			out.println("alert('Erro no banco de dados! Contate o suporte e tente novamente mais tarde." + e.getStackTrace() + "');");  
 			out.println("document.location=('/GraoPara/protected/user/indexUser.jsp');");  
