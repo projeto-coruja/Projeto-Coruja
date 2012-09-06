@@ -56,13 +56,12 @@ public class BuscaDocEJBTest {
 		
 		LA = new LoginDAO();
 		try {
-			UO = LA.findUserByEmail("outlook@gmail.com");
+			UO = LA.findUserByEmail("user@graopara.com");
 		} catch (UserNotFoundException e) {
-			LA.addUser("outlook@gmail.com", "Outlook", "password", null);
+			LA.addUser("user@graopara.com", "Usuário Padrão", "null", null);
 			try {
-				UO = LA.findUserByEmail("outlook@gmail.com");
+				UO = LA.findUserByEmail("user@graopara.com");
 			} catch (UserNotFoundException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 		}
@@ -80,7 +79,7 @@ public class BuscaDocEJBTest {
 		local = "Pará";
 		destinatario = "VOCE";
 		resumo = "3R# UM# V%Z, 1M G#T& ÇHI~NÉ'S'\"\"\nNEH";
-		dataDocumento = new Date(1500, 4, 29);
+		dataDocumento = new Date();
 		uploader = "outlook@gmail.com";
 		
 		
@@ -103,9 +102,12 @@ public class BuscaDocEJBTest {
 			/*List<DTO> resultset = bde.busca(origem_tipoOrigem, origem_codOrigem, idNumDoc_tipoId, idNumDoc_codId, autor,
 					destinatario, local, "1500-05-29", tipoDocumento_tipoDocumento, 
 					palavraChave01, palavraChave02, palavraChave03);*/
-			List<DTO> resultset = bde.busca(origem_tipoOrigem, origem_codOrigem, idNumDoc_tipoId, idNumDoc_codId, autor,
-					destinatario, local, "1500-05-29", tipoDocumento_tipoDocumento, 
-					palavraChave01, palavraChave02, palavraChave03, null);
+			List<DTO> resultset = bde.busca(
+					origem_tipoOrigem, origem_codOrigem, "", 
+					origem_titulo, idNumDoc_tipoId, idNumDoc_codId, 
+					autor, destinatario, local, dataDocumento.toString(), "", 
+					tipoDocumento_tipoDocumento, resumo, 
+					palavraChave01, palavraChave02, palavraChave03);
 //			ce.deletarDocumento(resultset.get(0).getId());
 			((DocumentoDTO)resultset.get(0)).setAutor("EU DE NOVO");
 			ce.atualizarDocumento((DocumentoDTO) resultset.get(0));
