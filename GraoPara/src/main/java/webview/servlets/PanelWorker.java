@@ -111,10 +111,10 @@ public class PanelWorker {
 			for(DTO k : origens){
 				OrigemDTO ori = (OrigemDTO) k;				
 				out.write("<tr>");
-				out.write("<td> <label for=\"identificacao\" class=\"labelExibe\">" + ori.getTipoOrigem() + " </label> </td>");
-				out.write("<td> <label for=\"codigo\" class=\"labelExibe\">" + ori.getCodOrigem() + " </label> </td>");
-				out.write("<td> <label for=\"titulo\" class=\"labelExibe\">" + ori.getTitulo() + " </label> </td>");
-				out.println("<td>"
+				out.write("<td class=\"tdList\"> <label for=\"identificacao\" class=\"labelExibe\">" + ori.getTipoOrigem() + " </label> </td>");
+				out.write("<td class=\"tdList\"> <label for=\"codigo\" class=\"labelExibe\">" + ori.getCodOrigem() + " </label> </td>");
+				out.write("<td class=\"tdList\"> <label for=\"titulo\" class=\"labelExibe\">" + ori.getTitulo() + " </label> </td>");
+				out.println("<td class=\"tdList\">"
 						+ "<a href=\"/GraoPara/protected/admin/editarTituloOrigem.jsp?" 
 						+ "identificacao=" + ori.getTipoOrigem()
 						+ "&codigo=" + ori.getCodOrigem()
