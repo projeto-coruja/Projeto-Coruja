@@ -84,85 +84,122 @@
 			</div>
 		</div>
 			<!-- Fim do Menu Lateral -->
-		<div class="content" id="content">
-			<h2>Pesquisa de Documento</h2>
-			<form action="/GraoPara/public/listagemDocumentos.jsp" id="signupform"  method="get" name="cadastro" autocomplete="off">			
+<div class="content" id="content">
+			<h1>Pesquisa de Documento</h1>
+			<form action="/GraoPara/public/listagemDocumentos.jsp" id="signupform" method="get" name="cadastro">
 				<table class="tablePesquisa">
 					<tr>
 						<td colspan="3"><label class="labelForms"><strong>PREENCHA UM OU MAIS CAMPOS A SEGUIR:</strong></label></td>
 					</tr>
 					<tr>
-						<td class="tdPesquisa"><label class="labelForms" id="lidentificacao" for="identificacao">Identificação:</label></td>
+						<td class="tdPesquisa">
+							<label class="labelForms" id="lidentificacao" for="identificacao">Identificação:</label>
+						</td>
 						<td class="field">
-							<select name="identificacao" class="input" id="identificacao">
-								<%= WebUtility.printSelectOrigem(request) %>
-							</select></td>
-						<td class="status"><a href="#"><img src="/GraoPara/images/icone_ajuda.png"
-															alt="Todos os documentos do Arquivo Público do Pará que serão trabalhados aqui estão organizados em CÓDICE ou em CAIXAS. Portanto, se o documento está em um códice ou em uma caixa faz uma enorme diferença, pois se tratam de coleções diferentes. Tudo é organizado pelo fato de ser caixa ou códice e depois a informação de qual caixa ou códice está se falando é muito importante, pois atrelada a cada uma dessas caixas ou códices está, às vezes, centenas de documentos."
-															title="Todos os documentos do Arquivo Público do Pará que serão trabalhados aqui estão organizados em CÓDICE ou em CAIXAS. Portanto, se o documento está em um códice ou em uma caixa faz uma enorme diferença, pois se tratam de coleções diferentes. Tudo é organizado pelo fato de ser caixa ou códice e depois a informação de qual caixa ou códice está se falando é muito importante, pois atrelada a cada uma dessas caixas ou códices está, às vezes, centenas de documentos." /></a>
+							<select name="identificacao" class="input" id="identificacao"><%= WebUtility.printSelectOrigem(request) %></select>
+						</td>
+						<td class="status"><a href="#"><img	src="/GraoPara/images/icone_ajuda.png"
+								alt="Todos os documentos do Arquivo Público do Pará que serão trabalhados aqui estão organizados em CÓDICE ou em CAIXAS. Portanto, se o documento está em um códice ou em uma caixa faz uma enorme diferença, pois se tratam de coleções diferentes. Tudo é organizado pelo fato de ser caixa ou códice e depois a informação de qual caixa ou códice está se falando é muito importante, pois atrelada a cada uma dessas caixas ou códices está, às vezes, centenas de documentos."
+								title="Todos os documentos do Arquivo Público do Pará que serão trabalhados aqui estão organizados em CÓDICE ou em CAIXAS. Portanto, se o documento está em um códice ou em uma caixa faz uma enorme diferença, pois se tratam de coleções diferentes. Tudo é organizado pelo fato de ser caixa ou códice e depois a informação de qual caixa ou códice está se falando é muito importante, pois atrelada a cada uma dessas caixas ou códices está, às vezes, centenas de documentos." /></a>
+						</td>
+					</tr>
+					<tr>						
+						<td class="tdPesquisa"><label class="labelForms" id="lcodigo" for="codigo">Código:</label></td>
+						<td class="field">
+						<label class="labelForms" id="ldata" for="data">de: </label>
+						<input class="inputShort" name="codigoDe" id="codigo" type="text" maxlength="5"><label class="labelForms" id="lcodigo" for="codigo"> até:</label><input class="inputShort" name="codigoAte" id="codigo" type="text" maxlength="5"></td>
+						<td class="status"><a href="#"><img src="/GraoPara/images/icone_ajuda.png" alt="Código do documento" title="Informe a faixa de código do documentos que deseja pesquisar" /></a></td>
+					</tr>
+					<tr>
+						<td class="tdPesquisa"><label class="labelForms" id="ltitulo"
+							for="titulo">Título:</label></td>
+						<td class="field"><input class="input" name="titulo"
+							id="titulo" type="text" size="20" maxlength="500"></td>
+						<td class="status"><a href="#"><img
+								src="/GraoPara/images/icone_ajuda.png"
+								alt="Cada caixa ou códice tem um título, geralmente longo."
+								title="Cada caixa ou códice tem um título, geralmente longo." /></a></td>
+					</tr>
+					<tr>
+						<td class="tdPesquisa"><label class="labelForms" id="lnumero"
+							for="numero">Número APEP ou Sequencial:</label></td>
+						<td class="field"><input class="input" name="numero"
+							id="numero" type="text" maxlength="4"></td>
+						<td class="status"><a href="#"><img
+								src="/GraoPara/images/icone_ajuda.png"
+								alt="O número APEP é o número do documento dentro da caixa ou códice que o arquivista atribuiu. Muitos documentos possuem já essa numeração que facilita encontrar o documento dentro do conjunto. Quando existir esse número será com esse que identificaremos o documento. Em alguns casos, porém, o documento não está identificado. Aí você tem, às vezes, duzentos documentos sem nenhum tipo de numeração, o que torna impossível para o pesquisador que ler os verbetes saber rapidamente de que texto está se falando. Nestes casos, usaremos o que estamos chamando de número sequencial."
+								title="O número APEP é o número do documento dentro da caixa ou códice que o arquivista atribuiu. Muitos documentos possuem já essa numeração que facilita encontrar o documento dentro do conjunto. Quando existir esse número será com esse que identificaremos o documento. Em alguns casos, porém, o documento não está identificado. Aí você tem, às vezes, duzentos documentos sem nenhum tipo de numeração, o que torna impossível para o pesquisador que ler os verbetes saber rapidamente de que texto está se falando. Nestes casos, usaremos o que estamos chamando de número sequencial." /></a></td>
+					</tr>
+					<tr>
+						<td class="tdPesquisa"><label class="labelForms" id="lautor"
+							for="autor">Autor do Documento:</label></td>
+						<td class="field"><input class="input" name="autor"
+							id="autor" type="text" size="20" maxlength="48"></td>
+						<td class="status"><a href="#"><img
+								src="/GraoPara/images/icone_ajuda.png"
+								alt="Autor do Documento que deseja pesquisar"
+								title="Autor do Documento que deseja pesquisar" /></a></td>
+					</tr>
+					<tr>
+						<td class="tdPesquisa"><label class="labelForms"
+							id="ldestinatario" for="destinatario">Destinatário do
+								Documento:</label></td>
+						<td class="field"><input class="input" name="destinatario"
+							id="destinatario" type="text" size="20" maxlength="48"></td>
+						<td class="status"><a href="#"><img
+								src="/GraoPara/images/icone_ajuda.png"
+								alt="Esse campo descreve para quem era destinado o documento. Por exemplo, o governo no Rio de Janeiro, a autoridade fulano de tal. Trata-se de um campo textual, assim como autor ou verbete."
+								title="Esse campo descreve para quem era destinado o documento. Por exemplo, o governo no Rio de Janeiro, a autoridade fulano de tal. Trata-se de um campo textual, assim como autor ou verbete." /></a></td>
+					</tr>
+					<tr>
+						<td class="tdPesquisa"><label class="labelForms" id="llocal"
+							for="local">Local:</label></td>
+						<td class="field"><input class="input" name="local"
+							id="local" type="text" maxlength="48"></td>
+						<td class="status"><a href="#"><img
+								src="/GraoPara/images/icone_ajuda.png"
+								alt="Trata-se do local em que foi escrito o documento, normalmente a cidade. Por exemplo, Belém."
+								title="Trata-se do local em que foi escrito o documento, normalmente a cidade. Por exemplo, Belém." /></a></td>
+					</tr>
+					<tr>
+						<td class="tdPesquisa">
+							<label class="labelForms" id="ldata" for="data">Ano:</label>
+						</td>
+						<td class="field">
+							<label class="labelForms" id="ldata" for="data">de: </label>
+							<input class="inputShort" type="text" name="anoIni" id="ano" maxlength="4" />
+							<label class="labelForms" id="ldata" for="data"> até: </label>
+							<input class="inputShort" type="text" name="anoFim" id="ano" maxlength="4" />
+						</td> 
+						<td class="status">
+							<a href="#"><img
+								src="/GraoPara/images/icone_ajuda.png"
+								alt="Informe um período para filtrar a pesquisa."
+								title="Informe um período para filtrar a pesquisa." />
+							</a>
 						</td>
 					</tr>
 					<tr>
-						<td class="tdPesquisa"><label class="labelForms" id="lcodigo" for="codigo">Código:</label></td>
-						<td class="field"><input class="input" name="codigo" id="codigo" type="text" maxlength="5"></td>
-						<td class="status"><a href="#"><img src="/GraoPara/images/icone_ajuda.png" alt="Código do documento" title="Informe o código do documento que deseja pesquisar" /></a></td>
-					</tr>
-					<tr>
-						<td class="tdPesquisa"><label class="labelForms" id="ltitulo" for="titulo">Título:</label></td>
-						<td class="field"><input class="input" name="titulo" id="titulo" type="text" size="20" maxlength="500"></td>
-						<td class="status"><a href="#"><img src="/GraoPara/images/icone_ajuda.png"
-															alt="Cada caixa ou códice tem um título, geralmente longo."
-															title="Cada caixa ou códice tem um título, geralmente longo." /></a></td>
-					</tr>
-					<tr>
-						<td class="tdPesquisa"><label class="labelForms" id="lnumero" for="numero">Número APEP ou Sequencial:</label></td>
-						<td class="field"><input class="input" name="numero" id="numero" type="text" maxlength="4"></td>
-						<td class="status"><a href="#"><img src="/GraoPara/images/icone_ajuda.png"
-															alt="O número APEP é o número do documento dentro da caixa ou códice que o arquivista atribuiu. Muitos documentos possuem já essa numeração que facilita encontrar o documento dentro do conjunto. Quando existir esse número será com esse que identificaremos o documento. Em alguns casos, porém, o documento não está identificado. Aí você tem, às vezes, duzentos documentos sem nenhum tipo de numeração, o que torna impossível para o pesquisador que ler os verbetes saber rapidamente de que texto está se falando. Nestes casos, usaremos o que estamos chamando de número sequencial."
-															title="O número APEP é o número do documento dentro da caixa ou códice que o arquivista atribuiu. Muitos documentos possuem já essa numeração que facilita encontrar o documento dentro do conjunto. Quando existir esse número será com esse que identificaremos o documento. Em alguns casos, porém, o documento não está identificado. Aí você tem, às vezes, duzentos documentos sem nenhum tipo de numeração, o que torna impossível para o pesquisador que ler os verbetes saber rapidamente de que texto está se falando. Nestes casos, usaremos o que estamos chamando de número sequencial." /></a></td>
-					</tr>
-					<tr>
-						<td class="tdPesquisa"><label class="labelForms" id="lautor" for="autor">Autor do Documento:</label></td>
-						<td class="field"><input class="input" name="autor" id="autor" type="text" size="20" maxlength="48"></td>
-						<td class="status"><a href="#"><img src="/GraoPara/images/icone_ajuda.png"
-															alt="Autor do Documento que deseja pesquisar"
-															title="Autor do Documento que deseja pesquisar" /></a></td>
-					</tr>
-					<tr>
-						<td class="tdPesquisa"><label class="labelForms" id="ldestinatario" for="destinatario">Destinatário do Documento:</label></td>
-						<td class="field"><input class="input" name="destinatario" id="destinatario" type="text" size="20" maxlength="48"></td>
-						<td class="status"><a href="#"><img src="/GraoPara/images/icone_ajuda.png"
-															alt="Esse campo descreve para quem era destinado o documento. Por exemplo, o governo no Rio de Janeiro, a autoridade fulano de tal. Trata-se de um campo textual, assim como autor ou verbete."
-															title="Esse campo descreve para quem era destinado o documento. Por exemplo, o governo no Rio de Janeiro, a autoridade fulano de tal. Trata-se de um campo textual, assim como autor ou verbete." /></a></td>
-					</tr>
-					<tr>
-						<td class="tdPesquisa"><label class="labelForms" id="llocal" for="local">Local:</label></td>
-						<td class="field"><input class="input" name="local" id="local" type="text" maxlength="48"></td>
-						<td class="status"><a href="#"><img src="/GraoPara/images/icone_ajuda.png"
-															alt="Trata-se do local em que foi escrito o documento, normalmente a cidade. Por exemplo, Belém."
-															title="Trata-se do local em que foi escrito o documento, normalmente a cidade. Por exemplo, Belém." /></a></td>
-					</tr>
-					<tr>
-						<td class="tdPesquisa"><label class="labelForms" id="ldata" for="data">Ano:</label></td>
-						<td class="field">  <input class="input" type="text" name="ano" id="ano" maxlength="4" /></td>
-						<td class="status"><a href="#"><img src="/GraoPara/images/icone_ajuda.png"
-															alt="Informe somente o ano se quiser filtrar a pesquisa por período."
-															title="Informe somente o ano se quiser filtrar a pesquisa por período." /></a></td>
-					</tr>
-					<tr>
-						<td class="tdPesquisa"><label class="labelForms" id="ltipoDoc" for="tipoDoc">Tipo do Documento:</label></td>
+						<td class="tdPesquisa">
+							<label class="labelForms" id="ltipoDoc" for="tipoDoc">Tipo do Documento:</label>
+						</td>
 						<td class="field">
 							<select class="input" name="tipoDoc" id="tipoDoc">
 								<!-- Pegar do Banco de dados os tipos e, caso o usuÃ¡rio selecione outro, exibir campo para cadastrar outro tipo -->
-								<%= WebUtility.printSelectTipoDoc(request) %>
-							</select></td>
-						<td class="status"><a href="#"><img src="/GraoPara/images/icone_ajuda.png"
-															alt="Selecione um dos tipos de documentos para filtrar resultados"
-															title="Selecione um dos tipos de documentos para filtrar resultados" /></a></td>
+								<%=WebUtility.printSelectTipoDoc(request) %>
+							</select>
+						</td>
+						<td class="status">
+							<a href="#">
+								<img src="/GraoPara/images/icone_ajuda.png"
+								alt="Selecione um dos tipos de documentos para filtrar resultados"
+								title="Selecione um dos tipos de documentos para filtrar resultados" />
+							</a>
+						</td>
 					</tr>
 					<tr>
 						<td colspan="3">
-							<label class="labelForms"><strong>RESUMO OU VERBETE DO DOCUMENTO:<span class="asterisco">*</span></strong></label>
+							<label class="labelForms">RESUMO OU VERBETE DO DOCUMENTO:</label>
 						</td>
 					</tr>
 					<tr>						
@@ -172,35 +209,35 @@
 						<td class="status"></td>
 					</tr>
 					<tr>
-						<td colspan="3"><label for="palavrasChaves" class="labelForms">Palavra Chaves:</label></td>
+						<td colspan="3">
+							<label for="palavrasChaves" class="labelForms">Palavra Chaves:</label>
+						</td>
 					</tr>
 					<tr>
 						<td class="field" colspan="2">
-
 							<select class="input" name="chave1" id="chave1" style="width: 120px">
 								<option value = "">Nenhuma</option>
 								<%= WebUtility.printSelectKeyWords(request, "chave1") %>
 							</select>
-
 							<select class="input" name="chave2" id="chave2" style="width: 120px">
 								<option value = "">Nenhuma</option>
 								<%= WebUtility.printSelectKeyWords(request, "chave2") %>
 							</select>
-
-							<select class="input" name="chave3" id="chave3" style="width: 120px">
+							<select  class="input" name="chave3" id="chave3" style="width: 120px">
 								<option value = "">Nenhuma</option>
 								<%= WebUtility.printSelectKeyWords(request, "chave3") %>
 							</select>
 						</td>
-						<td class="status"><a href="#"><img src="/GraoPara/images/icone_ajuda.png"
-															alt="Informe de uma a três palavras chaves para filtrar sua pesquisa"
-															title="Informe de uma a três palavras chaves para filtrar sua pesquisa" /></a></td>
+						<td class="status"><a href="#"><img
+								src="/GraoPara/images/icone_ajuda.png"
+								alt="Informe de uma a três palavras chaves para filtrar sua pesquisa"
+								title="Informe de uma a três palavras chaves para filtrar sua pesquisa" /></a></td>
 					</tr>
 					<tr>
 						<td colspan="3">
 							<p></p> <input class="buttonLimpar" name="limpar" type="reset"
 							value="Limpar" /><input class="buttonRegistrar" name="inserir"
-							type="submit" id="signupsubmit" value="Enviar" />
+							type="submit" value="Enviar" id="signupsubmit" style="FONT-FAMILY: 'Bitstream Charter';"/>
 						</td>
 					</tr>
 				</table>
