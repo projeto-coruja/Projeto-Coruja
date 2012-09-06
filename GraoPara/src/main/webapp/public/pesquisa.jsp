@@ -161,18 +161,32 @@
 															title="Selecione um dos tipos de documentos para filtrar resultados" /></a></td>
 					</tr>
 					<tr>
+						<td colspan="3">
+							<label class="labelForms"><strong>RESUMO OU VERBETE DO DOCUMENTO:<span class="asterisco">*</span></strong></label>
+						</td>
+					</tr>
+					<tr>						
+						<td class="field" colspan="2">
+							<textarea class="inputResumo" id="resumo" name="resumo" rows="7" cols="40" maxlength="2048"></textarea>
+						</td>
+						<td class="status"></td>
+					</tr>
+					<tr>
 						<td colspan="3"><label for="palavrasChaves" class="labelForms">Palavra Chaves:</label></td>
 					</tr>
 					<tr>
 						<td class="field" colspan="2">
+
 							<select class="input" name="chave1" id="chave1" style="width: 120px">
 								<option value = "">Nenhuma</option>
 								<%= WebUtility.printSelectKeyWords(request, "chave1") %>
 							</select>
+
 							<select class="input" name="chave2" id="chave2" style="width: 120px">
 								<option value = "">Nenhuma</option>
 								<%= WebUtility.printSelectKeyWords(request, "chave2") %>
 							</select>
+
 							<select class="input" name="chave3" id="chave3" style="width: 120px">
 								<option value = "">Nenhuma</option>
 								<%= WebUtility.printSelectKeyWords(request, "chave3") %>

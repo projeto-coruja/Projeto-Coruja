@@ -198,8 +198,20 @@
 								title="Selecione um dos tipos de documentos para filtrar resultados" /></a></td>
 					</tr>
 					<tr>
-						<td colspan="3"><label for="palavrasChaves"
-							class="labelForms">Palavra Chaves:</label></td>
+						<td colspan="3">
+							<label class="labelForms"><strong>RESUMO OU VERBETE DO DOCUMENTO:<span class="asterisco">*</span></strong></label>
+						</td>
+					</tr>
+					<tr>						
+						<td class="field" colspan="2">
+							<textarea class="inputResumo" id="resumo" name="resumo" rows="7" cols="40" maxlength="2048"></textarea>
+						</td>
+						<td class="status"></td>
+					</tr>
+					<tr>
+						<td colspan="3">
+							<label for="palavrasChaves" class="labelForms">Palavra Chaves:</label>
+						</td>
 					</tr>
 					<tr>
 						<td class="field" colspan="2">

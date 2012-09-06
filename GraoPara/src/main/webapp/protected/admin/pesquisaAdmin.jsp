@@ -190,34 +190,62 @@
 								title="Trata-se do local em que foi escrito o documento, normalmente a cidade. Por exemplo, Belém." /></a></td>
 					</tr>
 					<tr>
-						<td class="tdPesquisa"><label class="labelForms" id="ldata"	for="data">Ano:</label>
-						<label class="labelForms" id="ldata"	for="data">Desde</label></td>
-						<td class="field"><input class="inputShort" type="text" name="anoIni" id="ano" maxlength="4" /></td>
+						<td class="tdPesquisa">
+							<label class="labelForms" id="ldata" for="data">Ano:</label>
+							<label class="labelForms" id="ldata" for="data">Desde</label>
+						</td>
+						<td class="field">
+							<input class="inputShort" type="text" name="anoIni" id="ano" maxlength="4" />
+						</td>
 						
-						<td class="tdPesquisa"><label class="labelForms" id="ldata"	for="data">Até</label></td>
-						<td class="field"><input class="inputShort" type="text" name="anoFim" id="ano" maxlength="4" /></td>
+						<td class="tdPesquisa">
+							<label class="labelForms" id="ldata" for="data">Até</label>
+						</td>
+						<td class="field">
+							<input class="inputShort" type="text" name="anoFim" id="ano" maxlength="4" />
+						</td>
 						
-						<td class="status"><a href="#"><img
+						<td class="status">
+							<a href="#"><img
 								src="/GraoPara/images/icone_ajuda.png"
 								alt="Informe somente o ano se quiser filtrar a pesquisa por período."
-								title="Informe somente o ano se quiser filtrar a pesquisa por período." /></a></td>
+								title="Informe somente o ano se quiser filtrar a pesquisa por período." />
+							</a>
+						</td>
 					</tr>
 					<tr>
-						<td class="tdPesquisa"><label class="labelForms" id="ltipoDoc"
-							for="tipoDoc">Tipo do Documento:</label></td>
-						<td class="field"><select class="input" name="tipoDoc"
-							id="tipoDoc">
+						<td class="tdPesquisa">
+							<label class="labelForms" id="ltipoDoc" for="tipoDoc">Tipo do Documento:</label>
+						</td>
+						<td class="field">
+							<select class="input" name="tipoDoc" id="tipoDoc">
 								<!-- Pegar do Banco de dados os tipos e, caso o usuÃ¡rio selecione outro, exibir campo para cadastrar outro tipo -->
 								<%=WebUtility.printSelectTipoDoc(request) %>
-						</select></td>
-						<td class="status"><a href="#"><img
-								src="/GraoPara/images/icone_ajuda.png"
+							</select>
+						</td>
+						<td class="status">
+							<a href="#">
+								<img src="/GraoPara/images/icone_ajuda.png"
 								alt="Selecione um dos tipos de documentos para filtrar resultados"
-								title="Selecione um dos tipos de documentos para filtrar resultados" /></a></td>
+								title="Selecione um dos tipos de documentos para filtrar resultados" />
+							</a>
+						</td>
 					</tr>
 					<tr>
-						<td colspan="3"><label for="palavrasChaves"
-							class="labelForms">Palavra Chaves:</label></td>
+						<td colspan="3">
+							<label class="labelForms">RESUMO OU VERBETE DO DOCUMENTO:</label>
+						</td>
+					</tr>
+					<tr>						
+						<td class="field" colspan="2">
+							<textarea class="inputResumo" id="resumo" name="resumo" rows="7" cols="40" maxlength="2048"></textarea>
+						</td>
+						<td class="status"></td>
+					</tr>
+					<tr>
+						<td colspan="3">
+							<label for="palavrasChaves" class="labelForms">Palavra Chaves:</label>
+						</td>
 					</tr>
 					<tr>
 						<td class="field" colspan="2">

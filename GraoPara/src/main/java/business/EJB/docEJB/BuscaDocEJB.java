@@ -24,7 +24,7 @@ public class BuscaDocEJB {
 	}
 	
 	public List<DTO> busca(String identificacao, String codigoDe, String codigoAte, String titulo , String tipoAPEP_SEQ, String numAPEP_SEQ, String autor, 
-			String destinatario, String local, String anoIni, String anoFim, String tipo, 
+			String destinatario, String local, String anoIni, String anoFim, String tipo, String resumo, 
 			String palavra1, String palavra2, String palavra3) throws UnreachableDataBaseException, DocumentNotFoundException{
 		
 		boolean continue_query = false;
@@ -99,6 +99,14 @@ public class BuscaDocEJB {
 				query += " and ";
 			}
 			query += "tipo_documento = '" + tipo + "'";
+			continue_query = true;
+		}
+		
+		if(resumo != null && !resumo.isEmpty()){
+			if(continue_query == true){
+				query += " and ";
+			}
+			query += "resumo like '%" + resumo + "%'";
 			continue_query = true;
 		}
 		

@@ -80,12 +80,12 @@ public class InitServlet extends HttpServlet {
 		}
 		else admin = null;
 		
-		List<DTO> user = pa.findEntities("from User where email = 'outlook@gmail.com'");
+		List<DTO> user = pa.findEntities("from User where email = 'user@graopara.com'");
 		if(user == null)
 		{
 			log.info("Criando usuário de teste...");
-			pa.saveEntity(new UserDTO("Outlook", EJBUtility.getHash("null","MD5"), (ProfileDTO) (pa.findEntities("from Profile where profile = 'user'").get(0)),
-				"outlook@gmail.com", new Date()));
+			pa.saveEntity(new UserDTO("Usuário Padrão", EJBUtility.getHash("null","MD5"), (ProfileDTO) (pa.findEntities("from Profile where profile = 'user'").get(0)),
+				"user@graopara.com", new Date()));
 		}
 		else user = null;
 		
@@ -151,6 +151,7 @@ public class InitServlet extends HttpServlet {
 		PersistenceUtility.closeSessionFactory();
 		log.info("Encerrando o logging...");
 		log = null;
+		//System.gc();
 		LogFactory.releaseAll();
 	}
 
