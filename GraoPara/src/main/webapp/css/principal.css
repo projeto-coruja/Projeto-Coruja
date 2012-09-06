@@ -342,7 +342,7 @@ label{
 	float: left;
 	width: 180px;
 	height: 940px;
-	background-color: #C3D9FF;
+	background-color: #2C3E82;
 	padding-bottom: 10px;
 }
 
@@ -411,7 +411,7 @@ color: #839AE6;
 /* ~~ The footer ~~ */
 .footer {
 	padding: 10px 0;
-	background-color: #9DB3FF;
+	background-color: #24346F;
 	text-align: center;
 	text-shadow:#000;
 	position: relative;/* this gives IE6 hasLayout to properly clear */
