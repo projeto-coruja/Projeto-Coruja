@@ -104,7 +104,7 @@ public class KeyWordDAO {
 	public List<DTO> findKeyWordByString(String key) throws  UnreachableDataBaseException, KeywordNotFoundException  {
 		List<DTO> resultSet = null;
 		try {
-			resultSet = manager.findEntities("from PalavraChave where palavra like '%" + key.toLowerCase() + "%'");
+			resultSet = manager.findEntities("from PalavraChave where palavra like '%" + key.toLowerCase() + "%' order by palavra");
 			if(resultSet == null) {
 				throw new KeywordNotFoundException ("Palavra não encontrada");
 			}
@@ -118,7 +118,7 @@ public class KeyWordDAO {
 	public List<DTO> getAllKeys() throws  UnreachableDataBaseException, KeywordNotFoundException  {
 		List<DTO> resultSet = null;
 		try {
-			resultSet = manager.findEntities("from PalavraChave");
+			resultSet = manager.findEntities("from PalavraChave order by palavra");
 			if(resultSet == null) {
 				throw new KeywordNotFoundException ("Nenhuma palavra aprovada");
 			}
@@ -132,7 +132,7 @@ public class KeyWordDAO {
 	public List<DTO> getAllPendentKeys() throws  UnreachableDataBaseException, KeywordNotFoundException  {
 		List<DTO> resultSet = null;
 		try {
-			resultSet = manager.findEntities("from PalavraChave where aprovada = false");
+			resultSet = manager.findEntities("from PalavraChave where aprovada = false order by palavra");
 			if(resultSet == null) {
 				throw new KeywordNotFoundException ("Nenhuma palavra esperando por aprovação");
 			}

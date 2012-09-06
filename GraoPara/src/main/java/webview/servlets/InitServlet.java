@@ -19,6 +19,7 @@ import business.EJB.util.EJBUtility;
 
 import persistence.PersistenceAccess;
 import persistence.dto.DTO;
+import persistence.dto.OrigemDTO;
 import persistence.dto.ProfileDTO;
 import persistence.dto.TipoDocumentoDTO;
 import persistence.dto.UserDTO;
@@ -71,16 +72,16 @@ public class InitServlet extends HttpServlet {
 		}
 		
 		//TODO: MUDAR SENHA
-		List<DTO> admin = pa.findEntities("from User where email = 'admin@graopara.com'");
-		if(admin == null)
+		List<DTO> user = pa.findEntities("from User where email = 'admin@graopara.com'");
+		if(user == null)
 		{
 			log.info("Criando usuário de admin...");
 			pa.saveEntity(new UserDTO("Admin", EJBUtility.getHash("null","MD5"), (ProfileDTO) (pa.findEntities("from Profile where profile = 'admin'").get(0)),
 				"admin@graopara.com", new Date()));
 		}
-		else admin = null;
+		else user = null;
 		
-		List<DTO> user = pa.findEntities("from User where email = 'user@graopara.com'");
+		user = pa.findEntities("from User where email = 'user@graopara.com'");
 		if(user == null)
 		{
 			log.info("Criando usuário de teste...");
@@ -89,14 +90,25 @@ public class InitServlet extends HttpServlet {
 		}
 		else user = null;
 		
-		List<DTO> visit = pa.findEntities("from User where email = 'default@graopara.com'");
-		if(visit == null)
+		user = pa.findEntities("from User where email = 'default@graopara.com'");
+		if(user == null)
 		{
 			log.info("Criando usuário sem privilégios de teste...");
 			pa.saveEntity(new UserDTO("Anonimo", EJBUtility.getHash("null","MD5"), (ProfileDTO) (pa.findEntities("from Profile where profile = 'default'").get(0)),
 				"default@graopara.com", new Date()));
 		}
-		else visit = null;
+		user = null;
+		
+		List<DTO> origem = pa.findEntities("from Origem where tipoOrigem = 'CODICE'");
+		if(origem == null) {
+			log.info("Criando um origem de documento...");
+			pa.saveEntity(new OrigemDTO("1", "CODICE", "CODICE"));
+		}
+		origem = pa.findEntities("from Origem where tipoOrigem = 'CAIXA'");
+		if(origem == null) {
+			log.info("Criando um origem de documento...");
+			pa.saveEntity(new OrigemDTO("2", "CAIXA", "CAIXA"));
+		}
 		
 		List<DTO> doc = pa.findEntities("from TipoDocumento where tipoDocumento = 'Ofícios'");
 		if(doc == null)
