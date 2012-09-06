@@ -111,7 +111,7 @@
 		</div>
 		<!-- Fim do Menu Lateral -->
 		<div class="content" id="content">
-				<h1>Cadastro Usuário</h1>
+				<h1>Editar Usuário</h1>
 			<form id="signupform" autocomplete="off" method="post" action="/GraoPara/doChangesToAccount?action=editPermission">
 				<table class="tableForms">
 					<tr>
