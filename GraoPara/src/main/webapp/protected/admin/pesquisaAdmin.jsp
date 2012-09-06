@@ -133,7 +133,7 @@
 						<td class="tdPesquisa"><label class="labelForms" id="lcodigo" for="codigo">Código:</label></td>
 						<td class="field">
 						<label class="labelForms" id="ldata" for="data">de: </label>
-						<input class="inputShort" name="codigoDe" id="codigo" type="text" maxlength="5"><label class="labelForms" id="lcodigo" for="codigo"> Até:</label><input class="inputShort" name="codigoAte" id="codigo" type="text" maxlength="5"></td>
+						<input class="inputShort" name="codigoDe" id="codigo" type="text" maxlength="5"><label class="labelForms" id="lcodigo" for="codigo"> até:</label><input class="inputShort" name="codigoAte" id="codigo" type="text" maxlength="5"></td>
 						<td class="status"><a href="#"><img src="/GraoPara/images/icone_ajuda.png" alt="Código do documento" title="Informe a faixa de código do documentos que deseja pesquisar" /></a></td>
 					</tr>
 					<tr>
@@ -190,12 +190,11 @@
 					<tr>
 						<td class="tdPesquisa">
 							<label class="labelForms" id="ldata" for="data">Ano:</label>
-							<label class="labelForms" id="ldata" for="data"> Desde</label>
 						</td>
 						<td class="field">
 							<label class="labelForms" id="ldata" for="data">de: </label>
 							<input class="inputShort" type="text" name="anoIni" id="ano" maxlength="4" />
-							<label class="labelForms" id="ldata" for="data"> Até: </label>
+							<label class="labelForms" id="ldata" for="data"> até: </label>
 							<input class="inputShort" type="text" name="anoFim" id="ano" maxlength="4" />
 						</td> 
 						<td class="status">
