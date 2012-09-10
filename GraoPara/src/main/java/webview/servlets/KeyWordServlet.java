@@ -36,36 +36,36 @@ public class KeyWordServlet extends HttpServlet {
 		response.setContentType("text/html");  
 	    PrintWriter out=response.getWriter();   
 		CadastroEJB cad = new CadastroEJB();
-		String key = request.getParameter("palavra");
-		String oldkey = request.getParameter("palavraAntiga");
+		String oldKey = request.getParameter("palavraAntiga");
+		String newKey = request.getParameter("palavraNova");
 		String action = request.getParameter("action");
-		String previous = request.getParameter("from");
-		if(previous.equals("painelAdmin.jsp"))	previous += "#tab3";
+		
 		try {
 			if(action!= null && action.equals("add")) {
-				cad.cadastrarPalavraChave(key);
+				cad.cadastrarPalavraChave(newKey);
 			    out.println("<script>");  
 			    out.println("alert('Palavra chave adicionado com sucesso. ');");  
-			    out.println("document.location=('/GraoPara/protected/admin/"+ previous +"');");
+			    out.println("document.location=('/GraoPara/protected/admin/cadastrarPalavrasChave.jsp');");
 			    out.println("</script>");
 			}
 			else if(action!= null && action.equals("edit")) {
-				cad.atualizarPalavraChave(oldkey, key, true);
+				cad.atualizarPalavraChave(oldKey, newKey, true);
 			    out.println("<script>");  
-			    out.println("alert('Palavra chave atualizada com sucesso. ');");  
-			    out.println("document.location=('/GraoPara/protected/admin/"+ previous +"');");
+			    out.println("alert('Palavra chave atualizada com sucesso. ');");
+			    out.println("document.location=('/GraoPara/protected/admin/cadastrarPalavrasChave.jsp');");
 			    out.println("</script>");
 			}
 			else if(action != null && action.equals("delete")) {	
-				cad.deletarPalavraChave(key);
+				cad.deletarPalavraChave(newKey);
 			    out.println("<script>");
-			    out.println("document.location=('/GraoPara/protected/admin/"+ previous+"');");
+			    out.println("alert('Palavra chave excluída com sucesso. ');");
+			    out.println("document.location=('/GraoPara/protected/admin/cadastrarPalavrasChave.jsp');");
 			    out.println("</script>");
 			}
 			else {
 			    out.println("<script>");  
 			    out.println("alert('Problema ao executar operação. ');");  
-			    out.println("history.go(-1);");  
+			    out.println("history.go(-1);");
 			    out.println("</script>");
 			}
 		} catch (UnreachableDataBaseException e) {
