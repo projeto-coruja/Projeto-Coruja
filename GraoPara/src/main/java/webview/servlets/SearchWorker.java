@@ -149,7 +149,5 @@ public class SearchWorker {
 			out.println("<td colspan=\"2\" class=\"tdList\"><label class=\"labelExibe\">Nenhum tipo de documento encontrado.</label></td>");
 			out.println("</tr>");
 		}
-		
-		
 	}
 }

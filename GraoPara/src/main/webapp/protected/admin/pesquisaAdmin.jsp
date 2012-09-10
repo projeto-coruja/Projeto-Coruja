@@ -129,14 +129,12 @@
 								title="Todos os documentos do Arquivo Público do Pará que serão trabalhados aqui estão organizados em CÓDICE ou em CAIXAS. Portanto, se o documento está em um códice ou em uma caixa faz uma enorme diferença, pois se tratam de coleções diferentes. Tudo é organizado pelo fato de ser caixa ou códice e depois a informação de qual caixa ou códice está se falando é muito importante, pois atrelada a cada uma dessas caixas ou códices está, às vezes, centenas de documentos." /></a>
 						</td>
 					</tr>
-					<tr>
-						<td class="tdPesquisa"><label class="labelForms" id="lcodigo" for="codigo">Código de:</label></td>
-						<td class="field"><input class="input" name="codigoDe" id="codigo" type="text" maxlength="5"></td>
-						
-						<td class="tdPesquisa"><label class="labelForms" id="lcodigo" for="codigo">Até:</label></td>
-						<td class="field"><input class="input" name="codigoAte" id="codigo" type="text" maxlength="5"></td>
-
-						<td class="status"><a href="#"><img src="/GraoPara/images/icone_ajuda.png" alt="Código do documento" title="Informe o código do documento que deseja pesquisar" /></a></td>
+					<tr>						
+						<td class="tdPesquisa"><label class="labelForms" id="lcodigo" for="codigo">Código:</label></td>
+						<td class="field">
+						<label class="labelForms" id="ldata" for="data">de: </label>
+						<input class="inputShort" name="codigoDe" id="codigo" type="text" maxlength="5"><label class="labelForms" id="lcodigo" for="codigo"> até:</label><input class="inputShort" name="codigoAte" id="codigo" type="text" maxlength="5"></td>
+						<td class="status"><a href="#"><img src="/GraoPara/images/icone_ajuda.png" alt="Código do documento" title="Informe a faixa de código do documentos que deseja pesquisar" /></a></td>
 					</tr>
 					<tr>
 						<td class="tdPesquisa"><label class="labelForms" id="ltitulo"
@@ -192,24 +190,18 @@
 					<tr>
 						<td class="tdPesquisa">
 							<label class="labelForms" id="ldata" for="data">Ano:</label>
-							<label class="labelForms" id="ldata" for="data">Desde</label>
 						</td>
 						<td class="field">
+							<label class="labelForms" id="ldata" for="data">de: </label>
 							<input class="inputShort" type="text" name="anoIni" id="ano" maxlength="4" />
-						</td>
-						
-						<td class="tdPesquisa">
-							<label class="labelForms" id="ldata" for="data">Até</label>
-						</td>
-						<td class="field">
+							<label class="labelForms" id="ldata" for="data"> até: </label>
 							<input class="inputShort" type="text" name="anoFim" id="ano" maxlength="4" />
-						</td>
-						
+						</td> 
 						<td class="status">
 							<a href="#"><img
 								src="/GraoPara/images/icone_ajuda.png"
-								alt="Informe somente o ano se quiser filtrar a pesquisa por período."
-								title="Informe somente o ano se quiser filtrar a pesquisa por período." />
+								alt="Informe um período para filtrar a pesquisa."
+								title="Informe um período para filtrar a pesquisa." />
 							</a>
 						</td>
 					</tr>

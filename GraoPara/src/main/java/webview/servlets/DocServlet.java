@@ -37,9 +37,12 @@ public class DocServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String tipoOrigem = request.getParameter("identificacao").toUpperCase();
-		String codOrigem = request.getParameter("codigo");
-		String titulo = request.getParameter("titulo");
+		String[] identificacao = request.getParameter("identificacao").split("-");
+//		String codOrigem = request.getParameter("codigo");
+		
+		String tipoOrigem = identificacao[0];
+		String codOrigem = identificacao[1];
+		String titulo = identificacao[2];
 		String tipoId = request.getParameter("tipo_num").toUpperCase();
 		String numId = request.getParameter("numero");
 		String autor = request.getParameter("autor");

@@ -55,7 +55,7 @@ public class OrigemDAO {
 	public OrigemDTO findExactOrigin(String cod, String type) throws  UnreachableDataBaseException, OriginNotFoundException  {
 		List<DTO> resultSet = null;
 		try {
-			resultSet = manager.findEntities("from Origem where cod_origem like '" + cod +"' and tipo_origem like '" + type +"'");
+			resultSet = manager.findEntities("from Origem where cod_origem like '%" + cod +"%' and tipo_origem like '%" + type +"%' codOrigem, tipoOrigem, titulo");
 			OrigemDTO select = null;
 			if(resultSet == null) {
 				throw new OriginNotFoundException ("Origem não encontrado");
@@ -75,7 +75,7 @@ public class OrigemDAO {
 	public List<DTO> findOriginByCod(String cod) throws  UnreachableDataBaseException, OriginNotFoundException  {
 		List<DTO> resultSet = null;
 		try {
-			resultSet = manager.findEntities("from Origem where cod_origem like '" + cod +"'");
+			resultSet = manager.findEntities("from Origem where cod_origem like '%" + cod +"%' order by codOrigem, tipoOrigem, titulo");
 			if(resultSet == null) {
 				throw new OriginNotFoundException ("Código não encontrado");
 			}
@@ -89,7 +89,7 @@ public class OrigemDAO {
 	public List<DTO> findOriginByType(String type) throws  UnreachableDataBaseException, OriginNotFoundException  {
 		List<DTO> resultSet = null;
 		try {
-			resultSet = manager.findEntities("from Origem where tipo_origem like '" + type +"'");
+			resultSet = manager.findEntities("from Origem where tipo_origem like '%" + type +"%' order by codOrigem, tipoOrigem, titulo");
 			if(resultSet == null) {
 				throw new OriginNotFoundException ("Tipo não encontrado");
 			}
@@ -103,7 +103,7 @@ public class OrigemDAO {
 	public List<DTO> findOriginByTitle(String title) throws  UnreachableDataBaseException, OriginNotFoundException  {
 		List<DTO> resultSet = null;
 		try {
-			resultSet = manager.findEntities("from Origem where titulo like '%" + title +"%'");
+			resultSet = manager.findEntities("from Origem where titulo like '%" + title +"%' order by codOrigem, tipoOrigem, titulo");
 			if(resultSet == null) {
 				throw new OriginNotFoundException ("Título não encontrado");
 			}
@@ -117,7 +117,7 @@ public class OrigemDAO {
 	public List<DTO> findAllOrigins() throws  UnreachableDataBaseException, OriginNotFoundException  {
 		List<DTO> resultSet = null;
 		try {
-			resultSet = manager.findEntities("from Origem");
+			resultSet = manager.findEntities("from Origem order by codOrigem, tipoOrigem, titulo");
 			if(resultSet == null) {
 				throw new OriginNotFoundException ("Tipo não encontrado");
 			}

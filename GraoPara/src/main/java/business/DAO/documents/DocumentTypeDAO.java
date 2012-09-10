@@ -66,7 +66,7 @@ public class DocumentTypeDAO {
 	public TipoDocumentoDTO findSingleDocumentTypeByString(String type) throws  UnreachableDataBaseException, DocumentTypeNotFoundException  {
 		List<DTO> resultSet = null;
 		try {
-			resultSet = manager.findEntities("from TipoDocumento where tipoDocumento = '" + type +"'");
+			resultSet = manager.findEntities("from TipoDocumento where tipoDocumento = '" + type +"' order by tipoDocumento");
 			if(resultSet == null) {
 				throw new DocumentTypeNotFoundException ("Tipo não encontrado");
 			}

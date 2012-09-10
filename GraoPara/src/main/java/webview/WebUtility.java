@@ -116,29 +116,50 @@ public final class WebUtility {
 		else return label;
 	}
 	
-	public static String printSelectOrigem(HttpServletRequest request) throws IOException {
+	public static String printSelectOrigem(HttpServletRequest request) throws IOException, UnreachableDataBaseException {
 		String output = null;
-		String parameter = request.getParameter("identificacao");
-		if(parameter == null)
-		{
-			output = 
-					"<option selected value=\"\">Selecione...</option> " +
-					"<option value=\"CODICE\">Códice</option> " +
-					"<option value=\"CAIXA\">Caixa</option>";
+		
+		OrigemDAO origemDAO = null;
+		
+		try {
+			origemDAO = new OrigemDAO();
+			List<DTO> list = origemDAO.findAllOrigins();
+			output = "\n	<option selected value=\"\">Selecione...</option> ";
+			
+			for(DTO d : list){
+				String tipoOrigem = ((OrigemDTO) d).getTipoOrigem();
+				output += "\n	<option value=\"" 
+					+ tipoOrigem + " \">" 
+					+ tipoOrigem + "</option> ";
+			}
+		} catch (OriginNotFoundException e) {
+			e.printStackTrace();
 		}
-		else if(parameter.equals("CODICE"))
-		{
-			output = 
-					"<option selected value=\"CODICE\">Códice</option> " +
-					"<option value=\"CAIXA\">Caixa</option>";
+		return output;
+	}
+	
+	public static String printCadastroOrigem(HttpServletRequest request) throws IOException, UnreachableDataBaseException {
+		String output = null;
+		
+		OrigemDAO origemDAO = null;
+		
+		try {
+			origemDAO = new OrigemDAO();
+			List<DTO> list = origemDAO.findAllOrigins();
+			output = "\n	<option selected value=\"\">Selecione...</option> ";
+			
+			for(DTO d : list){
+				String tipoOrigem = ((OrigemDTO) d).getTipoOrigem();
+				String codOrigem =  ((OrigemDTO) d).getCodOrigem();
+				String tituloOrigem = ((OrigemDTO) d).getTitulo();
+				output += "\n	<option value=\"" 
+					+ tipoOrigem + "-" + codOrigem + "-" + tituloOrigem + " \">" 
+					+ tipoOrigem + " - " + codOrigem + " - " + tituloOrigem + "</option> ";
+			}
+		} catch (OriginNotFoundException e) {
+			e.printStackTrace();
 		}
-		else if(parameter.equals("CAIXA"))
-		{
-			output = 
-					"<option value=\"CODICE\">Códice</option> " +
-					"<option selected value=\"CAIXA\">Caixa</option>";
-		}
-
+		
 		return output;
 	}
 	
@@ -192,10 +213,8 @@ public final class WebUtility {
 					result += "<option value=\"" + tipoDoc + "\">" + tipoDoc + "</option> ";
 			}
 		} catch (UnreachableDataBaseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (DocumentTypeNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return result;

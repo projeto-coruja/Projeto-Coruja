@@ -138,7 +138,7 @@ a:hover, a:active, a:focus { /* this group of selectors will give a keyboard nav
 	-moz-border-radius: 0.4em;
 	border-radius: 0.4em;	
 	border: 1;
-	width: 57px;
+	width: 64px;
 	height: 20px;
 	margin: 5px 0;
 	color: #000;	
@@ -233,7 +233,7 @@ a:hover, a:active, a:focus { /* this group of selectors will give a keyboard nav
 	-moz-border-radius: .4em;
 	border-radius: .4em;	
 	border: 1;
-	width: 250px;
+	width: 350px;
 	height: 20px;
 	margin: 0px 0;
 	color: #000;
@@ -266,7 +266,7 @@ margin-right: 80px;
 }
 
 .buttonSair {
-margin-left: 27px;
+margin-left: 22px;
 width: 100px;
 }
 
@@ -300,7 +300,7 @@ margin-left: 0px;
 
 .scrollLong{
 	height: 35em;
-	width:650px;
+	width:1000px;
 	overflow: auto;
 }
 
@@ -386,16 +386,16 @@ ul.nav a, ul.nav a:visited { /* grouping these selectors makes sure that your li
 	display: block; /* this gives the link block properties causing it to fill the whole LI containing it. This causes the entire area to react to a mouse click. */
 	text-decoration: none;
 	background-color: #FFF;
-	color: #839AE6;
+	color: #335EB8;
 }
 ul.nav a:hover, ul.nav a:active, ul.nav a:focus { /* this changes the background and text color for both mouse and keyboard navigators */
-	background-color: #C3D9FF;
+	background-color: #95B2F0;
 	color: #FFF;
 }
 
 .active{
 	background-color: #FFF;
-	color: #839AE6;
+	color: #335EB8;
 }
 
 p.left{
@@ -404,7 +404,7 @@ text-align: left;
 
 .sidebar{
 text-align: center;
-color: #839AE6;
+color: #335EB8;
 }
 
 
@@ -452,7 +452,7 @@ span.asterisco {
 }
 
 .labelExibe {
-	font-size: 10px;
+	font-size: 10.5px;
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	text-align:center;
 }

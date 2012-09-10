@@ -93,35 +93,31 @@
 			</div>	
 		</div>
 		<!-- Fim do Menu Lateral -->
-		<div class="content" id="content">
+	<div class="content" id="content">
 			<h1>Pesquisa de Documento</h1>
-			<form action="/GraoPara/protected/user/listagemDocumentos.jsp" id="signupform" method="get" name="cadastro" autocomplete="off">
+			<form action="/GraoPara/protected/user/listagemDocumentos.jsp" id="signupform" method="get" name="cadastro">
 				<table class="tablePesquisa">
 					<tr>
-						<td colspan="3"><label class="labelForms"><strong>PREENCHA
-									UM OU MAIS CAMPOS A SEGUIR:</strong></label></td>
+						<td colspan="3"><label class="labelForms"><strong>PREENCHA UM OU MAIS CAMPOS A SEGUIR:</strong></label></td>
 					</tr>
 					<tr>
-						<td class="tdPesquisa"><label class="labelForms"
-							id="lidentificacao" for="identificacao">Identificação:</label></td>
-						<td class="field"><select name="identificacao" class="input"
-							id="identificacao">
-								<%= WebUtility.printSelectOrigem(request) %>
-						</select></td>
-						<td class="status"><a href="#"><img
-								src="/GraoPara/images/icone_ajuda.png"
+						<td class="tdPesquisa">
+							<label class="labelForms" id="lidentificacao" for="identificacao">Identificação:</label>
+						</td>
+						<td class="field">
+							<select name="identificacao" class="input" id="identificacao"><%= WebUtility.printSelectOrigem(request) %></select>
+						</td>
+						<td class="status"><a href="#"><img	src="/GraoPara/images/icone_ajuda.png"
 								alt="Todos os documentos do Arquivo Público do Pará que serão trabalhados aqui estão organizados em CÓDICE ou em CAIXAS. Portanto, se o documento está em um códice ou em uma caixa faz uma enorme diferença, pois se tratam de coleções diferentes. Tudo é organizado pelo fato de ser caixa ou códice e depois a informação de qual caixa ou códice está se falando é muito importante, pois atrelada a cada uma dessas caixas ou códices está, às vezes, centenas de documentos."
 								title="Todos os documentos do Arquivo Público do Pará que serão trabalhados aqui estão organizados em CÓDICE ou em CAIXAS. Portanto, se o documento está em um códice ou em uma caixa faz uma enorme diferença, pois se tratam de coleções diferentes. Tudo é organizado pelo fato de ser caixa ou códice e depois a informação de qual caixa ou códice está se falando é muito importante, pois atrelada a cada uma dessas caixas ou códices está, às vezes, centenas de documentos." /></a>
 						</td>
 					</tr>
-					<tr>
-						<td class="tdPesquisa"><label class="labelForms" id="lcodigo"
-							for="codigo">Código:</label></td>
-						<td class="field"><input class="input" name="codigo"
-							id="codigo" type="text" maxlength="5"></td>
-						<td class="status"><a href="#"><img
-								src="/GraoPara/images/icone_ajuda.png" alt="Código do documento"
-								title="Informe o código do documento que deseja pesquisar" /></a></td>
+					<tr>						
+						<td class="tdPesquisa"><label class="labelForms" id="lcodigo" for="codigo">Código:</label></td>
+						<td class="field">
+						<label class="labelForms" id="ldata" for="data">de: </label>
+						<input class="inputShort" name="codigoDe" id="codigo" type="text" maxlength="5"><label class="labelForms" id="lcodigo" for="codigo"> até:</label><input class="inputShort" name="codigoAte" id="codigo" type="text" maxlength="5"></td>
+						<td class="status"><a href="#"><img src="/GraoPara/images/icone_ajuda.png" alt="Código do documento" title="Informe a faixa de código do documentos que deseja pesquisar" /></a></td>
 					</tr>
 					<tr>
 						<td class="tdPesquisa"><label class="labelForms" id="ltitulo"
@@ -175,31 +171,44 @@
 								title="Trata-se do local em que foi escrito o documento, normalmente a cidade. Por exemplo, Belém." /></a></td>
 					</tr>
 					<tr>
-						<td class="tdPesquisa"><label class="labelForms" id="ldata"
-							for="data">Ano:</label></td>
-						<td class="field"><input class="input"
-							type="text" name="ano" id="ano" maxlength="4" /></td>
-						<td class="status"><a href="#"><img
+						<td class="tdPesquisa">
+							<label class="labelForms" id="ldata" for="data">Ano:</label>
+						</td>
+						<td class="field">
+							<label class="labelForms" id="ldata" for="data">de: </label>
+							<input class="inputShort" type="text" name="anoIni" id="ano" maxlength="4" />
+							<label class="labelForms" id="ldata" for="data"> até: </label>
+							<input class="inputShort" type="text" name="anoFim" id="ano" maxlength="4" />
+						</td> 
+						<td class="status">
+							<a href="#"><img
 								src="/GraoPara/images/icone_ajuda.png"
-								alt="Informe somente o ano se quiser filtrar a pesquisa por período."
-								title="Informe somente o ano se quiser filtrar a pesquisa por período." /></a></td>
+								alt="Informe um período para filtrar a pesquisa."
+								title="Informe um período para filtrar a pesquisa." />
+							</a>
+						</td>
 					</tr>
 					<tr>
-						<td class="tdPesquisa"><label class="labelForms" id="ltipoDoc"
-							for="tipoDoc">Tipo do Documento:</label></td>
-						<td class="field"><select class="input" name="tipoDoc"
-							id="tipoDoc">
+						<td class="tdPesquisa">
+							<label class="labelForms" id="ltipoDoc" for="tipoDoc">Tipo do Documento:</label>
+						</td>
+						<td class="field">
+							<select class="input" name="tipoDoc" id="tipoDoc">
 								<!-- Pegar do Banco de dados os tipos e, caso o usuÃ¡rio selecione outro, exibir campo para cadastrar outro tipo -->
-								<%= WebUtility.printSelectTipoDoc(request) %>
-						</select></td>
-						<td class="status"><a href="#"><img
-								src="/GraoPara/images/icone_ajuda.png"
+								<%=WebUtility.printSelectTipoDoc(request) %>
+							</select>
+						</td>
+						<td class="status">
+							<a href="#">
+								<img src="/GraoPara/images/icone_ajuda.png"
 								alt="Selecione um dos tipos de documentos para filtrar resultados"
-								title="Selecione um dos tipos de documentos para filtrar resultados" /></a></td>
+								title="Selecione um dos tipos de documentos para filtrar resultados" />
+							</a>
+						</td>
 					</tr>
 					<tr>
 						<td colspan="3">
-							<label class="labelForms"><strong>RESUMO OU VERBETE DO DOCUMENTO:<span class="asterisco">*</span></strong></label>
+							<label class="labelForms">RESUMO OU VERBETE DO DOCUMENTO:</label>
 						</td>
 					</tr>
 					<tr>						
@@ -223,7 +232,7 @@
 								<option value = "">Nenhuma</option>
 								<%= WebUtility.printSelectKeyWords(request, "chave2") %>
 							</select>
-							<select class="input" name="chave3" id="chave3" style="width: 120px">
+							<select  class="input" name="chave3" id="chave3" style="width: 120px">
 								<option value = "">Nenhuma</option>
 								<%= WebUtility.printSelectKeyWords(request, "chave3") %>
 							</select>
@@ -237,7 +246,7 @@
 						<td colspan="3">
 							<p></p> <input class="buttonLimpar" name="limpar" type="reset"
 							value="Limpar" /><input class="buttonRegistrar" name="inserir"
-							type="submit" id="signupsubmit" value="Enviar" />
+							type="submit" value="Enviar" id="signupsubmit" style="FONT-FAMILY: 'Bitstream Charter';"/>
 						</td>
 					</tr>
 				</table>
