@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.jsp.JspWriter;
 
 import persistence.dto.DTO;
@@ -16,6 +17,7 @@ import business.EJB.userEJB.AuthBean;
 import business.exceptions.documents.DocumentNotFoundException;
 import business.exceptions.documents.DocumentTypeNotFoundException;
 import business.exceptions.login.UnreachableDataBaseException;
+import business.export.SpreadsheetExport;
 
 public class SearchWorker {
 	
@@ -108,6 +110,7 @@ public class SearchWorker {
 				}
 				out.println("</tr>");
 			}
+			
 		} catch (UnreachableDataBaseException e) {
 			out.write("<script>");  
 			out.write("alert('Problemas ao acessar o banco de dados. Contate o suporte técnico e tente novamente mais tarde ');");  
@@ -119,6 +122,8 @@ public class SearchWorker {
 			out.write("alert('Nenhum documento encontrado!');");  
 			out.write("history.go(-1)");  
 			out.write("</script>");
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	
 	}
