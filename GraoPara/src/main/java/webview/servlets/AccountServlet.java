@@ -33,7 +33,6 @@ public class AccountServlet extends HttpServlet {
      */
     public AccountServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
