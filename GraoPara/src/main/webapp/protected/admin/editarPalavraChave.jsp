@@ -117,7 +117,7 @@
 				<table class="tableControle">					
 					<tr>
 						<td class="tdControle">
-							<label class="labelForms" id="lpalavraAntiga" for="palavraAntiga">Palavra Chave Antiga:</label>
+							<label class="labelForms" for="palavraAntiga">Palavra Chave Antiga:</label>
 						</td>
 						<td class="field">
 							<input class="input" id="palavraAntiga" name="palavraAntiga" type="text" value="<%= request.getParameter("palavra") %>" maxlength="32" readonly="readonly"/>
@@ -126,25 +126,18 @@
 					</tr>					
 					<tr>
 						<td class="tdControle">
-							<label class="labelForms" id="lpalavraNova" for="palavraNova">Palavra Chave Nova:<span class="asterisco">*</span></label>
+							<label class="labelForms" for="palavraNova">Palavra Chave Nova:<span class="asterisco">*</span></label>
 						</td>
 						<td class="field">
-							<input class="input" id="palavra" name="palavra" type="text" value="" maxlength="32" />
+							<input class="input" name="palavraNova" type="text" value="" maxlength="32" />
+							<input class="input" name="action" type="hidden" value="edit"/>
 						</td>
 						<td class="status"></td>
 					</tr>
 					<tr>
-						<td class="tdControle" colspan="3">
-						<p></p>
-							<input class="buttonCancelar" type="button" value="Cancelar" onClick="history.go(-1)"> <input class="buttonRegistrar" id="signupsubmit" name="Enviar" type="submit" value="Enviar" />
-						</td>
-					</tr>
-					<tr>
-						<td class="field">
-							<input type="hidden" id="from" name="from" type="text" value="cadastrarPalavrasChave.jsp"/>
-						</td>
-						<td class="field">
-							<input type="hidden" id="action" name="action" type="text" value="edit"/>
+						<td class="tdControle" colspan="3" align="right">
+							<input class="buttonCancelar" type="button" value="Cancelar" onClick="history.go(-1)">
+							<input class="buttonRegistrar" id="signupsubmit" name="Enviar" type="submit" value="Enviar" />
 						</td>
 					</tr>
 				</table>

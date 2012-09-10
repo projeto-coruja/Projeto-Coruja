@@ -264,35 +264,6 @@
 					</div>
 				</section>
 
-				<section id="tab3">
-					<h2>
-						<a href="#tab3">Palavras-Chaves</a>
-					</h2>
-					<div class="scroll">
-						<table class="tablePainel">
-							<thead>
-								<tr>
-									<td width="120" height="20"><label for="identificacao"
-										class="labelExibe">ID</label></td>
-									<td width="120" height="20"><label for="identificacao"
-										class="labelExibe">Palavra-Chave</label></td>
-									<!-- <td width="120" height="20"><label for="identificacao"
-										class="labelExibe">Status</label></td> -->
-									<td width="120" height="20"><label for="identificacao"
-										class="labelExibe">Ação</label></td>
-									<!-- Exemplo de cadastro -->
-								</tr>
-							</thead>
-							<tbody>
-								<%
-									request.setAttribute("in", "painelAdmin.jsp");
-									PanelWorker.listAllKeyWords(request, out);
-								%>
-							</tbody>
-						</table>
-					</div>
-				</section>
-
 			</article>
 
 		</div>
