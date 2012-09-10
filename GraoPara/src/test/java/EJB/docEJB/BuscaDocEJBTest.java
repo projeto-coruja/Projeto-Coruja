@@ -18,12 +18,12 @@ import business.exceptions.documents.DocumentNotFoundException;
 import business.exceptions.login.UnreachableDataBaseException;
 import business.exceptions.login.UserNotFoundException;
 
+@SuppressWarnings("unused")
 public class BuscaDocEJBTest {
 	
 	private static BuscaDocEJB bde;
 	private static CadastroEJB ce;
 	private static LoginDAO LA;
-	@SuppressWarnings("unused")
 	private static UserDTO UO;
 	
 	private static String origem_codOrigem;
@@ -99,10 +99,10 @@ public class BuscaDocEJBTest {
 	
 	@Test
 	public void testBusca() {
-		try {
-			/*List<DTO> resultset = bde.busca(origem_tipoOrigem, origem_codOrigem, idNumDoc_tipoId, idNumDoc_codId, autor,
+		/*try {
+			List<DTO> resultset = bde.busca(origem_tipoOrigem, origem_codOrigem, idNumDoc_tipoId, idNumDoc_codId, autor,
 					destinatario, local, "1500-05-29", tipoDocumento_tipoDocumento, 
-					palavraChave01, palavraChave02, palavraChave03);*/
+					palavraChave01, palavraChave02, palavraChave03);
 			List<DTO> resultset = bde.busca(origem_tipoOrigem, origem_codOrigem, idNumDoc_tipoId, idNumDoc_codId, autor,
 					destinatario, local, "1500-05-29", tipoDocumento_tipoDocumento, 
 					palavraChave01, palavraChave02, palavraChave03, null);
@@ -119,6 +119,6 @@ public class BuscaDocEJBTest {
 		} catch (DocumentNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 	}
 }

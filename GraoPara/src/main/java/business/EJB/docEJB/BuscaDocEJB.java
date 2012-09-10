@@ -183,7 +183,7 @@ public class BuscaDocEJB {
 		
 		if(query.equals(default_query)) throw new DocumentNotFoundException();
 		else {
-			query += " order by titulo_origem";
+			query += " order by cod_origem, cod_id";
 			return docDao.findDocumentByQuery(query);
 		}
 	}
