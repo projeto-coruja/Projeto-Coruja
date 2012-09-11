@@ -102,6 +102,11 @@
 		<!-- Fim do Menu Lateral -->
 		<div class="content" id="content">
 		<h1>Listagem de Documentos</h1>
+			<div align="right">
+				<form action="GraoPara/doDownload">
+					<input type="submit" name="download" class="buttonDownload" value="Download Pesquisa"/>
+				</form>
+			</div>
 			<div class="scrollLong">
 				<table class="tableList">
 						<tr class="trList">

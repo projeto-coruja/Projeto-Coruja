@@ -7,13 +7,21 @@ body {
 	/* background-image: url('../../images/bg_principal.jpg'); */
 	background: #f6f8f9; /* Old browsers */
 	background: #f6f8f9; /* Old browsers */
-	background: -moz-linear-gradient(left,  #f6f8f9 0%, #e5ebee 15%, #e5ebee 85%, #f5f7f9 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, right top, color-stop(0%,#f6f8f9), color-stop(15%,#e5ebee), color-stop(85%,#e5ebee), color-stop(100%,#f5f7f9)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(left,  #f6f8f9 0%,#e5ebee 15%,#e5ebee 85%,#f5f7f9 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(left,  #f6f8f9 0%,#e5ebee 15%,#e5ebee 85%,#f5f7f9 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(left,  #f6f8f9 0%,#e5ebee 15%,#e5ebee 85%,#f5f7f9 100%); /* IE10+ */
-	background: linear-gradient(to right,  #f6f8f9 0%,#e5ebee 15%,#e5ebee 85%,#f5f7f9 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f6f8f9', endColorstr='#f5f7f9',GradientType=1 ); /* IE6-9 */
+	background: -moz-linear-gradient(left, #f6f8f9 0%, #e5ebee 15%, #e5ebee 85%, #f5f7f9
+		100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%, #f6f8f9),
+		color-stop(15%, #e5ebee), color-stop(85%, #e5ebee),
+		color-stop(100%, #f5f7f9) ); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(left, #f6f8f9 0%, #e5ebee 15%, #e5ebee 85%,
+		#f5f7f9 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(left, #f6f8f9 0%, #e5ebee 15%, #e5ebee 85%, #f5f7f9
+		100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(left, #f6f8f9 0%, #e5ebee 15%, #e5ebee 85%, #f5f7f9
+		100%); /* IE10+ */
+	background: linear-gradient(to right, #f6f8f9 0%, #e5ebee 15%, #e5ebee 85%, #f5f7f9
+		100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient(      startColorstr='#f6f8f9',
+		endColorstr='#f5f7f9', GradientType=1 ); /* IE6-9 */
 	margin: 0;
 	padding: 0;
 	color: #000;
@@ -21,36 +29,45 @@ body {
 }
 
 /* ~~ Element/tag selectors ~~ */
-ul, ol, dl { /* Due to variations between browsers, it's best practices to zero padding and margin on lists. For consistency, you can either specify the amounts you want here, or on the list items (LI, DT, DD) they contain. Remember that what you do here will cascade to the .nav list unless you write a more specific selector. */
+ul,ol,dl {
+	/* Due to variations between browsers, it's best practices to zero padding and margin on lists. For consistency, you can either specify the amounts you want here, or on the list items (LI, DT, DD) they contain. Remember that what you do here will cascade to the .nav list unless you write a more specific selector. */
 	padding: 0;
 	margin: 0;
 }
-h1, h2, h3, h4, h5, h6{
-	margin-top: 0;	 /* removing the top margin gets around an issue where margins can escape from their containing div. The remaining bottom margin will hold it away from any elements that follow. */
+
+h1,h2,h3,h4,h5,h6 {
+	margin-top: 0;
+	/* removing the top margin gets around an issue where margins can escape from their containing div. The remaining bottom margin will hold it away from any elements that follow. */
 	padding-right: 15px;
-	padding-left: 15px; /* adding the padding to the sides of the elements within the divs, instead of the divs themselves, gets rid of any box model math. A nested div with side padding can also be used as an alternate method. */
+	padding-left: 15px;
+	/* adding the padding to the sides of the elements within the divs, instead of the divs themselves, gets rid of any box model math. A nested div with side padding can also be used as an alternate method. */
 	text-align: center;
 	color: #668FE4;
 }
 
-h1{
+h1 {
 	font-size: 22px;
 }
 
-a img { /* this selector removes the default blue border displayed in some browsers around an image when it is surrounded by a link */
+a img {
+	/* this selector removes the default blue border displayed in some browsers around an image when it is surrounded by a link */
 	border: none;
 }
 
 /* ~~ Styling for your site's links must remain in this order - including the group of selectors that create the hover effect. ~~ */
 a:link {
-	color:#414958;
-	text-decoration: none; /* unless you style your links to look extremely unique, it's best to provide underlines for quick visual identification */
+	color: #414958;
+	text-decoration: none;
+	/* unless you style your links to look extremely unique, it's best to provide underlines for quick visual identification */
 }
+
 a:visited {
 	color: #4E5869;
 	text-decoration: none;
 }
-a:hover, a:active, a:focus { /* this group of selectors will give a keyboard navigator the same hover experience as the person using a mouse. */
+
+a:hover,a:active,a:focus {
+	/* this group of selectors will give a keyboard navigator the same hover experience as the person using a mouse. */
 	text-decoration: none;
 }
 
@@ -58,10 +75,12 @@ a:hover, a:active, a:focus { /* this group of selectors will give a keyboard nav
 
 /* Originalmente as divs tinham layout líquido (porcentagem) mas falando com o Arlindo, foi decidido deixar mais estático */
 .container {
-	max-width: 1000px;/* a max-width may be desirable to keep this layout from getting too wide on a large monitor. This keeps line length more readable. IE6 does not respect this declaration. */
+	max-width: 1000px;
+	/* a max-width may be desirable to keep this layout from getting too wide on a large monitor. This keeps line length more readable. IE6 does not respect this declaration. */
 	min-width: 810px;
 	background-color: #FFF;
-	margin: 0 auto; /* the auto value on the sides, coupled with the width, centers the layout. It is not needed if you set the .container's width to 100%. */
+	margin: 0 auto;
+	/* the auto value on the sides, coupled with the width, centers the layout. It is not needed if you set the .container's width to 100%. */
 	font-size: 100%;
 }
 
@@ -74,12 +93,12 @@ a:hover, a:active, a:focus { /* this group of selectors will give a keyboard nav
 }
 
 /* Configuração dos campos de input para o painel de login*/
-.inputLogin{
+.inputLogin {
 	background-color: #ffffff;
 	/* Parametros para deixar a borda arredondada nos principais navegadores */
 	-webkit-border-radius: .4em;
 	-moz-border-radius: .4em;
-	border-radius: .4em;	
+	border-radius: .4em;
 	/* Parametros para deixar uma sombra, com um estilo bevel */
 	-moz-box-shadow: 0 -1px 0 0px #000;
 	-webkit-box-shadow: 0 -1px 0 0px #000;
@@ -88,39 +107,42 @@ a:hover, a:active, a:focus { /* this group of selectors will give a keyboard nav
 	height: 27px;
 	margin-left: -5px;
 	color: #000;
-	padding: 0 0 0 5px; /* Se quiser mais espação entre os formularios, é aqui que você deve brincar, teste as 4 coordenadas */
+	padding: 0 0 0 5px;
+	/* Se quiser mais espação entre os formularios, é aqui que você deve brincar, teste as 4 coordenadas */
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 1em;
 	letter-spacing: 1px;
 }
 
-.iconeAjuda{
+.iconeAjuda {
 	margin-top: 5px;
 }
 
-.input{
+.input {
 	background-color: #ffffff;
 	/* Proximos três atributos definem a borda arredondada dos inputs, cada linha é para um tipo de navegador */
 	/* Por algum motivo obscuro o Opera ainda está deixando os inputs retangulares, apesar de no input login ele aceitar o código de borda arredondada*/
 	-webkit-border-radius: 0.4em;
 	-moz-border-radius: 0.4em;
 	border-radius: 0.4em;
-	border: 1; /* Necessário quando o background da página em que o formulario estiver for branco */
+	border: 1;
+	/* Necessário quando o background da página em que o formulario estiver for branco */
 	width: 180px;
 	height: 20px;
 	margin: 5px 0;
 	color: #000;
-	padding: 0 0 0 2px; /* Atributo para dar espaço no texto inserido, especie de margin, mas do texto e não do campo em si */
+	padding: 0 0 0 2px;
+	/* Atributo para dar espaço no texto inserido, especie de margin, mas do texto e não do campo em si */
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 1em;
 	letter-spacing: 1px;
 }
 
-.inputTipoNum{
+.inputTipoNum {
 	background-color: #ffffff;
 	-webkit-border-radius: 0.4em;
 	-moz-border-radius: 0.4em;
-	border-radius: 0.4em;	
+	border-radius: 0.4em;
 	border: 1;
 	width: 140px;
 	height: 20px;
@@ -132,55 +154,56 @@ a:hover, a:active, a:focus { /* this group of selectors will give a keyboard nav
 	letter-spacing: 1px;
 }
 
-.inputShort{
+.inputShort {
 	background-color: #ffffff;
 	-webkit-border-radius: 0.4em;
 	-moz-border-radius: 0.4em;
-	border-radius: 0.4em;	
+	border-radius: 0.4em;
 	border: 1;
 	width: 64px;
 	height: 20px;
 	margin: 5px 0;
-	color: #000;	
+	color: #000;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 1em;
 	letter-spacing: 1px;
 }
 
-.inputDia{
+.inputDia {
 	background-color: #ffffff;
 	-webkit-border-radius: 0.4em;
 	-moz-border-radius: 0.4em;
-	border-radius: 0.4em;	
+	border-radius: 0.4em;
 	border: 1;
 	width: 51px;
 	height: 20px;
 	margin: 5px 0;
-	color: #000;	
+	color: #000;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 1em;
 	letter-spacing: 1px;
 }
 
-.inputAno{
+.inputAno {
 	background-color: #ffffff;
 	-webkit-border-radius: 0.4em;
 	-moz-border-radius: 0.4em;
-	border-radius: 0.4em;	
+	border-radius: 0.4em;
 	border: 1;
 	width: 40px;
 	height: 20px;
 	margin: 5px 0;
-	color: #000;	
+	color: #000;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 1em;
 	letter-spacing: 1px;
 }
-.inputPalavraChave{
+
+.inputPalavraChave {
 	background-color: #ffffff;
 	-webkit-border-radius: 0.4em;
 	-moz-border-radius: 0.4em;
-	border-radius: 0.4em;	
+	border-radius: 0.4em;
 	border: 1;
 	width: 100px;
 	height: 20px;
@@ -192,12 +215,11 @@ a:hover, a:active, a:focus { /* this group of selectors will give a keyboard nav
 	letter-spacing: 1px;
 }
 
-.inputResumo{
+.inputResumo {
 	background-color: #ffffff;
 	-webkit-border-radius: .4em;
 	-moz-border-radius: .4em;
 	border-radius: .4em;
-	
 	border: 1;
 	width: 400px;
 	height: 250px;
@@ -209,11 +231,11 @@ a:hover, a:active, a:focus { /* this group of selectors will give a keyboard nav
 	letter-spacing: 1px;
 }
 
-.inputEstado{
+.inputEstado {
 	background-color: #ffffff;
 	-webkit-border-radius: .4em;
 	-moz-border-radius: .4em;
-	border-radius: .4em;	
+	border-radius: .4em;
 	border: 1;
 	width: 60px;
 	height: 20px;
@@ -225,13 +247,11 @@ a:hover, a:active, a:focus { /* this group of selectors will give a keyboard nav
 	letter-spacing: 1px;
 }
 
-
-
-.inputLong{
+.inputLong {
 	background-color: #ffffff;
 	-webkit-border-radius: .4em;
 	-moz-border-radius: .4em;
-	border-radius: .4em;	
+	border-radius: .4em;
 	border: 1;
 	width: 350px;
 	height: 20px;
@@ -244,9 +264,10 @@ a:hover, a:active, a:focus { /* this group of selectors will give a keyboard nav
 }
 
 /* Estilo do botão de entrar do painel de login, está sendo reaproveitado para vários outros botões */
-.buttonEntrar, .buttonRegistrar, .buttonCancelar, .buttonLimpar, .buttonSair  {
+.buttonEntrar,.buttonRegistrar,.buttonCancelar,.buttonLimpar,.buttonSair
+	{
 	width: 140px;
-	height: 24px;	
+	height: 24px;
 	text-align: center;
 	border: none;
 	float: inherit;
@@ -254,86 +275,86 @@ a:hover, a:active, a:focus { /* this group of selectors will give a keyboard nav
 	-webkit-border-radius: .6em;
 	-moz-border-radius: .6em;
 	border-radius: .6em;
-	-webkit-box-shadow: 0 0px 1px rgba( 255, 255, 255, );
+	-webkit-box-shadow: 0 0px 1px rgba(255, 255, 255,);
 	-moz-box-shadow: 0 0px 1px rgba(255, 255, 255);
-	box-shadow: 0 0px 1px rgba(255, 255, 255, );
+	box-shadow: 0 0px 1px rgba(255, 255, 255,);
 	color: white;
 	cursor: pointer;
 }
 
 .buttonCancelar {
-margin-right: 80px;
+	margin-right: 80px;
 }
 
 .buttonSair {
-margin-left: 22px;
-width: 100px;
+	margin-left: 22px;
+	width: 100px;
+}
+
+.buttonDownload {
+	margin-left: 22px;
+	width: 150px;
 }
 
 .buttonLimpar {
-margin-right: 10px;
-margin-left: 0px;
+	margin-right: 10px;
+	margin-left: 0px;
 }
-.buttonShort{
-	width:90px;
-	height:24px;
-	text-align:center;
+
+.buttonShort {
+	width: 90px;
+	height: 24px;
+	text-align: center;
 	border: none;
-	float: inherit;	
+	float: inherit;
 	background: #6F7D94;
-	background: -webkit-gradient(linear, left top);	
+	background: -webkit-gradient(linear, left top);
 	-webkit-border-radius: .6em;
 	-moz-border-radius: .6em;
 	border-radius: .6em;
-	
-	-webkit-box-shadow: 0 0px 1px rgba( 255, 255, 255);
+	-webkit-box-shadow: 0 0px 1px rgba(255, 255, 255);
 	-moz-box-shadow: 0 0px 1px rgba(255, 255, 255);
 	box-shadow: 0 0px 1px rgba(255, 255, 255);
-	color: #fff;	
-	cursor:pointer;
+	color: #fff;
+	cursor: pointer;
 }
 
-.scroll{
+.scroll {
 	height: 25em;
 	overflow: auto;
 }
 
-.scrollLong{
+.scrollLong {
 	height: 35em;
-	width:1000px;
+	width: 1000px;
 	overflow: auto;
 }
 
-.buttonPesquisa{
-	width:185px;
-	height:24px;
-	text-align:center;
+.buttonPesquisa {
+	width: 185px;
+	height: 24px;
+	text-align: center;
 	border: none;
 	float: right;
-	
 	background: #6F7D94;
 	background: -webkit-gradient(linear, left top);
-	
 	-webkit-border-radius: .6em;
 	-moz-border-radius: .6em;
 	border-radius: .6em;
-	
-	-webkit-box-shadow: 0 0px 1px rgba( 255, 255, 255);
+	-webkit-box-shadow: 0 0px 1px rgba(255, 255, 255);
 	-moz-box-shadow: 0 0px 1px rgba(255, 255, 255);
 	box-shadow: 0 0px 1px rgba(255, 255, 255);
 	color: #fff;
-	
-	cursor:pointer;
-	
+	cursor: pointer;
 }
 
-fieldset{
+fieldset {
 	padding: 0 0 0 0;
 	margin: 10px;
 	border: 0;
 }
 
-label{
+label {
 	padding: 0 0 0 0;
 }
 
@@ -351,89 +372,104 @@ label{
 	padding: 30px 10px 10px 20px;
 	width: 600px;
 	float: left;
-	
 }
 
 .content2 {
 	padding: 50px 0 800px 90px;
-	float: left;	
+	float: left;
 }
 
 .contentListagem {
-padding: 10px;
-width: 700px;
-float: left;
-text-align: center;
+	padding: 10px;
+	width: 700px;
+	float: left;
+	text-align: center;
 }
 
 /* ~~ This grouped selector gives the lists in the .content area space ~~ */
-.content ul, .content ol { 
-	padding: 0 15px 15px 40px; /* this padding mirrors the right padding in the headings and paragraph rule above. Padding was placed on the bottom for space between other elements on the lists and on the left to create the indention. These may be adjusted as you wish. */
+.content ul,.content ol {
+	padding: 0 15px 15px 40px;
+	/* this padding mirrors the right padding in the headings and paragraph rule above. Padding was placed on the bottom for space between other elements on the lists and on the left to create the indention. These may be adjusted as you wish. */
 }
 
 /* ~~ The navigation list styles (can be removed if you choose to use a premade flyout menu like Spry) ~~ */
 ul.nav {
 	list-style: none; /* this removes the list marker */
-	border-top: 1px solid #839AE6; /* this creates the top border for the links - all others are placed using a bottom border on the LI */
-	margin-bottom: 15px; /* this creates the space between the navigation on the content below */
+	border-top: 1px solid #839AE6;
+	/* this creates the top border for the links - all others are placed using a bottom border on the LI */
+	margin-bottom: 15px;
+	/* this creates the space between the navigation on the content below */
 }
+
 ul.nav li {
-	border-bottom: 1px solid #839AE6; /* this creates the button separation */
+	border-bottom: 1px solid #839AE6;
+	/* this creates the button separation */
 	right: auto;
 }
-ul.nav a, ul.nav a:visited { /* grouping these selectors makes sure that your links retain their button look even after being visited */
+
+ul.nav a,ul.nav a:visited {
+	/* grouping these selectors makes sure that your links retain their button look even after being visited */
 	padding: 5px 5px 5px 15px;
-	display: block; /* this gives the link block properties causing it to fill the whole LI containing it. This causes the entire area to react to a mouse click. */
+	display: block;
+	/* this gives the link block properties causing it to fill the whole LI containing it. This causes the entire area to react to a mouse click. */
 	text-decoration: none;
 	background-color: #FFF;
 	color: #335EB8;
 }
-ul.nav a:hover, ul.nav a:active, ul.nav a:focus { /* this changes the background and text color for both mouse and keyboard navigators */
+
+ul.nav a:hover,ul.nav a:active,ul.nav a:focus {
+	/* this changes the background and text color for both mouse and keyboard navigators */
 	background-color: #95B2F0;
 	color: #FFF;
 }
 
-.active{
+.active {
 	background-color: #FFF;
 	color: #335EB8;
 }
 
-p.left{
-text-align: left;
+p.left {
+	text-align: left;
 }
 
-.sidebar{
-text-align: center;
-color: #335EB8;
+.sidebar {
+	text-align: center;
+	color: #335EB8;
 }
-
 
 /* ~~ The footer ~~ */
 .footer {
 	padding: 10px 0;
 	background-color: #24346F;
 	text-align: center;
-	text-shadow:#000;
-	position: relative;/* this gives IE6 hasLayout to properly clear */
-	clear: both; /* this clear property forces the .container to understand where the columns end and contain them */
+	text-shadow: #000;
+	position: relative; /* this gives IE6 hasLayout to properly clear */
+	clear: both;
+	/* this clear property forces the .container to understand where the columns end and contain them */
 	color: #FFF;
 }
 
 /* ~~ miscellaneous float/clear classes ~~ */
-.fltrt {  /* this class can be used to float an element right in your page. The floated element must precede the element it should be next to on the page. */
+.fltrt {
+	/* this class can be used to float an element right in your page. The floated element must precede the element it should be next to on the page. */
 	float: right;
 	margin-left: 8px;
 }
-.fltlft { /* this class can be used to float an element left in your page. The floated element must precede the element it should be next to on the page. */
+
+.fltlft {
+	/* this class can be used to float an element left in your page. The floated element must precede the element it should be next to on the page. */
 	float: left;
 	margin-right: 8px;
 }
-.clearfloat { /* this class can be placed on a <br /> or empty div as the final element following the last floated div (within the #container) if the #footer is removed or taken out of the #container */
-	clear:both;
-	height:0;
+
+.clearfloat {
+	/* this class can be placed on a <br /> or empty div as the final element following the last floated div (within the #container) if the #footer is removed or taken out of the #container */
+	clear: both;
+	height: 0;
 	font-size: 1px;
 	line-height: 0px;
 }
+
 .loginText {
 	font-size: 80%;
 }
@@ -442,114 +478,155 @@ color: #335EB8;
 apagado quando o usuário digitar algo dentro, para isso use o atributo placeholder="texto" dentro da tag do input no html */
 .labelForms {
 	font-size: 12px;
-	text-align:left;
+	text-align: left;
 }
 
 span.asterisco {
 	font-size: 11px;
-	text-align:left;
+	text-align: left;
 	color: red;
 }
 
 .labelExibe {
 	font-size: 10.5px;
 	font-family: Verdana, Arial, Helvetica, sans-serif;
-	text-align:center;
+	text-align: center;
 }
 
 .coluna {
-	width : 120; 
-	height : 20;
+	width: 120;
+	height: 20;
 }
 
 .digitosTexts {
 	font-size: 60%;
 }
 
-.tableForms{
-	text-align:left;
+.tableForms {
+	text-align: left;
 	margin: 40px 0 0 0px;
 	width: 580px;
 	border: 0px;
 }
 
-.tablePesquisa{
-	text-align:left;
+.tablePesquisa {
+	text-align: left;
 	margin: 40px 0 0 0px;
 	width: 420px;
 	border: 0px;
 }
 
-.tdForms{
-	text-align:left;
+.tdForms {
+	text-align: left;
 	width: 130px;
 	border: 0px;
 }
 
-.tdPesquisa{
-	text-align:left;
+.tdPesquisa {
+	text-align: left;
 	width: 200px;
 	border: 0px;
 }
-.tdForms2{
-	text-align:left;
+
+.tdForms2 {
+	text-align: left;
 	width: 100px;
 	border: 0px;
 }
 
-.tableEditar{
-	text-align:left;
+.tableEditar {
+	text-align: left;
 	margin: 40px 0 0 30px;
 	width: 700px;
 	border: 0px;
 }
-.tablePainel{
-	text-align:center;	
+
+.tablePainel {
+	text-align: center;
 	width: 540px;
 }
 
-.tableList{
-	text-align:center;	
+.tableList {
+	text-align: center;
 	width: 585px;
 }
 
-.tableList, .trList, .tdList{	
+.tableList,.trList,.tdList {
 	border-collapse: collapse;
 	border: 1px solid;
 }
 
 /* Banner rules xD */
-
 .banner {
- margin-bottom: 0px;
- width: 700px;
- height:100px;
- display:block;
- background:transparent url('../../images/bannerCoruja.png') center top no-repeat;
- text-align: center;
+	margin-bottom: 0px;
+	width: 700px;
+	height: 100px;
+	display: block;
+	background: transparent url('../../images/bannerCoruja.png') center top
+		no-repeat;
+	text-align: center;
 }
 
 .banner:hover {
-   background-image: url('../../images/bannerMouseOver.png');
+	background-image: url('../../images/bannerMouseOver.png');
 }
 
-article.menuLateral section,  
-article.menuLateral section h2  
-{  
-    -webkit-transition: all 500ms ease;  
-    -moz-transition: all 500ms ease;  
-    -ms-transition: all 500ms ease;  
-    -o-transition: all 500ms ease;  
-    transition: all 500ms ease;  
+article.menuLateral section,article.menuLateral section h2 {
+	-webkit-transition: all 500ms ease;
+	-moz-transition: all 500ms ease;
+	-ms-transition: all 500ms ease;
+	-o-transition: all 500ms ease;
+	transition: all 500ms ease;
 }
 
 /*Menu com borda arredondada*/
-.bordaBox {background: transparent;width: 174px;padding: 10px 3px;}
-.bordaBox .b1, .bordaBox .b2, .bordaBox .b3, .bordaBox .b4, .bordaBox .b1b, .bordaBox .b2b, .bordaBox .b3b, .bordaBox .b4b {display:block; overflow:hidden; font-size:1px;}
-.bordaBox .b1, .bordaBox .b2, .bordaBox .b3, .bordaBox .b1b, .bordaBox .b2b, .bordaBox .b3b {height:1px;}
-.bordaBox .b2, .bordaBox .b3, .bordaBox .b4 {background:#FFF; border-left:1px solid #839AE6; border-right:1px solid #839AE6;}
-.bordaBox .b1 {margin:0 5px; background:#839AE6;}
-.bordaBox .b2 {margin:0 3px; border-width:0 2px;}
-.bordaBox .b3 {margin:0 2px;}
-.bordaBox .b4 {height:2px; margin:0 1px;}
-.bordaBox .conteudo {padding:5px;display:block; background:#FFF; border-left:1px solid #839AE6; border-right:1px solid #839AE6;}
+.bordaBox {
+	background: transparent;
+	width: 174px;
+	padding: 10px 3px;
+}
+
+.bordaBox .b1,.bordaBox .b2,.bordaBox .b3,.bordaBox .b4,.bordaBox .b1b,.bordaBox .b2b,.bordaBox .b3b,.bordaBox .b4b
+	{
+	display: block;
+	overflow: hidden;
+	font-size: 1px;
+}
+
+.bordaBox .b1,.bordaBox .b2,.bordaBox .b3,.bordaBox .b1b,.bordaBox .b2b,.bordaBox .b3b
+	{
+	height: 1px;
+}
+
+.bordaBox .b2,.bordaBox .b3,.bordaBox .b4 {
+	background: #FFF;
+	border-left: 1px solid #839AE6;
+	border-right: 1px solid #839AE6;
+}
+
+.bordaBox .b1 {
+	margin: 0 5px;
+	background: #839AE6;
+}
+
+.bordaBox .b2 {
+	margin: 0 3px;
+	border-width: 0 2px;
+}
+
+.bordaBox .b3 {
+	margin: 0 2px;
+}
+
+.bordaBox .b4 {
+	height: 2px;
+	margin: 0 1px;
+}
+
+.bordaBox .conteudo {
+	padding: 5px;
+	display: block;
+	background: #FFF;
+	border-left: 1px solid #839AE6;
+	border-right: 1px solid #839AE6;
+}
