@@ -271,7 +271,7 @@ a:hover,a:active,a:focus {
 	text-align: center;
 	border: none;
 	float: inherit;
-	background: #95B2F0;
+	background: #24346F;
 	-webkit-border-radius: .6em;
 	-moz-border-radius: .6em;
 	border-radius: .6em;
@@ -363,7 +363,7 @@ label {
 	float: left;
 	width: 180px;
 	height: 940px;
-	background-color: #2C3E82;
+	background-color: #24346F;
 	padding-bottom: 10px;
 }
 
@@ -395,14 +395,14 @@ label {
 /* ~~ The navigation list styles (can be removed if you choose to use a premade flyout menu like Spry) ~~ */
 ul.nav {
 	list-style: none; /* this removes the list marker */
-	border-top: 1px solid #839AE6;
+	border-top: 1px solid #24346F;
 	/* this creates the top border for the links - all others are placed using a bottom border on the LI */
 	margin-bottom: 15px;
 	/* this creates the space between the navigation on the content below */
 }
 
 ul.nav li {
-	border-bottom: 1px solid #839AE6;
+	border-bottom: 1px solid #24346F;
 	/* this creates the button separation */
 	right: auto;
 }
@@ -414,7 +414,7 @@ ul.nav a,ul.nav a:visited {
 	/* this gives the link block properties causing it to fill the whole LI containing it. This causes the entire area to react to a mouse click. */
 	text-decoration: none;
 	background-color: #FFF;
-	color: #335EB8;
+	color: #24346F;
 }
 
 ul.nav a:hover,ul.nav a:active,ul.nav a:focus {
@@ -434,7 +434,7 @@ p.left {
 
 .sidebar {
 	text-align: center;
-	color: #335EB8;
+	color: #24346F;
 }
 
 /* ~~ The footer ~~ */
