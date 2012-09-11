@@ -50,21 +50,21 @@
 			<div class="bordaBox">
 				<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
 				<div class="conteudo">
-			<div class="LoginArea" id="logado" style="display:block;">
-				<form method="post" action="/GraoPara/doLogout">
-					<fieldset>
-						<label class="sidebar" for="login">Bem vindo
-						<%
-							WebUtility.printName(request, out);
-						%>
-						</label>
-					</fieldset>
-					<fieldset>
-						<input class="buttonSair" type="submit" name="Sair" value="Sair" />
-					</fieldset>
-				</form>
-			</div>
-			</div>
+					<div class="LoginArea" id="logado" style="display:block;">
+						<form method="post" action="/GraoPara/doLogout">
+							<fieldset>
+								<label class="sidebar" for="login">Bem vindo
+								<%
+									WebUtility.printName(request, out);
+								%>
+								</label>
+							</fieldset>
+							<fieldset>
+								<input class="buttonSair" type="submit" name="Sair" value="Sair" />
+							</fieldset>
+						</form>
+					</div>
+				</div>
 				<b class="b4"></b><b class="b3"></b><b class="b2"></b><b class="b1"></b>
 			</div>	
 			<!-- ----------------------------------------------------------------------- -->
@@ -122,20 +122,14 @@
 						<td class="tdControle"><label class="labelForms" id="lchave"
 							for="chave">Cadastrar nova Palavra:<span class="asterisco">*</span></label>
 						</td>
-						<td class="field"><input class="input" id="palavra"
-							name="palavra" type="text" value="" maxlength="32" /></td>
+						<td class="field"><input class="input" id="palavra"	name="palavra" type="text" value="" maxlength="32" /></td>
 						<td class="status"></td>
-					 <td class="field"><input class="input" id="action"
-							name="action" type="hidden" value="add" maxlength="32" /></td>
-						<td class="field"><input class="input" id="action"
-							name="from" type="hidden" value="cadastrarPalavrasChave.jsp" maxlength="20" /></td> 
-						
+					 	
+					 	<td class="field"><input class="input" id="action" name="action" type="hidden" value="add" maxlength="32" /></td>
+						<td class="field"><input class="input" id="action" name="from" type="hidden" value="cadastrarPalavrasChave.jsp" maxlength="20" /></td> 
 					</tr>
 					<tr>
-						<td class="tdForms">
-							<p></p> <input class="buttonRegistrar" id="signupsubmit"
-							name="inserir" type="submit" value="Enviar" />
-						</td>
+						<td class="tdForms" align="right" colspan="2"><input class="buttonRegistrar" id="signupsubmit" name="inserir" type="submit" value="Enviar" /></td>
 					</tr>
 				</table>
 			</form>
@@ -144,25 +138,19 @@
 				<table class="tableList">
 					<tr class="trList">
 						<thead>
-								<tr>
-									<td class="tdList"><label for="id"
-										class="labelExibe">ID</label></td>
-									<td class="tdList"><label for="palavraChave"
-										class="labelExibe">Palavra-Chave</label></td>
-									<!-- <td class="tdList"><label for="status"
-										class="labelExibe">Status</label></td> -->
-									<td class="tdList"><label for="acao"
-										class="labelExibe">Ação</label></td>
-									<!-- Exemplo de cadastro -->
-								</tr>
-							</thead>
-							<tbody>
-								<%
-									request.setAttribute("in", "cadastrarPalavrasChave.jsp");
-									PanelWorker.listAllKeyWords(request, out);
-								%>
-							</tbody>
-						</table>
+							<tr>
+								<td class="tdList"><label for="id" class="labelExibe">ID</label></td>
+								<td class="tdList"><label for="palavraChave" class="labelExibe">Palavra-Chave</label></td>
+								<td class="tdList"><label for="acao" class="labelExibe">Ação</label></td>
+							</tr>
+						</thead>
+					<tbody>
+						<%
+							request.setAttribute("in", "cadastrarPalavrasChave.jsp");
+							PanelWorker.listAllKeyWords(request, out);
+						%>
+					</tbody>
+				</table>
 			</div>
 		</div>
 		<!-- Começo do Rodapé -->

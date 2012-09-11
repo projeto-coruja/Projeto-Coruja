@@ -48,7 +48,7 @@ public class DocumentDAO {
 
 		// Verificação de existência do id do documento no banco
 		try {
-			check = indd.findIdByCodId(newDoc.getIdNumDocumento().getTipoId());
+			check = indd.findIdByCodId(newDoc.getIdNumDocumento().getCodId());
 			for(DTO dto : check){
 				if(		((IdNumDocumentoDTO) dto).getTipoId().equals(newDoc.getIdNumDocumento().getTipoId()) &&
 						((IdNumDocumentoDTO) dto).getCodId().equals(newDoc.getIdNumDocumento().getCodId()))
@@ -101,13 +101,8 @@ public class DocumentDAO {
 		
 		// Verificação de existência da origem do documento no banco
 		try {
-			check = od.findOriginByTitle(newDoc.getOrigemDocumento().getTitulo());
-			for(DTO dto : check){
-				if(((OrigemDTO) dto).getTitulo().equals(((OrigemDTO) dto).getTitulo()) &&
-						((OrigemDTO) dto).getTipoOrigem().equals(((OrigemDTO) dto).getTipoOrigem()) &&
-						((OrigemDTO) dto).getCodOrigem().equals(((OrigemDTO) dto).getCodOrigem()))
-					newDoc.setOrigemDocumento((OrigemDTO) dto);
-			}
+			OrigemDTO e_check = od.findExactOrigin(newDoc.getOrigemDocumento().getCodOrigem(), newDoc.getOrigemDocumento().getTipoOrigem());
+			newDoc.setOrigemDocumento(e_check);
 		} catch (OriginNotFoundException e1) {
 			try {
 				newDoc.setOrigemDocumento(od.addOrigem(newDoc.getOrigemDocumento().getCodOrigem(), newDoc.getOrigemDocumento().getTipoOrigem(), newDoc.getOrigemDocumento().getTitulo()));

@@ -31,7 +31,7 @@ public class BuscaDocEJB {
 		String query = new String(default_query);
 		
 		if(identificacao != null && !identificacao.isEmpty()){
-			query += "tipo_origem = '" + identificacao + "'";
+			query += "tipo_origem = '" + identificacao.trim() + "'";
 			continue_query = true;
 		}
 		
