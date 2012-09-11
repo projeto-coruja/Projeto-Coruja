@@ -25,7 +25,7 @@ public class SpreadsheetExport {
 		
 		tmpPath = "/tmp"; // Jboss
 		
-		System.out.println(tmpPath);
+//		System.out.println(tmpPath);
 	}
 	
 	public static String generateSpreadsheet(List<DTO> resultSet) throws Exception{
@@ -125,13 +125,13 @@ public class SpreadsheetExport {
 			cel.addParagraph(docDTO.getTipoDocumento().getTipoDocumento());
 			
 			cel = row.getCellByIndex(coluna++);
-			cel.addParagraph((docDTO.getPalavrasChaves1() != null ? docDTO.getPalavrasChaves1().getPalavra() : " ") 
-					+ (docDTO.getPalavrasChaves2() != null ? docDTO.getPalavrasChaves2().getPalavra() : " ") + " - "
-					+ (docDTO.getPalavrasChaves3() != null ? docDTO.getPalavrasChaves3().getPalavra() : " "));
+			cel.addParagraph((docDTO.getPalavrasChaves1() != null ? docDTO.getPalavrasChaves1().getPalavra() : " ")
+					+ (docDTO.getPalavrasChaves2() != null ? " - " + docDTO.getPalavrasChaves2().getPalavra() : " ")
+					+ (docDTO.getPalavrasChaves3() != null ? " - " + docDTO.getPalavrasChaves3().getPalavra() : " "));
 			
 		}
 		String filePath = tmpPath + "/rlt_" + generateRandomString() + "_" + creationDate + ".ods";
-		System.out.println(filePath);
+//		System.out.println(filePath);
 		outerDoc.save(filePath);
 		outerDoc.close();
 		return filePath;

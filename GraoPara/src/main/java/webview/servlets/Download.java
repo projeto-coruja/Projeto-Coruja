@@ -14,16 +14,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import persistence.dto.DTO;
 import business.EJB.docEJB.BuscaDocEJB;
 import business.exceptions.documents.DocumentNotFoundException;
 import business.export.SpreadsheetExport;
 
-import persistence.dto.DTO;
-
 /**
  * Servlet implementation class Download
  */
-@WebServlet("/Download")
+@WebServlet("/doDownload")
 public class Download extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -54,7 +53,6 @@ public class Download extends HttpServlet {
 		String palavra2 = request.getParameter("chave2");
 		String palavra3 = request.getParameter("chave3");
 		
-		
 		String filePath = null;
 		URL url = null;
 		URLConnection connection = null;
@@ -63,7 +61,6 @@ public class Download extends HttpServlet {
 		
 
 		BuscaDocEJB search = new BuscaDocEJB();
-		
 		try {
 			List<DTO> resultSet = search.busca(identificacao.toUpperCase(), codigoDe, codigoAte, titulo, "", numAPEP_SEQ, autor, destinatario, local, anoIni, anoFim, tipoDoc, resumo, palavra1, palavra2, palavra3);
 			if(resultSet == null)	throw new DocumentNotFoundException();
@@ -86,6 +83,7 @@ public class Download extends HttpServlet {
 			in.close();
 			out.flush();
 			out.close();
+			
 		} catch (IOException e){
 			e.printStackTrace();
 		} catch (DocumentNotFoundException e){
@@ -93,14 +91,6 @@ public class Download extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 
-		
-		
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	}
 
 }
