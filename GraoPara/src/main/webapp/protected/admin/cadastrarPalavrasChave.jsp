@@ -119,17 +119,20 @@
 				method="get" autocomplete="off">
 				<table class="tableControle">
 					<tr>
-						<td class="tdControle"><label class="labelForms" id="lchave"
+						<td class="tdControle">
+							<label class="labelForms" id="lchave"
 							for="chave">Cadastrar nova Palavra:<span class="asterisco">*</span></label>
 						</td>
-						<td class="field"><input class="input" id="palavra"	name="palavra" type="text" value="" maxlength="32" /></td>
+						<td class="field"><input class="input" id="palavra"	name="palavraNova" type="text" value="" maxlength="32" /></td>
 						<td class="status"></td>
 					 	
 					 	<td class="field"><input class="input" id="action" name="action" type="hidden" value="add" maxlength="32" /></td>
 						<td class="field"><input class="input" id="action" name="from" type="hidden" value="cadastrarPalavrasChave.jsp" maxlength="20" /></td> 
 					</tr>
 					<tr>
-						<td class="tdForms" align="right" colspan="2"><input class="buttonRegistrar" id="signupsubmit" name="inserir" type="submit" value="Enviar" /></td>
+						<td class="tdForms" align="right" colspan="2">
+							<input class="buttonRegistrar" id="signupsubmit" name="inserir" type="submit" value="Enviar" />
+						</td>
 					</tr>
 				</table>
 			</form>
