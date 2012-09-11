@@ -56,7 +56,7 @@ public class KeyWordServlet extends HttpServlet {
 			    out.println("</script>");
 			}
 			else if(action != null && action.equals("delete")) {	
-				cad.deletarPalavraChave(newKey);
+				cad.deletarPalavraChave(oldKey);
 			    out.println("<script>");
 			    out.println("alert('Palavra chave excluída com sucesso. ');");
 			    out.println("document.location=('/GraoPara/protected/admin/cadastrarPalavrasChave.jsp');");

@@ -45,10 +45,10 @@ public class PanelWorker {
 				/*out.write("<td> <label for=\"identificacao\" class=\"labelExibe\">" + (key.isAprovada()==true ? "Aprovada" : "Pendente") + "</label> </td>");*/
 				out.println("<td "+td+">"
 						+ "<a href=\"/GraoPara/protected/admin/editarPalavraChave.jsp?"
-							+ "palavra="+ key.getPalavra() +"\" >"
+							+ "palavraAntiga="+ key.getPalavra() +"\" >"
 							+ "<img src=\"/GraoPara/images/edit.png\" title=\"Editar\" alt=\"Editar\" /></a>" 
 						+ "<a href=\"/GraoPara/protected/admin/doChangesToKeyWord?" 
-							+ "palavra=" + key.getPalavra()  
+							+ "palavraAntiga=" + key.getPalavra()  
 							+ "&action=delete"
 							+ "&from=" + in
 							+ "\"><img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\" /></a>"
@@ -80,12 +80,12 @@ public class PanelWorker {
 					out.write("<td> <label for=\"identificacao\" class=\"labelExibe\">" + (key.isAprovada()==true ? "Aprovada" : "Pendente") + "</label> </td>");
 					out.println("<td>"
 							+ "<a href=\"/GraoPara/doChangesToKeyWord?" 
-								+ "palavra=" + key.getPalavra() 
+								+ "palavraAntiga=" + key.getPalavra() 
 								+ "&action=approve"
 								+ "&tab=1\" >"
 								+ "<img src=\"/GraoPara/images/approve.png\" title=\"Aprovar\" alt=\"Aprovar\" /></a>" 
 							+ "<a href=\"/GraoPara/doChangesToKeyWord?" 
-								+ "palavra=" + key.getPalavra() 
+								+ "palavraAntiga=" + key.getPalavra() 
 								+ "&action=delete"
 								+ "&tab=1\"><img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\" /></a>"
 							+ "</td>");

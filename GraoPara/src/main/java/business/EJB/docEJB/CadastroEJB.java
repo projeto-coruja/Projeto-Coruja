@@ -334,7 +334,8 @@ public class CadastroEJB {
 	}
 	
 	public synchronized void atualizarPalavraChave(String oldKey, String newKey, Boolean newStatus) throws UnreachableDataBaseException, KeywordNotFoundException , IllegalArgumentException {
-		if(oldKey == null || newKey == null || oldKey.equals("") || newKey.equals("") || newStatus == null)	throw new IllegalArgumentException("Argumentos não podem ser null/vazio");
+		if(oldKey == null || newKey == null || oldKey.equals("") || newKey.equals("") || newStatus == null)	
+			throw new IllegalArgumentException("Argumentos não podem ser null/vazio");
 		
 		BuscaDocEJB busca = new BuscaDocEJB();
 		List<DTO> results = null;
