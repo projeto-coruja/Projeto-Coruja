@@ -55,17 +55,11 @@ public class OrigemDAO {
 	public OrigemDTO findExactOrigin(String cod, String type) throws  UnreachableDataBaseException, OriginNotFoundException  {
 		List<DTO> resultSet = null;
 		try {
-			resultSet = manager.findEntities("from Origem where cod_origem like '%" + cod +"%' and tipo_origem like '%" + type +"%' codOrigem, tipoOrigem, titulo");
-			OrigemDTO select = null;
+			resultSet = manager.findEntities("from Origem where cod_origem = '" + cod +"' and tipo_origem = '" + type +"' order by codOrigem, tipoOrigem");
 			if(resultSet == null) {
 				throw new OriginNotFoundException ("Origem não encontrado");
 			}
-			for(DTO d : resultSet){
-				if(((OrigemDTO)d).getCodOrigem().equals(cod) && ((OrigemDTO)d).getTipoOrigem().equals(type))
-					select = (OrigemDTO) d;
-			}
-			if(select == null)	throw new OriginNotFoundException ("Origem não encontrado");
-			return select;
+			else return (OrigemDTO) resultSet.get(0);
 		} catch (DataAccessLayerException e) {
 			e.printStackTrace();
 			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
