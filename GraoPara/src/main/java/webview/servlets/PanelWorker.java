@@ -41,7 +41,7 @@ public class PanelWorker {
 
 				out.write("<tr>");
 				out.write("<td "+td+"> <label for=\"identificacao\" class=\"labelExibe\">" + key.getId() + "</label> </td>");
-				out.write("<td "+td+"> <label for=\"identificacao\" class=\"labelExibe\">" + key.getPalavra() + " </label> </td>");
+				out.write("<td "+td+"> <label for=\"identificacao\" class=\"labelExibe\">" + key.getPalavra().replace("_", " ") + " </label> </td>");
 				/*out.write("<td> <label for=\"identificacao\" class=\"labelExibe\">" + (key.isAprovada()==true ? "Aprovada" : "Pendente") + "</label> </td>");*/
 				out.println("<td "+td+">"
 						+ "<a href=\"/GraoPara/protected/admin/editarPalavraChave.jsp?"

@@ -120,7 +120,7 @@
 							<label class="labelForms" for="palavraAntiga">Palavra Chave Antiga:</label>
 						</td>
 						<td class="field">
-							<input class="input" id="palavraAntiga" name="palavraAntiga" type="text" value="<%= request.getParameter("palavra") %>" maxlength="32" readonly="readonly"/>
+							<input class="input" id="palavraAntiga" name="palavraAntiga" type="text" value="<%= request.getParameter("palavraAntiga").replace("_", " ") %>" maxlength="32" readonly="readonly"/>
 						</td>
 						<td class="status"></td>
 					</tr>					
