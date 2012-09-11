@@ -152,4 +152,44 @@ public class SearchWorker {
 			out.println("</tr>");
 		}
 	}
+	
+	public static String getAllAttributesAndValues(HttpServletRequest request, JspWriter out) throws IOException {
+		
+		String param = "";
+		
+		String identificacao = request.getParameter("identificacao");
+		String codigoDe = request.getParameter("codigoDe");
+		String codigoAte = request.getParameter("codigoAte");
+		String titulo = request.getParameter("titulo");
+		String numAPEP_SEQ = request.getParameter("numero");
+		String autor = request.getParameter("autor");
+		String destinatario = request.getParameter("destinatario");
+		String local = request.getParameter("local");
+		String anoIni = request.getParameter("anoIni");
+		String anoFim = request.getParameter("anoFim");
+		String tipoDoc = request.getParameter("tipoDoc");
+		String resumo = request.getParameter("resumo");
+		String palavra1 = request.getParameter("chave1");
+		String palavra2 = request.getParameter("chave2");
+		String palavra3 = request.getParameter("chave3");
+		
+		param += "identificacao="+identificacao;
+		param += "&codigoDe="+codigoDe;
+		param += "&codigoAte="+codigoAte;
+		param += "&titulo="+titulo;
+		param += "&numero="+numAPEP_SEQ;
+		param += "&autor="+autor;
+		param += "&destinatario="+destinatario;
+		param += "&local="+local;
+		param += "&anoIni="+anoIni;
+		param += "&anoFim="+anoFim;
+		param += "&tipoDoc="+tipoDoc;
+		param += "&resumo="+resumo;
+		param += "&chave1="+palavra1;
+		param += "&chave2="+palavra2;
+		param += "&chave3="+palavra3;
+		
+//		out.println(param);
+		return param;
+	}
 }

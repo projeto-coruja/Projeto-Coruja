@@ -1,4 +1,5 @@
 <!doctype html>
+<%@page import="webview.servlets.Download"%>
 <%@page import="webview.servlets.SearchWorker"%>
 <html>
 <head>
@@ -71,9 +72,7 @@
 		<div class="content" id="content">
 		<h2>Listagem de Documentos</h2>
 			<div align="right">
-				<form action="GraoPara/doDownload">
-					<input type="submit" name="download" class="buttonDownload" value="Download Pesquisa"/>
-				</form>
+				<a href="/GraoPara/doDownload?<% out.write(SearchWorker.getAllAttributesAndValues(request, out)); %>" class="buttonDownload" >Download Pesquisa</a>
 			</div>
 			<div class="scrollLong">
 				<table class="tableList">

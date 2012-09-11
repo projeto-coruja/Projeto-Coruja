@@ -40,6 +40,9 @@ public class KeyWordServlet extends HttpServlet {
 		String newKey = request.getParameter("palavraNova");
 		String action = request.getParameter("action");
 		
+		if(oldKey != null)	oldKey = oldKey.replace(" ", "_");
+		if(newKey != null)	newKey = newKey.replace(" ", "_");
+		
 		try {
 			if(action!= null && action.equals("add")) {
 				cad.cadastrarPalavraChave(newKey);
