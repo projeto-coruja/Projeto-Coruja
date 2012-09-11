@@ -1,12 +1,24 @@
 package webview.servlets;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import business.EJB.docEJB.BuscaDocEJB;
+import business.exceptions.documents.DocumentNotFoundException;
+import business.export.SpreadsheetExport;
+
+import persistence.dto.DTO;
 
 /**
  * Servlet implementation class Download
@@ -25,41 +37,64 @@ public class Download extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-    // TODO download!
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-/*		FacesContext context = FacesContext.getCurrentInstance();
+	protected synchronized void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String identificacao = request.getParameter("identificacao");
+		String codigoDe = request.getParameter("codigoDe");
+		String codigoAte = request.getParameter("codigoAte");
+		String titulo = request.getParameter("titulo");
+		String numAPEP_SEQ = request.getParameter("numero");
+		String autor = request.getParameter("autor");
+		String destinatario = request.getParameter("destinatario");
+		String local = request.getParameter("local");
+		String anoIni = request.getParameter("anoIni");
+		String anoFim = request.getParameter("anoFim");
+		String tipoDoc = request.getParameter("tipoDoc");
+		String resumo = request.getParameter("resumo");
+		String palavra1 = request.getParameter("chave1");
+		String palavra2 = request.getParameter("chave2");
+		String palavra3 = request.getParameter("chave3");
+		
+		
 		String filePath = null;
-		String fileName = null;
-		int read = 0;
-		byte[] bytes = new byte[1024];
-		FileInputStream fis = null;
-		OutputStream os = null;
+		URL url = null;
+		URLConnection connection = null;
+		FileInputStream in = null;
+		OutputStream out = null;
+		
 
-		response = ( HttpServletResponse ) context.getExternalContext().getResponse();
+		BuscaDocEJB search = new BuscaDocEJB();
+		
 		try {
-			filePath = generateSpreadsheet(resultSet);	
-			fileName = filePath.split("_")[2];
-
+			List<DTO> resultSet = search.busca(identificacao.toUpperCase(), codigoDe, codigoAte, titulo, "", numAPEP_SEQ, autor, destinatario, local, anoIni, anoFim, tipoDoc, resumo, palavra1, palavra2, palavra3);
+			if(resultSet == null)	throw new DocumentNotFoundException();
+			filePath = SpreadsheetExport.generateSpreadsheet(resultSet);	
+			url = new URL("ftp://"+filePath);
+			connection = url.openConnection();
+			
+			response.setHeader("Content-Disposition", "attachment;filename=\""+ filePath +"\"");
+			response.setContentLength((int)connection.getContentLength());
 			response.setContentType("application/ods");
-			response.setHeader("Content-Disposition", "attachment;filename=\"" + fileName + "\""); 
+			File f = new File(filePath);
+			in = new FileInputStream(f);
+			out = response.getOutputStream();
 
-			fis = new FileInputStream(new File(filePath,fileName));
-			os = response.getOutputStream();
-
-			while((read = fis.read(bytes)) != -1){
-				os.write(bytes,0,read);
+			int read = 0;
+			byte[] bytes = new byte[1024];
+			while((read = in.read(bytes)) != -1){
+				out.write(bytes,0,read);
 			}
-
-			os.flush();
-			os.close();
+			in.close();
+			out.flush();
+			out.close();
 		} catch (IOException e){
+			e.printStackTrace();
+		} catch (DocumentNotFoundException e){
 			e.printStackTrace();
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
+		} 
 		
-		FacesContext.getCurrentInstance().responseComplete();	
-		*/
+		
 	}
 
 	/**

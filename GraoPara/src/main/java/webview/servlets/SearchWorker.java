@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.jsp.JspWriter;
 
 import persistence.dto.DTO;
@@ -17,7 +16,6 @@ import business.EJB.userEJB.AuthBean;
 import business.exceptions.documents.DocumentNotFoundException;
 import business.exceptions.documents.DocumentTypeNotFoundException;
 import business.exceptions.login.UnreachableDataBaseException;
-import business.export.SpreadsheetExport;
 
 public class SearchWorker {
 	
@@ -125,7 +123,6 @@ public class SearchWorker {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	
 	}
 	
 	public static void listAllDocumentsTypes(HttpServletRequest request, JspWriter out) throws IOException{

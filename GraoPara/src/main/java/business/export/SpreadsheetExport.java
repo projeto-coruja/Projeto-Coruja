@@ -19,9 +19,13 @@ public class SpreadsheetExport {
 	private static String tmpPath;
 	
 	private static void getPath(){
-
-		tmpPath = SpreadsheetExport.class.getResource("SpreadsheetExport.class").getPath();
-		tmpPath = tmpPath.replace("/target/classes/business/export/SpreadsheetExport.class", "/ExportODS/");
+		// Para testes locais
+//		tmpPath = SpreadsheetExport.class.getResource("SpreadsheetExport.class").getPath();
+//		tmpPath = tmpPath.replace("/GraoPara.war/WEB-INF/classes/business/export/SpreadsheetExport.class", "/ods");
+		
+		tmpPath = "/tmp"; // Jboss
+		
+		System.out.println(tmpPath);
 	}
 	
 	public static String generateSpreadsheet(List<DTO> resultSet) throws Exception{
@@ -32,6 +36,8 @@ public class SpreadsheetExport {
 		Row row = tbl.appendRow();
 		Cell cel = row.getCellByIndex(0);
 		int coluna;
+		
+		getPath();
 		
 		// Primeira linha
 		coluna = 0;
@@ -125,7 +131,7 @@ public class SpreadsheetExport {
 			
 		}
 		String filePath = tmpPath + "/rlt_" + generateRandomString() + "_" + creationDate + ".ods";
-		//System.out.println(fileRandomName);
+		System.out.println(filePath);
 		outerDoc.save(filePath);
 		outerDoc.close();
 		return filePath;
