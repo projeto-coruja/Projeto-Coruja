@@ -369,7 +369,6 @@ public class CadastroEJB {
 				if(doc.getPalavrasChaves3() != null && doc.getPalavrasChaves3().getPalavra().equals(oldKey)){
 					doc.setPalavrasChaves3(null);
 				}
-				atualizarDocumento(doc);
 			}
 			PalavraChaveDTO keyWordDTO = keyDao.updateKeyWord(oldKey.toLowerCase(), newKey.toLowerCase(), newStatus);
 
@@ -407,7 +406,6 @@ public class CadastroEJB {
 				OrigemDTO ori = doc.getOrigemDocumento();
 				if(ori != null && ori.getTipoOrigem().equals(identificacao) && ori.getCodOrigem().equals(codigo)){
 					doc.setOrigemDocumento(null);
-					atualizarDocumento(doc);
 				}
 			}
 			
@@ -417,13 +415,13 @@ public class CadastroEJB {
 			
 			for(DTO dto : results){
 				DocumentoDTO doc = (DocumentoDTO) dto;
-				if(doc.getOrigemDocumento() == null){
-					doc.setOrigemDocumento(odto);
-				}
+				doc.setOrigemDocumento(odto);
 				atualizarDocumento(doc);
 			}
 		} catch (DocumentNotFoundException e) {
-			
+			OrigemDTO odto = od.findExactOrigin(codigo, identificacao);
+			odto.setTitulo(novotitulo);
+			od.updateOrigin(odto);
 		}
 		
 	}

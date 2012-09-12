@@ -33,7 +33,6 @@ public class DocServlet extends HttpServlet {
      */
     public DocServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

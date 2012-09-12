@@ -2,6 +2,7 @@ package webview;
 
 import java.io.IOException;
 import java.text.Normalizer;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.Cookie;
@@ -124,13 +125,17 @@ public final class WebUtility {
 		try {
 			origemDAO = new OrigemDAO();
 			List<DTO> list = origemDAO.findAllOrigins();
+			List<String> aux = new ArrayList<String>();
 			output = "\n	<option selected value=\"\">Selecione...</option> ";
 			
 			for(DTO d : list){
 				String tipoOrigem = ((OrigemDTO) d).getTipoOrigem();
-				output += "\n	<option value=\"" 
-					+ tipoOrigem + " \">" 
-					+ tipoOrigem + "</option> ";
+				if(!aux.contains(tipoOrigem)){
+					output += "\n	<option value=\"" 
+						+ tipoOrigem + " \">" 
+						+ tipoOrigem + "</option> ";
+					aux.add(tipoOrigem);
+				}
 			}
 		} catch (OriginNotFoundException e) {
 			e.printStackTrace();

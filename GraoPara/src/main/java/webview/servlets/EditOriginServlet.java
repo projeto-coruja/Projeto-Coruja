@@ -43,6 +43,7 @@ public class EditOriginServlet extends HttpServlet {
 		try {
 			cb.atualizarTituloOrigem(tipo, codigo, titulo);
 			out.println("<script>");  
+		    out.println("alert('Título editado com sucesso.');");
 		    out.println("document.location=('/GraoPara/protected/admin/cadastrarOrigem.jsp');");
 		    out.println("</script>");		
 		} catch (UnreachableDataBaseException e) {
