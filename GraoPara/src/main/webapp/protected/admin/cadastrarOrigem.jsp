@@ -121,7 +121,7 @@
 				<table class="tableForms">
 					<tr>
 						<td class="tdForms">
-							<label class="labelForms" id="lidentificacao" for="identificacao">Identificação<span class="asterisco">*</span></label>
+							<label class="labelForms" id="lidentificacao" for="identificacao">Identificação:<span class="asterisco">*</span></label>
 						</td>
 						<td class="field">
 							<select name="identificacao" class="input" id="identificacao">
