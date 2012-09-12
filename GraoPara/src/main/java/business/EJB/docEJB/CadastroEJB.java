@@ -77,7 +77,7 @@ public class CadastroEJB {
 		}
 		else throw new IllegalArgumentException("Palavra-chave principal não pode ser vazia!");
 			
-		if(!palavraChave02.isEmpty()) {
+		if(!palavraChave02.isEmpty() && !palavraChave02.equals(palavraChave01)) {
 			try {
 				palavraChaveDTO[1] = buscaPalavraChave.buscarPalavraChave(palavraChave02);
 			} catch (IllegalArgumentException e) {
@@ -87,7 +87,7 @@ public class CadastroEJB {
 			}
 		}
 		
-		if(!palavraChave03.isEmpty()) {
+		if(!palavraChave03.isEmpty() && !palavraChave03.equals(palavraChave01) && !palavraChave03.equals(palavraChave02)) {
 			try {
 				palavraChaveDTO[2] = buscaPalavraChave.buscarPalavraChave(palavraChave03);
 			} catch (IllegalArgumentException e) {

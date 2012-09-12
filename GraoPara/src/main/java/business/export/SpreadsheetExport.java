@@ -81,6 +81,9 @@ public class SpreadsheetExport {
 		cel = row.getCellByIndex(coluna++);
 		cel.addParagraph("Palavra Chaves");
 		
+		cel = row.getCellByIndex(coluna++);
+		cel.addParagraph("Resumo");
+		
 //		cel = row.getCellByIndex(coluna++);
 //		cel.addParagraph("Palavra-chave 1")
 //		cel = row.getCellByIndex(coluna++);
@@ -129,6 +132,8 @@ public class SpreadsheetExport {
 					+ (docDTO.getPalavrasChaves2() != null ? " - " + docDTO.getPalavrasChaves2().getPalavra() : " ")
 					+ (docDTO.getPalavrasChaves3() != null ? " - " + docDTO.getPalavrasChaves3().getPalavra() : " "));
 			
+			cel = row.getCellByIndex(coluna++);
+			cel.addParagraph(docDTO.getResumo());
 		}
 		String filePath = tmpPath + "/rlt_" + generateRandomString() + "_" + creationDate + ".ods";
 //		System.out.println(filePath);

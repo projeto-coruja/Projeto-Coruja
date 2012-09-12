@@ -102,28 +102,10 @@
 							<label class="labelForms" id="lidentificacao" for="identificacao">Identificação<span class="asterisco">*</span></label>
 						</td>
 						<td class="field">
-							<select name="identificacao" class="input" id="identificacao">
-									<option value="">Selecione...</option>
-									<option value="codice">Número de Códice</option>
-									<option value="caixa">Número da Caixa</option>
+							<select name="identificacao" class="inputLong" id="identificacao">
+								<%= WebUtility.printCadastroOrigem(request) %>
 							</select>
 						</td>
-						<td class="status"></td>
-					</tr>
-					<tr>
-						<td class="tdForms">
-							<label class="labelForms" id="lcodigo" for="codigo">Código:<span class="asterisco">*</span></label>
-						</td>
-						<td class="field">
-							<input class="inputShort" name="codigo" size="10" id="codigo" type="text" maxlength="5">
-						</td>
-						<td class="status"></td>
-					</tr>
-					<tr>
-						<td class="tdForms">
-							<label class="labelForms" id="ltitulo" for="titulo">Título:<span class="asterisco">*</span></label>
-						</td>
-						<td class="field"><input class="input" name="titulo" id="titulo" type="text" size="20" maxlength="500"></td>
 						<td class="status"></td>
 					</tr>
 					<tr>
