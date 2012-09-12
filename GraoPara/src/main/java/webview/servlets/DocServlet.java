@@ -63,9 +63,10 @@ public class DocServlet extends HttpServlet {
 		
 //		GregorianCalendar dataDoc = new GregorianCalendar(Integer.parseInt(dataAno), Integer.parseInt(dataMes), Integer.parseInt(dataDia));
 		Date dataDoc = null;
-		DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
 		try {
-			dataDoc = (Date) df.parse(dataAno+"-"+dataMes+"-"+dataDia);
+			String dataTmp = dataAno+"-"+dataMes+"-"+dataDia;
+			DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+			dataDoc = (Date) df.parse(dataTmp);
 		} catch (ParseException e1) {
 			e1.printStackTrace();
 		}
