@@ -116,31 +116,17 @@
 				action="/GraoPara/protected/admin/updateDoc">
 				<table class="tableForms">
 					<tr>
-						<td class="tdForms"><label class="labelForms" id="lidentificacao"
-							for="identificacao">Identificação<span class="asterisco">*</span></label>
+						<td class="tdForms">
+							<label class="labelForms" id="lidentificacao" for="identificacao">Identificação<span class="asterisco">*</span></label>
 						</td>
-						<td class="field"><select name="identificacao" class="input"
-							id="identificacao">
-								<%=WebUtility.printSelectOrigem(request)%>
-						</select></td>
+						<td class="field">
+							<select name="identificacao" class="inputLong" id="identificacao">
+								<%= WebUtility.printCadastroOrigem(request) %>
+							</select>
+						</td>
 						<td class="status"></td>
 					</tr>
 					<tr>
-						<td class="tdForms"><label class="labelForms" id="lcodigo" for="codigo">Código:<span
-								class="asterisco">*</span></label></td>
-						<td class="field"><input class="inputShort" name="codigo"
-							size="10" id="codigo" type="text" maxlength="5"
-							value="<%=WebUtility.printLabel(request, "codigo")%>"></td>
-						<td class="status"></td>
-					</tr>
-					<tr>
-						<td class="tdForms"><label class="labelForms" id="ltitulo" for="titulo">Título:<span
-								class="asterisco">*</span></label></td>
-						<td class="field"><input class="input" name="titulo"
-							id="titulo" type="text" size="20" maxlength="500"
-							value="<%=WebUtility.printLabel(request, "titulo")%>"></td>
-						<td class="status"></td>
-					</tr>
 					<tr>
 						<td class="tdForms"><label class="labelForms" id="lnumero" for="numero">Número
 								APEP ou Sequencial:<span class="asterisco">*</span>
@@ -184,15 +170,15 @@
 						<td class="field"><select name="dia" id="dia"
 							class="inputShort">
 								<%=WebUtility.printSelectDia(request) %>
-								<option value="1">1</option>
-								<option value="2">2</option>
-								<option value="3">3</option>
-								<option value="4">4</option>
-								<option value="5">5</option>
-								<option value="6">6</option>
-								<option value="7">7</option>
-								<option value="8">8</option>
-								<option value="9">9</option>
+								<option value="01">1</option>
+								<option value="02">2</option>
+								<option value="03">3</option>
+								<option value="04">4</option>
+								<option value="05">5</option>
+								<option value="06">6</option>
+								<option value="07">7</option>
+								<option value="08">8</option>
+								<option value="09">9</option>
 								<option value="10">10</option>
 								<option value="11">11</option>
 								<option value="12">12</option>
@@ -217,18 +203,18 @@
 								<option value="31">31</option></select> <select name="mes" id="mes"
 							class="inputShort">
 								<%= WebUtility.printSelectMes(request) %>
-								<option value="1">Janeiro</option>
-								<option value="2">Fevereiro</option>
-								<option value="3">Março</option>
-								<option value="4">Abril</option>
-								<option value="5">Maio</option>
-								<option value="6">Junho</option>
-								<option value="7">Julho</option>
-								<option value="8">Agosto</option>
-								<option value="9">Setembro</option>
-								<option value="10">Outubro</option>
-								<option value="11">Novembro</option>
-								<option value="12">Dezembro</option></select> <label class="labelForms"
+								<option value="01">Jan</option>
+								<option value="02">Fev</option>
+								<option value="03">Mar</option>
+								<option value="04">Abr</option>
+								<option value="05">Mai</option>
+								<option value="06">Jun</option>
+								<option value="07">Jul</option>
+								<option value="08">Ago</option>
+								<option value="09">Set</option>
+								<option value="10">Out</option>
+								<option value="11">Nov</option>
+								<option value="12">Dez</option></select> <label class="labelForms"
 							id="ldata" for="data">Ano:</label><input class="inputShort"
 							type="text" name="ano" id="ano" maxlength="4" value="<%=WebUtility.printLabel(request, "ano")%>"/></td>
 						<td class="status"></td>

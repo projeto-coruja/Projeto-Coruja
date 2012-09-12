@@ -145,21 +145,29 @@ public final class WebUtility {
 	
 	public static String printCadastroOrigem(HttpServletRequest request) throws IOException, UnreachableDataBaseException {
 		String output = null;
+		String identificacao = request.getParameter("identificacao");
+		String codigo = request.getParameter("codigo");
+		String titulo = request.getParameter("titulo");
 		
 		OrigemDAO origemDAO = null;
 		
 		try {
 			origemDAO = new OrigemDAO();
 			List<DTO> list = origemDAO.findAllOrigins();
-			output = "\n	<option selected value=\"\">Selecione...</option> ";
+			if(identificacao != null && codigo != null && titulo != null)
+				output = "\n	<option selected value=\"" 
+						+ identificacao + "-" + codigo + "-" + titulo + "\">" 
+						+ identificacao + "-" + codigo + "-" + titulo + "</option> ";
 			
+			else	output = "\n	<option selected value=\"\">Selecione...</option> ";
 			for(DTO d : list){
 				String tipoOrigem = ((OrigemDTO) d).getTipoOrigem();
 				String codOrigem =  ((OrigemDTO) d).getCodOrigem();
 				String tituloOrigem = ((OrigemDTO) d).getTitulo();
-				output += "\n	<option value=\"" 
-					+ tipoOrigem + "-" + codOrigem + "-" + tituloOrigem + " \">" 
-					+ tipoOrigem + " - " + codOrigem + " - " + tituloOrigem + "</option> ";
+				if(!tipoOrigem.equals(identificacao) && !codOrigem.equals(codigo))
+					output += "\n	<option value=\"" 
+						+ tipoOrigem + "-" + codOrigem + "-" + tituloOrigem + " \">" 
+						+ tipoOrigem + " - " + codOrigem + " - " + tituloOrigem + "</option> ";
 			}
 		} catch (OriginNotFoundException e) {
 			e.printStackTrace();
