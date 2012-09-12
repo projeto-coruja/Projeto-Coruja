@@ -149,7 +149,7 @@
 				action="/GraoPara/doChangesToAccount?action=editPassword" method="post">
 				<table class="tableControle">
 					<tr>
-						<th colspan="3" align="center">Mudar Senha Atual</th>
+						<td colspan="3"><label class="labelForms"><strong>MUDAR SENHA ATUAL</strong></label></td>
 					</tr>
 					<tr>
 						<td class="tdControle"><label class="labelForms" id="lpassword" for="password">Senha

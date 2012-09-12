@@ -94,4 +94,25 @@ public class IdNumDocumentoDAO {
 					"Erro ao acessar o banco de dados");
 		}
 	}
+	
+	public IdNumDocumentoDTO findExactId(String cod, String type)
+			throws UnreachableDataBaseException, IdNumDocumentNotFoundException {
+		IdNumDocumentoDTO select = null;
+		List<DTO> resultSet = null;
+		try {
+			resultSet = manager.findEntities("from IdNumDocumento where codId = '" + cod + "' and tipo_id = '" + type + "'");
+			if (resultSet == null) {
+				throw new IdNumDocumentNotFoundException("Código não encontrado");
+			} else {
+				for(DTO dto : resultSet){
+					if(((IdNumDocumentoDTO)dto).getTipoId().equals(type) && ((IdNumDocumentoDTO)dto).getCodId().equals(cod))
+						select = (IdNumDocumentoDTO) dto;
+				}
+				return select;
+			}
+		} catch (DataAccessLayerException e) {
+			e.printStackTrace();
+			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
+		}
+	}
 }

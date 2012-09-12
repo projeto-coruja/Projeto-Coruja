@@ -92,6 +92,13 @@ public class DocServlet extends HttpServlet {
 		} catch (UserNotFoundException e) {
 			System.err.println("Erro ao indentificar um usuário no cadastro de documento!");
 			e.printStackTrace();
+		} catch (IllegalArgumentException e){
+			response.setContentType("text/html");  
+		    PrintWriter out=response.getWriter();   
+		    out.println("<script>");  
+		    out.println("alert('Problema ao cadastrar documento, Já existe documento com a identificação fornecido!');");  
+		    out.println("history.go(-1);");  
+		    out.println("</script>");
 		}
 	}
 
