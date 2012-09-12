@@ -18,6 +18,7 @@ import business.DAO.documents.OrigemDAO;
 import business.DAO.login.LoginDAO;
 import business.exceptions.documents.DocumentNotFoundException;
 import business.exceptions.documents.DocumentTypeNotFoundException;
+import business.exceptions.documents.IdNumDocumentNotFoundException;
 import business.exceptions.documents.KeywordNotFoundException;
 import business.exceptions.documents.OriginNotFoundException;
 import business.exceptions.login.UnreachableDataBaseException;
@@ -26,10 +27,14 @@ import business.exceptions.login.UserNotFoundException;
 public class CadastroEJB {
 	private final DocumentDAO docDao;
 	private final KeyWordDAO keyDao;
+	private final OrigemDAO oriDao;
+	private final IdNumDocumentoDAO idDao;
 
 	public CadastroEJB() {
 		docDao = new DocumentDAO();
 		keyDao = new KeyWordDAO();
+		oriDao = new OrigemDAO();
+		idDao = new IdNumDocumentoDAO();
 	}
 
 	public synchronized void cadastrarDocumento(String origem_codOrigem,
@@ -38,7 +43,7 @@ public class CadastroEJB {
 			String tipoDocumento_tipoDocumento, String palavraChave01,
 			String palavraChave02, String palavraChave03, String autor,
 			String local, String destinatario, String resumo,
-			Date dataDocumento, String uploader) throws UnreachableDataBaseException, UserNotFoundException {
+			Date dataDocumento, String uploader) throws UnreachableDataBaseException, UserNotFoundException, IllegalArgumentException {
 
 		DocumentoDTO docDTO;
 		TipoDocumentoDTO tipoDTO;
@@ -51,16 +56,25 @@ public class CadastroEJB {
 		origem_tipoOrigem = origem_tipoOrigem.toUpperCase();
 		
 		if (!( idNumDoc_tipoId.equals("APEP") || idNumDoc_tipoId.equals("SEQ") ))
-			throw new IllegalArgumentException(
-					"Tipo do id de documento tem que ser \"APEP\" ou \"SEQ\"");
-		if (!( origem_tipoOrigem.equals("CAIXA") || origem_tipoOrigem
-				.equals("CODICE")))
-			throw new IllegalArgumentException(
-					"Tipo da origem tem que ser \"CAIXA\" ou \"CODICE\"");
-		origemDTO = new OrigemDTO(origem_codOrigem, origem_tipoOrigem,
-				origem_titulo);
-
-		idDTO = new IdNumDocumentoDTO(idNumDoc_tipoId, idNumDoc_codId);
+			throw new IllegalArgumentException("Tipo do id de documento tem que ser \"APEP\" ou \"SEQ\"");
+		
+		if (!( origem_tipoOrigem.equals("CAIXA") || origem_tipoOrigem.equals("CODICE")))
+			throw new IllegalArgumentException("Tipo da origem tem que ser \"CAIXA\" ou \"CODICE\"");
+		
+		try {
+			origemDTO = oriDao.findExactOrigin(origem_codOrigem, origem_tipoOrigem);
+		} catch (OriginNotFoundException e1) {
+			origemDTO = new OrigemDTO(origem_codOrigem, origem_tipoOrigem,
+					origem_titulo);
+			e1.printStackTrace();
+		}
+		
+		try {
+			idDTO = idDao.findExactId(idNumDoc_codId,idNumDoc_tipoId);
+			if(idDTO != null)	throw new IllegalArgumentException("IdNumDoc repetido!");
+		} catch (IdNumDocumentNotFoundException e1) {
+			idDTO = new IdNumDocumentoDTO(idNumDoc_tipoId, idNumDoc_codId);
+		}
 
 		tipoDTO = new TipoDocumentoDTO(tipoDocumento_tipoDocumento);
 		
