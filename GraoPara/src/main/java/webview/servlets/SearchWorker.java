@@ -153,6 +153,97 @@ public class SearchWorker {
 		}
 	}
 	
+	
+	public static void printDocumentInformation(HttpServletRequest request, JspWriter out) throws IOException{
+		String tipo = request.getParameter("tipoAPEP_SEQ");
+		String num = request.getParameter("numeroAPEP");
+		DocumentoDTO doc = null;
+		BuscaDocEJB busca = new BuscaDocEJB();
+		
+		String text;
+		
+		try {
+			doc = busca.busca(tipo, num);
+			String data[] = doc.getDataDocumento().toString().split("-");
+			
+			text = "<table >";
+			
+			text += "<tr class=\"trList\">";
+			text += "<td class=\"tdList\"><label class=\"labelExibe\">Identificação</label></td>";
+			text += "<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getOrigemDocumento().getTipoOrigem()+"</label></td>";
+			text += "</tr>";
+			
+			text += "<tr class=\"trList\">";
+			text += "<td class=\"tdList\"><label class=\"labelExibe\">Código</label></td>";
+			text += "<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getOrigemDocumento().getCodOrigem() +"</label></td>";
+			text += "</tr>";
+
+			text += "<tr class=\"trList\">";
+			text += "<td class=\"tdList\"><label class=\"labelExibe\">Título</label></td>";
+			text += "<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getOrigemDocumento().getTitulo() 	+"</label></td>";
+			text += "</tr>";
+
+			text += "<tr class=\"trList\">";
+			text += "<td class=\"tdList\"><label class=\"labelExibe\">Tipo de Número</label></td>";
+			text += "<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getIdNumDocumento().getTipoId()	+"</label></td>";
+			text += "</tr>";
+
+			text += "<tr class=\"trList\">";
+			text += "<td class=\"tdList\"><label class=\"labelExibe\">Número</label></td>";
+			text += "<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getIdNumDocumento().getCodId()		+"</label></td>";
+			text += "</tr>";
+
+			text += "<tr class=\"trList\">";
+			text += "<td class=\"tdList\"><label class=\"labelExibe\">Autor</label></td>";
+			text += "<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getAutor() 						+"</label></td>";
+			text += "</tr>";
+
+			text += "<tr class=\"trList\">";
+			text += "<td class=\"tdList\"><label class=\"labelExibe\">Destinatário</label></td>";
+			text += "<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getDestinatario()					+"</label></td>";
+			text += "</tr>";
+
+			text += "<tr class=\"trList\">";
+			text += "<td class=\"tdList\"><label class=\"labelExibe\">Local</label></td>";
+			text += "<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getLocal()							+"</label></td>";
+			text += "</tr>";
+
+			text += "<tr class=\"trList\">";
+			text += "<td class=\"tdList\"><label class=\"labelExibe\">Data</label></td>";
+			text += "<td class=\"tdList\"><label class=\"labelExibe\">"+ data[2]+"/"+data[1]+"/"+data[0]		+"</label></td>";
+			text += "</tr>";
+			
+			text += "<tr >";
+			text += "<td class=\"tdList\"><label class=\"labelExibe\">Tipo de Documento</label></td>";
+			text += "<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getTipoDocumento().getTipoDocumento()	+"</label></td>";
+			text += "</tr>";
+			
+			text += "<tr >";
+			text += "<td class=\"tdList\"><label class=\"labelExibe\">Palavras-Chave</label></td>";
+			text += "<td class=\"tdList\"><label class=\"labelExibe\">"	
+					+ (doc.getPalavrasChaves1() != null ? text += doc.getPalavrasChaves1().getPalavra() + " - " : (text += " ") ) 
+					+ (doc.getPalavrasChaves2() != null ? text += doc.getPalavrasChaves2().getPalavra() + " - " : (text += " ") )
+					+ (doc.getPalavrasChaves3() != null ? text += doc.getPalavrasChaves3().getPalavra() : (text += "") )
+					+ "</label></td>";
+			text += "</tr>";
+			
+			text += "<tr >";
+			text += "<td class=\"tdList\"><label class=\"labelExibe\">Resumo</label></td>";
+			text += "<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getResumo()	+"</label></td>";
+			text += "</tr>";
+			
+			text += "</table>";
+
+			out.println(text);
+		} catch (UnreachableDataBaseException e) {
+			e.printStackTrace();
+		} catch (DocumentNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+
+	}
+	
 	public static String getAllAttributesAndValues(HttpServletRequest request, JspWriter out) throws IOException {
 		
 		String param = "";
