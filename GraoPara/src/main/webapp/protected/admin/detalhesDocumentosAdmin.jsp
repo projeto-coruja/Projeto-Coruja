@@ -31,7 +31,8 @@
 	charset="utf-8"></script>
 <script src="/GraoPara/javascript/validate_pt_br.js"
 	type="text/javascript" charset="utf-8"></script>
-
+	
+	
 </head>
 
 <body>
@@ -110,7 +111,6 @@
 		</div>
 		<!-- Fim do Menu Lateral -->
 		<div class="content" id="content">
-
 			<h2>Edição de Documentos</h2>
 			<form id="signupform" autocomplete="off" method="POST"
 				action="/GraoPara/protected/admin/updateDoc">
@@ -138,6 +138,7 @@
 							maxlength="4" value=<%=WebUtility.printLabel(request, "numeroAPEP")%>></td>
 						<td class="status"></td>
 					</tr>
+					
 					<tr>
 						<td class="tdForms"><label class="labelForms" id="lautor" for="autor">Autor
 								do Documento:<span class="asterisco">*</span>
@@ -261,6 +262,8 @@
 						</td>
 					</tr>
 				</table>
+				<input class="inputShort" name="pesquisa_APEP_SEQ" id="numero" type="hidden" value=<%= WebUtility.printLabel(request, "tipoAPEP_SEQ") %>>
+				<input class="inputShort" name="pesquisa_num_APEP_SEQ" id="numero" type="hidden" value=<%= WebUtility.printLabel(request, "numeroAPEP")%>>
 			</form>
 		</div>
 		<!-- Começo do Rodapé -->

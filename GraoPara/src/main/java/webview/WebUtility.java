@@ -157,7 +157,7 @@ public final class WebUtility {
 			if(identificacao != null && codigo != null && titulo != null)
 				output = "\n	<option selected value=\"" 
 						+ identificacao + "-" + codigo + "-" + titulo + "\">" 
-						+ identificacao + "-" + codigo + "-" + titulo + "</option> ";
+						+ identificacao + " - " + codigo + " - " + titulo + "</option> ";
 			
 			else	output = "\n	<option selected value=\"\">Selecione...</option> ";
 			for(DTO d : list){

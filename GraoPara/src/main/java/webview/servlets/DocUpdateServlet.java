@@ -35,9 +35,7 @@ public class DocUpdateServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String tipoOrigem = request.getParameter("identificacao").toUpperCase();
-		String codOrigem = request.getParameter("codigo");
-		String titulo = request.getParameter("titulo");
+		String tipoOrigem = request.getParameter("identificacao");
 		String tipoId = request.getParameter("tipo_num").toUpperCase();
 		String numId = request.getParameter("numero");
 		String autor = request.getParameter("autor");
@@ -51,6 +49,13 @@ public class DocUpdateServlet extends HttpServlet {
 		String palChave1 = request.getParameter("chave1");
 		String palChave2 = request.getParameter("chave2");
 		String palChave3 = request.getParameter("chave3");
+		
+		String tipoIdAntigo = request.getParameter("pesquisa_APEP_SEQ");
+		String numIdAntigo = request.getParameter("pesquisa_num_APEP_SEQ");
+
+		String codOrigem = tipoOrigem.split("-")[1] ;
+		String titulo = tipoOrigem.split("-")[2];
+		tipoOrigem = tipoOrigem.split("-")[0].toUpperCase();
 		
 		response.setContentType("text/html");  
 	    PrintWriter out=response.getWriter();   
@@ -72,7 +77,7 @@ public class DocUpdateServlet extends HttpServlet {
 		
 		try {
 			CB.atualizarDocumento(codOrigem, tipoOrigem, titulo, 
-					tipoId, numId,
+					tipoIdAntigo, numIdAntigo, tipoId, numId,
 					tipoDoc,
 					palChave1, palChave2, palChave3,
 					autor, local, destinatario, resumo,
@@ -89,6 +94,11 @@ public class DocUpdateServlet extends HttpServlet {
 			e.printStackTrace();
 		} catch (DocumentNotFoundException e) {
 			e.printStackTrace();
+		} catch (IllegalArgumentException e) {
+			out.println("<script>");  
+			out.println("alert('Número APEP/Sequencial duplicado.');");  
+			out.println("history.go(-1)");  
+			out.println("</script>");
 		}
     }
 }

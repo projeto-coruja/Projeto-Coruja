@@ -18,6 +18,7 @@ import business.DAO.documents.OrigemDAO;
 import business.DAO.login.LoginDAO;
 import business.exceptions.documents.DocumentNotFoundException;
 import business.exceptions.documents.DocumentTypeNotFoundException;
+import business.exceptions.documents.DuplicateOriginException;
 import business.exceptions.documents.IdNumDocumentNotFoundException;
 import business.exceptions.documents.KeywordNotFoundException;
 import business.exceptions.documents.OriginNotFoundException;
@@ -186,35 +187,48 @@ public class CadastroEJB {
 	
 	public synchronized void atualizarDocumento(String origem_codOrigem,
 			String origem_tipoOrigem, String origem_titulo,
-			String idNumDoc_tipoId, String idNumDoc_codId,
+			String idNumDoc_tipoIdAntigo, String idNumDoc_codIdAntigo, String idNumDoc_tipoId, String idNumDoc_codId,
 			String tipoDocumento_tipoDocumento, String palavraChave01,
 			String palavraChave02, String palavraChave03, String autor,
 			String local, String destinatario, String resumo,
-			Date dataDocumento, String uploader) throws UnreachableDataBaseException, DocumentNotFoundException{
+			Date dataDocumento, String uploader) throws UnreachableDataBaseException, DocumentNotFoundException, IllegalArgumentException{
 		
 		KeyWordDAO kwDao = new KeyWordDAO();
 		
 		BuscaDocEJB buscaDocumento = new BuscaDocEJB();
-		DocumentoDTO docDTO = buscaDocumento.busca(idNumDoc_tipoId, idNumDoc_codId);
+		DocumentoDTO docDTO = buscaDocumento.busca(idNumDoc_tipoIdAntigo, idNumDoc_codIdAntigo);
 		
 		OrigemDAO buscaOrigem = new OrigemDAO();
 		DocumentTypeDAO buscaTipo = new DocumentTypeDAO();
+		
+		IdNumDocumentoDAO indDAO = new IdNumDocumentoDAO();
+		
+		try {
+			IdNumDocumentoDTO check = indDAO.findExactId(idNumDoc_codId, idNumDoc_tipoId);
+			if(check != null)	throw new IllegalArgumentException("Código duplicado");
+			else	throw new IdNumDocumentNotFoundException();
+		} catch (IdNumDocumentNotFoundException e2) {
+			docDTO.setIdNumDocumento(indDAO.addIdNumDocument(idNumDoc_tipoId, idNumDoc_codId));
+		}
+		
 		
 		try {
 			OrigemDTO novaOrigem = buscaOrigem.findExactOrigin(origem_codOrigem, origem_tipoOrigem);
 			docDTO.setOrigemDocumento(novaOrigem);
 			
 		} catch (OriginNotFoundException e1) {
-			docDTO.getOrigemDocumento().setCodOrigem(origem_codOrigem);
-			docDTO.getOrigemDocumento().setTipoOrigem(origem_tipoOrigem);
-			docDTO.getOrigemDocumento().setTitulo(origem_titulo);
+			try {
+				docDTO.setOrigemDocumento(buscaOrigem.addOrigem(origem_codOrigem,origem_tipoOrigem,origem_titulo));
+			} catch (DuplicateOriginException e) {
+				e.printStackTrace();
+			}
 		}
 		
 		try {
 			TipoDocumentoDTO docType = buscaTipo.findSingleDocumentTypeByString(tipoDocumento_tipoDocumento);
 			docDTO.setTipoDocumento(docType);
 		} catch (DocumentTypeNotFoundException e1) {
-			docDTO.getTipoDocumento().setTipoDocumento(tipoDocumento_tipoDocumento);
+			docDTO.setTipoDocumento(buscaTipo.addDocumentType(tipoDocumento_tipoDocumento));
 		}
 		
 		List<DTO> check = null;
