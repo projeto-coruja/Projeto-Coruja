@@ -114,11 +114,6 @@
 			<form id="signupform" autocomplete="off" method="post" action="/GraoPara/protected/admin/doAdminRegister">
 				<table class="tableForms">
 					<tr>
-						<td class="labelForms" colspan="3">
-							<strong>PREENCHA TODOS OS CAMPOS COM ASTERÍSCO <span class="asterisco">*</span></strong>
-						</td>
-					</tr>
-					<tr>
 						<td class="tdForms2">
 							<label class="labelForms" id="lfirstname" for="nome">Nome Completo:<span class="asterisco">*</span></label>
 						</td>

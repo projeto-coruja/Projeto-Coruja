@@ -90,9 +90,6 @@
 			<form id="signupform" autocomplete="off" method="GET" action="/GraoPara/protected/user/addDoc">
 				<table class="tableForms">
 					<tr>
-						<td colspan="3">
-							<label class="labelForms"><strong>PREENCHA TODOS OS CAMPOS COM ASTERÍSCO<span class="asterisco">*</span></strong></label>
-						</td>
 						<td class="field">
 							<input type = "hidden" id="action" name="action" value="add"></input>
 						</td>
