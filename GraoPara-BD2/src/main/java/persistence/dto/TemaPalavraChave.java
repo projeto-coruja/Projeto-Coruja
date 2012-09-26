@@ -1,16 +1,16 @@
 package persistence.dto;
 
-public class TemaPalavraChave {
+public class TemaPalavraChave implements DTO{
 	
-	private int id;
+	private Long id;
 
 	private String tema;	//Atores, Instituição, Ação
 	
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -21,5 +21,4 @@ public class TemaPalavraChave {
 	public void setTema(String tema) {
 		this.tema = tema;
 	}
-	
 }

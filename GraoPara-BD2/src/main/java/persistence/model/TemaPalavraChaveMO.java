@@ -31,5 +31,9 @@ public class TemaPalavraChaveMO {
 	public void setTema(String tema) {
 		this.tema = tema;
 	}
+	
+	public String toString() {
+		return tema;
+	}
 
 }

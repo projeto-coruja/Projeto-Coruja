@@ -1,6 +1,5 @@
 package persistence.dto;
 
-
 public class Profile implements DTO {
 	
 	private Long id;
