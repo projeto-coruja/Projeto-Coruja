@@ -7,11 +7,10 @@ import java.util.ArrayList;
 import persistence.dto.DTO;
 
 /**
- * @
- * 
- * 
- * @author Hueho
- *
+ * Classe utilitária para ajudar na manutenção dos DTOs.<br>
+ * Por padrão, programa-se principalmente por convenção. A única configuração opcional<br>
+ * é feita a nível de código, definindo os pacotes onde estão armazenadas as classes<br>
+ * de entidade e de DTO.
  */
 
 @SuppressWarnings("rawtypes")
@@ -21,10 +20,10 @@ public class DTOUtility {
 	private static final String entityPrefix = "persistence.model.";
 	
 	/**
-	 * Função utilitária para encontrar a classe de entidade correspondente ao DTO passado como<br>
-	 * parâmetro. 
-	 * @param DTO dto
-	 * 
+	 * Função utilitária para encontrar a classe de entidade correspondente a instância de<br>
+	 * DTO passada como parâmetro. 
+	 * @param dto a instância do DTO de onde queremos derivar a entidade
+	 * @return o objeto Class representando a entidade desejada
 	 */
 	public Class findEntityClassForDTO(DTO dto){
 		Class clazz = dto.getClass();
@@ -37,6 +36,12 @@ public class DTOUtility {
 		return null;
 	}
 	
+	/**
+	 * Função utilitária para encontrar a classe de DTO correspondente a instância de<br>
+	 * entidade passada como parâmetro. 
+	 * @param ent a instância de entidade de onde queremos derivar a DTO
+	 * @return o objeto Class representando o DTO desejada
+	 */
 	public Class findDTOClassForEntity(Object ent){
 		Class clazz = ent.getClass();
 		String name = clazz.getSimpleName();
@@ -47,7 +52,18 @@ public class DTOUtility {
 		}
 		return null;
 	}
-	
+	/** 
+	 * Função que atualiza uma entidade com base em um DTO. A função utiliza reflexão para derivar dinamicamente<br>
+	 * os getters e setters dos objetos, e então executá-los de acordo. Quando for necessário atualizar um campo<br>
+	 * de entidade, a função é chamada recursivamente utilizando como parâmetros a entidade e o DTO embutidos.
+	 * @param ent a instância de entidade
+	 * @param dto a instância de DTO
+	 * @throws IllegalAccessException
+	 * @throws IllegalArgumentException
+	 * @throws InvocationTargetException
+	 * @throws NoSuchMethodException
+	 * @throws SecurityException
+	 */
 	@SuppressWarnings("unchecked")
 	public void updateEntityFromDTO(Object ent, DTO dto) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException{
 		
@@ -89,10 +105,6 @@ public class DTOUtility {
 				}
 			}
 		}
-		
-	}
-	
-	public static void main(String[] args) throws Exception {
 		
 	}
 
