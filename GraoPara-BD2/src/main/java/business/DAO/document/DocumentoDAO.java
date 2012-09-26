@@ -80,7 +80,6 @@ public class DocumentoDAO {
 				);
 			}
 		}
-		else throw new IllegalArgumentException("Palavra-chave principal não pode ser nula.");
 
 		if(newDoc.getPalavraChave2() != null)
 		{

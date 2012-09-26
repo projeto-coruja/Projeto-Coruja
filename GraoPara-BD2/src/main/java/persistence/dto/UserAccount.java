@@ -16,6 +16,15 @@ public class UserAccount implements DTO{
 	
 	private String password;
 
+	public UserAccount(String name, Profile profile, String email,	String password) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.profile = profile;
+		this.email = email;
+		this.password = password;
+	}
+
 	public Long getId() {
 		return id;
 	}
