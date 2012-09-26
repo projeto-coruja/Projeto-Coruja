@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+                                         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+		<property name="hibernate.connection.password">coruja</property>
+		<property name="hibernate.hbm2ddl.auto">create</property>
+		<property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/coruja_graopara_2</property>
+		<property name="hibernate.connection.username">coruja</property>
+		<!-- <property name="hibernate.show_sql">true</property> -->
+		<!--<property name="hibernate.default_schema">Coruja_GraoPara</property> -->
+		<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL82Dialect</property>
+		<!-- <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property> -->
+
+		<mapping class="persistence.model.UserAccountMO" />
+		<mapping class="persistence.model.ProfileMO" />
+		<mapping class="persistence.model.TemaPalavraChaveMO" />
+		<mapping class="persistence.model.PalavraChaveMO" />
+		<mapping class="persistence.model.AutorMO" />
+		<mapping class="persistence.model.CodiceCaixaMO" />
+		<mapping class="persistence.model.TipoDocumentoMO" />
+		<mapping class="persistence.model.DocumentoMO" />
+	</session-factory>
+</hibernate-configuration>
