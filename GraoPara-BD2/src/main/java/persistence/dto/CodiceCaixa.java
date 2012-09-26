@@ -12,6 +12,14 @@ public class CodiceCaixa implements DTO {
 	
 	private int anoFim;
 
+	public CodiceCaixa(String cod, String titulo, int anoInicio, int anoFim) {
+		super();
+		this.cod = cod;
+		this.titulo = titulo;
+		this.anoInicio = anoInicio;
+		this.anoFim = anoFim;
+	}
+
 	public Long getId() {
 		return id;
 	}

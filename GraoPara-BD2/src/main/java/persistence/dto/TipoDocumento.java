@@ -8,6 +8,11 @@ public class TipoDocumento implements DTO{
 	
 	private String descricao;
 
+	public TipoDocumento(String tipoDocumento, String descricao) {
+		this.nome = tipoDocumento;
+		this.descricao = descricao;
+	}
+
 	public Long getId() {
 		return id;
 	}

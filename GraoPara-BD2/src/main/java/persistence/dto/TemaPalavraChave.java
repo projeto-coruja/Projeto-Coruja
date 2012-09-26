@@ -6,6 +6,10 @@ public class TemaPalavraChave implements DTO{
 
 	private String tema;	//Atores, Instituição, Ação
 	
+	public TemaPalavraChave(String theme) {
+		this.tema = theme;
+	}
+
 	public Long getId() {
 		return id;
 	}

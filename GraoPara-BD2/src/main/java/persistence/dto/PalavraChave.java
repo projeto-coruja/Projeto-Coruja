@@ -12,6 +12,11 @@ public class PalavraChave implements DTO {
 	
 	private String palavra;
 
+	public PalavraChave(String palavraChave, TemaPalavraChave tema) {
+		this.palavra = palavraChave;
+		this.tema = tema;
+	}
+
 	public Long getId() {
 		return id;
 	}

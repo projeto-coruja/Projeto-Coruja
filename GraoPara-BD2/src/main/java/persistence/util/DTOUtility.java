@@ -5,6 +5,7 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 import persistence.dto.DTO;
+import persistence.exceptions.UpdateEntityException;
 
 /**
  * Classe utilitária para ajudar na manutenção dos DTOs.<br>
@@ -58,14 +59,11 @@ public class DTOUtility {
 	 * de entidade, a função é chamada recursivamente utilizando como parâmetros a entidade e o DTO embutidos.
 	 * @param ent a instância de entidade
 	 * @param dto a instância de DTO
-	 * @throws IllegalAccessException
 	 * @throws IllegalArgumentException
-	 * @throws InvocationTargetException
-	 * @throws NoSuchMethodException
-	 * @throws SecurityException
+	 * @throws UpdateEntityException 
 	 */
 	@SuppressWarnings("unchecked")
-	public void updateEntityFromDTO(Object ent, DTO dto) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException{
+	public void updateEntityFromDTO(Object ent, DTO dto) throws IllegalArgumentException, UpdateEntityException {
 		
 		if(ent == null) throw new IllegalArgumentException("Entity argument is null");
 		if(dto == null) throw new IllegalArgumentException("DTO argument is null");
@@ -93,19 +91,33 @@ public class DTOUtility {
 			if(!get.getName().substring(3).equals("Id")){
 				for(Method set : ec_setters) {
 					if(get.getName().substring(3).equals(set.getName().substring(3))) {
-						Object arg = get.invoke(dto, (Object[]) null);
-						if(!(arg instanceof DTO))
-							set.invoke(ent, arg);
-						else {
-							Method ent_getter = ent_class.getMethod(get.getName(), (Class[]) null);
-							Object embedded_ent = ent_getter.invoke(ent, (Object[]) null);
-							updateEntityFromDTO(embedded_ent, (DTO) arg);
+						Object arg;
+						try {
+							arg = get.invoke(dto, (Object[]) null);
+							if(!(arg instanceof DTO))
+								set.invoke(ent, arg);
+							else {
+								Method ent_getter = ent_class.getMethod(get.getName(), (Class[]) null);
+								Object embedded_ent = ent_getter.invoke(ent, (Object[]) null);
+								updateEntityFromDTO(embedded_ent, (DTO) arg);
+							}
+						} catch (IllegalAccessException e) {
+							e.printStackTrace();
+							throw new UpdateEntityException("Erro ao atualizar entidade.");
+						} catch (InvocationTargetException e) {
+							e.printStackTrace();
+							throw new UpdateEntityException("Erro ao atualizar entidade.");
+						} catch (NoSuchMethodException e) {
+							e.printStackTrace();
+							throw new UpdateEntityException("Erro ao atualizar entidade.");
+						} catch (SecurityException e) {
+							e.printStackTrace();
+							throw new UpdateEntityException("Erro ao atualizar entidade.");
 						}
 					}
 				}
 			}
 		}
-		
 	}
 
 }

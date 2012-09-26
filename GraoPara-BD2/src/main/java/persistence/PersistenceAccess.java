@@ -1,12 +1,12 @@
 package persistence;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 import org.jdto.DTOBinder;
 import org.jdto.DTOBinderFactory;
 
 import persistence.dto.DTO;
+import persistence.exceptions.UpdateEntityException;
 import persistence.util.DTOUtility;
 import persistence.util.EntityManager;
 
@@ -28,7 +28,7 @@ public class PersistenceAccess {
 		em.save(binder.extractFromDto(du.findEntityClassForDTO(dto), dto));
 	}
 	
-	public void updateEntity(DTO dto) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
+	public void updateEntity(DTO dto) throws IllegalArgumentException, UpdateEntityException {
 		Object entity = em.find(du.findEntityClassForDTO(dto), dto.getId());
 		du.updateEntityFromDTO(entity, dto);
 		em.update(entity);
