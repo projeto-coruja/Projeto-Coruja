@@ -11,27 +11,18 @@
 <link rel="stylesheet" type="text/css" href="/GraoPara/css/controle.css" />
 
 <!-- CSS das validações -->
-<link rel="stylesheet" type="text/css" media="screen"
-	href="/GraoPara/css/styleValidation.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="/GraoPara/css/styleValidation.css" />
 
 <!-- Import dos javascripts -->
-<script type="text/javascript" src="/GraoPara/javascript/cookie.js"
-	charset="utf-8"></script>
-<script type="text/javascript"
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"
-	charset="utf-8"></script>
-<script src="/GraoPara/javascript/chili-1.7.pack.js"
-	type="text/javascript"></script>
+<script type="text/javascript" src="/GraoPara/javascript/cookie.js" charset="utf-8"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" charset="utf-8"></script>
+<script src="/GraoPara/javascript/chili-1.7.pack.js" type="text/javascript"></script>
 	
 <!-- Import dos scripts de validação de formulário -->
-<script src="/GraoPara/javascript/jquery.js" type="text/javascript"
-	charset="utf-8"></script>
-<script src="/GraoPara/javascript/validate.js" type="text/javascript"
-	charset="utf-8"></script>
-<script src="/GraoPara/javascript/validate_pesquisa.js"
-	type="text/javascript" charset="utf-8"></script>
-<script src="/GraoPara/javascript/utility.js"
-	type="text/javascript" charset="utf-8"></script>
+<script src="/GraoPara/javascript/jquery.js" type="text/javascript" charset="utf-8"></script>
+<script src="/GraoPara/javascript/validate.js" type="text/javascript" charset="utf-8"></script>
+<script src="/GraoPara/javascript/validate_pesquisa.js" type="text/javascript" charset="utf-8"></script>
+<script src="/GraoPara/javascript/utility.js" type="text/javascript" charset="utf-8"></script>
 
 </head>
 <body onloadstart="checkCookie()">
@@ -99,8 +90,8 @@
 							<select name="identificacao" class="input" id="identificacao"><%= WebUtility.printSelectOrigem(request) %></select>
 						</td>
 						<td class="status"><a href="#"><img	src="/GraoPara/images/icone_ajuda.png"
-								alt="Escolha a coleção de Códices ou Caixas do Arquivo Público do Pará"
-								title="Escolha a coleção de Códices ou Caixas do Arquivo Público do Pará" /></a>
+								alt="Escolha a coleção de Códices ou Caixas do Arquivo Público do Pará."
+								title="Escolha a coleção de Códices ou Caixas do Arquivo Público do Pará." /></a>
 						</td>
 					</tr>
 					<tr>						
@@ -110,8 +101,8 @@
 						<input class="inputShort" name="codigoDe" id="codigo" type="text" maxlength="5"><label class="labelForms" id="lcodigo" for="codigo"> até:</label><input class="inputShort" name="codigoAte" id="codigo" type="text" maxlength="5"></td>
 						<td class="status"><a href="#"><img
 								src="/GraoPara/images/icone_ajuda.png"
-								alt="Pode-se solicitar a pesquisa de uma sequência de Códices ou Caixas. Basta indicar o primeiro e o último desejado"
-								title="Pode-se solicitar a pesquisa de uma sequência de Códices ou Caixas. Basta indicar o primeiro e o último desejado" /></a></td>
+								alt="Pode-se solicitar a pesquisa de uma sequência de Códices ou Caixas. Basta indicar o primeiro e o último desejado."
+								title="Pode-se solicitar a pesquisa de uma sequência de Códices ou Caixas. Basta indicar o primeiro e o último desejado." /></a></td>
 					</tr>
 					<tr>
 						<td class="tdPesquisa"><label class="labelForms" id="ltitulo"
@@ -130,8 +121,8 @@
 							id="numero" type="text" maxlength="4"></td>
 						<td class="status"><a href="#"><img
 								src="/GraoPara/images/icone_ajuda.png"
-								alt="O Número APEP é aquele atribuído pelo arquivista do APEP para cada um dos documentos do Códice ou Caixa. Caso não tenha sido atribuído um número pelo arquivista, o projeto designou um que chamou de sequencial"
-								title="O Número APEP é aquele atribuído pelo arquivista do APEP para cada um dos documentos do Códice ou Caixa. Caso não tenha sido atribuído um número pelo arquivista, o projeto designou um que chamou de sequencial" /></a></td>
+								alt="O Número APEP é aquele atribuído pelo arquivista do APEP para cada um dos documentos do Códice ou Caixa. Caso não tenha sido atribuído um número pelo arquivista, o projeto designou um que chamou de sequencial."
+								title="O Número APEP é aquele atribuído pelo arquivista do APEP para cada um dos documentos do Códice ou Caixa. Caso não tenha sido atribuído um número pelo arquivista, o projeto designou um que chamou de sequencial." /></a></td>
 					</tr>
 					<tr>
 						<td class="tdPesquisa"><label class="labelForms" id="lautor"
@@ -140,8 +131,8 @@
 							id="autor" type="text" size="20" maxlength="48"></td>
 						<td class="status"><a href="#"><img
 								src="/GraoPara/images/icone_ajuda.png"
-								alt="Busca pelo nome completo ou parte do autor do documento"
-								title="Busca pelo nome completo ou parte do autor do documento" /></a></td>
+								alt="Busca pelo nome completo ou parte do autor do documento."
+								title="Busca pelo nome completo ou parte do autor do documento." /></a></td>
 					</tr>
 					<tr>
 						<td class="tdPesquisa"><label class="labelForms"
@@ -150,8 +141,8 @@
 							id="destinatario" type="text" size="20" maxlength="48"></td>
 						<td class="status"><a href="#"><img
 								src="/GraoPara/images/icone_ajuda.png"
-								alt="Busca pelo nome completo ou parte do destinatário do Documento"
-								title="Busca pelo nome completo ou parte do destinatário do Documento" /></a></td>
+								alt="Busca pelo nome completo ou parte do destinatário do Documento."
+								title="Busca pelo nome completo ou parte do destinatário do Documento." /></a></td>
 					</tr>
 					<tr>
 						<td class="tdPesquisa"><label class="labelForms" id="llocal"
@@ -194,8 +185,8 @@
 						<td class="status">
 							<a href="#">
 								<img src="/GraoPara/images/icone_ajuda.png"
-								alt="Selecione um dos tipos de documentos para filtrar resultados"
-								title="Selecione um dos tipos de documentos para filtrar resultados" />
+								alt="Selecione um dos tipos de documentos para filtrar resultados."
+								title="Selecione um dos tipos de documentos para filtrar resultados." />
 							</a>
 						</td>
 					</tr>
