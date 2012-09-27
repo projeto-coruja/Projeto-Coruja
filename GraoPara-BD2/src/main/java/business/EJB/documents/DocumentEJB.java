@@ -1,5 +1,8 @@
 package business.EJB.documents;
 
+import java.util.List;
+
+import persistence.dto.DTO;
 import persistence.dto.Documento;
 import persistence.dto.TipoDocumento;
 import business.DAO.document.CodiceCaixaDAO;
@@ -7,6 +10,7 @@ import business.DAO.document.DocumentoDAO;
 import business.DAO.document.PalavraChaveDAO;
 import business.DAO.document.TemaPalavraChaveDAO;
 import business.DAO.document.TipoDocumentoDAO;
+import business.exceptions.documents.DocumentTypeNotFoundException;
 import business.exceptions.login.UnreachableDataBaseException;
 
 public class DocumentEJB {
@@ -16,6 +20,8 @@ public class DocumentEJB {
 	private final PalavraChaveDAO keyWordDao;
 	private final TipoDocumentoDAO typeDocumentDAO;
 	private final DocumentoDAO docDao;
+	
+	private static String default_query = "from Documento where ";
 
 	public DocumentEJB() {
 		codiceCaixaDAO = new CodiceCaixaDAO();
@@ -25,18 +31,22 @@ public class DocumentEJB {
 		docDao = new DocumentoDAO();
 	}
 	
-	public synchronized void deletarDocumento(Documento docDto) throws UnreachableDataBaseException{
-		TipoDocumento tdDto;
-		Long countTipoDocumentoDTO;
-		TipoDocumentoDAO dtDao = new TipoDocumentoDAO();
+	public Documento busca(String cod) throws UnreachableDataBaseException, DocumentTypeNotFoundException{
 
-		tdDto = docDto.getTipoDocumento();
-		docDao.removeDocument(docDto);
-		countTipoDocumentoDTO = docDao.countDocumentsByCriteria("tipo_documento = '" + tdDto.getNome() + "'");
-		
-		if(countTipoDocumentoDTO == 0){
-			dtDao.removeDocumentType(tdDto);
+		boolean continue_query = false;
+		String query = new String(default_query);
+
+		if(cod != null && !cod.isEmpty()){
+			if(continue_query == true){
+				query += " and ";
+			}
+			query += "cod = '" + cod + "'";
+			continue_query = true;
 		}
+
+		List<DTO> list = docDao.findDocumentByQuery(query);
+		if(list == null) throw new DocumentNotFoundException();
+		return (DocumentoDTO) list.get(0);
 
 	}
 

@@ -9,6 +9,7 @@ import business.exceptions.login.UnreachableDataBaseException;
 import persistence.PersistenceAccess;
 import persistence.dto.DTO;
 import persistence.dto.TemaPalavraChave;
+import persistence.exceptions.UpdateEntityException;
 import persistence.util.DataAccessLayerException;
 
 public class TemaPalavraChaveDAO {
@@ -30,7 +31,9 @@ public class TemaPalavraChaveDAO {
 		return newTheme;
 	}
 	
-	public TemaPalavraChave updateKeyWord(String oldTheme, String newTheme) throws UnreachableDataBaseException, ThemeNotFoundException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
+	public TemaPalavraChave updateTheme(String oldTheme, String newTheme) 
+			throws UnreachableDataBaseException, ThemeNotFoundException, IllegalAccessException, IllegalArgumentException, 
+			InvocationTargetException, NoSuchMethodException, SecurityException, UpdateEntityException {
 		List<DTO> check = null;
 		TemaPalavraChave select = null;
 		try{

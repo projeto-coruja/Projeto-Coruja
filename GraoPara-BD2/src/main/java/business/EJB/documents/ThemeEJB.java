@@ -3,7 +3,7 @@ package business.EJB.documents;
 import java.util.List;
 
 import persistence.dto.DTO;
-import persistence.dto.Documento;
+import persistence.dto.PalavraChave;
 import persistence.dto.TemaPalavraChave;
 import business.DAO.document.PalavraChaveDAO;
 import business.DAO.document.TemaPalavraChaveDAO;
@@ -17,6 +17,13 @@ public class ThemeEJB {
 	
 	public ThemeEJB() {
 		themeDAO = new TemaPalavraChaveDAO();
+	}
+	
+	public void addTheme(String tema) throws UnreachableDataBaseException{
+		
+		if(tema.isEmpty())	throw new IllegalArgumentException();
+		else themeDAO.addThemeWord(tema);
+		
 	}
 	
 	public List<DTO> searchAllThemes() throws UnreachableDataBaseException, ThemeNotFoundException  {
@@ -45,9 +52,30 @@ public class ThemeEJB {
 		}
 	}
 	
-	public synchronized void deleteThemes(String tema) throws UnreachableDataBaseException, KeywordNotFoundException {
-		List<DTO> results = null;
-		PalavraChaveDAO palavra = new PalavraChaveDAO();
+	public synchronized void updateThemes(String oldTheme, String newTheme) throws UnreachableDataBaseException, KeywordNotFoundException {
+		
+		PalavraChaveDAO palavraChaveDAO = new PalavraChaveDAO();
+		List<DTO> resultSet = null;
+		List<DTO> listTheme = null;
+		
+		try {
+			listTheme = themeDAO.findThemeByString(newTheme);
+			if(listTheme==null)
+				throw new Exception();
+			
+			resultSet = palavraChaveDAO.findKeyWordByTheme(oldTheme);
+			for (DTO dto : resultSet) {
+				//palavraChaveDAO.updateKeyWord(dto., newKey, newTheme)
+				palavraChaveDAO.updateKeyWord(
+						((PalavraChave)dto).getPalavra(), 
+						((PalavraChave)dto).getPalavra(), 
+						newTheme
+				);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
 
 	}
 
