@@ -43,13 +43,13 @@ public class DocumentoMO {
 	private AutorMO autor;
 	
 	@ManyToOne
-	private PalavraChaveMO atores;
+	private PalavraChaveMO palavraChave1;
 	
 	@ManyToOne
-	private PalavraChaveMO instituicao;
+	private PalavraChaveMO palavraChave2;
 	
 	@ManyToOne
-	private PalavraChaveMO acao;
+	private PalavraChaveMO palavraChave3;
 	
 	@ManyToOne
 	private UserAccountMO uploader;
@@ -113,28 +113,28 @@ public class DocumentoMO {
 		this.autor = autor;
 	}
 
-	public PalavraChaveMO getAtores() {
-		return atores;
+	public PalavraChaveMO getPalavraChave1() {
+		return palavraChave1;
 	}
 
-	public void setAtores(PalavraChaveMO atores) {
-		this.atores = atores;
+	public void setPalavraChave1(PalavraChaveMO palavraChave1) {
+		this.palavraChave1 = palavraChave1;
 	}
 
-	public PalavraChaveMO getInstituicao() {
-		return instituicao;
+	public PalavraChaveMO getPalavraChave2() {
+		return palavraChave2;
 	}
 
-	public void setInstituicao(PalavraChaveMO instituicao) {
-		this.instituicao = instituicao;
+	public void setPalavraChave2(PalavraChaveMO palavraChave2) {
+		this.palavraChave2 = palavraChave2;
 	}
 
-	public PalavraChaveMO getAcao() {
-		return acao;
+	public PalavraChaveMO getPalavraChave3() {
+		return palavraChave3;
 	}
 
-	public void setAcao(PalavraChaveMO acao) {
-		this.acao = acao;
+	public void setPalavraChave3(PalavraChaveMO palavraChave3) {
+		this.palavraChave3 = palavraChave3;
 	}
 
 	public UserAccountMO getUploader() {

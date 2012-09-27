@@ -146,4 +146,8 @@ public class DocumentoDAO {
 		}
 	}
 	
+	public Long countDocumentsByCriteria(String criteria) throws IllegalArgumentException{
+		return manager.countRows("Documento", criteria);
+	}
+	
 }

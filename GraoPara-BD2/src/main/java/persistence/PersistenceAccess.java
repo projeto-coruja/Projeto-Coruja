@@ -48,4 +48,13 @@ public class PersistenceAccess {
 		em.delete(dead);
 	}
 
+	public Long countRows(String table, String criteria){
+		if(table == null)	
+			throw new IllegalArgumentException("Tabela não pode ser null");
+
+		if(criteria == null)	
+			return em.count(table, "1=1");
+		else return em.count(table, criteria);
+	}
+
 }
