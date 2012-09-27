@@ -93,22 +93,25 @@
 					</tr>
 					<tr>
 						<td class="tdPesquisa">
-							<label class="labelForms" id="lidentificacao" for="identificacao">Identificação:</label>
+							<label class="labelForms" id="lidentificacao" for="identificacao">Códice ou Caixa:</label>
 						</td>
 						<td class="field">
 							<select name="identificacao" class="input" id="identificacao"><%= WebUtility.printSelectOrigem(request) %></select>
 						</td>
 						<td class="status"><a href="#"><img	src="/GraoPara/images/icone_ajuda.png"
-								alt="Todos os documentos do Arquivo Público do Pará que serão trabalhados aqui estão organizados em CÓDICE ou em CAIXAS. Portanto, se o documento está em um códice ou em uma caixa faz uma enorme diferença, pois se tratam de coleções diferentes. Tudo é organizado pelo fato de ser caixa ou códice e depois a informação de qual caixa ou códice está se falando é muito importante, pois atrelada a cada uma dessas caixas ou códices está, às vezes, centenas de documentos."
-								title="Todos os documentos do Arquivo Público do Pará que serão trabalhados aqui estão organizados em CÓDICE ou em CAIXAS. Portanto, se o documento está em um códice ou em uma caixa faz uma enorme diferença, pois se tratam de coleções diferentes. Tudo é organizado pelo fato de ser caixa ou códice e depois a informação de qual caixa ou códice está se falando é muito importante, pois atrelada a cada uma dessas caixas ou códices está, às vezes, centenas de documentos." /></a>
+								alt="Escolha a coleção de Códices ou Caixas do Arquivo Público do Pará"
+								title="Escolha a coleção de Códices ou Caixas do Arquivo Público do Pará" /></a>
 						</td>
 					</tr>
 					<tr>						
-						<td class="tdPesquisa"><label class="labelForms" id="lcodigo" for="codigo">Código:</label></td>
+						<td class="tdPesquisa"><label class="labelForms" id="lcodigo" for="codigo">Número do Códice ou Caixa:</label></td>
 						<td class="field">
 						<label class="labelForms" id="ldata" for="data">de: </label>
 						<input class="inputShort" name="codigoDe" id="codigo" type="text" maxlength="5"><label class="labelForms" id="lcodigo" for="codigo"> até:</label><input class="inputShort" name="codigoAte" id="codigo" type="text" maxlength="5"></td>
-						<td class="status"><a href="#"><img src="/GraoPara/images/icone_ajuda.png" alt="Código do documento" title="Informe a faixa de código do documentos que deseja pesquisar" /></a></td>
+						<td class="status"><a href="#"><img
+								src="/GraoPara/images/icone_ajuda.png"
+								alt="Pode-se solicitar a pesquisa de uma sequência de Códices ou Caixas. Basta indicar o primeiro e o último desejado"
+								title="Pode-se solicitar a pesquisa de uma sequência de Códices ou Caixas. Basta indicar o primeiro e o último desejado" /></a></td>
 					</tr>
 					<tr>
 						<td class="tdPesquisa"><label class="labelForms" id="ltitulo"
@@ -127,8 +130,8 @@
 							id="numero" type="text" maxlength="4"></td>
 						<td class="status"><a href="#"><img
 								src="/GraoPara/images/icone_ajuda.png"
-								alt="O número APEP é o número do documento dentro da caixa ou códice que o arquivista atribuiu. Muitos documentos possuem já essa numeração que facilita encontrar o documento dentro do conjunto. Quando existir esse número será com esse que identificaremos o documento. Em alguns casos, porém, o documento não está identificado. Aí você tem, às vezes, duzentos documentos sem nenhum tipo de numeração, o que torna impossível para o pesquisador que ler os verbetes saber rapidamente de que texto está se falando. Nestes casos, usaremos o que estamos chamando de número sequencial."
-								title="O número APEP é o número do documento dentro da caixa ou códice que o arquivista atribuiu. Muitos documentos possuem já essa numeração que facilita encontrar o documento dentro do conjunto. Quando existir esse número será com esse que identificaremos o documento. Em alguns casos, porém, o documento não está identificado. Aí você tem, às vezes, duzentos documentos sem nenhum tipo de numeração, o que torna impossível para o pesquisador que ler os verbetes saber rapidamente de que texto está se falando. Nestes casos, usaremos o que estamos chamando de número sequencial." /></a></td>
+								alt="O Número APEP é aquele atribuído pelo arquivista do APEP para cada um dos documentos do Códice ou Caixa. Caso não tenha sido atribuído um número pelo arquivista, o projeto designou um que chamou de sequencial"
+								title="O Número APEP é aquele atribuído pelo arquivista do APEP para cada um dos documentos do Códice ou Caixa. Caso não tenha sido atribuído um número pelo arquivista, o projeto designou um que chamou de sequencial" /></a></td>
 					</tr>
 					<tr>
 						<td class="tdPesquisa"><label class="labelForms" id="lautor"
@@ -137,19 +140,18 @@
 							id="autor" type="text" size="20" maxlength="48"></td>
 						<td class="status"><a href="#"><img
 								src="/GraoPara/images/icone_ajuda.png"
-								alt="Autor do Documento que deseja pesquisar"
-								title="Autor do Documento que deseja pesquisar" /></a></td>
+								alt="Busca pelo nome completo ou parte do autor do documento"
+								title="Busca pelo nome completo ou parte do autor do documento" /></a></td>
 					</tr>
 					<tr>
 						<td class="tdPesquisa"><label class="labelForms"
-							id="ldestinatario" for="destinatario">Destinatário do
-								Documento:</label></td>
+							id="ldestinatario" for="destinatario">Destinatário do Documento:</label></td>
 						<td class="field"><input class="input" name="destinatario"
 							id="destinatario" type="text" size="20" maxlength="48"></td>
 						<td class="status"><a href="#"><img
 								src="/GraoPara/images/icone_ajuda.png"
-								alt="Esse campo descreve para quem era destinado o documento. Por exemplo, o governo no Rio de Janeiro, a autoridade fulano de tal. Trata-se de um campo textual, assim como autor ou verbete."
-								title="Esse campo descreve para quem era destinado o documento. Por exemplo, o governo no Rio de Janeiro, a autoridade fulano de tal. Trata-se de um campo textual, assim como autor ou verbete." /></a></td>
+								alt="Busca pelo nome completo ou parte do destinatário do Documento"
+								title="Busca pelo nome completo ou parte do destinatário do Documento" /></a></td>
 					</tr>
 					<tr>
 						<td class="tdPesquisa"><label class="labelForms" id="llocal"
