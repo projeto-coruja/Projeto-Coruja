@@ -36,29 +36,34 @@
 
 			<!--Depois de logado-->
 			<div class="bordaBox">
-				<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+				<b class="b1"></b>
+				<b class="b2"></b>
+				<b class="b3"></b>
+				<b class="b4"></b>
 				<div class="conteudo">
-			<div class="LoginArea" id="logado" style="display:block;">
-				<form method="post" action="/GraoPara/doLogout">
-					<fieldset>
-						<label class="sidebar" for="login">Bem vindo
-						<%
-							WebUtility.printName(request, out);
-						%>
-						</label>
-					</fieldset>
-					<fieldset>
-						<input class="buttonSair" type="submit" name="Sair" value="Sair" />
-					</fieldset>
-				</form>
-			</div>
-			</div>
-				<b class="b4"></b><b class="b3"></b><b class="b2"></b><b class="b1"></b>
+					<div class="LoginArea" id="logado" style="display:block;">
+						<form method="post" action="/GraoPara/doLogout">
+							<fieldset>
+								<label class="sidebar" for="login">Bem vindo <% WebUtility.printName(request, out); %></label>
+							</fieldset>
+							<fieldset>
+								<input class="buttonSair" type="submit" name="Sair" value="Sair" />
+							</fieldset>
+						</form>
+					</div>
+				</div>
+				<b class="b4"></b>
+				<b class="b3"></b>
+				<b class="b2"></b>
+				<b class="b1"></b>
 			</div>	
 			<!-- ----------------------------------------------------------------------- -->
 
 			<div class="bordaBox">
-				<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+				<b class="b1"></b>
+				<b class="b2"></b>
+				<b class="b3"></b>
+				<b class="b4"></b>
 				<div class="conteudo">
 					<article class="menuLateral">
 						<ul class="nav" id="menu">
@@ -69,10 +74,16 @@
 						</ul>
 					</article>
 				</div>
-				<b class="b4"></b><b class="b3"></b><b class="b2"></b><b class="b1"></b>
+				<b class="b4"></b>
+				<b class="b3"></b>
+				<b class="b2"></b>
+				<b class="b1"></b>
 			</div>	
 			<div class="bordaBox">
-				<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+				<b class="b1"></b>
+				<b class="b2"></b>
+				<b class="b3"></b>
+				<b class="b4"></b>
 				<div class="conteudo">
 					<article class="menuLateral">
 						<ul class="nav" id="menu">
@@ -84,10 +95,16 @@
 						</ul>
 					</article>
 				</div>
-				<b class="b4"></b><b class="b3"></b><b class="b2"></b><b class="b1"></b>
+				<b class="b4"></b>
+				<b class="b3"></b>
+				<b class="b2"></b>
+				<b class="b1"></b>
 			</div>	
 			<div class="bordaBox">
-				<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+				<b class="b1"></b>
+				<b class="b2"></b>
+				<b class="b3"></b>
+				<b class="b4"></b>
 				<div class="conteudo">
 					<article class="menuLateral">
 						<ul class="nav" id="menu">	
@@ -97,7 +114,10 @@
 						</ul>
 					</article>
 					</div>
-					<b class="b4"></b><b class="b3"></b><b class="b2"></b><b class="b1"></b>
+					<b class="b4"></b>
+					<b class="b3"></b>
+					<b class="b2"></b>
+					<b class="b1"></b>
 				</div>
 		</div>
 		<!-- Fim do Menu Lateral -->
@@ -107,25 +127,15 @@
 		<form id="signupform" autocomplete="off" method="GET" action="/GraoPara/protected/admin/addDoc">
 				<table class="tableForms">
 					<tr>
-						<td class="field">
-							<input type = "hidden" id="action" name="action" value="add"></input>
-						</td>
+						<td class="field"><input type = "hidden" id="action" name="action" value="add"></input></td>
 					</tr>
 					<tr>
-						<td class="tdForms">
-							<label class="labelForms" id="lidentificacao" for="identificacao">Identificação<span class="asterisco">*</span></label>
-						</td>
-						<td class="field">
-							<select name="identificacao" class="inputLong" id="identificacao">
-								<%= WebUtility.printCadastroOrigem(request) %>
-							</select>
-						</td>
+						<td class="tdForms"><label class="labelForms" id="lidentificacao" for="identificacao">Códice ou Caixa<span class="asterisco">*</span></label></td>
+						<td class="field"><select name="identificacao" class="inputLong" id="identificacao"><%= WebUtility.printCadastroOrigem(request) %></select></td>
 						<td class="status"></td>
 					</tr>
 					<tr>
-						<td class="tdForms">
-							<label class="labelForms" id="lnumero" for="numero">Número APEP ou Sequencial:<span class="asterisco">*</span></label>
-						</td>
+						<td class="tdForms"><label class="labelForms" id="lnumero" for="numero">Número APEP ou Sequencial:<span class="asterisco">*</span></label></td>
 						<td class="field">
 							<select name="tipo_num" class="inputTipoNum" id="tipo_num">
 									<option value="" selected>Selecione...</option>
@@ -137,36 +147,22 @@
 						<td class="status"></td>
 					</tr>
 					<tr>
-						<td class="tdForms">
-							<label class="labelForms" id="lautor" for="autor">Autor do Documento:<span class="asterisco">*</span></label>
-						</td>
-						<td class="field">
-							<input class="input" name="autor" id="autor" type="text" size="20" maxlength="48">
-						</td>
+						<td class="tdForms"><label class="labelForms" id="lautor" for="autor">Autor do Documento:<span class="asterisco">*</span></label></td>
+						<td class="field"><input class="input" name="autor" id="autor" type="text" size="20" maxlength="1024"></td>
 						<td class="status"></td>
 					</tr>
 					<tr>
-						<td class="tdForms">
-							<label class="labelForms" id="ldestinatario" for="destinatario">Destinatário do Documento:<span class="asterisco">*</span></label>
-						</td>
-						<td class="field">
-							<input class="input" name="destinatario" id="destinatario" type="text" size="20" maxlength="48">
-						</td>
+						<td class="tdForms"><label class="labelForms" id="ldestinatario" for="destinatario">Destinatário do Documento:<span class="asterisco">*</span></label></td>
+						<td class="field"><input class="input" name="destinatario" id="destinatario" type="text" size="20" maxlength="1024"></td>
 						<td class="status"></td>
 					</tr>
 					<tr>
-						<td class="tdForms">
-							<label class="labelForms" id="llocal" for="local">Local:<span class="asterisco">*</span></label>
-						</td>
-						<td class="field">
-							<input class="input" name="local" id="local" type="text" maxlength="48">
-						</td>
+						<td class="tdForms"><label class="labelForms" id="llocal" for="local">Local:<span class="asterisco">*</span></label></td>
+						<td class="field"><input class="input" name="local" id="local" type="text" maxlength="1024"></td>
 						<td class="status"></td>
 					</tr>
 					<tr>
-						<td class="tdForms">
-							<label class="labelForms" id="ldata" for="data">Data do Documento:<span class="asterisco">*</span></label>
-						</td>
+						<td class="tdForms"><label class="labelForms" id="ldata" for="data">Data do Documento:<span class="asterisco">*</span></label></td>
 						<td class="field">
 							<select name="dia" id="dia" class="inputShort">
 								<option value="" selected="selected">Dia:</option>
@@ -223,9 +219,7 @@
 						<td class="status"></td>
 					</tr>
 					<tr>
-						<td class="tdForms">
-							<label class="labelForms" id="ltipoDoc" for="tipoDoc">Tipo do Documento:<span class="asterisco">*</span></label>
-						</td>
+						<td class="tdForms"><label class="labelForms" id="ltipoDoc" for="tipoDoc">Tipo do Documento:<span class="asterisco">*</span></label></td>
 						<td class="field">
 							<select class="input" name="tipoDoc" id="tipoDoc"> <!-- Pegar do Banco de dados os tipos e, caso o usuÃ¡rio selecione outro, exibir campo para cadastrar outro tipo -->
 								<%= WebUtility.printSelectTipoDoc(request) %>
@@ -234,20 +228,14 @@
 						<td class="status"></td>
 					</tr>		
 					<tr>
-						<td colspan="3">
-							<label class="labelForms"><strong>RESUMO OU VERBETE DO DOCUMENTO:<span class="asterisco">*</span></strong></label>
-						</td>
+						<td colspan="3"><label class="labelForms"><strong>RESUMO OU VERBETE DO DOCUMENTO:<span class="asterisco">*</span></strong></label></td>
 					</tr>
 					<tr>						
-						<td class="field" colspan="2">
-							<textarea class="inputResumo" id="resumo" name="resumo" rows="7" cols="40" maxlength="2048"></textarea>
-						</td>
+						<td class="field" colspan="2"><textarea class="inputResumo" id="resumo" name="resumo" rows="7" cols="40" maxlength="2048"></textarea></td>
 						<td class="status"></td>
 					</tr>								
 					<tr>
-						<td colspan="3">
-							<label for="palavrasChaves" class="labelForms">Palavra Chaves:<span class="asterisco">(Obrigatório pelo menos uma)</span></label>
-						</td>
+						<td colspan="3"><label for="palavrasChaves" class="labelForms">Palavra Chaves:<span class="asterisco">(Obrigatório pelo menos uma)</span></label></td>
 					</tr>
 					<tr>
 						<td class="field" colspan="2">
@@ -270,20 +258,21 @@
 						<td class="status"></td>
 					</tr>
 					<tr>
-						<td class="tdForms">
-							<p></p>
+						<td class="tdForms"><p></p>
 							<input class="buttonRegistrar" id="signupsubmit" name="inserir" type="submit" value="Enviar" />
 						</td>
 					</tr>
 				</table>
 			</form>			
 		</div>
+		
 		<!-- Começo do Rodapé -->
 		<div class="footer">
 			<p>Copyright © - Universidade Federal de São Paulo - UNIFESP 2012</p>
 			<p>Desenvolvido pelo grupo Coruja</p>
 		</div>
 		<!-- Fim do Rodapé -->
+		
 		<!-- end .container -->
 	</div>
 </body>
