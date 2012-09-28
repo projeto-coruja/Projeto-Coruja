@@ -13,6 +13,8 @@ public class Documento implements DTO {
 	
 	private String titulo;
 	
+	private String local;
+	
 	private String resumo;
 
 	@DTOCascade
@@ -24,6 +26,9 @@ public class Documento implements DTO {
 	@DTOCascade
 	private Autor autor;
 	
+	@DTOCascade
+	private Autor destinatario;
+
 	@DTOCascade
 	private PalavraChave palavraChave1;
 	
@@ -39,7 +44,7 @@ public class Documento implements DTO {
 	private Date data;
 
 	public Long getId() {
-		return this.id;
+		return id;
 	}
 
 	public void setId(Long id) {
@@ -53,7 +58,7 @@ public class Documento implements DTO {
 	public void setCod(String cod) {
 		this.cod = cod;
 	}
-	
+
 	public String getTitulo() {
 		return titulo;
 	}
@@ -61,7 +66,15 @@ public class Documento implements DTO {
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
-	
+
+	public String getLocal() {
+		return local;
+	}
+
+	public void setLocal(String local) {
+		this.local = local;
+	}
+
 	public String getResumo() {
 		return resumo;
 	}
@@ -92,6 +105,14 @@ public class Documento implements DTO {
 
 	public void setAutor(Autor autor) {
 		this.autor = autor;
+	}
+
+	public Autor getDestinatario() {
+		return destinatario;
+	}
+
+	public void setDestinatario(Autor destinatario) {
+		this.destinatario = destinatario;
 	}
 
 	public PalavraChave getPalavraChave1() {

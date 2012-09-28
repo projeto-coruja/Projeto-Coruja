@@ -31,6 +31,8 @@ public class EJBUtility {
 	/**
 	 * Transforma uma senha em hash.
 	 * @param s - String que será transformado em hash.
+	 * @param algorithm - Algorítmo a ser utilizado. 
+	 * Caso <b>null</b> ou algoritmo inexistente, o método utilizará o <b>MD5</b> como padrão. 
 	 * @return hashword - Hash da senha.
 	 */
 	public static String getHash(String s, String algorithm){
@@ -49,14 +51,14 @@ public class EJBUtility {
 	}
 
 	/**
-	 * Gera uma nova senha de n caracteres.
-	 * @param n - Número de caracteres que será colocado na nova senha. 
-	 * @return password - Nova senha gerado aleatóriamente.
+	 * Gera uma String aleatório de n caracteres.
+	 * @param n - Número de caracteres que será colocado na String. 
+	 * @return String gerado.
 	 */
-	public static String genNewRandomPassword(Integer n){
+	public static String genRandomString(Integer n){
 		char c;
 		Random r = new Random();
-		String password = "";
+		String s = "";
 		for(int i = 0; i < n; i++){
 			switch(r.nextInt(3)){
 			case 0:
@@ -71,10 +73,10 @@ public class EJBUtility {
 			default:
 				c = '-';
 			}
-			password += c;
+			s += c;
 		}
 
-		return password;
+		return s;
 
 	}
 

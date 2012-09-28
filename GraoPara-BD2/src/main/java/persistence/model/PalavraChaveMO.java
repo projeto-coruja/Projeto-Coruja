@@ -11,7 +11,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 
 @Entity
-public class PalavraChaveMO {
+public class PalavraChaveMO implements EntityMO  {
 	
 	@Id
 	@GeneratedValue

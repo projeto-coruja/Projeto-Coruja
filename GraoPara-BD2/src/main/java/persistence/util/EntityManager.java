@@ -7,6 +7,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import persistence.model.EntityMO;
 import persistence.util.DataAccessLayerException;
 import persistence.util.PersistenceUtility;
 
@@ -20,7 +21,7 @@ public class EntityManager {
 		PersistenceUtility.buildIfNeeded();
 	}
 
-	public void save(Object obj) throws DataAccessLayerException{
+	public void save(EntityMO obj) throws DataAccessLayerException{
 		try{
 			startOperation();
 			session.save(obj);
@@ -32,7 +33,7 @@ public class EntityManager {
 		}
 	}
 	
-	public void update(Object obj) throws DataAccessLayerException{
+	public void update(EntityMO obj) throws DataAccessLayerException{
 		try{
 			startOperation();
 			session.update(obj);
@@ -44,7 +45,7 @@ public class EntityManager {
 		}
 	}
 
-	public void delete(Object obj) throws DataAccessLayerException{
+	public void delete(EntityMO obj) throws DataAccessLayerException{
 		try{
 			startOperation();
 			session.delete(obj);

@@ -8,7 +8,7 @@ import org.hibernate.annotations.NaturalId;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-public class AutorMO {
+public class AutorMO implements EntityMO {
 	
 	@Id
 	@GeneratedValue

@@ -1,11 +1,14 @@
 package business.EJB.documents;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 import persistence.dto.DTO;
 import persistence.dto.TipoDocumento;
+import persistence.exceptions.UpdateEntityException;
 
 import business.DAO.document.TipoDocumentoDAO;
+import business.exceptions.documents.DocumentNotFoundException;
 import business.exceptions.documents.DocumentTypeNotFoundException;
 import business.exceptions.login.UnreachableDataBaseException;
 
@@ -21,27 +24,41 @@ public class DocumentTypeEJB {
 		return typeDoc.findAllDocumentTypes();
 	}
 
-	public synchronized void addNewDocumentType(String type, String description) throws UnreachableDataBaseException{
+	public void addNewDocumentType(String type, String description) throws UnreachableDataBaseException{
 		TipoDocumentoDAO dao = new TipoDocumentoDAO();
+		@SuppressWarnings("unused")
 		TipoDocumento dto = null;
 		try{
 			dto = dao.findSingleDocumentTypeByString(type);
 		}catch(DocumentTypeNotFoundException e){
 			dao.addDocumentType(type, description);
 		}
-
+	}
+	
+	public void updateNewDocumentType(String type, String description) 
+			throws UpdateEntityException, UnreachableDataBaseException, IllegalAccessException, 
+			IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException{
+		TipoDocumentoDAO dao = new TipoDocumentoDAO();
+		TipoDocumento dto = null;
+		try{
+			dto = dao.findSingleDocumentTypeByString(type);
+			dto.setNome(type);
+			dto.setDescricao(description);
+			dao.updateDocumentType(dto);
+		}catch(DocumentTypeNotFoundException e){
+			dao.addDocumentType(type, description);
+		}
 	}
 
-	public synchronized void removeTypeDocument(String deletingType) throws UnreachableDataBaseException, DocumentTypeNotFoundException{
-		BuscaDocEJB search = new BuscaDocEJB();
-
+	public void removeTypeDocument(String deletingType) throws UnreachableDataBaseException, DocumentTypeNotFoundException{
+		DocumentEJB search = new DocumentEJB();
 		TipoDocumento type = typeDoc.findSingleDocumentTypeByString(deletingType);
-		List<DTO> documentList;
 		try {
-			documentList = search.buscaPorTipoDocumento(deletingType);
+			search.findByDocumentType(deletingType);
 			throw new IllegalArgumentException("Tentativa de remoção de tipo de documento que possue associação a algum documento.");
-		} catch (DocumentTypeNotFoundException e) {
+		} catch (DocumentNotFoundException e) {
 			typeDoc.removeDocumentType(type);
+			e.printStackTrace();
 		}
 
 	}

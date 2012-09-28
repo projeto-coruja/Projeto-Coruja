@@ -9,7 +9,7 @@ import org.hibernate.annotations.NaturalId;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-public class CodiceCaixaMO {
+public class CodiceCaixaMO implements EntityMO  {
 	
 	@Id
 	@GeneratedValue

@@ -38,7 +38,7 @@ public class RegisterUserBean {
 	
 	public String recuperarSenha(String email) throws UnreachableDataBaseException, UserNotFoundException, IllegalArgumentException, UpdateEntityException {
 		UserAccount user = userDAO.findUserByEmail(email);
-		String newPassword = EJBUtility.genNewRandomPassword(6);
+		String newPassword = EJBUtility.genRandomString(6);
 		user.setPassword(EJBUtility.getHash(newPassword, "MD5"));
 		userDAO.updateUser(user);
 		return newPassword;

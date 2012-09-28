@@ -11,6 +11,7 @@ import persistence.dto.TipoDocumento;
 import persistence.exceptions.UpdateEntityException;
 import persistence.util.DataAccessLayerException;
 import business.exceptions.documents.CodiceCaixaNotFoundException;
+import business.exceptions.documents.DocumentNotFoundException;
 import business.exceptions.documents.DocumentTypeNotFoundException;
 import business.exceptions.documents.DuplicateCodiceCaixaException;
 import business.exceptions.documents.KeywordNotFoundException;
@@ -148,6 +149,21 @@ public class DocumentoDAO {
 	
 	public Long countDocumentsByCriteria(String criteria) throws IllegalArgumentException{
 		return manager.countRows("Documento", criteria);
+	}
+
+	public List<DTO> findDocumentByQuery(String query) throws DocumentNotFoundException, UnreachableDataBaseException{
+		List<DTO> resultSet = null;
+		if(query == null)	throw new IllegalArgumentException("Query não pode ser null");
+		try {
+			resultSet = manager.findEntity(query);
+			if(resultSet == null) {
+				throw new  DocumentNotFoundException("Nenhum documento encontrado.");
+			}
+			else return resultSet;
+		} catch (DataAccessLayerException e) {
+			e.printStackTrace();
+			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
+		}
 	}
 	
 }

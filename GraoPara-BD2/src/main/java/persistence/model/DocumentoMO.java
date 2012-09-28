@@ -15,7 +15,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 
 @Entity
-public class DocumentoMO {
+public class DocumentoMO implements EntityMO  {
 	
 	@Id
 	@GeneratedValue
@@ -29,8 +29,11 @@ public class DocumentoMO {
 	@Column(length = 1024)
 	private String titulo;
 	
+	@Column(length = 1024)
+	private String local;
+	
 	@NotNull
-	@Column(length = 4096)
+	@Column(length = 8192)
 	private String resumo;
 
 	@ManyToOne
@@ -41,6 +44,9 @@ public class DocumentoMO {
 	
 	@ManyToOne
 	private AutorMO autor;
+	
+	@ManyToOne
+	private AutorMO destinatario;
 	
 	@ManyToOne
 	private PalavraChaveMO palavraChave1;
@@ -72,7 +78,7 @@ public class DocumentoMO {
 	public void setCod(String cod) {
 		this.cod = cod;
 	}
-	
+
 	public String getTitulo() {
 		return titulo;
 	}
@@ -80,7 +86,15 @@ public class DocumentoMO {
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
-	
+
+	public String getLocal() {
+		return local;
+	}
+
+	public void setLocal(String local) {
+		this.local = local;
+	}
+
 	public String getResumo() {
 		return resumo;
 	}
@@ -89,12 +103,12 @@ public class DocumentoMO {
 		this.resumo = resumo;
 	}
 
-	public CodiceCaixaMO getOrigem() {
+	public CodiceCaixaMO getCodiceCaixa() {
 		return codiceCaixa;
 	}
 
-	public void setOrigem(CodiceCaixaMO origem) {
-		this.codiceCaixa = origem;
+	public void setCodiceCaixa(CodiceCaixaMO codiceCaixa) {
+		this.codiceCaixa = codiceCaixa;
 	}
 
 	public TipoDocumentoMO getTipoDocumento() {
@@ -111,6 +125,14 @@ public class DocumentoMO {
 
 	public void setAutor(AutorMO autor) {
 		this.autor = autor;
+	}
+
+	public AutorMO getDestinatario() {
+		return destinatario;
+	}
+
+	public void setDestinatario(AutorMO destinatario) {
+		this.destinatario = destinatario;
 	}
 
 	public PalavraChaveMO getPalavraChave1() {

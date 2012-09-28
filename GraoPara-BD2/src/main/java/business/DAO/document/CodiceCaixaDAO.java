@@ -1,6 +1,5 @@
 package business.DAO.document;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 import business.exceptions.documents.CodiceCaixaNotFoundException;
@@ -30,7 +29,7 @@ public class CodiceCaixaDAO {
 			e.printStackTrace();
 			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");			
 		} catch (CodiceCaixaNotFoundException e) {
-			manager.saveEntity(newId);
+			newId = (CodiceCaixa) manager.saveEntity(newId);
 			return newId;
 		}
 	}
@@ -116,5 +115,4 @@ public class CodiceCaixaDAO {
 			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
 		}
 	}
-
 }

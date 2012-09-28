@@ -11,7 +11,7 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-public class UserAccountMO {
+public class UserAccountMO implements EntityMO  {
 	
 	@Id
 	@GeneratedValue

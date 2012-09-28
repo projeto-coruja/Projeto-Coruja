@@ -38,7 +38,7 @@ public class PalavraChaveDAO {
 		PalavraChave newKey = new PalavraChave(key, newTheme);
 		
 		try{
-			manager.saveEntity(newKey);
+			newKey = (PalavraChave) manager.saveEntity(newKey);
 		}catch(DataAccessLayerException e){
 			e.printStackTrace();
 			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");			

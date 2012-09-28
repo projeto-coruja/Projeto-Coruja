@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import persistence.dto.DTO;
 import persistence.exceptions.UpdateEntityException;
+import persistence.model.EntityMO;
 
 /**
  * Classe utilitária para ajudar na manutenção dos DTOs.<br>
@@ -63,7 +64,7 @@ public class DTOUtility {
 	 * @throws UpdateEntityException 
 	 */
 	@SuppressWarnings("unchecked")
-	public void updateEntityFromDTO(Object ent, DTO dto) throws IllegalArgumentException, UpdateEntityException {
+	public void updateEntityFromDTO(EntityMO ent, DTO dto) throws IllegalArgumentException, UpdateEntityException {
 		
 		if(ent == null) throw new IllegalArgumentException("Entity argument is null");
 		if(dto == null) throw new IllegalArgumentException("DTO argument is null");
@@ -98,7 +99,7 @@ public class DTOUtility {
 								set.invoke(ent, arg);
 							else {
 								Method ent_getter = ent_class.getMethod(get.getName(), (Class[]) null);
-								Object embedded_ent = ent_getter.invoke(ent, (Object[]) null);
+								EntityMO embedded_ent = (EntityMO) ent_getter.invoke(ent, (Object[]) null);
 								updateEntityFromDTO(embedded_ent, (DTO) arg);
 							}
 						} catch (IllegalAccessException e) {

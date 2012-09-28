@@ -8,6 +8,7 @@ import business.exceptions.login.UnreachableDataBaseException;
 import persistence.PersistenceAccess;
 import persistence.dto.DTO;
 import persistence.dto.TipoDocumento;
+import persistence.exceptions.UpdateEntityException;
 import persistence.util.DataAccessLayerException;
 
 public class TipoDocumentoDAO {
@@ -21,7 +22,7 @@ public class TipoDocumentoDAO {
 	public TipoDocumento addDocumentType(String tipoDocumento, String descricao) throws UnreachableDataBaseException{
 		TipoDocumento newType = new TipoDocumento(tipoDocumento, descricao);
 		try{
-			manager.saveEntity(newType);
+			newType = (TipoDocumento) manager.saveEntity(newType);
 		}catch(DataAccessLayerException e){
 			e.printStackTrace();
 			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");			
@@ -39,7 +40,10 @@ public class TipoDocumentoDAO {
 		}
 	}
 	
-	public void updateDocumentType(TipoDocumento docType) throws UnreachableDataBaseException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
+	public void updateDocumentType(TipoDocumento docType) 
+			throws UnreachableDataBaseException, IllegalAccessException, IllegalArgumentException, 
+			InvocationTargetException, NoSuchMethodException, SecurityException, UpdateEntityException {
+		
 		if(docType == null) throw new IllegalArgumentException("Tipo de documento inexistente!");
 		try { 
 			if(docType.getId() == null)	addDocumentType(docType.getNome(), docType.getDescricao());

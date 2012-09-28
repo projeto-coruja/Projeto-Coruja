@@ -23,7 +23,7 @@ public class TemaPalavraChaveDAO {
 	public TemaPalavraChave addThemeWord(String theme) throws UnreachableDataBaseException{
 		TemaPalavraChave newTheme = new TemaPalavraChave(theme);
 		try{
-			manager.saveEntity(newTheme);
+			newTheme = (TemaPalavraChave) manager.saveEntity(newTheme);
 		}catch(DataAccessLayerException e){
 			e.printStackTrace();
 			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");			
