@@ -129,6 +129,15 @@
 						<td colspan="3"><label class="labelForms"><strong>PREENCHA UM OU MAIS CAMPOS A SEGUIR:</strong></label></td>
 					</tr>
 					<tr>
+						<td class="tdPesquisa"><label class="labelForms" id="lbuscaGeral" for="buscaGeral">Busca por Qualquer Palavra:</label></td>
+						<td class="field"><input class="input" name="buscaGeral" id="buscaGeral" type="text" size="20" maxlength="100"></td>
+						<td class="status"><a href="#"><img
+							src="/GraoPara/images/icone_ajuda.png"
+							alt="Busca por qualquer palavra registrada nos campos de identificação do documento por este projeto."
+							title="Busca por qualquer palavra registrada nos campos de identificação do documento por este projeto." /></a>
+						</td>
+					</tr>
+					<tr>
 						<td class="tdPesquisa"><label class="labelForms" id="lidentificacao" for="identificacao">Códice ou Caixa:</label></td>
 						<td class="field"><select name="identificacao" class="input" id="identificacao"><%= WebUtility.printSelectOrigem(request) %></select></td>
 						<td class="status"><a href="#"><img	

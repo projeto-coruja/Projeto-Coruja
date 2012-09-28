@@ -85,12 +85,21 @@
 		</div>
 			<!-- Fim do Menu Lateral -->
 			
-<div class="content" id="content">
+	<div class="content" id="content">
 			<h1>Pesquisa de Documento</h1>
 			<form action="/GraoPara/public/listagemDocumentos.jsp" id="signupform" method="get" name="cadastro">
 				<table class="tablePesquisa">
 					<tr>
 						<td colspan="3"><label class="labelForms"><strong>PREENCHA UM OU MAIS CAMPOS A SEGUIR:</strong></label></td>
+					</tr>
+					<tr>
+						<td class="tdPesquisa"><label class="labelForms" id="lbuscaGeral" for="buscaGeral">Busca por Qualquer Palavra:</label></td>
+						<td class="field"><input class="input" name="buscaGeral" id="buscaGeral" type="text" size="20" maxlength="100"></td>
+						<td class="status"><a href="#"><img
+							src="/GraoPara/images/icone_ajuda.png"
+							alt="Busca por qualquer palavra registrada nos campos de identificação do documento por este projeto."
+							title="Busca por qualquer palavra registrada nos campos de identificação do documento por este projeto." /></a>
+						</td>
 					</tr>
 					<tr>
 						<td class="tdPesquisa"><label class="labelForms" id="lidentificacao" for="identificacao">Códice ou Caixa:</label></td>
