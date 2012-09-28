@@ -147,6 +147,11 @@
 						<td class="status"></td>
 					</tr>
 					<tr>
+						<td class="tdForms"><label class="labelForms" id="ltituloDocumento" for="tituloDocumento">Título do Documento:<span class="asterisco">*</span></label></td>
+						<td class="field"><input class="input" name="tituloDocumento" id="tituloDocumento" type="text" size="20" maxlength="1024"></td>
+						<td class="status"></td>
+					</tr>
+					<tr>
 						<td class="tdForms"><label class="labelForms" id="lautor" for="autor">Autor do Documento:<span class="asterisco">*</span></label></td>
 						<td class="field"><input class="input" name="autor" id="autor" type="text" size="20" maxlength="1024"></td>
 						<td class="status"></td>
