@@ -1,34 +1,37 @@
 package business.EJB.documents;
 
+import java.util.Date;
 import java.util.List;
 
+import persistence.dto.Autor;
+import persistence.dto.CodiceCaixa;
 import persistence.dto.DTO;
 import persistence.dto.Documento;
+import persistence.dto.PalavraChave;
 import persistence.dto.TipoDocumento;
+import persistence.dto.UserAccount;
+import persistence.exceptions.UpdateEntityException;
+import business.DAO.document.AutorDAO;
 import business.DAO.document.CodiceCaixaDAO;
 import business.DAO.document.DocumentoDAO;
 import business.DAO.document.PalavraChaveDAO;
-import business.DAO.document.TemaPalavraChaveDAO;
 import business.DAO.document.TipoDocumentoDAO;
+import business.exceptions.documents.AuthorNotFoundException;
+import business.exceptions.documents.CodiceCaixaNotFoundException;
 import business.exceptions.documents.DocumentNotFoundException;
 import business.exceptions.documents.DocumentTypeNotFoundException;
+import business.exceptions.documents.DuplicateCodiceCaixaException;
+import business.exceptions.documents.DuplicatedAuthorException;
+import business.exceptions.documents.KeywordNotFoundException;
 import business.exceptions.login.UnreachableDataBaseException;
 
 public class DocumentEJB {
 	
-	private final CodiceCaixaDAO codiceCaixaDAO;
-	private final TemaPalavraChaveDAO temaDAO;
-	private final PalavraChaveDAO keyWordDao;
-	private final TipoDocumentoDAO typeDocumentDAO;
 	private final DocumentoDAO docDao;
 	
 	private static String default_query = "from DocumentoMO where ";
 
 	public DocumentEJB() {
-		codiceCaixaDAO = new CodiceCaixaDAO();
-		temaDAO = new TemaPalavraChaveDAO();
-		keyWordDao = new PalavraChaveDAO();
-		typeDocumentDAO = new TipoDocumentoDAO();
 		docDao = new DocumentoDAO();
 	}
 	
@@ -176,6 +179,164 @@ public class DocumentEJB {
 		return docDao.findDocumentByQuery(query);
 	}
 	
+	public void registerNewDocument(
+			// Documento
+			String tituloDocumento,
+			String codDocumento,
+			String local,
+			String resumo,
+			UserAccount uploader,
+			// Códice e caixa
+			String codCodiceCaixa,
+			String tituloCodiceCaixa,
+			String anoInicioCodiceCaixa,
+			String anoFimCodiceCaixa,
+			// Autor documento
+			String autor,
+			String ocupacaoAutor,
+			// Destinatário (AutorMO)
+			String destinatario,
+			String ocupacaoDestinatario,
+			// Tipo Documento
+			String tipoDocumento,
+			String descricaoDoTipoDocumento,
+			// Palavra chave 1
+			String palavraChave1,
+			String temaPalavraChave1,
+			// Palavra chave 2
+			String palavraChave2,
+			String temaPalavraChave2,
+			// Palavra chave 3
+			String palavraChave3,
+			String temaPalavraChave3) throws UnreachableDataBaseException{
+
+		List<DTO> check;
+		CodiceCaixaDAO codiceCaixaDAO = new CodiceCaixaDAO();
+		TipoDocumentoDAO tipoDocumentoDAO = new TipoDocumentoDAO();
+		PalavraChaveDAO palavraChaveDAO = new PalavraChaveDAO();
+		AutorDAO autorDAO = new AutorDAO();
+		
+		Documento newDoc;
+		CodiceCaixa codCaixa = null;
+		PalavraChave[] palavraChave = new PalavraChave[3];
+		TipoDocumento tipoDoc = null;
+		Autor author = null;
+		Autor addressee = null;
+		
+		// Verificação de existência da origem do documento no banco
+		try {
+			codCaixa = codiceCaixaDAO.findExactCodiceCaixa(codCodiceCaixa, tituloCodiceCaixa);
+		} catch (CodiceCaixaNotFoundException e1) {
+			try {
+				codCaixa = codiceCaixaDAO.addCodiceCaixa(
+								codCodiceCaixa, 
+								tituloCodiceCaixa, 
+								Integer.parseInt(tituloCodiceCaixa), 
+								Integer.parseInt(anoFimCodiceCaixa)	);
+			} catch (DuplicateCodiceCaixaException e) {
+				e.printStackTrace();
+			}
+		}
+
+		// Verificação de existência do tipo de documento no banco
+		try {
+			check = tipoDocumentoDAO.findDocumentTypeByString(tipoDocumento);
+			for(DTO dto : check){
+				if(((TipoDocumento) dto).getNome().equals(tipoDocumento))
+					tipoDoc = (TipoDocumento) dto;
+			}
+		} catch (DocumentTypeNotFoundException e1) {	
+			tipoDoc = tipoDocumentoDAO.addDocumentType(tipoDocumento, descricaoDoTipoDocumento);
+		}
+		
+		// Verificação de existência das palavras chaves documento no banco
+		if(palavraChave1 != null && !palavraChave1.isEmpty())
+		{	
+			try {
+				check = palavraChaveDAO.findKeyWordByString(palavraChave1);
+				for(DTO dto : check){
+					if(((PalavraChave) dto).getPalavra().equals(palavraChave1))
+						palavraChave[0] = (PalavraChave) dto;
+				}
+			} catch (KeywordNotFoundException e1) {
+				palavraChave[0] = palavraChaveDAO.addKeyWord(
+								palavraChave1,
+								temaPalavraChave1
+								);
+			}
+		}
+
+		if(palavraChave2 != null && !palavraChave2.isEmpty())
+		{
+			try {
+				check = palavraChaveDAO.findKeyWordByString(palavraChave2);
+				for(DTO dto : check){
+					if(((PalavraChave) dto).getPalavra().equals(palavraChave2))
+						palavraChave[1] = (PalavraChave) dto;
+				}
+			} catch (KeywordNotFoundException e1) {
+				palavraChave[1] = palavraChaveDAO.addKeyWord(
+								palavraChave2,
+								temaPalavraChave2
+								);
+			}
+		}
+
+		if(palavraChave3 != null && !palavraChave3.isEmpty())
+		{
+			try {
+				check = palavraChaveDAO.findKeyWordByString(palavraChave3);
+				for(DTO dto : check){
+					if(((PalavraChave) dto).getPalavra().equals(palavraChave3))
+						palavraChave[2] = (PalavraChave) dto;
+				}
+			} catch (KeywordNotFoundException e1) {
+				palavraChave[2] = palavraChaveDAO.addKeyWord(
+								palavraChave3,
+								temaPalavraChave3
+								);
+			}
+		}
+		
+		if(autor != null && !autor.isEmpty()){
+			if(ocupacaoAutor.isEmpty())	ocupacaoAutor = null;
+			try{
+				author = autorDAO.findAuthorByNameAndOccupation(autor, ocupacaoAutor);
+			} catch (AuthorNotFoundException e){
+				try {
+					author = autorDAO.addAutor(autor, ocupacaoAutor);
+				} catch (DuplicatedAuthorException e1) {
+					e1.printStackTrace();
+				}
+			}
+		}
+		else author = null;
+		
+		if(destinatario != null && !destinatario.isEmpty()){
+			if(ocupacaoDestinatario.isEmpty())	ocupacaoDestinatario = null;
+			try{
+				addressee = autorDAO.findAuthorByNameAndOccupation(destinatario, ocupacaoDestinatario);
+			} catch (AuthorNotFoundException e){
+				try {
+					addressee = autorDAO.addAutor(destinatario, ocupacaoDestinatario);
+				} catch (DuplicatedAuthorException e1) {
+					e1.printStackTrace();
+				}
+			}
+		}
+		else addressee = null;
+		
+		newDoc = new Documento(codDocumento, tituloDocumento, local, resumo, 
+				codCaixa, tipoDoc, author, addressee, 
+				palavraChave[0], palavraChave[1], palavraChave[2], uploader, new Date());
+		docDao.addDocument(newDoc);
+	}
+	
+	public void modifyDocument(Documento document) throws IllegalArgumentException, UnreachableDataBaseException, UpdateEntityException{
+		docDao.updateDocument(document);
+		
+	}
+	
 	public List<DTO> findByDocumentType(String type) throws UnreachableDataBaseException, DocumentNotFoundException{
 
 		String query = new String(default_query);
@@ -197,5 +358,17 @@ public class DocumentEJB {
 		if(list == null) throw new DocumentNotFoundException();
 		return list;
 	}
+	
+	public List<DTO> findByKeyWord(String keyWord) throws UnreachableDataBaseException, DocumentNotFoundException{
 
+		String query = new String(default_query);
+
+		query += "palavraChave1 in (SELECT palavra FROM PalavraChaveMO where palavra = '" + keyWord + "') OR "
+				+ "palavraChave2 in (SELECT palavra FROM PalavraChaveMO where palavra = '" + keyWord + "') OR "
+				+ "palavraChave3 in (SELECT palavra FROM PalavraChaveMO where palavra = '" + keyWord + "')";
+
+		List<DTO> list = docDao.findDocumentByQuery(query);
+		if(list == null) throw new DocumentNotFoundException();
+		return list;
+	}
 }

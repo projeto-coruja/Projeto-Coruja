@@ -5,7 +5,10 @@ import java.util.List;
 import persistence.dto.DTO;
 import persistence.dto.Documento;
 import persistence.dto.PalavraChave;
+import persistence.exceptions.UpdateEntityException;
 import business.DAO.document.PalavraChaveDAO;
+import business.DAO.document.TemaPalavraChaveDAO;
+import business.exceptions.documents.DocumentNotFoundException;
 import business.exceptions.documents.KeywordNotFoundException;
 import business.exceptions.login.UnreachableDataBaseException;
 
@@ -63,13 +66,13 @@ public class KeyWordEJB {
 	}
 
 	public synchronized void deletarPalavraChave(String keyWord) throws UnreachableDataBaseException, KeywordNotFoundException{
-		BuscaDocEJB busca = new BuscaDocEJB();
+		DocumentEJB docEJB = new DocumentEJB();
 		List<DTO> results = null;
 
 		keyWord = keyWord.toLowerCase();
 
 		try {
-			results = busca.searchByKeyWord(keyWord);
+			results = docEJB.findByKeyWord(keyWord);
 			for(DTO dto : results){
 				Documento doc = (Documento) dto;
 				if(doc.getPalavraChave1() != null && doc.getPalavraChave1().getPalavra().equals(keyWord)){
@@ -78,63 +81,81 @@ public class KeyWordEJB {
 					doc.setPalavraChave3(null);
 				}
 				if(doc.getPalavraChave2() != null && doc.getPalavraChave2().getPalavra().equals(keyWord)){
+					
 					doc.setPalavraChave2(doc.getPalavraChave3());
 					doc.setPalavraChave3(null);
 				}
 				if(doc.getPalavraChave3() != null && doc.getPalavraChave3().getPalavra().equals(keyWord)){
 					doc.setPalavraChave3(null);
 				}
-				atualizarDocumento(doc);
+				docEJB.modifyDocument(doc);
 			}
 		} catch (DocumentNotFoundException e) {
-			//e.printStackTrace();
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+		} catch (UpdateEntityException e) {
+			e.printStackTrace();
 		} finally {
 			keyWordDAO.removeKeyWord(keyWord);
 		}
 	}
 	
-	public synchronized void atualizarPalavraChave(String oldKey, String newKey, Boolean newStatus) throws UnreachableDataBaseException, KeywordNotFoundException , IllegalArgumentException {
-		if(oldKey == null || newKey == null || oldKey.equals("") || newKey.equals("") || newStatus == null)	
+	public synchronized void atualizarPalavraChave(String oldKey, String newKey, String newTheme) throws UnreachableDataBaseException, KeywordNotFoundException , IllegalArgumentException, UpdateEntityException {
+		if(oldKey == null || newKey == null || oldKey.equals("") || newKey.equals("") || newTheme == null || newTheme.isEmpty())	
 			throw new IllegalArgumentException("Argumentos não podem ser null/vazio");
 
-		BuscaDocEJB busca = new BuscaDocEJB();
+		TemaPalavraChaveDAO themeDAO = new TemaPalavraChaveDAO();
+		DocumentEJB busca = new DocumentEJB();
 		List<DTO> results = null;
 
 		try {
-			results = busca.searchByKeyWord(oldKey);
+			results = busca.findByKeyWord(oldKey);
 			for(DTO dto : results){
-				DocumentoDTO doc = (DocumentoDTO) dto;
-				if(doc.getPalavrasChaves1() != null && doc.getPalavrasChaves1().getPalavra().equals(oldKey)){
-					doc.setPalavrasChaves1(doc.getPalavrasChaves2());
-					doc.setPalavrasChaves2(doc.getPalavrasChaves3());
-					doc.setPalavrasChaves3(null);
+				Documento doc = (Documento) dto;
+				if(doc.getPalavraChave1() != null && doc.getPalavraChave1().getPalavra().equals(oldKey)){
+					doc.setPalavraChave1(doc.getPalavraChave2());
+					doc.setPalavraChave2(doc.getPalavraChave3());
+					doc.setPalavraChave3(null);
 				}
-				if(doc.getPalavrasChaves2() != null && doc.getPalavrasChaves2().getPalavra().equals(oldKey)){
-					doc.setPalavrasChaves2(doc.getPalavrasChaves3());
-					doc.setPalavrasChaves3(null);
+				if(doc.getPalavraChave2() != null && doc.getPalavraChave2().getPalavra().equals(oldKey)){
+					doc.setPalavraChave2(doc.getPalavraChave3());
+					doc.setPalavraChave3(null);
 				}
-				if(doc.getPalavrasChaves3() != null && doc.getPalavrasChaves3().getPalavra().equals(oldKey)){
-					doc.setPalavrasChaves3(null);
+				if(doc.getPalavraChave3() != null && doc.getPalavraChave3().getPalavra().equals(oldKey)){
+					doc.setPalavraChave3(null);
 				}
 			}
-			PalavraChaveDTO keyWordDTO = keyDao.updateKeyWord(oldKey.toLowerCase(), newKey.toLowerCase(), newStatus);
+
+//			TemaPalavraChave select;
+//			try{
+//				List<DTO> resultSet = themeDAO.findThemeByString(newTheme);
+//				for(DTO dto : resultSet){
+//					if(((TemaPalavraChave)dto).getTema().equals(newKey))	select = (TemaPalavraChave) dto;
+//				}
+//			}catch(ThemeNotFoundException e){
+//				select = themeDAO.addThemeWord(newKey);
+//			}
+//			
+			PalavraChave keyWordDTO = keyWordDAO.updateKeyWord(oldKey.toLowerCase(), newKey.toLowerCase(), newTheme);
 
 			for(DTO dto : results){
-				DocumentoDTO doc = (DocumentoDTO) dto;
-				if(doc.getPalavrasChaves1() == null){
-					doc.setPalavrasChaves1(keyWordDTO);
+				Documento doc = (Documento) dto;
+				if(doc.getPalavraChave1() == null){
+					doc.setPalavraChave1(keyWordDTO);
 				}
-				else if(doc.getPalavrasChaves2() == null){
-					doc.setPalavrasChaves2(keyWordDTO);
+				else if(doc.getPalavraChave2() == null){
+					doc.setPalavraChave2(keyWordDTO);
 				}
-				else if(doc.getPalavrasChaves3() == null){
-					doc.setPalavrasChaves3(keyWordDTO);
+				else if(doc.getPalavraChave3() == null){
+					doc.setPalavraChave3(keyWordDTO);
 				}
-				atualizarDocumento(doc);
 			}
 		} catch (DocumentNotFoundException e) {
-			@SuppressWarnings("unused")
-			PalavraChaveDTO keyWordDTO = keyDao.updateKeyWord(oldKey.toLowerCase(), newKey.toLowerCase(), newStatus);
+			try {
+				keyWordDAO.updateKeyWord(oldKey.toLowerCase(), newKey.toLowerCase(), newTheme);
+			} catch (UpdateEntityException e1) {
+				e1.printStackTrace();
+			}
 		} 
 
 	}

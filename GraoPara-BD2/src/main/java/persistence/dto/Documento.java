@@ -43,6 +43,27 @@ public class Documento implements DTO {
 	
 	private Date data;
 
+	public Documento(String cod, String titulo, String local, String resumo,
+			CodiceCaixa codiceCaixa, TipoDocumento tipoDocumento, Autor autor,
+			Autor destinatario, PalavraChave palavraChave1,
+			PalavraChave palavraChave2, PalavraChave palavraChave3,
+			UserAccount uploader, Date data) {
+		super();
+		this.cod = cod;
+		this.titulo = titulo;
+		this.local = local;
+		this.resumo = resumo;
+		this.codiceCaixa = codiceCaixa;
+		this.tipoDocumento = tipoDocumento;
+		this.autor = autor;
+		this.destinatario = destinatario;
+		this.palavraChave1 = palavraChave1;
+		this.palavraChave2 = palavraChave2;
+		this.palavraChave3 = palavraChave3;
+		this.uploader = uploader;
+		this.data = data;
+	}
+
 	public Long getId() {
 		return id;
 	}

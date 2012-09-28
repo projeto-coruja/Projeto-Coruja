@@ -23,7 +23,7 @@ public class AutorDAO {
 			throws UnreachableDataBaseException, DuplicatedAuthorException {
 		Autor newAuthor = new Autor(nome, ocupacao);
 		try{
-			findAutorByNameAndOccupation(nome, ocupacao);
+			findAuthorByNameAndOccupation(nome, ocupacao);
 			throw new DuplicatedAuthorException("Autor duplicado.");
 		}catch(DataAccessLayerException e){
 			e.printStackTrace();
@@ -52,7 +52,7 @@ public class AutorDAO {
 		}
 	}
 
-	public Autor findAutorByNameAndOccupation(String name, String occupation) throws AuthorNotFoundException, UnreachableDataBaseException {
+	public Autor findAuthorByNameAndOccupation(String name, String occupation) throws AuthorNotFoundException, UnreachableDataBaseException {
 		List<DTO> resultSet = null;
 		try {
 			resultSet = manager.findEntity("from AutorME where nome = '" 

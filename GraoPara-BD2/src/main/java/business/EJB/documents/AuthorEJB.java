@@ -17,7 +17,7 @@ public class AuthorEJB {
 	
 	public void addNewAuthor(String name, String occupation) throws UnreachableDataBaseException, DuplicatedAuthorException{
 		try {
-			dao.findAutorByNameAndOccupation(name, occupation);
+			dao.findAuthorByNameAndOccupation(name, occupation);
 		} catch (AuthorNotFoundException e) {
 			dao.addAutor(name, occupation);
 			e.printStackTrace();
@@ -27,7 +27,7 @@ public class AuthorEJB {
 	public void removeAuthor(String name, String occupation) throws UnreachableDataBaseException{
 		Autor author;
 		try {
-			author = dao.findAutorByNameAndOccupation(name, occupation);
+			author = dao.findAuthorByNameAndOccupation(name, occupation);
 			dao.removeAuthor(author);
 		} catch (AuthorNotFoundException e){
 		}
