@@ -21,6 +21,7 @@ import persistence.dto.Profile;
 import persistence.dto.TemaPalavraChave;
 import persistence.dto.TipoDocumento;
 import persistence.dto.UserAccount;
+import persistence.util.PersistenceUtility;
 import webview.servlet.util.WebUtility;
 
 import business.EJB.util.EJBUtility;
