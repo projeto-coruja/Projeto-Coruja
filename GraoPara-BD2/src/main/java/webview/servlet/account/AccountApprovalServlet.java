@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import persistence.exceptions.UpdateEntityException;
-import webview.servlet.util.JavascriptAlerts;
+import webview.util.JavascriptAlerts;
 
 import business.EJB.user.AdminBean;
 import business.exceptions.login.IncorrectProfileInformationException;

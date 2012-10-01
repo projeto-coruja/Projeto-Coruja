@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import persistence.dto.UserAccount;
 import persistence.exceptions.UpdateEntityException;
-import webview.servlet.util.JavascriptAlerts;
+import webview.util.JavascriptAlerts;
 import business.EJB.user.RegisterUserBean;
 import business.EJB.user.SearchUserEJB;
 import business.EJB.util.EJBUtility;

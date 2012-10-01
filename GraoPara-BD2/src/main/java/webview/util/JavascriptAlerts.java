@@ -1,4 +1,4 @@
-package webview.servlet.util;
+package webview.util;
 
 import java.io.IOException;
 import java.io.PrintWriter;

@@ -13,8 +13,8 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import webview.servlet.util.JavascriptAlerts;
-import webview.servlet.util.WebUtility;
+import webview.util.JavascriptAlerts;
+import webview.util.WebUtility;
 import business.EJB.user.AuthBean;
 import business.EJB.user.UserBean;
 

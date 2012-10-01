@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import webview.servlet.util.WebUtility;
+import webview.util.WebUtility;
 import business.EJB.user.AuthBean;
 import business.EJB.user.UserBean;
 

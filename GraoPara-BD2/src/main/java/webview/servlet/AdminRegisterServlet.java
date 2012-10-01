@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import webview.servlet.util.JavascriptAlerts;
-import webview.servlet.util.WebUtility;
+import webview.util.JavascriptAlerts;
+import webview.util.WebUtility;
 import business.EJB.user.AdminBean;
 import business.exceptions.login.DuplicateUserException;
 import business.exceptions.login.IncorrectLoginInformationException;
@@ -43,7 +43,7 @@ public class AdminRegisterServlet extends HttpServlet {
 
 		if (!senha.equals(request.getParameter("confsenha"))) {
 			
-			JavascriptAlerts.alertAndRedirectHistory(response, "Senha inválida! Tente novamente.", "/GraoPara/protected/admin/cadUserAdmin.jsp");
+			JavascriptAlerts.alertAndRedirectPage(response, "Senha inválida! Tente novamente.", "/GraoPara/protected/admin/cadUserAdmin.jsp");
 			
 		} else {
 			
@@ -53,18 +53,18 @@ public class AdminRegisterServlet extends HttpServlet {
 				adminBean.adicionarUsuario(email, nome, senha, permissao);
 				response.setContentType("text/html");
 				
-				JavascriptAlerts.alertAndRedirectHistory(response, "Usuário adicionado!", "/GraoPara/protected/admin/cadUserAdmin.jsp");
+				JavascriptAlerts.alertAndRedirectPage(response, "Usuário adicionado!", "/GraoPara/protected/admin/cadUserAdmin.jsp");
 
 			} catch (UnreachableDataBaseException e) {
 				
-				JavascriptAlerts.alertAndRedirectHistory(response, "Erro no banco de dados! Contate o suporte e tente novamente mais tarde.", "/GraoPara/protected/admin/cadUserAdmin.jsp");
+				JavascriptAlerts.alertAndRedirectPage(response, "Erro no banco de dados! Contate o suporte e tente novamente mais tarde.", "/GraoPara/protected/admin/cadUserAdmin.jsp");
 				e.printStackTrace();
 			} catch (IncorrectLoginInformationException e) {
 				
-				JavascriptAlerts.alertAndRedirectHistory(response, "Email inválido!", "/GraoPara/protected/admin/cadUserAdmin.jsp");
+				JavascriptAlerts.alertAndRedirectPage(response, "Email inválido!", "/GraoPara/protected/admin/cadUserAdmin.jsp");
 			} catch (DuplicateUserException e) {
 				
-				JavascriptAlerts.alertAndRedirectHistory(response, "Email já em uso!", "/GraoPara/protected/admin/cadUserAdmin.jsp");
+				JavascriptAlerts.alertAndRedirectPage(response, "Email já em uso!", "/GraoPara/protected/admin/cadUserAdmin.jsp");
 			}
 		}
 

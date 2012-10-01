@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import persistence.dto.UserAccount;
 import persistence.exceptions.UpdateEntityException;
 
-import webview.servlet.util.JavascriptAlerts;
-import webview.servlet.util.WebUtility;
+import webview.util.JavascriptAlerts;
+import webview.util.WebUtility;
 import business.EJB.user.AdminBean;
 import business.EJB.user.AuthBean;
 import business.EJB.user.RegisterUserBean;

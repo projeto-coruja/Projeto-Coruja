@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import webview.servlet.util.JavascriptAlerts;
-import webview.servlet.util.WebUtility;
+import webview.util.JavascriptAlerts;
+import webview.util.WebUtility;
 import business.EJB.user.RegisterUserBean;
 import business.exceptions.login.DuplicateUserException;
 import business.exceptions.login.IncorrectLoginInformationException;

@@ -1,4 +1,4 @@
-package webview.servlet.util;
+package webview.util;
 
 import java.io.IOException;
 import java.text.Normalizer;
@@ -9,11 +9,15 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.JspWriter;
 
+import business.DAO.document.CodiceCaixaDAO;
 import business.EJB.user.AuthBean;
 import business.EJB.user.UserBean;
+import business.exceptions.documents.CodiceCaixaNotFoundException;
 import business.exceptions.login.UnreachableDataBaseException;
 import business.exceptions.login.UserNotFoundException;
 
+import persistence.dto.CodiceCaixa;
+import persistence.dto.DTO;
 import persistence.dto.Profile;
 
 public final class WebUtility {
@@ -109,28 +113,84 @@ public final class WebUtility {
 		if(label == null) return "";
 		else return label;
 	}
-
-	public static String printSelectOrigem(HttpServletRequest request) throws IOException, UnreachableDataBaseException {
+	
+	public static String printCodCodiceCaixa(HttpServletRequest request) throws IOException, UnreachableDataBaseException {
 		String output = null;
 
-		OrigemDAO origemDAO = null;
+		CodiceCaixaDAO codiceCaixa = null;
 
 		try {
-			origemDAO = new OrigemDAO();
-			List<DTO> list = origemDAO.findAllOrigins();
+			codiceCaixa = new CodiceCaixaDAO();
+			List<DTO> list = codiceCaixa.findAllCodiceCaixa();
 			List<String> aux = new ArrayList<String>();
 			output = "\n	<option selected value=\"\">Selecione...</option> ";
+			
+			aux.add(output);
 
 			for(DTO d : list){
-				String tipoOrigem = ((OrigemDTO) d).getTipoOrigem();
-				if(!aux.contains(tipoOrigem)){
-					output += "\n	<option value=\"" 
-						+ tipoOrigem + " \">" 
-						+ tipoOrigem + "</option> ";
-					aux.add(tipoOrigem);
+				String tipoCodiceOuCaixa = ((CodiceCaixa) d).getCod();
+				if(!aux.contains(tipoCodiceOuCaixa)){
+					output += "\n	<option value=\""+ tipoCodiceOuCaixa + " \">"+ tipoCodiceOuCaixa + "</option> ";
+					aux.add(tipoCodiceOuCaixa);
 				}
 			}
-		} catch (OriginNotFoundException e) {
+		} catch (CodiceCaixaNotFoundException e) {
+			e.printStackTrace();
+		}
+		return output;
+	}
+
+	public static String printTituloCodiceCaixa(HttpServletRequest request) throws IOException, UnreachableDataBaseException {
+		String output = null;
+
+		CodiceCaixaDAO codiceCaixa = null;
+
+		try {
+			codiceCaixa = new CodiceCaixaDAO();
+			List<DTO> list = codiceCaixa.findAllCodiceCaixa();
+			List<String> aux = new ArrayList<String>();
+			output = "\n	<option selected value=\"\">Selecione...</option> ";
+			
+			aux.add(output);
+
+			for(DTO d : list){
+				String titulo = ((CodiceCaixa) d).getTitulo();
+				if(!aux.contains(titulo)){
+					output += "\n	<option value=\""+ titulo + " \">"+ titulo + "</option> ";
+					aux.add(titulo);
+				}
+			}
+		} catch (CodiceCaixaNotFoundException e) {
+			e.printStackTrace();
+		}
+		return output;
+	}
+	
+	public static String printEpocasCodiceCaixa(HttpServletRequest request) throws IOException, UnreachableDataBaseException {
+		String output = null;
+
+		CodiceCaixaDAO codiceCaixa = null;
+
+		try {
+			codiceCaixa = new CodiceCaixaDAO();
+			List<DTO> list = codiceCaixa.findAllCodiceCaixa();
+			List<String> aux = new ArrayList<String>();
+			output = "\n	<option selected value=\"\">Selecione...</option> ";
+			
+			aux.add(output);
+
+			for(DTO d : list){
+				int epocaInicial = ((CodiceCaixa) d).getAnoInicio();
+				int epocaFinal = ((CodiceCaixa) d).getAnoFim(); 
+				
+				if(!aux.contains(epocaInicial)){
+					output += "\n	<option value=\""
+							+ epocaInicial +"_"+ epocaFinal + " \">"
+							+ epocaInicial +"-"+ epocaFinal + "</option> ";
+					aux.add(String.valueOf(epocaInicial));
+				}
+			}
+		} catch (CodiceCaixaNotFoundException e) {
 			e.printStackTrace();
 		}
 		return output;
@@ -169,7 +229,7 @@ public final class WebUtility {
 		return output;
 	}
 
-	public static String printSelectId(HttpServletRequest request) throws IOException {
+	public static String printCodDocumento(HttpServletRequest request) throws IOException {
 		String output = null;
 		String parameter = request.getParameter("tipoAPEP_SEQ");
 		if(parameter == null)
