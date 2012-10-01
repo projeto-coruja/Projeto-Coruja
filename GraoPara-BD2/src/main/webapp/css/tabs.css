@@ -1,0 +1,187 @@
+@CHARSET "UTF-8";
+
+
+h2{ 
+	margin-bottom:10px;
+}
+
+
+#wrapper{
+	width:1000px;
+	margin:40px auto 0;
+}
+
+#wrapper h1{
+	color:#FFF;
+	text-align:center;
+	margin-bottom:20px;
+}
+
+#wrapper a{
+	display:block;
+	/* font-size:1.2em; */
+	padding-top:20px;
+	color:#FFF;
+	text-decoration:none;
+	text-align:center;
+}
+
+#tabContainer {
+	width:1000px;
+	padding:15px;
+	background-color:#414958;
+	-moz-border-radius: 4px;
+	border-radius: 4px; 
+}
+
+.tabs{
+	height:30px;
+}
+
+.tabs > ul{
+	/* font-size: 1em; */
+	list-style:none;
+}
+
+.tabs > ul > li{
+	margin:0 2px 0 0;
+	padding:7px 10px;
+	display:block;
+	float:left;
+	color:#FFF;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+	-moz-border-radius-topleft: 4px;
+	-moz-border-radius-topright: 4px;
+	-moz-border-radius-bottomright: 0px;
+	-moz-border-radius-bottomleft: 0px;
+	border-top-left-radius:4px;
+	border-top-right-radius: 4px;
+	border-bottom-right-radius: 0px;
+	border-bottom-left-radius: 0px; 
+	background: #FFF; /* old browsers */
+	background: -moz-linear-gradient(top, #FFFFFF 0%, #F3F3F3 10%, #F3F3F3 50%, #FFFFFF 100%); /* firefox */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFFFFF), color-stop(10%,#F3F3F3), color-stop(50%,#F3F3F3), color-stop(100%,#FFFFFF)); /* webkit */
+}
+
+.tabs > ul > li:hover{
+	background: #FFFFFF; /* old browsers */
+	background: -moz-linear-gradient(top, #FFFFFF 0%, #F3F3F3 10%, #F3F3F3 50%, #FFFFFF 100%); /* firefox */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFFFFF), color-stop(10%,#F3F3F3), color-stop(50%,#F3F3F3), color-stop(100%,#FFFFFF)); /* webkit */
+	cursor:pointer;
+	color: #333;
+}
+
+.tabs > ul > li.tabActiveHeader{
+	background: #FFFFFF; /* old browsers */
+	background: -moz-linear-gradient(top, #FFFFFF 0%, #F3F3F3 10%, #F3F3F3 50%, #FFFFFF 100%); /* firefox */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFFFFF), color-stop(10%,#F3F3F3), color-stop(50%,#F3F3F3), color-stop(100%,#FFFFFF)); /* webkit */
+	cursor:pointer;
+	color: #333;
+}
+
+.tabscontent {
+	-moz-border-radius-topleft: 0px;
+	-moz-border-radius-topright: 4px;
+	-moz-border-radius-bottomright: 4px;
+	-moz-border-radius-bottomleft: 4px;
+	border-top-left-radius: 0px;
+	border-top-right-radius: 4px;
+	border-bottom-right-radius: 4px;
+	border-bottom-left-radius: 4px; 
+	padding:10px 10px 25px;
+	background: #FFFFFF; /* old browsers */
+	background: -moz-linear-gradient(top, #FFFFFF 0%, #FFFFFF 90%, #e4e9ed 100%); /* firefox */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFFFFF), color-stop(90%,#FFFFFF), color-stop(100%,#e4e9ed)); /* webkit */
+	margin:0;
+	color:#333;
+}
+
+article.tabsCSS 
+{  
+    position: relative;  
+    display: block;  
+    width: 800px;  
+    height: 15em;  
+    margin: 2em auto;  
+}
+
+article.tabsCSS section  
+{  
+    position: absolute;
+    width: 560px; 
+    display: block;  
+    top: 1.8em;    
+    height: 25em;  
+    padding: 10px 20px;  
+    background-color: #ddd;  
+    border-radius: 5px;  
+    box-shadow: 0 3px 3px rgba(0,0,0,0.1);  
+    z-index: 0;    
+}
+
+article.tabsCSS section:first-child  
+{  
+    z-index: 1;  
+}
+
+article.tabsCSS section h2  
+{  
+    position: absolute;  
+    font-size: 80%;   
+    font-weight: normal;  
+    width: 130px;  
+    height: 1.8em;  
+    top: -1.8em;  
+    left: 10px;  
+    padding: 0;  
+    margin: 0;  
+    color: #fff;  
+    background-color: #95B2F0;  
+    border-radius: 5px 5px 0 0;  
+}
+/*article.tabsCSS section:nth-child(1) h2  
+{
+	width: 130px;
+}*/
+article.tabsCSS section:nth-child(2) h2  
+{  
+    left: 140px;  
+}  
+article.tabsCSS section:nth-child(3) h2  
+{  
+    left: 270px;  
+}
+article.tabsCSS section:nth-child(4) h2  
+{  
+    left: 400px;  
+} 
+article.tabsCSS section h2 a  
+{  
+    display: block;  
+    width: 100%;  
+    line-height: 1.8em;  
+    text-align: center;  
+    text-decoration: none;  
+    color: inherit;  
+    outline: 0 none;  
+}
+
+article.tabsCSS section:target,  
+article.tabsCSS section:target h2  
+{  
+    color: #333;  
+    background-color: #fff;  
+    z-index: 2;  
+}
+
+article.tabsCSS section,  
+article.tabsCSS section h2  
+{  
+    -webkit-transition: all 500ms ease;  
+    -moz-transition: all 500ms ease;  
+    -ms-transition: all 500ms ease;  
+    -o-transition: all 500ms ease;  
+    transition: all 500ms ease;  
+}  
