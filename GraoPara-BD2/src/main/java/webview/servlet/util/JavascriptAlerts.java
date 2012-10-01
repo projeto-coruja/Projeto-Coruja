@@ -24,7 +24,7 @@ public class JavascriptAlerts {
 	    out.println("</script>");
 	}
 	
-	public static void alertAndRedirectHistory(HttpServletResponse response, String alert, String jsp_Page) throws IOException{
+	public static void alertAndRedirectHistory(HttpServletResponse response, String alert) throws IOException{
 		response.setContentType("text/html");  
 	    PrintWriter out=response.getWriter();   
 		out.println("<script>");  
