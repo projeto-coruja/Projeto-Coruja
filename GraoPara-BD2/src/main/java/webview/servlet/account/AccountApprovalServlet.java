@@ -19,6 +19,7 @@ import business.exceptions.login.UserNotFoundException;
 
 @WebServlet("/protected/admin/approveAccount")
 public class AccountApprovalServlet extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -41,19 +42,19 @@ public class AccountApprovalServlet extends HttpServlet {
 		
 		} catch (IncorrectProfileInformationException e) {
 			
-			JavascriptAlerts.alertAndRedirectHistory(response, "Erro de profile inválido, contate o suporte.", "/GraoPara/protected/admin/indexAdmin.jsp");
+			JavascriptAlerts.alertAndRedirectHistory(response, "Erro de profile inválido, contate o suporte.");
 			e.printStackTrace();
 		} catch (UnreachableDataBaseException e) {
 			
-			JavascriptAlerts.alertAndRedirectHistory(response, "Erro de banco de dados, contate o suporte.", "/GraoPara/protected/admin/indexAdmin.jsp");
+			JavascriptAlerts.alertAndRedirectHistory(response, "Erro de banco de dados, contate o suporte.");
 			e.printStackTrace();
 		} catch (UserNotFoundException e) {
 			
-			JavascriptAlerts.alertAndRedirectHistory(response, "Erro de usuário inválido, contate o suporte.", "/GraoPara/protected/admin/indexAdmin.jsp");
+			JavascriptAlerts.alertAndRedirectHistory(response, "Erro de usuário inválido, contate o suporte.");
 			e.printStackTrace();
 		} catch (ProfileNotFoundException e) {
 			
-			JavascriptAlerts.alertAndRedirectHistory(response, "Erro de profile não encontrado, contate o suporte.", "/GraoPara/protected/admin/indexAdmin.jsp");
+			JavascriptAlerts.alertAndRedirectHistory(response, "Erro de profile não encontrado, contate o suporte.");
 			e.printStackTrace();
 		} catch (IllegalArgumentException e) {
 			// TODO Auto-generated catch block

@@ -98,4 +98,5 @@ public class AutorDAO {
 			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
 		}
 	}
+	
 }

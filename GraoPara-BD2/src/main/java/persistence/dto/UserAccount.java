@@ -15,10 +15,12 @@ public class UserAccount implements DTO{
 	private String email;
 	
 	private String password;
+	
+	public UserAccount() {
+		
+	}
 
 	public UserAccount(String name, Profile profile, String email,	String password) {
-		super();
-		this.id = id;
 		this.name = name;
 		this.profile = profile;
 		this.email = email;
@@ -64,5 +66,5 @@ public class UserAccount implements DTO{
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
+	
 }

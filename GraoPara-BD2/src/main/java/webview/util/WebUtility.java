@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.JspWriter;
 
 import business.DAO.document.CodiceCaixaDAO;
+import business.DAO.document.TipoDocumentoDAO;
 import business.EJB.user.AuthBean;
 import business.EJB.user.UserBean;
 import business.exceptions.documents.CodiceCaixaNotFoundException;
@@ -18,6 +19,7 @@ import business.exceptions.login.UserNotFoundException;
 
 import persistence.dto.CodiceCaixa;
 import persistence.dto.DTO;
+import persistence.dto.Documento;
 import persistence.dto.Profile;
 
 public final class WebUtility {
@@ -87,20 +89,18 @@ public final class WebUtility {
 
 	public static String docToString(Documento doc) {
 		return
-				doc.getOrigemDocumento().getTitulo() + "\n"
+				doc.getTitulo() + "\n"
 				+ doc.getAutor() + " "
 				+ doc.getDestinatario() + " "
 				+ doc.getLocal() + " "
 				+ doc.getResumo() + " "
-				+ doc.getDataDocumento().toString()
+				+ doc.getData().toString()
 				+ " --- "
-				+ doc.getUploader().getEmail() + " "
-				+ doc.getDataInclusao().toString()
+				+ doc.getUploader().getEmail()
 				+ " --- "
-				+ doc.getIdNumDocumento().getTipoId() + " "
-				+ doc.getIdNumDocumento().getCodId() + " "
-				+ doc.getOrigemDocumento().getTipoOrigem() + " "
-				+ doc.getOrigemDocumento().getCodOrigem() + " ";
+				+ doc.getCod() + " "
+				+ doc.getCodiceCaixa().getTitulo() + " "
+				+ doc.getCodiceCaixa().getCod() + " ";
 	}
 
 	public static void printName(HttpServletRequest request, JspWriter out) throws IOException {
@@ -202,11 +202,11 @@ public final class WebUtility {
 		String codigo = request.getParameter("codigo");
 		String titulo = request.getParameter("titulo");
 
-		OrigemDAO origemDAO = null;
+		CodiceCaixaDAO codiceCasixaDAO = null;
 
 		try {
-			origemDAO = new OrigemDAO();
-			List<DTO> list = origemDAO.findAllOrigins();
+			codiceCasixaDAO = new CodiceCaixaDAO();
+			List<DTO> list = codiceCasixaDAO.findAllCodiceCaixa();
 			if(identificacao != null && codigo != null && titulo != null)
 				output = "\n	<option selected value=\"" 
 						+ identificacao + "-" + codigo + "-" + titulo + "\">" 
@@ -214,15 +214,14 @@ public final class WebUtility {
 
 			else	output = "\n	<option selected value=\"\">Selecione...</option> ";
 			for(DTO d : list){
-				String tipoOrigem = ((OrigemDTO) d).getTipoOrigem();
-				String codOrigem =  ((OrigemDTO) d).getCodOrigem();
-				String tituloOrigem = ((OrigemDTO) d).getTitulo();
-				if(!tipoOrigem.equals(identificacao) && !codOrigem.equals(codigo))
+				String codOrigem =  ((CodiceCaixa) d).getCod();
+				String tituloOrigem = ((CodiceCaixa) d).getTitulo();
+				if(!codOrigem.equals(codigo))
 					output += "\n	<option value=\"" 
-						+ tipoOrigem + "-" + codOrigem + "-" + tituloOrigem + " \">" 
-						+ tipoOrigem + " - " + codOrigem + " - " + tituloOrigem + "</option> ";
+						+ "-" + codOrigem + "-" + tituloOrigem + " \">" 
+						+ " - " + codOrigem + " - " + tituloOrigem + "</option> ";
 			}
-		} catch (OriginNotFoundException e) {
+		} catch (CodiceCaixaNotFoundException e) {
 			e.printStackTrace();
 		}
 
@@ -265,7 +264,7 @@ public final class WebUtility {
 	}
 
 	public static String printSelectTipoDoc(HttpServletRequest request) {
-		DocumentTypeDAO dtd = new DocumentTypeDAO();
+		TipoDocumentoDAO dtd = new TipoDocumentoDAO();
 		String result = "";
 		String tipoDoc = null;
 		try {

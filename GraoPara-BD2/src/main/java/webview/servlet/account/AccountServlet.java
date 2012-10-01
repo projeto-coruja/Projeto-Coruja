@@ -29,6 +29,7 @@ import business.exceptions.login.UserNotFoundException;
  */
 @WebServlet("/doChangesToAccount")
 public class AccountServlet extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -51,31 +52,26 @@ public class AccountServlet extends HttpServlet {
 		String senhaVelha;
 		String senhaNova;
 		UserAccount user = null;
-		String redirect = null;
-
 		response.setContentType("text/html");  
-		PrintWriter out=response.getWriter(); 
-
 		String email = WebUtility.selectCookie(request.getCookies(), WebUtility.cookie_email).getValue();
 		String status = WebUtility.selectCookie(request.getCookies(), WebUtility.cookie_status).getValue();
 
 
-		if(status.equals(AuthBean.LoginSuccessUser))	// retorna para a página de USER
-			redirect = "/GraoPara/protected/user/painelUser.jsp";
-		else if(status.equals(AuthBean.LoginSuccessAdmin))	// retorna para a página de ADMIN
-			redirect = "/GraoPara/protected/admin/painelAdmin.jsp";
+		if(status.equals(AuthBean.LoginSuccessUser)) {
+		} else if(status.equals(AuthBean.LoginSuccessAdmin)) {
+		}
 
 		if(action.equals("editPermission")){
 			permissaoNova = request.getParameter("permissao");
 			email = request.getParameter("email");
 			
-			JavascriptAlerts.alertAndRedirectHistory(response, "Permissão trocado com sucesso.", redirect);
+			JavascriptAlerts.alertAndRedirectHistory(response, "Permissão trocado com sucesso.");
 			
 			try {
 				admin.alterarPermissoesUsuario(email, permissaoNova);
 			} catch (UnreachableDataBaseException e) {
 				
-				JavascriptAlerts.alertAndRedirectHistory(response, "Não foi possível conectar com o banco de dados.", "/GraoPara/public/index.jsp");
+				JavascriptAlerts.alertAndRedirectHistory(response, "Não foi possível conectar com o banco de dados.");
 				e.printStackTrace();
 				
 			} catch (UserNotFoundException e) {
@@ -102,15 +98,15 @@ public class AccountServlet extends HttpServlet {
 					user.setPassword(EJBUtility.getHash(senhaNova, "MD5"));
 					cadastro.atualizarUsuario(user);  
 					
-					JavascriptAlerts.alertAndRedirectHistory(response, "Senha trocada com sucesso.", redirect);
+					JavascriptAlerts.alertAndRedirectHistory(response, "Senha trocada com sucesso.");
 				}
 				else{
 					
-					JavascriptAlerts.alertAndRedirectHistory(response, "Erro ao trocar a senha, senha informada diferente da cadastrada.", redirect);
+					JavascriptAlerts.alertAndRedirectHistory(response, "Erro ao trocar a senha, senha informada diferente da cadastrada.");
 				}
 			} catch (UnreachableDataBaseException e) {
 				
-				JavascriptAlerts.alertAndRedirectHistory(response, "Não foi possível conectar com o banco de dados.", "/GraoPara/public/index.jsp");
+				JavascriptAlerts.alertAndRedirectHistory(response, "Não foi possível conectar com o banco de dados.");
 				e.printStackTrace();
 				
 			} catch (UserNotFoundException e) {

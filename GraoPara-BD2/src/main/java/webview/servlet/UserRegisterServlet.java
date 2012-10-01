@@ -21,6 +21,7 @@ import business.exceptions.login.UnreachableDataBaseException;
  */
 @WebServlet("/doRegister")
 public class UserRegisterServlet extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -41,7 +42,7 @@ public class UserRegisterServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, UnreachableDataBaseException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String nome = WebUtility.removeAccents(request.getParameter("nome"));
 		String email = request.getParameter("email");
 		String senha = request.getParameter("senha");

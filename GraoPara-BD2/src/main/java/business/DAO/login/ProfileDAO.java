@@ -13,6 +13,7 @@ import persistence.util.DataAccessLayerException;
 public class ProfileDAO {
 
 	private static Profile defaultProfile;
+	
 	private static final String defaultProfileName = "default";
 
 	private PersistenceAccess manager;

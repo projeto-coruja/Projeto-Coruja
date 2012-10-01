@@ -22,6 +22,7 @@ import business.exceptions.login.UserNotFoundException;
  */
 @WebServlet("/doPasswordRecovery")
 public class AccountRecoveryServlet extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -47,15 +48,15 @@ public class AccountRecoveryServlet extends HttpServlet {
 			user.setPassword(EJBUtility.getHash(newPassword, "MD5"));
 			cadastro.atualizarUsuario(user);
 		    
-			JavascriptAlerts.alertAndRedirectHistory(response, "Nova senha gerado para "+ email +": "+ newPassword, "/GraoPara/protected/admin/gerarSenha.jsp");
+			JavascriptAlerts.alertAndRedirectHistory(response, "Nova senha gerado para "+ email +": "+ newPassword);
 			
 		} catch (UnreachableDataBaseException e) {
 			
-			JavascriptAlerts.alertAndRedirectHistory(response, "Problema ao se conectar ao banco de dados.", "/GraoPara/protected/admin/gerarSenha.jsp");
+			JavascriptAlerts.alertAndRedirectHistory(response, "Problema ao se conectar ao banco de dados.");
 			e.printStackTrace();
 		} catch (UserNotFoundException e) {
 			
-			JavascriptAlerts.alertAndRedirectHistory(response, "Usuário não encontrado.", "/GraoPara/protected/admin/gerarSenha.jsp");
+			JavascriptAlerts.alertAndRedirectHistory(response, "Usuário não encontrado.");
 		} catch (IllegalArgumentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -64,4 +65,5 @@ public class AccountRecoveryServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
+	
 }

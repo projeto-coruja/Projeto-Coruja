@@ -10,7 +10,9 @@ import business.exceptions.documents.DuplicatedAuthorException;
 import business.exceptions.login.UnreachableDataBaseException;
 
 public class AuthorEJB {
+	
 	private AutorDAO dao;
+	
 	public AuthorEJB(){
 		dao = new AutorDAO();
 	}
@@ -36,4 +38,5 @@ public class AuthorEJB {
 	public List<DTO> listAllAuthors() throws UnreachableDataBaseException, AuthorNotFoundException{
 		return dao.findAllAuthor();
 	}
+	
 }

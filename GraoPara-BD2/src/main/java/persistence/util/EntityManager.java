@@ -15,6 +15,7 @@ import persistence.util.PersistenceUtility;
 public class EntityManager {
 
 	private Session session;
+	
 	private Transaction transaction;
 	
 	public EntityManager(){

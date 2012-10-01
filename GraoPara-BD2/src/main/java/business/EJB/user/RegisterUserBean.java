@@ -47,4 +47,5 @@ public class RegisterUserBean {
 	public void atualizarUsuario(UserAccount user) throws UnreachableDataBaseException, UserNotFoundException, IllegalArgumentException, UpdateEntityException{
 		userDAO.updateUser(user);
 	}
+	
 }

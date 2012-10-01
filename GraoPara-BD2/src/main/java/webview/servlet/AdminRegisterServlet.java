@@ -20,6 +20,7 @@ import business.exceptions.login.UnreachableDataBaseException;
  */
 @WebServlet("/protected/admin/doAdminRegister")
 public class AdminRegisterServlet extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -34,8 +35,7 @@ public class AdminRegisterServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String nome = WebUtility.removeAccents(request.getParameter("nome"));
 		String email = request.getParameter("email");
 		String senha = request.getParameter("senha");
@@ -67,6 +67,6 @@ public class AdminRegisterServlet extends HttpServlet {
 				JavascriptAlerts.alertAndRedirectPage(response, "Email já em uso!", "/GraoPara/protected/admin/cadUserAdmin.jsp");
 			}
 		}
-
 	}
+	
 }

@@ -13,6 +13,7 @@ import org.hibernate.service.ServiceRegistryBuilder;
 public class PersistenceUtility {
 
 	private static SessionFactory sessionFactory = configureSessionFactory();
+	
 	private static ServiceRegistry serviceRegistry;
 
 	private static Log log = LogFactory.getLog(PersistenceUtility.class);
@@ -96,6 +97,5 @@ public class PersistenceUtility {
 	public static void closeSessionFactory() {
 		sessionFactory.close();
 	}
-	
-    
+	    
 }

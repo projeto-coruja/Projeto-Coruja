@@ -19,6 +19,7 @@ import persistence.model.EntityMO;
 public class DTOUtility {
 	
 	private static final String dtoPrefix = "persistence.dto.";
+	
 	private static final String entityPrefix = "persistence.model.";
 	
 	/**

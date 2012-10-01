@@ -2,6 +2,11 @@ package persistence.exceptions;
 
 public class UpdateEntityException extends Exception {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public UpdateEntityException() {
 		super();
 	}
@@ -22,6 +27,5 @@ public class UpdateEntityException extends Exception {
 	public UpdateEntityException(Throwable cause) {
 		super(cause);
 	}
-
 	
 }

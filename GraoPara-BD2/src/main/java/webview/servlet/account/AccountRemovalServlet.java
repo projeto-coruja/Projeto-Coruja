@@ -19,6 +19,7 @@ import business.exceptions.login.UserNotFoundException;
  */
 @WebServlet("/protected/admin/removeAccount")
 public class AccountRemovalServlet extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -33,9 +34,13 @@ public class AccountRemovalServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		UserDAO loginDAO = new UserDAO();
+		
 		UserAccount userToRemove = null;
+		
 		AdminBean adm = new AdminBean();
+		
 		String email = request.getParameter("email");
 
 		try {
@@ -51,7 +56,7 @@ public class AccountRemovalServlet extends HttpServlet {
 		try {
 			adm.deletarUsuario(email);
 
-			if(userToRemove.getUserProfile().getProfile().equals("default"))
+			if(userToRemove.getProfile().equals("default"))
 				response.sendRedirect("/GraoPara/protected/admin/painelAdmin.jsp#tab1"); 
 			else
 				response.sendRedirect("/GraoPara/protected/admin/painelAdmin.jsp#tab2");
@@ -62,4 +67,5 @@ public class AccountRemovalServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
+	
 }

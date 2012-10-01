@@ -2,7 +2,6 @@ package business.EJB.util;
 
 import java.util.regex.Pattern;
 
-
 public class RegularExpression {
 
 	private Pattern p;
@@ -27,4 +26,5 @@ public class RegularExpression {
 		if(newPattern.charAt(newPattern.length()-1) != '$')	newPattern = newPattern + "$";
 		p = Pattern.compile(newPattern, Pattern.CASE_INSENSITIVE);
 	}
+	
 }
