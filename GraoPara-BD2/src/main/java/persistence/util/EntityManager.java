@@ -7,7 +7,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import persistence.model.EntityMO;
+import persistence.model.EntityModel;
 import persistence.util.DataAccessLayerException;
 import persistence.util.PersistenceUtility;
 
@@ -22,7 +22,7 @@ public class EntityManager {
 		PersistenceUtility.buildIfNeeded();
 	}
 
-	public void save(EntityMO obj) throws DataAccessLayerException{
+	public void save(EntityModel obj) throws DataAccessLayerException{
 		try{
 			startOperation();
 			session.save(obj);
@@ -34,10 +34,10 @@ public class EntityManager {
 		}
 	}
 	
-	public void update(EntityMO obj) throws DataAccessLayerException{
+	public void update(EntityModel obj) throws DataAccessLayerException{
 		try{
 			startOperation();
-			session.update(obj);
+			session.merge(obj);
 			transaction.commit();
 		}catch(HibernateException e){
 			handleException(e);
@@ -46,7 +46,7 @@ public class EntityManager {
 		}
 	}
 
-	public void delete(EntityMO obj) throws DataAccessLayerException{
+	public void delete(EntityModel obj) throws DataAccessLayerException{
 		try{
 			startOperation();
 			session.delete(obj);
@@ -59,7 +59,7 @@ public class EntityManager {
 	}
 	
 	@SuppressWarnings("rawtypes")
-	public Object find(Class table, long id) throws DataAccessLayerException{
+	public EntityModel find(Class table, long id) throws DataAccessLayerException{
 		Object obj = null;
 		try{
 			startOperation();
@@ -70,7 +70,7 @@ public class EntityManager {
 		}finally{
 			finishOperation();
 		}
-		return obj;
+		return (EntityModel) obj;
 	}
 
 

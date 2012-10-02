@@ -7,7 +7,7 @@ import org.hibernate.annotations.NaturalId;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-public class ProfileMO implements EntityMO  {
+public class ProfileMO implements EntityModel  {
 	
 	@Id
 	private Long id;

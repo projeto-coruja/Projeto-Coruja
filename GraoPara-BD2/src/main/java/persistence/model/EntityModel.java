@@ -1,6 +1,6 @@
 package persistence.model;
 
-public interface EntityMO {
+public interface EntityModel {
 
 	public Long getId();
 
