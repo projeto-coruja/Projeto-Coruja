@@ -1,8 +1,8 @@
 <!doctype html>
 <%@page import="java.io.PrintWriter"%>
-<%@page import="webview.util.*"%>
-<%@page import="business.EJB.user.*"%>
-<%@page import="webview.worker.*"%>
+<%@page import="webview.util.WebUtility"%>
+<%@page import="business.EJB.user.AdminBean"%>
+<%@page import="webview.worker.SearchWorker"%>
 <html>
 <head>
 <meta charset="utf-8">

@@ -1,6 +1,6 @@
 <!doctype html>
-<%@page import="webview.servlet."%>
-<%@page import="webview.worker.*"%>
+<%@page import="webview.servlet.AdminRegisterServlet"%>
+<%@page import="webview.worker.SearchWorker"%>
 <html>
 <head>
 <meta charset="utf-8">
