@@ -1,5 +1,5 @@
 <!doctype html>
-<%@page import="webview.util.*"%>
+<%@page import="webview.util.WebUtility"%>
 <html>
 <head>
 <meta charset="utf-8">

@@ -1,6 +1,6 @@
 <!doctype html>
-<%@page import="webview.worker.*"%>
-<%@page import="webview.util.*"%>
+<%@page import="webview.worker.PanelWorker"%>
+<%@page import="webview.util.WebUtility"%>
 <html>
 <head>
 <meta charset="utf-8">

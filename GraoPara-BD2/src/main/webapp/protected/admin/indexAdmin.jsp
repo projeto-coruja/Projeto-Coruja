@@ -1,7 +1,7 @@
 <!doctype html>
 <%@page import="java.io.PrintWriter"%>
-<%@page import="webview.util.*"%>
-<%@page import="business.EJB.user.*"%>
+<%@page import="webview.util.WebUtility"%>
+<%@page import="business.EJB.user.AdminBean"%>
 <html>
 <head>
 <meta charset="utf-8">
