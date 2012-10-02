@@ -10,6 +10,7 @@ import persistence.exceptions.UpdateEntityException;
 import business.DAO.document.TipoDocumentoDAO;
 import business.exceptions.documents.DocumentNotFoundException;
 import business.exceptions.documents.DocumentTypeNotFoundException;
+import business.exceptions.documents.DuplicatedDocumentTypeException;
 import business.exceptions.login.UnreachableDataBaseException;
 
 public class DocumentTypeEJB {
@@ -24,12 +25,12 @@ public class DocumentTypeEJB {
 		return typeDoc.findAllDocumentTypes();
 	}
 
-	public void addNewDocumentType(String type, String description) throws UnreachableDataBaseException{
+	public void addNewDocumentType(String type, String description) throws UnreachableDataBaseException, DuplicatedDocumentTypeException{
 		TipoDocumentoDAO dao = new TipoDocumentoDAO();
-		@SuppressWarnings("unused")
 		TipoDocumento dto = null;
 		try{
 			dto = dao.findSingleDocumentTypeByString(type);
+			if(dto != null)	throw new DuplicatedDocumentTypeException("Tipo de documento já existe");
 		}catch(DocumentTypeNotFoundException e){
 			dao.addDocumentType(type, description);
 		}

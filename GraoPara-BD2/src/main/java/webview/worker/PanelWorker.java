@@ -6,28 +6,31 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.JspWriter;
 
-import business.DAO.documents.OrigemDAO;
-import business.EJB.docEJB.BuscaPalavraChaveEJB;
-import business.EJB.userEJB.AdminBean;
-import business.EJB.userEJB.BuscaUserEJB;
+import business.EJB.documents.CodiceCaixaEJB;
+import business.EJB.documents.KeyWordEJB;
+
+import business.EJB.user.AdminBean;
+import business.EJB.user.SearchUserEJB;
+
+import business.exceptions.documents.CodiceCaixaNotFoundException;
 import business.exceptions.documents.KeywordNotFoundException;
-import business.exceptions.documents.OriginNotFoundException;
 import business.exceptions.login.ProfileNotFoundException;
 import business.exceptions.login.UnreachableDataBaseException;
 import business.exceptions.login.UserNotFoundException;
 
+import persistence.dto.CodiceCaixa;
 import persistence.dto.DTO;
-import persistence.dto.OrigemDTO;
-import persistence.dto.PalavraChaveDTO;
-import persistence.dto.ProfileDTO;
-import persistence.dto.UserDTO;
-import webview.WebUtility;
+import persistence.dto.PalavraChave;
+import persistence.dto.Profile;
+import persistence.dto.UserAccount;
+
+import webview.util.WebUtility;
 
 
 public class PanelWorker {
 
 	public static void listAllKeyWords(HttpServletRequest request, JspWriter out)  throws IOException{
-		BuscaPalavraChaveEJB busca = new BuscaPalavraChaveEJB();
+		KeyWordEJB busca = new KeyWordEJB();
 		List<DTO> keys = null;	    
 		String in = (String) request.getAttribute("in");
 		String td = null;
@@ -37,7 +40,7 @@ public class PanelWorker {
 			keys = busca.buscaPalavrasChaves();
 
 			for(DTO k : keys){
-				PalavraChaveDTO key = (PalavraChaveDTO) k;
+				PalavraChave key = (PalavraChave) k;
 
 				out.write("<tr>");
 				out.write("<td "+td+"> <label for=\"identificacao\" class=\"labelExibe\">" + key.getId() + "</label> </td>");
@@ -65,13 +68,13 @@ public class PanelWorker {
 		}
 	}
 	
-	public static void listAllNewKeyWords(HttpServletRequest request, JspWriter out) throws IOException{
-		BuscaPalavraChaveEJB busca = new BuscaPalavraChaveEJB();
+	/*public static void listAllNewKeyWords(HttpServletRequest request, JspWriter out) throws IOException{
+		KeyWordEJB busca = new KeyWordEJB();
 		List<DTO> keys = null;	    
 		try{
 			keys = busca.buscaPalavrasChavesPendentes();
 			for(DTO k : keys){
-				PalavraChaveDTO key = (PalavraChaveDTO) k;
+				PalavraChave key = (PalavraChave) k;
 
 				if(!key.isAprovada()){
 					out.write("<tr>");
@@ -101,23 +104,21 @@ public class PanelWorker {
 		} catch (KeywordNotFoundException e) {
 			out.println("<td colspan=\"4\"><label class=\"labelExibe\">Nenhuma palavra-chave encontrada.</label></td>");
 		}
-	}	
+	}	*/
 	
-	public static void listAllOrigins(HttpServletRequest request, JspWriter out) throws IOException{
-		OrigemDAO od = new OrigemDAO();
+	public static void listAllCodex(HttpServletRequest request, JspWriter out) throws IOException{
+		CodiceCaixaEJB od = new CodiceCaixaEJB();
 		List<DTO> origens = null;	    
 		try{
-			origens = od.findAllOrigins();
+			origens = od.getAllEntries();
 			for(DTO k : origens){
-				OrigemDTO ori = (OrigemDTO) k;				
+				CodiceCaixa ori = (CodiceCaixa) k;				
 				out.write("<tr>");
-				out.write("<td class=\"tdList\"> <label for=\"identificacao\" class=\"labelExibe\">" + ori.getTipoOrigem() + " </label> </td>");
-				out.write("<td class=\"tdList\"> <label for=\"codigo\" class=\"labelExibe\">" + ori.getCodOrigem() + " </label> </td>");
+				out.write("<td class=\"tdList\"> <label for=\"codigo\" class=\"labelExibe\">" + ori.getCod() + " </label> </td>");
 				out.write("<td class=\"tdList\"> <label for=\"titulo\" class=\"labelExibe\">" + ori.getTitulo() + " </label> </td>");
 				out.println("<td class=\"tdList\">"
 						+ "<a href=\"/GraoPara/protected/admin/editarTituloOrigem.jsp?" 
-						+ "identificacao=" + ori.getTipoOrigem()
-						+ "&codigo=" + ori.getCodOrigem()
+						+ "&codigo=" + ori.getCod()
 						+ "\"><img src=\"/GraoPara/images/edit.png\" title=\"Editar título\" alt=\"Editar título\" /></a>"
 						+ "</td>");
 				out.write("</tr>");
@@ -129,26 +130,26 @@ public class PanelWorker {
 			out.write("alert('Problemas ao acessar o banco de dados. Contate o suporte técnico e tente novamente mais tarde ');");  
 			//out.write("document.location=('/GraoPara/public/index.jsp');");  
 			out.write("</script>");
-		} catch (OriginNotFoundException e) {
+		} catch (CodiceCaixaNotFoundException e) {
 			out.println("<td colspan=\"4\"><label class=\"labelExibe\">Nenhuma palavra-chave encontrada.</label></td>");
 		}
 	}
 	
 	public static void listAllUsers(HttpServletRequest request, JspWriter out) throws IOException{
 		String c_email = WebUtility.selectCookie(request.getCookies(), WebUtility.cookie_email).getValue();
-		BuscaUserEJB busca = new BuscaUserEJB();
+		SearchUserEJB busca = new SearchUserEJB();
 		List<DTO> users = null;	    
 		try {
 			users = busca.listUsers();
 			
 			for(DTO u : users){
-				UserDTO user = (UserDTO) u;
+				UserAccount user = (UserAccount) u;
 				
 				if(!user.getEmail().equals(c_email)){
 					out.println("<tr>");
 					out.println("<td> <label for=\"identificacao\" class=\"labelExibe\">" + user.getName() + "</label> </td>");
 					out.println("<td> <label for=\"identificacao\" class=\"labelExibe\">" + user.getEmail() + " </label> </td>");
-					out.println("<td> <label for=\"identificacao\" class=\"labelExibe\">" + user.getUserProfile().getProfile() + "</label> </td>");
+					out.println("<td> <label for=\"identificacao\" class=\"labelExibe\">" + user.getProfile().getName() + "</label> </td>");
 					out.println("<td>"
 							+ "<a href=\"/GraoPara/protected/admin/editarUsuario.jsp?"
 							+ "paramName=" + user.getName()
@@ -174,19 +175,19 @@ public class PanelWorker {
 	}
 	
 	public static void listAllNewUsers(HttpServletRequest request, JspWriter out) throws IOException{
-		BuscaUserEJB busca = new BuscaUserEJB();
+		SearchUserEJB busca = new SearchUserEJB();
 		List<DTO> users = null;
 		try {
 			users = busca.listUsers();
 			
 			for(DTO u : users){
-				UserDTO user = (UserDTO) u;
+				UserAccount user = (UserAccount) u;
 				
-				if(user.getUserProfile().getProfile().equals("default")){
+				if(user.getProfile().getName().equals("default")){
 					out.println("<tr>");
 					out.println("<td> <label for=\"identificacao\" class=\"labelExibe\">" + user.getName() + "</label> </td>");
 					out.println("<td> <label for=\"identificacao\" class=\"labelExibe\">" + user.getEmail() + " </label> </td>");
-					out.println("<td> <label for=\"identificacao\" class=\"labelExibe\">" + user.getUserProfile().getProfile() + "</label> </td>");
+					out.println("<td> <label for=\"identificacao\" class=\"labelExibe\">" + user.getProfile().getName() + "</label> </td>");
 					out.println("<td>"
 						+ "<a href=\"/GraoPara/protected/admin/approveAccount?" 
 							+ "email=" + user.getEmail()
@@ -213,15 +214,14 @@ public class PanelWorker {
 		}
 	}
 	
-
 	public static void listAllAvailablePofile(HttpServletRequest request, JspWriter out) throws IOException{
 		AdminBean adm = new AdminBean();
 		List<DTO> list;
 		try {
 			list = adm.getAllAvailableProfiles();
 			for(DTO dto : list){
-				ProfileDTO profile = (ProfileDTO) dto;
-				out.println("<option value=\""+ profile.getProfile() +"\">"+ profile.getProfile() + "</option>");
+				Profile profile = (Profile) dto;
+				out.println("<option value=\""+ profile.getName() +"\">"+ profile.getName() + "</option>");
 			}
 		} catch (UnreachableDataBaseException e) {
 			e.printStackTrace();

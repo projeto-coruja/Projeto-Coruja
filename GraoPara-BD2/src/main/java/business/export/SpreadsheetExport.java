@@ -10,8 +10,10 @@ import org.odftoolkit.simple.table.Row;
 import org.odftoolkit.simple.table.Table;
 
 import persistence.dto.DTO;
+import persistence.dto.Documento;
 import persistence.dto.DocumentoDTO;
 import business.EJB.docEJB.BuscaDocEJB;
+import business.EJB.documents.DocumentEJB;
 import business.EJB.util.EJBUtility;
 
 public class SpreadsheetExport {
@@ -31,7 +33,7 @@ public class SpreadsheetExport {
 	public static String generateSpreadsheet(List<DTO> resultSet) throws Exception{
 		SpreadsheetDocument outerDoc = SpreadsheetDocument.newSpreadsheetDocument();
 		String creationDate = new SimpleDateFormat("dd-MM-YYYY").format(new Date());
-		DocumentoDTO docDTO = null;
+		Documento docDTO = null;
 		Table tbl = outerDoc.getSheetByIndex(0);
 		Row row = tbl.appendRow();
 		Cell cel = row.getCellByIndex(0);
@@ -84,17 +86,10 @@ public class SpreadsheetExport {
 		cel = row.getCellByIndex(coluna++);
 		cel.addParagraph("Resumo");
 		
-//		cel = row.getCellByIndex(coluna++);
-//		cel.addParagraph("Palavra-chave 1")
-//		cel = row.getCellByIndex(coluna++);
-//		cel.addParagraph("Palavra-chave 2");
-//		cel = row.getCellByIndex(coluna++);
-//		cel.addParagraph("Palavra-chave 3");
-		
 		// Segunda em diante
 		for(int linha = 0; linha < resultSet.size(); linha++){
 			coluna = 0;
-			docDTO = (DocumentoDTO) resultSet.get(linha);
+			docDTO = (Documento) resultSet.get(linha);
 			row = tbl.getRowByIndex(linha+1);
 			
 			cel = row.getCellByIndex(coluna++);
@@ -113,7 +108,7 @@ public class SpreadsheetExport {
 			cel.addParagraph(docDTO.getIdNumDocumento().getCodId());
 			
 			cel = row.getCellByIndex(coluna++);
-			cel.addParagraph(docDTO.getAutor());
+			cel.addParagraph(docDTO.getAutor().get);
 			
 			cel = row.getCellByIndex(coluna++);
 			cel.addParagraph(docDTO.getDestinatario());
@@ -135,7 +130,7 @@ public class SpreadsheetExport {
 			cel = row.getCellByIndex(coluna++);
 			cel.addParagraph(docDTO.getResumo());
 		}
-		String filePath = tmpPath + "/rlt_" + generateRandomString() + "_" + creationDate + ".ods";
+		String filePath = tmpPath + "/rlt_" + EJBUtility.genRandomString(8) + "_" + creationDate + ".ods";
 //		System.out.println(filePath);
 		outerDoc.save(filePath);
 		outerDoc.close();
@@ -148,15 +143,11 @@ public class SpreadsheetExport {
 	
 		
 		List<DTO> lista;
-		BuscaDocEJB busca = new BuscaDocEJB();
-		lista = busca.busca("CAIXA", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+		DocumentEJB busca = new DocumentEJB();
+		lista = busca.findByKeyWord("gato");
 		
 		SpreadsheetExport.generateSpreadsheet(lista);
 		
-	}
-	
-	private static String generateRandomString() {
-		return EJBUtility.genNewRandomPassword(8);
 	}
 
 }

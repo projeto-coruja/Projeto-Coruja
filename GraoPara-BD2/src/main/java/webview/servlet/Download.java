@@ -43,15 +43,17 @@ public class Download extends HttpServlet {
 		String titulo = request.getParameter("titulo");
 		String numAPEP_SEQ = request.getParameter("numero");
 		String autor = request.getParameter("autor");
+		String ocupacaoAutor = null;
 		String destinatario = request.getParameter("destinatario");
+		String ocupacaoDestinatario = null;
 		String local = request.getParameter("local");
 		String anoIni = request.getParameter("anoIni");
 		String anoFim = request.getParameter("anoFim");
 		String tipoDoc = request.getParameter("tipoDoc");
 		String resumo = request.getParameter("resumo");
-		String palavra1 = request.getParameter("chave1");
-		String palavra2 = request.getParameter("chave2");
-		String palavra3 = request.getParameter("chave3");
+		String palavraChave1 = request.getParameter("chave1");
+		String palavraChave2 = request.getParameter("chave2");
+		String palavraChave3 = request.getParameter("chave3");
 		
 		String filePath = null;
 		URL url = null;
@@ -62,7 +64,7 @@ public class Download extends HttpServlet {
 
 		DocumentEJB search = new DocumentEJB();
 		try {
-			List<DTO> resultSet = search.busca(identificacao.toUpperCase(), codigoDe, codigoAte, titulo, "", numAPEP_SEQ, autor, destinatario, local, anoIni, anoFim, tipoDoc, resumo, palavra1, palavra2, palavra3);
+			List<DTO> resultSet = search.findDocuments(codCodiceCaixa, tituloCodiceCaixa, anoInicioCodiceCaixa, anoFimCodiceCaixa, codDocumento, autor, ocupacaoAutor, destinatario, ocupacaoDestinatario, tipoDocumento, local, resumo, palavraChave1, palavraChave2, palavraChave3);
 			if(resultSet == null)	throw new DocumentNotFoundException();
 			filePath = SpreadsheetExport.generateSpreadsheet(resultSet);	
 			url = new URL("ftp://"+filePath);
