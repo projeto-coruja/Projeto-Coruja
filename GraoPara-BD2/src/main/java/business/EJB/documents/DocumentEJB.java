@@ -84,10 +84,10 @@ public class DocumentEJB {
 							+"AND anoFim <=" + anoFimCodiceCaixa+" )";
 		}
 		else{
-			if(continue_query == true){
-				query += " and ";
-			}
 			if(anoFimCodiceCaixa != null && !anoFimCodiceCaixa.isEmpty()){
+				if(continue_query == true){
+					query += " and ";
+				}
 				query += " codiceCaixa IN (SELECT anoInicio FROM  CodiceCaixaMO " 
 						+ "WHERE anoFim <= " + anoFimCodiceCaixa + ")";
 			}
@@ -122,6 +122,14 @@ public class DocumentEJB {
 				query += " and ";
 			}
 			query += " destinatario IN (SELECT ocupacao FROM AutorMO where ocupacao like '%" + ocupacaoDestinatario + "%')";
+			continue_query = true;
+		}
+		
+		if(codDocumento != null && !codDocumento.isEmpty()){
+			if(continue_query == true){
+				query += " and ";
+			}
+			query += " cod like '%" + codDocumento + "%'";
 			continue_query = true;
 		}
 		
@@ -335,6 +343,17 @@ public class DocumentEJB {
 	public void modifyDocument(Documento document) throws IllegalArgumentException, UnreachableDataBaseException, UpdateEntityException{
 		docDao.updateDocument(document);
 		
+	}
+	
+	public Documento findSingleDocument(String code) throws DocumentNotFoundException, UnreachableDataBaseException, IllegalArgumentException{
+		if(code == null || code.isEmpty()) throw new IllegalArgumentException("Code is empty");
+		String query = default_query;
+		query += " cod = '" + code + "'";
+		List<DTO> resultSet = docDao.findDocumentByQuery(query);
+		for(DTO dto : resultSet){
+			if(((Documento)dto).getCod().equals(code))	return (Documento) dto;
+		}
+		throw new DocumentNotFoundException("Documento não encontrado");
 	}
 	
 	public List<DTO> findByDocumentType(String type) throws UnreachableDataBaseException, DocumentNotFoundException{

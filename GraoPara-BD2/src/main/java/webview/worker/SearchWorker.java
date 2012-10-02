@@ -150,54 +150,58 @@ public class SearchWorker {
 	
 	
 	public static void printDocumentInformation(HttpServletRequest request, JspWriter out) throws IOException{
-		String tipo = request.getParameter("tipoAPEP_SEQ");
-		String num = request.getParameter("numeroAPEP");
-		DocumentoDTO doc = null;
-		BuscaDocEJB busca = new BuscaDocEJB();
+		String num = request.getParameter("codigoDoDocumento");
+		Documento doc = null;
+		DocumentEJB busca = new DocumentEJB();
 		
 		String text;
 		
 		try {
-			doc = busca.busca(tipo, num);
-			String data[] = doc.getDataDocumento().toString().split("-");
+			doc = busca.findSingleDocument(num);
+			String data[] = doc.getData().toString().split("-");
 			
 			text = "<table >";
 			
 			text += "<tr class=\"trList\">";
-			text += "<td class=\"tdList\"><label class=\"labelExibe\">Identificação</label></td>";
-			text += "<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getOrigemDocumento().getTipoOrigem()+"</label></td>";
+			text += "<td class=\"tdList\"><label class=\"labelExibe\">Código da caixa/códice</label></td>";
+			text += "<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getCodiceCaixa().getCod()			+"</label></td>";
 			text += "</tr>";
 			
 			text += "<tr class=\"trList\">";
-			text += "<td class=\"tdList\"><label class=\"labelExibe\">Código</label></td>";
-			text += "<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getOrigemDocumento().getCodOrigem() +"</label></td>";
+			text += "<td class=\"tdList\"><label class=\"labelExibe\">Título da caixa/códice</label></td>";
+			text += "<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getCodiceCaixa().getTitulo()		+"</label></td>";
 			text += "</tr>";
 
 			text += "<tr class=\"trList\">";
-			text += "<td class=\"tdList\"><label class=\"labelExibe\">Título</label></td>";
-			text += "<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getOrigemDocumento().getTitulo() 	+"</label></td>";
+			text += "<td class=\"tdList\"><label class=\"labelExibe\">Código do documento</label></td>";
+			text += "<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getCod() 							+"</label></td>";
 			text += "</tr>";
 
 			text += "<tr class=\"trList\">";
-			text += "<td class=\"tdList\"><label class=\"labelExibe\">Tipo de Número</label></td>";
-			text += "<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getIdNumDocumento().getTipoId()	+"</label></td>";
-			text += "</tr>";
-
-			text += "<tr class=\"trList\">";
-			text += "<td class=\"tdList\"><label class=\"labelExibe\">Número</label></td>";
-			text += "<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getIdNumDocumento().getCodId()		+"</label></td>";
+			text += "<td class=\"tdList\"><label class=\"labelExibe\">Título do documento</label></td>";
+			text += "<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getTitulo()						+"</label></td>";
 			text += "</tr>";
 
 			text += "<tr class=\"trList\">";
 			text += "<td class=\"tdList\"><label class=\"labelExibe\">Autor</label></td>";
-			text += "<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getAutor() 						+"</label></td>";
+			text += "<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getAutor().getNome()				+"</label></td>";
 			text += "</tr>";
 
 			text += "<tr class=\"trList\">";
+			text += "<td class=\"tdList\"><label class=\"labelExibe\">Ocupação do autor</label></td>";
+			text += "<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getAutor().getOcupacao()			+"</label></td>";
+			text += "</tr>";
+			
+			text += "<tr class=\"trList\">";
 			text += "<td class=\"tdList\"><label class=\"labelExibe\">Destinatário</label></td>";
-			text += "<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getDestinatario()					+"</label></td>";
+			text += "<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getDestinatario().getNome()		+"</label></td>";
 			text += "</tr>";
 
+			text += "<tr class=\"trList\">";
+			text += "<td class=\"tdList\"><label class=\"labelExibe\">Ocupaçao do destinatário</label></td>";
+			text += "<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getDestinatario().getOcupacao()	+"</label></td>";
+			text += "</tr>";
+			
 			text += "<tr class=\"trList\">";
 			text += "<td class=\"tdList\"><label class=\"labelExibe\">Local</label></td>";
 			text += "<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getLocal()							+"</label></td>";
@@ -210,15 +214,15 @@ public class SearchWorker {
 			
 			text += "<tr >";
 			text += "<td class=\"tdList\"><label class=\"labelExibe\">Tipo de Documento</label></td>";
-			text += "<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getTipoDocumento().getTipoDocumento()	+"</label></td>";
+			text += "<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getTipoDocumento().getNome()		+"</label></td>";
 			text += "</tr>";
 			
 			text += "<tr >";
 			text += "<td class=\"tdList\"><label class=\"labelExibe\">Palavras-Chave</label></td>";
 			text += "<td class=\"tdList\"><label class=\"labelExibe\">"	
-					+ (doc.getPalavrasChaves1() != null ? text += doc.getPalavrasChaves1().getPalavra() + " - " : (text += " ") ) 
-					+ (doc.getPalavrasChaves2() != null ? text += doc.getPalavrasChaves2().getPalavra() + " - " : (text += " ") )
-					+ (doc.getPalavrasChaves3() != null ? text += doc.getPalavrasChaves3().getPalavra() : (text += "") )
+					+ (doc.getPalavraChave1() != null ? text += doc.getPalavraChave1().getPalavra() + " - " : (text += " ") ) 
+					+ (doc.getPalavraChave2() != null ? text += doc.getPalavraChave2().getPalavra() + " - " : (text += " ") )
+					+ (doc.getPalavraChave3() != null ? text += doc.getPalavraChave3().getPalavra() : (text += "") )
 					+ "</label></td>";
 			text += "</tr>";
 			
