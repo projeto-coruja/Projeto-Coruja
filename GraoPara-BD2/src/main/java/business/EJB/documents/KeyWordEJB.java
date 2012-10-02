@@ -7,7 +7,6 @@ import persistence.dto.Documento;
 import persistence.dto.PalavraChave;
 import persistence.exceptions.UpdateEntityException;
 import business.DAO.document.PalavraChaveDAO;
-import business.DAO.document.TemaPalavraChaveDAO;
 import business.exceptions.documents.DocumentNotFoundException;
 import business.exceptions.documents.KeywordNotFoundException;
 import business.exceptions.login.UnreachableDataBaseException;
@@ -20,7 +19,7 @@ public class KeyWordEJB {
 		keyWordDAO = new PalavraChaveDAO();
 	}
 
-	public PalavraChave buscarPalavraChave(String searchKeyWord) throws UnreachableDataBaseException, KeywordNotFoundException, IllegalArgumentException  {
+	public PalavraChave findByString(String searchKeyWord) throws UnreachableDataBaseException, KeywordNotFoundException, IllegalArgumentException  {
 		
 		if(searchKeyWord == null || searchKeyWord.isEmpty())
 			throw new IllegalArgumentException("Nenhuma palavra chave informado");
@@ -37,13 +36,17 @@ public class KeyWordEJB {
 		}
 		
 		throw new KeywordNotFoundException("Palavra chave não encontrado.");
-	}	
+	}
+	
+	public List<DTO> getAllKeyWords() throws UnreachableDataBaseException, KeywordNotFoundException{
+		return keyWordDAO.getAllKeys();
+	}
 
 	public List<DTO> buscaPalavrasChaves() throws UnreachableDataBaseException, KeywordNotFoundException  {
 		return keyWordDAO.getAllKeys();
 	}
 	
-	public synchronized void cadastrarPalavraChave(String palavra, String tema) throws IllegalArgumentException, UnreachableDataBaseException {
+	public synchronized void addKeyWord(String palavra, String tema) throws IllegalArgumentException, UnreachableDataBaseException {
 		PalavraChaveDAO kwDao = new PalavraChaveDAO();		
 		try {
 			List<DTO> check = kwDao.findKeyWordByString(palavra);
@@ -65,7 +68,7 @@ public class KeyWordEJB {
 		}
 	}
 
-	public synchronized void deletarPalavraChave(String keyWord) throws UnreachableDataBaseException, KeywordNotFoundException{
+	public synchronized void removeKeyWord(String keyWord) throws UnreachableDataBaseException, KeywordNotFoundException{
 		DocumentEJB docEJB = new DocumentEJB();
 		List<DTO> results = null;
 
@@ -100,11 +103,10 @@ public class KeyWordEJB {
 		}
 	}
 	
-	public synchronized void atualizarPalavraChave(String oldKey, String newKey, String newTheme) throws UnreachableDataBaseException, KeywordNotFoundException , IllegalArgumentException, UpdateEntityException {
+	public synchronized void updateKeyWord(String oldKey, String newKey, String newTheme) throws UnreachableDataBaseException, KeywordNotFoundException , IllegalArgumentException, UpdateEntityException {
 		if(oldKey == null || newKey == null || oldKey.equals("") || newKey.equals("") || newTheme == null || newTheme.isEmpty())	
 			throw new IllegalArgumentException("Argumentos não podem ser null/vazio");
 
-		TemaPalavraChaveDAO themeDAO = new TemaPalavraChaveDAO();
 		DocumentEJB busca = new DocumentEJB();
 		List<DTO> results = null;
 

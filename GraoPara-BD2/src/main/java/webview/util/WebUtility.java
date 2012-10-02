@@ -11,16 +11,22 @@ import javax.servlet.jsp.JspWriter;
 
 import business.DAO.document.CodiceCaixaDAO;
 import business.DAO.document.TipoDocumentoDAO;
+import business.EJB.documents.CodiceCaixaEJB;
+import business.EJB.documents.KeyWordEJB;
 import business.EJB.user.AuthBean;
 import business.EJB.user.UserBean;
 import business.exceptions.documents.CodiceCaixaNotFoundException;
+import business.exceptions.documents.DocumentTypeNotFoundException;
+import business.exceptions.documents.KeywordNotFoundException;
 import business.exceptions.login.UnreachableDataBaseException;
 import business.exceptions.login.UserNotFoundException;
 
 import persistence.dto.CodiceCaixa;
 import persistence.dto.DTO;
 import persistence.dto.Documento;
+import persistence.dto.PalavraChave;
 import persistence.dto.Profile;
+import persistence.dto.TipoDocumento;
 
 public final class WebUtility {
 
@@ -40,7 +46,12 @@ public final class WebUtility {
 	public static Profile default_profile = new Profile("default");
 
 	public static final int cookie_expire = -1; //1 sessão dias
-
+	
+	/**
+	 * 
+	 * @param cookie_list
+	 * @return
+	 */
 	public static UserBean cookieLogin(Cookie[] cookie_list) {
 		if(cookie_list == null) return null;
 
@@ -68,6 +79,12 @@ public final class WebUtility {
 		return null;
 	}
 
+	/**
+	 * 
+	 * @param c_list
+	 * @param c_name
+	 * @return
+	 */
 	public static Cookie selectCookie(Cookie[] c_list, String c_name) {
 		if(c_list == null) return null;
 
@@ -78,7 +95,13 @@ public final class WebUtility {
 		}
 		return null;
 	}
-
+	
+	/**
+	 * 
+	 * @param str1
+	 * @param str2
+	 * @return
+	 */
 	public static String strDiff(String str1, String str2) {
 		int idx = str1.lastIndexOf(str2);
 	    if (idx > -1) {
@@ -87,6 +110,11 @@ public final class WebUtility {
 	    else return str1;
 	}
 
+	/**
+	 * 
+	 * @param doc
+	 * @return
+	 */
 	public static String docToString(Documento doc) {
 		return
 				doc.getTitulo() + "\n"
@@ -102,18 +130,38 @@ public final class WebUtility {
 				+ doc.getCodiceCaixa().getTitulo() + " "
 				+ doc.getCodiceCaixa().getCod() + " ";
 	}
-
+	
+	/**
+	 * 
+	 * @param request
+	 * @param out
+	 * @throws IOException
+	 */
 	public static void printName(HttpServletRequest request, JspWriter out) throws IOException {
 		Cookie name = selectCookie(request.getCookies(), WebUtility.cookie_nome);
 		if(name != null) out.write("<label>" + name.getValue() + "!</label>");
 	}
 
+	/**
+	 * 
+	 * @param request
+	 * @param parameter
+	 * @return
+	 * @throws IOException
+	 */
 	public static String printLabel(HttpServletRequest request, String parameter) throws IOException {
 		String label = request.getParameter(parameter);
 		if(label == null) return "";
 		else return label;
 	}
 	
+	/**
+	 * 
+	 * @param request
+	 * @return
+	 * @throws IOException
+	 * @throws UnreachableDataBaseException
+	 */
 	public static String printCodCodiceCaixa(HttpServletRequest request) throws IOException, UnreachableDataBaseException {
 		String output = null;
 
@@ -140,6 +188,13 @@ public final class WebUtility {
 		return output;
 	}
 
+	/**
+	 * 
+	 * @param request
+	 * @return
+	 * @throws IOException
+	 * @throws UnreachableDataBaseException
+	 */
 	public static String printTituloCodiceCaixa(HttpServletRequest request) throws IOException, UnreachableDataBaseException {
 		String output = null;
 
@@ -166,6 +221,13 @@ public final class WebUtility {
 		return output;
 	}
 	
+	/**
+	 * 
+	 * @param request
+	 * @return
+	 * @throws IOException
+	 * @throws UnreachableDataBaseException
+	 */
 	public static String printEpocasCodiceCaixa(HttpServletRequest request) throws IOException, UnreachableDataBaseException {
 		String output = null;
 
@@ -196,6 +258,13 @@ public final class WebUtility {
 		return output;
 	}
 
+	/**
+	 * 
+	 * @param request
+	 * @return
+	 * @throws IOException
+	 * @throws UnreachableDataBaseException
+	 */
 	public static String printCadastroOrigem(HttpServletRequest request) throws IOException, UnreachableDataBaseException {
 		String output = null;
 		String identificacao = request.getParameter("identificacao");
@@ -228,6 +297,12 @@ public final class WebUtility {
 		return output;
 	}
 
+	/**
+	 * 
+	 * @param request
+	 * @return
+	 * @throws IOException
+	 */
 	public static String printCodDocumento(HttpServletRequest request) throws IOException {
 		String output = null;
 		String parameter = request.getParameter("tipoAPEP_SEQ");
@@ -250,12 +325,22 @@ public final class WebUtility {
 		return output;
 	}
 
+	/**
+	 * 
+	 * @param request
+	 * @return
+	 */
 	public static String printSelectDia(HttpServletRequest request) {
 		String dia = request.getParameter("dia");
 		return "<option selected value=\"" + dia + "\">" + dia + "</option>" +
 				"<option value=\"\">--------</option>";
 	}
 
+	/**
+	 * 
+	 * @param request
+	 * @return
+	 */
 	public static String printSelectMes(HttpServletRequest request) {
 		String mes = request.getParameter("mes");
 		int num_mes = Integer.parseInt(mes);
@@ -263,6 +348,11 @@ public final class WebUtility {
 				"<option value=\"\">--------</option>";
 	}
 
+	/**
+	 * 
+	 * @param request
+	 * @return
+	 */
 	public static String printSelectTipoDoc(HttpServletRequest request) {
 		TipoDocumentoDAO dtd = new TipoDocumentoDAO();
 		String result = "";
@@ -271,7 +361,7 @@ public final class WebUtility {
 			List<DTO> list = dtd.findAllDocumentTypes();
 			result = "<option value=\"\">Selecione...</option> ";
 			for(DTO d : list){
-				tipoDoc = ((TipoDocumentoDTO) d).getTipoDocumento();
+				tipoDoc = ((TipoDocumento) d).getNome();
 				if(tipoDoc.equals(request.getParameter("tipoDoc")))
 					result += "<option selected value=\"" + tipoDoc + "\">" + tipoDoc + "</option> ";
 				else
@@ -285,12 +375,18 @@ public final class WebUtility {
 		return result;
 	}
 
+	/**
+	 * 
+	 * @param request
+	 * @param key_pos
+	 * @return
+	 */
 	public static String printInputKeyWords(HttpServletRequest request, String key_pos) {
-		BuscaPalavraChaveEJB busca = new BuscaPalavraChaveEJB();
+		KeyWordEJB busca = new KeyWordEJB();
 		String result = "";
 		String key = request.getParameter(key_pos);
 		try {
-			PalavraChaveDTO palavra = busca.buscarPalavraChave(key);
+			PalavraChave palavra = busca.findByString(key);
 			return "<input type=\"text\" size=\"12\" maxlength=\"32\" class=\"inputPalavraChave\" id=\""+ key_pos +"\" name=\""+ key_pos +"\" value=\"" + palavra.getPalavra() + "\"/>";
 
 		} catch (UnreachableDataBaseException e) {
@@ -303,15 +399,21 @@ public final class WebUtility {
 		return result;
 	}
 
+	/**
+	 * 
+	 * @param request
+	 * @param key_pos
+	 * @return
+	 */
 	public static String printSelectKeyWords(HttpServletRequest request, String key_pos) {
-		KeyWordDAO word = new KeyWordDAO();
+		KeyWordEJB word = new KeyWordEJB();
 		String result = "";
 		String key = null;
 		try {
-			List<DTO> list = word.getAllKeys();
+			List<DTO> list = word.getAllKeyWords();
 
 			for(DTO d : list){
-				key = ((PalavraChaveDTO) d).getPalavra();
+				key = ((PalavraChave) d).getPalavra();
 				if(key.equals(request.getParameter(key_pos)))
 					result += "<option selected value=\"" + key + "\">" + key + "</option> ";
 				else
@@ -326,20 +428,27 @@ public final class WebUtility {
 		return result;
 	}
 
-	public static String printOriginTitle(HttpServletRequest request) throws OriginNotFoundException {
-		OrigemDAO od = new OrigemDAO();
+	/**
+	 * @param request
+	 * @return
+	 * @throws CodiceCaixaNotFoundException
+	 */
+	public static String printOriginTitle(HttpServletRequest request) throws CodiceCaixaNotFoundException {
+		CodiceCaixaEJB od = new CodiceCaixaEJB();
 		String result = "";
 		try {
-			OrigemDTO ori = od.findExactOrigin(request.getParameter("codigo"), request.getParameter("identificacao"));
+			CodiceCaixa ori = od.findExactEntry(request.getParameter("codigo"), request.getParameter("titulo"));
 			result = ori.getTitulo().trim();
 		} catch (UnreachableDataBaseException e) {
 			e.printStackTrace();
-		} catch (OriginNotFoundException e) {
-			throw e;
 		}
 		return result;
 	}
 
+	/**
+	 * @param str
+	 * @return
+	 */
 	public static String removeAccents(String str) {
 	    str = Normalizer.normalize(str, Normalizer.Form.NFD);
 	    str = str.replaceAll("[^\\p{ASCII}]", "");

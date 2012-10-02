@@ -7,12 +7,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.JspWriter;
 
 import persistence.dto.DTO;
-import persistence.dto.DocumentoDTO;
-import persistence.dto.TipoDocumentoDTO;
-import webview.WebUtility;
-import business.EJB.docEJB.BuscaDocEJB;
-import business.EJB.docEJB.TipoDocumentoEJB;
-import business.EJB.userEJB.AuthBean;
+import persistence.dto.Documento;
+import persistence.dto.TipoDocumento;
+import webview.util.WebUtility;
+import business.EJB.documents.DocumentEJB;
+import business.EJB.documents.DocumentTypeEJB;
+import business.EJB.user.AuthBean;
 import business.exceptions.documents.DocumentNotFoundException;
 import business.exceptions.documents.DocumentTypeNotFoundException;
 import business.exceptions.login.UnreachableDataBaseException;
@@ -20,22 +20,24 @@ import business.exceptions.login.UnreachableDataBaseException;
 public class SearchWorker {
 	
 	public static void listAllDocuments(HttpServletRequest request, JspWriter out) throws IOException{
-		String identificacao = request.getParameter("identificacao");
-		String codigoDe = request.getParameter("codigoDe");
-		String codigoAte = request.getParameter("codigoAte");
-		String titulo = request.getParameter("titulo");
-		String numAPEP_SEQ = request.getParameter("numero");
-		String autor = request.getParameter("autor");
-		String destinatario = request.getParameter("destinatario");
-		String local = request.getParameter("local");
-		String anoIni = request.getParameter("anoIni");
-		String anoFim = request.getParameter("anoFim");
-		String tipoDoc = request.getParameter("tipoDoc");
-		String resumo = request.getParameter("resumo");
-		String palavra1 = request.getParameter("chave1");
-		String palavra2 = request.getParameter("chave2");
-		String palavra3 = request.getParameter("chave3");
-
+		
+		//TODO: Pegar os valores via parâmetros.
+		String codCodiceCaixa = null;
+		String tituloCodiceCaixa = null;
+		String anoInicioCodiceCaixa = null;
+		String anoFimCodiceCaixa = null;
+		String codDocumento = null;
+		String autor = null;
+		String ocupacaoAutor = null;
+		String destinatario = null;
+		String ocupacaoDestinatario = null;
+		String tipoDocumento = null;
+		String local = null;
+		String resumo = null;
+		String palavraChave1 = null;
+		String palavraChave2 = null;
+		String palavraChave3 = null;
+		
 		String c_status = null;
 		
 		if(request.getCookies().length > 1){
@@ -43,66 +45,58 @@ public class SearchWorker {
 		}
 		
 		
-		BuscaDocEJB search = new BuscaDocEJB();
+		DocumentEJB search = new DocumentEJB();
 		List<DTO> docs = null;    
 
 		try {
-			docs = search.busca(identificacao.toUpperCase(), codigoDe, codigoAte, titulo, "", numAPEP_SEQ, autor, destinatario, local, anoIni, anoFim, tipoDoc, resumo, palavra1, palavra2, palavra3); 
+			docs = search.findDocuments(codCodiceCaixa, tituloCodiceCaixa, anoInicioCodiceCaixa, anoFimCodiceCaixa, codDocumento, autor, ocupacaoAutor, destinatario, ocupacaoDestinatario, tipoDocumento, local, resumo, palavraChave1, palavraChave2, palavraChave3);
 
 			for(DTO d : docs){
 				
-				DocumentoDTO doc = (DocumentoDTO) d;
+				Documento doc = (Documento) d;
 				
-				String data[] = doc.getDataDocumento().toString().split("-");
+				String data[] = doc.getData().toString().split("-");
 
-				String palchave1 = "";
-				String palchave2 = "";
-				String palchave3 = "";
-				if(doc.getPalavrasChaves1() != null) palchave1 = doc.getPalavrasChaves1().getPalavra();
-				if(doc.getPalavrasChaves2() != null) palchave2 = doc.getPalavrasChaves2().getPalavra();
-				if(doc.getPalavrasChaves3() != null) palchave3 = doc.getPalavrasChaves3().getPalavra();
-				
 				out.println("<tr  class=\"trList\">");
-				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getOrigemDocumento().getTipoOrigem()+"</label></td>");
-				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getOrigemDocumento().getCodOrigem() +"</label></td>");
-				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getOrigemDocumento().getTitulo() 	+"</label></td>");
-				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getIdNumDocumento().getTipoId()	+"</label></td>");
-				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getIdNumDocumento().getCodId()		+"</label></td>");
-				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getAutor() 						+"</label></td>");
-				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getDestinatario()					+"</label></td>");
+				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getCodiceCaixa().getCod()			+"</label></td>");
+				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getCodiceCaixa().getTitulo()		+"</label></td>");
+				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getCod()							+"</label></td>");
+				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getTitulo()						+"</label></td>");
+				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getTipoDocumento().getNome()		+"</label></td>");
+				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getAutor().getNome() 				+"</label></td>");
+				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getAutor().getOcupacao() 			+"</label></td>");
+				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getDestinatario().getNome()		+"</label></td>");
+				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getDestinatario().getOcupacao()	+"</label></td>");
 				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getLocal()							+"</label></td>");
 				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ data[2]+"/"+data[1]+"/"+data[0]		+"</label></td>");
-				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getTipoDocumento().getTipoDocumento()	+"</label></td>");
 				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"
-						+ palchave1 + " - " 
-						+ palchave2 + " - "
-						+ palchave3
+						+ (doc.getPalavraChave1() != null ? doc.getPalavraChave1().getPalavra() + " - " : "" )
+						+ (doc.getPalavraChave2() != null ? doc.getPalavraChave2().getPalavra() + " - " : "" )
+						+ (doc.getPalavraChave3() != null ? doc.getPalavraChave3().getPalavra() : "" )
 						+ "</label></td>");
+				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getResumo()						+"</label></td>");
 				if(c_status != null && c_status.equals(AuthBean.LoginSuccessAdmin)){
 					 out.println( "<td class=\"tdList\">"
 								+ "<a href=\"/GraoPara/protected/admin/detalhesDocumentosAdmin.jsp?"
-								+"identificacao=" + doc.getOrigemDocumento().getTipoOrigem()
-								+"&codigo=" + doc.getOrigemDocumento().getCodOrigem()
-								+"&titulo=" + doc.getOrigemDocumento().getTitulo()
-								+"&tipoAPEP_SEQ=" + doc.getIdNumDocumento().getTipoId()
-								+"&numeroAPEP=" + doc.getIdNumDocumento().getCodId()
+								+"codigo=" + doc.getCodiceCaixa().getCod()
+								+"&codigoDoDocumento=" + doc.getCod()
+								+"&titulo=" + doc.getTitulo()
 								+"&dia=" + data[2]
 								+"&mes=" + data[1]
 								+"&ano=" + data[0]
 								+"&autor=" + doc.getAutor()
 								+"&destinatario=" + doc.getDestinatario()
 								+"&local=" + doc.getLocal()
-								+"&tipoDoc=" + doc.getTipoDocumento().getTipoDocumento()
+								+"&tipoDoc=" + doc.getTipoDocumento().getNome()
 								+"&resumo=" + doc.getResumo()
-								+"&chave1=" + palchave1
-								+"&chave2=" + palchave2
-								+"&chave3=" + palchave3
+								+"&chave1=" + (doc.getPalavraChave1() != null ? doc.getPalavraChave1().getPalavra() : "" )
+								+"&chave2=" + (doc.getPalavraChave2() != null ? doc.getPalavraChave2().getPalavra() : "" )
+								+"&chave3=" + (doc.getPalavraChave3() != null ? doc.getPalavraChave3().getPalavra() : "" )
 								+ "\">"
 								+ "<img src=\"/GraoPara/images/edit.png\" title=\"Editar\" alt=\"Editar\"/></a> "
 								+ "<br>"
 								+ "<a href=\"/GraoPara/protected/admin/removeDoc?"
-								+"tipoAPEP_SEQ=" + doc.getIdNumDocumento().getTipoId()
-								+"&numeroAPEP=" + doc.getIdNumDocumento().getCodId()
+								+"&numeroAPEP=" + doc.getCod()
 								+ "\">" 
 								+ "<img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\"/></a></td> ");
 				}
@@ -127,17 +121,18 @@ public class SearchWorker {
 	
 	public static void listAllDocumentsTypes(HttpServletRequest request, JspWriter out) throws IOException{
 		List<DTO> lista;
-		TipoDocumentoEJB tipoEjb = new TipoDocumentoEJB();
+		DocumentTypeEJB ejb = new DocumentTypeEJB();
 		
 		try {
-			lista = tipoEjb.listAllTypeDocuments();
+			lista = ejb.listAllTypeDocuments();
 			
 			for(DTO dto : lista){
-				TipoDocumentoDTO tipoDoc = (TipoDocumentoDTO) dto;
+				TipoDocumento tipoDoc = (TipoDocumento) dto;
 				out.println("<tr  class=\"trList\">");
-				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ tipoDoc.getTipoDocumento()+"</label></td>");
+				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ tipoDoc.getNome()+"</label></td>");
+				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ tipoDoc.getDescricao()+"</label></td>");
 				out.println("<td class=\"tdList\">"
-						+ "<a href=\"/GraoPara/protected/admin/removeDocType?docType="+ tipoDoc.getTipoDocumento() + "\">"
+						+ "<a href=\"/GraoPara/protected/admin/removeDocType?docType="+ tipoDoc.getNome() + "\">"
 							+"<img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\"/>"
 						+ "</a>"
 					+ "</td> ");
