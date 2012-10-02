@@ -312,7 +312,5 @@ public class SpreadsheetExport {
 				new Date()));
 		
 		SpreadsheetExport.generateSpreadsheet(lista);
-		
 	}
-
 }
