@@ -210,7 +210,7 @@
 							</thead>
 						<tbody>
 							<%
-								PanelWorker.listAllOrigins(request, out);
+								PanelWorker.listAllCodex(request, out);
 							%>
 						</tbody>
 					</table>
