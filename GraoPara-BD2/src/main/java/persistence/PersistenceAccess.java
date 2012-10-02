@@ -7,7 +7,7 @@ import org.jdto.DTOBinderFactory;
 
 import persistence.dto.DTO;
 import persistence.exceptions.UpdateEntityException;
-import persistence.model.EntityMO;
+import persistence.model.EntityModel;
 import persistence.util.DTOUtility;
 import persistence.util.EntityManager;
 
@@ -26,14 +26,14 @@ public class PersistenceAccess {
 	
 	@SuppressWarnings({"unchecked"})
 	public DTO saveEntity(DTO dto) {
-		EntityMO ent = (EntityMO) binder.extractFromDto(du.findEntityClassForDTO(dto), dto);
+		EntityModel ent = (EntityModel) binder.extractFromDto(du.findEntityClassForDTO(dto), dto);
 		em.save(ent);
 		dto.setId(ent.getId());
 		return dto;
 	}
 	
 	public void updateEntity(DTO dto) throws IllegalArgumentException, UpdateEntityException {
-		EntityMO entity = (EntityMO) em.find(du.findEntityClassForDTO(dto), dto.getId());
+		EntityModel entity = (EntityModel) em.find(du.findEntityClassForDTO(dto), dto.getId());
 		du.updateEntityFromDTO(entity, dto);
 		em.update(entity);
 	}
@@ -48,7 +48,7 @@ public class PersistenceAccess {
 	}
 	
 	public void deleteEntity(DTO dto) {
-		EntityMO dead = (EntityMO) em.find(du.findEntityClassForDTO(dto), dto.getId());
+		EntityModel dead = (EntityModel) em.find(du.findEntityClassForDTO(dto), dto.getId());
 		em.delete(dead);
 	}
 

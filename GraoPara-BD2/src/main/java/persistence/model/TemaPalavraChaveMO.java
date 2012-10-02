@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-public class TemaPalavraChaveMO implements EntityMO  {
+public class TemaPalavraChaveMO implements EntityModel  {
 	
 	@Id
 	@GeneratedValue

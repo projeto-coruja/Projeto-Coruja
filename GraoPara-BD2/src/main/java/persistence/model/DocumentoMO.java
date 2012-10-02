@@ -15,7 +15,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 
 @Entity
-public class DocumentoMO implements EntityMO  {
+public class DocumentoMO implements EntityModel  {
 	
 	@Id
 	@GeneratedValue
