@@ -41,9 +41,13 @@ public class PersistenceAccess {
 	@SuppressWarnings("unchecked")
 	public List<DTO> findEntity(String query) {
 		List<Object> resultSet = man.find(query);
-		if(resultSet == null || resultSet.isEmpty()) return null;
+		if(resultSet == null || resultSet.isEmpty()) {
+			man.finishOperation();
+			return null;
+		}
 		else{
 			List<DTO> dtoSet = binder.bindFromBusinessObjectList(du.findDTOClassForEntity(resultSet.get(0)), resultSet);
+			man.finishOperation();
 			resultSet = null;
 			return dtoSet;
 		}

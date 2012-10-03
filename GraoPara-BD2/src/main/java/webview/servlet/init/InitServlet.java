@@ -1,7 +1,6 @@
 package webview.servlet.init;
 
 import java.io.File;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletConfig;
@@ -23,7 +22,6 @@ import persistence.dto.TipoDocumento;
 import persistence.dto.UserAccount;
 import persistence.util.PersistenceUtility;
 import webview.util.WebUtility;
-
 import business.EJB.util.EJBUtility;
 
 /**
