@@ -41,10 +41,16 @@ public class PersistenceAccess {
 	@SuppressWarnings("unchecked")
 	public List<DTO> findEntity(String query) {
 		List<Object> resultSet = em.find(query);
-		List<DTO> dtoSet = binder.bindFromBusinessObjectList(du.findDTOClassForEntity(resultSet.get(0)), resultSet);
-		em.finishOperation();
-		resultSet = null;
-		return dtoSet;
+		if(resultSet == null || resultSet.size() <= 0){
+			em.finishOperation();
+			return null;
+		}
+		else{
+			List<DTO> dtoSet = binder.bindFromBusinessObjectList(du.findDTOClassForEntity(resultSet.get(0)), resultSet);
+			em.finishOperation();
+			resultSet = null;
+			return dtoSet;
+		}
 	}
 	
 	public void deleteEntity(DTO dto) {

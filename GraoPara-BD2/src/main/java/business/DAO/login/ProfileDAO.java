@@ -52,7 +52,7 @@ public class ProfileDAO {
 	public Profile findProfileByName(String profile) throws UnreachableDataBaseException, ProfileNotFoundException {
 		List<DTO> resultSet = null;
 		try {
-			resultSet = manager.findEntity("from Profile where name = '" + profile + "'");
+			resultSet = manager.findEntity("from ProfileMO where name = '" + profile + "'");
 			if(resultSet == null) {
 				throw new ProfileNotFoundException();
 			}
@@ -66,7 +66,7 @@ public class ProfileDAO {
 	public List<DTO> getAllProfiles() throws UnreachableDataBaseException, ProfileNotFoundException{
 		List<DTO> resultSet = null;
 		try{
-			resultSet = manager.findEntity("from Profile order by name");
+			resultSet = manager.findEntity("from ProfileMO order by name");
 			if(resultSet == null)	throw new ProfileNotFoundException("Nenhum perfil encontrado");
 			else return resultSet;
 		} catch(DataAccessLayerException e) {
