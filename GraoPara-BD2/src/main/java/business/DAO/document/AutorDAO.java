@@ -55,7 +55,7 @@ public class AutorDAO {
 	public Autor findAuthorByNameAndOccupation(String name, String occupation) throws AuthorNotFoundException, UnreachableDataBaseException {
 		List<DTO> resultSet = null;
 		try {
-			resultSet = manager.findEntity("from AutorME where nome = '" 
+			resultSet = manager.findEntity("from AutorMO where nome = '" 
 					+ name +"'"
 					+ " and ocupacao = '" + occupation +"'" 
 					+ " order by nome, ocupacao");
@@ -72,7 +72,7 @@ public class AutorDAO {
 	public List<DTO> findAutorByName(String name) throws AuthorNotFoundException, UnreachableDataBaseException {
 		List<DTO> resultSet = null;
 		try {
-			resultSet = manager.findEntity("from AutorME where nome = '" 
+			resultSet = manager.findEntity("from AutorMO where nome = '" 
 					+ name +"'"
 					+ " order by nome, ocupacao");
 			if(resultSet == null) {
