@@ -42,6 +42,10 @@ public class Documento implements DTO {
 	private UserAccount uploader;
 	
 	private Date data;
+	
+	public Documento() {
+		//JDTO
+	}
 
 	public Documento(String cod, String titulo, String local, String resumo,
 			CodiceCaixa codiceCaixa, TipoDocumento tipoDocumento, Autor autor,

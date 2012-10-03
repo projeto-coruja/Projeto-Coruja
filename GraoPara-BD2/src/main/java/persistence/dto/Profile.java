@@ -9,6 +9,10 @@ public class Profile implements DTO {
 	public Profile(String profile) {
 		this.name = profile;
 	}
+	
+	public Profile() {
+		//JDTO
+	}
 
 	public Long getId() {
 		return id;

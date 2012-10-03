@@ -17,7 +17,7 @@ public class UserAccount implements DTO{
 	private String password;
 	
 	public UserAccount() {
-		
+		//Para o JDTO
 	}
 
 	public UserAccount(String name, Profile profile, String email,	String password) {
@@ -26,7 +26,7 @@ public class UserAccount implements DTO{
 		this.email = email;
 		this.password = password;
 	}
-
+	
 	public Long getId() {
 		return id;
 	}

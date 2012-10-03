@@ -7,6 +7,10 @@ public class TipoDocumento implements DTO{
 	private String nome;
 	
 	private String descricao;
+	
+	public TipoDocumento() {
+		//Para o JDTO
+	}
 
 	public TipoDocumento(String tipoDocumento, String descricao) {
 		this.nome = tipoDocumento;

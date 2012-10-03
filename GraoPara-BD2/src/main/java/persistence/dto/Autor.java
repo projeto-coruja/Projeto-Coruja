@@ -8,6 +8,10 @@ public class Autor implements DTO {
 	
 	private String ocupacao;
 
+	public Autor() {
+		//JDTO
+	}
+	
 	public Autor(String nome, String ocupacao) {
 		this.nome = nome;
 		this.ocupacao = ocupacao;

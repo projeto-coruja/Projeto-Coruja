@@ -11,6 +11,10 @@ public class PalavraChave implements DTO {
 	private TemaPalavraChave tema;
 	
 	private String palavra;
+	
+	public PalavraChave() {
+		//JDTO
+	}
 
 	public PalavraChave(String palavraChave, TemaPalavraChave tema) {
 		this.palavra = palavraChave;

@@ -11,6 +11,10 @@ public class CodiceCaixa implements DTO {
 	private int anoInicio;
 	
 	private int anoFim;
+	
+	public CodiceCaixa() {
+		//JDTO
+	}
 
 	public CodiceCaixa(String cod, String titulo, int anoInicio, int anoFim) {
 		super();

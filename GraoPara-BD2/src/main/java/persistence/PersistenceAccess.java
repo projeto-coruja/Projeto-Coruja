@@ -24,7 +24,7 @@ public class PersistenceAccess {
 		du = new DTOUtility();
 	}
 	
-	public void saveEntity(DTO dto) throws IllegalArgumentException {
+	public synchronized void saveEntity(DTO dto) throws IllegalArgumentException {
 		EntityModel em = du.createEmptyEntityInstanceFromDTOType(dto);
 		du.updateEntityFromDTO(em, dto);
 		man.save(em);

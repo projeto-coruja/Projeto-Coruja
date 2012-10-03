@@ -12,7 +12,7 @@ import persistence.util.DataAccessLayerException;
 
 public class ProfileDAO {
 
-	private static Profile defaultProfile;
+	private static Profile defaultProfile = null;
 	
 	private static final String defaultProfileName = "default";
 
@@ -34,7 +34,7 @@ public class ProfileDAO {
 			} catch (UnreachableDataBaseException e) {
 				e.printStackTrace();
 			} catch (ProfileNotFoundException e) {
-				e.printStackTrace();
+				//
 			}
 		}
 	}
