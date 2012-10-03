@@ -6,65 +6,60 @@ import org.jdto.DTOBinder;
 import org.jdto.DTOBinderFactory;
 
 import persistence.dto.DTO;
-import persistence.exceptions.UpdateEntityException;
 import persistence.model.EntityModel;
 import persistence.util.DTOUtility;
 import persistence.util.EntityManager;
 
 public class PersistenceAccess {
 	
-	private static DTOBinder binder = DTOBinderFactory.getBinder();
+	private EntityManager man;
 	
-	private EntityManager em;
+	private DTOBinder binder;
 	
 	private DTOUtility du;
 	
 	public PersistenceAccess() {
-		em = new EntityManager();
+		man = new EntityManager();
+		binder = DTOBinderFactory.getBinder();
 		du = new DTOUtility();
 	}
 	
-	@SuppressWarnings({"unchecked"})
-	public DTO saveEntity(DTO dto) {
-		EntityModel ent = (EntityModel) binder.extractFromDto(du.findEntityClassForDTO(dto), dto);
-		em.save(ent);
-		dto.setId(ent.getId());
-		return dto;
+	public void saveEntity(DTO dto) throws IllegalArgumentException {
+		EntityModel em = du.createEmptyEntityInstanceFromDTOType(dto);
+		du.updateEntityFromDTO(em, dto);
+		man.save(em);
+		dto.setId(em.getId());
 	}
 	
-	public void updateEntity(DTO dto) throws IllegalArgumentException, UpdateEntityException {
-		EntityModel entity = (EntityModel) em.find(du.findEntityClassForDTO(dto), dto.getId());
-		du.updateEntityFromDTO(entity, dto);
-		em.update(entity);
+	public void updateEntity(DTO dto) throws IllegalArgumentException {
+		EntityModel entity = man.find(du.findEntityClassForDTO(dto), dto.getId());
+		if(entity == null) throw new IllegalArgumentException("NÃO MEXA NO ID DE DTOs!");
+		du.updateEntityFromDTO((EntityModel) entity, dto);
+		man.update(entity);
 	}
 	
 	@SuppressWarnings("unchecked")
 	public List<DTO> findEntity(String query) {
-		List<Object> resultSet = em.find(query);
-		if(resultSet == null || resultSet.size() <= 0){
-			em.finishOperation();
+		List<Object> resultSet = man.find(query);
+		if(resultSet == null || resultSet.isEmpty()) {
+			man.finishOperation();
 			return null;
 		}
 		else{
 			List<DTO> dtoSet = binder.bindFromBusinessObjectList(du.findDTOClassForEntity(resultSet.get(0)), resultSet);
-			em.finishOperation();
+			man.finishOperation();
 			resultSet = null;
 			return dtoSet;
 		}
 	}
 	
 	public void deleteEntity(DTO dto) {
-		EntityModel dead = (EntityModel) em.find(du.findEntityClassForDTO(dto), dto.getId());
-		em.delete(dead);
+		Object dead = man.find(du.findEntityClassForDTO(dto), dto.getId());
+		man.delete((EntityModel) dead);
 	}
-
-	public Long countRows(String table, String criteria){
-		if(table == null)	
-			throw new IllegalArgumentException("Tabela não pode ser null");
-
-		if(criteria == null)	
-			return em.count(table, "1=1");
-		else return em.count(table, criteria);
+	
+	public Long countRows(String name, String criteria) {
+		return man.count(du.findEntityNameForDTOName(name), criteria);
 	}
 
 }

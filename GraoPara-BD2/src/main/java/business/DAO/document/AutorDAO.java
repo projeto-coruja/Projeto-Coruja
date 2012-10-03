@@ -29,7 +29,7 @@ public class AutorDAO {
 			e.printStackTrace();
 			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");			
 		} catch (AuthorNotFoundException e) {
-			newAuthor = (Autor) manager.saveEntity(newAuthor);
+			manager.saveEntity(newAuthor);
 			return newAuthor;
 		}
 	}

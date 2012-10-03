@@ -3,7 +3,6 @@ package business.DAO.document;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
-import business.exceptions.documents.KeywordNotFoundException;
 import business.exceptions.documents.ThemeNotFoundException;
 import business.exceptions.login.UnreachableDataBaseException;
 import persistence.PersistenceAccess;
@@ -23,7 +22,7 @@ public class TemaPalavraChaveDAO {
 	public TemaPalavraChave addThemeWord(String theme) throws UnreachableDataBaseException{
 		TemaPalavraChave newTheme = new TemaPalavraChave(theme);
 		try{
-			newTheme = (TemaPalavraChave) manager.saveEntity(newTheme);
+			manager.saveEntity(newTheme);
 		}catch(DataAccessLayerException e){
 			e.printStackTrace();
 			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");			

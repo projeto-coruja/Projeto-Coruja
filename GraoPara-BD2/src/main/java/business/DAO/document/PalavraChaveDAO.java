@@ -39,7 +39,7 @@ public class PalavraChaveDAO {
 		PalavraChave newKey = new PalavraChave(key, newTheme);
 		
 		try{
-			newKey = (PalavraChave) manager.saveEntity(newKey);
+			manager.saveEntity(newKey);
 		}catch(DataAccessLayerException e){
 			e.printStackTrace();
 			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");			
@@ -116,7 +116,8 @@ public class PalavraChaveDAO {
 				TemaPalavraChaveDAO tpcDAO = new TemaPalavraChaveDAO();
 				select_tpc = tpcDAO.addThemeWord(newTheme);
 			}
-			select_pc = (PalavraChave) manager.saveEntity(new PalavraChave(newKey,select_tpc));
+			select_pc = new PalavraChave(newKey,select_tpc);
+			manager.saveEntity(select_pc);
 		}
 		
 		return select_pc;

@@ -64,6 +64,15 @@ public class DTOUtility {
 		}
 		return null;
 	}
+	
+	/**
+	 * Função utilitária para encontrar o nome da classe entidade desejada
+	 * @param dtoName o nome da classe DTO de onde queremos derivar a entidade
+	 * @return a String representando a entidade desejada
+	 */
+	public String findEntityNameForDTOName(String dtoName){
+		return dtoName + entitySuffix;	
+	}
 	/** 
 	 * Função que atualiza uma entidade com base em um DTO. A função utiliza reflexão para derivar dinamicamente<br>
 	 * os getters e setters dos objetos, e então executá-los de acordo. Quando for necessário atualizar um campo<br>
@@ -74,7 +83,7 @@ public class DTOUtility {
 	 * @throws UpdateEntityException 
 	 */
 	@SuppressWarnings("unchecked")
-	public void updateEntityFromDTO(EntityModel ent, DTO dto) throws IllegalArgumentException, UpdateEntityException {
+	public void updateEntityFromDTO(EntityModel ent, DTO dto) throws IllegalArgumentException {
 		
 		if(ent == null) throw new IllegalArgumentException("Entity argument is null");
 		if(dto == null) throw new IllegalArgumentException("DTO argument is null");
@@ -208,17 +217,15 @@ public class DTOUtility {
 							} else set.invoke(ent, arg);
 						} catch (IllegalAccessException e) {
 							e.printStackTrace();
-							throw new UpdateEntityException("Erro ao atualizar entidade.");
 						} catch (InvocationTargetException e) {
 							e.printStackTrace();
-							throw new UpdateEntityException("Erro ao atualizar entidade.");
 						} catch (NoSuchMethodException e) {
 							e.printStackTrace();
-							throw new UpdateEntityException("Erro ao atualizar entidade.");
 						} catch (SecurityException e) {
 							e.printStackTrace();
-							throw new UpdateEntityException("Erro ao atualizar entidade.");
 						} catch (InstantiationException e) {
+							e.printStackTrace();
+						} catch (UpdateEntityException e) {
 							e.printStackTrace();
 						}
 					}
@@ -227,8 +234,16 @@ public class DTOUtility {
 		}
 	}
 	
-	public EntityModel createEmptyEntityInstanceFromDTOType(DTO dto) throws InstantiationException, IllegalAccessException {
-		return (EntityModel) findEntityClassForDTO(dto).newInstance();
+	public EntityModel createEmptyEntityInstanceFromDTOType(DTO dto) {
+		EntityModel result = null;
+		try {
+			result = (EntityModel) findEntityClassForDTO(dto).newInstance();
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 
 }

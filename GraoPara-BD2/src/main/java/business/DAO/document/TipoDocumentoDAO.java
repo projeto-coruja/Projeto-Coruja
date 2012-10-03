@@ -22,7 +22,7 @@ public class TipoDocumentoDAO {
 	public TipoDocumento addDocumentType(String tipoDocumento, String descricao) throws UnreachableDataBaseException{
 		TipoDocumento newType = new TipoDocumento(tipoDocumento, descricao);
 		try{
-			newType = (TipoDocumento) manager.saveEntity(newType);
+			manager.saveEntity(newType);
 		}catch(DataAccessLayerException e){
 			e.printStackTrace();
 			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");			

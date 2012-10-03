@@ -29,7 +29,7 @@ public class CodiceCaixaDAO {
 			e.printStackTrace();
 			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");			
 		} catch (CodiceCaixaNotFoundException e) {
-			newId = (CodiceCaixa) manager.saveEntity(newId);
+			manager.saveEntity(newId);
 			return newId;
 		}
 	}
