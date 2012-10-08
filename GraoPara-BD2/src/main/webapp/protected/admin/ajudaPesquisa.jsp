@@ -7,26 +7,26 @@
 	<head>
 		<!-- Tipo de codificacao utilizado -->
 		<meta charset="utf-8">
-		
+
 		<title>Grão-Pará</title>
-		
+
 		<!-- Import dos styles CSS -->
 		<link rel="stylesheet" type="text/css" href="/GraoPara/css/principal.css" />
 		<link rel="stylesheet" type="text/css" href="/GraoPara/css/tabs.css" />
 		<link rel="stylesheet" type="text/css" href="/GraoPara/css/controle.css" />
-		
+
 		<!-- CSS das validacoes -->
 		<link rel="stylesheet" type="text/css" href="/GraoPara/css/validationEngine.jquery.css" />
-		
+
 		<!-- Import dos javascripts -->
 		<script type="text/javascript" src="/GraoPara/javascript/cookie.js" charset="utf-8"></script>
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" charset="utf-8"></script>
 	</head>
-	
+
 	<body onloadstart="checkCookie()">
 		<div class="container">
 			<div class="header"></div>
-	
+
 			<!-- Comeco do menu lateral -->
 			<div class="sidebar1">
 				<!--Depois de logado-->
@@ -38,14 +38,14 @@
 								WebUtility.printName(request, out);
 							%>
 						</fieldset>
-						
+
 						<fieldset>
 							<input class="buttonSair" type="submit" name="Sair" value="Sair" />
 						</fieldset>
 					</form>
 				</div>
 				<!-- ----------------------------------------------------------------------- -->
-	
+
 				<article class="menuLateral">
 					<ul class="nav" id="menu">
 						<li><a href="/GraoPara/protected/admin/indexAdmin.jsp">Home</a></li>
@@ -60,12 +60,12 @@
 				</article>
 			</div>
 			<!-- Fim do Menu Lateral -->
-			
+
 			<div class="content" id="content">
 				<h1>Como pesquisar</h1>
-				
+
 				<a name="num">Número do códice ou da caixa:</a>
-				
+
 				<p class="left">
 					Todos os documentos do Arquivo Público do Pará que serão trabalhados aqui, estão organizados em CÓDICE ou em CAIXAS. Portanto, se o documento está em um códice ou em uma caixa faz uma enorme diferença, pois se tratam de coleções diferentes. Tudo é organizado pelo fato de ser caixa ou códice e, depois, a informação de qual caixa ou códice está se falando é muito importante, pois atrelada a cada uma dessas caixas ou códices está, às vezes, centenas de documentos.
 					A partir disso, algumas considerações:
@@ -128,7 +128,7 @@
 				
 				<a name="numero">Número do códice ou da caixa:</a>
 			</div>
-			
+
 			<!-- Comeco do Rodape -->
 			<div class="footer">
 				<p>Copyright © - Universidade Federal de São Paulo - UNIFESP 2012</p>
