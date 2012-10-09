@@ -43,9 +43,9 @@ public class CodiceCaixaDAO {
 		}
 	}
 	
-	public void updateCodiceCaixa(CodiceCaixa origin) throws UnreachableDataBaseException, IllegalArgumentException, UpdateEntityException{
+	public void updateCodiceCaixa(CodiceCaixa codiceCaixa) throws UnreachableDataBaseException, IllegalArgumentException, UpdateEntityException{
 		try{
-			manager.updateEntity(origin);
+			manager.updateEntity(codiceCaixa);
 		} catch(DataAccessLayerException e){
 			e.printStackTrace();
 			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
