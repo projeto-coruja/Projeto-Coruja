@@ -18,7 +18,7 @@ import persistence.dto.UserAccount;
 
 import webview.util.WebUtility;
 import business.EJB.documents.DocumentEJB;
-import business.EJB.user.SearchUserEJB;
+import business.EJB.user.SearchUserBean;
 import business.exceptions.login.UnreachableDataBaseException;
 import business.exceptions.login.UserNotFoundException;
 
@@ -67,15 +67,14 @@ public class DocServlet extends HttpServlet {
 //		GregorianCalendar dataDoc = new GregorianCalendar(Integer.parseInt(dataAno), Integer.parseInt(dataMes), Integer.parseInt(dataDia));
 		Date dataDoc = null;
 		try {
-			String dataTmp = null;
 			DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-			dataDoc = (Date) df.parse(dataTmp);
+			dataDoc = (Date) df.parse(data);
 		} catch (ParseException e1) {
 			e1.printStackTrace();
 		}
 		UserAccount uploader = null;
 		try {
-			uploader = (new SearchUserEJB()).findUser(email);
+			uploader = (new SearchUserBean()).findUser(email);
 		
 			DocumentEJB CB = new DocumentEJB();
 			try {

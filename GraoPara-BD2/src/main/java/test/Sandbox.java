@@ -4,11 +4,13 @@ import static org.junit.Assert.assertEquals;
 
 import java.lang.reflect.InvocationTargetException;
 
+import persistence.dto.Documento;
 import persistence.dto.UserAccount;
 
 import business.DAO.login.ProfileDAO;
 import business.DAO.login.UserDAO;
 import business.EJB.documents.DocumentEJB;
+import business.exceptions.documents.DocumentNotFoundException;
 import business.exceptions.login.ProfileNotFoundException;
 import business.exceptions.login.UnreachableDataBaseException;
 import business.exceptions.login.UserNotFoundException;
@@ -26,8 +28,9 @@ public class Sandbox {
 	 * @throws UnreachableDataBaseException 
 	 * @throws ProfileNotFoundException 
 	 * @throws UserNotFoundException 
+	 * @throws DocumentNotFoundException 
 	 */
-	public static void main(String[] args) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, UnreachableDataBaseException, ProfileNotFoundException, UserNotFoundException {
+	public static void main(String[] args) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, UnreachableDataBaseException, ProfileNotFoundException, UserNotFoundException, DocumentNotFoundException {
 		DocumentEJB e = new DocumentEJB();
 		UserDAO d = new UserDAO();
 		ProfileDAO pd = new ProfileDAO();
@@ -38,7 +41,7 @@ public class Sandbox {
 				"1234", 
 				"unifesp", 
 				"Era uma vez um gato chinês", 
-				a, 
+				null, a, 
 				"codCodiceCaixa", 
 				"tituloCodiceCaixa", 
 				"1225", 
@@ -55,6 +58,9 @@ public class Sandbox {
 				"temaPalavraChave2", 
 				"palavraChave3", 
 				"temaPalavraChave3");
+		Documento doc = (Documento) e.findDocuments(null, null, null, null, null, "autor", null, null, null, null, null, null, null, null, null).get(0);
+		System.out.println(doc.getCod());
+		
 	}
 
 }

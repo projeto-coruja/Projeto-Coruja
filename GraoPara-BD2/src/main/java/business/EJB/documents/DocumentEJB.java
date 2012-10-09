@@ -58,76 +58,73 @@ public class DocumentEJB {
 		String query = new String(default_query);
 		
 		if(codCodiceCaixa != null && !codCodiceCaixa.isEmpty()){
-			query += " codiceCaixa in (SELECT cod FROM CodiceCaixaMO cod = '" + codCodiceCaixa.trim() + "'";
+			query += " codiceCaixa.cod = '" + codCodiceCaixa.trim() + "'";
 			continue_query = true;
 		}
 		
 		if(tituloCodiceCaixa != null && !tituloCodiceCaixa.isEmpty()){
 			if(continue_query == true){
-				query += " and ";
+				query += " AND ";
 			}
-			query += " codiceCaixa IN (SELECT titulo FROM CodiceCaixaMO where titulo like '%" + tituloCodiceCaixa + "%') ";
+			query += " codiceCaixa.titulo like '%" + tituloCodiceCaixa + "%'";
 			continue_query = true;
 		}
 		
 		if(anoInicioCodiceCaixa != null && !anoInicioCodiceCaixa.isEmpty()){
 			if(continue_query == true){
-				query += " and ";
+				query += " AND ";
 			}
 			if(anoFimCodiceCaixa == null || anoFimCodiceCaixa.isEmpty()){
-				query += " codiceCaixa IN (SELECT anoInicio FROM  CodiceCaixaMO " 
-						+ "WHERE anoInicio >= " + anoInicioCodiceCaixa + ")";
+				query += " codiceCaixa.anoInicio >= " + anoInicioCodiceCaixa;
 			}
 			else
-				query += " codiceCaixa IN "
-						+"(SELECT anoInicio FROM  CodiceCaixaMO WHERE anoInicio >= '" + anoInicioCodiceCaixa + "' "
-							+"AND anoFim <=" + anoFimCodiceCaixa+" )";
+				query += " codiceCaixa.anoInicio >= '" + anoInicioCodiceCaixa + "' "
+							+"AND codiceCaixa.anoFim <=" + anoFimCodiceCaixa;
 		}
 		else{
 			if(anoFimCodiceCaixa != null && !anoFimCodiceCaixa.isEmpty()){
 				if(continue_query == true){
-					query += " and ";
+					query += " AND ";
 				}
-				query += " codiceCaixa IN (SELECT anoInicio FROM  CodiceCaixaMO " 
-						+ "WHERE anoFim <= " + anoFimCodiceCaixa + ")";
+				query += " codiceCaixa.anoFim <= " + anoFimCodiceCaixa;
 			}
 		}
 		
 		if(autor != null && !autor.isEmpty()){
 			if(continue_query == true){
-				query += " and ";
+				query += " AND ";
 			}
-			query += " autor IN (SELECT nome FROM AutorMO where nome like '%" + autor + "%')";
+			query += " autor.nome like '%" + autor + "%'";
 			continue_query = true;
 		}
 		
 		if(ocupacaoAutor != null && !ocupacaoAutor.isEmpty()){
 			if(continue_query == true){
-				query += " and ";
+				query += " AND ";
 			}
-			query += " autor IN (SELECT ocupacao FROM AutorMO where ocupacao like '%" + ocupacaoAutor + "%')";
+			query += " autor.ocupacao like '%" + ocupacaoAutor + "%'";
 			continue_query = true;
 		}
 
 		if(destinatario != null && !destinatario.isEmpty()){
 			if(continue_query == true){
-				query += " and ";
+				query += " AND ";
 			}
-			query += " destinatario IN (SELECT nome FROM AutorMO where nome like '%" + destinatario + "%')";
+			query += " destinatario.nome like '%" + destinatario + "%'";
 			continue_query = true;
 		}
 		
 		if(ocupacaoDestinatario != null && !ocupacaoDestinatario.isEmpty()){
 			if(continue_query == true){
-				query += " and ";
+				query += " AND ";
 			}
-			query += " destinatario IN (SELECT ocupacao FROM AutorMO where ocupacao like '%" + ocupacaoDestinatario + "%')";
+			query += " destinatario.ocupacao like '%" + ocupacaoDestinatario + "%'";
 			continue_query = true;
 		}
 		
 		if(codDocumento != null && !codDocumento.isEmpty()){
 			if(continue_query == true){
-				query += " and ";
+				query += " AND ";
 			}
 			query += " cod like '%" + codDocumento + "%'";
 			continue_query = true;
@@ -135,7 +132,7 @@ public class DocumentEJB {
 		
 		if(local != null && !local.isEmpty()){
 			if(continue_query == true){
-				query += " and ";
+				query += " AND ";
 			}
 			query += " local like '%" + local + "%'";
 			continue_query = true;
@@ -143,7 +140,7 @@ public class DocumentEJB {
 		
 		if(resumo != null && !resumo.isEmpty()){
 			if(continue_query == true){
-				query += " and ";
+				query += " AND ";
 			}
 			query += " resumo like '%" + resumo + "%'";
 			continue_query = true;
@@ -151,31 +148,31 @@ public class DocumentEJB {
 		
 		if(palavraChave1 != null && !palavraChave1.isEmpty()){
 			if(continue_query == true){
-				query += " and ";
+				query += " AND ";
 			}
-			query += "(palavra_chave_1 like '%" + palavraChave1 + "%'";
-			query += "or palavra_chave_2 like '%" + palavraChave1 + "%'";
-			query += "or palavra_chave_3 like '%" + palavraChave1 + "%')";
+			query += "(palavraChave1.palavra like '%" + palavraChave1 + "%'";
+			query += "OR palavraChave2.palavra like '%" + palavraChave1 + "%'";
+			query += "OR palavraChave3.palavra like '%" + palavraChave1 + "%')";
 			continue_query = true;
 		}
 
 		if(palavraChave2 != null && !palavraChave2.isEmpty()){
 			if(continue_query == true){
-				query += " and ";
+				query += " AND ";
 			}
-			query += "(palavra_chave_1 like '%" + palavraChave2 + "%'";
-			query += "or palavra_chave_2 like '%" + palavraChave2 + "%'";
-			query += "or palavra_chave_3 like '%" + palavraChave2 + "%')";
+			query += "(palavraChave1.palavra like '%" + palavraChave2 + "%'";
+			query += "OR palavraChave2.palavra like '%" + palavraChave2 + "%'";
+			query += "OR palavraChave3.palavra like '%" + palavraChave2 + "%')";
 			continue_query = true;
 		}
 
 		if(palavraChave3 != null && !palavraChave3.isEmpty()){
 			if(continue_query == true){
-				query += " and ";
+				query += " AND ";
 			}
-			query += "(palavra_chave_1 like '%" + palavraChave3 + "%'";
-			query += "or palavra_chave_2 like '%" + palavraChave3 + "%'";
-			query += "or palavra_chave_3 like '%" + palavraChave3 + "%')";
+			query += "(palavraChave1.palavra like '%" + palavraChave3 + "%'";
+			query += "OR palavraChave2.palavra like '%" + palavraChave3 + "%'";
+			query += "OR palavraChave3.palavra like '%" + palavraChave3 + "%')";
 			continue_query = true;
 		}
 		
