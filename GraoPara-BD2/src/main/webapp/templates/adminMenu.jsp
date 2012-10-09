@@ -1,3 +1,4 @@
+<%@page import="webview.util.WebUtility"%>
 <div class="bordaBox">
 	<b class="b1"></b>
 	<b class="b2"></b>

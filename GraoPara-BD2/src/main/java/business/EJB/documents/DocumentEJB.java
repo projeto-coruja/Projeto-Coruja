@@ -184,7 +184,7 @@ public class DocumentEJB {
 		return docDao.findDocumentByQuery(query);
 	}
 	
-	public void registerNewDocument(
+	public synchronized void registerNewDocument(
 			// Documento
 			String tituloDocumento,
 			String codDocumento,
@@ -338,11 +338,11 @@ public class DocumentEJB {
 		docDao.addDocument(newDoc);
 	}
 	
-	public void modifyDocument(Documento doc) throws IllegalArgumentException, UnreachableDataBaseException, UpdateEntityException{
+	public synchronized void modifyDocument(Documento doc) throws IllegalArgumentException, UnreachableDataBaseException, UpdateEntityException{
 		docDao.updateDocument(doc);
 	}
 	
-	public void modifyDocument(
+	public synchronized void modifyDocument(
 			// Busca do documento a ser modificado
 			String codDocumentoAntigo,
 			// Documento
@@ -507,7 +507,7 @@ public class DocumentEJB {
 		docDao.updateDocument(doc);
 	}
 	
-	public void removeDocument(Documento document) throws UnreachableDataBaseException {
+	public synchronized void removeDocument(Documento document) throws UnreachableDataBaseException {
 		docDao.removeDocument(document);
 	}
 	

@@ -25,7 +25,7 @@ public class DocumentTypeEJB {
 		return typeDoc.findAllDocumentTypes();
 	}
 
-	public void addNewDocumentType(String type, String description) throws UnreachableDataBaseException, DuplicatedDocumentTypeException{
+	public synchronized void addNewDocumentType(String type, String description) throws UnreachableDataBaseException, DuplicatedDocumentTypeException{
 		TipoDocumentoDAO dao = new TipoDocumentoDAO();
 		TipoDocumento dto = null;
 		try{
@@ -36,7 +36,7 @@ public class DocumentTypeEJB {
 		}
 	}
 	
-	public void updateNewDocumentType(String type, String description) 
+	public synchronized void updateNewDocumentType(String type, String description) 
 			throws UpdateEntityException, UnreachableDataBaseException, IllegalAccessException, 
 			IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException{
 		TipoDocumentoDAO dao = new TipoDocumentoDAO();
@@ -51,7 +51,7 @@ public class DocumentTypeEJB {
 		}
 	}
 
-	public void removeTypeDocument(String deletingType) throws UnreachableDataBaseException, DocumentTypeNotFoundException{
+	public synchronized void removeTypeDocument(String deletingType) throws UnreachableDataBaseException, DocumentTypeNotFoundException{
 		DocumentEJB search = new DocumentEJB();
 		TipoDocumento type = typeDoc.findSingleDocumentTypeByString(deletingType);
 		try {

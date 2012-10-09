@@ -19,30 +19,20 @@ public class ThemeEJB {
 		themeDAO = new TemaPalavraChaveDAO();
 	}
 	
-	public void addTheme(String tema) throws UnreachableDataBaseException{
-		
-		if(tema.isEmpty())	throw new IllegalArgumentException();
-		else themeDAO.addThemeWord(tema);
-		
-	}
-	
 	public List<DTO> searchAllThemes() throws UnreachableDataBaseException, ThemeNotFoundException  {
 		return themeDAO.getAllThemes();
 	}
 	
 	public synchronized void registerThemes(String tema) throws IllegalArgumentException, UnreachableDataBaseException {
-		TemaPalavraChaveDAO theme = new TemaPalavraChaveDAO();		
+		if(tema == null || tema.isEmpty())	throw new IllegalArgumentException("Parameter is null/empty");
+		TemaPalavraChaveDAO theme = new TemaPalavraChaveDAO();
 		try {
 			List<DTO> check = theme.findThemeByString(tema);
 			for (DTO dto : check) {
 				if (((TemaPalavraChave) dto).getTema().equals(tema))
 					throw new IllegalArgumentException("Palavra já existe");
 			}
-			try {
-				theme.addThemeWord(tema);
-			} catch (UnreachableDataBaseException e1) {
-				e1.printStackTrace();
-			}
+			throw new ThemeNotFoundException();
 		} catch (ThemeNotFoundException e) {
 			try {
 				theme.addThemeWord(tema);

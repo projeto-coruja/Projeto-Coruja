@@ -27,7 +27,6 @@ public class KeyWordServlet extends HttpServlet {
      */
     public KeyWordServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -42,9 +41,6 @@ public class KeyWordServlet extends HttpServlet {
 		String newKey = request.getParameter("palavraNova");
 		String theme = request.getParameter("tema");
 		String action = request.getParameter("action");
-		
-		if(oldKey != null)	oldKey = oldKey.replace(" ", "_");
-		if(newKey != null)	newKey = newKey.replace(" ", "_");
 		
 		try {
 			if(action!= null && action.equals("add")) {

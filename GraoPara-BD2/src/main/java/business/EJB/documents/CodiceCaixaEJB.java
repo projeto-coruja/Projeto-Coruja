@@ -18,13 +18,13 @@ public class CodiceCaixaEJB {
 		dao = new CodiceCaixaDAO();
 	}
 	
-	public void add(String cod, String titulo, int anoInicio, int anoFim) throws UnreachableDataBaseException, DuplicateCodiceCaixaException{
+	public synchronized void add(String cod, String titulo, int anoInicio, int anoFim) throws UnreachableDataBaseException, DuplicateCodiceCaixaException{
 		if(anoFim < anoInicio)	throw new IllegalArgumentException("anoFim < anoInicio");
 		if(cod == null || cod.isEmpty())	throw new IllegalArgumentException("Código vazio ou nulo");
 		dao.addCodiceCaixa(cod, titulo, anoInicio, anoFim);
 	}
 	
-	public void update(String oldCod, String oldTitle, String newCod, String newTitle, int anoInicio, int anoFim) throws UnreachableDataBaseException, CodiceCaixaNotFoundException, IllegalArgumentException, UpdateEntityException{
+	public synchronized void update(String oldCod, String oldTitle, String newCod, String newTitle, int anoInicio, int anoFim) throws UnreachableDataBaseException, CodiceCaixaNotFoundException, IllegalArgumentException, UpdateEntityException{
 		if(anoFim < anoInicio)	throw new IllegalArgumentException("anoFim < anoInicio");
 		if(oldCod == null || oldCod.isEmpty() || newCod == null || newCod.isEmpty())	throw new IllegalArgumentException("Código vazio ou nulo");
 		CodiceCaixa cc = findExactEntry(oldCod, oldTitle);

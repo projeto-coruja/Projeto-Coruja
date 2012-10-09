@@ -455,5 +455,4 @@ public final class WebUtility {
 	    str = str.replaceAll("[^\\p{ASCII}]", "");
 	    return str;
 	}
-	
 }
