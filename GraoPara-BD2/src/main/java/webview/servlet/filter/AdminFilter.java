@@ -51,7 +51,7 @@ public class AdminFilter implements Filter {
 			chain.doFilter(request, response);
 		}
 		
-		else if(c_status != null && (c_status.getValue().equals(AuthBean.LoginSuccessUser))) {
+		else if(c_status != null && ((c_status.getValue().equals(AuthBean.LoginSuccessUserLevel1)) || (c_status.getValue().equals(AuthBean.LoginSuccessUserLevel2)))) {
 			JavascriptAlerts.alertAndRedirectPage(res, "Você não possuí permissão para acessar esta área!", "/GraoPara/protected/user/indexUser.jsp");
 		}
 		
@@ -69,7 +69,7 @@ public class AdminFilter implements Filter {
 				res.addCookie(c_status);
 				chain.doFilter(request, response);
 			}
-			else if(user != null && user.getLogType().equals(AuthBean.LoginSuccessUser)) {
+			else if(user != null && (user.getLogType().equals(AuthBean.LoginSuccessUserLevel1) || user.getLogType().equals(AuthBean.LoginSuccessUserLevel2))) {
 				c_status = new Cookie(WebUtility.cookie_status, user.getLogType().toString());
 				c_status.setMaxAge(-1);
 				res.addCookie(c_status);
@@ -86,7 +86,6 @@ public class AdminFilter implements Filter {
 	 * @see Filter#init(FilterConfig)
 	 */
 	public void init(FilterConfig fConfig) throws ServletException {
-		// TODO Auto-generated method stub
 	}
 
 }

@@ -39,7 +39,6 @@ public class InitServlet extends HttpServlet {
 	 */
 	public InitServlet() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -59,8 +58,11 @@ public class InitServlet extends HttpServlet {
 				if(p.equals("default")) {
 					pa.saveEntity(WebUtility.default_profile);
 				}
-				else if(p.equals("user")) {
-					pa.saveEntity(WebUtility.user_profile);
+				else if(p.equals("user1")) {
+					pa.saveEntity(WebUtility.user_profile_lvl_1);
+				}
+				else if(p.equals("user2")) {
+					pa.saveEntity(WebUtility.user_profile_lvl_2);
 				}
 				else if(p.equals("admin")) {
 					pa.saveEntity(WebUtility.admin_profile);

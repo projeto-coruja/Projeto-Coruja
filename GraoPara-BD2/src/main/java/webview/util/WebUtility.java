@@ -42,7 +42,8 @@ public final class WebUtility {
 	}; 
 
 	public static Profile admin_profile = new Profile("admin");
-	public static Profile user_profile = new Profile("user");
+	public static Profile user_profile_lvl_1 = new Profile("user1");
+	public static Profile user_profile_lvl_2 = new Profile("user2");
 	public static Profile default_profile = new Profile("default");
 
 	public static final int cookie_expire = -1; //1 sessão dias
@@ -454,4 +455,5 @@ public final class WebUtility {
 	    str = str.replaceAll("[^\\p{ASCII}]", "");
 	    return str;
 	}
+	
 }

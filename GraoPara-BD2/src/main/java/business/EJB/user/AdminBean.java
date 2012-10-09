@@ -37,9 +37,8 @@ public class AdminBean {
 			throws UnreachableDataBaseException, IncorrectProfileInformationException {
 		try {
 			if(!profileNameChecker.check(profile))	throw new IncorrectProfileInformationException("Nome inválido");
-			@SuppressWarnings("unused")
 			Profile check = profileDAO.findProfileByName(profile);
-			throw new IncorrectProfileInformationException("Nome de profile já existe.");
+			if(check.getName().equals(profile))	throw new IncorrectProfileInformationException("Nome de profile já existe.");
 		} catch(ProfileNotFoundException e) {
 			profileDAO.createProfile(profile);
 		} catch (UnreachableDataBaseException e) {

@@ -6,6 +6,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import persistence.dto.Profile;
+
 import business.exceptions.login.ProfileNotFoundException;
 import business.exceptions.login.UnreachableDataBaseException;
 import business.exceptions.login.UserNotFoundException;
@@ -17,7 +19,8 @@ public class LoginDAOTest {
 	public void profileTest() throws UnreachableDataBaseException, ProfileNotFoundException{
 		ProfileDAO dao = new ProfileDAO();
 		dao.createProfile("teste");
-		assertEquals("teste",dao.findProfileByName("teste").getName());
+		Profile p = dao.findProfileByName("teste");
+		assertEquals("teste", p.getName());
 	}
 	
 	@After

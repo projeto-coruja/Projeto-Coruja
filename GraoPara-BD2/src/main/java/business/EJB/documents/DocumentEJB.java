@@ -239,7 +239,7 @@ public class DocumentEJB {
 				codCaixa = codiceCaixaDAO.addCodiceCaixa(
 								codCodiceCaixa, 
 								tituloCodiceCaixa, 
-								Integer.parseInt(tituloCodiceCaixa), 
+								Integer.parseInt(anoInicioCodiceCaixa), 
 								Integer.parseInt(anoFimCodiceCaixa)	);
 			} catch (DuplicateCodiceCaixaException e) {
 				e.printStackTrace();

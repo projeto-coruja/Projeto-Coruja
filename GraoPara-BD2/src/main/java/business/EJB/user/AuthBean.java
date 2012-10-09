@@ -14,7 +14,8 @@ public class AuthBean {
 	public final static boolean NonHashedPwd = false;
 
 	public final static String LoginFailOrDefault = "f7904905535ed808ce600ea013c1ec4e471507ef0563adcd1d93f87d38608c47";
-	public final static String LoginSuccessUser = "4f077f41bf2610da31dc152a26bd950fe2a55dfe51a8e2968c581ef151c9df08";
+	public final static String LoginSuccessUserLevel1 = "626f2659243587c96bc858517f36d8766c493d4adc6efd45e1b6d0edbdecf666";
+	public final static String LoginSuccessUserLevel2 = "e04394eb555584278715d567be41e47638a0bf0fe00612bcbceea89e6c3a69c2";
 	public final static String LoginSuccessAdmin = "ccdb36d8fe6fbecdec96b11f3c776987688d43ea2293576f20af7b54351c6e65";
 
 	public static UserBean validarLogin(String email, String password, boolean hashed) throws UnreachableDataBaseException, UserNotFoundException {
@@ -38,7 +39,9 @@ public class AuthBean {
 			
 			if(profile.equals("admin"))			result.setLogType(LoginSuccessAdmin);
 			
-			else if(profile.equals("user"))		result.setLogType(LoginSuccessUser);
+			else if(profile.equals("user1"))		result.setLogType(LoginSuccessUserLevel1);
+			
+			else if(profile.equals("user2"))		result.setLogType(LoginSuccessUserLevel2);
 			
 			else								result.setLogType(LoginFailOrDefault);
 
