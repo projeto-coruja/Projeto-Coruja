@@ -89,15 +89,31 @@ public class InitServlet extends HttpServlet {
 		}
 		else user = null;
 
-		user = pa.findEntity("from User where email = 'user@graopara.com'");
+		user = pa.findEntity("from UserMO where email = 'user1@graopara.com'");
 		if(user == null)
 		{
 			log.info("Criando usuário de teste...");
 			pa.saveEntity(
 					new UserAccount(
-							"Usuário Padrão", 
-							(Profile) (pa.findEntity("from ProfileMO where profile = 'user'").get(0)),
-							"user@graopara.com",
+							"Usuário Padrão Nível 1", 
+							(Profile) (pa.findEntity("from ProfileMO where profile = 'user1'").get(0)),
+							"user1@graopara.com",
+							EJBUtility.getHash("null","MD5")
+					)
+			);
+			
+		}
+		else user = null;
+		
+		user = pa.findEntity("from UserMO where email = 'user1@graopara.com'");
+		if(user == null)
+		{
+			log.info("Criando usuário de teste...");
+			pa.saveEntity(
+					new UserAccount(
+							"Usuário Padrão Nível 2", 
+							(Profile) (pa.findEntity("from ProfileMO where profile = 'user2'").get(0)),
+							"user2@graopara.com",
 							EJBUtility.getHash("null","MD5")
 					)
 			);
@@ -105,7 +121,7 @@ public class InitServlet extends HttpServlet {
 		}
 		else user = null;
 
-		user = pa.findEntity("from User where email = 'default@graopara.com'");
+		user = pa.findEntity("from UserMO where email = 'default@graopara.com'");
 		if(user == null)
 		{
 			log.info("Criando usuário sem privilégios de teste...");

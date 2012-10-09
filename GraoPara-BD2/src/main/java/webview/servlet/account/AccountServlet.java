@@ -17,7 +17,7 @@ import webview.util.WebUtility;
 import business.EJB.user.AdminBean;
 import business.EJB.user.AuthBean;
 import business.EJB.user.RegisterUserBean;
-import business.EJB.user.SearchUserEJB;
+import business.EJB.user.SearchUserBean;
 import business.EJB.util.EJBUtility;
 import business.exceptions.login.IncorrectProfileInformationException;
 import business.exceptions.login.ProfileNotFoundException;
@@ -44,7 +44,7 @@ public class AccountServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RegisterUserBean cadastro = new RegisterUserBean();
-		SearchUserEJB busca = new SearchUserEJB();
+		SearchUserBean busca = new SearchUserBean();
 		AdminBean admin = new AdminBean();
 		
 		String action = request.getParameter("action");
@@ -56,12 +56,7 @@ public class AccountServlet extends HttpServlet {
 		String email = WebUtility.selectCookie(request.getCookies(), WebUtility.cookie_email).getValue();
 		String status = WebUtility.selectCookie(request.getCookies(), WebUtility.cookie_status).getValue();
 
-
-		if(status.equals(AuthBean.LoginSuccessUser)) {
-		} else if(status.equals(AuthBean.LoginSuccessAdmin)) {
-		}
-
-		if(action.equals("editPermission")){
+		if(action.equals("editPermission") && status.equals(WebUtility.admin_profile.getName())){
 			permissaoNova = request.getParameter("permissao");
 			email = request.getParameter("email");
 			
@@ -70,10 +65,8 @@ public class AccountServlet extends HttpServlet {
 			try {
 				admin.alterarPermissoesUsuario(email, permissaoNova);
 			} catch (UnreachableDataBaseException e) {
-				
 				JavascriptAlerts.alertAndRedirectHistory(response, "Não foi possível conectar com o banco de dados.");
 				e.printStackTrace();
-				
 			} catch (UserNotFoundException e) {
 				e.printStackTrace();
 			} catch (IncorrectProfileInformationException e) {
@@ -86,7 +79,6 @@ public class AccountServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-
 		else if(action.equals("editPassword")){
 			senhaVelha = request.getParameter("senhaAtual");
 			senhaNova = request.getParameter("senhaNova");
@@ -94,21 +86,16 @@ public class AccountServlet extends HttpServlet {
 				user = busca.findUser(email);
 				
 				if(user.getPassword().equals(EJBUtility.getHash(senhaVelha, "MD5"))){
-					
 					user.setPassword(EJBUtility.getHash(senhaNova, "MD5"));
 					cadastro.atualizarUsuario(user);  
-					
 					JavascriptAlerts.alertAndRedirectHistory(response, "Senha trocada com sucesso.");
 				}
 				else{
-					
 					JavascriptAlerts.alertAndRedirectHistory(response, "Erro ao trocar a senha, senha informada diferente da cadastrada.");
 				}
 			} catch (UnreachableDataBaseException e) {
-				
 				JavascriptAlerts.alertAndRedirectHistory(response, "Não foi possível conectar com o banco de dados.");
 				e.printStackTrace();
-				
 			} catch (UserNotFoundException e) {
 				e.printStackTrace();
 			} catch (IllegalArgumentException e) {

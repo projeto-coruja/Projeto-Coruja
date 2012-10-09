@@ -10,7 +10,7 @@ import business.EJB.documents.CodiceCaixaEJB;
 import business.EJB.documents.KeyWordEJB;
 
 import business.EJB.user.AdminBean;
-import business.EJB.user.SearchUserEJB;
+import business.EJB.user.SearchUserBean;
 
 import business.exceptions.documents.CodiceCaixaNotFoundException;
 import business.exceptions.documents.KeywordNotFoundException;
@@ -137,7 +137,7 @@ public class PanelWorker {
 	
 	public static void listAllUsers(HttpServletRequest request, JspWriter out) throws IOException{
 		String c_email = WebUtility.selectCookie(request.getCookies(), WebUtility.cookie_email).getValue();
-		SearchUserEJB busca = new SearchUserEJB();
+		SearchUserBean busca = new SearchUserBean();
 		List<DTO> users = null;	    
 		try {
 			users = busca.listUsers();
@@ -175,7 +175,7 @@ public class PanelWorker {
 	}
 	
 	public static void listAllNewUsers(HttpServletRequest request, JspWriter out) throws IOException{
-		SearchUserEJB busca = new SearchUserEJB();
+		SearchUserBean busca = new SearchUserBean();
 		List<DTO> users = null;
 		try {
 			users = busca.listUsers();

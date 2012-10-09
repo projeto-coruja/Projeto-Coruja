@@ -9,11 +9,11 @@ import business.DAO.login.UserDAO;
 import business.exceptions.login.UnreachableDataBaseException;
 import business.exceptions.login.UserNotFoundException;
 
-public class SearchUserEJB {
+public class SearchUserBean {
 
 	UserDAO user;
 
-	public SearchUserEJB() {
+	public SearchUserBean() {
 		user = new UserDAO();
 	}
 

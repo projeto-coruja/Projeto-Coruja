@@ -12,7 +12,7 @@ import persistence.dto.UserAccount;
 import persistence.exceptions.UpdateEntityException;
 import webview.util.JavascriptAlerts;
 import business.EJB.user.RegisterUserBean;
-import business.EJB.user.SearchUserEJB;
+import business.EJB.user.SearchUserBean;
 import business.EJB.util.EJBUtility;
 import business.exceptions.login.UnreachableDataBaseException;
 import business.exceptions.login.UserNotFoundException;
@@ -37,7 +37,7 @@ public class AccountRecoveryServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		SearchUserEJB busca = new SearchUserEJB();
+		SearchUserBean busca = new SearchUserBean();
 		RegisterUserBean cadastro = new RegisterUserBean();
 		String newPassword = null;
 		String email = request.getParameter("email"); 
