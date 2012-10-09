@@ -4,6 +4,7 @@ import java.util.List;
 
 import persistence.dto.CodiceCaixa;
 import persistence.dto.DTO;
+import persistence.exceptions.UpdateEntityException;
 
 import business.DAO.document.CodiceCaixaDAO;
 import business.exceptions.documents.CodiceCaixaNotFoundException;
@@ -21,6 +22,17 @@ public class CodiceCaixaEJB {
 		if(anoFim < anoInicio)	throw new IllegalArgumentException("anoFim < anoInicio");
 		if(cod == null || cod.isEmpty())	throw new IllegalArgumentException("Código vazio ou nulo");
 		dao.addCodiceCaixa(cod, titulo, anoInicio, anoFim);
+	}
+	
+	public void update(String oldCod, String oldTitle, String newCod, String newTitle, int anoInicio, int anoFim) throws UnreachableDataBaseException, CodiceCaixaNotFoundException, IllegalArgumentException, UpdateEntityException{
+		if(anoFim < anoInicio)	throw new IllegalArgumentException("anoFim < anoInicio");
+		if(oldCod == null || oldCod.isEmpty() || newCod == null || newCod.isEmpty())	throw new IllegalArgumentException("Código vazio ou nulo");
+		CodiceCaixa cc = findExactEntry(oldCod, oldTitle);
+		cc.setCod(newCod);
+		cc.setTitulo(newTitle);
+		cc.setAnoInicio(anoInicio);
+		cc.setAnoFim(anoFim);
+		dao.updateCodiceCaixa(cc);
 	}
 	
 	public List<DTO> findByCod(String cod) throws UnreachableDataBaseException, CodiceCaixaNotFoundException{

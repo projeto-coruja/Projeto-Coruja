@@ -193,6 +193,7 @@ public class DocumentEJB {
 			String codDocumento,
 			String local,
 			String resumo,
+			Date data,
 			UserAccount uploader,
 			// Códice e caixa
 			String codCodiceCaixa,
@@ -336,13 +337,181 @@ public class DocumentEJB {
 		
 		newDoc = new Documento(codDocumento, tituloDocumento, local, resumo, 
 				codCaixa, tipoDoc, author, addressee, 
-				palavraChave[0], palavraChave[1], palavraChave[2], uploader, new Date());
+				palavraChave[0], palavraChave[1], palavraChave[2], uploader, data);
 		docDao.addDocument(newDoc);
 	}
 	
-	public void modifyDocument(Documento document) throws IllegalArgumentException, UnreachableDataBaseException, UpdateEntityException{
-		docDao.updateDocument(document);
+	public void modifyDocument(Documento doc) throws IllegalArgumentException, UnreachableDataBaseException, UpdateEntityException{
+		docDao.updateDocument(doc);
+	}
+	
+	public void modifyDocument(
+			// Busca do documento a ser modificado
+			String codDocumentoAntigo,
+			// Documento
+			String tituloDocumento,
+			String codDocumento,
+			String local,
+			String resumo,
+			Date data,
+			// Códice e caixa
+			String codCodiceCaixa,
+			String tituloCodiceCaixa,
+			String anoInicioCodiceCaixa,
+			String anoFimCodiceCaixa,
+			// Autor documento
+			String autor,
+			String ocupacaoAutor,
+			// Destinatário (AutorMO)
+			String destinatario,
+			String ocupacaoDestinatario,
+			// Tipo Documento
+			String tipoDocumento,
+			String descricaoDoTipoDocumento,
+			// Palavra chave 1
+			String palavraChave1,
+			String temaPalavraChave1,
+			// Palavra chave 2
+			String palavraChave2,
+			String temaPalavraChave2,
+			// Palavra chave 3
+			String palavraChave3,
+			String temaPalavraChave3) throws UnreachableDataBaseException, DocumentNotFoundException, IllegalArgumentException, UpdateEntityException{
+
+		List<DTO> check;
+		CodiceCaixaDAO codiceCaixaDAO = new CodiceCaixaDAO();
+		TipoDocumentoDAO tipoDocumentoDAO = new TipoDocumentoDAO();
+		PalavraChaveDAO palavraChaveDAO = new PalavraChaveDAO();
+		AutorDAO autorDAO = new AutorDAO();
 		
+		Documento doc = null;
+		CodiceCaixa codCaixa = null;
+		PalavraChave[] palavraChave = new PalavraChave[3];
+		TipoDocumento tipoDoc = null;
+		Autor author = null;
+		Autor addressee = null;
+		
+		try {
+			doc = findSingleDocument(codDocumentoAntigo);
+		} catch (IllegalArgumentException e2) {
+			e2.printStackTrace();
+		} 
+		
+		// Verificação de existência da origem do documento no banco
+		try {
+			codCaixa = codiceCaixaDAO.findExactCodiceCaixa(codCodiceCaixa, tituloCodiceCaixa);
+		} catch (CodiceCaixaNotFoundException e1) {
+			try {
+				codCaixa = codiceCaixaDAO.addCodiceCaixa(
+								codCodiceCaixa, 
+								tituloCodiceCaixa, 
+								Integer.parseInt(anoInicioCodiceCaixa), 
+								Integer.parseInt(anoFimCodiceCaixa)	);
+			} catch (DuplicateCodiceCaixaException e) {
+				e.printStackTrace();
+			}
+		}
+		doc.setCodiceCaixa(codCaixa);
+
+		// Verificação de existência do tipo de documento no banco
+		try {
+			check = tipoDocumentoDAO.findDocumentTypeByString(tipoDocumento);
+			for(DTO dto : check){
+				if(((TipoDocumento) dto).getNome().equals(tipoDocumento))
+					tipoDoc = (TipoDocumento) dto;
+			}
+		} catch (DocumentTypeNotFoundException e1) {	
+			tipoDoc = tipoDocumentoDAO.addDocumentType(tipoDocumento, descricaoDoTipoDocumento);
+		}
+		doc.setTipoDocumento(tipoDoc);
+		
+		// Verificação de existência das palavras chaves documento no banco
+		if(palavraChave1 != null && !palavraChave1.isEmpty())
+		{	
+			try {
+				check = palavraChaveDAO.findKeyWordByString(palavraChave1);
+				for(DTO dto : check){
+					if(((PalavraChave) dto).getPalavra().equals(palavraChave1))
+						palavraChave[0] = (PalavraChave) dto;
+				}
+			} catch (KeywordNotFoundException e1) {
+				palavraChave[0] = palavraChaveDAO.addKeyWord(
+								palavraChave1,
+								temaPalavraChave1
+								);
+			}
+		}
+		doc.setPalavraChave1(palavraChave[0]);
+
+		if(palavraChave2 != null && !palavraChave2.isEmpty())
+		{
+			try {
+				check = palavraChaveDAO.findKeyWordByString(palavraChave2);
+				for(DTO dto : check){
+					if(((PalavraChave) dto).getPalavra().equals(palavraChave2))
+						palavraChave[1] = (PalavraChave) dto;
+				}
+			} catch (KeywordNotFoundException e1) {
+				palavraChave[1] = palavraChaveDAO.addKeyWord(
+								palavraChave2,
+								temaPalavraChave2
+								);
+			}
+		}
+		doc.setPalavraChave2(palavraChave[1]);
+
+		if(palavraChave3 != null && !palavraChave3.isEmpty())
+		{
+			try {
+				check = palavraChaveDAO.findKeyWordByString(palavraChave3);
+				for(DTO dto : check){
+					if(((PalavraChave) dto).getPalavra().equals(palavraChave3))
+						palavraChave[2] = (PalavraChave) dto;
+				}
+			} catch (KeywordNotFoundException e1) {
+				palavraChave[2] = palavraChaveDAO.addKeyWord(
+								palavraChave3,
+								temaPalavraChave3
+								);
+			}
+		}
+		doc.setPalavraChave3(palavraChave[2]);
+		
+		if(autor != null && !autor.isEmpty()){
+			if(ocupacaoAutor.isEmpty())	ocupacaoAutor = null;
+			try{
+				author = autorDAO.findAuthorByNameAndOccupation(autor, ocupacaoAutor);
+			} catch (AuthorNotFoundException e){
+				try {
+					author = autorDAO.addAutor(autor, ocupacaoAutor);
+				} catch (DuplicatedAuthorException e1) {
+					e1.printStackTrace();
+				}
+			}
+		}
+		else author = null;
+		doc.setAutor(author);
+		
+		if(destinatario != null && !destinatario.isEmpty()){
+			if(ocupacaoDestinatario.isEmpty())	ocupacaoDestinatario = null;
+			try{
+				addressee = autorDAO.findAuthorByNameAndOccupation(destinatario, ocupacaoDestinatario);
+			} catch (AuthorNotFoundException e){
+				try {
+					addressee = autorDAO.addAutor(destinatario, ocupacaoDestinatario);
+				} catch (DuplicatedAuthorException e1) {
+					e1.printStackTrace();
+				}
+			}
+		}
+		else addressee = null;
+		doc.setDestinatario(addressee);
+
+		docDao.updateDocument(doc);
+	}
+	
+	public void removeDocument(Documento document) throws UnreachableDataBaseException {
+		docDao.removeDocument(document);
 	}
 	
 	public Documento findSingleDocument(String code) throws DocumentNotFoundException, UnreachableDataBaseException, IllegalArgumentException{
