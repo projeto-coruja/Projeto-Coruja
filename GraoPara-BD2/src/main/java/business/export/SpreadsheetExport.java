@@ -29,13 +29,7 @@ public class SpreadsheetExport {
 	private static String tmpPath;
 	
 	private static void getPath(){
-		// Para testes locais
-//		tmpPath = SpreadsheetExport.class.getResource("SpreadsheetExport.class").getPath();
-//		tmpPath = tmpPath.replace("/GraoPara.war/WEB-INF/classes/business/export/SpreadsheetExport.class", "/ods");
-		
-		tmpPath = "/tmp"; // Jboss
-		
-//		System.out.println(tmpPath);
+		tmpPath = "/tmp/tenbcnen"; // Jboss
 	}
 	
 	private static double getStringWidth(String s){
