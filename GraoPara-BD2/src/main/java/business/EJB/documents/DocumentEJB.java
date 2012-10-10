@@ -36,7 +36,8 @@ public class DocumentEJB {
 	}
 	
 	public List<DTO> findDocuments(
-			String codCodiceCaixa,
+			String codCodiceCaixaDe,
+			String codCodiceCaixaAte,
 			String tituloCodiceCaixa,
 			String anoInicioCodiceCaixa,
 			String anoFimCodiceCaixa,
@@ -57,8 +58,11 @@ public class DocumentEJB {
 		boolean continue_query = false;
 		String query = new String(default_query);
 		
-		if(codCodiceCaixa != null && !codCodiceCaixa.isEmpty()){
-			query += " codiceCaixa.cod = '" + codCodiceCaixa.trim() + "'";
+		if(codCodiceCaixaDe != null && !codCodiceCaixaDe.isEmpty()){
+			if(codCodiceCaixaAte != null && !codCodiceCaixaAte.isEmpty()) {
+				query += " codiceCaixa.cod between '" + codCodiceCaixaDe + "' and '" + codCodiceCaixaAte + "'";
+			}
+			else query += " codiceCaixa.cod = '" + codCodiceCaixaDe.trim() + "'";
 			continue_query = true;
 		}
 		
