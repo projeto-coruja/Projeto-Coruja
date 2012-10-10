@@ -11,7 +11,7 @@
 		<link rel="stylesheet" type="text/css" href="/GraoPara/css/tabs.css" />
 		<link rel="stylesheet" type="text/css" href="/GraoPara/css/controle.css" />
 
-		<!-- CSS das validações -->
+		<!-- CSS das validacoes -->
 		<link rel="stylesheet" type="text/css" href="/GraoPara/css/validationEngine.jquery.css" />
 
 		<!-- Import dos javascripts -->
@@ -25,10 +25,10 @@
 
 			<!-- Menu lateral -->
 			<div class="sidebar1">
-				<!-- Área de login -->
+				<!-- Area de login -->
 				<%@include file="/templates/login.jsp" %>
 
-				<!-- Área de menu -->
+				<!-- Area de menu -->
 				<%@include file="/templates/userMenu.jsp"%>
 			</div>
 
@@ -39,7 +39,7 @@
 				</p>
 			</div>
 
-			<!-- Rodapé -->
+			<!-- Rodape -->
 			<div class="footer">
 				<p>Copyright © - Universidade Federal de São Paulo - UNIFESP 2012</p>
 				<p>Desenvolvido pelo grupo Coruja</p>

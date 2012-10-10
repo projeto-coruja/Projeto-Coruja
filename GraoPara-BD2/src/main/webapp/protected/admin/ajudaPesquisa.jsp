@@ -27,39 +27,14 @@
 		<div class="container">
 			<div class="header"></div>
 
-			<!-- Comeco do menu lateral -->
+			<!-- Menu lateral -->
 			<div class="sidebar1">
-				<!--Depois de logado-->
-				<div class="LoginArea" id="logado" style="display:block;">
-					<form method="post" action="/GraoPara/doLogout">
-						<fieldset>
-							<label for="login">Bem vindo</label>
-							<%
-								WebUtility.printName(request, out);
-							%>
-						</fieldset>
+				<!-- Area de login -->
+				<%@include file="/templates/login.jsp" %>
 
-						<fieldset>
-							<input class="buttonSair" type="submit" name="Sair" value="Sair" />
-						</fieldset>
-					</form>
-				</div>
-				<!-- ----------------------------------------------------------------------- -->
-
-				<article class="menuLateral">
-					<ul class="nav" id="menu">
-						<li><a href="/GraoPara/protected/admin/indexAdmin.jsp">Home</a></li>
-						<li><a href="/GraoPara/protected/admin/pesquisaAdmin.jsp">Pesquisar</a></li>
-						<li><a href="/GraoPara/protected/admin/cadastroDocumentosAdmin.jsp">Cadastrar Documento</a></li>
-						<li><a href="/GraoPara/protected/admin/cadUserAdmin.jsp">Cadastrar UsuÁrio</a></li>
-						<li><a href="/GraoPara/protected/admin/painelAdmin.jsp">Painel Admin</a></li>
-						<li><a href="/GraoPara/protected/admin/gerarSenha.jsp">Gerar Senha</a></li>
-						<li><a href="/GraoPara/protected/admin/sobreAdmin.jsp">Sobre</a></li>
-						<li><a href="#">Créditos</a></li>
-					</ul>
-				</article>
+				<!-- Area de menu -->
+				<%@include file="/templates/adminMenu.jsp"%>
 			</div>
-			<!-- Fim do Menu Lateral -->
 
 			<div class="content" id="content">
 				<h1>Como pesquisar</h1>
@@ -129,13 +104,11 @@
 				<a name="numero">Número do códice ou da caixa:</a>
 			</div>
 
-			<!-- Comeco do Rodape -->
+			<!-- Rodape -->
 			<div class="footer">
 				<p>Copyright © - Universidade Federal de São Paulo - UNIFESP 2012</p>
 				<p>Desenvolvido pelo grupo Coruja</p>
 			</div>
-			<!-- Fim do Rodape -->
-			<!-- end .container -->
 		</div>
 	</body>
 </html>
