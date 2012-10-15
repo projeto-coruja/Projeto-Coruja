@@ -27,7 +27,7 @@
 			<!-- Menu lateral -->
 			<div class="sidebar1">
 				<!-- Area de login -->
-				<%@include file="/templates/login.jsp" %>
+				<%@include file="/templates/loginReception.jsp" %>
 
 				<!-- Area de menu -->
 				<%@include file="/templates/userMenu.jsp"%>

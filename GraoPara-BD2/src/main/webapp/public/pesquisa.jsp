@@ -1,296 +1,288 @@
 <!doctype html>
 <%@page import="webview.util.WebUtility"%>
+
 <html>
-<head>
-<meta charset="utf-8">
-<title>Grão-Pará</title>
+	<head>
+		<meta charset="utf-8">
+		<title>Grão-Pará</title>
 
-<!-- Import dos styles CSS -->
-<link rel="stylesheet" type="text/css" href="/GraoPara/css/principal.css" />
-<link rel="stylesheet" type="text/css" href="/GraoPara/css/tabs.css" />
-<link rel="stylesheet" type="text/css" href="/GraoPara/css/controle.css" />
+		<!-- Import dos styles CSS -->
+		<link rel="stylesheet" type="text/css" href="/GraoPara/css/principal.css" />
+		<link rel="stylesheet" type="text/css" href="/GraoPara/css/tabs.css" />
+		<link rel="stylesheet" type="text/css" href="/GraoPara/css/controle.css" />
 
-<!-- CSS das validações -->
-<link rel="stylesheet" type="text/css" media="screen" href="/GraoPara/css/styleValidation.css" />
+		<!-- CSS das validacoes -->
+		<link rel="stylesheet" type="text/css" media="screen" href="/GraoPara/css/styleValidation.css" />
 
-<!-- Import dos javascripts -->
-<script type="text/javascript" src="/GraoPara/javascript/cookie.js" charset="utf-8"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" charset="utf-8"></script>
-<script src="/GraoPara/javascript/chili-1.7.pack.js" type="text/javascript"></script>
-	
-<!-- Import dos scripts de validação de formulário -->
-<script src="/GraoPara/javascript/jquery.js" type="text/javascript" charset="utf-8"></script>
-<script src="/GraoPara/javascript/validate.js" type="text/javascript" charset="utf-8"></script>
-<script src="/GraoPara/javascript/validate_pesquisa.js" type="text/javascript" charset="utf-8"></script>
-<script src="/GraoPara/javascript/utility.js" type="text/javascript" charset="utf-8"></script>
+		<!-- Import dos javascripts -->
+		<script type="text/javascript" src="/GraoPara/javascript/cookie.js" charset="utf-8"></script>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" charset="utf-8"></script>
+		<script src="/GraoPara/javascript/chili-1.7.pack.js" type="text/javascript"></script>
 
-</head>
-<body onloadstart="checkCookie()">
-	<div class="container">
-		<div class="header"></div>
+		<!-- Import dos scripts de validacao de formulario -->
+		<script src="/GraoPara/javascript/jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/GraoPara/javascript/validate.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/GraoPara/javascript/validate_pesquisa.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/GraoPara/javascript/utility.js" type="text/javascript" charset="utf-8"></script>
+	</head>
 
-		<!-- Começo do menu lateral -->
-		<div class="sidebar1">
+	<body onloadstart="checkCookie()">
+		<div class="container">
+			<div class="header"></div>
 
-			<!--Começo da área de login -->
-			<div class="bordaBox">
-				<b class="b1"></b>
-				<b class="b2"></b>
-				<b class="b3"></b>
-				<b class="b4"></b>
-				<div class="conteudo">
-					<div class="LoginArea" id="loginDefault" style="display:block;">
-						<form method="post" action="/GraoPara/doLogin">
-							<fieldset>
-								<label class="sidebar" for="login">Login:</label>
-								<input class="inputLogin" type="text" name="login" height="30px" size="auto" placeholder="Seu login" required>								
-								<label class="sidebar" for="senha">Senha:</label>
-								<input class="inputLogin" type="password" name="senha" height="30px" size="auto" placeholder="Sua senha" required>
-							</fieldset>							
-							<fieldset>
-								<input class="buttonEntrar" type="submit" name="Entrar" value="Entrar" />											
-							</fieldset>							
-							<fieldset>
-								<a href="/GraoPara/public/CadUsuario.jsp"><input type="button" class="buttonRegistrar" name="Registrar" value="Registrar"></a>
-							</fieldset>						
-						</form>
-					</div>
-				</div>
-				<b class="b4"></b>
-				<b class="b3"></b>
-				<b class="b2"></b>
-				<b class="b1"></b>
+			<!-- Menu lateral -->
+			<div class="sidebar1">
+				<!-- Area de login -->
+				<%@include file="/templates/login.jsp" %>
+
+				<!-- Area de menu -->
+				<%@include file="/templates/defaultMenu.jsp"%>
 			</div>
-			<!-- Fim da área de login -->
-			<div class="bordaBox">
-				<b class="b1"></b>
-				<b class="b2"></b>
-				<b class="b3"></b>
-				<b class="b4"></b>
-				<div class="conteudo">
-					<article class="menuLateral">
-						<ul class="nav" id="menu">
-							<li><a href="/GraoPara/public/index.jsp">Home</a></li>
-							<li><a href="/GraoPara/public/pesquisa.jsp">Pesquisar</a></li>
-							<li><a href="/GraoPara/public/sobre.jsp">Sobre</a></li>
-							<li><a href="/GraoPara/public/creditos.jsp">Créditos</a></li>
-							<li><a href="/GraoPara/public/tutorialPesquisa.jsp">Como pesquisar no acervo</a></ul>
-					</article>
-				</div>
-				<b class="b4"></b>
-				<b class="b3"></b>
-				<b class="b2"></b>
-				<b class="b1"></b>
+
+			<div class="content" id="content">
+				<h1>Pesquisa de Documento</h1>
+
+				<form action="/GraoPara/public/listagemDocumentos.jsp" id="signupform" method="get" name="cadastro">
+					<table class="tablePesquisa">
+						<tr>
+							<td colspan="3">
+								<label class="labelForms">
+									<strong>PREENCHA UM OU MAIS CAMPOS A SEGUIR:</strong>
+								</label>
+							</td>
+						</tr>
+
+						<tr>
+							<td class="tdPesquisa">
+								<label class="labelForms" id="lbuscaGeral" for="buscaGeral">
+									Busca por Qualquer Palavra:
+								</label>
+							</td>
+
+							<td class="field">
+								<input class="input" name="buscaGeral" id="buscaGeral" type="text" size="20" maxlength="100">
+							</td>
+
+							<td class="status">
+								<a href="#">
+									<img src="/GraoPara/images/icone_ajuda.png"	alt="Busca por qualquer palavra registrada nos campos de identificação do documento por este projeto." title="Busca por qualquer palavra registrada nos campos de identificação do documento por este projeto." />
+								</a>
+							</td>
+						</tr>
+
+						<tr>
+							<td class="tdPesquisa">
+								<label class="labelForms" id="lidentificacao" for="identificacao">
+									Códice ou Caixa:
+								</label>
+							</td>
+
+							<td class="field">
+								<select name="CodCodiceCaixa" class="input" id="identificacao">
+									<%=WebUtility.printCodCodiceCaixa(request)%>
+								</select>
+							</td>
+
+							<td class="status">
+								<a href="#">
+									<img src="/GraoPara/images/icone_ajuda.png" alt="Escolha a coleção de Códices ou Caixas do Arquivo Público do Pará." title="Escolha a coleção de Códices ou Caixas do Arquivo Público do Pará." />
+								</a>
+							</td>
+						</tr>
+
+						<tr>
+							<td class="tdPesquisa">
+								<label class="labelForms" id="lidentificacao" for="identificacao">
+									Titulo do Códice/Caixa:
+								</label>
+							</td>
+
+							<td class="field">
+								<select name="tituloCodiceCaixa" class="input" id="identificacao">
+									<%=WebUtility.printTituloCodiceCaixa(request)%>
+								</select>
+							</td>
+
+							<td class="status">
+								<a href="#">
+									<img src="/GraoPara/images/icone_ajuda.png" alt="Escolha a coleção de Códices ou Caixas do Arquivo Público do Pará." title="Escolha a coleção de Códices ou Caixas do Arquivo Público do Pará." />
+								</a>
+							</td>
+						</tr>
+
+						<tr>
+							<td class="tdPesquisa">
+								<label class="labelForms" id="lcodigo" for="codigo">
+									Época:
+								</label>
+							</td>
+
+							<td class="field">
+								<select name="epocas" class="input" id="identificacao">
+									<%=WebUtility.printEpocasCodiceCaixa(request)%>
+								</select>
+							</td>
+
+							<td class="status">
+								<a href="#">
+									<img src="/GraoPara/images/icone_ajuda.png"	alt="Pode-se solicitar a pesquisa de uma sequência de Códices ou Caixas. Basta indicar o primeiro e o último desejado." title="Pode-se solicitar a pesquisa de uma sequência de Códices ou Caixas. Basta indicar o primeiro e o último desejado." />
+								</a>
+							</td>
+						</tr>
+
+						<tr>
+							<td class="tdPesquisa">
+								<label class="labelForms" id="ltitulo" for="titulo">
+									Título:
+								</label>
+							</td>
+
+							<td class="field">
+								<input class="input" name="titulo" id="titulo" type="text" size="20" maxlength="500">
+							</td>
+
+							<td class="status">
+								<a href="#">
+									<img src="/GraoPara/images/icone_ajuda.png" alt="Cada caixa ou códice tem um título, geralmente longo." title="Cada caixa ou códice tem um título, geralmente longo." />
+								</a>
+							</td>
+						</tr>
+
+						<tr>
+							<td class="tdPesquisa">
+								<label class="labelForms" id="lnumero" for="numero">
+									Número APEP ou Sequencial:
+								</label>
+							</td>
+
+							<td class="field">
+								<input class="input" name="numero" id="numero" type="text" maxlength="4">
+							</td>
+
+							<td class="status">
+								<a href="#">
+									<img src="/GraoPara/images/icone_ajuda.png" alt="O Número APEP é aquele atribuído pelo arquivista do APEP para cada um dos documentos do Códice ou Caixa. Caso não tenha sido atribuído um número pelo arquivista, o projeto designou um que chamou de sequencial." title="O Número APEP é aquele atribuído pelo arquivista do APEP para cada um dos documentos do Códice ou Caixa. Caso não tenha sido atribuído um número pelo arquivista, o projeto designou um que chamou de sequencial." />
+								</a>
+							</td>
+						</tr>
+
+						<tr>
+							<td class="tdPesquisa">
+								<label class="labelForms" id="lautor" for="autor">
+									Autor do Documento:
+								</label>
+							</td>
+
+							<td class="field">
+								<input class="input" name="autor" id="autor" type="text" size="20" maxlength="48">
+							</td>
+
+							<td class="status">
+								<a href="#">
+									<img src="/GraoPara/images/icone_ajuda.png" alt="Busca pelo nome completo ou parte do autor do documento." title="Busca pelo nome completo ou parte do autor do documento." />
+								</a>
+							</td>
+						</tr>
+
+						<tr>
+							<td class="tdPesquisa"><label class="labelForms" id="lautorOcupacao" for="autorOcupacao">Ocupação do Autor do Documento:</label></td>
+							<td class="field"><input class="input" name="autorOcupacao" id="autorOcupacao" type="text" size="20" maxlength="48"></td>
+							<td class="status"><a href="#"><img
+								src="/GraoPara/images/icone_ajuda.png"
+								alt="Ocupação do autor do documento. Por exemplo, Presidente da Província."
+								title="Ocupação do autor do documento. Por exemplo, Presidente da Província." /></a>
+							</td>
+						</tr>					
+						<tr>
+							<td class="tdPesquisa"><label class="labelForms" id="ldestinatario" for="destinatario">Destinatário do Documento:</label></td>
+							<td class="field"><input class="input" name="destinatario" id="destinatario" type="text" size="20" maxlength="48"></td>
+							<td class="status"><a href="#"><img
+								src="/GraoPara/images/icone_ajuda.png"
+								alt="Busca pelo nome completo ou parte do destinatário do Documento."
+								title="Busca pelo nome completo ou parte do destinatário do Documento." /></a>
+							</td>
+						</tr>
+						<tr>
+							<td class="tdPesquisa"><label class="labelForms" id="llocal" for="local">Local:</label></td>
+							<td class="field"><input class="input" name="local" id="local" type="text" maxlength="48"></td>
+							<td class="status"><a href="#"><img
+								src="/GraoPara/images/icone_ajuda.png"
+								alt="Trata-se do local em que foi escrito o documento, normalmente a cidade. Por exemplo, Belém."
+								title="Trata-se do local em que foi escrito o documento, normalmente a cidade. Por exemplo, Belém." /></a>
+							</td>
+						</tr>
+						<tr>
+							<td class="tdPesquisa"><label class="labelForms" id="ldata" for="data">Ano:</label></td>
+							<td class="field">
+								<label class="labelForms" id="ldata" for="data">de: </label>
+								<input class="inputShort" type="text" name="anoIni" id="ano" maxlength="4" />
+								<label class="labelForms" id="ldata" for="data"> até: </label>
+								<input class="inputShort" type="text" name="anoFim" id="ano" maxlength="4" />
+							</td> 
+							<td class="status"><a href="#"><img
+								src="/GraoPara/images/icone_ajuda.png"
+								alt="Informe um período para filtrar a pesquisa."
+								title="Informe um período para filtrar a pesquisa." /></a>
+							</td>
+						</tr>
+						<tr>
+							<td class="tdPesquisa"><label class="labelForms" id="ltipoDoc" for="tipoDoc">Tipo do Documento:</label></td>
+							<td class="field">
+								<select class="input" name="tipoDoc" id="tipoDoc">
+									<!-- Pegar do Banco de dados os tipos e, caso o usuÃ¡rio selecione outro, exibir campo para cadastrar outro tipo -->
+									<%=WebUtility.printSelectTipoDoc(request) %>
+								</select>
+							</td>
+							<td class="status"><a href="#"><img 
+								src="/GraoPara/images/icone_ajuda.png"
+								alt="Selecione um dos tipos de documentos para filtrar resultados."
+								title="Selecione um dos tipos de documentos para filtrar resultados." /></a>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="3"><label class="labelForms">RESUMO OU VERBETE DO DOCUMENTO:</label></td>
+						</tr>
+						<tr>						
+							<td class="field" colspan="2"><textarea class="inputResumo" id="resumo" name="resumo" rows="7" cols="40" maxlength="2048"></textarea></td>
+							<td class="status"></td>
+						</tr>
+						<tr>
+							<td colspan="3"><label for="palavrasChaves" class="labelForms">Palavra Chaves:</label></td>
+						</tr>
+						<tr>
+							<td class="field" colspan="2">
+								<select class="input" name="chave1" id="chave1" style="width: 120px"><option value = "">Nenhuma</option>
+									<%= WebUtility.printSelectKeyWords(request, "chave1") %>
+								</select>
+								<select class="input" name="chave2" id="chave2" style="width: 120px"><option value = "">Nenhuma</option>
+									<%= WebUtility.printSelectKeyWords(request, "chave2") %>
+								</select>
+								<select  class="input" name="chave3" id="chave3" style="width: 120px"><option value = "">Nenhuma</option>
+									<%= WebUtility.printSelectKeyWords(request, "chave3") %>
+								</select>
+							</td>
+							<td class="status"><a href="#"><img
+								src="/GraoPara/images/icone_ajuda.png"
+								alt="Informe de uma a três palavras chaves para filtrar sua pesquisa"
+								title="Informe de uma a três palavras chaves para filtrar sua pesquisa" /></a>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="3"><p></p>
+								<input class="buttonLimpar" name="limpar" type="reset" value="Limpar" />
+								<input class="buttonRegistrar" name="inserir" type="submit" value="Enviar" id="signupsubmit" style="FONT-FAMILY: 'Bitstream Charter';"/>
+							</td>
+						</tr>
+					</table>
+				</form>
 			</div>
-		</div>
-			<!-- Fim do Menu Lateral -->
 			
-	<div class="content" id="content">
-			<h1>Pesquisa de Documento</h1>
-			<form action="/GraoPara/public/listagemDocumentos.jsp" id="signupform" method="get" name="cadastro">
-				<table class="tablePesquisa">
-					<tr>
-						<td colspan="3"><label class="labelForms"><strong>PREENCHA UM OU MAIS CAMPOS A SEGUIR:</strong></label></td>
-					</tr>
-					<tr>
-						<td class="tdPesquisa"><label class="labelForms" id="lbuscaGeral" for="buscaGeral">Busca por Qualquer Palavra:</label></td>
-						<td class="field"><input class="input" name="buscaGeral" id="buscaGeral" type="text" size="20" maxlength="100"></td>
-						<td class="status"><a href="#"><img
-							src="/GraoPara/images/icone_ajuda.png"
-							alt="Busca por qualquer palavra registrada nos campos de identificação do documento por este projeto."
-							title="Busca por qualquer palavra registrada nos campos de identificação do documento por este projeto." /></a>
-						</td>
-					</tr>
-					
-					<tr>
-						<td class="tdPesquisa"><label class="labelForms" id="lidentificacao" for="identificacao">Códice ou Caixa:</label></td>
-						<td class="field">
-							
-							<select name="CodCodiceCaixa" class="input" id="identificacao">
-								<%=WebUtility.printCodCodiceCaixa(request)%>
-							</select>
-							
-						</td>
-						
-						<!-- O QUE FAZ ISSO??? -->
-						<td class="status">
-							<a href="#"><img
-								src="/GraoPara/images/icone_ajuda.png"
-								alt="Escolha a coleção de Códices ou Caixas do Arquivo Público do Pará."
-								title="Escolha a coleção de Códices ou Caixas do Arquivo Público do Pará." />
-							</a>
-						</td>
-					</tr>
-					
-					
-					
-					
-					<tr>
-						<td class="tdPesquisa"><label class="labelForms" id="lidentificacao" for="identificacao">Titulo do Códice/Caixa:</label></td>
-						<td class="field">
-							
-							<select name="tituloCodiceCaixa" class="input" id="identificacao">
-								<%=WebUtility.printTituloCodiceCaixa(request)%>
-							</select>
-							
-						</td>
-						
-						<!-- O QUE FAZ ISSO??? -->
-						<td class="status">
-							<a href="#"><img
-								src="/GraoPara/images/icone_ajuda.png"
-								alt="Escolha a coleção de Códices ou Caixas do Arquivo Público do Pará."
-								title="Escolha a coleção de Códices ou Caixas do Arquivo Público do Pará." />
-							</a>
-						</td>
-					</tr>
-					
-					
-					
-					<tr>						
-						<td class="tdPesquisa"><label class="labelForms" id="lcodigo" for="codigo">Época:</label></td>
-						<td class="field">
-							<select name="epocas" class="input" id="identificacao">
-								<%=WebUtility.printEpocasCodiceCaixa(request)%>
-							</select>
-						</td>
-						
-						<!-- O QUE FAZ ISSO??? -->
-						<td class="status"><a href="#"><img
-							src="/GraoPara/images/icone_ajuda.png"
-							alt="Pode-se solicitar a pesquisa de uma sequência de Códices ou Caixas. Basta indicar o primeiro e o último desejado."
-							title="Pode-se solicitar a pesquisa de uma sequência de Códices ou Caixas. Basta indicar o primeiro e o último desejado." /></a>
-						</td>
-					</tr>
-					<tr>
-						<td class="tdPesquisa"><label class="labelForms" id="ltitulo" for="titulo">Título:</label></td>
-						<td class="field"><input class="input" name="titulo" id="titulo" type="text" size="20" maxlength="500"></td>
-						<td class="status"><a href="#"><img
-							src="/GraoPara/images/icone_ajuda.png"
-							alt="Cada caixa ou códice tem um título, geralmente longo."
-							title="Cada caixa ou códice tem um título, geralmente longo." /></a>
-						</td>
-					</tr>
-					<tr>
-						<td class="tdPesquisa"><label class="labelForms" id="lnumero" for="numero">Número APEP ou Sequencial:</label></td>
-						<td class="field"><input class="input" name="numero" id="numero" type="text" maxlength="4"></td>
-						<td class="status"><a href="#"><img
-							src="/GraoPara/images/icone_ajuda.png"
-							alt="O Número APEP é aquele atribuído pelo arquivista do APEP para cada um dos documentos do Códice ou Caixa. Caso não tenha sido atribuído um número pelo arquivista, o projeto designou um que chamou de sequencial."
-							title="O Número APEP é aquele atribuído pelo arquivista do APEP para cada um dos documentos do Códice ou Caixa. Caso não tenha sido atribuído um número pelo arquivista, o projeto designou um que chamou de sequencial." /></a>
-						</td>
-					</tr>
-					<tr>
-						<td class="tdPesquisa"><label class="labelForms" id="lautor" for="autor">Autor do Documento:</label></td>
-						<td class="field"><input class="input" name="autor" id="autor" type="text" size="20" maxlength="48"></td>
-						<td class="status"><a href="#"><img
-							src="/GraoPara/images/icone_ajuda.png"
-							alt="Busca pelo nome completo ou parte do autor do documento."
-							title="Busca pelo nome completo ou parte do autor do documento." /></a>
-						</td>
-					</tr>					
-					<tr>
-						<td class="tdPesquisa"><label class="labelForms" id="lautorOcupacao" for="autorOcupacao">Ocupação do Autor do Documento:</label></td>
-						<td class="field"><input class="input" name="autorOcupacao" id="autorOcupacao" type="text" size="20" maxlength="48"></td>
-						<td class="status"><a href="#"><img
-							src="/GraoPara/images/icone_ajuda.png"
-							alt="Ocupação do autor do documento. Por exemplo, Presidente da Província."
-							title="Ocupação do autor do documento. Por exemplo, Presidente da Província." /></a>
-						</td>
-					</tr>					
-					<tr>
-						<td class="tdPesquisa"><label class="labelForms" id="ldestinatario" for="destinatario">Destinatário do Documento:</label></td>
-						<td class="field"><input class="input" name="destinatario" id="destinatario" type="text" size="20" maxlength="48"></td>
-						<td class="status"><a href="#"><img
-							src="/GraoPara/images/icone_ajuda.png"
-							alt="Busca pelo nome completo ou parte do destinatário do Documento."
-							title="Busca pelo nome completo ou parte do destinatário do Documento." /></a>
-						</td>
-					</tr>
-					<tr>
-						<td class="tdPesquisa"><label class="labelForms" id="llocal" for="local">Local:</label></td>
-						<td class="field"><input class="input" name="local" id="local" type="text" maxlength="48"></td>
-						<td class="status"><a href="#"><img
-							src="/GraoPara/images/icone_ajuda.png"
-							alt="Trata-se do local em que foi escrito o documento, normalmente a cidade. Por exemplo, Belém."
-							title="Trata-se do local em que foi escrito o documento, normalmente a cidade. Por exemplo, Belém." /></a>
-						</td>
-					</tr>
-					<tr>
-						<td class="tdPesquisa"><label class="labelForms" id="ldata" for="data">Ano:</label></td>
-						<td class="field">
-							<label class="labelForms" id="ldata" for="data">de: </label>
-							<input class="inputShort" type="text" name="anoIni" id="ano" maxlength="4" />
-							<label class="labelForms" id="ldata" for="data"> até: </label>
-							<input class="inputShort" type="text" name="anoFim" id="ano" maxlength="4" />
-						</td> 
-						<td class="status"><a href="#"><img
-							src="/GraoPara/images/icone_ajuda.png"
-							alt="Informe um período para filtrar a pesquisa."
-							title="Informe um período para filtrar a pesquisa." /></a>
-						</td>
-					</tr>
-					<tr>
-						<td class="tdPesquisa"><label class="labelForms" id="ltipoDoc" for="tipoDoc">Tipo do Documento:</label></td>
-						<td class="field">
-							<select class="input" name="tipoDoc" id="tipoDoc">
-								<!-- Pegar do Banco de dados os tipos e, caso o usuÃ¡rio selecione outro, exibir campo para cadastrar outro tipo -->
-								<%=WebUtility.printSelectTipoDoc(request) %>
-							</select>
-						</td>
-						<td class="status"><a href="#"><img 
-							src="/GraoPara/images/icone_ajuda.png"
-							alt="Selecione um dos tipos de documentos para filtrar resultados."
-							title="Selecione um dos tipos de documentos para filtrar resultados." /></a>
-						</td>
-					</tr>
-					<tr>
-						<td colspan="3"><label class="labelForms">RESUMO OU VERBETE DO DOCUMENTO:</label></td>
-					</tr>
-					<tr>						
-						<td class="field" colspan="2"><textarea class="inputResumo" id="resumo" name="resumo" rows="7" cols="40" maxlength="2048"></textarea></td>
-						<td class="status"></td>
-					</tr>
-					<tr>
-						<td colspan="3"><label for="palavrasChaves" class="labelForms">Palavra Chaves:</label></td>
-					</tr>
-					<tr>
-						<td class="field" colspan="2">
-							<select class="input" name="chave1" id="chave1" style="width: 120px"><option value = "">Nenhuma</option>
-								<%= WebUtility.printSelectKeyWords(request, "chave1") %>
-							</select>
-							<select class="input" name="chave2" id="chave2" style="width: 120px"><option value = "">Nenhuma</option>
-								<%= WebUtility.printSelectKeyWords(request, "chave2") %>
-							</select>
-							<select  class="input" name="chave3" id="chave3" style="width: 120px"><option value = "">Nenhuma</option>
-								<%= WebUtility.printSelectKeyWords(request, "chave3") %>
-							</select>
-						</td>
-						<td class="status"><a href="#"><img
-							src="/GraoPara/images/icone_ajuda.png"
-							alt="Informe de uma a três palavras chaves para filtrar sua pesquisa"
-							title="Informe de uma a três palavras chaves para filtrar sua pesquisa" /></a>
-						</td>
-					</tr>
-					<tr>
-						<td colspan="3"><p></p>
-							<input class="buttonLimpar" name="limpar" type="reset" value="Limpar" />
-							<input class="buttonRegistrar" name="inserir" type="submit" value="Enviar" id="signupsubmit" style="FONT-FAMILY: 'Bitstream Charter';"/>
-						</td>
-					</tr>
-				</table>
-			</form>
+			<!-- Começo do Rodapé -->
+			<div class="footer">
+				<p>Copyright © - Universidade Federal de São Paulo - UNIFESP 2012</p>
+				<p>Desenvolvido pelo grupo Coruja</p>
+			</div>
 		</div>
-		
-		<!-- Começo do Rodapé -->
-		<div class="footer">
-			<p>Copyright © - Universidade Federal de São Paulo - UNIFESP 2012</p>
-			<p>Desenvolvido pelo grupo Coruja</p>
-		</div>
-		<!-- Fim do Rodapé -->
-		
-		<!-- end .container -->
-	</div>
-</body>
+	</body>
 </html>
 
