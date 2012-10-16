@@ -67,7 +67,7 @@ public class StartFilter implements Filter {
 			res.sendRedirect(req.getContextPath() + "/public/index.jsp");
 		}
 		
-		else if(c_status != null && (c_status.getValue().equals(AuthBean.LoginSuccessUser) 
+		else if(c_status != null && (c_status.getValue().equals(AuthBean.LoginSuccessUserLevel2) 
 				&& AuthBean.allowOperation(c_session.getValue(), c_email.getValue(), c_username.getValue(), c_status.getValue()))) {
 			res.sendRedirect(req.getContextPath() + "/protected/user/indexUser.jsp");
 		}
@@ -86,7 +86,7 @@ public class StartFilter implements Filter {
 				res.addCookie(c_status);
 				res.sendRedirect(req.getContextPath() + "/public/index.jsp");
 			}
-			else if(user.getLogType().equals(AuthBean.LoginSuccessUser)){
+			else if(user.getLogType().equals(AuthBean.LoginSuccessUserLevel2)){
 				c_status = new Cookie(WebUtility.cookie_status, user.getLogType().toString());
 				c_status.setMaxAge(-1);
 				res.sendRedirect(req.getContextPath() + "/protected/user/indexUser.jsp");

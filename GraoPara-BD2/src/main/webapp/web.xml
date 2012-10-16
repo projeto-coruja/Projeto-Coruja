@@ -3,7 +3,7 @@
   <servlet>
     <display-name>InitServlet</display-name>
     <servlet-name>InitServlet</servlet-name>
-    <servlet-class>webview.servlets.InitServlet</servlet-class>
+    <servlet-class>webview.servlet.init.InitServlet</servlet-class>
     <init-param>
       <param-name>log4j.properties-location</param-name>
       <param-value>WEB-INF/log4j.properties</param-value>
@@ -14,8 +14,8 @@
     <tracking-mode>COOKIE</tracking-mode>
   </session-config>
   <welcome-file-list>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>indexUser.jsp</welcome-file>
-    <welcome-file>indexAdmin.jsp</welcome-file>
+    <welcome-file>public/index.jsp</welcome-file>
+    <welcome-file>protected/user/index.jsp</welcome-file>
+    <welcome-file>protected/admin/index.jsp</welcome-file>
   </welcome-file-list>
 </web-app>

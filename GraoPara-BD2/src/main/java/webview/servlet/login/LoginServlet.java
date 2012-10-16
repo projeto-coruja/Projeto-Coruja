@@ -29,7 +29,6 @@ public class LoginServlet extends HttpServlet {
      */
     public LoginServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
     
 	/**
@@ -40,7 +39,7 @@ public class LoginServlet extends HttpServlet {
 		String senha = request.getParameter("senha");
 		try {
 			UserBean login_result = AuthBean.validarLogin(user, senha, AuthBean.NonHashedPwd);
-			if(login_result != null && (login_result.getLogType().equals(AuthBean.LoginSuccessAdmin) || login_result.getLogType().equals(AuthBean.LoginSuccessUser)))
+			if(login_result != null && (login_result.getLogType().equals(AuthBean.LoginSuccessAdmin) || login_result.getLogType().equals(AuthBean.LoginSuccessUserLevel2)))
 			{
 				Cookie c_email = new Cookie(WebUtility.cookie_email, user);
 				Cookie c_pass = new Cookie(
@@ -61,7 +60,7 @@ public class LoginServlet extends HttpServlet {
 				response.addCookie(c_status);
 				response.addCookie(c_nome);
 
-			    if(login_result.getLogType() == AuthBean.LoginSuccessUser)	// retorna para a página de USER
+			    if(login_result.getLogType() == AuthBean.LoginSuccessUserLevel2)	// retorna para a página de USER
 			    	response.sendRedirect("/GraoPara/protected/user/indexUser.jsp");
 			    else if(login_result.getLogType() == AuthBean.LoginSuccessAdmin)	// retorna para a página de ADMIN
 			    	response.sendRedirect("/GraoPara/protected/admin/indexAdmin.jsp");
