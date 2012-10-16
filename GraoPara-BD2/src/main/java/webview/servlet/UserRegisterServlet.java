@@ -1,7 +1,6 @@
 package webview.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,7 +13,6 @@ import webview.util.WebUtility;
 import business.EJB.user.RegisterUserBean;
 import business.exceptions.login.DuplicateUserException;
 import business.exceptions.login.IncorrectLoginInformationException;
-import business.exceptions.login.UnreachableDataBaseException;
 
 /**
  * Servlet implementation class CadastroServlet

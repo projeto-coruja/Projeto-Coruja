@@ -22,7 +22,8 @@ public class SearchWorker {
 	public static void listAllDocuments(HttpServletRequest request, JspWriter out) throws IOException{
 		
 		//TODO: Pegar os valores via parâmetros.
-		String codCodiceCaixa = null;
+		String codCodiceCaixaDe = null;
+		String codCodiceCaixaAte = null;
 		String tituloCodiceCaixa = null;
 		String anoInicioCodiceCaixa = null;
 		String anoFimCodiceCaixa = null;
@@ -49,7 +50,7 @@ public class SearchWorker {
 		List<DTO> docs = null;    
 
 		try {
-			docs = search.findDocuments(codCodiceCaixa, tituloCodiceCaixa, anoInicioCodiceCaixa, anoFimCodiceCaixa, codDocumento, autor, ocupacaoAutor, destinatario, ocupacaoDestinatario, tipoDocumento, local, resumo, palavraChave1, palavraChave2, palavraChave3);
+			docs = search.findDocuments(codCodiceCaixaDe, codCodiceCaixaAte, tituloCodiceCaixa, anoInicioCodiceCaixa, anoFimCodiceCaixa, codDocumento, autor, ocupacaoAutor, destinatario, ocupacaoDestinatario, tipoDocumento, local, resumo, palavraChave1, palavraChave2, palavraChave3);
 
 			for(DTO d : docs){
 				
