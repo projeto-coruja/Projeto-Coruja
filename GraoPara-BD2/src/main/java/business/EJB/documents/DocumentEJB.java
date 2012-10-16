@@ -193,6 +193,7 @@ public class DocumentEJB {
 			String tituloDocumento,
 			String codDocumento,
 			String local,
+			String url,
 			String resumo,
 			Date data,
 			UserAccount uploader,
@@ -336,7 +337,7 @@ public class DocumentEJB {
 		}
 		else addressee = null;
 		
-		newDoc = new Documento(codDocumento, tituloDocumento, local, resumo, 
+		newDoc = new Documento(codDocumento, tituloDocumento, local, url, resumo, 
 				codCaixa, tipoDoc, author, addressee, 
 				palavraChave[0], palavraChave[1], palavraChave[2], uploader, data);
 		docDao.addDocument(newDoc);

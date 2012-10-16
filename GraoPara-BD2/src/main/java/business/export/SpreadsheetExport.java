@@ -1,7 +1,6 @@
 package business.export;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -13,15 +12,8 @@ import org.odftoolkit.simple.table.Column;
 import org.odftoolkit.simple.table.Row;
 import org.odftoolkit.simple.table.Table;
 
-import persistence.dto.Autor;
-import persistence.dto.CodiceCaixa;
 import persistence.dto.DTO;
 import persistence.dto.Documento;
-import persistence.dto.PalavraChave;
-import persistence.dto.Profile;
-import persistence.dto.TemaPalavraChave;
-import persistence.dto.TipoDocumento;
-import persistence.dto.UserAccount;
 import business.EJB.util.EJBUtility;
 
 public class SpreadsheetExport {
@@ -285,7 +277,7 @@ public class SpreadsheetExport {
 		return filePath;
 	}
 
-	public static void main(String[] args) throws Exception {
+	/*public static void main(String[] args) throws Exception {
 		getPath();
 		System.out.println(tmpPath);
 	
@@ -294,7 +286,7 @@ public class SpreadsheetExport {
 //		DocumentEJB busca = new DocumentEJB();
 //		lista = busca.findByKeyWord("gato");
 		
-		lista.add(new Documento("123","teste","local","resumo",
+		lista.add(new Documento("123","teste","local", "http://google.com.br", "resumo",
 				new CodiceCaixa("123","testeCodiceCaixa",1500,1540),
 				new TipoDocumento("tipoDocumento","Descrição"),
 				new Autor("abcaheo aoehaeofgh aeohaeo foehrfaefh aehjioahrf","ocupação1"),
@@ -306,5 +298,5 @@ public class SpreadsheetExport {
 				new Date()));
 		
 		SpreadsheetExport.generateSpreadsheet(lista);
-	}
+	}*/
 }

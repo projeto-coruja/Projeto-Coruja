@@ -31,6 +31,9 @@ public class DocumentoMO implements EntityModel  {
 	
 	@Column(length = 1024)
 	private String local;
+
+	@Column(length = 1024)
+	private String url;
 	
 	@NotNull
 	@Column(length = 8192)
@@ -93,6 +96,14 @@ public class DocumentoMO implements EntityModel  {
 
 	public void setLocal(String local) {
 		this.local = local;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 	public String getResumo() {
