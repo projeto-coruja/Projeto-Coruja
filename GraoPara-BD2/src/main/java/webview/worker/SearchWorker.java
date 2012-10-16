@@ -22,6 +22,7 @@ public class SearchWorker {
 	public static void listAllDocuments(HttpServletRequest request, JspWriter out) throws IOException{
 		
 		//TODO: Pegar os valores via parâmetros.
+		String tipoCodiceCaixaDe = null;
 		String codCodiceCaixaDe = null;
 		String codCodiceCaixaAte = null;
 		String tituloCodiceCaixa = null;
@@ -50,16 +51,18 @@ public class SearchWorker {
 		List<DTO> docs = null;    
 
 		try {
-			docs = search.findDocuments(codCodiceCaixaDe, codCodiceCaixaAte, tituloCodiceCaixa, anoInicioCodiceCaixa, anoFimCodiceCaixa, codDocumento, autor, ocupacaoAutor, destinatario, ocupacaoDestinatario, tipoDocumento, local, resumo, palavraChave1, palavraChave2, palavraChave3);
+			docs = search.findDocuments(tipoCodiceCaixaDe, codCodiceCaixaDe, codCodiceCaixaAte, tituloCodiceCaixa, anoInicioCodiceCaixa, anoFimCodiceCaixa, codDocumento, autor, ocupacaoAutor, destinatario, ocupacaoDestinatario, tipoDocumento, local, resumo, palavraChave1, palavraChave2, palavraChave3);
 
 			for(DTO d : docs){
 				
 				Documento doc = (Documento) d;
 				
+				String codiceCaixa[] = doc.getCodiceCaixa().getCod().split("-");
 				String data[] = doc.getData().toString().split("-");
 
 				out.println("<tr  class=\"trList\">");
-				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getCodiceCaixa().getCod()			+"</label></td>");
+				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ codiceCaixa[0]							+"</label></td>");
+				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ codiceCaixa[1]							+"</label></td>");
 				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getCodiceCaixa().getTitulo()		+"</label></td>");
 				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getCod()							+"</label></td>");
 				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getTitulo()						+"</label></td>");
@@ -165,7 +168,7 @@ public class SearchWorker {
 			
 			text += "<tr class=\"trList\">";
 			text += "<td class=\"tdList\"><label class=\"labelExibe\">Código da caixa/códice</label></td>";
-			text += "<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getCodiceCaixa().getCod()			+"</label></td>";
+			text += "<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getCodiceCaixa().getCod().replace("-", " - ")		+"</label></td>";
 			text += "</tr>";
 			
 			text += "<tr class=\"trList\">";

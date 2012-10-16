@@ -18,9 +18,10 @@ public class CodiceCaixaEJB {
 		dao = new CodiceCaixaDAO();
 	}
 	
-	public synchronized void add(String cod, String titulo, int anoInicio, int anoFim) throws UnreachableDataBaseException, DuplicateCodiceCaixaException{
+	public synchronized void add(String tipo, String cod, String titulo, int anoInicio, int anoFim) throws UnreachableDataBaseException, DuplicateCodiceCaixaException{
 		if(anoFim < anoInicio)	throw new IllegalArgumentException("anoFim < anoInicio");
-		if(cod == null || cod.isEmpty())	throw new IllegalArgumentException("Código vazio ou nulo");
+		if(tipo == null || cod == null || tipo.isEmpty() || cod.isEmpty())	throw new IllegalArgumentException("Código e/ou tipo vazio ou nulo");
+		cod = tipo+"-"+cod;
 		dao.addCodiceCaixa(cod, titulo, anoInicio, anoFim);
 	}
 	

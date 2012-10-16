@@ -29,13 +29,14 @@ public class DocumentEJB {
 	
 	private final DocumentoDAO docDao;
 	
-	private static String default_query = "from DocumentoMO where ";
+	private static String default_query = "from DocumentoMO WHERE ";
 
 	public DocumentEJB() {
 		docDao = new DocumentoDAO();
 	}
 	
 	public List<DTO> findDocuments(
+			String tipoCodiceCaixa,
 			String codCodiceCaixaDe,
 			String codCodiceCaixaAte,
 			String tituloCodiceCaixa,
@@ -57,10 +58,13 @@ public class DocumentEJB {
 		
 		boolean continue_query = false;
 		String query = new String(default_query);
+
 		
 		if(codCodiceCaixaDe != null && !codCodiceCaixaDe.isEmpty()){
+			codCodiceCaixaDe = tipoCodiceCaixa+"-"+codCodiceCaixaDe;
 			if(codCodiceCaixaAte != null && !codCodiceCaixaAte.isEmpty()) {
-				query += " codiceCaixa.cod between '" + codCodiceCaixaDe + "' and '" + codCodiceCaixaAte + "'";
+				codCodiceCaixaAte = tipoCodiceCaixa+"-"+codCodiceCaixaAte;
+				query += " codiceCaixa.cod BETWEEN '" + codCodiceCaixaDe + "' AND '" + codCodiceCaixaAte + "'";
 			}
 			else query += " codiceCaixa.cod = '" + codCodiceCaixaDe.trim() + "'";
 			continue_query = true;
@@ -70,7 +74,7 @@ public class DocumentEJB {
 			if(continue_query == true){
 				query += " AND ";
 			}
-			query += " codiceCaixa.titulo like '%" + tituloCodiceCaixa + "%'";
+			query += " codiceCaixa.titulo LIKE '%" + tituloCodiceCaixa + "%'";
 			continue_query = true;
 		}
 		
@@ -98,7 +102,7 @@ public class DocumentEJB {
 			if(continue_query == true){
 				query += " AND ";
 			}
-			query += " autor.nome like '%" + autor + "%'";
+			query += " autor.nome LIKE '%" + autor + "%'";
 			continue_query = true;
 		}
 		
@@ -106,7 +110,7 @@ public class DocumentEJB {
 			if(continue_query == true){
 				query += " AND ";
 			}
-			query += " autor.ocupacao like '%" + ocupacaoAutor + "%'";
+			query += " autor.ocupacao LIKE '%" + ocupacaoAutor + "%'";
 			continue_query = true;
 		}
 
@@ -114,7 +118,7 @@ public class DocumentEJB {
 			if(continue_query == true){
 				query += " AND ";
 			}
-			query += " destinatario.nome like '%" + destinatario + "%'";
+			query += " destinatario.nome LIKE '%" + destinatario + "%'";
 			continue_query = true;
 		}
 		
@@ -122,7 +126,7 @@ public class DocumentEJB {
 			if(continue_query == true){
 				query += " AND ";
 			}
-			query += " destinatario.ocupacao like '%" + ocupacaoDestinatario + "%'";
+			query += " destinatario.ocupacao LIKE '%" + ocupacaoDestinatario + "%'";
 			continue_query = true;
 		}
 		
@@ -130,7 +134,7 @@ public class DocumentEJB {
 			if(continue_query == true){
 				query += " AND ";
 			}
-			query += " cod like '%" + codDocumento + "%'";
+			query += " cod LIKE '%" + codDocumento + "%'";
 			continue_query = true;
 		}
 		
@@ -138,7 +142,7 @@ public class DocumentEJB {
 			if(continue_query == true){
 				query += " AND ";
 			}
-			query += " local like '%" + local + "%'";
+			query += " local LIKE '%" + local + "%'";
 			continue_query = true;
 		}
 		
@@ -146,7 +150,7 @@ public class DocumentEJB {
 			if(continue_query == true){
 				query += " AND ";
 			}
-			query += " resumo like '%" + resumo + "%'";
+			query += " resumo LIKE '%" + resumo + "%'";
 			continue_query = true;
 		}
 		
@@ -154,9 +158,9 @@ public class DocumentEJB {
 			if(continue_query == true){
 				query += " AND ";
 			}
-			query += "(palavraChave1.palavra like '%" + palavraChave1 + "%'";
-			query += "OR palavraChave2.palavra like '%" + palavraChave1 + "%'";
-			query += "OR palavraChave3.palavra like '%" + palavraChave1 + "%')";
+			query += "(palavraChave1.palavra LIKE '%" + palavraChave1 + "%'";
+			query += "OR palavraChave2.palavra LIKE '%" + palavraChave1 + "%'";
+			query += "OR palavraChave3.palavra LIKE '%" + palavraChave1 + "%')";
 			continue_query = true;
 		}
 
@@ -164,9 +168,9 @@ public class DocumentEJB {
 			if(continue_query == true){
 				query += " AND ";
 			}
-			query += "(palavraChave1.palavra like '%" + palavraChave2 + "%'";
-			query += "OR palavraChave2.palavra like '%" + palavraChave2 + "%'";
-			query += "OR palavraChave3.palavra like '%" + palavraChave2 + "%')";
+			query += "(palavraChave1.palavra LIKE '%" + palavraChave2 + "%'";
+			query += "OR palavraChave2.palavra LIKE '%" + palavraChave2 + "%'";
+			query += "OR palavraChave3.palavra LIKE '%" + palavraChave2 + "%')";
 			continue_query = true;
 		}
 
@@ -174,9 +178,9 @@ public class DocumentEJB {
 			if(continue_query == true){
 				query += " AND ";
 			}
-			query += "(palavraChave1.palavra like '%" + palavraChave3 + "%'";
-			query += "OR palavraChave2.palavra like '%" + palavraChave3 + "%'";
-			query += "OR palavraChave3.palavra like '%" + palavraChave3 + "%')";
+			query += "(palavraChave1.palavra LIKE '%" + palavraChave3 + "%'";
+			query += "OR palavraChave2.palavra LIKE '%" + palavraChave3 + "%'";
+			query += "OR palavraChave3.palavra LIKE '%" + palavraChave3 + "%')";
 			continue_query = true;
 		}
 		
@@ -184,11 +188,11 @@ public class DocumentEJB {
 			query = " FROM DocumentoMO ";
 		}
 		
-		query += " order by cod, titulo ";
+		query += " ORDER BY cod, titulo ";
 		return docDao.findDocumentByQuery(query);
 	}
 	
-	public synchronized void registerNewDocument(
+	public synchronized void registerNewDocument (
 			// Documento
 			String tituloDocumento,
 			String codDocumento,
@@ -219,7 +223,7 @@ public class DocumentEJB {
 			String temaPalavraChave2,
 			// Palavra chave 3
 			String palavraChave3,
-			String temaPalavraChave3) throws UnreachableDataBaseException{
+			String temaPalavraChave3) throws UnreachableDataBaseException, IllegalArgumentException{
 
 		List<DTO> check;
 		CodiceCaixaDAO codiceCaixaDAO = new CodiceCaixaDAO();
@@ -238,7 +242,8 @@ public class DocumentEJB {
 		try {
 			codCaixa = codiceCaixaDAO.findExactCodiceCaixa(codCodiceCaixa, tituloCodiceCaixa);
 		} catch (CodiceCaixaNotFoundException e1) {
-			try {
+			throw new IllegalArgumentException("Nenhum Códice/Caixa selecionado");
+			/*try {
 				codCaixa = codiceCaixaDAO.addCodiceCaixa(
 								codCodiceCaixa, 
 								tituloCodiceCaixa, 
@@ -246,7 +251,7 @@ public class DocumentEJB {
 								Integer.parseInt(anoFimCodiceCaixa)	);
 			} catch (DuplicateCodiceCaixaException e) {
 				e.printStackTrace();
-			}
+			}*/
 		}
 
 		// Verificação de existência do tipo de documento no banco
@@ -531,7 +536,7 @@ public class DocumentEJB {
 
 		String query = new String(default_query);
 
-		query += "tipoDocumento in (SELECT nome FROM TipoDocumentoMO where nome like '%" + type + "%')";
+		query += "tipoDocumento.nome LIKE '%" + type + "%'";
 
 		List<DTO> list = docDao.findDocumentByQuery(query);
 		if(list == null) throw new DocumentNotFoundException();
@@ -542,7 +547,7 @@ public class DocumentEJB {
 
 		String query = new String(default_query);
 
-		query += "codiceCaixa in (SELECT cod FROM CodiceCaixaMO where cod = '" + codCodiceCaixa + "')";
+		query += "codiceCaixa.cod = '" + codCodiceCaixa + "'";
 
 		List<DTO> list = docDao.findDocumentByQuery(query);
 		if(list == null) throw new DocumentNotFoundException();
@@ -553,9 +558,9 @@ public class DocumentEJB {
 
 		String query = new String(default_query);
 
-		query += "palavraChave1 in (SELECT palavra FROM PalavraChaveMO where palavra = '" + keyWord + "') OR "
-				+ "palavraChave2 in (SELECT palavra FROM PalavraChaveMO where palavra = '" + keyWord + "') OR "
-				+ "palavraChave3 in (SELECT palavra FROM PalavraChaveMO where palavra = '" + keyWord + "')";
+		query += "palavraChave1.palavra = '" + keyWord + "' OR "
+				+ "palavraChave2.palavra = '" + keyWord + "' OR "
+				+ "palavraChave3.palavra = '" + keyWord + "'";
 
 		List<DTO> list = docDao.findDocumentByQuery(query);
 		if(list == null) throw new DocumentNotFoundException();

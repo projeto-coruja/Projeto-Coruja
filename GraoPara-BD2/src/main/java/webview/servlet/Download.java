@@ -35,6 +35,7 @@ public class Download extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected synchronized void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String tipoCodigoCaixa = request.getParameter("");
 		String codigoDe = request.getParameter("codigoDe");
 		String codigoAte = request.getParameter("codigoAte");
 		String titulo = request.getParameter("titulo");
@@ -59,7 +60,7 @@ public class Download extends HttpServlet {
 
 		DocumentEJB search = new DocumentEJB();
 		try {
-			List<DTO> resultSet = search.findDocuments(codigoDe, codigoAte, titulo, anoIni, anoFim, numAPEP_SEQ, autor, ocupacaoAutor, destinatario, ocupacaoDestinatario, tipoDoc, local, resumo, palavraChave1, palavraChave2, palavraChave3);
+			List<DTO> resultSet = search.findDocuments(tipoCodigoCaixa, codigoDe, codigoAte, titulo, anoIni, anoFim, numAPEP_SEQ, autor, ocupacaoAutor, destinatario, ocupacaoDestinatario, tipoDoc, local, resumo, palavraChave1, palavraChave2, palavraChave3);
 			if(resultSet == null)	throw new DocumentNotFoundException();
 			filePath = SpreadsheetExport.generateSpreadsheet(resultSet);	
 			File f = new File(filePath);

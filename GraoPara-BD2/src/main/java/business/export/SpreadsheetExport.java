@@ -162,7 +162,7 @@ public class SpreadsheetExport {
 			docDTO = (Documento) resultSet.get(linha);
 			row = tbl.getRowByIndex(linha+1);
 
-			tmp = docDTO.getCodiceCaixa().getCod();
+			tmp = docDTO.getCodiceCaixa().getCod().replace("-", " - ");
 			column = tbl.getColumnByIndex(coluna);
 			if(getStringWidth(tmp) > column.getWidth())	column.setWidth(getStringWidth(tmp));
 			cel = row.getCellByIndex(coluna++);

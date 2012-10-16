@@ -32,6 +32,7 @@ public class CodCaixaServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String tipo = request.getParameter("tipo");
 		String codigo = request.getParameter("codigo");
 		String titulo = request.getParameter("titulo");
 		int anoIni = Integer.parseInt(request.getParameter("anoIni"));
@@ -42,7 +43,7 @@ public class CodCaixaServlet extends HttpServlet {
 	    PrintWriter out=response.getWriter();   
 
 		try {
-			od.add(codigo, titulo, anoIni, anoFim);
+			od.add(tipo, codigo, titulo, anoIni, anoFim);
 			out.println("<script>");  
 		    out.println("document.location=('/GraoPara/protected/admin/cadastrarOrigem.jsp');");
 		    out.println("</script>");		

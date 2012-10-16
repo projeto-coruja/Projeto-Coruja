@@ -44,6 +44,7 @@ public class DocServlet extends HttpServlet {
 		String url = null;
 		String resumo = null;
 		String data = null;
+		String tipoCodiceCaixa = null;
 		String codCodiceCaixa = null;
 		String tituloCodiceCaixa = null;
 		String anoInicioCodiceCaixa = null;
@@ -76,8 +77,8 @@ public class DocServlet extends HttpServlet {
 		UserAccount uploader = null;
 		try {
 			uploader = (new SearchUserBean()).findUser(email);
-		
 			DocumentEJB CB = new DocumentEJB();
+			codCodiceCaixa = tipoCodiceCaixa+"-"+codCodiceCaixa;
 			try {
 				
 				CB.registerNewDocument(tituloDocumento, 
