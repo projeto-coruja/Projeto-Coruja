@@ -25,7 +25,6 @@ public class CodCaixaServlet extends HttpServlet {
      */
     public CodCaixaServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**

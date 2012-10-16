@@ -178,7 +178,7 @@ public class SpreadsheetExport {
 			cel.setVerticalAlignment(VerticalAlignmentType.MIDDLE);
 			cel.setDisplayText(tmp);
 
-			tmp = docDTO.getCod();
+			tmp = docDTO.getCod().replace("-", " - ");
 			column = tbl.getColumnByIndex(coluna);
 			if(getStringWidth(tmp) > column.getWidth())	column.setWidth(getStringWidth(tmp));
 			cel = row.getCellByIndex(coluna++);
