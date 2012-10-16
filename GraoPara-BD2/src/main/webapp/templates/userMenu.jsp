@@ -7,10 +7,10 @@
 	<div class="conteudo">
 		<article class="menuLateral">
 			<ul class="nav" id="menu">
-				<li><a href="/GraoPara/protected/user/indexUser.jsp">Home</a></li>
-				<li><a href="/GraoPara/protected/user/pesquisaUser.jsp">Pesquisar</a></li>
-				<li><a href="/GraoPara/protected/user/cadastroDocumentosUser.jsp">Cadastrar Documento</a></li>
-				<li><a href="/GraoPara/protected/user/painelUser.jsp">Painel User</a></li>
+				<li><a href="/GraoPara/protected/user/index.jsp">Home</a></li>
+				<li><a href="/GraoPara/protected/user/pesquisa.jsp">Pesquisar</a></li>
+				<li><a href="/GraoPara/protected/user/cadastroDocumentos.jsp">Cadastrar Documento</a></li>
+				<li><a href="/GraoPara/protected/user/painel.jsp">Painel User</a></li>
 			</ul>
 		</article>
 	</div>
@@ -30,9 +30,9 @@
 	<div class="conteudo">
 		<article class="menuLateral">
 			<ul class="nav" id="menu">
-				<li><a href="/GraoPara/protected/user/tutorialPesquisaUser.jsp">Como pesquisar no acervo</a></li>
-				<li><a href="/GraoPara/protected/user/sobreUser.jsp">Sobre</a></li>
-				<li><a href="/GraoPara/protected/user/creditosUser.jsp">Créditos</a></li>
+				<li><a href="/GraoPara/protected/user/tutorialPesquisa.jsp">Como pesquisar no acervo</a></li>
+				<li><a href="/GraoPara/protected/user/sobre.jsp">Sobre</a></li>
+				<li><a href="/GraoPara/protected/user/creditos.jsp">Créditos</a></li>
 			</ul>
 		</article>
 	</div>

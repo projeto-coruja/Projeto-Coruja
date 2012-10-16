@@ -78,7 +78,7 @@ public class SearchWorker {
 				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getResumo()						+"</label></td>");
 				if(c_status != null && c_status.equals(AuthBean.LoginSuccessAdmin)){
 					 out.println( "<td class=\"tdList\">"
-								+ "<a href=\"/GraoPara/protected/admin/detalhesDocumentosAdmin.jsp?"
+								+ "<a href=\"/GraoPara/protected/admin/detalhesDocumentos.jsp?"
 								+"codigo=" + doc.getCodiceCaixa().getCod()
 								+"&codigoDoDocumento=" + doc.getCod()
 								+"&titulo=" + doc.getTitulo()

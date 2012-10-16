@@ -51,11 +51,11 @@ public class PublicFilter implements Filter {
 		}
 		
 		else if(c_status != null && (c_status.getValue().equals(AuthBean.LoginSuccessUserLevel1))) {
-			res.sendRedirect(req.getContextPath() + "/protected/user/indexUser.jsp");
+			res.sendRedirect(req.getContextPath() + "/protected/user/index.jsp");
 		}
 		
 		else if(c_status != null && (c_status.getValue().equals(AuthBean.LoginSuccessAdmin))) {
-			res.sendRedirect(req.getContextPath() + "/protected/admin/indexAdmin.jsp");
+			res.sendRedirect(req.getContextPath() + "/protected/admin/index.jsp");
 		}
 		
 		else {
@@ -64,13 +64,13 @@ public class PublicFilter implements Filter {
 				c_status = new Cookie(WebUtility.cookie_status, user.getLogType().toString());
 				c_status.setMaxAge(-1);
 				res.addCookie(c_status);
-				res.sendRedirect(req.getContextPath() + "/protected/user/indexUser.jsp");
+				res.sendRedirect(req.getContextPath() + "/protected/user/index.jsp");
 			}
 			else if(user != null && user.getLogType() == AuthBean.LoginSuccessAdmin) {
 				c_status = new Cookie(WebUtility.cookie_status, user.getLogType().toString());
 				c_status.setMaxAge(-1);
 				res.addCookie(c_status);
-				res.sendRedirect(req.getContextPath() + "/protected/admin/indexAdmin.jsp");
+				res.sendRedirect(req.getContextPath() + "/protected/admin/index.jsp");
 			}
 			else {
 				chain.doFilter(request, response);

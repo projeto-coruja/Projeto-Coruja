@@ -26,10 +26,10 @@ function checkCookie() {
 	var status = getCookie("status_graopara");
 
 	if(status == 2) {
-		window.location.replace("/GraoPara/protected/admin/indexAdmin.jsp");
+		window.location.replace("/GraoPara/protected/admin/index.jsp");
 	}
 	else if(status == 1) {
-		window.location.replace("/GraoPara/protected/user/indexUser.jsp");
+		window.location.replace("/GraoPara/protected/user/index.jsp");
 	}
 }
 

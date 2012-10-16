@@ -52,7 +52,7 @@ public class AdminFilter implements Filter {
 		}
 		
 		else if(c_status != null && ((c_status.getValue().equals(AuthBean.LoginSuccessUserLevel1)) || (c_status.getValue().equals(AuthBean.LoginSuccessUserLevel2)))) {
-			JavascriptAlerts.alertAndRedirectPage(res, "Você não possuí permissão para acessar esta área!", "/GraoPara/protected/user/indexUser.jsp");
+			JavascriptAlerts.alertAndRedirectPage(res, "Você não possuí permissão para acessar esta área!", "/GraoPara/protected/user/index.jsp");
 		}
 		
 		else if(c_status != null && (c_status.getValue().equals(AuthBean.LoginFailOrDefault))) {
@@ -74,7 +74,7 @@ public class AdminFilter implements Filter {
 				c_status.setMaxAge(-1);
 				res.addCookie(c_status);
 				
-				JavascriptAlerts.alertAndRedirectPage(res, "Você não possuí permissão para acessar esta área!", "/GraoPara/protected/user/indexUser.jsp");
+				JavascriptAlerts.alertAndRedirectPage(res, "Você não possuí permissão para acessar esta área!", "/GraoPara/protected/user/index.jsp");
 			}
 			else {
 				JavascriptAlerts.alertAndRedirectPage(res, "Você não possuí permissão para acessar esta área!", "/GraoPara/public/index.jsp");

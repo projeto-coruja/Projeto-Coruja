@@ -105,7 +105,7 @@ public class CodiceCaixaDAO {
 	public List<DTO> findAllCodiceCaixa() throws  UnreachableDataBaseException, CodiceCaixaNotFoundException  {
 		List<DTO> resultSet = null;
 		try {
-			resultSet = manager.findEntity("from CodiceCaixaMO order by order by cod, titulo, anoInicio, anoFim");
+			resultSet = manager.findEntity("from CodiceCaixaMO order by cod, titulo, anoInicio, anoFim");
 			if(resultSet == null) {
 				throw new CodiceCaixaNotFoundException("Não existe nenhum Codice/Caixa cadastrado.");
 			}
