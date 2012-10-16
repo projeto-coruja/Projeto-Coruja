@@ -57,9 +57,9 @@ public class AccountRemovalServlet extends HttpServlet {
 			adm.deletarUsuario(email);
 
 			if(userToRemove.getProfile().equals("default"))
-				response.sendRedirect("/GraoPara/protected/admin/painelAdmin.jsp#tab1"); 
+				response.sendRedirect("/GraoPara/protected/admin/painel.jsp#tab1"); 
 			else
-				response.sendRedirect("/GraoPara/protected/admin/painelAdmin.jsp#tab2");
+				response.sendRedirect("/GraoPara/protected/admin/painel.jsp#tab2");
 
 		} catch (UnreachableDataBaseException e) {
 			e.printStackTrace();

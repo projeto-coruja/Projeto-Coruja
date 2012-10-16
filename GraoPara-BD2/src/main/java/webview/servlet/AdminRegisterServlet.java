@@ -43,7 +43,7 @@ public class AdminRegisterServlet extends HttpServlet {
 
 		if (!senha.equals(request.getParameter("confsenha"))) {
 			
-			JavascriptAlerts.alertAndRedirectPage(response, "Senha inválida! Tente novamente.", "/GraoPara/protected/admin/cadUserAdmin.jsp");
+			JavascriptAlerts.alertAndRedirectPage(response, "Senha inválida! Tente novamente.", "/GraoPara/protected/admin/cadUser.jsp");
 			
 		} else {
 			
@@ -53,18 +53,18 @@ public class AdminRegisterServlet extends HttpServlet {
 				adminBean.adicionarUsuario(email, nome, senha, permissao);
 				response.setContentType("text/html");
 				
-				JavascriptAlerts.alertAndRedirectPage(response, "Usuário adicionado!", "/GraoPara/protected/admin/cadUserAdmin.jsp");
+				JavascriptAlerts.alertAndRedirectPage(response, "Usuário adicionado!", "/GraoPara/protected/admin/cadUser.jsp");
 
 			} catch (UnreachableDataBaseException e) {
 				
-				JavascriptAlerts.alertAndRedirectPage(response, "Erro no banco de dados! Contate o suporte e tente novamente mais tarde.", "/GraoPara/protected/admin/cadUserAdmin.jsp");
+				JavascriptAlerts.alertAndRedirectPage(response, "Erro no banco de dados! Contate o suporte e tente novamente mais tarde.", "/GraoPara/protected/admin/cadUser.jsp");
 				e.printStackTrace();
 			} catch (IncorrectLoginInformationException e) {
 				
-				JavascriptAlerts.alertAndRedirectPage(response, "Email inválido!", "/GraoPara/protected/admin/cadUserAdmin.jsp");
+				JavascriptAlerts.alertAndRedirectPage(response, "Email inválido!", "/GraoPara/protected/admin/cadUser.jsp");
 			} catch (DuplicateUserException e) {
 				
-				JavascriptAlerts.alertAndRedirectPage(response, "Email já em uso!", "/GraoPara/protected/admin/cadUserAdmin.jsp");
+				JavascriptAlerts.alertAndRedirectPage(response, "Email já em uso!", "/GraoPara/protected/admin/cadUser.jsp");
 			}
 		}
 	}

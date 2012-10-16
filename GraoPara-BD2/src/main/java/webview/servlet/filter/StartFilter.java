@@ -69,10 +69,10 @@ public class StartFilter implements Filter {
 		
 		else if(c_status != null && (c_status.getValue().equals(AuthBean.LoginSuccessUserLevel2) 
 				&& AuthBean.allowOperation(c_session.getValue(), c_email.getValue(), c_username.getValue(), c_status.getValue()))) {
-			res.sendRedirect(req.getContextPath() + "/protected/user/indexUser.jsp");
+			res.sendRedirect(req.getContextPath() + "/protected/user/index.jsp");
 		}
 		else if(c_status != null && (c_status.getValue().equals(AuthBean.LoginSuccessAdmin))) {
-			res.sendRedirect(req.getContextPath() + "/protected/admin/indexAdmin.jsp");
+			res.sendRedirect(req.getContextPath() + "/protected/admin/index.jsp");
 		}
 		else {
 			UserBean user = WebUtility.cookieLogin(c_list);			
@@ -89,12 +89,12 @@ public class StartFilter implements Filter {
 			else if(user.getLogType().equals(AuthBean.LoginSuccessUserLevel2)){
 				c_status = new Cookie(WebUtility.cookie_status, user.getLogType().toString());
 				c_status.setMaxAge(-1);
-				res.sendRedirect(req.getContextPath() + "/protected/user/indexUser.jsp");
+				res.sendRedirect(req.getContextPath() + "/protected/user/index.jsp");
 			}
 			else if(user.getLogType().equals(AuthBean.LoginSuccessAdmin)){
 				c_status = new Cookie(WebUtility.cookie_status, user.getLogType().toString());
 				c_status.setMaxAge(-1);
-				res.sendRedirect(req.getContextPath() + "/protected/admin/indexAdmin.jsp");
+				res.sendRedirect(req.getContextPath() + "/protected/admin/index.jsp");
 			}
 		}
 	}

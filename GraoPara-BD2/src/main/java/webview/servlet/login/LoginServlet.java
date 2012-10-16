@@ -61,9 +61,9 @@ public class LoginServlet extends HttpServlet {
 				response.addCookie(c_nome);
 
 			    if(login_result.getLogType() == AuthBean.LoginSuccessUserLevel2)	// retorna para a página de USER
-			    	response.sendRedirect("/GraoPara/protected/user/indexUser.jsp");
+			    	response.sendRedirect("/GraoPara/protected/user/index.jsp");
 			    else if(login_result.getLogType() == AuthBean.LoginSuccessAdmin)	// retorna para a página de ADMIN
-			    	response.sendRedirect("/GraoPara/protected/admin/indexAdmin.jsp");
+			    	response.sendRedirect("/GraoPara/protected/admin/index.jsp");
 			}
 			else if(login_result != null && (login_result.getLogType().equals(AuthBean.LoginFailOrDefault)))
 			{

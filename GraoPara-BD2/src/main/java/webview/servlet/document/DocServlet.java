@@ -115,7 +115,7 @@ public class DocServlet extends HttpServlet {
 			    PrintWriter out=response.getWriter();   
 				out.println("<script>");  
 				out.println("alert('Erro no banco de dados! Contate o suporte e tente novamente mais tarde." + e.getStackTrace() + "');");  
-				out.println("document.location=('/GraoPara/protected/user/indexUser.jsp');");  
+				out.println("document.location=('/GraoPara/protected/user/index.jsp');");  
 				out.println("</script>");
 				e.printStackTrace();
 			} catch (IllegalArgumentException e){

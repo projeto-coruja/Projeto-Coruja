@@ -50,7 +50,7 @@ public class UserFilter implements Filter {
 			chain.doFilter(request, response);
 		}
 		else if(c_status != null && c_status.getValue().equals(AuthBean.LoginSuccessAdmin)) {
-			res.sendRedirect(req.getContextPath() + "/protected/admin/indexAdmin.jsp");
+			res.sendRedirect(req.getContextPath() + "/protected/admin/index.jsp");
 		}
 		else if(c_status != null && c_status.getValue().equals(AuthBean.LoginFailOrDefault)) {
 		    
@@ -69,7 +69,7 @@ public class UserFilter implements Filter {
 			else if(user != null && user.getLogType() == AuthBean.LoginSuccessAdmin) {
 				c_status = new Cookie(WebUtility.cookie_status, user.getLogType().toString());
 				c_status.setMaxAge(-1);
-				res.sendRedirect(req.getContextPath() + "/protected/admin/indexAdmin.jsp");
+				res.sendRedirect(req.getContextPath() + "/protected/admin/index.jsp");
 			}
 			else {
 				

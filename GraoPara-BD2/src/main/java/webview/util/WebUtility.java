@@ -184,7 +184,7 @@ public final class WebUtility {
 				}
 			}
 		} catch (CodiceCaixaNotFoundException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		return output;
 	}
@@ -217,7 +217,7 @@ public final class WebUtility {
 				}
 			}
 		} catch (CodiceCaixaNotFoundException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		return output;
 	}
@@ -254,7 +254,7 @@ public final class WebUtility {
 				}
 			}
 		} catch (CodiceCaixaNotFoundException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		return output;
 	}
@@ -292,7 +292,7 @@ public final class WebUtility {
 						+ " - " + codOrigem + " - " + tituloOrigem + "</option> ";
 			}
 		} catch (CodiceCaixaNotFoundException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 
 		return output;
@@ -371,7 +371,7 @@ public final class WebUtility {
 		} catch (UnreachableDataBaseException e) {
 			e.printStackTrace();
 		} catch (DocumentTypeNotFoundException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		return result;
 	}

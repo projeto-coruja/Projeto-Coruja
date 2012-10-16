@@ -38,7 +38,7 @@ public class AccountApprovalServlet extends HttpServlet {
 		
 		try {
 			adminBean.alterarPermissoesUsuario(request.getParameter("email"), "user");
-			response.sendRedirect(request.getContextPath() + "/protected/admin/painelAdmin.jsp#tab1");
+			response.sendRedirect(request.getContextPath() + "/protected/admin/painel.jsp#tab1");
 		
 		} catch (IncorrectProfileInformationException e) {
 			

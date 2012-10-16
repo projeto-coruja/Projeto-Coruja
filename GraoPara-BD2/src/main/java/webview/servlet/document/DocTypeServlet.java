@@ -42,7 +42,7 @@ public class DocTypeServlet extends HttpServlet {;
 		} catch (UnreachableDataBaseException e) {
 			out.println("<script>");  
 		    out.println("alert('Erro no banco de dados! Contate o suporte e tente novamente mais tarde.');");  
-		    out.println("document.location=('/GraoPara/protected/admin/indexAdmin.jsp');");  
+		    out.println("document.location=('/GraoPara/protected/admin/index.jsp');");  
 		    out.println("</script>");
 			e.printStackTrace();
 		} catch (DuplicatedDocumentTypeException e) {
