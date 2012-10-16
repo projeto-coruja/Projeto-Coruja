@@ -40,6 +40,7 @@ public class Sandbox {
 		e.registerNewDocument("título legal", 
 				"1234", 
 				"unifesp", 
+				"www.com.br",
 				"Era uma vez um gato chinês", 
 				null, a, 
 				"codCodiceCaixa", 

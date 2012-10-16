@@ -14,6 +14,8 @@ public class Documento implements DTO {
 	private String titulo;
 	
 	private String local;
+
+	private String url;
 	
 	private String resumo;
 
@@ -47,7 +49,7 @@ public class Documento implements DTO {
 		//JDTO
 	}
 
-	public Documento(String cod, String titulo, String local, String resumo,
+	public Documento(String cod, String titulo, String local, String url, String resumo,
 			CodiceCaixa codiceCaixa, TipoDocumento tipoDocumento, Autor autor,
 			Autor destinatario, PalavraChave palavraChave1,
 			PalavraChave palavraChave2, PalavraChave palavraChave3,
@@ -56,6 +58,7 @@ public class Documento implements DTO {
 		this.cod = cod;
 		this.titulo = titulo;
 		this.local = local;
+		this.url = url;
 		this.resumo = resumo;
 		this.codiceCaixa = codiceCaixa;
 		this.tipoDocumento = tipoDocumento;
@@ -98,6 +101,14 @@ public class Documento implements DTO {
 
 	public void setLocal(String local) {
 		this.local = local;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 	public String getResumo() {

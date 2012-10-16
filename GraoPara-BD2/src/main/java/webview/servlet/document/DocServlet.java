@@ -41,6 +41,7 @@ public class DocServlet extends HttpServlet {
 		String tituloDocumento = null;
 		String codDocumento = null;
 		String local = null;
+		String url = null;
 		String resumo = null;
 		String data = null;
 		String codCodiceCaixa = null;
@@ -82,6 +83,7 @@ public class DocServlet extends HttpServlet {
 				CB.registerNewDocument(tituloDocumento, 
 						codDocumento, 
 						local, 
+						url,
 						resumo, 
 						dataDoc,
 						uploader, 
