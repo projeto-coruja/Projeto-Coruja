@@ -20,7 +20,7 @@ import business.exceptions.login.UserNotFoundException;
 /**
  * Servlet implementation class LoginServlet
  */
-@WebServlet("/doLogin")
+//@WebServlet("/doLogin")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

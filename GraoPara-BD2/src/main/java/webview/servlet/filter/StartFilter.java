@@ -23,7 +23,7 @@ import business.EJB.user.UserBean;
 /**
  * Servlet Filter implementation class DefaultFilter
  */
-@WebFilter("/")
+//@WebFilter("/")
 public class StartFilter implements Filter {
 
 	@SuppressWarnings("unused")

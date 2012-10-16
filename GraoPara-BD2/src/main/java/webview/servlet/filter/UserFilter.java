@@ -21,7 +21,7 @@ import business.EJB.user.UserBean;
 /**
  * Servlet Filter implementation class LoginFilter
  */
-@WebFilter("/protected/user/*")
+//@WebFilter("/protected/user/*")
 public class UserFilter implements Filter {
 
     /**

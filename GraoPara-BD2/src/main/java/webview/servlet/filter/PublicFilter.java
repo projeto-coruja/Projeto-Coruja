@@ -20,7 +20,7 @@ import business.EJB.user.UserBean;
 /**
  * Servlet Filter implementation class PublicFilter
  */
-@WebFilter({"/public/*"})
+//@WebFilter({"/public/*"})
 public class PublicFilter implements Filter {
 
     /**
