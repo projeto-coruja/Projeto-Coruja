@@ -154,6 +154,7 @@ public class SearchWorker {
 	
 	
 	public static void printDocumentInformation(HttpServletRequest request, JspWriter out) throws IOException{
+		String tipo = request.getParameter("tipoCodigoDoDocumento");
 		String num = request.getParameter("codigoDoDocumento");
 		Documento doc = null;
 		DocumentEJB busca = new DocumentEJB();
@@ -161,7 +162,7 @@ public class SearchWorker {
 		String text;
 		
 		try {
-			doc = busca.findSingleDocument(num);
+			doc = busca.findSingleDocument(tipo, num);
 			String data[] = doc.getData().toString().split("-");
 			
 			text = "<table >";

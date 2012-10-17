@@ -75,9 +75,7 @@ public class EJBUtility {
 			}
 			s += c;
 		}
-
 		return s;
-
 	}
 
 }

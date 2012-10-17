@@ -27,17 +27,17 @@ public class DocRemovalServlet extends HttpServlet {
      */
     public DocRemovalServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String code = request.getParameter("numeroAPEP"); // Número APEP/SEQ
+		String type = request.getParameter("tipo"); // Tipo APEP/SEQ
+		String code = request.getParameter("numero"); // Número APEP/SEQ
 		DocumentEJB docEJB = new DocumentEJB();
 		response.setContentType("text/html");  
 	    PrintWriter out=response.getWriter(); 
 	    Documento docs = null;
 		try {
-			docs = docEJB.findSingleDocument(code);
+			docs = docEJB.findSingleDocument(type, code);
 			docEJB.removeDocument(docs);
 			response.sendRedirect(request.getHeader("referer"));
 			response.setHeader("Refresh", "0");

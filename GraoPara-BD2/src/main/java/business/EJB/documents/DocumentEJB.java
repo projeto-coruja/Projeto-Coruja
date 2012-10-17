@@ -20,7 +20,6 @@ import business.exceptions.documents.AuthorNotFoundException;
 import business.exceptions.documents.CodiceCaixaNotFoundException;
 import business.exceptions.documents.DocumentNotFoundException;
 import business.exceptions.documents.DocumentTypeNotFoundException;
-import business.exceptions.documents.DuplicateCodiceCaixaException;
 import business.exceptions.documents.DuplicatedAuthorException;
 import business.exceptions.documents.KeywordNotFoundException;
 import business.exceptions.login.UnreachableDataBaseException;
@@ -354,9 +353,11 @@ public class DocumentEJB {
 	
 	public synchronized void modifyDocument(
 			// Busca do documento a ser modificado
+			String tipoCodDocumentoAntigo,
 			String codDocumentoAntigo,
 			// Documento
 			String tituloDocumento,
+			String tipoCodDocumento,
 			String codDocumento,
 			String local,
 			String resumo,
@@ -398,17 +399,23 @@ public class DocumentEJB {
 		Autor author = null;
 		Autor addressee = null;
 		
-		try {
-			doc = findSingleDocument(codDocumentoAntigo);
-		} catch (IllegalArgumentException e2) {
-			e2.printStackTrace();
-		} 
+		doc = findSingleDocument(tipoCodDocumentoAntigo, codDocumentoAntigo);
+		
+		
+		doc.setCod(tipoCodDocumento+"-"+codDocumento); // TODO: verificação de unicidade.
+		
+		
+		doc.setTitulo(tituloDocumento);
+		doc.setLocal(local);
+		doc.setResumo(resumo);
+		doc.setData(data);
 		
 		// Verificação de existência da origem do documento no banco
 		try {
 			codCaixa = codiceCaixaDAO.findExactCodiceCaixa(codCodiceCaixa, tituloCodiceCaixa);
 		} catch (CodiceCaixaNotFoundException e1) {
-			try {
+			throw new IllegalArgumentException();
+			/*try {
 				codCaixa = codiceCaixaDAO.addCodiceCaixa(
 								codCodiceCaixa, 
 								tituloCodiceCaixa, 
@@ -416,7 +423,7 @@ public class DocumentEJB {
 								Integer.parseInt(anoFimCodiceCaixa)	);
 			} catch (DuplicateCodiceCaixaException e) {
 				e.printStackTrace();
-			}
+			}*/
 		}
 		doc.setCodiceCaixa(codCaixa);
 
@@ -521,10 +528,10 @@ public class DocumentEJB {
 		docDao.removeDocument(document);
 	}
 	
-	public Documento findSingleDocument(String code) throws DocumentNotFoundException, UnreachableDataBaseException, IllegalArgumentException{
+	public Documento findSingleDocument(String type, String code) throws DocumentNotFoundException, UnreachableDataBaseException, IllegalArgumentException{
 		if(code == null || code.isEmpty()) throw new IllegalArgumentException("Code is empty");
 		String query = default_query;
-		query += " cod = '" + code + "'";
+		query += " cod = '" + type+"-"+code + "'";
 		List<DTO> resultSet = docDao.findDocumentByQuery(query);
 		for(DTO dto : resultSet){
 			if(((Documento)dto).getCod().equals(code))	return (Documento) dto;

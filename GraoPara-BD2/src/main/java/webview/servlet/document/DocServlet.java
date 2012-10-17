@@ -39,6 +39,7 @@ public class DocServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String tituloDocumento = null;
+		String tipoCodDocumento = null;
 		String codDocumento = null;
 		String local = null;
 		String url = null;
@@ -79,6 +80,7 @@ public class DocServlet extends HttpServlet {
 			uploader = (new SearchUserBean()).findUser(email);
 			DocumentEJB CB = new DocumentEJB();
 			codCodiceCaixa = tipoCodiceCaixa+"-"+codCodiceCaixa;
+			codDocumento = tipoCodDocumento+"-"+codDocumento;
 			try {
 				
 				CB.registerNewDocument(tituloDocumento, 

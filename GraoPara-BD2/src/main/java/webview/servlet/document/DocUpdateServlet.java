@@ -9,14 +9,11 @@ import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import persistence.exceptions.UpdateEntityException;
-
-import webview.util.WebUtility;
 import business.EJB.documents.DocumentEJB;
 import business.exceptions.documents.DocumentNotFoundException;
 import business.exceptions.login.UnreachableDataBaseException;
@@ -38,9 +35,10 @@ public class DocUpdateServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
+    	String tipoCodDocumentoAntigo = null;
 		String codDocumentoAntigo = null;
 		String tituloDocumento = null;
+		String tipoCodDocumento = null;
 		String codDocumento = null;
 		String local = null;
 		String resumo = null;
@@ -64,10 +62,6 @@ public class DocUpdateServlet extends HttpServlet {
 		response.setContentType("text/html");  
 	    PrintWriter out=response.getWriter();   
 		
-		Cookie c_user = WebUtility.selectCookie(
-				request.getCookies(), WebUtility.cookie_email);
-		String email = c_user.getValue();
-		
 //		GregorianCalendar dataDoc = new GregorianCalendar(Integer.parseInt(dataAno), Integer.parseInt(dataMes), Integer.parseInt(dataDia));
 		Date dataDoc = null;
 		DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
@@ -80,8 +74,10 @@ public class DocUpdateServlet extends HttpServlet {
 
 		
 		try {
-			CB.modifyDocument(codDocumentoAntigo, 
+			CB.modifyDocument(tipoCodDocumentoAntigo,
+					codDocumentoAntigo, 
 					tituloDocumento, 
+					tipoCodDocumento,
 					codDocumento, 
 					local, 
 					resumo, 
