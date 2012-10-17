@@ -7,22 +7,24 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 
-import org.hibernate.annotations.NaturalId;
 import org.hibernate.validator.constraints.NotEmpty;
 
 
 @Entity
+@Table(uniqueConstraints=@UniqueConstraint(columnNames={"cod", "codiceCaixa"}))
 public class DocumentoMO implements EntityModel  {
 	
 	@Id
 	@GeneratedValue
 	private Long id;
 	
+	@Column(name="cod")
 	@NotEmpty
-	@NaturalId
 	private String cod;
 	
 	@NotNull
@@ -39,6 +41,7 @@ public class DocumentoMO implements EntityModel  {
 	@Column(length = 8192)
 	private String resumo;
 
+	@Column(name="codiceCaixa")
 	@ManyToOne
 	private CodiceCaixaMO codiceCaixa;
 	
