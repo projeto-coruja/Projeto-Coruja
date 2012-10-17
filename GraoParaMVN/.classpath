@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<classpath>
-	<classpathentry kind="src" path=""/>
-	<classpathentry kind="src" path="/GraoParaBusiness"/>
-	<classpathentry kind="src" path="/GraoParaWEB"/>
-	<classpathentry kind="output" path="bin"/>
-</classpath>
