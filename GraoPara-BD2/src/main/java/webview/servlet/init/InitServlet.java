@@ -6,7 +6,6 @@ import java.util.List;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 
 import org.apache.commons.logging.Log;
@@ -27,7 +26,6 @@ import business.EJB.util.EJBUtility;
 /**
  * Servlet implementation class InitServlet
  */
-@WebServlet("/InitServlet")
 public class InitServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
@@ -48,7 +46,7 @@ public class InitServlet extends HttpServlet {
 
 		log.info("Iniciando sistema Grão-Para...");
 		PersistenceAccess pa = new PersistenceAccess();
-		String[] profiles_names = {"default", "user", "admin"};
+		String[] profiles_names = {"default", "user1", "user2", "admin"};
 
 		List<DTO> profile;
 		for (String p : profiles_names) {
@@ -74,7 +72,7 @@ public class InitServlet extends HttpServlet {
 		}
 
 		//TODO: MUDAR SENHA
-		List<DTO> user = pa.findEntity("from UserMO where email = 'admin@graopara.com'");
+		List<DTO> user = pa.findEntity("from UserAccountMO where email = 'admin@graopara.com'");
 		if(user == null)
 		{
 			log.info("Criando usuário de admin...");
@@ -89,7 +87,7 @@ public class InitServlet extends HttpServlet {
 		}
 		else user = null;
 
-		user = pa.findEntity("from UserMO where email = 'user1@graopara.com'");
+		user = pa.findEntity("from UserAccountMO where email = 'user1@graopara.com'");
 		if(user == null)
 		{
 			log.info("Criando usuário de teste...");
@@ -105,7 +103,7 @@ public class InitServlet extends HttpServlet {
 		}
 		else user = null;
 		
-		user = pa.findEntity("from UserMO where email = 'user1@graopara.com'");
+		user = pa.findEntity("from UserAccountMO where email = 'user1@graopara.com'");
 		if(user == null)
 		{
 			log.info("Criando usuário de teste...");
@@ -121,7 +119,7 @@ public class InitServlet extends HttpServlet {
 		}
 		else user = null;
 
-		user = pa.findEntity("from UserMO where email = 'default@graopara.com'");
+		user = pa.findEntity("from UserAccountMO where email = 'default@graopara.com'");
 		if(user == null)
 		{
 			log.info("Criando usuário sem privilégios de teste...");

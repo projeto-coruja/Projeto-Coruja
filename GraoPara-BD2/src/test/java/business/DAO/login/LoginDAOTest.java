@@ -20,7 +20,7 @@ public class LoginDAOTest {
 		ProfileDAO dao = new ProfileDAO();
 		dao.createProfile("teste");
 		Profile p = dao.findProfileByName("teste");
-		assertEquals("teste", p.getName());
+		assertEquals("teste", p.getProfile());
 	}
 	
 	@After

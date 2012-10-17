@@ -16,7 +16,7 @@ public class ProfileMO implements EntityModel  {
 	
 	@NaturalId
 	@NotEmpty
-	private String name;
+	private String profile;
 
 	public Long getId() {
 		return id;
@@ -26,12 +26,12 @@ public class ProfileMO implements EntityModel  {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getProfile() {
+		return profile;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setProfile(String profile) {
+		this.profile = profile;
 	}
 
 }

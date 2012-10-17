@@ -53,7 +53,7 @@ public class AccountServlet extends HttpServlet {
 		String email = WebUtility.selectCookie(request.getCookies(), WebUtility.cookie_email).getValue();
 		String status = WebUtility.selectCookie(request.getCookies(), WebUtility.cookie_status).getValue();
 
-		if(action.equals("editPermission") && status.equals(WebUtility.admin_profile.getName())){
+		if(action.equals("editPermission") && status.equals(WebUtility.admin_profile.getProfile())){
 			permissaoNova = request.getParameter("permissao");
 			email = request.getParameter("email");
 			

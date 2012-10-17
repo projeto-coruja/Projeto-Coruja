@@ -149,7 +149,7 @@ public class PanelWorker {
 					out.println("<tr>");
 					out.println("<td> <label for=\"identificacao\" class=\"labelExibe\">" + user.getName() + "</label> </td>");
 					out.println("<td> <label for=\"identificacao\" class=\"labelExibe\">" + user.getEmail() + " </label> </td>");
-					out.println("<td> <label for=\"identificacao\" class=\"labelExibe\">" + user.getProfile().getName() + "</label> </td>");
+					out.println("<td> <label for=\"identificacao\" class=\"labelExibe\">" + user.getProfile().getProfile() + "</label> </td>");
 					out.println("<td>"
 							+ "<a href=\"/GraoPara/protected/admin/editarUsuario.jsp?"
 							+ "paramName=" + user.getName()
@@ -183,11 +183,11 @@ public class PanelWorker {
 			for(DTO u : users){
 				UserAccount user = (UserAccount) u;
 				
-				if(user.getProfile().getName().equals("default")){
+				if(user.getProfile().getProfile().equals("default")){
 					out.println("<tr>");
 					out.println("<td> <label for=\"identificacao\" class=\"labelExibe\">" + user.getName() + "</label> </td>");
 					out.println("<td> <label for=\"identificacao\" class=\"labelExibe\">" + user.getEmail() + " </label> </td>");
-					out.println("<td> <label for=\"identificacao\" class=\"labelExibe\">" + user.getProfile().getName() + "</label> </td>");
+					out.println("<td> <label for=\"identificacao\" class=\"labelExibe\">" + user.getProfile().getProfile() + "</label> </td>");
 					out.println("<td>"
 						+ "<a href=\"/GraoPara/protected/admin/approveAccount?" 
 							+ "email=" + user.getEmail()
@@ -221,7 +221,7 @@ public class PanelWorker {
 			list = adm.getAllAvailableProfiles();
 			for(DTO dto : list){
 				Profile profile = (Profile) dto;
-				out.println("<option value=\""+ profile.getName() +"\">"+ profile.getName() + "</option>");
+				out.println("<option value=\""+ profile.getProfile() +"\">"+ profile.getProfile() + "</option>");
 			}
 		} catch (UnreachableDataBaseException e) {
 			e.printStackTrace();

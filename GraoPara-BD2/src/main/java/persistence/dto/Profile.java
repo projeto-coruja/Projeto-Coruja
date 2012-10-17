@@ -4,10 +4,10 @@ public class Profile implements DTO {
 	
 	private Long id;
 	
-	private String name;
+	private String profile;
 
 	public Profile(String profile) {
-		this.name = profile;
+		this.profile = profile;
 	}
 	
 	public Profile() {
@@ -22,12 +22,12 @@ public class Profile implements DTO {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getProfile() {
+		return profile;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setProfile(String profile) {
+		this.profile = profile;
 	}
 
 }

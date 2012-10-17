@@ -35,7 +35,7 @@ public class AuthBean {
 			UserBean result = new UserBean();
 			result.setEmail(email);
 			result.setUsername(check.getName());
-			String profile = check.getProfile().getName();
+			String profile = check.getProfile().getProfile();
 			
 			if(profile.equals("admin"))			result.setLogType(LoginSuccessAdmin);
 			

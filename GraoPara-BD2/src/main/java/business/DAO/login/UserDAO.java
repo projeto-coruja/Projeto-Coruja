@@ -81,8 +81,8 @@ public class UserDAO {
 		try {
 			check = findUserByEmail(email);
 			if(check == null) throw new UserNotFoundException("Usuário não existe!");
-			String old_profile = check.getProfile().getName();
-			if(old_profile != new_profile.getName()) check.setProfile(new_profile);
+			String old_profile = check.getProfile().getProfile();
+			if(old_profile != new_profile.getProfile()) check.setProfile(new_profile);
 			else throw new IncorrectProfileInformationException("Perfil já definido para esse usuário, escolha outro.");
 			manager.updateEntity(check);
 		} catch (DataAccessLayerException e) {
