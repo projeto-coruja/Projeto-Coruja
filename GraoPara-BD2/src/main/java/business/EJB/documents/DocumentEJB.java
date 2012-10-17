@@ -57,15 +57,14 @@ public class DocumentEJB {
 		
 		boolean continue_query = false;
 		String query = new String(default_query);
-
 		
 		if(codCodiceCaixaDe != null && !codCodiceCaixaDe.isEmpty()){
-			codCodiceCaixaDe = tipoCodiceCaixa+"-"+codCodiceCaixaDe;
+			String codCdCxDe = tipoCodiceCaixa+"-"+codCodiceCaixaDe;
 			if(codCodiceCaixaAte != null && !codCodiceCaixaAte.isEmpty()) {
-				codCodiceCaixaAte = tipoCodiceCaixa+"-"+codCodiceCaixaAte;
-				query += " codiceCaixa.cod BETWEEN '" + codCodiceCaixaDe + "' AND '" + codCodiceCaixaAte + "'";
+				String codCdCxAte = tipoCodiceCaixa+"-"+codCodiceCaixaAte;
+				query += " codiceCaixa.cod BETWEEN '" + codCdCxDe.trim() + "' AND '" + codCdCxAte.trim() + "'";
 			}
-			else query += " codiceCaixa.cod = '" + codCodiceCaixaDe.trim() + "'";
+			else query += " codiceCaixa.cod = '" + codCdCxDe.trim() + "'";
 			continue_query = true;
 		}
 		

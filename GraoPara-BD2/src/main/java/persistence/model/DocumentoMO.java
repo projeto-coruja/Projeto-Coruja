@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
@@ -41,7 +42,7 @@ public class DocumentoMO implements EntityModel  {
 	@Column(length = 8192)
 	private String resumo;
 
-	@Column(name="codiceCaixa")
+	@JoinColumn(name="codiceCaixa")
 	@ManyToOne
 	private CodiceCaixaMO codiceCaixa;
 	
