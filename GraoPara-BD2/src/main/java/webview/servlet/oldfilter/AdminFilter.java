@@ -1,4 +1,4 @@
-package webview.servlet.filter;
+package webview.servlet.oldfilter;
 
 import java.io.IOException;
 
@@ -19,17 +19,17 @@ import business.EJB.user.AuthBean;
 import business.EJB.user.UserBean;
 
 /**
- * Servlet Filter implementation class LoginFilter
+ * Servlet Filter implementation class AdminFilter
  */
-//@WebFilter("/protected/user/*")
-public class UserFilter implements Filter {
+//@WebFilter("/protected/admin/*")
+public class AdminFilter implements Filter {
 
-    /**
-     * Default constructor. 
-     */
-    public UserFilter() {
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 * Default constructor. 
+	 */
+	public AdminFilter() {
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see Filter#destroy()
@@ -46,33 +46,37 @@ public class UserFilter implements Filter {
 		HttpServletResponse res = (HttpServletResponse) response;
 		Cookie[] c_list = req.getCookies();
 		Cookie c_status = WebUtility.selectCookie(c_list, WebUtility.cookie_status);
-		if(c_status != null && c_status.getValue().equals(AuthBean.LoginSuccessUserLevel2)) {
+
+		if(c_status != null && (c_status.getValue().equals(AuthBean.LoginSuccessAdmin))) {
 			chain.doFilter(request, response);
 		}
-		else if(c_status != null && c_status.getValue().equals(AuthBean.LoginSuccessAdmin)) {
-			res.sendRedirect(req.getContextPath() + "/protected/admin/index.jsp");
+		
+		else if(c_status != null && ((c_status.getValue().equals(AuthBean.LoginSuccessUserLevel1)) || (c_status.getValue().equals(AuthBean.LoginSuccessUserLevel2)))) {
+			JavascriptAlerts.alertAndRedirectPage(res, "Você não possuí permissão para acessar esta área!", "/GraoPara/protected/user/index.jsp");
 		}
-		else if(c_status != null && c_status.getValue().equals(AuthBean.LoginFailOrDefault)) {
-		    
-		    JavascriptAlerts.alertAndRedirectPage(res, "Você não possuí permissão para acessar esta área!", "/GraoPara/public/index.jsp");
-		    
-			chain.doFilter(request, response);
+		
+		else if(c_status != null && (c_status.getValue().equals(AuthBean.LoginFailOrDefault))) {
+			
+			JavascriptAlerts.alertAndRedirectPage(res, "Você não possuí permissão para acessar esta área!", "/GraoPara/public/index.jsp");
 		}
+		
 		else {
 			UserBean user = WebUtility.cookieLogin(c_list);			
-			if(user != null && user.getLogType() == AuthBean.LoginSuccessUserLevel2) {
+			
+			if(user != null && user.getLogType().equals(AuthBean.LoginSuccessAdmin)) {
 				c_status = new Cookie(WebUtility.cookie_status, user.getLogType().toString());
 				c_status.setMaxAge(-1);
 				res.addCookie(c_status);
 				chain.doFilter(request, response);
 			}
-			else if(user != null && user.getLogType() == AuthBean.LoginSuccessAdmin) {
+			else if(user != null && (user.getLogType().equals(AuthBean.LoginSuccessUserLevel1) || user.getLogType().equals(AuthBean.LoginSuccessUserLevel2))) {
 				c_status = new Cookie(WebUtility.cookie_status, user.getLogType().toString());
 				c_status.setMaxAge(-1);
-				res.sendRedirect(req.getContextPath() + "/protected/admin/index.jsp");
+				res.addCookie(c_status);
+				
+				JavascriptAlerts.alertAndRedirectPage(res, "Você não possuí permissão para acessar esta área!", "/GraoPara/protected/user/index.jsp");
 			}
 			else {
-				
 				JavascriptAlerts.alertAndRedirectPage(res, "Você não possuí permissão para acessar esta área!", "/GraoPara/public/index.jsp");
 			}
 		}
@@ -82,7 +86,6 @@ public class UserFilter implements Filter {
 	 * @see Filter#init(FilterConfig)
 	 */
 	public void init(FilterConfig fConfig) throws ServletException {
-		// TODO Auto-generated method stub
 	}
 
 }

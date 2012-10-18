@@ -52,7 +52,7 @@ public class ProfileDAO {
 	public Profile findProfileByName(String profile) throws UnreachableDataBaseException, ProfileNotFoundException {
 		List<DTO> resultSet = null;
 		try {
-			resultSet = manager.findEntity("from ProfileMO where name = '" + profile + "'");
+			resultSet = manager.findEntity("from ProfileMO where profile = '" + profile + "'");
 			if(resultSet == null) {
 				throw new ProfileNotFoundException();
 			}
