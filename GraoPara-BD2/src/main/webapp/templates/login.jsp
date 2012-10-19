@@ -20,7 +20,7 @@
 				</fieldset>
 
 				<fieldset>
-					<a href="/GraoPara/public/CadUsuario.jsp">
+					<a href="/GraoPara/public/userCadastre.jsp">
 						<input type="button" class="buttonRegistrar" name="Registrar" value="Registrar">
 					</a>
 				</fieldset>
