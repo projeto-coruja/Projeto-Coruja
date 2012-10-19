@@ -28,6 +28,7 @@ public class SearchWorker {
 		String tituloCodiceCaixa = null;
 		String anoInicioCodiceCaixa = null;
 		String anoFimCodiceCaixa = null;
+		String tipoCodDocumento = null;
 		String codDocumento = null;
 		String autor = null;
 		String ocupacaoAutor = null;
@@ -51,7 +52,7 @@ public class SearchWorker {
 		List<DTO> docs = null;    
 
 		try {
-			docs = search.findDocuments(tipoCodiceCaixaDe, codCodiceCaixaDe, codCodiceCaixaAte, tituloCodiceCaixa, anoInicioCodiceCaixa, anoFimCodiceCaixa, codDocumento, autor, ocupacaoAutor, destinatario, ocupacaoDestinatario, tipoDocumento, local, resumo, palavraChave1, palavraChave2, palavraChave3);
+			docs = search.findDocuments(tipoCodiceCaixaDe, codCodiceCaixaDe, codCodiceCaixaAte, tituloCodiceCaixa, anoInicioCodiceCaixa, anoFimCodiceCaixa, tipoCodDocumento, codDocumento, autor, ocupacaoAutor, destinatario, ocupacaoDestinatario, tipoDocumento, local, resumo, palavraChave1, palavraChave2, palavraChave3);
 
 			for(DTO d : docs){
 				

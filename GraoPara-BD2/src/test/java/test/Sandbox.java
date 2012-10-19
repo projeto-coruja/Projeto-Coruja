@@ -38,6 +38,7 @@ public class Sandbox {
 		d.addUser("a@b.c.d", "nome", "12345", pd.findProfileByName("teste"));
 		UserAccount a = d.findUserByEmail("a@b.c.d");
 		e.registerNewDocument("título legal", 
+				"APEP",
 				"1234", 
 				"unifesp", 
 				"www.com.br",
@@ -59,7 +60,7 @@ public class Sandbox {
 				"temaPalavraChave2", 
 				"palavraChave3", 
 				"temaPalavraChave3");
-		Documento doc = (Documento) e.findDocuments(null, null, null, null, null, null, null, "autor", null, null, null, null, null, null, null, null, null).get(0);
+		Documento doc = (Documento) e.findDocuments(null, null, null, null, null, null, null, null, "autor", null, null, null, null, null, null, null, null, null).get(0);
 		System.out.println(doc.getCod());
 		
 	}

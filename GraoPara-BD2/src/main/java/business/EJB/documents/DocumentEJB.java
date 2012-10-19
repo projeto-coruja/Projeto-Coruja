@@ -42,6 +42,7 @@ public class DocumentEJB {
 			String anoInicioCodiceCaixa,
 			String anoFimCodiceCaixa,
 			
+			String tipoCodDocumento,
 			String codDocumento,
 			
 			String autor,
@@ -132,7 +133,7 @@ public class DocumentEJB {
 			if(continue_query == true){
 				query += " AND ";
 			}
-			query += " cod LIKE '%" + codDocumento + "%'";
+			query += " cod LIKE '%" + (tipoCodDocumento != null && !tipoCodDocumento.isEmpty() ? tipoCodDocumento + "-" : "") + codDocumento + "%'";
 			continue_query = true;
 		}
 		
@@ -193,6 +194,7 @@ public class DocumentEJB {
 	public synchronized void registerNewDocument (
 			// Documento
 			String tituloDocumento,
+			String tipoCodDocumento, // APEP/SEQ
 			String codDocumento,
 			String local,
 			String url,
@@ -339,6 +341,8 @@ public class DocumentEJB {
 			}
 		}
 		else addressee = null;
+		
+		codDocumento = tipoCodDocumento + "-" + codDocumento;
 		
 		newDoc = new Documento(codDocumento, tituloDocumento, local, url, resumo, 
 				codCaixa, tipoDoc, author, addressee, 

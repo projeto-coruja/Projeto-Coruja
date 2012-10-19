@@ -15,8 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import persistence.dto.UserAccount;
-
 import webview.util.WebUtility;
+
 import business.EJB.documents.DocumentEJB;
 import business.EJB.user.SearchUserBean;
 import business.exceptions.login.UnreachableDataBaseException;
@@ -84,6 +84,7 @@ public class DocServlet extends HttpServlet {
 			try {
 				
 				CB.registerNewDocument(tituloDocumento, 
+						tipoCodDocumento,
 						codDocumento, 
 						local, 
 						url,
