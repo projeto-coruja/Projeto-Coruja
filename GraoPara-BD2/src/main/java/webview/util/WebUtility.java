@@ -195,7 +195,7 @@ public final class WebUtility {
 	 * @return
 	 * @throws UnreachableDataBaseException
 	 */
-	public static String printTituloCodiceCaixa() throws UnreachableDataBaseException {
+	public static String printTituloCodiceCaixa(boolean withContent) throws UnreachableDataBaseException {
 		String output = null;
 
 		CodiceCaixaDAO codiceCaixa = null;
@@ -205,10 +205,12 @@ public final class WebUtility {
 			codiceCaixa = new CodiceCaixaDAO();
 			documento = new DocumentoDAO();
 			List<DTO> list = codiceCaixa.findAllCodiceCaixa();
-			for(DTO d : list) {
-				CodiceCaixa c = (CodiceCaixa) d;
-				Long count = documento.countDocumentsByCriteria("codiceCaixa.cod = '" + c.getCod() + "'");
-				if(count == 0) list.remove(d);
+			if(withContent) {
+				for(DTO d : list) {
+					CodiceCaixa c = (CodiceCaixa) d;
+					Long count = documento.countDocumentsByCriteria("codiceCaixa.cod = '" + c.getCod() + "'");
+					if(count == 0) list.remove(d);
+				}
 			}
 			
 			output = "\n	<option selected value=\"\">Selecione...</option> ";
