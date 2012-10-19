@@ -1,6 +1,7 @@
 package webview.worker;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +19,8 @@ import business.exceptions.documents.DocumentTypeNotFoundException;
 import business.exceptions.login.UnreachableDataBaseException;
 
 public class SearchWorker {
+	
+	private static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 	
 	public static void listAllDocuments(HttpServletRequest request, JspWriter out) throws IOException{
 		
@@ -59,13 +62,16 @@ public class SearchWorker {
 				Documento doc = (Documento) d;
 				
 				String codiceCaixa[] = doc.getCodiceCaixa().getCod().split("-");
-				String data[] = doc.getData().toString().split("-");
-
+				String codDoc[] = doc.getCod().split("-");
+				String dataFormatted = sdf.format(doc.getData());
+				String dataSplit[] = dataFormatted.split("/");
+				
 				out.println("<tr  class=\"trList\">");
 				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ codiceCaixa[0]							+"</label></td>");
 				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ codiceCaixa[1]							+"</label></td>");
 				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getCodiceCaixa().getTitulo()		+"</label></td>");
-				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getCod()							+"</label></td>");
+				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ codDoc[0]								+"</label></td>");
+				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ codDoc[1]								+"</label></td>");
 				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getTitulo()						+"</label></td>");
 				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getTipoDocumento().getNome()		+"</label></td>");
 				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getAutor().getNome() 				+"</label></td>");
@@ -73,7 +79,7 @@ public class SearchWorker {
 				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getDestinatario().getNome()		+"</label></td>");
 				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getDestinatario().getOcupacao()	+"</label></td>");
 				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getLocal()							+"</label></td>");
-				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ data[2]+"/"+data[1]+"/"+data[0]		+"</label></td>");
+				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ dataFormatted							+"</label></td>");
 				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"
 						+ (doc.getPalavraChave1() != null ? doc.getPalavraChave1().getPalavra() + " - " : "" )
 						+ (doc.getPalavraChave2() != null ? doc.getPalavraChave2().getPalavra() + " - " : "" )
@@ -86,9 +92,9 @@ public class SearchWorker {
 								+"codigo=" + doc.getCodiceCaixa().getCod()
 								+"&codigoDoDocumento=" + doc.getCod()
 								+"&titulo=" + doc.getTitulo()
-								+"&dia=" + data[2]
-								+"&mes=" + data[1]
-								+"&ano=" + data[0]
+								+"&dia=" + dataSplit[0]
+								+"&mes=" + dataSplit[1]
+								+"&ano=" + dataSplit[2]
 								+"&autor=" + doc.getAutor()
 								+"&destinatario=" + doc.getDestinatario()
 								+"&local=" + doc.getLocal()

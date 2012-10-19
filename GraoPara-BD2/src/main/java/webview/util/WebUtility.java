@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.JspWriter;
 
 import business.DAO.document.CodiceCaixaDAO;
+import business.DAO.document.DocumentoDAO;
 import business.DAO.document.TipoDocumentoDAO;
 import business.EJB.documents.CodiceCaixaEJB;
 import business.EJB.documents.KeyWordEJB;
@@ -191,30 +192,30 @@ public final class WebUtility {
 
 	/**
 	 * 
-	 * @param request
 	 * @return
-	 * @throws IOException
 	 * @throws UnreachableDataBaseException
 	 */
-	public static String printTituloCodiceCaixa(HttpServletRequest request) throws IOException, UnreachableDataBaseException {
+	public static String printTituloCodiceCaixa() throws UnreachableDataBaseException {
 		String output = null;
 
 		CodiceCaixaDAO codiceCaixa = null;
+		DocumentoDAO documento = null;
 
 		try {
 			codiceCaixa = new CodiceCaixaDAO();
+			documento = new DocumentoDAO();
 			List<DTO> list = codiceCaixa.findAllCodiceCaixa();
-			List<String> aux = new ArrayList<String>();
-			output = "\n	<option selected value=\"\">Selecione...</option> ";
+			for(DTO d : list) {
+				CodiceCaixa c = (CodiceCaixa) d;
+				Long count = documento.countDocumentsByCriteria("codiceCaixa.cod = '" + c.getCod() + "'");
+				if(count == 0) list.remove(d);
+			}
 			
-			aux.add(output);
+			output = "\n	<option selected value=\"\">Selecione...</option> ";
 
 			for(DTO d : list){
-				String titulo = ((CodiceCaixa) d).getTitulo();
-				if(!aux.contains(titulo)){
-					output += "\n	<option value=\""+ titulo + " \">"+ titulo + "</option> ";
-					aux.add(titulo);
-				}
+				CodiceCaixa c = (CodiceCaixa) d;
+				output += "\n	<option value=\""+ c.getCod() + " \">"+ c.getCod().replace("-", " ") + " " + c.getTitulo() + "</option> ";
 			}
 		} catch (CodiceCaixaNotFoundException e) {
 			//e.printStackTrace();
