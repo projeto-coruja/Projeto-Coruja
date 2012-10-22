@@ -68,8 +68,10 @@ public class DocumentEJB {
 			else query += " codiceCaixa.cod = '" + codCdCxDe.trim() + "'";
 			continue_query = true;
 		}*/
-		
-		if(codCodiceCaixaDe != null && !codCodiceCaixaDe.isEmpty()){
+
+		// Eu não faço a mínima idéia do que eu escrevi nas próximas 40 linha... Então se alguem quiser revisar aí, a vontade...
+		// TODO: Verificar(?) se faz algum sentido!
+		if(codCodiceCaixaDe != null && !codCodiceCaixaDe.isEmpty()){ 
 			if(codCodiceCaixaAte != null && !codCodiceCaixaAte.isEmpty()) {
 				if(tipoCodiceCaixa != null && !tipoCodiceCaixa.isEmpty()){
 					query += " codiceCaixa.cod BETWEEN '" + (tipoCodiceCaixa+"-"+codCodiceCaixaDe).trim()  + "'"  + 
@@ -83,7 +85,7 @@ public class DocumentEJB {
 				}
 				continue_query = true;
 			}
-			else{ // TODO: arrumar para não extrapolar na busca
+			else{
 				if(tipoCodiceCaixa != null && !tipoCodiceCaixa.isEmpty()){
 					query += " codiceCaixa.cod >= '" + (tipoCodiceCaixa+"-"+codCodiceCaixaDe).trim() + "'" +
 							(tipoCodiceCaixa.equals("CAIXA") ? " AND codiceCaixa.cod < 'CODICE-%'" : "");
@@ -107,8 +109,10 @@ public class DocumentEJB {
 			continue_query = true;
 		}
 		else if(tipoCodiceCaixa != null && !tipoCodiceCaixa.isEmpty()){
-			
+			query += " codiceCaixa.cod LIKE '" + tipoCodiceCaixa + "%'";
+			continue_query = true;
 		}
+		// Fim do código que eu escrevi sem ter a mínima idéia do que eu fiz...
 		
 		if(tituloCodiceCaixa != null && !tituloCodiceCaixa.isEmpty()){
 			if(continue_query == true){
