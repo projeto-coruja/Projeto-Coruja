@@ -1,6 +1,6 @@
 <td class="field">
 	<select name="dia" id="dia" class="inputShort">
-		<option value="" selected="selected">Dia:</option>
+		<option value="" selected="selected">Dia</option>
 		<option value="01">1</option>
 		<option value="02">2</option>
 		<option value="03">3</option>
@@ -35,7 +35,7 @@
 	</select>
 
 	<select name="mes" id="mes" class="inputShort">
-		<option value="" selected="selected">Mês:</option>
+		<option value="" selected="selected">Mês</option>
 		<option value="01">Jan</option>
 		<option value="02">Fev</option>
 		<option value="03">Mar</option>
@@ -50,6 +50,6 @@
 		<option value="12">Dez</option>
 	</select>
 
-	<label class="labelForms" id="ldata" for="data">Ano:</label>
+	<label class="labelForms" id="ldata" for="data">Ano</label>
 	<input class="inputShort" type="text" name="ano" id="ano" maxlength="4"/>
 </td>
