@@ -28,7 +28,7 @@ public class DocumentEJB {
 	
 	private final DocumentoDAO docDao;
 	
-	private static String default_query = "from DocumentoMO WHERE ";
+	private static String default_query = "FROM DocumentoMO WHERE ";
 
 	public DocumentEJB() {
 		docDao = new DocumentoDAO();
@@ -59,7 +59,7 @@ public class DocumentEJB {
 		boolean continue_query = false;
 		String query = new String(default_query);
 		
-		if(codCodiceCaixaDe != null && !codCodiceCaixaDe.isEmpty()){
+		/*if(codCodiceCaixaDe != null && !codCodiceCaixaDe.isEmpty()){
 			String codCdCxDe = tipoCodiceCaixa+"-"+codCodiceCaixaDe;
 			if(codCodiceCaixaAte != null && !codCodiceCaixaAte.isEmpty()) {
 				String codCdCxAte = tipoCodiceCaixa+"-"+codCodiceCaixaAte;
@@ -67,6 +67,47 @@ public class DocumentEJB {
 			}
 			else query += " codiceCaixa.cod = '" + codCdCxDe.trim() + "'";
 			continue_query = true;
+		}*/
+		
+		if(codCodiceCaixaDe != null && !codCodiceCaixaDe.isEmpty()){
+			if(codCodiceCaixaAte != null && !codCodiceCaixaAte.isEmpty()) {
+				if(tipoCodiceCaixa != null && !tipoCodiceCaixa.isEmpty()){
+					query += " codiceCaixa.cod BETWEEN '" + (tipoCodiceCaixa+"-"+codCodiceCaixaDe).trim()  + "'"  + 
+							" AND '" + (tipoCodiceCaixa+"-"+codCodiceCaixaAte).trim() + "'";
+				}
+				else{
+					query += " codiceCaixa.cod BETWEEN '" + ("CODICE-"+codCodiceCaixaDe).trim() + "'" + 
+							" AND '" + ("CODICE-"+codCodiceCaixaAte).trim() + "'" + 
+							" AND codiceCaixa.cod BETWEEN '" + ("CAIXA-"+codCodiceCaixaDe).trim() + "'"  + 
+							" AND '" + ("CAIXA-"+codCodiceCaixaAte).trim() + "'";
+				}
+				continue_query = true;
+			}
+			else{ // TODO: arrumar para não extrapolar na busca
+				if(tipoCodiceCaixa != null && !tipoCodiceCaixa.isEmpty()){
+					query += " codiceCaixa.cod >= '" + (tipoCodiceCaixa+"-"+codCodiceCaixaDe).trim() + "'" +
+							(tipoCodiceCaixa.equals("CAIXA") ? " AND codiceCaixa.cod < 'CODICE-%'" : "");
+				}
+				else{
+					query += " (codiceCaixa.cod >= '" + ("CAIXA-"+codCodiceCaixaDe).trim() + "' AND codiceCaixa.cod < 'CODICE-%')" +
+							" OR codiceCaixa.cod >= '" + ("CODICE-"+codCodiceCaixaDe).trim() + "'";
+				}
+				continue_query = true;
+			}
+		}
+		else if(codCodiceCaixaAte != null && !codCodiceCaixaAte.isEmpty()) {
+			if(tipoCodiceCaixa != null && !tipoCodiceCaixa.isEmpty()){
+				query += " codiceCaixa.cod <= '" + (tipoCodiceCaixa+"-"+codCodiceCaixaAte).trim() + "'" +
+						(tipoCodiceCaixa.equals("CODICE") ? " AND codiceCaixa.cod > 'CAIXA-%'" : "");
+			}
+			else{
+				query += " codiceCaixa.cod <= '" + ("CAIXA-"+codCodiceCaixaAte).trim() + "'" +
+						" OR (codiceCaixa.cod <= '" + ("CODICE-"+codCodiceCaixaAte).trim() + "' AND codiceCaixa.cod > 'CAIXA-%'";
+			}
+			continue_query = true;
+		}
+		else if(tipoCodiceCaixa != null && !tipoCodiceCaixa.isEmpty()){
+			
 		}
 		
 		if(tituloCodiceCaixa != null && !tituloCodiceCaixa.isEmpty()){
@@ -275,10 +316,11 @@ public class DocumentEJB {
 						palavraChave[0] = (PalavraChave) dto;
 				}
 			} catch (KeywordNotFoundException e1) {
-				palavraChave[0] = palavraChaveDAO.addKeyWord(
+				throw new IllegalArgumentException("Palavra-chave inexistente");
+				/*palavraChave[0] = palavraChaveDAO.addKeyWord(
 								palavraChave1,
 								temaPalavraChave1
-								);
+								);*/
 			}
 		}
 
@@ -291,10 +333,10 @@ public class DocumentEJB {
 						palavraChave[1] = (PalavraChave) dto;
 				}
 			} catch (KeywordNotFoundException e1) {
-				palavraChave[1] = palavraChaveDAO.addKeyWord(
+				/*palavraChave[1] = palavraChaveDAO.addKeyWord(
 								palavraChave2,
 								temaPalavraChave2
-								);
+								);*/
 			}
 		}
 
@@ -307,10 +349,10 @@ public class DocumentEJB {
 						palavraChave[2] = (PalavraChave) dto;
 				}
 			} catch (KeywordNotFoundException e1) {
-				palavraChave[2] = palavraChaveDAO.addKeyWord(
+				/*palavraChave[2] = palavraChaveDAO.addKeyWord(
 								palavraChave3,
 								temaPalavraChave3
-								);
+								);*/
 			}
 		}
 		
@@ -405,7 +447,7 @@ public class DocumentEJB {
 		doc = findSingleDocument(tipoCodDocumentoAntigo, codDocumentoAntigo);
 		
 		
-		doc.setCod(tipoCodDocumento+"-"+codDocumento); // TODO: verificação de unicidade.
+		doc.setCod(tipoCodDocumento+"-"+codDocumento); 
 		
 		
 		doc.setTitulo(tituloDocumento);
@@ -452,10 +494,11 @@ public class DocumentEJB {
 						palavraChave[0] = (PalavraChave) dto;
 				}
 			} catch (KeywordNotFoundException e1) {
-				palavraChave[0] = palavraChaveDAO.addKeyWord(
+				throw new IllegalArgumentException("Palavra chave inexistente");
+				/*palavraChave[0] = palavraChaveDAO.addKeyWord(
 								palavraChave1,
 								temaPalavraChave1
-								);
+								);*/
 			}
 		}
 		doc.setPalavraChave1(palavraChave[0]);
@@ -469,10 +512,11 @@ public class DocumentEJB {
 						palavraChave[1] = (PalavraChave) dto;
 				}
 			} catch (KeywordNotFoundException e1) {
-				palavraChave[1] = palavraChaveDAO.addKeyWord(
+				throw new IllegalArgumentException("Palavra chave inexistente");
+				/*palavraChave[1] = palavraChaveDAO.addKeyWord(
 								palavraChave2,
 								temaPalavraChave2
-								);
+								);*/
 			}
 		}
 		doc.setPalavraChave2(palavraChave[1]);
@@ -486,10 +530,11 @@ public class DocumentEJB {
 						palavraChave[2] = (PalavraChave) dto;
 				}
 			} catch (KeywordNotFoundException e1) {
-				palavraChave[2] = palavraChaveDAO.addKeyWord(
+				throw new IllegalArgumentException("Palavra chave inexistente");
+				/*palavraChave[2] = palavraChaveDAO.addKeyWord(
 								palavraChave3,
 								temaPalavraChave3
-								);
+								);*/
 			}
 		}
 		doc.setPalavraChave3(palavraChave[2]);

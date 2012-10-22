@@ -25,24 +25,29 @@ public class SearchWorker {
 	public static void listAllDocuments(HttpServletRequest request, JspWriter out) throws IOException{
 		
 		//TODO: Pegar os valores via parâmetros.
-		String tipoCodiceCaixaDe = null;
-		String codCodiceCaixaDe = null;
-		String codCodiceCaixaAte = null;
-		String tituloCodiceCaixa = null;
-		String anoInicioCodiceCaixa = null;
-		String anoFimCodiceCaixa = null;
-		String tipoCodDocumento = null;
-		String codDocumento = null;
-		String autor = null;
-		String ocupacaoAutor = null;
-		String destinatario = null;
-		String ocupacaoDestinatario = null;
-		String tipoDocumento = null;
-		String local = null;
-		String resumo = null;
-		String palavraChave1 = null;
-		String palavraChave2 = null;
-		String palavraChave3 = null;
+		String tipoCodiceCaixa = request.getParameter("tipoCodCodiceCaixa");
+		String tituloCodiceCaixa = request.getParameter("tituloCodiceCaixa");
+		String codCodiceCaixaDe = request.getParameter("codDe");
+		String codCodiceCaixaAte = request.getParameter("codAte");
+		String anoInicioCodiceCaixa = request.getParameter("epocaDe");
+		String anoFimCodiceCaixa = request.getParameter("epocaAte");
+		
+		String tipoCodDocumento = request.getParameter("tipoDaIdentificacao");
+		String codDocumento = request.getParameter("numDaIdentificacao");
+		
+		String autor = request.getParameter("autor");
+		String ocupacaoAutor = request.getParameter("autorOcupacao");
+		
+		String destinatario = request.getParameter("destinatario");
+		String ocupacaoDestinatario = request.getParameter("destinatarioOcupacao");
+		
+		String tipoDocumento = request.getParameter("tipoDoc");
+		String local = request.getParameter("local");
+		String resumo = request.getParameter("resumo");
+		
+		String palavraChave1 = request.getParameter("chave1");
+		String palavraChave2 = request.getParameter("chave2");
+		String palavraChave3 = request.getParameter("chave3");
 		
 		String c_status = null;
 		
@@ -55,7 +60,23 @@ public class SearchWorker {
 		List<DTO> docs = null;    
 
 		try {
-			docs = search.findDocuments(tipoCodiceCaixaDe, codCodiceCaixaDe, codCodiceCaixaAte, tituloCodiceCaixa, anoInicioCodiceCaixa, anoFimCodiceCaixa, tipoCodDocumento, codDocumento, autor, ocupacaoAutor, destinatario, ocupacaoDestinatario, tipoDocumento, local, resumo, palavraChave1, palavraChave2, palavraChave3);
+			docs = search.findDocuments(tipoCodiceCaixa, 
+					codCodiceCaixaDe, 
+					codCodiceCaixaAte, 
+					tituloCodiceCaixa, 
+					anoInicioCodiceCaixa, 
+					anoFimCodiceCaixa, 
+					tipoCodDocumento, 
+					codDocumento, 
+					autor, ocupacaoAutor, 
+					destinatario, 
+					ocupacaoDestinatario, 
+					tipoDocumento, 
+					local, 
+					resumo, 
+					palavraChave1, 
+					palavraChave2, 
+					palavraChave3);
 
 			for(DTO d : docs){
 				
