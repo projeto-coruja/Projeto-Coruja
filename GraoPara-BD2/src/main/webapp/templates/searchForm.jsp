@@ -24,7 +24,7 @@
 			<tr>
 				<td class="tdPesquisa">
 					<label class="labelForms" id="lidentificacao" for="identificacao">
-						Códice ou Caixa:
+						Códice/Caixa
 					</label>
 				</td>
 
@@ -45,7 +45,7 @@
 			<tr>
 				<td class="tdPesquisa">
 					<label class="labelForms" id="lcodigo" for="codigo">
-						Intervalo do código do códice/caixa:
+						Intervalo do Código do Códice/Caixa
 					</label>
 				</td>
 
@@ -66,7 +66,7 @@
 			<tr>
 				<td class="tdPesquisa">
 					<label class="labelForms" id="lidentificacao" for="identificacao">
-						Titulo do Códice/Caixa:
+						Titulo do Códice/Caixa
 					</label>
 				</td>
 
@@ -86,7 +86,7 @@
 			<tr>
 				<td class="tdPesquisa">
 					<label class="labelForms" id="lcodigo" for="codigo">
-						Época (Caixa ou Códice):
+						Época (Caixa ou Códice)
 					</label>
 				</td>
 
@@ -107,7 +107,7 @@
 			<tr>
 				<td class="tdPesquisa">
 					<label class="labelForms" id="ltitulo" for="titulo">
-						Título:
+						Título
 					</label>
 				</td>
 
@@ -125,7 +125,7 @@
 			<tr>
 				<td class="tdPesquisa">
 					<label class="labelForms" id="lnumero" for="numero">
-						Tipo APEP ou Sequencial:
+						Tipo APEP ou Sequencial
 					</label>
 				</td>
 
@@ -147,7 +147,7 @@
 			<tr>
 				<td class="tdPesquisa">
 					<label class="labelForms" id="lnumero" for="numero">
-						Número da identificação:
+						Número da Identificação
 					</label>
 				</td>
 
@@ -165,7 +165,7 @@
 			<tr>
 				<td class="tdPesquisa">
 					<label class="labelForms" id="lautor" for="autor">
-						Autor do Documento:
+						Autor do Documento
 					</label>
 				</td>
 
@@ -181,7 +181,7 @@
 			</tr>
 
 			<tr>
-				<td class="tdPesquisa"><label class="labelForms" id="lautorOcupacao" for="autorOcupacao">Ocupação do Autor do Documento:</label></td>
+				<td class="tdPesquisa"><label class="labelForms" id="lautorOcupacao" for="autorOcupacao">Ocupação do Autor do Documento</label></td>
 				<td class="field"><input class="input" name="autorOcupacao" id="autorOcupacao" type="text" size="20" maxlength="48"></td>
 				<td class="status"><a href="#"><img
 					src="/GraoPara/images/icone_ajuda.png"
@@ -190,7 +190,7 @@
 				</td>
 			</tr>					
 			<tr>
-				<td class="tdPesquisa"><label class="labelForms" id="ldestinatario" for="destinatario">Destinatário do Documento:</label></td>
+				<td class="tdPesquisa"><label class="labelForms" id="ldestinatario" for="destinatario">Destinatário do Documento</label></td>
 				<td class="field"><input class="input" name="destinatario" id="destinatario" type="text" size="20" maxlength="48"></td>
 				<td class="status"><a href="#"><img
 					src="/GraoPara/images/icone_ajuda.png"
@@ -199,7 +199,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="tdPesquisa"><label class="labelForms" id="lautorOcupacao" for="autorOcupacao">Ocupação do destinatário do documento:</label></td>
+				<td class="tdPesquisa"><label class="labelForms" id="lautorOcupacao" for="autorOcupacao">Ocupação do Destinatário do Documento</label></td>
 				<td class="field"><input class="input" name="destinatarioOcupacao" id="autorOcupacao" type="text" size="20" maxlength="48"></td>
 				<td class="status"><a href="#"><img
 					src="/GraoPara/images/icone_ajuda.png"
@@ -208,7 +208,7 @@
 				</td>
 			</tr>	
 			<tr>
-				<td class="tdPesquisa"><label class="labelForms" id="llocal" for="local">Local:</label></td>
+				<td class="tdPesquisa"><label class="labelForms" id="llocal" for="local">Local</label></td>
 				<td class="field"><input class="input" name="local" id="local" type="text" maxlength="48"></td>
 				<td class="status"><a href="#"><img
 					src="/GraoPara/images/icone_ajuda.png"
@@ -217,11 +217,11 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="tdPesquisa"><label class="labelForms" id="ldata" for="data">Ano:</label></td>
+				<td class="tdPesquisa"><label class="labelForms" id="ldata" for="data">Ano</label></td>
 				<td class="field">
-					<label class="labelForms" id="ldata" for="data">de: </label>
+					<label class="labelForms" id="ldata" for="data">de </label>
 					<input class="inputShort" type="text" name="anoIni" id="ano" maxlength="4" />
-					<label class="labelForms" id="ldata" for="data"> até: </label>
+					<label class="labelForms" id="ldata" for="data"> até </label>
 					<input class="inputShort" type="text" name="anoFim" id="ano" maxlength="4" />
 				</td> 
 				<td class="status"><a href="#"><img
@@ -231,7 +231,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="tdPesquisa"><label class="labelForms" id="ltipoDoc" for="tipoDoc">Tipo do Documento:</label></td>
+				<td class="tdPesquisa"><label class="labelForms" id="ltipoDoc" for="tipoDoc">Tipo do Documento</label></td>
 				<td class="field">
 					<select class="input" name="tipoDoc" id="tipoDoc">
 						<!-- Pegar do Banco de dados os tipos e, caso o usuÃ¡rio selecione outro, exibir campo para cadastrar outro tipo -->
@@ -245,14 +245,14 @@
 				</td>
 			</tr>
 			<tr>
-				<td colspan="3"><label class="labelForms">RESUMO OU VERBETE DO DOCUMENTO:</label></td>
+				<td colspan="3"><label class="labelForms">Resumo ou Veberbete do Documento</label></td>
 			</tr>
 			<tr>						
 				<td class="field" colspan="2"><textarea class="inputResumo" id="resumo" name="resumo" rows="7" cols="40" maxlength="2048"></textarea></td>
 				<td class="status"></td>
 			</tr>
 			<tr>
-				<td colspan="3"><label for="palavrasChaves" class="labelForms">Palavra Chaves:</label></td>
+				<td colspan="3"><label for="palavrasChaves" class="labelForms">Palavra Chaves</label></td>
 			</tr>
 			<tr>
 				<td class="field" colspan="2">
