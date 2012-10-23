@@ -406,6 +406,7 @@ public class DocumentEJB {
 			String tipoCodDocumento,
 			String codDocumento,
 			String local,
+			String url,
 			String resumo,
 			Date data,
 			// Códice e caixa
@@ -424,13 +425,10 @@ public class DocumentEJB {
 			String descricaoDoTipoDocumento,
 			// Palavra chave 1
 			String palavraChave1,
-			String temaPalavraChave1,
 			// Palavra chave 2
 			String palavraChave2,
-			String temaPalavraChave2,
 			// Palavra chave 3
-			String palavraChave3,
-			String temaPalavraChave3) throws UnreachableDataBaseException, DocumentNotFoundException, IllegalArgumentException, UpdateEntityException{
+			String palavraChave3) throws UnreachableDataBaseException, DocumentNotFoundException, IllegalArgumentException, UpdateEntityException{
 
 		List<DTO> check;
 		CodiceCaixaDAO codiceCaixaDAO = new CodiceCaixaDAO();

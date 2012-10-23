@@ -40,8 +40,7 @@ public class DocServlet extends HttpServlet {
 		
 		String tituloDocumento = request.getParameter("tituloDocumento");
 		String tipoCodDocumento = request.getParameter("tipoDoc");
-		String codDocumento = request.getParameter("numero");
-		
+		String codDocumento = request.getParameter("numero");		
 		String local = request.getParameter("local");
 		String url = null;
 		String resumo = request.getParameter("resumo");
@@ -56,6 +55,7 @@ public class DocServlet extends HttpServlet {
 		
 		String autor = request.getParameter("autor");
 		String ocupacaoAutor = request.getParameter("autorOcupacao");
+		
 		String destinatario = request.getParameter("destinatario");
 		String ocupacaoDestinatario = request.getParameter("destinatarioOcupacao");
 		

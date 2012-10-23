@@ -40,7 +40,7 @@
 			</div>
 
 			<div class="content" id="content">
-				<h1>Cadastro de Documentos</h1>
+				<h1>Cadastro de Documento</h1>
 
 				<form id="signupform" autocomplete="off" method="GET" action="/GraoPara/protected/admin/addDoc">
 					<table class="tableForms">
@@ -144,7 +144,7 @@
 						</tr>
 
 						<tr>
-							<td colspan="3"><label class="labelForms">Resumo ou Veberbete do Documento <span class="asterisco">*</span></strong></label></td>
+							<td colspan="3"><label class="labelForms">Resumo ou Veberbete do Documento <span class="asterisco">*</span></label></td>
 						</tr>
 
 						<tr>
@@ -181,7 +181,7 @@
 
 						<tr>
 							<td class="tdForms"><p></p>
-								<input class="buttonRegistrar" id="signupsubmit" name="inserir" type="submit" value="Cadastrar" />
+								<input class="buttonRegistrar" id="signupsubmit" name="inserir" type="submit" value="Enviar" />
 							</td>
 						</tr>
 					</table>

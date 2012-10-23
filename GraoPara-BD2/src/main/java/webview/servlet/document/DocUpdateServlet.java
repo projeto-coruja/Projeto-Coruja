@@ -35,43 +35,51 @@ public class DocUpdateServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-    	String tipoCodDocumentoAntigo = null;
-		String codDocumentoAntigo = null;
-		String tituloDocumento = null;
-		String tipoCodDocumento = null;
-		String codDocumento = null;
-		String local = null;
-		String resumo = null;
-		String codCodiceCaixa = null;
-		String tituloCodiceCaixa = null;
-		String anoInicioCodiceCaixa = null;
-		String anoFimCodiceCaixa = null;
-		String autor = null;
-		String ocupacaoAutor = null;
-		String destinatario = null;
-		String ocupacaoDestinatario = null;
-		String tipoDocumento = null;
-		String descricaoDoTipoDocumento = null;
-		String palavraChave1 = null;
-		String temaPalavraChave1 = null;
-		String palavraChave2 = null;
-		String temaPalavraChave2 = null;
-		String palavraChave3 = null;
-		String temaPalavraChave3 = null;
+    	String tipoCodDocumentoAntigo = request.getParameter("pesquisa_APEP_SEQ");
+		String codDocumentoAntigo = request.getParameter("pesquisa_num_APEP_SEQ");
+		
+		String tituloDocumento = request.getParameter("tituloDocumento");
+		String tipoCodDocumento = request.getParameter("tipoDoc");
+		String codDocumento = request.getParameter("numero");
+		String local = request.getParameter("local");
+		String url = null;
+		String resumo = request.getParameter("resumo");
+		String data = request.getParameter("ano") + "-" + request.getParameter("mes") + "-" + request.getParameter("dia");
+		
+		String[] identificacao = request.getParameter("identificacao").split("-");
+		String tipoCodiceCaixa = identificacao[0];
+		String codCodiceCaixa = identificacao[1];
+		String tituloCodiceCaixa = identificacao[2];
+		String anoInicioCodiceCaixa = request.getParameter("anoInicioCodiceCaixa");
+		String anoFimCodiceCaixa = request.getParameter("anoFimCodiceCaixa");
+		
+		String autor = request.getParameter("autor");
+		String ocupacaoAutor = request.getParameter("autorOcupacao");
+		
+		String destinatario = request.getParameter("destinatario");
+		String ocupacaoDestinatario = request.getParameter("destinatarioOcupacao");
+		
+		String tipoDocumento = request.getParameter("tipoDoc");
+		String descricaoDoTipoDocumento = request.getParameter("descricaoTipoDocumento");
+		
+		String palavraChave1 = request.getParameter("chave1");
+		String palavraChave2 = request.getParameter("chave2");
+		String palavraChave3 = request.getParameter("chave3");
     	
 		response.setContentType("text/html");  
 	    PrintWriter out=response.getWriter();   
 		
-//		GregorianCalendar dataDoc = new GregorianCalendar(Integer.parseInt(dataAno), Integer.parseInt(dataMes), Integer.parseInt(dataDia));
+	    
 		Date dataDoc = null;
-		DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
 		try {
-			dataDoc = (Date) df.parse("-");
+			DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+			dataDoc = (Date) df.parse(data);
 		} catch (ParseException e1) {
 			e1.printStackTrace();
 		}
 		DocumentEJB CB = new DocumentEJB();
-
+		codCodiceCaixa = tipoCodiceCaixa+"-"+codCodiceCaixa;
+		codDocumento = tipoCodDocumento+"-"+codDocumento;
 		
 		try {
 			CB.modifyDocument(tipoCodDocumentoAntigo,
@@ -80,6 +88,7 @@ public class DocUpdateServlet extends HttpServlet {
 					tipoCodDocumento,
 					codDocumento, 
 					local, 
+					url, 
 					resumo, 
 					dataDoc, 
 					codCodiceCaixa, 
@@ -92,12 +101,9 @@ public class DocUpdateServlet extends HttpServlet {
 					ocupacaoDestinatario, 
 					tipoDocumento, 
 					descricaoDoTipoDocumento, 
-					palavraChave1, 
-					temaPalavraChave1, 
+					palavraChave1,
 					palavraChave2, 
-					temaPalavraChave2, 
-					palavraChave3, 
-					temaPalavraChave3);
+					palavraChave3);
 			out.println("<script>");  
 			out.println("alert('Documento Atualizado com sucesso!');");  
 			out.println("document.location=('/GraoPara/protected/admin/index.jsp');");  

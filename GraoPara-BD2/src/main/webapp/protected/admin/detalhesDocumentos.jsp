@@ -39,7 +39,7 @@
 			</div>
 
 			<div class="content" id="content">
-				<h2>Edição de Documentos</h2>
+				<h2>Edição de Documento</h2>
 
 				<form id="signupform" autocomplete="off" method="POST" action="/GraoPara/protected/admin/updateDoc">
 					<table class="tableForms">
