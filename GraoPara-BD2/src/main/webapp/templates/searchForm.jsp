@@ -50,9 +50,9 @@
 				</td>
 
 				<td class="field">
-					<label class="labelForms" id="ldata" for="data">de: </label>
+					<label class="labelForms" id="ldata" for="data">de </label>
 					<input class="inputShort" type="text" name="codDe" id="ano" maxlength="4" />
-					<label class="labelForms" id="ldata" for="data"> até: </label>
+					<label class="labelForms" id="ldata" for="data"> até </label>
 					<input class="inputShort" type="text" name="codAte" id="ano" maxlength="4" />
 				</td> 
 
@@ -86,14 +86,14 @@
 			<tr>
 				<td class="tdPesquisa">
 					<label class="labelForms" id="lcodigo" for="codigo">
-						Época (Caixa ou Códice)
+						Época (Caixa/Códice)
 					</label>
 				</td>
 
 				<td class="field">
-					<label class="labelForms" id="ldata" for="data">de: </label>
+					<label class="labelForms" id="ldata" for="data">de </label>
 					<input class="inputShort" type="text" name="epocaDe" id="ano" maxlength="4" />
-					<label class="labelForms" id="ldata" for="data"> até: </label>
+					<label class="labelForms" id="ldata" for="data"> até </label>
 					<input class="inputShort" type="text" name="epocaAte" id="ano" maxlength="4" />
 				</td> 
 

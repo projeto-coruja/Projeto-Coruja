@@ -55,13 +55,13 @@
 						</tr>
 						
 						<tr>
-							<td class="tdForms"><label class="labelForms" id="lanoInicioCodiceCaixa" for="anoInicioCodiceCaixa">Início do Ano de Códice/Caixa <span class="asterisco">*</span></label></td>
+							<td class="tdForms"><label class="labelForms" id="lanoInicioCodiceCaixa" for="anoInicioCodiceCaixa">Início de Ano do Códice/Caixa <span class="asterisco">*</span></label></td>
 							<td class="field"><input class="input" name="anoInicioCodiceCaixa" id="anoInicioCodiceCaixa" type="text" size="20" maxlength="4"></td>
 							<td class="status"></td>
 						</tr>
 						
 						<tr>
-							<td class="tdForms"><label class="labelForms" id="lanoFimCodiceCaixa" for="anoFimCodiceCaixa">Fim do Ano de Códice/Caixa <span class="asterisco">*</span></label></td>
+							<td class="tdForms"><label class="labelForms" id="lanoFimCodiceCaixa" for="anoFimCodiceCaixa">Fim de Ano do Códice/Caixa <span class="asterisco">*</span></label></td>
 							<td class="field"><input class="input" name="anoFimCodiceCaixa" id="anoFimCodiceCaixa" type="text" size="20" maxlength="4"></td>
 							<td class="status"></td>
 						</tr>

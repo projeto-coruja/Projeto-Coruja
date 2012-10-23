@@ -34,12 +34,14 @@ public class EditOriginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String oldCod = null;
-		String oldTitle = null;
-		String newCod = null;
-		String newTitle = null;
-		int anoInicio = 0;
-		int anoFim = 0;
+		String oldCod = request.getParameter("oldCod");
+		String oldTitle = request.getParameter("oldTitle");
+		
+		String newCod = request.getParameter("identificacao");
+		String newTitle = request.getParameter("titulo");
+		
+		int anoInicio = Integer.parseInt(request.getParameter("anoInicioCodiceCaixa"));
+		int anoFim = Integer.parseInt(request.getParameter("anoFimCodiceCaixa"));
 		
 		CodiceCaixaEJB cb = new CodiceCaixaEJB();
 		response.setContentType("text/html");

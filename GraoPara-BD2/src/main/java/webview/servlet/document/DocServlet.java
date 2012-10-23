@@ -44,7 +44,6 @@ public class DocServlet extends HttpServlet {
 		String local = request.getParameter("local");
 		String url = null;
 		String resumo = request.getParameter("resumo");
-		String data = request.getParameter("ano") + "-" + request.getParameter("mes") + "-" + request.getParameter("dia");
 		
 		String[] identificacao = request.getParameter("identificacao").split("-");
 		String tipoCodiceCaixa = identificacao[0];
@@ -71,6 +70,7 @@ public class DocServlet extends HttpServlet {
 		String email = c_user.getValue();
 		
 
+		String data = request.getParameter("ano") + "-" + request.getParameter("mes") + "-" + request.getParameter("dia");
 		Date dataDoc = null;
 		try {
 			DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
