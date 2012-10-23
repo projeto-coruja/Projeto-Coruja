@@ -47,8 +47,7 @@
 						<tr>
 							<td class="tdControle">
 								<label class="labelForms" id="ltpDoc" for="tpDoc">
-									Cadastrar novo Tipo:
-									<span class="asterisco">*</span>
+									Cadastrar Novo Tipo
 								</label>
 							</td>
 
