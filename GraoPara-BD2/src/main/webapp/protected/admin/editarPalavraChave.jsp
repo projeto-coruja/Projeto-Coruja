@@ -45,7 +45,7 @@
 					<table class="tableControle">
 						<tr>
 							<td class="tdControle">
-								<label class="labelForms" for="palavraAntiga">Palavra Chave Antiga:</label>
+								<label class="labelForms" for="palavraAntiga">Palavra Chave Antiga</label>
 							</td>
 
 							<td class="field">
@@ -58,7 +58,7 @@
 						<tr>
 							<td class="tdControle">
 								<label class="labelForms" for="palavraNova">
-									Palavra Chave Nova:
+									Palavra Chave Nova 
 									<span class="asterisco">*</span>
 								</label>
 							</td>
@@ -74,7 +74,7 @@
 						<tr>
 							<td class="tdControle" colspan="3" align="right">
 								<input class="buttonCancelar" type="button" value="Cancelar" onClick="history.go(-1)">
-								<input class="buttonRegistrar" id="signupsubmit" name="Enviar" type="submit" value="Enviar" />
+								<input class="buttonRegistrar" id="signupsubmit" name="Atualizar" type="submit" value="Atualizar" />
 							</td>
 						</tr>
 					</table>

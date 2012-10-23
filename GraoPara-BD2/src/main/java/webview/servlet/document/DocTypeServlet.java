@@ -47,8 +47,6 @@ public class DocTypeServlet extends HttpServlet {;
 			e.printStackTrace();
 		} catch (DuplicatedDocumentTypeException e) {
 			e.printStackTrace();
-		}
-		
+		}		
 	}
-
 }

@@ -77,5 +77,4 @@ public class EditOriginServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
-
 }
