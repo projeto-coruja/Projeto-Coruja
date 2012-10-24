@@ -195,9 +195,9 @@ public final class WebUtility {
 	 * @return
 	 * @throws UnreachableDataBaseException
 	 */
-	public static String printTituloCodiceCaixa(boolean withContent) throws UnreachableDataBaseException {
+	public static String printTituloCodiceCaixa(HttpServletRequest request, boolean withContent) throws UnreachableDataBaseException {
 		String output = null;
-
+		String selected = request.getParameter("codigo");
 		CodiceCaixaDAO codiceCaixa = null;
 		DocumentoDAO documento = null;
 
@@ -217,7 +217,10 @@ public final class WebUtility {
 
 			for(DTO d : list){
 				CodiceCaixa c = (CodiceCaixa) d;
-				output += "\n	<option value=\""+ c.getCod() + " \">"+ c.getCod().replace("-", " ") + " " + c.getTitulo() + "</option> ";
+				if(!c.getCod().equals(selected))
+					output += "\n	<option value=\""+ c.getCod() + " \">"+ c.getCod().replace("-", " ") + " " + c.getTitulo() + "</option> ";
+				else
+					output += "\n	<option selected value=\""+ c.getCod() + " \">"+ c.getCod().replace("-", " ") + " " + c.getTitulo() + "</option> ";
 			}
 		} catch (CodiceCaixaNotFoundException e) {
 			//e.printStackTrace();

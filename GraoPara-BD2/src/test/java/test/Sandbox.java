@@ -54,12 +54,9 @@ public class Sandbox {
 				"ocupacaoDestinatario", 
 				"tipoDocumento", 
 				"descricaoDoTipoDocumento", 
-				"palavraChave1", 
-				"temaPalavraChave1",
+				"palavraChave1",
 				"palavraChave2",
-				"temaPalavraChave2", 
-				"palavraChave3", 
-				"temaPalavraChave3");
+				"palavraChave3");
 		Documento doc = (Documento) e.findDocuments(null, null, null, null, null, null, null, null, "autor", null, null, null, null, null, null, null, null, null).get(0);
 		System.out.println(doc.getCod());
 		
