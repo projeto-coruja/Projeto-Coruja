@@ -116,7 +116,7 @@ article.tabsCSS section
     height: 25em;  
     padding: 10px 20px;  
     background-color: #ddd;  
-    border-radius: 5px;  
+    border-radius: 10px;  
     box-shadow: 0 3px 3px rgba(0,0,0,0.1);  
     z-index: 0;    
 }
@@ -137,7 +137,7 @@ article.tabsCSS section h2
     left: 10px;  
     padding: 0;  
     margin: 0;  
-    color: #fff;  
+    color: #FFF;  
     background-color: #95B2F0;  
     border-radius: 5px 5px 0 0;  
 }
@@ -176,7 +176,7 @@ article.tabsCSS section:target h2
     z-index: 2;  
 }
 
-article.tabsCSS section,  
+/*article.tabsCSS section,  
 article.tabsCSS section h2  
 {  
     -webkit-transition: all 500ms ease;  
@@ -184,4 +184,4 @@ article.tabsCSS section h2
     -ms-transition: all 500ms ease;  
     -o-transition: all 500ms ease;  
     transition: all 500ms ease;  
-}  
+}*/
