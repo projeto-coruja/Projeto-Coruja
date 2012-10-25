@@ -3,6 +3,7 @@ package webview.worker;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.JspWriter;
 
@@ -136,7 +137,15 @@ public class PanelWorker {
 	}
 	
 	public static void listAllUsers(HttpServletRequest request, JspWriter out) throws IOException{
-		String c_email = WebUtility.selectCookie(request.getCookies(), WebUtility.cookie_email).getValue();
+		Cookie d_email = WebUtility.selectCookie(request.getCookies(), WebUtility.cookie_email);
+		String c_email;
+		
+		if(d_email == null)
+			c_email = null;
+		else
+			c_email = d_email.getValue();
+		
+		
 		SearchUserBean busca = new SearchUserBean();
 		List<DTO> users = null;	    
 		try {

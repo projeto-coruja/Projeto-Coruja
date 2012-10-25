@@ -11,7 +11,7 @@
 				<li><a href="index.jsp">Home</a></li>
 				<li><a href="pesquisa.jsp">Pesquisar</a></li>
 				<li><a href="painel.jsp">Painel Admin</a></li>
-				<li><a href="gerar.jsp">Gerar Senha</a></li>
+				<li><a href="gerarSenha.jsp">Gerar Senha</a></li>
 			</ul>
 		</article>
 	</div>
