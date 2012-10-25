@@ -75,13 +75,13 @@ a:hover,a:active,a:focus {
 
 /* Originalmente as divs tinham layout líquido (porcentagem) mas falando com o Arlindo, foi decidido deixar mais estático */
 .container {
-	max-width: 1000px;
+	max-width: 1024px !important;
 	/* a max-width may be desirable to keep this layout from getting too wide on a large monitor. This keeps line length more readable. IE6 does not respect this declaration. */
-	min-width: 810px;
-	background-color: #FFF;
-	margin: 0 auto;
+	min-width: 810px !important;
+	background-color: #FFF !important;
+	margin: 0 auto !important;
 	/* the auto value on the sides, coupled with the width, centers the layout. It is not needed if you set the .container's width to 100%. */
-	font-size: 100%;
+	font-size: 100% !important;
 }
 
 /* ~~ the header is not given a width. It will extend the full width of your layout. It contains an image placeholder that should be replaced with your own linked logo ~~ */
