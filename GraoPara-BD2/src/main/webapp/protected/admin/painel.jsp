@@ -11,6 +11,7 @@
 <link rel="stylesheet" type="text/css"
 	href="/GraoPara/css/principal.css" />
 <link rel="stylesheet" type="text/css" href="/GraoPara/css/controle.css" />
+<link rel="stylesheet" type="text/css" href="/GraoPara/css/tabs.css" />
 <link rel="stylesheet"
 	href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css">
 
@@ -162,17 +163,16 @@
 				</div>
 			</div>
 			<br>
-			<!-- Rodape -->
-			<div class="footer">
-				<p>Copyright © - Universidade Federal de São Paulo - UNIFESP
-					2012</p>
-				<p>Desenvolvido pelo grupo Coruja</p>
-			</div>
+		</div>
+		<!-- Rodape -->
+		<div class="footer">
+			<p>Copyright © - Universidade Federal de São Paulo - UNIFESP 2012</p>
+			<p>Desenvolvido pelo grupo Coruja</p>
 		</div>
 	</div>
-	
+
 	<script>
-		$( "#tabsPainel" ).tabs();
+		$("#tabsPainel").tabs();
 	</script>
 </body>
 </html>
