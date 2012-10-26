@@ -32,6 +32,7 @@
 
 			<!-- Menu lateral -->
 			<div class="sidebar1">
+				
 				<!-- Area de login -->
 				<%@include file="/templates/loginReception.jsp" %>
 
@@ -40,78 +41,15 @@
 			</div>
 
 			<div class="content" id="content">
-				<!-- Novo formulario para mudanca de senha -->
-				<h1>Painel de Controle</h1>
-
+				<h1>Painel de Controle</h1>				
+				
+				<!-- Formulario para alterar senha -->
 				<form id="signupform" autocomplete="off" action="/GraoPara/doChangesToAccount?action=editPassword" method="post">
-					<table class="tableControle">
-						<tr>
-							<td colspan="3">
-								<label class="labelForms">
-									<strong>MUDAR SENHA ATUAL</strong>
-								</label>
-							</td>
-						</tr>
-
-						<tr>
-							<td class="tdControle">
-								<label class="labelForms"  id="lpassword" for="password">
-									Senha Atual:
-									<span class="asterisco">*</span>
-								</label>
-							</td>
-
-							<td class="field">
-								<input id="senhaAtual" class="input" name="senhaAtual" type="password" maxlength="50" value="" />
-							</td>
-
-							<td class="status"></td>
-						</tr>
-
-						<tr>
-							<td class="tdControle">
-								<label class="labelForms"  id="lpassword" for="password">
-									Nova Senha:
-									<span class="asterisco">*</span>
-								</label>
-							</td>
-
-							<td class="field">
-								<input id="senhaNova" class="input" name="senhaNova" type="password" maxlength="50" value="" />
-							</td>
-
-							<td class="status"></td>
-						</tr>
-
-						<tr>
-							<td class="tdControle">
-								<label class="labelForms"  id="lpassword" for="password">
-									Confirme Nova Senha:
-									<span class="asterisco">*</span>
-								</label>
-							</td>
-
-							<td class="field">
-								<input id="senhaConfirme" class="input" name="senhaConfirme" type="password" maxlength="50" value="" />
-							</td>
-
-							<td class="status"></td>
-						</tr>
-
-						<tr>
-							<td class="tdForms">
-								<input class="buttonRegistrar" id="signupsubmit" name="inserir" type="submit" value="Enviar" />
-							</td>
-						</tr>
-					</table>
+					<%@include file="/templates/newPasswordForm.jsp"%>
 				</form>
 			</div>
 
-			<!-- Rodape -->
-			<div class="footer">
-				<p>Copyright © - Universidade Federal de São Paulo - UNIFESP 2012</p>
-				<p>Desenvolvido pelo grupo Coruja</p>
-			</div>
+			<%@include file="/templates/footer.jsp"%>
 		</div>
 	</body>
 </html>
