@@ -12,7 +12,7 @@ public class JavascriptAlerts {
 	    PrintWriter out=response.getWriter();   
 		out.println("<script>");  
 	    out.println("alert('" + alert + "');");  
-	    out.println("document.location=('" + jsp_Page + "');");  
+	    out.println("window.location.replace('" + jsp_Page + "');");  
 	    out.println("</script>");
 	}
 	

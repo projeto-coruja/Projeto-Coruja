@@ -44,7 +44,7 @@ public class DocRemovalServlet extends HttpServlet {
 		} catch (UnreachableDataBaseException e) {
 		    out.println("<script>");  
 		    out.println("alert('Erro no banco de dados. ');");  
-		    out.println("document.location=('/GraoPara/public/index.jsp');");  
+		    out.println("window.location.replace('/GraoPara/public/index.jsp');");  
 		    out.println("</script>");
 			e.printStackTrace();
 		} catch (DocumentNotFoundException e) {
@@ -52,7 +52,7 @@ public class DocRemovalServlet extends HttpServlet {
 		} catch (IllegalArgumentException e){
 		    out.println("<script>");  
 		    out.println("alert('"+ e.getMessage() +" ');");  
-		    out.println("document.location=('/GraoPara/public/index.jsp');");  
+		    out.println("window.location.replace('/GraoPara/public/index.jsp');");  
 		    out.println("</script>");
 		}
 	}

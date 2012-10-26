@@ -138,7 +138,7 @@ public class SearchWorker {
 		} catch (UnreachableDataBaseException e) {
 			out.write("<script>");  
 			out.write("alert('Problemas ao acessar o banco de dados. Contate o suporte técnico e tente novamente mais tarde ');");  
-			//out.write("document.location=('/GraoPara/public/index.jsp');");  
+			//out.write("window.location.replace('/GraoPara/public/index.jsp');");  
 			out.write("</script>");
 			e.printStackTrace();
 		} catch (DocumentNotFoundException e) {

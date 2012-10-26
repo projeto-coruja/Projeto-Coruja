@@ -44,7 +44,7 @@ public class CodCaixaServlet extends HttpServlet {
 		try {
 			od.add(tipo, codigo, titulo, anoIni, anoFim);
 			out.println("<script>");  
-		    out.println("document.location=('/GraoPara/protected/admin/cadastrarOrigem.jsp');");
+		    out.println("window.location.replace('/GraoPara/protected/admin/cadastrarOrigem.jsp');");
 		    out.println("</script>");		
 		} catch (DuplicateCodiceCaixaException e) {
 			out.println("<script>");  
@@ -55,7 +55,7 @@ public class CodCaixaServlet extends HttpServlet {
 		} catch (UnreachableDataBaseException e) {
 			out.println("<script>");  
 			out.println("alert('Erro no banco de dados, contate o suporte e tente novamente mais tarde.');");
-		    out.println("document.location=('/GraoPara/protected/admin/adminIndex.jsp');");
+		    out.println("window.location.replace('/GraoPara/protected/admin/adminIndex.jsp');");
 		    out.println("</script>");
 		}
 	}

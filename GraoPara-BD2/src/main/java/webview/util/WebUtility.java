@@ -14,11 +14,13 @@ import business.DAO.document.DocumentoDAO;
 import business.DAO.document.TipoDocumentoDAO;
 import business.EJB.documents.CodiceCaixaEJB;
 import business.EJB.documents.KeyWordEJB;
+import business.EJB.documents.ThemeEJB;
 import business.EJB.user.AuthBean;
 import business.EJB.user.UserBean;
 import business.exceptions.documents.CodiceCaixaNotFoundException;
 import business.exceptions.documents.DocumentTypeNotFoundException;
 import business.exceptions.documents.KeywordNotFoundException;
+import business.exceptions.documents.ThemeNotFoundException;
 import business.exceptions.login.UnreachableDataBaseException;
 import business.exceptions.login.UserNotFoundException;
 
@@ -27,6 +29,7 @@ import persistence.dto.DTO;
 import persistence.dto.Documento;
 import persistence.dto.PalavraChave;
 import persistence.dto.Profile;
+import persistence.dto.TemaPalavraChave;
 import persistence.dto.TipoDocumento;
 
 public final class WebUtility {
@@ -449,6 +452,29 @@ public final class WebUtility {
 		} catch (UnreachableDataBaseException e) {
 			e.printStackTrace();
 		}
+		return result;
+	}
+	
+	/**
+	 * @param request
+	 * @return
+	 */
+	public static String printSelectKeyWordThemes() {
+		ThemeEJB tb = new ThemeEJB();
+		String result = "";
+		String data = "";
+		try {
+			List<DTO> list = tb.searchAllThemes();
+			for(DTO d : list){
+				data = ((TemaPalavraChave) d).getTema();
+				result += "<option value=\"" + data + "\">" + data + "</option> ";
+			}
+		} catch (UnreachableDataBaseException e) {
+			e.printStackTrace();
+		} catch (ThemeNotFoundException e) {
+			//
+		}
+		
 		return result;
 	}
 

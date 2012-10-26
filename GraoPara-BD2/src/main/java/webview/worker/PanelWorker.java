@@ -62,7 +62,7 @@ public class PanelWorker {
 		} catch (UnreachableDataBaseException e) {
 			out.write("<script>");  
 			out.write("alert('Problemas ao acessar o banco de dados. Contate o suporte técnico e tente novamente mais tarde ');");  
-			//out.write("document.location=('/GraoPara/public/index.jsp');");  
+			//out.write("window.location.replace('/GraoPara/public/index.jsp');");  
 			out.write("</script>");
 		} catch (KeywordNotFoundException e) {
 			out.println("<td colspan=\"4\"><label class=\"labelExibe\">Nenhuma palavra-chave encontrada</label></td>");
@@ -100,7 +100,7 @@ public class PanelWorker {
 		} catch (UnreachableDataBaseException e) {
 			out.write("<script>");  
 			out.write("alert('Problemas ao acessar o banco de dados. Contate o suporte técnico e tente novamente mais tarde ');");  
-			//out.write("document.location=('/GraoPara/public/index.jsp');");  
+			//out.write("window.location.replace('/GraoPara/public/index.jsp');");  
 			out.write("</script>");
 		} catch (KeywordNotFoundException e) {
 			out.println("<td colspan=\"4\"><label class=\"labelExibe\">Nenhuma palavra-chave encontrada.</label></td>");
@@ -129,10 +129,10 @@ public class PanelWorker {
 		} catch (UnreachableDataBaseException e) {
 			out.write("<script>");  
 			out.write("alert('Problemas ao acessar o banco de dados. Contate o suporte técnico e tente novamente mais tarde ');");  
-			//out.write("document.location=('/GraoPara/public/index.jsp');");  
+			//out.write("window.location.replace('/GraoPara/public/index.jsp');");  
 			out.write("</script>");
 		} catch (CodiceCaixaNotFoundException e) {
-			out.println("<td colspan=\"4\"><label class=\"labelExibe\">Nenhuma palavra-chave encontrada.</label></td>");
+			out.println("<td colspan=\"4\"><label class=\"labelExibe\">Nenhum códice ou caixa encontrado.</label></td>");
 		}
 	}
 	
@@ -175,7 +175,7 @@ public class PanelWorker {
 		} catch (UnreachableDataBaseException e) {
 			out.write("<script>");  
 			out.write("alert('Problemas ao acessar o banco de dados. Contate o suporte técnico e tente novamente mais tarde.');");  
-			//out.write("document.location=('/GraoPara/public/index.jsp');");  
+			//out.write("window.location.replace('/GraoPara/public/index.jsp');");  
 			out.write("</script>");
 			e.printStackTrace();
 		} catch (UserNotFoundException e) {
@@ -215,7 +215,7 @@ public class PanelWorker {
 		} catch (UnreachableDataBaseException e) {
 			out.write("<script>");  
 			out.write("alert('Problemas ao acessar o banco de dados. Contate o suporte técnico e tente novamente mais tarde.');");  
-			//out.write("document.location=('/GraoPara/public/index.jsp');");  
+			//out.write("window.location.replace('/GraoPara/public/index.jsp');");  
 			out.write("</script>");
 			e.printStackTrace();
 		} catch (UserNotFoundException e) {

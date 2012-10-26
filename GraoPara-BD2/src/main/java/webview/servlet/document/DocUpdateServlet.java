@@ -106,7 +106,7 @@ public class DocUpdateServlet extends HttpServlet {
 					palavraChave3);
 			out.println("<script>");  
 			out.println("alert('Documento Atualizado com sucesso!');");  
-			out.println("document.location=('/GraoPara/protected/admin/index.jsp');");  
+			out.println("window.location.replace('/GraoPara/protected/admin/index.jsp');");  
 			out.println("</script>");
 		} catch (UnreachableDataBaseException e) {
 			out.println("<script>");  

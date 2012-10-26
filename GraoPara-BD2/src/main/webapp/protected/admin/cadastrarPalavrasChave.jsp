@@ -55,6 +55,13 @@
 							</td>
 
 							<td class="field"><input class="input" id="palavra"	name="palavraNova" type="text" value="" maxlength="32" /></td>
+							
+							<td class="field">
+								<select id="tema" name="tema">
+									<%=WebUtility.printSelectKeyWordThemes() %>
+								</select>
+							</td>
+							
 							<td class="status"></td>
 						 	<td class="field"><input class="input" id="action" name="action" type="hidden" value="add" maxlength="32" /></td>
 							<td class="field"><input class="input" id="action" name="from" type="hidden" value="cadastrarPalavrasChave.jsp" maxlength="20" /></td>

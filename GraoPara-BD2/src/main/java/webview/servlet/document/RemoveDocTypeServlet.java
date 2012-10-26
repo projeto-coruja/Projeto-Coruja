@@ -37,12 +37,12 @@ public class RemoveDocTypeServlet extends HttpServlet {
 		try {
 			tdEjb.removeTypeDocument(tipo);
 			out.println("<script>");  
-		    out.println("document.location=('/GraoPara/protected/admin/cadastrarTipoDocumento.jsp');");
+		    out.println("window.location.replace('/GraoPara/protected/admin/cadastrarTipoDocumento.jsp');");
 		    out.println("</script>");		
 		} catch (UnreachableDataBaseException e) {
 			out.println("<script>");  
 		    out.println("alert('Erro no banco de dados! Contate o suporte e tente novamente mais tarde." + e.getStackTrace() + "');");  
-		    out.println("document.location=('/GraoPara/protected/admin/index.jsp');");  
+		    out.println("window.location.replace('/GraoPara/protected/admin/index.jsp');");  
 		    out.println("</script>");
 			e.printStackTrace();
 		} catch (DocumentTypeNotFoundException e) {

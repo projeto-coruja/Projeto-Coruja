@@ -46,22 +46,22 @@ public class KeyWordServlet extends HttpServlet {
 			if(action!= null && action.equals("add")) {
 				cad.addKeyWord(newKey, theme);
 			    out.println("<script>");  
-			    out.println("alert('Palavra chave adicionado com sucesso. ');");  
-			    out.println("document.location=('/GraoPara/protected/admin/cadastrarPalavrasChave.jsp');");
+			    out.println("alert('Palavra chave adicionada com sucesso. ');");  
+			    out.println("window.location.replace('/GraoPara/protected/admin/cadastrarPalavrasChave.jsp');");
 			    out.println("</script>");
 			}
 			else if(action!= null && action.equals("edit")) {
 				cad.updateKeyWord(oldKey, newKey, theme);
 			    out.println("<script>");  
 			    out.println("alert('Palavra chave atualizada com sucesso. ');");
-			    out.println("document.location=('/GraoPara/protected/admin/cadastrarPalavrasChave.jsp');");
+			    out.println("window.location.replace('/GraoPara/protected/admin/cadastrarPalavrasChave.jsp');");
 			    out.println("</script>");
 			}
 			else if(action != null && action.equals("delete")) {	
 				cad.removeKeyWord(oldKey);
 			    out.println("<script>");
 			    out.println("alert('Palavra chave excluída com sucesso. ');");
-			    out.println("document.location=('/GraoPara/protected/admin/cadastrarPalavrasChave.jsp');");
+			    out.println("window.location.replace('/GraoPara/protected/admin/cadastrarPalavrasChave.jsp');");
 			    out.println("</script>");
 			}
 			else {
