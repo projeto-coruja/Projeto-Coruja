@@ -104,6 +104,7 @@ $(document).ready(function() {
 			/* -----------------------------------------------------
 			 *  Painel de Editar Palavra-Chave
 			 * ----------------------------------------------------- */
+			
 			palavraNova:{
 				required: true,
 				minlength: 3
