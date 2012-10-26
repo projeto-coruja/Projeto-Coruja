@@ -68,7 +68,6 @@
 																		
 									<tbody><%PanelWorker.listAllNewUsers(request, out);%></tbody>
 								</table>
-							</form>
 						</div>
 					</div>
 					
