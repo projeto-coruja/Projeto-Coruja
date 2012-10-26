@@ -50,19 +50,13 @@
 						<%@include file="/templates/documentForm.jsp" %>	
 						
 						<tr>
-							<td class="tdForms"><p></p>
-								<input class="buttonRegistrar" id="signupsubmit" name="inserir" type="submit" value="Enviar" />
-							</td>
+							<td class="tdForms"><br><input class="buttonRegistrar" id="signupsubmit" name="inserir" type="submit" value="Enviar" /></td>
 						</tr>
 					</table>
 				</form>
 			</div>
 
-			<!-- Rodape -->
-			<div class="footer">
-				<p>Copyright © - Universidade Federal de São Paulo - UNIFESP 2012</p>
-				<p>Desenvolvido pelo grupo Coruja</p>
-			</div>
+			<%@include file="/templates/footer.jsp" %>
 		</div>
 	</body>
 </html>

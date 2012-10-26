@@ -25,7 +25,7 @@ import business.exceptions.login.UserNotFoundException;
 /**
  * Servlet implementation class DocServlet
  */
-@WebServlet(urlPatterns={"/protected/user/addDoc", "/protected/admin/addDoc"})
+@WebServlet(urlPatterns={"/protected/admin/addDoc", "/protected/user/addDoc"})
 public class DocServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

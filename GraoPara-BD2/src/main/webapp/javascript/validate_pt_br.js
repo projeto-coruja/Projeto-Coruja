@@ -2,9 +2,11 @@ $(document).ready(function() {
 	// validate signup form on keyup and submit
 	var validator = $("#signupform").validate({
 		rules: {
-			/* ----------------------------------
-			 *  Cadastro de Documentos
-			 * ---------------------------------- */
+			
+			/* -----------------------------------------------------
+			 *  Cadastro de Documento
+			 * ----------------------------------------------------- */
+			
 			identificacao: {
 				required: true
 			},
@@ -56,9 +58,11 @@ $(document).ready(function() {
 			chave1: {
 				required: true,
 			},
-			/* ----------------------------------
-			 *  Cadastro de Usuários
-			 * ---------------------------------- */
+			
+			/* -----------------------------------------------------
+			 *  Cadastro de Usuário
+			 * ----------------------------------------------------- */
+			
 			nome: {
 				required: true,
 				minlength: 3
@@ -79,9 +83,11 @@ $(document).ready(function() {
 			permissao:{
 				required: true
 			},	
-			/* ----------------------------------
-			 *  Painel de trocar senha
-			 * ---------------------------------- */
+			
+			/* -----------------------------------------------------
+			 *  Painel de Controle (Alterar Senha)
+			 * ----------------------------------------------------- */
+			
 			senhaAtual: {
 				required: true,
 			},
@@ -94,47 +100,60 @@ $(document).ready(function() {
 				minlength: 6,
 				equalTo: "#senhaNova"
 			},
-			/* ----------------------------------
-			 *  Painel de editar Palavra Chave
-			 * ---------------------------------- */
+			
+			/* -----------------------------------------------------
+			 *  Painel de Editar Palavra-Chave
+			 * ----------------------------------------------------- */
+			
 			palavraNova:{
 				required: true,
 				minlength: 3
 			},
-			/* ----------------------------------
-			 *  Cadastro de usuários pelo Admin
-			 * ---------------------------------- */
+			
+			/* -----------------------------------------------------
+			 *  Cadastro de Usuário [Administrador]
+			 * ----------------------------------------------------- */
+			
 			permissao:{
 				required: true
 			},
-			/* ----------------------------------
-			 *  Cadastro de novos tipos de documentos pelo Admin
-			 * ---------------------------------- */
+			
+			/* -----------------------------------------------------
+			 *  Cadastro de Tipo de Documento [Administrador]
+			 * ----------------------------------------------------- */
+			
 			docType:{
 				required: true,
 				minlength: 3
 			},
-			/* ----------------------------------
-			 *  Cadastro de novas palavras-chave pelo Admin
-			 * ---------------------------------- */
+			
+			/* -----------------------------------------------------
+			 *  Cadastro de Palavra-Chave [Administrador]
+			 * ----------------------------------------------------- */
+			
 			palavra:{
 				required: true,
 				minlength: 3
 			},
-			/* ----------------------------------
-			 * Editar tipos de documentos pelo Admin
-			 * ---------------------------------- */
+			
+			/* -----------------------------------------------------
+			 * Editar Tipo de Documento [Administrador]
+			 * ----------------------------------------------------- */
+			
 			tpDocNovo:{
 				required: true,
 				minlength: 3
 			},
 		},
+		
 		messages: {
-			/* ----------------------------------
-			 *  Cadastro de Documentos
-			 * ---------------------------------- */
+			
+			/* -----------------------------------------------------
+			 *  Cadastro de Documento
+			 * ----------------------------------------------------- */
+			
 			identificacao: {
-				required: "Selecione a identificação."
+				required: "Selecione uma identificação."
 			},
 			tipo_num: {
 				required: "Selecione o tipo de número. </br>"
@@ -185,19 +204,21 @@ $(document).ready(function() {
 				required: "Informe a primeira palavra chave.",
 				minlength: jQuery.format("Digite no mínimo {0} caracteres.")
 			},
-			/* ----------------------------------
-			 *  Cadastro de Usuários
-			 * ---------------------------------- */
+			
+			/* -----------------------------------------------------
+			 *  Cadastro de Usuário
+			 * ----------------------------------------------------- */
+			
 			nome: {
 				required: "Digite seu nome completo.",
 				minlength: jQuery.format("Digite no mínimo {0} caracteres.")
 			},
 			senha: {
-				required: "Digite sua senha",
+				required: "Digite sua senha.",
 				minlength: jQuery.format("Digite no mínimo {0} caracteres.")
 			},
 			confsenha: {
-				required: "Confirme sua senha",
+				required: "Confirme sua senha.",
 				minlength: jQuery.format("Digite no mínimo {0} caracteres."),
 				equalTo: "Digite uma senha igual a anterior."
 			},
@@ -208,56 +229,69 @@ $(document).ready(function() {
 			permissao: {
 				required: "Selecione a Permissão do Usuário."
 			},
-			/* ----------------------------------
-			 *  Painel de trocar senha
-			 * ---------------------------------- */
+			
+			/* -----------------------------------------------------
+			 *  Painel de Controle (Alterar Senha)
+			 * ----------------------------------------------------- */
+			
 			senhaAtual: {
-				required: "Digite sua senha cadastrada"
+				required: "Informe sua senha atual."
 			},
 			senhaNova: {
-				required: "Digite uma senha nova",
+				required: "Digite a nova senha.",
 				minlength: jQuery.format("Digite no mínimo {0} caracteres.")
 			},
 			senhaConfirme: {
-				required:  "Confirme sua senha",
+				required:  "Redigite a nova senha.",
 				minlength: jQuery.format("Digite no mínimo {0} caracteres."),
 				equalTo: "Digite uma senha igual a anterior."
 			},
-			/* ----------------------------------
-			 *  Painel de editar Palavra Chave
-			 * ---------------------------------- */
+			
+			/* -----------------------------------------------------
+			 *  Painel de Editar Palavras-Chave
+			 * ----------------------------------------------------- */
+			
 			palavraNova: {
 				required: "Digite uma palavra nova",
 				minlength: jQuery.format("Digite no mínimo {0} caracteres.")
 			},
-			/* ----------------------------------
-			 *  Cadastro de usuários pelo Admin
-			 * ---------------------------------- */
+			
+			/* -----------------------------------------------------
+			 *  Cadastro de Usuário [Administrador]
+			 * ----------------------------------------------------- */
+			
 			permissao:{
 				required: "Selecione uma permissão para o usuário"
 			},
-			/* ----------------------------------
-			 *  Cadastro de novos tipos de documentos pelo Admin
-			 * ---------------------------------- */
+			
+			/* -----------------------------------------------------
+			 *  Cadastro de Tipo de Documento [Administrador]
+			 * ----------------------------------------------------- */
+			
 			docType:{
 				required: "Informe o tipo de documento que deseja cadastrar",
 				minlength: jQuery.format("Digite no mínimo {0} caracteres.")				
 			},
-			/* ----------------------------------
-			 *  Cadastro de novas palavras-chave pelo Admin
-			 * ---------------------------------- */
+			
+			/* -----------------------------------------------------
+			 *  Cadastro de Palavra-Chave [Administrador]
+			 * ----------------------------------------------------- */
+			
 			palavra:{
 				required: "Informe a palavra-chave que deseja cadastrar",
 				minlength: jQuery.format("Digite no mínimo {0} caracteres.")				
 			},
-			/* ----------------------------------
-			 *  Cadastro de novos tipos de documentos pelo Admin
-			 * ---------------------------------- */
+			
+			/* -----------------------------------------------------
+			 *  Cadastro de Tipo de Documento [Administrador]
+			 * ----------------------------------------------------- */
+			
 			tpDocNovo:{
 				required: "Informe o tipo de Documento novo",
 				minlength: jQuery.format("Digite no mínimo {0} caracteres.")
 			},
 		},
+		
 		// the errorPlacement has to take the table layout into account
 		errorPlacement: function(error, element) {
 			if ( element.is(":radio") )
@@ -268,5 +302,4 @@ $(document).ready(function() {
 				error.appendTo( element.parent().next() );
 		}
 	});
-
 });

@@ -34,19 +34,18 @@ public class PanelWorker {
 		KeyWordEJB busca = new KeyWordEJB();
 		List<DTO> keys = null;	    
 		String in = (String) request.getAttribute("in");
-		String td = null;
-		if(in.equals("cadastrarPalavrasChave.jsp"))		td =  "class=\"tdList\"";
-		else	td = "";
+		String td = null;		
+		if(in.equals("cadastrarPalavrasChave.jsp"))
+			td =  "class=\"tdList\"";
+		else
+			td = "";		
 		try{ 
 			keys = busca.buscaPalavrasChaves();
-
 			for(DTO k : keys){
 				PalavraChave key = (PalavraChave) k;
-
 				out.write("<tr>");
 				out.write("<td "+td+"> <label for=\"identificacao\" class=\"labelExibe\">" + key.getId() + "</label> </td>");
 				out.write("<td "+td+"> <label for=\"identificacao\" class=\"labelExibe\">" + key.getPalavra().replace("_", " ") + " </label> </td>");
-				/*out.write("<td> <label for=\"identificacao\" class=\"labelExibe\">" + (key.isAprovada()==true ? "Aprovada" : "Pendente") + "</label> </td>");*/
 				out.println("<td "+td+">"
 						+ "<a href=\"/GraoPara/protected/admin/editarPalavraChave.jsp?"
 							+ "palavraAntiga="+ key.getPalavra() +"\" >"
@@ -61,57 +60,18 @@ public class PanelWorker {
 			}
 		} catch (UnreachableDataBaseException e) {
 			out.write("<script>");  
-			out.write("alert('Problemas ao acessar o banco de dados. Contate o suporte técnico e tente novamente mais tarde ');");  
-			//out.write("window.location.replace('/GraoPara/public/index.jsp');");  
-			out.write("</script>");
-		} catch (KeywordNotFoundException e) {
-			out.println("<td colspan=\"4\"><label class=\"labelExibe\">Nenhuma palavra-chave encontrada</label></td>");
-		}
-	}
-	
-	/*public static void listAllNewKeyWords(HttpServletRequest request, JspWriter out) throws IOException{
-		KeyWordEJB busca = new KeyWordEJB();
-		List<DTO> keys = null;	    
-		try{
-			keys = busca.buscaPalavrasChavesPendentes();
-			for(DTO k : keys){
-				PalavraChave key = (PalavraChave) k;
-
-				if(!key.isAprovada()){
-					out.write("<tr>");
-					out.write("<td> <label for=\"identificacao\" class=\"labelExibe\">" + key.getId() + "</label> </td>");
-					out.write("<td> <label for=\"identificacao\" class=\"labelExibe\">" + key.getPalavra() + " </label> </td>");
-					out.write("<td> <label for=\"identificacao\" class=\"labelExibe\">" + (key.isAprovada()==true ? "Aprovada" : "Pendente") + "</label> </td>");
-					out.println("<td>"
-							+ "<a href=\"/GraoPara/doChangesToKeyWord?" 
-								+ "palavraAntiga=" + key.getPalavra() 
-								+ "&action=approve"
-								+ "&tab=1\" >"
-								+ "<img src=\"/GraoPara/images/approve.png\" title=\"Aprovar\" alt=\"Aprovar\" /></a>" 
-							+ "<a href=\"/GraoPara/doChangesToKeyWord?" 
-								+ "palavraAntiga=" + key.getPalavra() 
-								+ "&action=delete"
-								+ "&tab=1\"><img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\" /></a>"
-							+ "</td>");
-					out.write("</tr>");
-				}
-				
-			}
-		} catch (UnreachableDataBaseException e) {
-			out.write("<script>");  
-			out.write("alert('Problemas ao acessar o banco de dados. Contate o suporte técnico e tente novamente mais tarde ');");  
-			//out.write("window.location.replace('/GraoPara/public/index.jsp');");  
+			out.write("alert('Problemas ao acessar o banco de dados. Contate o suporte técnico e tente novamente mais tarde.');");
 			out.write("</script>");
 		} catch (KeywordNotFoundException e) {
 			out.println("<td colspan=\"4\"><label class=\"labelExibe\">Nenhuma palavra-chave encontrada.</label></td>");
 		}
-	}	*/
+	}	
 	
 	public static void listAllCodex(HttpServletRequest request, JspWriter out) throws IOException{
 		CodiceCaixaEJB od = new CodiceCaixaEJB();
 		List<DTO> origens = null;	    
 		try{
-			origens = od.getAllEntries();
+			origens = od.getAllEntries();			
 			for(DTO k : origens){
 				CodiceCaixa ori = (CodiceCaixa) k;				
 				out.write("<tr>");
@@ -122,38 +82,30 @@ public class PanelWorker {
 						+ "&codigo=" + ori.getCod()
 						+ "\"><img src=\"/GraoPara/images/edit.png\" title=\"Editar título\" alt=\"Editar título\" /></a>"
 						+ "</td>");
-				out.write("</tr>");
-				
-				
+				out.write("</tr>");				
 			}
 		} catch (UnreachableDataBaseException e) {
 			out.write("<script>");  
-			out.write("alert('Problemas ao acessar o banco de dados. Contate o suporte técnico e tente novamente mais tarde ');");  
-			//out.write("window.location.replace('/GraoPara/public/index.jsp');");  
+			out.write("alert('Problemas ao acessar o banco de dados. Contate o suporte técnico e tente novamente mais tarde.');"); 
 			out.write("</script>");
 		} catch (CodiceCaixaNotFoundException e) {
-			out.println("<td colspan=\"4\"><label class=\"labelExibe\">Nenhum códice ou caixa encontrado.</label></td>");
+			out.println("<td colspan=\"4\"><label class=\"labelExibe\">Nenhum cadastro de códice/caixa encontrado.</label></td>");
 		}
 	}
 	
 	public static void listAllUsers(HttpServletRequest request, JspWriter out) throws IOException{
 		Cookie d_email = WebUtility.selectCookie(request.getCookies(), WebUtility.cookie_email);
-		String c_email;
-		
+		String c_email;		
 		if(d_email == null)
 			c_email = null;
 		else
-			c_email = d_email.getValue();
-		
-		
+			c_email = d_email.getValue();		
 		SearchUserBean busca = new SearchUserBean();
-		List<DTO> users = null;	    
+		List<DTO> users = null;	  		
 		try {
-			users = busca.listUsers();
-			
+			users = busca.listUsers();				
 			for(DTO u : users){
-				UserAccount user = (UserAccount) u;
-				
+				UserAccount user = (UserAccount) u;				
 				if(!user.getEmail().equals(c_email)){
 					out.println("<tr>");
 					out.println("<td> <label for=\"identificacao\" class=\"labelExibe\">" + user.getName() + "</label> </td>");
@@ -170,12 +122,10 @@ public class PanelWorker {
 					out.println("</tr>");
 					out.println("</tr>");
 				}
-			}
-				
+			}				
 		} catch (UnreachableDataBaseException e) {
 			out.write("<script>");  
-			out.write("alert('Problemas ao acessar o banco de dados. Contate o suporte técnico e tente novamente mais tarde.');");  
-			//out.write("window.location.replace('/GraoPara/public/index.jsp');");  
+			out.write("alert('Problemas ao acessar o banco de dados. Contate o suporte técnico e tente novamente mais tarde.');"); 
 			out.write("</script>");
 			e.printStackTrace();
 		} catch (UserNotFoundException e) {
@@ -185,13 +135,11 @@ public class PanelWorker {
 	
 	public static void listAllNewUsers(HttpServletRequest request, JspWriter out) throws IOException{
 		SearchUserBean busca = new SearchUserBean();
-		List<DTO> users = null;
+		List<DTO> users = null;		
 		try {
-			users = busca.listUsers();
-			
+			users = busca.listUsers();			
 			for(DTO u : users){
-				UserAccount user = (UserAccount) u;
-				
+				UserAccount user = (UserAccount) u;				
 				if(user.getProfile().getProfile().equals("default")){
 					out.println("<tr>");
 					out.println("<td> <label for=\"identificacao\" class=\"labelExibe\">" + user.getName() + "</label> </td>");
@@ -210,24 +158,22 @@ public class PanelWorker {
 							+ "</td>");
 					out.println("</tr>");
 				}
-			}
-				
+			}				
 		} catch (UnreachableDataBaseException e) {
 			out.write("<script>");  
-			out.write("alert('Problemas ao acessar o banco de dados. Contate o suporte técnico e tente novamente mais tarde.');");  
-			//out.write("window.location.replace('/GraoPara/public/index.jsp');");  
+			out.write("alert('Problemas ao acessar o banco de dados. Contate o suporte técnico e tente novamente mais tarde.');"); 
 			out.write("</script>");
 			e.printStackTrace();
 		} catch (UserNotFoundException e) {
-			out.println("<td colspan=\"4\"><label class=\"labelExibe\">Nenhum usuário encontrado.</label></td>");
+			out.println("<td colspan=\"4\"><label class=\"labelExibe\">Nenhum usuário novo encontrado.</label></td>");
 		}
 	}
 	
 	public static void listAllAvailablePofile(HttpServletRequest request, JspWriter out) throws IOException{
 		AdminBean adm = new AdminBean();
-		List<DTO> list;
+		List<DTO> list;		
 		try {
-			list = adm.getAllAvailableProfiles();
+			list = adm.getAllAvailableProfiles();			
 			for(DTO dto : list){
 				Profile profile = (Profile) dto;
 				out.println("<option value=\""+ profile.getProfile() +"\">"+ profile.getProfile() + "</option>");

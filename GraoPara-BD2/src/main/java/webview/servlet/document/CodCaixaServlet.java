@@ -16,7 +16,7 @@ import business.exceptions.login.UnreachableDataBaseException;
 /**
  * Servlet implementation class OriginServlet
  */
-@WebServlet("/protected/admin/addOrigin")
+@WebServlet(urlPatterns={"/protected/admin/addOrigin", "/protected/user/addOrigin" })
 public class CodCaixaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -59,5 +59,4 @@ public class CodCaixaServlet extends HttpServlet {
 		    out.println("</script>");
 		}
 	}
-
 }
