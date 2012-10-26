@@ -53,10 +53,10 @@
 									<span class="asterisco">*</span>
 								</label>
 							</td>
-
 							<td class="field"><input class="input" id="palavra"	name="palavraNova" type="text" value="" maxlength="32" /></td>
-							
+							<br>
 							<td class="field">
+								<label class="labelForms" id="ltema" for="tema">Tema:</label>
 								<select id="tema" name="tema">
 									<%=WebUtility.printSelectKeyWordThemes() %>
 								</select>

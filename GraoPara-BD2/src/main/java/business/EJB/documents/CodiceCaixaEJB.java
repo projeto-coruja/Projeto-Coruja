@@ -7,6 +7,7 @@ import persistence.dto.DTO;
 import persistence.exceptions.UpdateEntityException;
 
 import business.DAO.document.CodiceCaixaDAO;
+import business.DAO.document.DocumentoDAO;
 import business.exceptions.documents.CodiceCaixaNotFoundException;
 import business.exceptions.documents.DuplicateCodiceCaixaException;
 import business.exceptions.login.UnreachableDataBaseException;
@@ -43,6 +44,18 @@ public class CodiceCaixaEJB {
 	public List<DTO> getAllEntries() throws UnreachableDataBaseException, CodiceCaixaNotFoundException{
 		return dao.findAllCodiceCaixa();
 	}
+	
+	public List<DTO> getAllEntriesWithContent() throws UnreachableDataBaseException, CodiceCaixaNotFoundException{
+		DocumentoDAO documento = new DocumentoDAO();
+		List<DTO> list = dao.findAllCodiceCaixa();
+		for(DTO d : list) {
+			CodiceCaixa c = (CodiceCaixa) d;
+			Long count = documento.countDocumentsByCriteria("codiceCaixa.cod = '" + c.getCod() + "'");
+			if(count == 0) list.remove(d);
+		}
+		return list;
+	}
+	
 	
 	public CodiceCaixa findExactEntry(String cod, String title) throws UnreachableDataBaseException, CodiceCaixaNotFoundException{
 		List<DTO> resultSet;
