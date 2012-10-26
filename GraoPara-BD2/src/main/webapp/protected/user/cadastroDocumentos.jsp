@@ -41,7 +41,7 @@
 
 			<div class="content" id="content">
 				<h1>Cadastro de Documento</h1>
-				<form id="signupform" autocomplete="off" method="GET" action="/GraoPara/protected/admin/addDoc">	
+				<form id="signupform" autocomplete="off" method="GET" action="/GraoPara/protected/user/addDoc">	
 					<table class="tableForms">
 						<tr>
 							<td class="field"><input type = "hidden" id="action" name="action" value="add"></input></td>
@@ -58,11 +58,7 @@
 				</form>
 			</div>
 
-			<!-- Rodape -->
-			<div class="footer">
-				<p>Copyright © - Universidade Federal de São Paulo - UNIFESP 2012</p>
-				<p>Desenvolvido pelo grupo Coruja</p>
-			</div>
+			<%@include file="/templates/footer.jsp" %>
 		</div>
 	</body>
 </html>

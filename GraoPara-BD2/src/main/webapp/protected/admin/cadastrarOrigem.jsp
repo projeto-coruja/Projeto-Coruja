@@ -34,6 +34,7 @@
 
 			<!-- Menu lateral -->
 			<div class="sidebar1">
+			
 				<!-- Area de login -->
 				<%@include file="/templates/loginReception.jsp" %>
 
@@ -42,90 +43,19 @@
 			</div>
 
 			<div class="content" id="content">
-				<h1>Cadastro de Códices/Caixas</h1>
+				<h1>Cadastro de Códice/Caixa</h1>
 
 				<form action="/GraoPara/protected/admin/addOrigin" id="signupform" method="get" autocomplete="off">
-					<table class="tableForms">
-						<tr>
-							<td class="tdForms">
-								<label class="labelForms" id="lidentificacao" for="identificacao">Identificação:<span class="asterisco">*</span></label>
-							</td>
-
-							<td class="field">
-								<select name="identificacao" class="input" id="identificacao">
-										<option value="">Selecione...</option>
-										<option value="codice">Número de Códice</option>
-										<option value="caixa">Número da Caixa</option>
-								</select>
-							</td>
-
-							<td class="status"></td>
-						</tr>
-
-						<tr>
-							<td class="tdForms">
-								<label class="labelForms" id="lcodigo" for="codigo">Código:<span class="asterisco">*</span></label>
-							</td>
-
-							<td class="field">
-								<input class="input" name="codigo" size="10" id="codigo" type="text" maxlength="5">
-							</td>
-
-							<td class="status"></td>
-						</tr>
-
-						<tr>
-							<td class="tdForms">
-								<label class="labelForms" id="ltitulo" for="titulo">Título:<span class="asterisco">*</span></label>
-							</td>
-
-							<td class="field"><input class="input" name="titulo" id="titulo" type="text" size="20" maxlength="48"></td>
-
-							<td class="status"></td>
-						</tr>
-
-						<tr>
-							<td class="tdForms">
-								<p></p> <input class="buttonRegistrar" id="signupsubmit"
-								name="inserir" type="submit" value="Enviar" />
-							</td>
-						</tr>
-					</table>
+					
+					<!-- Formulário de Cadastro de Códice/Caixa -->
+					<%@include file="/templates/newCodiceCaixaForm.jsp"%>
 				</form>
 
-				<!-- Duas quebras de linha -->
-				<br>
-				<br>
-
-				<div class="scrollLong">
-					<table class="tableList">
-						<tr class="trList">
-							<thead>
-								<tr>
-									<td class="tdList"><label for="identificacao"
-										class="labelExibe">Identificação</label></td>
-									<td class="tdList"><label for="codigo"
-										class="labelExibe">Código</label></td>
-									<td class="tdList"><label for="titulo"
-										class="labelExibe">Títulos</label></td>
-									<td class="tdList"><label for="acao"
-										class="labelExibe">Ação</label></td>
-								</tr>
-							</thead>
-						<tbody>
-							<%
-								PanelWorker.listAllCodex(request, out);
-							%>
-						</tbody>
-					</table>
-				</div>
+				<!-- Lista de Códices/Caixas já Cadastrados -->
+				<%@include file="/templates/registeredCodiceCaixaDetails.jsp" %>
 			</div>
 
-			<!-- Rodape -->
-			<div class="footer">
-				<p>Copyright © - Universidade Federal de São Paulo - UNIFESP 2012</p>
-				<p>Desenvolvido pelo grupo Coruja</p>
-			</div>
+			<%@include file="/templates/footer.jsp"%>
 		</div>
 	</body>
 </html>

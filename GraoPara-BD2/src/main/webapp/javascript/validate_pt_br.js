@@ -152,7 +152,7 @@ $(document).ready(function() {
 			 * ----------------------------------------------------- */
 			
 			identificacao: {
-				required: "Selecione a identificação."
+				required: "Selecione uma identificação."
 			},
 			tipo_num: {
 				required: "Selecione o tipo de número. </br>"
@@ -213,11 +213,11 @@ $(document).ready(function() {
 				minlength: jQuery.format("Digite no mínimo {0} caracteres.")
 			},
 			senha: {
-				required: "Digite sua senha",
+				required: "Digite sua senha.",
 				minlength: jQuery.format("Digite no mínimo {0} caracteres.")
 			},
 			confsenha: {
-				required: "Confirme sua senha",
+				required: "Confirme sua senha.",
 				minlength: jQuery.format("Digite no mínimo {0} caracteres."),
 				equalTo: "Digite uma senha igual a anterior."
 			},
@@ -234,14 +234,14 @@ $(document).ready(function() {
 			 * ----------------------------------------------------- */
 			
 			senhaAtual: {
-				required: "Informe sua senha atual"
+				required: "Informe sua senha atual."
 			},
 			senhaNova: {
-				required: "Digite a nova senha",
+				required: "Digite a nova senha.",
 				minlength: jQuery.format("Digite no mínimo {0} caracteres.")
 			},
 			senhaConfirme: {
-				required:  "Redigite a nova senha",
+				required:  "Redigite a nova senha.",
 				minlength: jQuery.format("Digite no mínimo {0} caracteres."),
 				equalTo: "Digite uma senha igual a anterior."
 			},

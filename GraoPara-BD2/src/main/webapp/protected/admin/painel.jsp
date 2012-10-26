@@ -50,9 +50,7 @@
 				<!-- Formulario para alterar senha -->
 				<form id="signupform" autocomplete="off" action="/GraoPara/doChangesToAccount?action=editPassword" method="post">
 					<%@include file="/templates/newPasswordForm.jsp"%>
-				</form>
-	
-				<br><br>
+				</form><br><br>
 	
 				<div id="tabsPainel">
 					<ul>
@@ -62,16 +60,12 @@
 					
 					<div id="tab1">
 						<div class="scroll">
-							<form action="">
+							<!-- <form action=""> -->
 								<table class="tablePainel">
-									<thead>
-										<tr>
-											<td><label for="identificacao" class="labelExibe">Nome</label></td>
-											<td><label for="identificacao" class="labelExibe">Email</label></td>
-											<td><label for="identificacao" class="labelExibe">Permissão</label></td>
-											<td><label for="identificacao" class="labelExibe">Ação</label></td>
-										</tr>
-									</thead>									
+									
+									<!-- Lista de Usuarios Cadastrados  -->
+									<%@include file="/templates/registeredUserDetails.jsp"%>
+																		
 									<tbody><%PanelWorker.listAllNewUsers(request, out);%></tbody>
 								</table>
 							</form>
@@ -81,21 +75,15 @@
 					<div id="tab2">
 						<div class="scroll">
 							<table class="tablePainel">
-								<thead>
-									<tr>
-										<td><label for="identificacao" class="labelExibe">Nome</label></td>
-										<td><label for="identificacao" class="labelExibe">Email</label></td>
-										<td><label for="identificacao" class="labelExibe">Permissão</label></td>
-										<td><label for="identificacao" class="labelExibe">Ação</label></td>
-									</tr>
-								</thead>	
+							
+								<!-- Lista de Usuarios Cadastrados  -->
+								<%@include file="/templates/registeredUserDetails.jsp"%>
+																	
 								<tbody><%PanelWorker.listAllUsers(request, out);%></tbody>
 							</table>
 						</div>
 					</div>
-				</div>
-				
-				<br>
+				</div><br>
 				
 			</div>
 			
