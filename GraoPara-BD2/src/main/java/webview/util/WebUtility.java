@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.JspWriter;
 
 import business.DAO.document.CodiceCaixaDAO;
-import business.DAO.document.DocumentoDAO;
 import business.DAO.document.TipoDocumentoDAO;
 import business.EJB.documents.CodiceCaixaEJB;
 import business.EJB.documents.KeyWordEJB;
@@ -201,19 +200,16 @@ public final class WebUtility {
 	public static String printTituloCodiceCaixa(HttpServletRequest request, boolean withContent) throws UnreachableDataBaseException {
 		String output = null;
 		String selected = request.getParameter("codigo");
-		CodiceCaixaDAO codiceCaixa = null;
-		DocumentoDAO documento = null;
+		CodiceCaixaEJB codiceCaixa = null;
+		List<DTO> list = null; 
 
 		try {
-			codiceCaixa = new CodiceCaixaDAO();
-			documento = new DocumentoDAO();
-			List<DTO> list = codiceCaixa.findAllCodiceCaixa();
+			codiceCaixa = new CodiceCaixaEJB();
 			if(withContent) {
-				for(DTO d : list) {
-					CodiceCaixa c = (CodiceCaixa) d;
-					Long count = documento.countDocumentsByCriteria("codiceCaixa.cod = '" + c.getCod() + "'");
-					if(count == 0) list.remove(d);
-				}
+				list = codiceCaixa.getAllEntriesWithContent();
+			}
+			else {
+				list = codiceCaixa.getAllEntries();
 			}
 			
 			output = "\n	<option selected value=\"\">Selecione...</option> ";
