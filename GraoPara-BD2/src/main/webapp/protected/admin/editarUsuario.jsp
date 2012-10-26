@@ -85,7 +85,7 @@
 							<td class="field">
 								<select name="permissao" class="input" id="permissao">
 									<option value="">Selecione...</option>
-									<% PanelWorker.listAllAvailablePofile(request, out); %>
+									<% PanelWorker.listAllAvailableProfile(request, out); %>
 								</select>
 							</td>
 

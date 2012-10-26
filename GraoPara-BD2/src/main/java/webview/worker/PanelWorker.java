@@ -169,7 +169,7 @@ public class PanelWorker {
 		}
 	}
 	
-	public static void listAllAvailablePofile(HttpServletRequest request, JspWriter out) throws IOException{
+	public static void listAllAvailableProfile(HttpServletRequest request, JspWriter out) throws IOException{
 		AdminBean adm = new AdminBean();
 		List<DTO> list;		
 		try {
