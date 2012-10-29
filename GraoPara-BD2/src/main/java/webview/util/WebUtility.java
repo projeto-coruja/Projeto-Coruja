@@ -3,6 +3,7 @@ package webview.util;
 import java.io.IOException;
 import java.text.Normalizer;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import javax.servlet.http.Cookie;
@@ -213,13 +214,18 @@ public final class WebUtility {
 			}
 			
 			output = "\n	<option selected value=\"\">Selecione...</option> ";
+			
+			HashSet<String> added = new HashSet<String>();
 
 			for(DTO d : list){
 				CodiceCaixa c = (CodiceCaixa) d;
-				if(!c.getCod().equals(selected))
-					output += "\n	<option value=\""+ c.getCod() + " \">"+ c.getCod().replace("-", " ") + " " + c.getTitulo() + "</option> ";
-				else
-					output += "\n	<option selected value=\""+ c.getCod() + " \">"+ c.getCod().replace("-", " ") + " " + c.getTitulo() + "</option> ";
+				if(!added.contains(c.getTitulo())) {
+					if(!c.getCod().equals(selected))
+						output += "\n	<option value=\""+ c.getTitulo() + " \">" + c.getTitulo() + "</option> ";
+					else
+						output += "\n	<option selected value=\""+ c.getTitulo() + " \">" + c.getTitulo() + "</option> ";
+					added.add(c.getTitulo());
+				}
 			}
 		} catch (CodiceCaixaNotFoundException e) {
 			//e.printStackTrace();

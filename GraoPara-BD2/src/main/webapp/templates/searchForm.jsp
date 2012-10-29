@@ -13,18 +13,13 @@
 					</label>
 				</td>
 			</tr>
-			<tr>
-				<td class="status">
-					<a href="#">
-						<img src="/GraoPara/images/icone_ajuda.png"	alt="Busca por qualquer palavra registrada nos campos de identificação do documento por este projeto." title="Busca por qualquer palavra registrada nos campos de identificação do documento por este projeto." />
-					</a>
-				</td>
-			</tr>
 
 			<tr>
 				<td class="tdPesquisa">
 					<label class="labelForms" id="lidentificacao" for="identificacao">
 						Códice/Caixa
+						<br>
+						<a class="tdMinilink" href="/GraoPara/listCodex" target="_blank">Lista de códices/caixas consultáveis</a>
 					</label>
 				</td>
 
@@ -42,6 +37,7 @@
 					</a>
 				</td>
 			</tr>
+			
 			<tr>
 				<td class="tdPesquisa">
 					<label class="labelForms" id="lcodigo" for="codigo">
@@ -129,7 +125,7 @@
 					</label>
 				</td>
 
-				<td class="status">
+				<td class="field">
 					<select name="tipoDaIdentificacao" class="input" id="identificacao">
 						<option selected value="">Selecione...</option>
 						<option value="APEP">APEP</option>
