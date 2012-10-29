@@ -103,7 +103,7 @@
 			<tr>
 				<td class="tdPesquisa">
 					<label class="labelForms" id="ltitulo" for="titulo">
-						Título
+						Título do Documento
 					</label>
 				</td>
 
@@ -241,7 +241,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td colspan="3"><label class="labelForms">Resumo ou Veberbete do Documento</label></td>
+				<td colspan="3"><label class="labelForms">Resumo ou Verbete do Documento</label></td>
 			</tr>
 			<tr>						
 				<td class="field" colspan="2"><textarea class="inputResumo" id="resumo" name="resumo" rows="7" cols="40" maxlength="2048"></textarea></td>
