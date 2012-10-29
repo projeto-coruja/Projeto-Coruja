@@ -20,11 +20,9 @@ public class CodiceCaixaMO implements EntityModel  {
 	private String cod;
 	
 	@NotEmpty
-	@NaturalId
 	@Column(length = 512)
 	private String titulo;
 	
-	//@NotNull
 	private int anoInicio;
 	
 	private int anoFim;

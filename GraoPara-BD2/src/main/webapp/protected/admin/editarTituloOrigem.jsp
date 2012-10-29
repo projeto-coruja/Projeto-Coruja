@@ -41,39 +41,30 @@
 			<div class="content" id="content">
 				<h1>Editar Códice/Caixa</h1>
 
-				<form id="signupform" autocomplete="off" method="get" action="/GraoPara/protected/admin/editOrigin">
+				<form id="editOriginForm" autocomplete="off" method="post" action="/GraoPara/protected/admin/editOrigin">
 					<table class="tableControle">
 						<tr>
-							<td class="tdForms"><label class="labelForms" id="lidentificacao" for="identificacao">Códice/Caixa <span class="asterisco">*</span></label></td>
-							<td class="field"><input class="input" readonly name="identificacao" size="10" id="identificacao" type="text" maxlength="10" value=<%=request.getParameter("identificacao")%>></td>
-							<td class="status"></td>
+							<td class="tdForms"><label class="labelForms" id="lcodigo" for="codigo">Editando:</label></td>
+							<td class="field"><input readonly="readonly" name= "codigo" id="codigo" value=<%=request.getParameter("codigo")%> /></td>
 						</tr>
-
-						<tr>
-							<td class="tdForms"><label class="labelForms" id="lcodigo" for="codigo">Código <span class="asterisco">*</span></label></td>
-							<td class="field"><input class="inputShort" readonly name="codigo" size="10" id="codigo" type="text" maxlength="5" value=<%=request.getParameter("codigo")%>></td>
-							<td class="status"></td>
-						</tr>
-
+						
 						<tr>
 							<td class="tdForms"><label class="labelForms" id="ltitulo" for="titulo">Título <span class="asterisco">*</span></label></td>
 							<td class="field">
-								<textarea class="inputResumo" name="titulo" id="titulo" rows="5" cols="40" maxlength="512">
-									<%=WebUtility.printCodCodiceCaixa(request)%>
-								</textarea>
+								<textarea class="inputResumo" name="titulo" id="titulo" rows="5" cols="40" maxlength="512"><%=WebUtility.printTituloCodCaixa(request)%></textarea>
 							</td>
 							<td class="status"></td>
 						</tr>
 						
 						<tr>
-							<td class="tdForms"><label class="labelForms" id="lanoInicioCodiceCaixa" for="anoInicioCodiceCaixa">Início de Ano <span class="asterisco">*</span></label></td>
-							<td class="field"><input class="inputShort" name="anoInicioCodiceCaixa" size="10" id="anoInicioCodiceCaixa" type="text" maxlength="4" value=<%=request.getParameter("codigo")%>></td>
+							<td class="tdForms"><label class="labelForms" id="lanoIni" for="anoIni">Ano de Início</label></td>
+							<td class="field"><input class="inputShort" name="anoIni" size="10" id="anoIni" type="text" maxlength="4" value=<%=request.getParameter("anoIni")%>></td>
 							<td class="status"></td>
 						</tr>
 						
 						<tr>
-							<td class="tdForms"><label class="labelForms" id="lanoFimCodiceCaixa" for="anoFimCodiceCaixa">Fim de Ano <span class="asterisco">*</span></label></td>
-							<td class="field"><input class="inputShort" name="anoFimCodiceCaixa" size="10" id="anoFimCodiceCaixa" type="text" maxlength="4" value=<%=request.getParameter("codigo")%>></td>
+							<td class="tdForms"><label class="labelForms" id="lanoFim" for="anoFim">Ano de Fim</label></td>
+							<td class="field"><input class="inputShort" name="anoFim" size="10" id="anoFim" type="text" maxlength="4" value=<%=request.getParameter("anoFim")%>></td>
 							<td class="status"></td>
 						</tr>
 
@@ -84,9 +75,6 @@
 							</td>
 						</tr>
 					</table>
-					
-					<input class="inputShort" name="oldCod" id="oldCod" type="hidden" value=<%=WebUtility.printLabel(request, "oldCod")%>>
-					<input class="inputResumo" name="oldTitle" id="oldTitle" type="hidden" value=<%=WebUtility.printLabel(request, "oldTitle")%>>
 				</form>
 			</div>
 

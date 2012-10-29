@@ -198,7 +198,7 @@ public final class WebUtility {
 	 * @return
 	 * @throws UnreachableDataBaseException
 	 */
-	public static String printTituloCodiceCaixa(HttpServletRequest request, boolean withContent) throws UnreachableDataBaseException {
+	public static String printSelectTituloCodiceCaixa(HttpServletRequest request, boolean withContent) throws UnreachableDataBaseException {
 		String output = null;
 		String selected = request.getParameter("codigo");
 		CodiceCaixaEJB codiceCaixa = null;
@@ -230,6 +230,29 @@ public final class WebUtility {
 		} catch (CodiceCaixaNotFoundException e) {
 			//e.printStackTrace();
 		}
+		return output;
+	}
+	
+	/**
+	 * 
+	 * @return
+	 * @throws UnreachableDataBaseException
+	 */
+	public static String printTituloCodCaixa(HttpServletRequest request) {
+		String output = null;
+		String selected = request.getParameter("codigo");
+		CodiceCaixaEJB codiceCaixa = new CodiceCaixaEJB();
+		List<DTO> list = null;
+		
+		try {
+			list = codiceCaixa.findByCod(selected);
+			output = ((CodiceCaixa)list.get(0)).getTitulo();
+		} catch (UnreachableDataBaseException e) {
+			e.printStackTrace();
+		} catch (CodiceCaixaNotFoundException e) {
+			e.printStackTrace();
+		}
+		
 		return output;
 	}
 	

@@ -74,13 +74,17 @@ public class PanelWorker {
 			origens = od.getAllEntries();			
 			for(DTO k : origens){
 				CodiceCaixa ori = (CodiceCaixa) k;				
-				out.write("<tr>");
-				out.write("<td class=\"tdList\"> <label for=\"codigo\" class=\"labelExibe\">" + ori.getCod() + " </label> </td>");
-				out.write("<td class=\"tdList\"> <label for=\"titulo\" class=\"labelExibe\">" + ori.getTitulo() + " </label> </td>");
+				out.print("<tr>");
+				out.print("<td class=\"tdList\"> <label for=\"codigo\" class=\"labelExibe\">" + ori.getCod() + " </label> </td>");
+				out.print("<td class=\"tdList\"> <label for=\"titulo\" class=\"labelExibe\">" + ori.getTitulo() + " </label> </td>");
+				out.print("<td class=\"tdList\"> <label for=\"anoIni\" class=\"labelExibe\">" + ori.getAnoInicio() + " </label> </td>");
+				out.print("<td class=\"tdList\"> <label for=\"anoFim\" class=\"labelExibe\">" + ori.getAnoFim() + " </label> </td>");
 				out.println("<td class=\"tdList\">"
 						+ "<a href=\"/GraoPara/protected/admin/editarTituloOrigem.jsp?" 
 						+ "&codigo=" + ori.getCod()
-						+ "\"><img src=\"/GraoPara/images/edit.png\" title=\"Editar título\" alt=\"Editar título\" /></a>"
+						+ "&anoIni=" + ori.getAnoInicio()
+						+ "&anoFim=" + ori.getAnoFim()
+						+ "\"><img src=\"/GraoPara/images/edit.png\" title=\"Editar códice/caixa\" alt=\"Editar códice/caixa\" /></a>"
 						+ "</td>");
 				out.write("</tr>");				
 			}
