@@ -55,13 +55,13 @@ public class KeyWordEJB {
 					throw new IllegalArgumentException("Palavra já existe");
 			}
 			try {
-				kwDao.addKeyWord(palavra, tema);
+				kwDao.addKeyWord(palavra.toLowerCase(), tema);
 			} catch (UnreachableDataBaseException e1) {
 				e1.printStackTrace();
 			}
 		} catch (KeywordNotFoundException e) {
 			try {
-				kwDao.addKeyWord(palavra, tema);
+				kwDao.addKeyWord(palavra.toLowerCase(), tema);
 			} catch (UnreachableDataBaseException e1) {
 				e1.printStackTrace();
 			}
@@ -107,59 +107,7 @@ public class KeyWordEJB {
 		if(oldKey == null || newKey == null || oldKey.equals("") || newKey.equals("") || newTheme == null || newTheme.isEmpty())	
 			throw new IllegalArgumentException("Argumentos não podem ser null/vazio");
 
-		DocumentEJB busca = new DocumentEJB();
-		List<DTO> results = null;
-
-		try {
-			results = busca.findByKeyWord(oldKey);
-			for(DTO dto : results){
-				Documento doc = (Documento) dto;
-				if(doc.getPalavraChave1() != null && doc.getPalavraChave1().getPalavra().equals(oldKey)){
-					doc.setPalavraChave1(doc.getPalavraChave2());
-					doc.setPalavraChave2(doc.getPalavraChave3());
-					doc.setPalavraChave3(null);
-				}
-				if(doc.getPalavraChave2() != null && doc.getPalavraChave2().getPalavra().equals(oldKey)){
-					doc.setPalavraChave2(doc.getPalavraChave3());
-					doc.setPalavraChave3(null);
-				}
-				if(doc.getPalavraChave3() != null && doc.getPalavraChave3().getPalavra().equals(oldKey)){
-					doc.setPalavraChave3(null);
-				}
-			}
-
-//			TemaPalavraChave select;
-//			try{
-//				List<DTO> resultSet = themeDAO.findThemeByString(newTheme);
-//				for(DTO dto : resultSet){
-//					if(((TemaPalavraChave)dto).getTema().equals(newKey))	select = (TemaPalavraChave) dto;
-//				}
-//			}catch(ThemeNotFoundException e){
-//				select = themeDAO.addThemeWord(newKey);
-//			}
-//			
-			PalavraChave keyWordDTO = keyWordDAO.updateKeyWord(oldKey.toLowerCase(), newKey.toLowerCase(), newTheme);
-
-			for(DTO dto : results){
-				Documento doc = (Documento) dto;
-				if(doc.getPalavraChave1() == null){
-					doc.setPalavraChave1(keyWordDTO);
-				}
-				else if(doc.getPalavraChave2() == null){
-					doc.setPalavraChave2(keyWordDTO);
-				}
-				else if(doc.getPalavraChave3() == null){
-					doc.setPalavraChave3(keyWordDTO);
-				}
-			}
-		} catch (DocumentNotFoundException e) {
-			try {
-				keyWordDAO.updateKeyWord(oldKey.toLowerCase(), newKey.toLowerCase(), newTheme);
-			} catch (UpdateEntityException e1) {
-				e1.printStackTrace();
-			}
-		} 
-
+		keyWordDAO.updateKeyWord(oldKey.toLowerCase(), newKey.toLowerCase(), newTheme);
 	}
 
 }

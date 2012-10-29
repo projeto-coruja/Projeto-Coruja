@@ -48,10 +48,12 @@ public class PanelWorker {
 				out.write("<td "+td+"> <label for=\"identificacao\" class=\"labelExibe\">" + key.getPalavra().replace("_", " ") + " </label> </td>");
 				out.println("<td "+td+">"
 						+ "<a href=\"/GraoPara/protected/admin/editarPalavraChave.jsp?"
-							+ "palavraAntiga="+ key.getPalavra() +"\" >"
+							+ "palavraAntiga="+ key.getPalavra()
+							+ "&tema="+ key.getTema().getTema() + "\" >"
 							+ "<img src=\"/GraoPara/images/edit.png\" title=\"Editar\" alt=\"Editar\" /></a>" 
 						+ "<a href=\"/GraoPara/protected/admin/doChangesToKeyWord?" 
-							+ "palavraAntiga=" + key.getPalavra()  
+							+ "palavraAntiga=" + key.getPalavra()
+							+ "&tema="+ key.getTema().getTema()
 							+ "&action=delete"
 							+ "&from=" + in
 							+ "\"><img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\" /></a>"
