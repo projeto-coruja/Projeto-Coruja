@@ -56,13 +56,13 @@ a img {
 
 /* ~~ Styling for your site's links must remain in this order - including the group of selectors that create the hover effect. ~~ */
 a:link {
-	color: #414958;
+	color: green;
 	text-decoration: none;
 	/* unless you style your links to look extremely unique, it's best to provide underlines for quick visual identification */
 }
 
 a:visited {
-	color: #4E5869;
+	color: green;
 	text-decoration: none;
 }
 
@@ -522,10 +522,18 @@ span.asterisco {
 	border: 0px;
 }
 
+
 .tdPesquisa {
 	text-align: left;
 	width: 200px;
 	border: 0px;
+}
+
+.tdMinilink {
+	text-align: left;
+	width: 400px;
+	border: 0px;
+	font-size: 11px;
 }
 
 .tdForms2 {

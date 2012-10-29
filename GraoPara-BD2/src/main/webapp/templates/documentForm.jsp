@@ -2,7 +2,7 @@
 
 <tr>
 	<td class="tdForms"><label class="labelForms" id="lidentificacao" for="identificacao">Códice/Caixa </label></td>
-	<td class="field"><select name="identificacao" class="inputLong" id="identificacao"><%=WebUtility.printTituloCodiceCaixa(request, true)%></select></td>
+	<td class="field"><select name="identificacao" class="inputLong" id="identificacao"><%=WebUtility.printSelectTituloCodiceCaixa(request, true)%></select></td>
 	<td class="status"></td>
 </tr>
 

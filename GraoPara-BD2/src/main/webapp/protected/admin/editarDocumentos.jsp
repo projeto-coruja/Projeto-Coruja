@@ -41,7 +41,7 @@
 
 							<td class="field">
 								<select name="identificacao" class="input" id="identificacao">
-										<%=WebUtility.printTituloCodiceCaixa(request, false)%>
+										<%=WebUtility.printSelectTituloCodiceCaixa(request, false)%>
 								</select>
 							</td>
 

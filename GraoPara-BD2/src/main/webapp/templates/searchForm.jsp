@@ -13,18 +13,13 @@
 					</label>
 				</td>
 			</tr>
-			<tr>
-				<td class="status">
-					<a href="#">
-						<img src="/GraoPara/images/icone_ajuda.png"	alt="Busca por qualquer palavra registrada nos campos de identificação do documento por este projeto." title="Busca por qualquer palavra registrada nos campos de identificação do documento por este projeto." />
-					</a>
-				</td>
-			</tr>
 
 			<tr>
 				<td class="tdPesquisa">
 					<label class="labelForms" id="lidentificacao" for="identificacao">
 						Códice/Caixa
+						<br>
+						<a class="tdMinilink" href="/GraoPara/listCodex" target="_blank">Lista de códices/caixas consultáveis</a>
 					</label>
 				</td>
 
@@ -42,6 +37,7 @@
 					</a>
 				</td>
 			</tr>
+			
 			<tr>
 				<td class="tdPesquisa">
 					<label class="labelForms" id="lcodigo" for="codigo">
@@ -72,7 +68,7 @@
 
 				<td class="field">
 					<select name="tituloCodiceCaixa" class="input" id="identificacao">
-						<%=WebUtility.printTituloCodiceCaixa(request, true)%>
+						<%=WebUtility.printSelectTituloCodiceCaixa(request, true)%>
 					</select>
 				</td>
 
@@ -107,7 +103,7 @@
 			<tr>
 				<td class="tdPesquisa">
 					<label class="labelForms" id="ltitulo" for="titulo">
-						Título
+						Título do Documento
 					</label>
 				</td>
 
@@ -129,7 +125,7 @@
 					</label>
 				</td>
 
-				<td class="status">
+				<td class="field">
 					<select name="tipoDaIdentificacao" class="input" id="identificacao">
 						<option selected value="">Selecione...</option>
 						<option value="APEP">APEP</option>
@@ -245,7 +241,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td colspan="3"><label class="labelForms">Resumo ou Veberbete do Documento</label></td>
+				<td colspan="3"><label class="labelForms">Resumo ou Verbete do Documento</label></td>
 			</tr>
 			<tr>						
 				<td class="field" colspan="2"><textarea class="inputResumo" id="resumo" name="resumo" rows="7" cols="40" maxlength="2048"></textarea></td>

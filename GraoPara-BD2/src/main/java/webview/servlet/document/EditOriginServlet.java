@@ -33,22 +33,19 @@ public class EditOriginServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String oldCod = request.getParameter("oldCod");
-		String oldTitle = request.getParameter("oldTitle");
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String cod = request.getParameter("codigo");
+		String title = request.getParameter("titulo");
 		
-		String newCod = request.getParameter("identificacao");
-		String newTitle = request.getParameter("titulo");
-		
-		int anoInicio = Integer.parseInt(request.getParameter("anoInicioCodiceCaixa"));
-		int anoFim = Integer.parseInt(request.getParameter("anoFimCodiceCaixa"));
+		int anoInicio = Integer.parseInt(request.getParameter("anoIni"));
+		int anoFim = Integer.parseInt(request.getParameter("anoFim"));
 		
 		CodiceCaixaEJB cb = new CodiceCaixaEJB();
 		response.setContentType("text/html");
 	    PrintWriter out=response.getWriter();   
 
 		try {
-			cb.update(oldCod, oldTitle, newCod, newTitle, anoInicio, anoFim);
+			cb.update(cod, title, anoInicio, anoFim);
 			out.println("<script>");  
 		    out.println("alert('Título editado com sucesso.');");
 		    out.println("window.location.replace('/GraoPara/protected/admin/cadastrarOrigem.jsp');");

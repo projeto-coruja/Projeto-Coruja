@@ -97,6 +97,7 @@ public class PalavraChaveDAO {
 			}
 			
 			if(!unmodifiedTheme)	select_pc.setTema(select_tpc);
+			select_pc.setPalavra(newKey);
 			manager.updateEntity(select_pc);
 
 		} catch(DataAccessLayerException e){

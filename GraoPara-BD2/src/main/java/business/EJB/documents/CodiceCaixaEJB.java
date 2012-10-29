@@ -37,6 +37,16 @@ public class CodiceCaixaEJB {
 		dao.updateCodiceCaixa(cc);
 	}
 	
+	public synchronized void update(String oldCod, String newTitle, int anoInicio, int anoFim) throws UnreachableDataBaseException, CodiceCaixaNotFoundException, IllegalArgumentException, UpdateEntityException{
+		if(anoFim < anoInicio)	throw new IllegalArgumentException("anoFim < anoInicio");
+		if(oldCod == null || oldCod.isEmpty())	throw new IllegalArgumentException("Código vazio ou nulo");
+		CodiceCaixa cc = (CodiceCaixa) findByCod(oldCod).get(0);
+		cc.setTitulo(newTitle);
+		cc.setAnoInicio(anoInicio);
+		cc.setAnoFim(anoFim);
+		dao.updateCodiceCaixa(cc);
+	}
+	
 	public List<DTO> findByCod(String cod) throws UnreachableDataBaseException, CodiceCaixaNotFoundException{
 		return dao.findCodiceCaixaByCod(cod);
 	}

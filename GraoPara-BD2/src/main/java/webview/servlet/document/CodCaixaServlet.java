@@ -30,33 +30,44 @@ public class CodCaixaServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		CodiceCaixaEJB od = new CodiceCaixaEJB();
+		response.setContentType("text/html");
+	    PrintWriter out=response.getWriter();  
+		
 		String tipo = request.getParameter("tipo");
 		String codigo = request.getParameter("codigo");
 		String titulo = request.getParameter("titulo");
-		int anoIni = Integer.parseInt(request.getParameter("anoIni"));
-		int anoFim = Integer.parseInt(request.getParameter("anoFim"));
+		String strAnoIni = request.getParameter("anoIni");
+		String strAnoFim = request.getParameter("anoFim");
 		
-		CodiceCaixaEJB od = new CodiceCaixaEJB();
-		response.setContentType("text/html");
-	    PrintWriter out=response.getWriter();   
-
-		try {
-			od.add(tipo, codigo, titulo, anoIni, anoFim);
+		if(tipo.trim().isEmpty() || codigo.trim().isEmpty() || titulo.trim().isEmpty() || strAnoIni.trim().isEmpty() || strAnoFim.trim().isEmpty()) {
 			out.println("<script>");  
-		    out.println("window.location.replace('/GraoPara/protected/admin/cadastrarOrigem.jsp');");
-		    out.println("</script>");		
-		} catch (DuplicateCodiceCaixaException e) {
-			out.println("<script>");  
-			out.println("alert('Número de Códices/Caixas Já Existe.');");  
+			out.println("alert('Preencha todos os campos, por favor!');");  
 		    out.println("history.go(-1);");  
 		    out.println("</script>");
-		    e.printStackTrace();
-		} catch (UnreachableDataBaseException e) {
-			out.println("<script>");  
-			out.println("alert('Erro no banco de dados, contate o suporte e tente novamente mais tarde.');");
-		    out.println("window.location.replace('/GraoPara/protected/admin/adminIndex.jsp');");
-		    out.println("</script>");
+		}
+		else {
+			int anoIni = Integer.parseInt(strAnoIni);
+			int anoFim = Integer.parseInt(strAnoFim);
+
+			try {
+				od.add(tipo, codigo, titulo, anoIni, anoFim);
+				out.println("<script>");  
+				out.println("window.location.replace('/GraoPara/protected/admin/cadastrarOrigem.jsp');");
+				out.println("</script>");		
+			} catch (DuplicateCodiceCaixaException e) {
+				out.println("<script>");  
+				out.println("alert('Número de códices/caixas já existe.');");  
+				out.println("history.go(-1);");  
+				out.println("</script>");
+				e.printStackTrace();
+			} catch (UnreachableDataBaseException e) {
+				out.println("<script>");  
+				out.println("alert('Erro no banco de dados, contate o suporte e tente novamente mais tarde.');");
+				out.println("window.location.replace('/GraoPara/protected/admin/adminIndex.jsp');");
+				out.println("</script>");
+			}
 		}
 	}
 }

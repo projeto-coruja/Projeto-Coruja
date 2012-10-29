@@ -6,7 +6,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.annotations.NaturalId;
 import org.hibernate.validator.constraints.NotEmpty;
 
 
@@ -22,7 +21,6 @@ public class PalavraChaveMO implements EntityModel  {
 	private TemaPalavraChaveMO tema;
 	
 	@NotEmpty
-	@NaturalId
 	private String palavra;
 
 	public Long getId() {
