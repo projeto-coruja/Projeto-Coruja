@@ -42,83 +42,23 @@
 				<a href="/GraoPara/doDownload?<% out.write(SearchWorker.getAllAttributesAndValues(request, out)); %>" class="buttonDownload" >
 					Download Pesquisa
 				</a>
+
+				<a href="http://pt-br.libreoffice.org/baixe-ja/" target="_blank">
+					<img src="/GraoPara/images/icone_ajuda.png"	alt="Os documentos são baixados no formato ODT e podem ser visualizados utilizando LibreOffice. Clique aqui para baixar o LibreOffice!" title="Os documentos são baixados no formato ODT e podem ser visualizados utilizando LibreOffice. Clique aqui para baixar o LibreOffice!" />
+				</a>
 			</div>
 
 			<div class="scrollLong">
 				<table class="tableList">
-						<tr class="trList">
-							<td class="tdList">
-								<label class="labelExibe">
-									Identificação
-								</label>
-							</td>
+					<tr class="trList">
+						<%@include file="/templates/documentData.jsp"%>
 
-							<td class="tdList">
-								<label class="labelExibe">
-									Código
-								</label>
-							</td>
-
-							<td class="tdList">
-								<label class="labelExibe">
-									Título
-								</label>
-							</td>
-
-							<td class="tdList">
-								<label class="labelExibe">
-									Tipo de Número
-								</label>
-							</td>
-
-							<td class="tdList">
-								<label class="labelExibe">
-									Número
-								</label>
-							</td>
-
-							<td class="tdList">
-								<label class="labelExibe">
-									Autor
-								</label>
-							</td>
-
-							<td class="tdList">
-								<label class="labelExibe">
-									Destinatário
-								</label>
-							</td>
-
-							<td class="tdList">
-								<label class="labelExibe">
-									Local
-								</label>
-							</td>
-
-							<td class="tdList">
-								<label class="labelExibe">
-									Data
-								</label>
-							</td>
-
-							<td class="tdList">
-								<label class="labelExibe">
-									Tipo de Documento
-								</label>
-							</td>
-
-							<td class="tdList">
-								<label class="labelExibe">
-									Palavras-Chave
-								</label>
-							</td>
-
-							<td class="tdList">
-								<label class="labelExibe">
-									Ações
-								</label>
-							</td>
-						</tr>
+						<td class="tdList">
+							<label class="labelExibe">
+								Ações
+							</label>
+						</td>
+					</tr>
 
 						<% SearchWorker.listAllDocuments(request, out); %>
 					</table>
