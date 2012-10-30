@@ -56,20 +56,20 @@ a img {
 
 /* ~~ Styling for your site's links must remain in this order - including the group of selectors that create the hover effect. ~~ */
 a:link {
-	color: blue;
-	text-decoration: none;
+	color: #24346F;
+	text-decoration: underline;
 	/* unless you style your links to look extremely unique, it's best to provide underlines for quick visual identification */
 }
 
 a:visited {
 	color: #24346F;
-	text-decoration: none;
+	text-decoration: underline;
 }
 
 a:hover,a:active,a:focus {
 	/* this group of selectors will give a keyboard navigator the same hover experience as the person using a mouse. */
 	color: #24346F;
-	text-decoration: underline;
+	text-decoration: none;
 }
 
 /* ~~ this container surrounds all other divs giving them their percentage-based width ~~ */
@@ -126,7 +126,7 @@ a:hover,a:active,a:focus {
 	/* Por algum motivo obscuro o Opera ainda está deixando os inputs retangulares, apesar de no input login ele aceitar o código de borda arredondada*/
 	-webkit-border-radius: 0.4em;
 	-moz-border-radius: 0.4em;
-	border-radius: 0.4em;
+	/* border-radius: 0.4em; */
 	border: 1;
 	/* Necessário quando o background da página em que o formulario estiver for branco */
 	width: 180px;
@@ -144,7 +144,7 @@ a:hover,a:active,a:focus {
 	background-color: #ffffff;
 	-webkit-border-radius: 0.4em;
 	-moz-border-radius: 0.4em;
-	border-radius: 0.4em;
+	/* border-radius: 0.4em; */
 	border: 1;
 	width: 140px;
 	height: 20px;
@@ -160,7 +160,7 @@ a:hover,a:active,a:focus {
 	background-color: #ffffff;
 	-webkit-border-radius: 0.4em;
 	-moz-border-radius: 0.4em;
-	border-radius: 0.4em;
+	/* border-radius: 0.4em; */
 	border: 1;
 	width: 64px;
 	height: 20px;
@@ -175,7 +175,7 @@ a:hover,a:active,a:focus {
 	background-color: #ffffff;
 	-webkit-border-radius: 0.4em;
 	-moz-border-radius: 0.4em;
-	border-radius: 0.4em;
+	/* border-radius: 0.4em; */
 	border: 1;
 	width: 51px;
 	height: 20px;
@@ -190,7 +190,7 @@ a:hover,a:active,a:focus {
 	background-color: #ffffff;
 	-webkit-border-radius: 0.4em;
 	-moz-border-radius: 0.4em;
-	border-radius: 0.4em;
+	/* border-radius: 0.4em; */
 	border: 1;
 	width: 40px;
 	height: 20px;
@@ -205,7 +205,7 @@ a:hover,a:active,a:focus {
 	background-color: #ffffff;
 	-webkit-border-radius: 0.4em;
 	-moz-border-radius: 0.4em;
-	border-radius: 0.4em;
+	/* border-radius: 0.4em; */
 	border: 1;
 	width: 100px;
 	height: 20px;
@@ -221,7 +221,7 @@ a:hover,a:active,a:focus {
 	background-color: #ffffff;
 	-webkit-border-radius: .4em;
 	-moz-border-radius: .4em;
-	border-radius: .4em;
+	/* border-radius: .4em; */
 	border: 1;
 	width: 400px;
 	height: 250px;
@@ -237,7 +237,7 @@ a:hover,a:active,a:focus {
 	background-color: #ffffff;
 	-webkit-border-radius: .4em;
 	-moz-border-radius: .4em;
-	border-radius: .4em;
+	/* border-radius: .4em; */
 	border: 1;
 	width: 60px;
 	height: 20px;
@@ -253,7 +253,7 @@ a:hover,a:active,a:focus {
 	background-color: #ffffff;
 	-webkit-border-radius: .4em;
 	-moz-border-radius: .4em;
-	border-radius: .4em;
+	/* border-radius: .4em; */
 	border: 1;
 	width: 350px;
 	height: 20px;
@@ -407,6 +407,14 @@ ul.nav li {
     font-size: small;
     border-top: 1px solid #24346F;
     right: auto;
+}
+
+.noBorderTop {
+	font-size: small;
+    list-style: none outside none;
+    border-top: 0px solid #24346F;
+    margin-bottom: -1px;
+    margin-top: -1px
 }
 
 ul.nav a,ul.nav a:visited {

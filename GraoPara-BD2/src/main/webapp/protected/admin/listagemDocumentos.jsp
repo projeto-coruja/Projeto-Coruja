@@ -41,9 +41,8 @@
 
 			<div align="right">
 				<a class="tdMinilink" href="/GraoPara/doDownload?<% out.write(SearchWorker.getAllAttributesAndValues(request, out));%>">Download Pesquisa</a>
-				<a href="http://pt-br.libreoffice.org/baixe-ja/" target="_blank">
-					<img src="/GraoPara/images/icone_ajuda.png"	alt="Os documentos são baixados no formato ODT e podem ser visualizados utilizando LibreOffice. Clique aqui para baixar o LibreOffice!" title="Os documentos são baixados no formato ODT e podem ser visualizados utilizando LibreOffice. Clique aqui para baixar o LibreOffice!" />
-				</a>
+				<label style="font-size: small">|</label>
+				<a class="tdMinilink" href="http://pt-br.libreoffice.org/baixe-ja/" target="_blank" title="Os documentos são baixados no formato ODT e podem ser visualizados utilizando LibreOffice. Clique aqui para baixar o LibreOffice!">Baixar o LibreOffice</a>
 			</div>
 
 			<div class="scrollLong">

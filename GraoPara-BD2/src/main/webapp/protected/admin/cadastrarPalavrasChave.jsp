@@ -63,7 +63,8 @@
 
 						<tr>
 							<td class="tdForms" align="right" colspan="2">
-								<br><input class="buttonRegistrar" id="signupsubmit" name="inserir" type="submit" value="Cadastrar" />
+								<br>
+								<input class="buttonRegistrar" id="signupsubmit" name="inserir" type="submit" value="Cadastrar" />
 							</td>
 						</tr>
 					</table>

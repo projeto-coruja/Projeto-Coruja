@@ -268,9 +268,11 @@
 				</td>
 			</tr>
 			<tr>
-				<td colspan="3"><p></p>
-					<input class="buttonLimpar" name="limpar" type="reset" value="Limpar" />
+				<td colspan="3">
+					<br>
 					<input class="buttonRegistrar" name="inserir" type="submit" value="Pesquisar" id="signupsubmit" />
+					<label>&nbsp;&nbsp;&nbsp;</label>
+					<input class="buttonLimpar" name="limpar" type="reset" value="Limpar" />
 				</td>
 			</tr>
 		</table>

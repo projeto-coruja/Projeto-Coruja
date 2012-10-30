@@ -52,7 +52,10 @@
 						</tr>
 
 						<tr>
-							<td class="tdControle"><input class="buttonRegistrar" id="signupsubmit" name="Enviar" type="submit" value="Gerar" /></td>
+							<td class="tdControle">
+								<br>
+								<input class="buttonRegistrar" id="signupsubmit" name="Enviar" type="submit" value="Gerar" />
+							</td>
 						</tr>
 					</table>
 				</form>
