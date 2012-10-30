@@ -33,56 +33,46 @@
 
 			<!-- Menu lateral -->
 			<div class="sidebar1">
+			
 				<!-- Area de login -->
-				<%@include file="/templates/loginReception.jsp" %>
+				<%@include file="/templates/loginReception.jsp"%>
 
 				<!-- Area de menu -->
-				<%@include file="/templates/adminMenu.jsp"%>
+				<%@include file="/templates/userAdvMenu.jsp"%>
 			</div>
 
 			<div class="content" id="content">
-				<h1>Cadastrar Tipos de Documentos</h1>
-				<form action="/GraoPara/protected/admin/doDocType" id="signupform" method="get" autocomplete="off">
+				<h1>Cadastro do Tipo de Documento</h1>
+				<form action="/GraoPara/protected/userAdv/doDocType" id="signupform" method="get" autocomplete="off">
 					<table class="tableControle">
 						<tr>
-							<td class="tdControle">
-								<label class="labelForms" id="ltpDoc" for="tpDoc">
-									Cadastrar Novo Tipo
-								</label>
-							</td>
-
+							<td class="tdControle"><label class="labelForms" id="ltpDoc" for="tpDoc">Novo Tipo de Documento</label></td>
 							<td class="field"><input class="input" id="tpDoc" name="docType" type="text" value="" maxlength="20" /></td>
 							<td class="status"></td>
 						</tr>
 
 						<tr>
-							<td class="tdForms">
-								<p></p> <input class="buttonRegistrar" id="signupsubmit" name="inserir" type="submit" value="Enviar" />
-							</td>
+							<td class="tdForms"><br><input class="buttonRegistrar" id="signupsubmit" name="inserir" type="submit" value="Cadastrar" /></td>
 						</tr>
 					</table>
 				</form>
 
 				<br>
 				<br>
-				
+
 				<div class="scrollLong">
 					<table class="tableList">
 						<tr class="trList">
-							<td class="tdList"><label class="labelExibe">Tipos de Documentos</label></td>
-							<td class="tdList"><label class="labelExibe">Ações</label></td>
+							<td class="tdList"><label class="labelExibe">Tipo de Documento</label></td>
+							<td class="tdList"><label class="labelExibe">Descrição</label></td>
 						</tr>
 
-						<% SearchWorker.listAllDocumentsTypes(request, out); %>
+						<% SearchWorker.listAllDocumentsTypes(request, out);%>
 					</table>
 				</div>
 			</div>
 
-			<!-- Rodape -->
-			<div class="footer">
-				<p>Copyright © - Universidade Federal de São Paulo - UNIFESP 2012</p>
-				<p>Desenvolvido pelo grupo Coruja</p>
-			</div>
+			<%@include file="/templates/footer.jsp"%>
 		</div>
 	</body>
 </html>

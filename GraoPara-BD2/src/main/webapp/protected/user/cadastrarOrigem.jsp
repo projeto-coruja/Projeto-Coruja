@@ -46,12 +46,11 @@
 				<h1>Cadastro de Códice/Caixa</h1>
 
 				<form action="/GraoPara/protected/user/addOrigin" id="signupform" method="get" autocomplete="off">
-
-					<!-- Formulário de Cadastro de Códice/Caixa -->
+					<!-- Formulario de cadastro de codice/caixa -->
 					<%@include file="/templates/newCodiceCaixaForm.jsp"%>
 				</form>
 
-				<!-- Lista de Códices/Caixas já Cadastrados -->
+				<!-- Lista de codices/caixas ja cadastrados -->
 				<%@include file="/templates/registeredCodiceCaixaDetails.jsp" %>
 			</div>
 

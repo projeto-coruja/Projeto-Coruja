@@ -154,7 +154,7 @@ public class SearchWorker {
 	public static void listAllDocumentsTypes(HttpServletRequest request, JspWriter out) throws IOException{
 		List<DTO> lista;
 		DocumentTypeEJB ejb = new DocumentTypeEJB();
-		
+
 		try {
 			lista = ejb.listAllTypeDocuments();
 			
@@ -167,7 +167,7 @@ public class SearchWorker {
 						+ "<a href=\"/GraoPara/protected/admin/removeDocType?docType="+ tipoDoc.getNome() + "\">"
 							+"<img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\"/>"
 						+ "</a>"
-					+ "</td> ");
+						+ "</td> ");
 				out.println("</tr>");
 			}
 			
