@@ -67,7 +67,7 @@
 							<td class="tdList"><label class="labelExibe">Descrição</label></td>
 						</tr>
 
-						<% SearchWorker.listAllDocumentsTypes(request, out);%>
+						<% SearchWorker.listAllDocumentsTypesForUser(request, out);%>
 					</table>
 				</div>
 			</div>

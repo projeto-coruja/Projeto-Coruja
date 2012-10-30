@@ -42,7 +42,7 @@ public class DocServlet extends HttpServlet {
 		String tipoCodDocumento = request.getParameter("tipoDoc");
 		String codDocumento = request.getParameter("numero");		
 		String local = request.getParameter("local");
-		String url = null;
+		String url = request.getParameter("urlImagem");
 		String resumo = request.getParameter("resumo");
 		
 		String[] identificacao = request.getParameter("identificacao").split("-");

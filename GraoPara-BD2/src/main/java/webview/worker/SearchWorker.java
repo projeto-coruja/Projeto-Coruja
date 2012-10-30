@@ -180,6 +180,30 @@ public class SearchWorker {
 		}
 	}
 	
+	public static void listAllDocumentsTypesForUser(HttpServletRequest request, JspWriter out) throws IOException{
+		List<DTO> lista;
+		DocumentTypeEJB ejb = new DocumentTypeEJB();
+
+		try {
+			lista = ejb.listAllTypeDocuments();
+			
+			for(DTO dto : lista){
+				TipoDocumento tipoDoc = (TipoDocumento) dto;
+				out.println("<tr  class=\"trList\">");
+				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ tipoDoc.getNome()+"</label></td>");
+				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ tipoDoc.getDescricao()+"</label></td>");
+				out.println("</tr>");
+			}
+			
+		} catch (UnreachableDataBaseException e) {
+			e.printStackTrace();
+		} catch (DocumentTypeNotFoundException e) {
+			out.println("<tr  class=\"trList\">");
+			out.println("<td colspan=\"2\" class=\"tdList\"><label class=\"labelExibe\">Nenhum tipo de documento encontrado.</label></td>");
+			out.println("</tr>");
+		}
+	}
+	
 	
 	public static void printDocumentInformation(HttpServletRequest request, JspWriter out) throws IOException{
 		String tipo = request.getParameter("tipoCodigoDoDocumento");
