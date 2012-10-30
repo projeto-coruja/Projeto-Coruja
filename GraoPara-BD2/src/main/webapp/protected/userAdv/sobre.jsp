@@ -22,7 +22,7 @@
 				<%@include file="/templates/loginReception.jsp" %>
 
 				<!-- Area de menu -->
-				<%@include file="/templates/userMenu.jsp"%>
+				<%@include file="/templates/userAdvMenu.jsp"%>
 			</div>
 
 			<!-- Conteudo -->

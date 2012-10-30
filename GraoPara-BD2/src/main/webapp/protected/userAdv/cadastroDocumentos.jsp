@@ -36,12 +36,12 @@
 				<%@include file="/templates/loginReception.jsp" %>
 
 				<!-- Area de menu -->
-				<%@include file="/templates/userMenu.jsp"%>
+				<%@include file="/templates/userAdvMenu.jsp"%>
 			</div>
 
 			<div class="content" id="content">
 				<h1>Cadastro de Documento</h1>
-				<form id="signupform" autocomplete="off" method="GET" action="/GraoPara/protected/user/addDoc">	
+				<form id="signupform" autocomplete="off" method="GET" action="/GraoPara/protected/userAdv/addDoc">	
 					<table class="tableForms">
 						<tr>
 							<td class="field"><input type = "hidden" id="action" name="action" value="add"></input></td>
