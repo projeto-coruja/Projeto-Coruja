@@ -28,6 +28,7 @@
 
 			<!-- Menu lateral -->
 			<div class="sidebar1">
+			
 				<!-- Area de login -->
 				<%@include file="/templates/loginReception.jsp" %>
 
@@ -39,10 +40,7 @@
 			<h1>Listagem de Documentos</h1>
 
 			<div align="right">
-				<a href="/GraoPara/doDownload?<% out.write(SearchWorker.getAllAttributesAndValues(request, out)); %>" class="buttonDownload" >
-					Download Pesquisa
-				</a>
-
+				<a class="tdMinilink" href="/GraoPara/doDownload?<% out.write(SearchWorker.getAllAttributesAndValues(request, out));%>">Download Pesquisa</a>
 				<a href="http://pt-br.libreoffice.org/baixe-ja/" target="_blank">
 					<img src="/GraoPara/images/icone_ajuda.png"	alt="Os documentos são baixados no formato ODT e podem ser visualizados utilizando LibreOffice. Clique aqui para baixar o LibreOffice!" title="Os documentos são baixados no formato ODT e podem ser visualizados utilizando LibreOffice. Clique aqui para baixar o LibreOffice!" />
 				</a>
@@ -52,24 +50,16 @@
 				<table class="tableList">
 					<tr class="trList">
 						<%@include file="/templates/documentData.jsp"%>
-
-						<td class="tdList">
-							<label class="labelExibe">
-								Ações
-							</label>
-						</td>
+						
+						<td class="tdList"><label class="labelExibe">Ações</label></td>
 					</tr>
-
+					
 						<% SearchWorker.listAllDocuments(request, out); %>
 					</table>
 				</div>
 			</div>
 
-			<!-- Rodape -->
-			<div class="footer">
-				<p>Copyright © - Universidade Federal de São Paulo - UNIFESP 2012</p>
-				<p>Desenvolvido pelo grupo Coruja</p>
-			</div>
+			<%@include file="/templates/footer.jsp" %>
 		</div>
 	</body>
 </html>

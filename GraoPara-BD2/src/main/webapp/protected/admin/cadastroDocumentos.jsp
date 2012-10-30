@@ -32,8 +32,9 @@
 
 			<!-- Menu lateral -->
 			<div class="sidebar1">
+			
 				<!-- Area de login -->
-				<%@include file="/templates/loginReception.jsp" %>
+				<%@include file="/templates/loginReception.jsp"%>
 
 				<!-- Area de menu -->
 				<%@include file="/templates/adminMenu.jsp"%>
@@ -47,7 +48,7 @@
 							<td class="field"><input type = "hidden" id="action" name="action" value="add"></input></td>
 						</tr>
 						
-						<%@include file="/templates/documentForm.jsp" %>	
+						<%@include file="/templates/documentForm.jsp"%>	
 						
 						<tr>
 							<td class="tdForms"><br><input class="buttonRegistrar" id="signupsubmit" name="inserir" type="submit" value="Enviar" /></td>
@@ -56,7 +57,7 @@
 				</form>
 			</div>
 
-			<%@include file="/templates/footer.jsp" %>
+			<%@include file="/templates/footer.jsp"%>
 		</div>
 	</body>
 </html>

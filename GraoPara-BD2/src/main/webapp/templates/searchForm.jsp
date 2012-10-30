@@ -1,4 +1,3 @@
-
 <%@page import="webview.util.WebUtility"%>
 
 <div class="content" id="content">
@@ -6,13 +5,13 @@
 
 	<form action="/GraoPara/public/listagemDocumentos.jsp" id="signupform" method="get" name="cadastro">
 		<table class="tablePesquisa">
-			<tr>
+			<!-- <tr>
 				<td colspan="3">
 					<label class="labelForms">
 						<strong>PREENCHA UM OU MAIS CAMPOS A SEGUIR:</strong>
 					</label>
 				</td>
-			</tr>
+			</tr> -->
 
 			<tr>
 				<td class="tdPesquisa">
@@ -46,9 +45,9 @@
 				</td>
 
 				<td class="field">
-					<label class="labelForms" id="ldata" for="data">de </label>
+					<label class="labelForms" id="ldata" for="data">De</label>
 					<input class="inputShort" type="text" name="codDe" id="ano" maxlength="4" />
-					<label class="labelForms" id="ldata" for="data"> até </label>
+					<label class="labelForms" id="ldata" for="data">Até</label>
 					<input class="inputShort" type="text" name="codAte" id="ano" maxlength="4" />
 				</td> 
 
@@ -87,9 +86,9 @@
 				</td>
 
 				<td class="field">
-					<label class="labelForms" id="ldata" for="data">de </label>
+					<label class="labelForms" id="ldata" for="data">De</label>
 					<input class="inputShort" type="text" name="epocaDe" id="ano" maxlength="4" />
-					<label class="labelForms" id="ldata" for="data"> até </label>
+					<label class="labelForms" id="ldata" for="data">Até</label>
 					<input class="inputShort" type="text" name="epocaAte" id="ano" maxlength="4" />
 				</td> 
 
@@ -215,9 +214,9 @@
 			<tr>
 				<td class="tdPesquisa"><label class="labelForms" id="ldata" for="data">Ano</label></td>
 				<td class="field">
-					<label class="labelForms" id="ldata" for="data">de </label>
+					<label class="labelForms" id="ldata" for="data">De</label>
 					<input class="inputShort" type="text" name="anoIni" id="ano" maxlength="4" />
-					<label class="labelForms" id="ldata" for="data"> até </label>
+					<label class="labelForms" id="ldata" for="data">Até</label>
 					<input class="inputShort" type="text" name="anoFim" id="ano" maxlength="4" />
 				</td> 
 				<td class="status"><a href="#"><img
@@ -248,7 +247,7 @@
 				<td class="status"></td>
 			</tr>
 			<tr>
-				<td colspan="3"><label for="palavrasChaves" class="labelForms">Palavra Chaves</label></td>
+				<td colspan="3"><label for="palavrasChaves" class="labelForms">Palavras-Chave</label></td>
 			</tr>
 			<tr>
 				<td class="field" colspan="2">
@@ -271,7 +270,7 @@
 			<tr>
 				<td colspan="3"><p></p>
 					<input class="buttonLimpar" name="limpar" type="reset" value="Limpar" />
-					<input class="buttonRegistrar" name="inserir" type="submit" value="Enviar" id="signupsubmit" style="FONT-FAMILY: 'Bitstream Charter';"/>
+					<input class="buttonRegistrar" name="inserir" type="submit" value="Pesquisar" id="signupsubmit" />
 				</td>
 			</tr>
 		</table>

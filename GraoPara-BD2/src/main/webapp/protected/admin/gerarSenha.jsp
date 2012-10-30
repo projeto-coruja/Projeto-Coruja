@@ -34,46 +34,31 @@
 			<!-- Menu lateral -->
 			<div class="sidebar1">
 				<!-- Area de login -->
-				<%@include file="/templates/loginReception.jsp" %>
+				<%@include file="/templates/loginReception.jsp"%>
 
 				<!-- Area de menu -->
 				<%@include file="/templates/adminMenu.jsp"%>
 			</div>
 
 			<div class="content" id="content">
-				<h1> Gerar Nova Senha para Usuário</h1>
+				<h1>Geração de Senha</h1>
 
 				<form action="/GraoPara/doPasswordRecovery" id="signupform"  method="post" autocomplete="off">
 					<table class="tableControle">
 						<tr>
-							<td class="tdControle">
-								<label class="labelForms"  id="lemail" for="email">
-									Email do usuário Cadastrado:
-									<span class="asterisco">*</span>
-								</label>
-							</td>
-
-							<td class="field">
-								<input class="input" id="email" name="email" type="text" value="" maxlength="150" />
-							</td>
-
+							<td class="tdControle"><label class="labelForms"  id="lemail" for="email">Email do Usuário</label></td>
+							<td class="field"><input class="input" id="email" name="email" type="text" value="" maxlength="150" /></td>
 							<td class="status"></td>
 						</tr>
 
 						<tr>
-							<td class="tdControle">
-								<input class="buttonRegistrar" id="signupsubmit" name="Enviar" type="submit" value="Gerar Senha Nova" />
-							</td>
+							<td class="tdControle"><input class="buttonRegistrar" id="signupsubmit" name="Enviar" type="submit" value="Gerar" /></td>
 						</tr>
 					</table>
 				</form>
 			</div>
 
-			<!-- Rodape -->
-			<div class="footer">
-				<p>Copyright © - Universidade Federal de São Paulo - UNIFESP 2012</p>
-				<p>Desenvolvido pelo grupo Coruja</p>
-			</div>
+			<%@include file="/templates/footer.jsp"%>
 		</div>
 	</body>
 </html>

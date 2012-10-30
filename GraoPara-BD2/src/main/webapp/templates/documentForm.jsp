@@ -7,13 +7,13 @@
 </tr>
 
 <tr>
-	<td class="tdForms"><label class="labelForms" id="lanoInicioCodiceCaixa" for="anoInicioCodiceCaixa">Início de Ano do Códice/Caixa </label></td>
+	<td class="tdForms"><label class="labelForms" id="lanoInicioCodiceCaixa" for="anoInicioCodiceCaixa">Ano Inicial do Códice/Caixa </label></td>
 	<td class="field"><input class="input" name="anoInicioCodiceCaixa" id="anoInicioCodiceCaixa" type="text" size="20" maxlength="4"></td>
 	<td class="status"></td>
 </tr>
 
 <tr>
-	<td class="tdForms"><label class="labelForms" id="lanoFimCodiceCaixa" for="anoFimCodiceCaixa">Fim de Ano do Códice/Caixa </label></td>
+	<td class="tdForms"><label class="labelForms" id="lanoFimCodiceCaixa" for="anoFimCodiceCaixa">Ano Final do Códice/Caixa </label></td>
 	<td class="field"><input class="input" name="anoFimCodiceCaixa" id="anoFimCodiceCaixa" type="text" size="20" maxlength="4"></td>
 	<td class="status"></td>
 </tr>
@@ -111,7 +111,7 @@
 </tr>
 
 <tr>
-	<td colspan="3"><label for="palavrasChaves" class="labelForms">Palavra Chaves <span class="asterisco">(Obrigatório Pelo Menos Uma)</span></label></td>
+	<td colspan="3"><label for="palavrasChaves" class="labelForms">Palavras-Chave (Obrigatório Pelo Menos Uma)</label></td>
 </tr>
 
 <tr>
