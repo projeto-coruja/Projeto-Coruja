@@ -34,24 +34,22 @@
 
 			<!-- Menu lateral -->
 			<div class="sidebar1">
-				
 				<!-- Area de login -->
 				<%@include file="/templates/loginReception.jsp" %>
 
 				<!-- Area de menu -->
-				<%@include file="/templates/userMenu.jsp"%>
+				<%@include file="/templates/userAdvMenu.jsp"%>
 			</div>
 
 			<div class="content" id="content">
 				<h1>Cadastro de Códice/Caixa</h1>
 
-				<form action="/GraoPara/protected/user/addOrigin" id="signupform" method="get" autocomplete="off">
-
-					<!-- Formulário de Cadastro de Códice/Caixa -->
+				<form action="/GraoPara/protected/userAdv/addOrigin" id="signupform" method="get" autocomplete="off">
+					<!-- Formulario de Cadastro de Codice/Caixa -->
 					<%@include file="/templates/newCodiceCaixaForm.jsp"%>
 				</form>
 
-				<!-- Lista de Códices/Caixas já Cadastrados -->
+				<!-- Lista de Codices/Caixas ja Cadastrados -->
 				<%@include file="/templates/registeredCodiceCaixaDetails.jsp" %>
 			</div>
 
