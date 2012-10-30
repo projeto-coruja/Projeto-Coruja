@@ -21,7 +21,7 @@
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" charset="utf-8"></script>
 		<script src="/GraoPara/javascript/chili-1.7.pack.js" type="text/javascript"></script>
 
-		<!-- Import dos scripts de validacao de formulario -->
+		<!-- Import dos scripts de validacoo de formulario -->
 		<script src="/GraoPara/javascript/jquery.js" type="text/javascript" charset="utf-8"></script>
 		<script src="/GraoPara/javascript/validate.js" type="text/javascript" charset="utf-8"></script>
 		<script src="/GraoPara/javascript/validate_pt_br.js" type="text/javascript" charset="utf-8"></script>
@@ -35,25 +35,27 @@
 			<!-- Menu lateral -->
 			<div class="sidebar1">
 				<!-- Area de login -->
-				<%@include file="/templates/loginReception.jsp" %>
+				<%@include file="/templates/loginReception.jsp"%>
 
 				<!-- Area de menu -->
-				<%@include file="/templates/userMenu.jsp"%>
+				<%@include file="/templates/userAdvMenu.jsp"%>
 			</div>
 
 			<div class="content" id="content">
-				<h1>Cadastro de Palavras-Chave</h1>
-				<form action="/GraoPara/protected/admin/doChangesToKeyWord" id="signupform"	method="get" autocomplete="off">
+				<h1>Cadastro de Palavra-Chave</h1>
+
+				<form action="/GraoPara/protected/userAdv/doChangesToKeyWord" id="signupform"	method="get" autocomplete="off">
 					<table class="tableControle">
 						<tr>
-							<td class="tdControle">
-								<label class="labelForms" id="lchave" for="chave">
-									Cadastrar nova Palavra:
-									<span class="asterisco">*</span>
-								</label>
-							</td>
-
+							<td class="tdControle"><label class="labelForms" id="lchave" for="chave">Palavra-Chave</label></td>
 							<td class="field"><input class="input" id="palavra"	name="palavraNova" type="text" value="" maxlength="32" /></td>
+							<td class="field">
+								<label class="labelForms" id="ltema" for="tema">Tema</label>
+								<select class="input" id="tema" name="tema">
+									<%=WebUtility.printSelectKeyWordThemes() %>
+								</select>
+							</td>
+							
 							<td class="status"></td>
 						 	<td class="field"><input class="input" id="action" name="action" type="hidden" value="add" maxlength="32" /></td>
 							<td class="field"><input class="input" id="action" name="from" type="hidden" value="cadastrarPalavrasChave.jsp" maxlength="20" /></td>
@@ -61,7 +63,7 @@
 
 						<tr>
 							<td class="tdForms" align="right" colspan="2">
-								<input class="buttonRegistrar" id="signupsubmit" name="inserir" type="submit" value="Enviar" />
+								<br><input class="buttonRegistrar" id="signupsubmit" name="inserir" type="submit" value="Cadastrar" />
 							</td>
 						</tr>
 					</table>
