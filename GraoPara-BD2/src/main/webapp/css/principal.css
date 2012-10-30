@@ -62,13 +62,13 @@ a:link {
 }
 
 a:visited {
-	color: blue;
+	color: #24346F;
 	text-decoration: none;
 }
 
 a:hover,a:active,a:focus {
 	/* this group of selectors will give a keyboard navigator the same hover experience as the person using a mouse. */
-	color: blue;
+	color: #24346F;
 	text-decoration: underline;
 }
 
@@ -99,20 +99,21 @@ a:hover,a:active,a:focus {
 	/* Parametros para deixar a borda arredondada nos principais navegadores */
 	-webkit-border-radius: .4em;
 	-moz-border-radius: .4em;
-	border-radius: .4em;
+	/* border-radius: .4em; */
 	/* Parametros para deixar uma sombra, com um estilo bevel */
 	-moz-box-shadow: 0 -1px 0 0px #000;
 	-webkit-box-shadow: 0 -1px 0 0px #000;
-	box-shadow: 0 -1px 0 0px #000;
-	width: 140px;
-	height: 27px;
+	/* box-shadow: 0 -1px 0 0px #000; */
+	width: 151px;
+	height: 23px;
 	margin-left: -5px;
 	color: #000;
 	padding: 0 0 0 5px;
 	/* Se quiser mais espação entre os formularios, é aqui que você deve brincar, teste as 4 coordenadas */
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 1em;
-	letter-spacing: 1px;
+	/* letter-spacing: 1px; */
+	
 }
 
 .iconeAjuda {
@@ -268,17 +269,17 @@ a:hover,a:active,a:focus {
 .buttonEntrar,.buttonRegistrar,.buttonCancelar,.buttonLimpar,.buttonSair
 	{
 	width: 140px;
-	height: 24px;
+	height: 25px;
 	text-align: center;
 	border: none;
 	float: inherit;
 	background: #24346F;
 	-webkit-border-radius: .6em;
 	-moz-border-radius: .6em;
-	border-radius: .6em;
+	/* border-radius: .6em; */
 	-webkit-box-shadow: 0 0px 1px rgba(255, 255, 255,);
 	-moz-box-shadow: 0 0px 1px rgba(255, 255, 255);
-	box-shadow: 0 0px 1px rgba(255, 255, 255,);
+	/* box-shadow: 0 0px 1px rgba(255, 255, 255,); */
 	color: white;
 	cursor: pointer;
 }
@@ -395,17 +396,17 @@ label {
 
 /* ~~ The navigation list styles (can be removed if you choose to use a premade flyout menu like Spry) ~~ */
 ul.nav {
-	list-style: none; /* this removes the list marker */
-	border-top: 1px solid #24346F;
-	/* this creates the top border for the links - all others are placed using a bottom border on the LI */
-	margin-bottom: 15px;
-	/* this creates the space between the navigation on the content below */
+    font-size: small;
+    list-style: none outside none;
+    border-top: 0px solid #24346F;
+    margin-bottom: -1px;
+    margin-top: -1px;
 }
 
 ul.nav li {
-	border-bottom: 1px solid #24346F;
-	/* this creates the button separation */
-	right: auto;
+    font-size: small;
+    border-top: 1px solid #24346F;
+    right: auto;
 }
 
 ul.nav a,ul.nav a:visited {
@@ -434,6 +435,7 @@ p.left {
 }
 
 .sidebar {
+	font-weight: bold;
 	text-align: center;
 	color: #24346F;
 }
@@ -633,7 +635,8 @@ article.menuLateral section,article.menuLateral section h2 {
 }
 
 .bordaBox .conteudo {
-	padding: 5px;
+	font-size: small;
+	padding: 1px;
 	display: block;
 	background: #FFF;
 	border-left: 1px solid #839AE6;
