@@ -15,7 +15,7 @@
 				<div>
 					<tr>
 						<td><input class="buttonEntrar" type="submit" name="Entrar"	value="Entrar" /></td>
-						<td><input type="button" class="buttonRegistrar" name="Registrar" value="Registrar"></td>						
+						<td><a href="/GraoPara/public/userCadastre.jsp"><input type="button" class="buttonRegistrar" name="Registrar" value="Registrar"></a></td>						
 						<p></p>
 					</tr>
 				</div>
