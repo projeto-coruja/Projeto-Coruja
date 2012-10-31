@@ -19,14 +19,14 @@
 			<!-- Menu lateral -->
 			<div class="sidebar1">
 				<!-- Area de login -->
-				<%@include file="/templates/loginReception.jsp" %>
+				<%@include file="/WEB-INF/templates/loginReception.jsp" %>
 
 				<!-- Area de menu -->
-				<%@include file="/templates/userAdvMenu.jsp"%>
+				<%@include file="/WEB-INF/templates/userAdvMenu.jsp"%>
 			</div>
 
 			<!-- Conteudo -->
-			<%@include file="/templates/aboutContent.jsp"%>
+			<%@include file="/WEB-INF/templates/aboutContent.jsp"%>
 
 			<!-- Rodape -->
 			<div class="footer">

@@ -32,10 +32,10 @@
 			<!-- Menu lateral -->
 			<div class="sidebar1">
 				<!-- Area de login -->
-				<%@include file="/templates/loginReception.jsp" %>
+				<%@include file="/WEB-INF/templates/loginReception.jsp" %>
 
 				<!-- Area de menu -->
-				<%@include file="/templates/adminMenu.jsp"%>
+				<%@include file="/WEB-INF/templates/adminMenu.jsp"%>
 			</div>
 
 			<div class="content" id="content">
@@ -44,7 +44,7 @@
 				<form id="signupform" autocomplete="off" method="POST" action="/GraoPara/protected/admin/updateDoc">
 					<table class="tableForms">
 						
-						<%@include file="/templates/documentForm.jsp" %>
+						<%@include file="/WEB-INF/templates/documentForm.jsp" %>
 
 						<tr>
 							<td class="tdControle" colspan="3">

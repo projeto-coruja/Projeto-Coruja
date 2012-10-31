@@ -80,7 +80,7 @@
 			
 		</label>
 	</td>
-	<%@include file="/templates/datesCadastre.jsp" %>
+	<%@include file="/WEB-INF/templates/datesCadastre.jsp" %>
 	<td class="status"></td>
 </tr>
 

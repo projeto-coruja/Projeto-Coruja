@@ -33,10 +33,10 @@
 			<!-- Menu lateral -->
 			<div class="sidebar1">
 				<!-- Area de login -->
-				<%@include file="/templates/loginReception.jsp" %>
+				<%@include file="/WEB-INF/templates/loginReception.jsp" %>
 
 				<!-- Area de menu -->
-				<%@include file="/templates/userMenu.jsp"%>
+				<%@include file="/WEB-INF/templates/userMenu.jsp"%>
 			</div>
 
 			<div class="content" id="content">
@@ -47,7 +47,7 @@
 							<td class="field"><input type = "hidden" id="action" name="action" value="add"></input></td>
 						</tr>
 						
-						<%@include file="/templates/documentForm.jsp" %>	
+						<%@include file="/WEB-INF/templates/documentForm.jsp" %>	
 						
 						<tr>
 							<td class="tdForms"><p></p>
@@ -58,7 +58,7 @@
 				</form>
 			</div>
 
-			<%@include file="/templates/footer.jsp" %>
+			<%@include file="/WEB-INF/templates/footer.jsp" %>
 		</div>
 	</body>
 </html>

@@ -32,14 +32,14 @@
 			<!-- Menu lateral -->
 			<div class="sidebar1">
 				<!-- Area de login -->
-				<%@include file="/templates/login.jsp" %>
+				<%@include file="/WEB-INF/templates/login.jsp" %>
 
 				<!-- Area de menu -->
-				<%@include file="/templates/defaultMenu.jsp"%>
+				<%@include file="/WEB-INF/templates/defaultMenu.jsp"%>
 			</div>
 
 			<!-- Conteudo -->
-			<%@include file="/templates/tutorialSearchContent.jsp"%>
+			<%@include file="/WEB-INF/templates/tutorialSearchContent.jsp"%>
 
 			<!-- Rodape -->
 			<div class="footer">

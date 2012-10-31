@@ -35,10 +35,10 @@
 			<!-- Menu lateral -->
 			<div class="sidebar1">
 				<!-- Area de login -->
-				<%@include file="/templates/loginReception.jsp" %>
+				<%@include file="/WEB-INF/templates/loginReception.jsp" %>
 
 				<!-- Area de menu -->
-				<%@include file="/templates/userAdvMenu.jsp"%>
+				<%@include file="/WEB-INF/templates/userAdvMenu.jsp"%>
 			</div>
 
 			<div class="content" id="content">
@@ -46,14 +46,14 @@
 
 				<form action="/GraoPara/protected/userAdv/addOrigin" id="signupform" method="get" autocomplete="off">
 					<!-- Formulario de Cadastro de Codice/Caixa -->
-					<%@include file="/templates/newCodiceCaixaForm.jsp"%>
+					<%@include file="/WEB-INF/templates/newCodiceCaixaForm.jsp"%>
 				</form>
 
 				<!-- Lista de Codices/Caixas ja Cadastrados -->
-				<%@include file="/templates/registeredCodiceCaixaDetails.jsp" %>
+				<%@include file="/WEB-INF/templates/registeredCodiceCaixaDetails.jsp" %>
 			</div>
 
-			<%@include file="/templates/footer.jsp"%>
+			<%@include file="/WEB-INF/templates/footer.jsp"%>
 		</div>
 	</body>
 </html>

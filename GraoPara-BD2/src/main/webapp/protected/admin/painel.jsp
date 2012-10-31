@@ -38,10 +38,10 @@
 			<div class="sidebar1">
 				
 				<!-- Area de login -->
-				<%@include file="/templates/loginReception.jsp"%>
+				<%@include file="/WEB-INF/templates/loginReception.jsp"%>
 	
 				<!-- Area de menu -->
-				<%@include file="/templates/adminMenu.jsp"%>
+				<%@include file="/WEB-INF/templates/adminMenu.jsp"%>
 			</div>
 	
 			<div class="content" id="content">
@@ -49,7 +49,7 @@
 				
 				<!-- Formulario para alterar senha -->
 				<form id="signupform" autocomplete="off" action="/GraoPara/doChangesToAccount?action=editPassword" method="post">
-					<%@include file="/templates/newPasswordForm.jsp"%>
+					<%@include file="/WEB-INF/templates/newPasswordForm.jsp"%>
 				</form><br><br>
 	
 				<div id="tabsPainel">
@@ -64,7 +64,7 @@
 								<table class="tablePainel">
 									
 									<!-- Lista de Usuarios Cadastrados  -->
-									<%@include file="/templates/registeredUserDetails.jsp"%>
+									<%@include file="/WEB-INF/templates/registeredUserDetails.jsp"%>
 																		
 									<tbody><%PanelWorker.listAllNewUsers(request, out);%></tbody>
 								</table>
@@ -76,7 +76,7 @@
 							<table class="tablePainel">
 							
 								<!-- Lista de Usuarios Cadastrados  -->
-								<%@include file="/templates/registeredUserDetails.jsp"%>
+								<%@include file="/WEB-INF/templates/registeredUserDetails.jsp"%>
 																	
 								<tbody><%PanelWorker.listAllUsers(request, out);%></tbody>
 							</table>
@@ -86,7 +86,7 @@
 				
 			</div>
 			
-			<%@include file="/templates/footer.jsp"%>
+			<%@include file="/WEB-INF/templates/footer.jsp"%>
 		</div>
 	
 		<script>$("#tabsPainel").tabs();</script>

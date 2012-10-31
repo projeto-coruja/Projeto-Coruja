@@ -34,10 +34,10 @@
 			<div class="sidebar1">
 			
 				<!-- Area de login -->
-				<%@include file="/templates/loginReception.jsp"%>
+				<%@include file="/WEB-INF/templates/loginReception.jsp"%>
 
 				<!-- Area de menu -->
-				<%@include file="/templates/adminMenu.jsp"%>
+				<%@include file="/WEB-INF/templates/adminMenu.jsp"%>
 			</div>
 
 			<div class="content" id="content">
@@ -48,7 +48,7 @@
 							<td class="field"><input type = "hidden" id="action" name="action" value="add"></input></td>
 						</tr>
 						
-						<%@include file="/templates/documentForm.jsp"%>	
+						<%@include file="/WEB-INF/templates/documentForm.jsp"%>	
 						
 						<tr>
 							<td class="tdForms">
@@ -60,7 +60,7 @@
 				</form>
 			</div>
 
-			<%@include file="/templates/footer.jsp"%>
+			<%@include file="/WEB-INF/templates/footer.jsp"%>
 		</div>
 	</body>
 </html>
