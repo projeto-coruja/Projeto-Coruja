@@ -3,8 +3,9 @@
 		<article class="menuLateral">
 			<ul class="nav" id="menu">
 				<li><a class="noBorderTop" href="/GraoPara/protected/user/index.jsp">Home</a></li>
-				<li><a href="/GraoPara/protected/user/pesquisa.jsp">Pesquisar Documento</a></li>
+				<li><a href="/GraoPara/protected/user/cadastrarOrigem.jsp">Cadastrar Códice/Caixa</a></li>
 				<li><a href="/GraoPara/protected/user/cadastroDocumentos.jsp">Cadastrar Documento</a></li>
+				<li><a href="/GraoPara/protected/user/pesquisa.jsp">Pesquisar Documento</a></li>
 				<li><a href="/GraoPara/protected/user/painel.jsp">Painel de Controle</a></li>
 			</ul>
 		</article>

@@ -3,8 +3,8 @@
 		<article class="menuLateral">
 			<ul class="nav" id="menu">
 				<li><a class="noBorderTop" href="/GraoPara/protected/admin/index.jsp">Home</a></li>
-				<li><a href="pesquisa.jsp">Pesquisar Documento</a></li>
 				<li><a href="painel.jsp">Painel de Controle</a></li>
+				<li><a href="cadUser.jsp">Cadastrar Usuário</a></li>
 				<li><a href="gerarSenha.jsp">Gerar Senha</a></li>
 			</ul>
 		</article>
@@ -25,7 +25,7 @@
 				<li><a href="cadastroDocumentos.jsp">Cadastrar Documento</a></li>
 				<li><a href="cadastrarPalavrasChave.jsp">Cadastrar Palavra-Chave</a></li>
 				<li><a href="cadastrarTipoDocumento.jsp">Cadastrar Tipo de Documento</a></li>
-				<li><a href="cadUser.jsp">Cadastrar Usuário</a></li>
+				<li><a href="pesquisa.jsp">Pesquisar Documento</a></li>
 			</ul>
 		</article>
 	</div>
