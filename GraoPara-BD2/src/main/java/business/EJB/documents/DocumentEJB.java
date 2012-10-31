@@ -586,6 +586,17 @@ public class DocumentEJB {
 		throw new DocumentNotFoundException("Documento não encontrado");
 	}
 	
+	public Documento findSingleDocument(String code) throws DocumentNotFoundException, UnreachableDataBaseException, IllegalArgumentException{
+		if(code == null || code.isEmpty()) throw new IllegalArgumentException("Code is empty");
+		String query = default_query;
+		query += " cod = '" + code + "'";
+		List<DTO> resultSet = docDao.findDocumentByQuery(query);
+		for(DTO dto : resultSet){
+			if(((Documento)dto).getCod().equals(code))	return (Documento) dto;
+		}
+		throw new DocumentNotFoundException("Documento não encontrado");
+	}
+	
 	public List<DTO> findByDocumentType(String type) throws UnreachableDataBaseException, DocumentNotFoundException{
 
 		String query = new String(default_query);

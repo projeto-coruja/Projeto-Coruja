@@ -39,7 +39,7 @@ public class DocServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String tituloDocumento = request.getParameter("tituloDocumento");
-		String tipoCodDocumento = request.getParameter("tipoDoc");
+		String tipoCodDocumento = request.getParameter("tipo_num");
 		String codDocumento = request.getParameter("numero");		
 		String local = request.getParameter("local");
 		String url = request.getParameter("urlImagem");
