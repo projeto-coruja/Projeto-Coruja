@@ -39,73 +39,38 @@
 			</div>
 
 			<div class="content" id="content">
-				<h2>Cadastro Usuário</h2>
+				<h1>Cadastro de Usuário</h1>
 
 				<form id="signupform" autocomplete="off" method="post" action="/GraoPara/doRegister">
 					<table class="tableForms">
 						<tr>
-							<td class="tdForms">
-								<label class="labelForms" id="lfirstname" for="nome">
-									Nome Completo:
-									<span class="asterisco">*</span>
-								</label>
-							</td>
+							<td class="tdForms2"><label class="labelForms" id="lfirstname" for="nome">Nome</label></td>
+							<td class="field"><input class="input" id="nome" name="nome" type="text" value="" maxlength="100"/></td>
+							<td class="status"></td>
+						</tr>
 
-							<td class="field">
-								<input class="input" id="nome" name="nome" type="text" value="" maxlength="100" />
-							</td>
+						<tr>
+							<td class="tdForms2"><label class="labelForms"  id="lemail" for="email" >Email</label></td>
+							<td class="field"><input class="input" id="email" name="email" type="text" value="" maxlength="150"/></td>
+							<td class="status"></td>
+						</tr>
 
+						<tr>
+							<td class="tdForms2"><label class="labelForms"  id="lpassword" for="password">Senha</label></td>
+							<td class="field"><input id="password" class="input" name="senha" type="password" maxlength="50" value="" /></td>
+							<td class="status"></td>
+						</tr>
+
+						<tr>
+							<td class="tdForms2"><label class="labelForms"  id="lpassword_confirm" for="password_confirm">Confirma Senha</label></td>
+							<td class="field"><input class="input" id="password_confirm" name="confsenha" type="password" maxlength="50" value="" /></td>
 							<td class="status"></td>
 						</tr>
 
 						<tr>
 							<td class="tdForms">
-								<label class="labelForms"  id="lemail" for="email">
-									Email:
-									<span class="asterisco">*</span>
-								</label>
-							</td>
-
-							<td class="field">
-								<input class="input" id="email" name="email" type="text" value="" maxlength="150" />
-							</td>
-
-							<td class="status"></td>
-						</tr>
-
-						<tr>
-							<td class="tdForms">
-								<label class="labelForms"  id="lpassword" for="password">
-									Senha:
-									<span class="asterisco">*</span>
-								</label>
-							</td>
-
-							<td class="field">
-								<input id="password" class="input" name="senha" type="password" maxlength="50" value="" />
-							</td>
-
-							<td class="status"></td>
-						</tr>
-
-						<tr>
-							<td class="tdForms">
-								<label class="labelForms"  id="lpassword_confirm" for="password_confirm">
-									Confirme sua Senha:
-									<span class="asterisco">*</span>
-								</label>
-							</td>
-
-							<td class="field">
-								<input class="input" id="password_confirm" name="confsenha" type="password" maxlength="50" value="" />
-							</td>
-
-							<td class="status"></td>
-						</tr>
-
-						<tr>
-							<td class="tdForms">
-								<input class="buttonRegistrar" id="signupsubmit" name="inserir" type="submit" value="Enviar" />
+								<br>
+								<input class="buttonRegistrar" id="signupsubmit" name="inserir" type="submit" value="Cadastrar" />
 							</td>
 						</tr>
 					</table>
@@ -113,10 +78,7 @@
 			</div>
 
 			<!-- Rodape -->
-			<div class="footer">
-				<p>Copyright © - Universidade Federal de São Paulo - UNIFESP 2012</p>
-				<p>Desenvolvido pelo grupo Coruja</p>
-			</div>
+			<%@include file="/WEB-INF/templates/footer.jsp"%>
 		</div>
 	</body>
 </html>
