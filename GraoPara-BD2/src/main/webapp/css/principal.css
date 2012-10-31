@@ -268,20 +268,21 @@ a:hover,a:active,a:focus {
 /* Estilo do botão de entrar do painel de login, está sendo reaproveitado para vários outros botões */
 .buttonEntrar,.buttonRegistrar,.buttonCancelar,.buttonLimpar,.buttonSair
 	{
-	width: 140px;
+	width: 80px;
 	height: 25px;
 	text-align: center;
 	border: none;
 	float: inherit;
 	background: #24346F;
-	-webkit-border-radius: .6em;
-	-moz-border-radius: .6em;
-	/* border-radius: .6em; */
+	-webkit-border-radius: .3em;
+	-moz-border-radius: .3em;
+	border-radius: .3em;
 	-webkit-box-shadow: 0 0px 1px rgba(255, 255, 255,);
 	-moz-box-shadow: 0 0px 1px rgba(255, 255, 255);
 	/* box-shadow: 0 0px 1px rgba(255, 255, 255,); */
 	color: white;
 	cursor: pointer;
+	margin-left: -1px;
 }
 
 .buttonCancelar {
@@ -311,9 +312,9 @@ a:hover,a:active,a:focus {
 	float: inherit;
 	background: #6F7D94;
 	background: -webkit-gradient(linear, left top);
-	-webkit-border-radius: .6em;
-	-moz-border-radius: .6em;
-	border-radius: .6em;
+	-webkit-border-radius: .3em;
+	-moz-border-radius: .3em;
+	border-radius: .3em;
 	-webkit-box-shadow: 0 0px 1px rgba(255, 255, 255);
 	-moz-box-shadow: 0 0px 1px rgba(255, 255, 255);
 	box-shadow: 0 0px 1px rgba(255, 255, 255);
@@ -340,9 +341,9 @@ a:hover,a:active,a:focus {
 	float: right;
 	background: #6F7D94;
 	background: -webkit-gradient(linear, left top);
-	-webkit-border-radius: .6em;
-	-moz-border-radius: .6em;
-	border-radius: .6em;
+	-webkit-border-radius: .3em;
+	-moz-border-radius: .3em;
+	border-radius: .3em;
 	-webkit-box-shadow: 0 0px 1px rgba(255, 255, 255);
 	-moz-box-shadow: 0 0px 1px rgba(255, 255, 255);
 	box-shadow: 0 0px 1px rgba(255, 255, 255);
