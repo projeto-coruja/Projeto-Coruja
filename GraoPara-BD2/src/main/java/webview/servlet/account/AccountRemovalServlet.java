@@ -41,6 +41,7 @@ public class AccountRemovalServlet extends HttpServlet {
 		
 		AdminBean adm = new AdminBean();
 		
+		String tab = request.getParameter("tab");
 		String email = request.getParameter("email");
 
 		try {
@@ -57,9 +58,9 @@ public class AccountRemovalServlet extends HttpServlet {
 			adm.deletarUsuario(email);
 
 			if(userToRemove.getProfile().equals("default"))
-				response.sendRedirect("/GraoPara/protected/admin/painel.jsp#tab1"); 
+				response.sendRedirect("/GraoPara/protected/admin/painel.jsp#tab"+tab); 
 			else
-				response.sendRedirect("/GraoPara/protected/admin/painel.jsp#tab2");
+				response.sendRedirect("/GraoPara/protected/admin/painel.jsp#tab"+tab);
 
 		} catch (UnreachableDataBaseException e) {
 			e.printStackTrace();

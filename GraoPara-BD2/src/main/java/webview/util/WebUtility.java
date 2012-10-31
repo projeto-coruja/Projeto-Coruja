@@ -212,19 +212,21 @@ public final class WebUtility {
 			else {
 				list = codiceCaixa.getAllEntries();
 			}
-			
-			output = "\n	<option selected value=\"\">Selecione...</option> ";
-			
-			HashSet<String> added = new HashSet<String>();
 
-			for(DTO d : list){
-				CodiceCaixa c = (CodiceCaixa) d;
-				if(!added.contains(c.getTitulo())) {
-					if(!c.getCod().equals(selected))
-						output += "\n	<option value=\""+ c.getTitulo() + " \">" + c.getTitulo() + "</option> ";
-					else
-						output += "\n	<option selected value=\""+ c.getTitulo() + " \">" + c.getTitulo() + "</option> ";
-					added.add(c.getTitulo());
+			output = "\n	<option selected value=\"\">Selecione...</option> ";
+			if(list != null){
+				
+				HashSet<String> added = new HashSet<String>();
+	
+				for(DTO d : list){
+					CodiceCaixa c = (CodiceCaixa) d;
+					if(!added.contains(c.getTitulo())) {
+						if(!c.getCod().equals(selected))
+							output += "\n	<option value=\""+ c.getTitulo() + " \">" + c.getTitulo() + "</option> ";
+						else
+							output += "\n	<option selected value=\""+ c.getTitulo() + " \">" + c.getTitulo() + "</option> ";
+						added.add(c.getTitulo());
+					}
 				}
 			}
 		} catch (CodiceCaixaNotFoundException e) {

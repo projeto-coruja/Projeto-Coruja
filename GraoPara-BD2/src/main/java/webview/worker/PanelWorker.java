@@ -123,7 +123,7 @@ public class PanelWorker {
 							+"&paramEmail="+user.getEmail()+"\" ><img src=\"/GraoPara/images/edit.png\" title=\"Editar\" alt=\"Editar\" /></a>" 
 							+ "<a href=\"/GraoPara/protected/admin/removeAccount?" 
 							+ "email=" + user.getEmail()
-							+ "&tab=3\"><img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\" /></a>"
+							+ "&tab=2\"><img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\" /></a>"
 							+ "</td>");
 					out.println("</tr>");
 					out.println("</tr>");
@@ -154,13 +154,13 @@ public class PanelWorker {
 					out.println("<td>"
 						+ "<a href=\"/GraoPara/protected/admin/approveAccount?" 
 							+ "email=" + user.getEmail()
-							+ "&action=delete" + "&tab=3\"><img src=\"/GraoPara/images/approve.png\" title=\"Aprovar\" alt=\"Aprovar\" /></a>"
+							+ " \"><img src=\"/GraoPara/images/approve.png\" title=\"Aprovar\" alt=\"Aprovar\" /></a>"
 						+ "<a href=\"/GraoPara/protected/admin/editarUsuario.jsp?"
 							+ "paramName=" + user.getName()
 							+"&paramEmail="+user.getEmail()+"\" ><img src=\"/GraoPara/images/edit.png\" title=\"Editar\" alt=\"Editar\" /></a>" 
 						+ "<a href=\"/GraoPara/protected/admin/removeAccount?" 
 							+ "email=" + user.getEmail()
-							+ "&tab=3\"><img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\" /></a>"
+							+ "&tab=1\"><img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\" /></a>"
 							+ "</td>");
 					out.println("</tr>");
 				}

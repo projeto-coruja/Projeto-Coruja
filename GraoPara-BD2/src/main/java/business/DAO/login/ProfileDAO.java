@@ -24,18 +24,35 @@ public class ProfileDAO {
 	}
 	
 	public static Profile getDefaultProfile(){
+		if(defaultProfile == null)	initDefaultProfile();
 		return defaultProfile;
 	}
 	
-	private void initDefaultProfile() { 
+	private static void initDefaultProfile() { 
 		if(defaultProfile == null) {	
 			try {
-				defaultProfile = this.findProfileByName(defaultProfileName);
+				defaultProfile = findDefaultProfile();
 			} catch (UnreachableDataBaseException e) {
 				e.printStackTrace();
 			} catch (ProfileNotFoundException e) {
-				//
+				
 			}
+		}
+	}
+	
+	private static Profile findDefaultProfile() throws UnreachableDataBaseException, ProfileNotFoundException {
+		PersistenceAccess manager;
+		manager = new PersistenceAccess();
+		List<DTO> resultSet = null;
+		try {
+			resultSet = manager.findEntity("from ProfileMO where profile = '" + defaultProfileName + "'");
+			if(resultSet == null) {
+				throw new ProfileNotFoundException();
+			}
+			else return (Profile) resultSet.get(0);
+		} catch(DataAccessLayerException e) {
+			e.printStackTrace();
+			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
 		}
 	}
 	
