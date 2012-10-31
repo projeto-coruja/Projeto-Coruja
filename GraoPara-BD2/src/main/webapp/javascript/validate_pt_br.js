@@ -10,13 +10,22 @@ $(document).ready(function() {
 			identificacao: {
 				required: true
 			},
+			anoInicioCodiceCaixa: {
+				required: true,
+				number: true,
+				minlength: 4
+			},
+			anoFimCodiceCaixa: {
+				required: true,
+				number: true,
+				minlength: 4
+			},
 			codigo: {
 				required: true,
-				minlength: 3,				
+				minlength: 3				
 			},
-			titulo: {
-				required: true,
-				minlength: 3,				
+			tituloDocumento: {
+				required: true				
 			},
 			numero: {
 				required: true,
@@ -26,16 +35,19 @@ $(document).ready(function() {
 				required: true			
 			},
 			autor: {
-				required: true,
-				minlength: 3,				
+				required: true				
+			},
+			autorOcupacao: {
+				required: true
 			},
 			destinatario: {
-				required: true,
-				minlength: 3,				
+				required: true				
+			},
+			destinatarioOcupacao: {
+				required: true
 			},
 			local: {
-				required: true,
-				minlength: 3,				
+				required: true				
 			},
 			dia: {
 				required: true				
@@ -45,18 +57,20 @@ $(document).ready(function() {
 			},
 			ano: {
 				required: true,
-				minlength: 4,
-				max: 2012,
-				number: true
+				number: true,
+				minlength: 4
 			},
 			tipoDoc: {
+				required: true
+			},
+			descricaoTipoDocumento: {
 				required: true
 			},
 			resumo: {
 				required: true
 			},
 			chave1: {
-				required: true,
+				required: true
 			},
 			
 			/* -----------------------------------------------------
