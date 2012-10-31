@@ -34,14 +34,14 @@
 			<div class="sidebar1">
 				
 				<!-- Area de login -->
-				<%@include file="/templates/loginReception.jsp" %>
+				<%@include file="/WEB-INF/templates/loginReception.jsp" %>
 				
 				<!-- Area de menu -->
-				<%@include file="/templates/adminMenu.jsp"%>
+				<%@include file="/WEB-INF/templates/adminMenu.jsp"%>
 			</div>
 
-			<%@include file="/templates/searchForm.jsp" %>
-			<%@include file="/templates/footer.jsp" %>
+			<%@include file="/WEB-INF/templates/searchForm.jsp" %>
+			<%@include file="/WEB-INF/templates/footer.jsp" %>
 		</div>
 	</body>
 </html>
