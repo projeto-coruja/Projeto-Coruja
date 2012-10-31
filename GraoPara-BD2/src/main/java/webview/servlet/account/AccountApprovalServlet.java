@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import persistence.exceptions.UpdateEntityException;
-import webview.util.JavascriptAlerts;
+import webview.util.AlertsUtility;
 
 import business.EJB.user.AdminBean;
 import business.exceptions.login.IncorrectProfileInformationException;
@@ -42,19 +42,19 @@ public class AccountApprovalServlet extends HttpServlet {
 		
 		} catch (IncorrectProfileInformationException e) {
 			
-			JavascriptAlerts.alertAndRedirectHistory(response, "Erro de profile inválido, contate o suporte.");
+			AlertsUtility.alertAndRedirectHistory(response, "Erro de profile inválido, contate o suporte.");
 			e.printStackTrace();
 		} catch (UnreachableDataBaseException e) {
 			
-			JavascriptAlerts.alertAndRedirectHistory(response, "Erro de banco de dados, contate o suporte.");
+			AlertsUtility.alertAndRedirectHistory(response, "Erro de banco de dados, contate o suporte.");
 			e.printStackTrace();
 		} catch (UserNotFoundException e) {
 			
-			JavascriptAlerts.alertAndRedirectHistory(response, "Erro de usuário inválido, contate o suporte.");
+			AlertsUtility.alertAndRedirectHistory(response, "Erro de usuário inválido, contate o suporte.");
 			e.printStackTrace();
 		} catch (ProfileNotFoundException e) {
 			
-			JavascriptAlerts.alertAndRedirectHistory(response, "Erro de profile não encontrado, contate o suporte.");
+			AlertsUtility.alertAndRedirectHistory(response, "Erro de profile não encontrado, contate o suporte.");
 			e.printStackTrace();
 		} catch (IllegalArgumentException e) {
 			// TODO Auto-generated catch block

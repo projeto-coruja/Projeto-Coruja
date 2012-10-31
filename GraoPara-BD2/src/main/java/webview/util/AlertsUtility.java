@@ -5,7 +5,7 @@ import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletResponse;
 
-public class JavascriptAlerts {
+public class AlertsUtility {
 	
 	public static void alertAndRedirectPage(HttpServletResponse response, String alert, String jsp_Page) throws IOException{
 		response.setContentType("text/html");  
@@ -16,7 +16,7 @@ public class JavascriptAlerts {
 	    out.println("</script>");
 	}
 	
-	public static void alertAndRedirectPage(HttpServletResponse response, String alert) throws IOException{
+	public static void alertOnly(HttpServletResponse response, String alert) throws IOException{
 		response.setContentType("text/html");  
 	    PrintWriter out=response.getWriter();   
 		out.println("<script>");  
