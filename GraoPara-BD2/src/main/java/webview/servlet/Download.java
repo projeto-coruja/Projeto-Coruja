@@ -35,21 +35,27 @@ public class Download extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected synchronized void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String tipoCodigoCaixa = request.getParameter("");
-		String codigoDe = request.getParameter("codigoDe");
-		String codigoAte = request.getParameter("codigoAte");
-		String titulo = request.getParameter("titulo");
-		String tipoAPEP_SEQ = request.getParameter("");
-		String numAPEP_SEQ = request.getParameter("numero");
+		
+		String tipoCodiceCaixa = request.getParameter("tipoCodCodiceCaixa");
+		String tituloCodiceCaixa = request.getParameter("tituloCodiceCaixa");
+		String codCodiceCaixaDe = request.getParameter("codDe");
+		String codCodiceCaixaAte = request.getParameter("codAte");
+		String anoInicioCodiceCaixa = request.getParameter("epocaDe");
+		String anoFimCodiceCaixa = request.getParameter("epocaAte");
+		
+		String tipoCodDocumento = request.getParameter("tipoDaIdentificacao");
+		String codDocumento = request.getParameter("numDaIdentificacao");
+		
 		String autor = request.getParameter("autor");
-		String ocupacaoAutor = null;
+		String ocupacaoAutor = request.getParameter("autorOcupacao");
+		
 		String destinatario = request.getParameter("destinatario");
-		String ocupacaoDestinatario = null;
+		String ocupacaoDestinatario = request.getParameter("destinatarioOcupacao");
+		
+		String tipoDocumento = request.getParameter("tipoDoc");
 		String local = request.getParameter("local");
-		String anoIni = request.getParameter("anoIni");
-		String anoFim = request.getParameter("anoFim");
-		String tipoDoc = request.getParameter("tipoDoc");
 		String resumo = request.getParameter("resumo");
+		
 		String palavraChave1 = request.getParameter("chave1");
 		String palavraChave2 = request.getParameter("chave2");
 		String palavraChave3 = request.getParameter("chave3");
@@ -61,19 +67,19 @@ public class Download extends HttpServlet {
 
 		DocumentEJB search = new DocumentEJB();
 		try {
-			List<DTO> resultSet = search.findDocuments(tipoCodigoCaixa, 
-					codigoDe, 
-					codigoAte, 
-					titulo, 
-					anoIni, 
-					anoFim, 
-					tipoAPEP_SEQ, 
-					numAPEP_SEQ, 
+			List<DTO> resultSet = search.findDocuments(tipoCodiceCaixa, 
+					codCodiceCaixaDe, 
+					codCodiceCaixaAte, 
+					tituloCodiceCaixa, 
+					anoInicioCodiceCaixa, 
+					anoFimCodiceCaixa, 
+					tipoCodDocumento, 
+					codDocumento, 
 					autor, 
 					ocupacaoAutor, 
 					destinatario, 
 					ocupacaoDestinatario, 
-					tipoDoc, 
+					tipoDocumento, 
 					local, 
 					resumo, 
 					palavraChave1, 
