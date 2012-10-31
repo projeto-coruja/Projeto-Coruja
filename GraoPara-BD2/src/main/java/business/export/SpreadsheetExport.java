@@ -21,7 +21,7 @@ public class SpreadsheetExport {
 	private static String tmpPath;
 	
 	private static void getPath(){
-		tmpPath = "/tmp/tenbcnen"; // Jboss
+		tmpPath = "/tmp"; // Jboss
 	}
 	
 	private static double getStringWidth(String s){
