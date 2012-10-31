@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import persistence.dto.UserAccount;
 import persistence.exceptions.UpdateEntityException;
-import webview.util.JavascriptAlerts;
+import webview.util.AlertsUtility;
 import business.EJB.user.RegisterUserBean;
 import business.EJB.user.SearchUserBean;
 import business.EJB.util.EJBUtility;
@@ -48,15 +48,15 @@ public class AccountRecoveryServlet extends HttpServlet {
 			user.setPassword(EJBUtility.getHash(newPassword, "MD5"));
 			cadastro.atualizarUsuario(user);
 		    
-			JavascriptAlerts.alertAndRedirectHistory(response, "Nova senha gerado para "+ email +": "+ newPassword);
+			AlertsUtility.alertAndRedirectHistory(response, "Nova senha gerado para "+ email +": "+ newPassword);
 			
 		} catch (UnreachableDataBaseException e) {
 			
-			JavascriptAlerts.alertAndRedirectHistory(response, "Problema ao se conectar ao banco de dados.");
+			AlertsUtility.alertAndRedirectHistory(response, "Problema ao se conectar ao banco de dados.");
 			e.printStackTrace();
 		} catch (UserNotFoundException e) {
 			
-			JavascriptAlerts.alertAndRedirectHistory(response, "Usuário não encontrado.");
+			AlertsUtility.alertAndRedirectHistory(response, "Usuário não encontrado.");
 		} catch (IllegalArgumentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

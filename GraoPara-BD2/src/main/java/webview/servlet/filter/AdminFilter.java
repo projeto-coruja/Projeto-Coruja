@@ -15,13 +15,13 @@ import business.EJB.user.AuthBean;
 /**
  * Servlet Filter implementation class UserFilter
  */
-@WebFilter({"/protected/user/*", "/protected/user/"})
-public class UserFilter implements Filter {
+@WebFilter({"/protected/admin/*", "/protected/admin/"})
+public class AdminFilter implements Filter {
 
     /**
      * Default constructor. 
      */
-    public UserFilter() {
+    public AdminFilter() {
         //  Auto-generated constructor stub
     }
 

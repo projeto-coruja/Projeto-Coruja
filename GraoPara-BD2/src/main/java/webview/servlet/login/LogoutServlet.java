@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import webview.util.JavascriptAlerts;
+import webview.util.AlertsUtility;
 
 /**
  * Servlet implementation class LogoutServlet
@@ -36,7 +36,7 @@ public class LogoutServlet extends HttpServlet {
 			response.addCookie(c);
 		}
 		
-		JavascriptAlerts.alertAndRedirectPage(response, "Logout feito com sucesso!");
+		AlertsUtility.alertOnly(response, "Logout feito com sucesso!");
 		
 		response.sendRedirect("/GraoPara/public/index.jsp");
 	}
