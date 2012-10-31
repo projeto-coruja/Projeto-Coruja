@@ -36,7 +36,7 @@ public class AdminFilter implements Filter {
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		FilterUtility.trueFilter(AuthBean.LoginSuccessUserLevel1, request, response, chain);
+		FilterUtility.trueFilter(AuthBean.LoginSuccessAdmin, request, response, chain);
 	}
 
 	/**
