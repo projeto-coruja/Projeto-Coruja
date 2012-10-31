@@ -113,17 +113,9 @@ table.tabbedtable label { text-align: right; padding-right: 9px; }
 }
 
 #signupform .field {
-  padding-bottom: 10px;
-  padding-left:50px;
+  padding-bottom: 0px;
+  padding-left:0px;
   width: 120px;
-  white-space: nowrap;
-}
-
-#signupform .status {
-  padding-top: 2px;
-  padding-left: 8px;
-  vertical-align: top;
-  font-size: 11px;
   white-space: nowrap;
 }
 
@@ -138,11 +130,16 @@ table.tabbedtable label { text-align: right; padding-right: 9px; }
   width: 150px;
 }
 
+#signupform input.error { 
+	border: 1px solid #DD4B39;
+}
+	
 #signupform label.error {
   /* background:url("/GraoPara/images/unchecked.gif") no-repeat 0px 0px; */
-  padding-left: 16px;
-  padding-bottom: 2px;
+  padding-left: 0px;
+  /* padding-bottom: 2px; */
   font-size: small;
+  vertical-align: -7px;
   /* font-weight: normal; */
   color: #DD4B39;
 }

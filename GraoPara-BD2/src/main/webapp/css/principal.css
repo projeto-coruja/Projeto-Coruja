@@ -38,15 +38,15 @@ ul,ol,dl {
 h1,h2,h3,h4,h5,h6 {
 	margin-top: 0;
 	/* removing the top margin gets around an issue where margins can escape from their containing div. The remaining bottom margin will hold it away from any elements that follow. */
-	padding-right: 15px;
-	padding-left: 15px;
+	/* padding-right: 15px;
+	padding-left: 15px; */
 	/* adding the padding to the sides of the elements within the divs, instead of the divs themselves, gets rid of any box model math. A nested div with side padding can also be used as an alternate method. */
-	text-align: center;
-	color: #668FE4;
+	text-align: -moz-center;
+	color: black;
 }
 
 h1 {
-	font-size: 22px;
+	font-size: larger;
 }
 
 a img {
@@ -104,6 +104,7 @@ a:hover,a:active,a:focus {
 	-moz-box-shadow: 0 -1px 0 0px #000;
 	-webkit-box-shadow: 0 -1px 0 0px #000;
 	/* box-shadow: 0 -1px 0 0px #000; */
+	border: 1px solid gray;
 	width: 151px;
 	height: 23px;
 	margin-left: -5px;
@@ -127,9 +128,9 @@ a:hover,a:active,a:focus {
 	-webkit-border-radius: 0.4em;
 	-moz-border-radius: 0.4em;
 	/* border-radius: 0.4em; */
-	border: 1;
+	border: 1px solid gray;
 	/* Necessário quando o background da página em que o formulario estiver for branco */
-	width: 180px;
+	width: 270px;
 	height: 20px;
 	margin: 5px 0;
 	color: #000;
@@ -140,12 +141,17 @@ a:hover,a:active,a:focus {
 	letter-spacing: 1px;
 }
 
+.input:FOCUS, .inputLogin:FOCUS, .inputTipoNum:FOCUS, .inputShort:FOCUS, .inputDia:FOCUS, .inputAno
+.inputPalavraChave:FOCUS, .inputResumo:FOCUS, .inputEstado:FOCUS, .inputLong:FOCUS {
+	border: 1px solid #4D90FE;
+}
+
 .inputTipoNum {
 	background-color: #ffffff;
 	-webkit-border-radius: 0.4em;
 	-moz-border-radius: 0.4em;
 	/* border-radius: 0.4em; */
-	border: 1;
+	border: 1px solid gray;
 	width: 140px;
 	height: 20px;
 	margin: 5px 0;
@@ -161,7 +167,7 @@ a:hover,a:active,a:focus {
 	-webkit-border-radius: 0.4em;
 	-moz-border-radius: 0.4em;
 	/* border-radius: 0.4em; */
-	border: 1;
+	border: 1px solid gray;
 	width: 64px;
 	height: 20px;
 	margin: 5px 0;
@@ -176,7 +182,7 @@ a:hover,a:active,a:focus {
 	-webkit-border-radius: 0.4em;
 	-moz-border-radius: 0.4em;
 	/* border-radius: 0.4em; */
-	border: 1;
+	border: 1px solid gray;
 	width: 51px;
 	height: 20px;
 	margin: 5px 0;
@@ -191,7 +197,7 @@ a:hover,a:active,a:focus {
 	-webkit-border-radius: 0.4em;
 	-moz-border-radius: 0.4em;
 	/* border-radius: 0.4em; */
-	border: 1;
+	border: 1px solid gray;
 	width: 40px;
 	height: 20px;
 	margin: 5px 0;
@@ -206,7 +212,7 @@ a:hover,a:active,a:focus {
 	-webkit-border-radius: 0.4em;
 	-moz-border-radius: 0.4em;
 	/* border-radius: 0.4em; */
-	border: 1;
+	border: 1px solid gray;
 	width: 100px;
 	height: 20px;
 	margin: 5px 0;
@@ -222,7 +228,7 @@ a:hover,a:active,a:focus {
 	-webkit-border-radius: .4em;
 	-moz-border-radius: .4em;
 	/* border-radius: .4em; */
-	border: 1;
+	border: 1px solid gray;
 	width: 400px;
 	height: 250px;
 	margin: 0px 0;
@@ -238,7 +244,7 @@ a:hover,a:active,a:focus {
 	-webkit-border-radius: .4em;
 	-moz-border-radius: .4em;
 	/* border-radius: .4em; */
-	border: 1;
+	border: 1px solid gray;
 	width: 60px;
 	height: 20px;
 	margin: 0px 0;
@@ -254,7 +260,7 @@ a:hover,a:active,a:focus {
 	-webkit-border-radius: .4em;
 	-moz-border-radius: .4em;
 	/* border-radius: .4em; */
-	border: 1;
+	border: 1px solid gray;
 	width: 350px;
 	height: 20px;
 	margin: 0px 0;
@@ -489,7 +495,8 @@ p.left {
 /* Parametros para personalizar mais fácil o texto de descrição dos formulários, em alguns sites eles substituem o label por um texto dentro do input que é
 apagado quando o usuário digitar algo dentro, para isso use o atributo placeholder="texto" dentro da tag do input no html */
 .labelForms {
-	font-size: 12px;
+	font-size: small;
+	font-weight: bold;
 	text-align: left;
 }
 
@@ -516,7 +523,7 @@ span.asterisco {
 
 .tableForms {
 	text-align: left;
-	margin: 40px 0 0 0px;
+	/* margin: 40px 0 0 0px; */
 	width: 580px;
 	border: 0px;
 }
