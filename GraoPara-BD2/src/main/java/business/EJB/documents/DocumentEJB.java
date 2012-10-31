@@ -282,7 +282,7 @@ public class DocumentEJB {
 		
 		// Verificação de existência da origem do documento no banco
 		try {
-			codCaixa = codiceCaixaDAO.findExactCodiceCaixa(codCodiceCaixa, tituloCodiceCaixa);
+			codCaixa = codiceCaixaDAO.findExactCodiceCaixa(codCodiceCaixa);
 		} catch (CodiceCaixaNotFoundException e1) {
 			throw new IllegalArgumentException("Nenhum Códice/Caixa selecionado");
 			/*try {
@@ -456,7 +456,7 @@ public class DocumentEJB {
 		
 		// Verificação de existência da origem do documento no banco
 		try {
-			codCaixa = codiceCaixaDAO.findExactCodiceCaixa(codCodiceCaixa, tituloCodiceCaixa);
+			codCaixa = codiceCaixaDAO.findExactCodiceCaixa(codCodiceCaixa);
 		} catch (CodiceCaixaNotFoundException e1) {
 			throw new IllegalArgumentException();
 			/*try {
