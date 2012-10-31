@@ -37,27 +37,28 @@
 			</div>
 
 			<div class="content" id="content">
-			<h1>Listagem de Documentos</h1>
+				<h1>Listagem de Documentos</h1>
+	
+				<div align="right">
+					<a class="tdMinilink" href="/GraoPara/doDownload?<% out.write(SearchWorker.getAllAttributesAndValues(request, out));%>">Download Pesquisa</a>
+					<label style="font-size: small">|</label>
+					<a class="tdMinilink" href="http://pt-br.libreoffice.org/baixe-ja/" target="_blank" title="Os documentos são baixados no formato ODT e podem ser visualizados utilizando LibreOffice. Clique aqui para baixar o LibreOffice!">Baixar o LibreOffice</a>
+				</div>
 
-			<div align="right">
-				<a class="tdMinilink" href="/GraoPara/doDownload?<% out.write(SearchWorker.getAllAttributesAndValues(request, out));%>">Download Pesquisa</a>
-				<label style="font-size: small">|</label>
-				<a class="tdMinilink" href="http://pt-br.libreoffice.org/baixe-ja/" target="_blank" title="Os documentos são baixados no formato ODT e podem ser visualizados utilizando LibreOffice. Clique aqui para baixar o LibreOffice!">Baixar o LibreOffice</a>
-			</div>
-
-			<div class="scrollLong">
-				<table class="tableList">
-					<tr class="trList">
-						<%@include file="/WEB-INF/templates/documentData.jsp"%>
+				<div class="scrollLong">
+					<table class="tableList">
+						<tr class="trList">
+							<%@include file="/WEB-INF/templates/documentData.jsp"%>
+							
+							<td class="tdList"><label class="labelExibe">Ações</label></td>
+						</tr>
 						
-						<td class="tdList"><label class="labelExibe">Ações</label></td>
-					</tr>
-					
 						<% SearchWorker.listAllDocuments(request, out); %>
 					</table>
 				</div>
 			</div>
 
+			<!-- Rodape -->
 			<%@include file="/WEB-INF/templates/footer.jsp" %>
 		</div>
 	</body>

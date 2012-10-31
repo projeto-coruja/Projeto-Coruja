@@ -26,6 +26,7 @@
 
 			<!-- Menu lateral -->
 			<div class="sidebar1">
+			
 				<!-- Area de login -->
 				<%@include file="/WEB-INF/templates/loginReception.jsp" %>
 
@@ -37,25 +38,15 @@
 				<h1>Listagem de Documentos</h1>
 
 				<div align="right">
-					<a href="/GraoPara/doDownload?<% out.write(SearchWorker.getAllAttributesAndValues(request, out)); %>" class="buttonDownload" >
-						Download Pesquisa
-					</a>
+					<a class="tdMinilink" href="/GraoPara/doDownload?<% out.write(SearchWorker.getAllAttributesAndValues(request, out));%>">Download Pesquisa</a>
+					<label style="font-size: small">|</label>
+					<a class="tdMinilink" href="http://pt-br.libreoffice.org/baixe-ja/" target="_blank" title="Os documentos são baixados no formato ODT e podem ser visualizados utilizando LibreOffice. Clique aqui para baixar o LibreOffice!">Baixar o LibreOffice</a>
 				</div>
 
 				<div class="scrollLong">
 					<table class="tableList">
 						<tr class="trList">
-							<td class="tdList"><label class="labelExibe">Identificação</label></td>
-							<td class="tdList"><label class="labelExibe">Código</label></td>
-							<td class="tdList"><label class="labelExibe">Título</label></td>
-							<td class="tdList"><label class="labelExibe">Tipo de Número</label></td>
-							<td class="tdList"><label class="labelExibe">Número</label></td>
-							<td class="tdList"><label class="labelExibe">Autor</label></td>
-							<td class="tdList"><label class="labelExibe">Destinatário</label></td>
-							<td class="tdList"><label class="labelExibe">Local</label></td>
-							<td class="tdList"><label class="labelExibe">Data</label></td>
-							<td class="tdList"><label class="labelExibe">Tipo de Documento</label></td>
-							<td class="tdList"><label class="labelExibe">Palavras-Chave</label></td>
+							<%@include file="/WEB-INF/templates/documentData.jsp"%>
 						</tr>
 
 						<% SearchWorker.listAllDocuments(request, out); %>
@@ -64,10 +55,7 @@
 			</div>
 
 			<!-- Rodape -->
-			<div class="footer">
-				<p>Copyright © - Universidade Federal de São Paulo - UNIFESP 2012</p>
-				<p>Desenvolvido pelo grupo Coruja</p>
-			</div>
+			<%@include file="/WEB-INF/templates/footer.jsp" %>
 		</div>
 	</body>
 </html>
