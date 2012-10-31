@@ -15,13 +15,13 @@ import business.EJB.user.AuthBean;
 /**
  * Servlet Filter implementation class UserFilter
  */
-@WebFilter({"/protected/user/*", "/protected/user/"})
-public class UserFilter implements Filter {
+@WebFilter({"/protected/admin/*", "/protected/admin/"})
+public class AdminFilter implements Filter {
 
     /**
      * Default constructor. 
      */
-    public UserFilter() {
+    public AdminFilter() {
         //  Auto-generated constructor stub
     }
 
@@ -36,7 +36,7 @@ public class UserFilter implements Filter {
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		FilterUtility.trueFilter(AuthBean.LoginSuccessUserLevel1, request, response, chain);
+		FilterUtility.trueFilter(AuthBean.LoginSuccessAdmin, request, response, chain);
 	}
 
 	/**

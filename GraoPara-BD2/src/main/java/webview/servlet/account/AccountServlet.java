@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import persistence.dto.UserAccount;
 import persistence.exceptions.UpdateEntityException;
-import webview.util.JavascriptAlerts;
+import webview.util.AlertsUtility;
 import webview.util.WebUtility;
 import business.EJB.user.AdminBean;
 import business.EJB.user.RegisterUserBean;
@@ -57,12 +57,12 @@ public class AccountServlet extends HttpServlet {
 			permissaoNova = request.getParameter("permissao");
 			email = request.getParameter("email");
 			
-			JavascriptAlerts.alertAndRedirectHistory(response, "Permissão trocado com sucesso.");
+			AlertsUtility.alertAndRedirectHistory(response, "Permissão trocado com sucesso.");
 			
 			try {
 				admin.alterarPermissoesUsuario(email, permissaoNova);
 			} catch (UnreachableDataBaseException e) {
-				JavascriptAlerts.alertAndRedirectHistory(response, "Não foi possível conectar com o banco de dados.");
+				AlertsUtility.alertAndRedirectHistory(response, "Não foi possível conectar com o banco de dados.");
 				e.printStackTrace();
 			} catch (UserNotFoundException e) {
 				e.printStackTrace();
@@ -85,13 +85,13 @@ public class AccountServlet extends HttpServlet {
 				if(user.getPassword().equals(EJBUtility.getHash(senhaVelha, "MD5"))){
 					user.setPassword(EJBUtility.getHash(senhaNova, "MD5"));
 					cadastro.atualizarUsuario(user);  
-					JavascriptAlerts.alertAndRedirectHistory(response, "Senha trocada com sucesso.");
+					AlertsUtility.alertAndRedirectHistory(response, "Senha trocada com sucesso.");
 				}
 				else{
-					JavascriptAlerts.alertAndRedirectHistory(response, "Erro ao trocar a senha, senha informada diferente da cadastrada.");
+					AlertsUtility.alertAndRedirectHistory(response, "Erro ao trocar a senha, senha informada diferente da cadastrada.");
 				}
 			} catch (UnreachableDataBaseException e) {
-				JavascriptAlerts.alertAndRedirectHistory(response, "Não foi possível conectar com o banco de dados.");
+				AlertsUtility.alertAndRedirectHistory(response, "Não foi possível conectar com o banco de dados.");
 				e.printStackTrace();
 			} catch (UserNotFoundException e) {
 				e.printStackTrace();

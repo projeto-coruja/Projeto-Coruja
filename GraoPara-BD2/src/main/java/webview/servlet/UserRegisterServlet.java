@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import webview.util.JavascriptAlerts;
+import webview.util.AlertsUtility;
 import webview.util.WebUtility;
 import business.EJB.user.RegisterUserBean;
 import business.exceptions.login.DuplicateUserException;
@@ -46,24 +46,18 @@ public class UserRegisterServlet extends HttpServlet {
 		String senha = request.getParameter("senha");
 
 		if(!senha.equals(request.getParameter("confsenha"))){
-			
-			JavascriptAlerts.alertAndRedirectHistory(response, "Senha inválida! Tente novamente.");
-			
+			AlertsUtility.alertAndRedirectHistory(response, "Senha inválida! Tente novamente.");
 		}
 		else
 		{
 			RegisterUserBean register = new RegisterUserBean();
 			try {
 				register.addUser(email, senha, nome);
-				
-				JavascriptAlerts.alertAndRedirectPage(response, "Usuário adicionado! Aguarde a aprovação dos seus direitos de edição.", "/GraoPara/public/index.jsp");
+				AlertsUtility.alertAndRedirectPage(response, "Usuário adicionado! Aguarde a aprovação dos seus direitos de edição.", "/GraoPara/public/index.jsp");
 			} catch (IncorrectLoginInformationException e) {
-				
-				JavascriptAlerts.alertAndRedirectPage(response, "Email inválido! Por favor tente novamente.", "/GraoPara/public/CadUsuario.jsp");
-				
+				AlertsUtility.alertAndRedirectPage(response, "Email inválido! Por favor tente novamente.", "/GraoPara/public/userCadastre.jsp");
 			} catch (DuplicateUserException e) {
-				
-				JavascriptAlerts.alertAndRedirectPage(response, "Email já em uso! Por favor tente novamente.", "/GraoPara/public/CadUsuario.jsp");
+				AlertsUtility.alertAndRedirectPage(response, "Email já em uso! Por favor tente novamente.", "/GraoPara/public/userCadastre.jsp");
 			}
 		}
 	}

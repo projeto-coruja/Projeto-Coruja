@@ -123,10 +123,11 @@ public class DocServlet extends HttpServlet {
 				out.println("</script>");
 				e.printStackTrace();
 			} catch (IllegalArgumentException e){
+				e.printStackTrace();
 				response.setContentType("text/html");  
 			    PrintWriter out=response.getWriter();   
 			    out.println("<script>");  
-			    out.println("alert('Problema ao cadastrar documento, Já existe documento com a identificação fornecido!');");  
+			    out.println("alert('Rá');");  
 			    out.println("history.go(-1);");  
 			    out.println("</script>");
 			}

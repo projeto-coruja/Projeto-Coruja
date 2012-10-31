@@ -12,13 +12,17 @@
 					<input class="inputLogin" type="password" name="senha" height="30px" size="auto" placeholder="" required>
 				</fieldset>
 
-				<fieldset>
-					<input class="buttonEntrar" type="submit" name="Entrar"	value="Entrar" />
-				</fieldset>
+				<div>
+					<tr>
+						<td><input class="buttonEntrar" type="submit" name="Entrar"	value="Entrar" /></td>
+						<td><a href="/GraoPara/public/userCadastre.jsp"><input type="button" class="buttonRegistrar" name="Registrar" value="Registrar"></a></td>						
+						<p></p>
+					</tr>
+				</div>
 
-				<fieldset>
+				<!-- <fieldset>
 					<a href="/GraoPara/public/userCadastre.jsp"><input type="button" class="buttonRegistrar" name="Registrar" value="Registrar"></a>
-				</fieldset>
+				</fieldset> -->
 			</form>
 		</div>
 	</div>

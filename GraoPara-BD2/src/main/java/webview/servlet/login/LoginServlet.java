@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import webview.util.JavascriptAlerts;
+import webview.util.AlertsUtility;
 import webview.util.WebUtility;
 import business.EJB.user.AuthBean;
 import business.EJB.user.UserBean;
@@ -39,7 +39,8 @@ public class LoginServlet extends HttpServlet {
 		String senha = request.getParameter("senha");
 		try {
 			UserBean login_result = AuthBean.validarLogin(user, senha, AuthBean.NonHashedPwd);
-			if(login_result != null && (login_result.getLogType().equals(AuthBean.LoginSuccessAdmin) || login_result.getLogType().equals(AuthBean.LoginSuccessUserLevel2)))
+			if(login_result != null && (login_result.getLogType().equals(AuthBean.LoginSuccessAdmin) || login_result.getLogType().equals(AuthBean.LoginSuccessUserLevel2) 
+					|| login_result.getLogType().equals(AuthBean.LoginSuccessUserLevel1)))
 			{
 				Cookie c_email = new Cookie(WebUtility.cookie_email, user);
 				Cookie c_pass = new Cookie(
@@ -60,21 +61,23 @@ public class LoginServlet extends HttpServlet {
 				response.addCookie(c_status);
 				response.addCookie(c_nome);
 
-			    if(login_result.getLogType() == AuthBean.LoginSuccessUserLevel2)	// retorna para a página de USER
+			    if(login_result.getLogType() == AuthBean.LoginSuccessUserLevel1)	// retorna para a página de USER
 			    	response.sendRedirect("/GraoPara/protected/user/index.jsp");
+			    if(login_result.getLogType() == AuthBean.LoginSuccessUserLevel2)	// retorna para a página de USERADV
+			    	response.sendRedirect("/GraoPara/protected/userAdv/index.jsp");
 			    else if(login_result.getLogType() == AuthBean.LoginSuccessAdmin)	// retorna para a página de ADMIN
 			    	response.sendRedirect("/GraoPara/protected/admin/index.jsp");
 			}
 			else if(login_result != null && (login_result.getLogType().equals(AuthBean.LoginFailOrDefault)))
 			{
-				JavascriptAlerts.alertAndRedirectPage(response, 
+				AlertsUtility.alertAndRedirectPage(response, 
 						"Sua conta ainda não foi aprovada pelo administrador, por favor aguarde e tente novamente mais tarde.", 
 						"/GraoPara/public/index.jsp");
 				}
 			else
 			{
 				//Exibir alerta e jogar de volta para o index, provisório
-				JavascriptAlerts.alertAndRedirectPage(response, 
+				AlertsUtility.alertAndRedirectPage(response, 
 						"Login incorreto! Verifique seu email e senha, e tente de novo.", 
 						"/GraoPara/public/index.jsp");
 			}
@@ -82,7 +85,7 @@ public class LoginServlet extends HttpServlet {
 		} catch (UnreachableDataBaseException e) {
 			e.printStackTrace();
 		} catch (UserNotFoundException e) {
-			JavascriptAlerts.alertAndRedirectPage(response, 
+			AlertsUtility.alertAndRedirectPage(response, 
 					"Login incorreto! Verifique seu email e senha, e tente de novo.", 
 					"/GraoPara/public/index.jsp");
 			}
