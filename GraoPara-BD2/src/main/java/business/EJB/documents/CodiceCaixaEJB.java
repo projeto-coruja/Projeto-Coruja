@@ -23,7 +23,7 @@ public class CodiceCaixaEJB {
 	public synchronized void add(String tipo, String cod, String titulo, int anoInicio, int anoFim) throws UnreachableDataBaseException, DuplicateCodiceCaixaException{
 		if(anoFim < anoInicio)	throw new IllegalArgumentException("anoFim < anoInicio");
 		if(tipo == null || cod == null || tipo.isEmpty() || cod.isEmpty())	throw new IllegalArgumentException("Código e/ou tipo vazio ou nulo");
-		cod = tipo+"-"+cod;
+		cod = tipo.toUpperCase()+"-"+cod;
 		dao.addCodiceCaixa(cod, titulo, anoInicio, anoFim);
 	}
 	
