@@ -133,6 +133,14 @@ table.tabbedtable label { text-align: right; padding-right: 9px; }
 #signupform input.error { 
 	border: 1px solid #DD4B39;
 }
+
+#signupform select.error { 
+	border: 1px solid #DD4B39;
+}
+
+#signupform textarea.error { 
+	border: 1px solid #DD4B39;
+}
 	
 #signupform label.error {
   /* background:url("/GraoPara/images/unchecked.gif") no-repeat 0px 0px; */

@@ -67,11 +67,12 @@
 	<td class="status"></td>
 </tr>
 
-<tr>
+<!-- Reservado o campo para amazenar o link de imagem -->
+<!-- <tr>
 	<td class="tdForms"><label class="labelForms" id="lurlImagem" for="urlImagem">URL da Imagem</label></td>
 	<td class="field"><input class="input" name="urlImagem" id="urlImagem" type="text" size="20" maxlength="1024"></td>
 	<td class="status"></td>
-</tr>
+</tr> -->
 
 <tr>
 	<td class="tdForms">
