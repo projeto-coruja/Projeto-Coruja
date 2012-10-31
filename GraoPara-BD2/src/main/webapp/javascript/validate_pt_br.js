@@ -224,24 +224,24 @@ $(document).ready(function() {
 			 * ----------------------------------------------------- */
 			
 			nome: {
-				required: "Digite seu nome completo.",
+				required: "Digite seu nome.",
 				minlength: jQuery.format("Digite no mínimo {0} caracteres.")
 			},
 			senha: {
-				required: "Digite sua senha.",
+				required: "Digite uma senha.",
 				minlength: jQuery.format("Digite no mínimo {0} caracteres.")
 			},
 			confsenha: {
 				required: "Confirme sua senha.",
 				minlength: jQuery.format("Digite no mínimo {0} caracteres."),
-				equalTo: "Digite uma senha igual a anterior."
+				equalTo: "Senha incorreta."
 			},
 			email: {
-				required: "Entre com um email válido.",
+				required: "Digite um email válido.",
 				email: "Entre com um email válido."
 			},
 			permissao: {
-				required: "Selecione a Permissão do Usuário."
+				required: "Selecione o nível do usuário."
 			},
 			
 			/* -----------------------------------------------------

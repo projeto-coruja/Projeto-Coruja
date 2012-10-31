@@ -8,9 +8,10 @@
 					<label class="sidebar" for="login">
 						Bem vindo <%WebUtility.printName(request, out);%>
 					</label>
+					
 				</fieldset>
 
-				<fieldset>
+				<fieldset style="padding-left:17px">
 					<input class="buttonSair" type="submit" name="Sair" value="Sair" />
 				</fieldset>
 			</form>

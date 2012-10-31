@@ -32,9 +32,15 @@
 	</tr>
 
 	<tr>
-		<td class="tdForms">
+		<td class="tdForms2">
 			<br>
 			<input class="buttonRegistrar" id="signupsubmit" name="inserir" type="submit" value="Cadastrar" />
+		</td>
+	</tr>
+	
+	<tr>
+		<td class="tdForms">
+			<br>
 		</td>
 	</tr>
 </table>
