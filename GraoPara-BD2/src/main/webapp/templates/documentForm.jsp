@@ -116,22 +116,19 @@
 
 <tr>
 	<td class="field" colspan="2">
-		 <select class="input" name="chave1" id="chave1" style="width: 120px" onchange="changeToInput(this);">
+		 <select class="input" name="chave1" id="chave1" style="width: 120px">
 			<option value = "">Nenhuma</option>
 			<%= WebUtility.printSelectKeyWords(request, "chave1") %>
-			<option value = "">Nova...</option>
 		</select>
 
-		<select class="input" name="chave2" id="chave2" style="width: 120px" onchange="changeToInput(this);">
+		<select class="input" name="chave2" id="chave2" style="width: 120px">
 			<option value = "">Nenhuma</option>
 			<%= WebUtility.printSelectKeyWords(request, "chave2") %>
-			<option value = "">Novo...</option>
 		</select>
 
-		<select  class="input" name="chave3" id="chave3" style="width: 120px" onchange="changeToInput(this);">
+		<select  class="input" name="chave3" id="chave3" style="width: 120px">
 			<option value = "">Nenhuma</option>
 			<%= WebUtility.printSelectKeyWords(request, "chave3") %>
-			<option value = "">Novo...</option>
 		</select>
 	</td>
 	<td class="status"></td>
