@@ -222,9 +222,9 @@ public final class WebUtility {
 					CodiceCaixa c = (CodiceCaixa) d;
 					if(!added.contains(c.getTitulo())) {
 						if(!c.getCod().equals(selected))
-							output += "\n	<option value=\""+ c.getTitulo() + " \">" + c.getTitulo() + "</option> ";
+							output += "\n	<option value=\""+ c.getCod() +"-"+ c.getTitulo() + " \">" + c.getCod().replace("-", " - ") + ": "+ c.getTitulo() + "</option> ";
 						else
-							output += "\n	<option selected value=\""+ c.getTitulo() + " \">" + c.getTitulo() + "</option> ";
+							output += "\n	<option selected value=\""+ c.getCod() +"-"+ c.getTitulo() + " \">" + c.getCod().replace("-", " - ") + ": "+ c.getTitulo() + "</option> ";
 						added.add(c.getTitulo());
 					}
 				}
