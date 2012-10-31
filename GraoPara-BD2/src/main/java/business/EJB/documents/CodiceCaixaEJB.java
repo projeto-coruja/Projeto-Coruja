@@ -3,8 +3,6 @@ package business.EJB.documents;
 import java.util.HashSet;
 import java.util.List;
 
-import javax.print.attribute.HashAttributeSet;
-
 import persistence.dto.CodiceCaixa;
 import persistence.dto.DTO;
 import persistence.exceptions.UpdateEntityException;
@@ -67,7 +65,7 @@ public class CodiceCaixaEJB {
 			Long count = documento.countDocumentsByCriteria("codiceCaixa.cod = '" + c.getCod() + "'");
 			if(count == 0) rm.add(i);
 		}
-		for(Integer i : rm) list.remove(i);
+		for(Integer i : rm) list.remove(i.intValue());
 		
 		return list;
 	}
