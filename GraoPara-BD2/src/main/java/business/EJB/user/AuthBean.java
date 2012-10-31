@@ -37,13 +37,10 @@ public class AuthBean {
 			result.setUsername(check.getName());
 			String profile = check.getProfile().getProfile();
 			
-			if(profile.equals("admin"))			result.setLogType(LoginSuccessAdmin);
-			
-			else if(profile.equals("user1"))		result.setLogType(LoginSuccessUserLevel1);
-			
-			else if(profile.equals("user2"))		result.setLogType(LoginSuccessUserLevel2);
-			
-			else								result.setLogType(LoginFailOrDefault);
+			if(profile.equals("admin"))	result.setLogType(LoginSuccessAdmin);
+			else if(profile.equals("user1")) result.setLogType(LoginSuccessUserLevel1);
+			else if(profile.equals("user2")) result.setLogType(LoginSuccessUserLevel2);
+			else result.setLogType(LoginFailOrDefault);
 
 			return result;
 		}
