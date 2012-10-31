@@ -10,6 +10,13 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.JspWriter;
 
+import persistence.dto.CodiceCaixa;
+import persistence.dto.DTO;
+import persistence.dto.Documento;
+import persistence.dto.PalavraChave;
+import persistence.dto.Profile;
+import persistence.dto.TemaPalavraChave;
+import persistence.dto.TipoDocumento;
 import business.DAO.document.CodiceCaixaDAO;
 import business.DAO.document.TipoDocumentoDAO;
 import business.EJB.documents.CodiceCaixaEJB;
@@ -23,14 +30,6 @@ import business.exceptions.documents.KeywordNotFoundException;
 import business.exceptions.documents.ThemeNotFoundException;
 import business.exceptions.login.UnreachableDataBaseException;
 import business.exceptions.login.UserNotFoundException;
-
-import persistence.dto.CodiceCaixa;
-import persistence.dto.DTO;
-import persistence.dto.Documento;
-import persistence.dto.PalavraChave;
-import persistence.dto.Profile;
-import persistence.dto.TemaPalavraChave;
-import persistence.dto.TipoDocumento;
 
 public final class WebUtility {
 
@@ -538,6 +537,7 @@ public final class WebUtility {
 		
 		return result;
 	}
+	
 
 	/**
 	 * @param str

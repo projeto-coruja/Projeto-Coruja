@@ -88,25 +88,12 @@ public class SearchWorker {
 				String dataSplit[] = dataFormatted.split("/");
 				
 				out.println("<tr  class=\"trList\">");
+				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getCodiceCaixa().getTitulo()		+"</label></td>");
 				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ codiceCaixa[0]							+"</label></td>");
 				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ codiceCaixa[1]							+"</label></td>");
-				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getCodiceCaixa().getTitulo()		+"</label></td>");
+				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getTitulo()						+"</label></td>");
 				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ codDoc[0]								+"</label></td>");
 				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ codDoc[1]								+"</label></td>");
-				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getTitulo()						+"</label></td>");
-				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getTipoDocumento().getNome()		+"</label></td>");
-				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getAutor().getNome() 				+"</label></td>");
-				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getAutor().getOcupacao() 			+"</label></td>");
-				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getDestinatario().getNome()		+"</label></td>");
-				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getDestinatario().getOcupacao()	+"</label></td>");
-				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getLocal()							+"</label></td>");
-				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ dataFormatted							+"</label></td>");
-				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"
-						+ (doc.getPalavraChave1() != null ? doc.getPalavraChave1().getPalavra() + " - " : "" )
-						+ (doc.getPalavraChave2() != null ? doc.getPalavraChave2().getPalavra() + " - " : "" )
-						+ (doc.getPalavraChave3() != null ? doc.getPalavraChave3().getPalavra() : "" )
-						+ "</label></td>");
-				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getResumo()						+"</label></td>");
 				if(c_status != null && c_status.equals(AuthBean.LoginSuccessAdmin)){
 					 out.println( "<td class=\"tdList\">"
 								+ "<a href=\"/GraoPara/protected/admin/detalhesDocumentos.jsp?"
@@ -131,6 +118,14 @@ public class SearchWorker {
 								+"&numeroAPEP=" + doc.getCod()
 								+ "\">" 
 								+ "<img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\"/></a></td> ");
+				}
+				else if(c_status == null || c_status.equals(AuthBean.LoginFailOrDefault)){
+					out.println("<td class=\"tdList\">"
+							+ "<a href=\"/GraoPara/public/informacaoDocumento.jsp?"
+							+"codigo=" + doc.getCod()
+							+"\">"
+							+"Detalhes completo"
+							+"</a></td>");
 				}
 				out.println("</tr>");
 			}
@@ -204,6 +199,55 @@ public class SearchWorker {
 		}
 	}
 	
+	public static void printInfoFromDocument(HttpServletRequest request, JspWriter out){
+		String code = request.getParameter("codigo");
+		DocumentEJB docEJB = new DocumentEJB();
+		try {
+			Documento doc = docEJB.findSingleDocument(code);
+			String dataFormatted;
+			if(doc.getData() == null) dataFormatted = "Ilegível/Sem Data";	
+			else	dataFormatted = sdf.format(doc.getData());
+			
+			out.write("<tr><td class=\"tdList\"><label class=\"labelExibe\">Identificação do Códice/Caixa</label></td>"
+					+"<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getCodiceCaixa().getCod().replace("-", " - ") + ": " + doc.getCodiceCaixa().getTitulo() +"</label></td></tr>"
+					
+					+"<tr><td class=\"tdList\"><label class=\"labelExibe\">Título</label></td>"
+					+"<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getTitulo() +"</label></td></tr>"
+					
+					+"<tr><td class=\"tdList\"><label class=\"labelExibe\">Identificação do documento</label></td>"
+					+"<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getCod().replace("-", " - ") +"</label></td></tr>"
+					
+					+"<tr><td class=\"tdList\"><label class=\"labelExibe\">Autor</label></td>"
+					+"<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getAutor().getNome() +"</label></td></tr>"
+					
+					+"<tr><td class=\"tdList\"><label class=\"labelExibe\">Destinatário</label></td>"
+					+"<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getDestinatario().getNome() +"</label></td></tr>"
+					
+					+"<tr><td class=\"tdList\"><label class=\"labelExibe\">Local</label></td>"
+					+"<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getLocal() +"</label></td></tr>"
+					
+					+"<tr><td class=\"tdList\"><label class=\"labelExibe\">Data</label></td>"
+					+"<td class=\"tdList\"><label class=\"labelExibe\">"+ dataFormatted +"</label></td></tr>"
+					
+					+"<tr><td class=\"tdList\"><label class=\"labelExibe\">Tipo de Documento</label></td>"
+					+"<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getTipoDocumento().getNome() +"</label></td></tr>"
+					
+					+"<tr><td class=\"tdList\"><label class=\"labelExibe\">Palavras-Chave</label></td>"
+					+"<td class=\"tdList\"><label class=\"labelExibe\">"+ (doc.getPalavraChave1() != null ? doc.getPalavraChave1().getPalavra() + "<br>" : "")
+																		+ (doc.getPalavraChave2() != null ? doc.getPalavraChave2().getPalavra() + "<br>" : "")
+																		+ (doc.getPalavraChave3() != null ? doc.getPalavraChave3().getPalavra() : "")
+																		+ "</label></td></tr>");
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+		} catch (DocumentNotFoundException e) {
+			e.printStackTrace();
+		} catch (UnreachableDataBaseException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
 	
 	public static void printDocumentInformation(HttpServletRequest request, JspWriter out) throws IOException{
 		String tipo = request.getParameter("tipoCodigoDoDocumento");
@@ -296,8 +340,6 @@ public class SearchWorker {
 		} catch (DocumentNotFoundException e) {
 			e.printStackTrace();
 		}
-		
-
 	}
 	
 	public static String getAllAttributesAndValues(HttpServletRequest request, JspWriter out) throws IOException {
