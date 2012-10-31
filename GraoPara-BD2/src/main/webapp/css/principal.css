@@ -282,7 +282,7 @@ a:hover,a:active,a:focus {
 	/* box-shadow: 0 0px 1px rgba(255, 255, 255,); */
 	color: white;
 	cursor: pointer;
-	margin-left: -1px;
+	margin-left: 2px;
 }
 
 .buttonCancelar {
