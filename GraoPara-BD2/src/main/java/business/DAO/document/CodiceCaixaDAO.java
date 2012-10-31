@@ -23,7 +23,7 @@ public class CodiceCaixaDAO {
 			throws UnreachableDataBaseException, DuplicateCodiceCaixaException {
 		CodiceCaixa newId = new CodiceCaixa(cod, titulo, anoInicio, anoFim);
 		try{
-			findExactCodiceCaixa(cod, titulo);
+			findExactCodiceCaixa(cod);
 			throw new DuplicateCodiceCaixaException("Codice/Caixa ja existe.");
 		}catch(DataAccessLayerException e){
 			e.printStackTrace();
@@ -52,15 +52,13 @@ public class CodiceCaixaDAO {
 		}
 	}
 	
-	public CodiceCaixa findExactCodiceCaixa(String cod, String titulo) 
+	public CodiceCaixa findExactCodiceCaixa(String cod) 
 			throws  UnreachableDataBaseException, CodiceCaixaNotFoundException  {
 		
 		List<DTO> resultSet = null;
 		try {
-			resultSet = manager.findEntity("from CodiceCaixaMO where cod = '" 
-					+ cod +"'"
-					+ " and titulo = '" + titulo +"'" 
-					+ " order by cod, titulo, anoInicio, anoFim");
+			resultSet = manager.findEntity("FROM CodiceCaixaMO WHERE cod = '"+ cod +"'"
+					+ " ORDER BY cod, titulo, anoInicio, anoFim");
 			if(resultSet == null) {
 				throw new CodiceCaixaNotFoundException ("Codice/Caixa não encontrado.");
 			}
