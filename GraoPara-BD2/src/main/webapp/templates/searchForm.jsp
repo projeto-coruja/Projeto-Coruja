@@ -67,7 +67,7 @@
 
 				<td class="field">
 					<select name="tituloCodiceCaixa" class="input" id="identificacao">
-						<%=WebUtility.printSelectTituloCodiceCaixa(request, true)%>
+						<%=WebUtility.printSelectTituloCodiceCaixa(request)%>
 					</select>
 				</td>
 
@@ -257,7 +257,7 @@
 					<select class="input" name="chave2" id="chave2" style="width: 120px"><option value = "">Nenhuma</option>
 						<%= WebUtility.printSelectKeyWords(request, "chave2") %>
 					</select>
-					<select  class="input" name="chave3" id="chave3" style="width: 120px"><option value = "">Nenhuma</option>
+					<select class="input" name="chave3" id="chave3" style="width: 120px"><option value = "">Nenhuma</option>
 						<%= WebUtility.printSelectKeyWords(request, "chave3") %>
 					</select>
 				</td>

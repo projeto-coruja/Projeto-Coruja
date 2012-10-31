@@ -235,6 +235,40 @@ public final class WebUtility {
 		return output;
 	}
 	
+	public static String printSelectTituloCodiceCaixa(HttpServletRequest request) throws UnreachableDataBaseException {
+		String output = null;
+		String selected = request.getParameter("codigo");
+		CodiceCaixaEJB codiceCaixa = null;
+		List<DTO> list = null; 
+
+		try {
+			codiceCaixa = new CodiceCaixaEJB();
+			list = codiceCaixa.getAllEntriesWithContent();
+			if(list != null){
+
+				output = "\n	<option selected value=\"\">Selecione...</option> ";
+				HashSet<String> added = new HashSet<String>();
+	
+				for(DTO d : list){
+					CodiceCaixa c = (CodiceCaixa) d;
+					if(!added.contains(c.getTitulo())) {
+						if(!c.getCod().equals(selected))
+							output += "\n	<option value=\"" + c.getTitulo() + " \">" + c.getTitulo() + "</option> ";
+						else
+							output += "\n	<option selected value=\""+ c.getTitulo() + " \">" + c.getTitulo() + "</option> ";
+						added.add(c.getTitulo());
+					}
+				}
+			}
+			else{
+				output = "\n	<option selected value=\"\">Nenhum Códice/Caixa com conteúdo</option> ";
+			}
+		} catch (CodiceCaixaNotFoundException e) {
+			//e.printStackTrace();
+		}
+		return output;
+	}
+	
 	/**
 	 * 
 	 * @return
