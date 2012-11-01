@@ -44,17 +44,7 @@
 			<div class="content" id="content">
 				<h1>Cadastro do Tipo de Documento</h1>
 				<form action="/GraoPara/protected/userAdv/doDocType" id="signupform" method="get" autocomplete="off">
-					<table class="tableControle">
-						<tr>
-							<td class="tdControle"><label class="labelForms" id="ltpDoc" for="tpDoc">Novo Tipo de Documento</label></td>
-							<td class="field"><input class="input" id="tpDoc" name="docType" type="text" value="" maxlength="20" /></td>
-							<td class="status"></td>
-						</tr>
-
-						<tr>
-							<td class="tdForms"><br><input class="buttonRegistrar" id="signupsubmit" name="inserir" type="submit" value="Cadastrar" /></td>
-						</tr>
-					</table>
+					<%@include file="/WEB-INF/templates/newDocTypeForm.jsp"%>
 				</form>
 
 				<br>
@@ -72,6 +62,7 @@
 				</div>
 			</div>
 
+			<!-- Rodape -->
 			<%@include file="/WEB-INF/templates/footer.jsp"%>
 		</div>
 	</body>

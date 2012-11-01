@@ -303,8 +303,7 @@ $(document).ready(function() {
 			 * ----------------------------------------------------- */
 			
 			docType:{
-				required: "Informe o tipo de documento que deseja cadastrar",
-				minlength: jQuery.format("Digite no mínimo {0} caracteres.")				
+				required: "Digite o novo tipo de documento."				
 			},
 			
 			/* -----------------------------------------------------
