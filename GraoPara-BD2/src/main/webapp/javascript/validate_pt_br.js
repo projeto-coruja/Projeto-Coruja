@@ -165,6 +165,31 @@ $(document).ready(function() {
 				required: true,
 				minlength: 3
 			},
+			
+			/* -----------------------------------------------------
+			 * Pesquisa de Documento
+			 * ----------------------------------------------------- */
+			
+			codDe: {
+				number: true,
+				minlength: 4				
+			},
+			
+			codAte: {
+				number: true,
+				minlength: 4
+			},
+			
+			epocaDe: {
+				number: true,
+				minlength: 4
+			},
+			
+			epocaAte: {
+				number: true,
+				minlength: 4
+			}
+			
 		},
 		
 		messages: {
@@ -323,6 +348,30 @@ $(document).ready(function() {
 				required: "Informe o tipo de Documento novo",
 				minlength: jQuery.format("Digite no mínimo {0} caracteres.")
 			},
+			
+			/* -----------------------------------------------------
+			 * Pesquisa de Documento
+			 * ----------------------------------------------------- */
+			
+			codDe: {
+				minlength: jQuery.format("Informe o ano com {0} dígitos."),
+				number: "Digite apenas números."
+			},
+			
+			codAte: {
+				minlength: jQuery.format("Informe o ano com {0} dígitos."),
+				number: "Digite apenas números."
+			},
+			
+			epocaDe: {
+				minlength: jQuery.format("Informe o ano com {0} dígitos."),
+				number: "Digite apenas números."
+			},
+			
+			epocaAte: {
+				minlength: jQuery.format("Informe o ano com {0} dígitos."),
+				number: "Digite apenas números."
+			}
 		},
 		
 		// the errorPlacement has to take the table layout into account

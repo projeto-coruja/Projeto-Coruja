@@ -41,6 +41,8 @@
 			</div>
 
 			<%@include file="/WEB-INF/templates/searchForm.jsp" %>
+			
+			<!-- Rodape -->
 			<%@include file="/WEB-INF/templates/footer.jsp" %>
 		</div>
 	</body>
