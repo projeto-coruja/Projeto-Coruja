@@ -69,6 +69,33 @@ public class PanelWorker {
 		}
 	}	
 	
+	public static void listAllKeyWordsForUser(HttpServletRequest request, JspWriter out)  throws IOException{
+		KeyWordEJB busca = new KeyWordEJB();
+		List<DTO> keys = null;	    
+		String in = (String) request.getAttribute("in");
+		String td = null;		
+		if(in.equals("cadastrarPalavrasChave.jsp"))
+			td =  "class=\"tdList\"";
+		else
+			td = "";		
+		try{ 
+			keys = busca.buscaPalavrasChaves();
+			for(DTO k : keys){
+				PalavraChave key = (PalavraChave) k;
+				out.write("<tr>");
+				out.write("<td "+td+"> <label for=\"identificacao\" class=\"labelExibe\">" + key.getId() + "</label> </td>");
+				out.write("<td "+td+"> <label for=\"identificacao\" class=\"labelExibe\">" + key.getPalavra().replace("_", " ") + " </label> </td>");
+				out.write("</tr>");
+			}
+		} catch (UnreachableDataBaseException e) {
+			out.write("<script>");  
+			out.write("alert('Problemas ao acessar o banco de dados. Contate o suporte técnico e tente novamente mais tarde.');");
+			out.write("</script>");
+		} catch (KeywordNotFoundException e) {
+			out.println("<td colspan=\"4\"><label class=\"labelExibe\">Nenhuma palavra-chave encontrada.</label></td>");
+		}
+	}
+	
 	public static void listAllCodex(HttpServletRequest request, JspWriter out) throws IOException{
 		CodiceCaixaEJB od = new CodiceCaixaEJB();
 		List<DTO> origens = null;	    

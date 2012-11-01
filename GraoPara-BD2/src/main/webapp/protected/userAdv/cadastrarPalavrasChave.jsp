@@ -45,28 +45,7 @@
 				<h1>Cadastro de Palavra-Chave</h1>
 
 				<form action="/GraoPara/protected/userAdv/doChangesToKeyWord" id="signupform"	method="get" autocomplete="off">
-					<table class="tableControle">
-						<tr>
-							<td class="tdControle"><label class="labelForms" id="lchave" for="chave">Palavra-Chave</label></td>
-							<td class="field"><input class="input" id="palavra"	name="palavraNova" type="text" value="" maxlength="32" /></td>
-							<td class="field">
-								<label class="labelForms" id="ltema" for="tema">Tema</label>
-								<select class="input" id="tema" name="tema">
-									<%=WebUtility.printSelectKeyWordThemes() %>
-								</select>
-							</td>
-							
-							<td class="status"></td>
-						 	<td class="field"><input class="input" id="action" name="action" type="hidden" value="add" maxlength="32" /></td>
-							<td class="field"><input class="input" id="action" name="from" type="hidden" value="cadastrarPalavrasChave.jsp" maxlength="20" /></td>
-						</tr>
-
-						<tr>
-							<td class="tdForms" align="right" colspan="2">
-								<br><input class="buttonRegistrar" id="signupsubmit" name="inserir" type="submit" value="Cadastrar" />
-							</td>
-						</tr>
-					</table>
+					<%@include file="/WEB-INF/templates/newKeywordForm.jsp"%>
 				</form>
 
 				<br>
@@ -79,14 +58,13 @@
 								<tr>
 									<td class="tdList"><label for="id" class="labelExibe">ID</label></td>
 									<td class="tdList"><label for="palavraChave" class="labelExibe">Palavra-Chave</label></td>
-									<td class="tdList"><label for="acao" class="labelExibe">Ação</label></td>
 								</tr>
 							</thead>
 
 						<tbody>
 							<%
 								request.setAttribute("in", "cadastrarPalavrasChave.jsp");
-								PanelWorker.listAllKeyWords(request, out);
+								PanelWorker.listAllKeyWordsForUser(request, out);
 							%>
 						</tbody>
 					</table>
@@ -94,10 +72,7 @@
 			</div>
 
 			<!-- Rodape -->
-			<div class="footer">
-				<p>Copyright © - Universidade Federal de São Paulo - UNIFESP 2012</p>
-				<p>Desenvolvido pelo grupo Coruja</p>
-			</div>
+			<%@include file="/WEB-INF/templates/footer.jsp"%>
 		</div>
 	</body>
 </html>
