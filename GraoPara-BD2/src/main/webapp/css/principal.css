@@ -121,7 +121,10 @@ a:hover,a:active,a:focus {
 }
 
 .iconeAjuda {
-	margin-top: 5px;
+	/* margin-top: 5px; */
+	position: absolute;
+	padding-left: 5px;
+	padding-top: 3px;
 }
 
 .input:FOCUS, .inputLogin:FOCUS, .inputTipoNum:FOCUS, .inputShort:FOCUS, .inputDia:FOCUS, .inputAno:FOCUS,
@@ -147,6 +150,7 @@ a:hover,a:active,a:focus {
 	/* Atributo para dar espaço no texto inserido, especie de margin, mas do texto e não do campo em si */
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: small;
+	font-style: italic;
 	letter-spacing: 1px;
 }
 
@@ -568,6 +572,11 @@ apagado quando o usuário digitar algo dentro, para isso use o atributo placehol
 .labelForms {
 	font-size: small;
 	font-weight: bold;
+	text-align: left;
+}
+
+.labelFormsSearch {
+	font-size: small;
 	text-align: left;
 }
 
