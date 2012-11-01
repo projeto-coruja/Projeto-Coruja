@@ -193,25 +193,23 @@ public class DTOUtility {
 							}
 							else if(arg instanceof DTO){
 								Method ent_getter = ent_class.getMethod(get.getName(), (Class[]) null);
-								Object embedded_ent = ent_getter.invoke(ent, (Object[]) null);
-								if(embedded_ent == null) {
-									if(((DTO) arg).getId() == null){
-										Class embedded_ent_class = ent_getter.getReturnType();
-										embedded_ent = embedded_ent_class.newInstance();
+								Object embedded_ent = null;
+								if(((DTO) arg).getId() == null){
+									Class embedded_ent_class = ent_getter.getReturnType();
+									embedded_ent = embedded_ent_class.newInstance();
+									updateEntityFromDTO((EntityModel) embedded_ent, (DTO) arg);
+									em.save((EntityModel) embedded_ent);
+									set.invoke(ent, embedded_ent);
+								}
+								else{
+									embedded_ent = em.find(findEntityClassForDTO((DTO) arg), ((DTO) arg).getId());
+									if(embedded_ent != null) {
 										updateEntityFromDTO((EntityModel) embedded_ent, (DTO) arg);
-										em.save((EntityModel) embedded_ent);
+										em.update((EntityModel) embedded_ent);
 										set.invoke(ent, embedded_ent);
 									}
-									else{
-										embedded_ent = em.find(findEntityClassForDTO((DTO) arg), ((DTO) arg).getId());
-										if(embedded_ent != null) {
-											updateEntityFromDTO((EntityModel) embedded_ent, (DTO) arg);
-											em.update((EntityModel) embedded_ent);
-											set.invoke(ent, embedded_ent);
-										}
-										else {
-											throw new UpdateEntityException("DO NOT SET ID ON NEWLY CREATED DTO INSTANCES");
-										}
+									else {
+										throw new UpdateEntityException("DO NOT SET ID ON NEWLY CREATED DTO INSTANCES");
 									}
 								}
 							} else set.invoke(ent, arg);

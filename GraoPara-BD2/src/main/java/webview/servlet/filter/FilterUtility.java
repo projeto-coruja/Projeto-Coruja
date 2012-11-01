@@ -47,6 +47,11 @@ public class FilterUtility {
 		AlertsUtility.alertAndRedirectPage(res, selected.fst, selected.snd);
 	}
 	
+	public static void redirectOnly(HttpServletResponse res, String c_value) throws IOException {
+		Tuple selected = redirMap.get(c_value);
+		res.sendRedirect(selected.snd);
+	}
+	
 	public static void trueFilter(String authLevel, ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response;
@@ -72,6 +77,34 @@ public class FilterUtility {
 				else FilterUtility.blockAndRedirect(res, u_value);
 			}
 			else FilterUtility.blockAndRedirect(res, AuthBean.LoginFailOrDefault);
+		}
+	}
+	
+	public static void truePublicFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+		HttpServletRequest req = (HttpServletRequest) request;
+		HttpServletResponse res = (HttpServletResponse) response;
+		Cookie[] c_list = req.getCookies();
+		Cookie c_status = WebUtility.selectCookie(c_list, WebUtility.cookie_status);
+		if(c_status != null) {
+			String c_value = c_status.getValue();
+			if(c_value.equals(AuthBean.LoginFailOrDefault)) {
+				chain.doFilter(request, response);
+			} 
+			else FilterUtility.redirectOnly(res, c_value);
+		} 
+		else {
+			UserBean user = WebUtility.cookieLogin(c_list);
+			if(user != null) {
+				String u_value = user.getLogType();
+				if(u_value.equals(AuthBean.LoginFailOrDefault)) {
+					c_status = new Cookie(WebUtility.cookie_status, u_value);
+					c_status.setMaxAge(-1);
+					res.addCookie(c_status);
+					chain.doFilter(request, response);
+				}
+				else FilterUtility.redirectOnly(res, u_value);
+			}
+			else chain.doFilter(request, response);
 		}
 	}
 	
