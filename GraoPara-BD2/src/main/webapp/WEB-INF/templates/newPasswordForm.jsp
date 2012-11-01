@@ -1,35 +1,36 @@
 <table class="tableForms">
-	<!-- <tr>
-		<td colspan="3"><label class="labelForms"> <strong>MUDAR SENHA ATUAL</strong></label></td>
-	</tr> -->
 
+	<!-- Senha Atual -->
 	<tr>
 		<td class="tdControle"><label class="labelForms" id="lpassword" for="password">Senha Atual</label></td>
 	</tr>	
 	
 	<tr>
-		<td class="field"><input id="senhaAtual" class="input" name="senhaAtual" type="password" maxlength="50" value="" /></td>	
+		<td class="field"><input id="senhaAtual" class="inputPass" name="senhaAtual" type="password" maxlength="50" value="" /></td>	
 		<td class="status"></td>
 	</tr>
 
+	<!-- Senha Nova -->
 	<tr>
 		<td class="tdControle"><label class="labelForms" id="lpassword" for="password">Senha Nova</label></td>	
 	</tr>
 	
 	<tr>
-		<td class="field"><input id="senhaNova" class="input" name="senhaNova" type="password" maxlength="50" value="" /></td>	
+		<td class="field"><input id="senhaNova" class="inputPass" name="senhaNova" type="password" maxlength="50" value="" /></td>	
 		<td class="status"></td>
 	</tr>
 
+	<!-- Confirma Senha -->
 	<tr>
 		<td class="tdControle"><label class="labelForms" id="lpassword" for="password">Confirma Senha</label></td>	
 	</tr>
 	
 	<tr>
-		<td class="field"><input id="senhaConfirme" class="input" name="senhaConfirme" type="password" maxlength="50" value="" /></td>	
+		<td class="field"><input id="senhaConfirme" class="inputPass" name="senhaConfirme" type="password" maxlength="50" value="" /></td>	
 		<td class="status"></td>
 	</tr>
 
+	<!-- Botao Alterar -->
 	<tr>
 		<td class="tdForms">
 		<br>

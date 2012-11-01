@@ -34,6 +34,7 @@
 
 			<!-- Menu lateral -->
 			<div class="sidebar1">
+			
 				<!-- Area de login -->
 				<%@include file="/WEB-INF/templates/loginReception.jsp" %>
 

@@ -440,7 +440,7 @@ label {
 /*Se eu não me engano, é a barra onde está os botões e o painelzinho de login */
 .sidebar1 {
 	float: left;
-	width: 209px; /* Valor anterior: 180px; */
+	width: 208px; /* Valor anterior: 180px; */
 	height: 1280px;
 	background-color: #24346F;
 	padding-bottom: 10px;
@@ -571,7 +571,7 @@ p.left {
 apagado quando o usuário digitar algo dentro, para isso use o atributo placeholder="texto" dentro da tag do input no html */
 .labelForms {
 	font-size: small;
-	font-weight: bold;
+	/* font-weight: bold; */
 	text-align: left;
 }
 
@@ -743,5 +743,5 @@ article.menuLateral section,article.menuLateral section h2 {
 	border-right: 1px solid #839AE6; */
 	
 	/* Acrescentado posteriormente */
-	width: 201px;
+	width: 200px;
 }

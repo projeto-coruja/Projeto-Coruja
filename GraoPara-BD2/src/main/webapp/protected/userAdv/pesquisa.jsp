@@ -32,6 +32,7 @@
 
 			<!-- Menu lateral -->
 			<div class="sidebar1">
+			
 				<!-- Area de login -->
 				<%@include file="/WEB-INF/templates/loginReception.jsp" %>
 
@@ -42,10 +43,7 @@
 			<%@include file="/WEB-INF/templates/searchForm.jsp" %>
 
 			<!-- Rodape -->
-			<div class="footer">
-				<p>Copyright © - Universidade Federal de São Paulo - UNIFESP 2012</p>
-				<p>Desenvolvido pelo grupo Coruja</p>
-			</div>
+			<%@include file="/WEB-INF/templates/footer.jsp" %>
 		</div>
 	</body>
 </html>
