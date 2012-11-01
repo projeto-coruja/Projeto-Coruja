@@ -45,20 +45,28 @@
 				<h1>Cadastro de Palavra-Chave</h1>
 
 				<form action="/GraoPara/protected/admin/doChangesToKeyWord" id="signupform"	method="get" autocomplete="off">
-					<table class="tableControle">
+					<table class="tableForms">
 						<tr>
 							<td class="tdControle"><label class="labelForms" id="lchave" for="chave">Palavra-Chave</label></td>
+						</tr>
+							
+						<tr>
 							<td class="field"><input class="input" id="palavra"	name="palavraNova" type="text" value="" maxlength="32" /></td>
+							<td class="status"></td>
+						</tr>	
+							
+						<tr>
+							<td class="tdControle"><label class="labelForms" id="ltema" for="tema">Tema</label>
+						</tr>
+						
+						<tr>		
 							<td class="field">
-								<label class="labelForms" id="ltema" for="tema">Tema</label>
-								<select class="input" id="tema" name="tema">
+								<select class="inputLong" id="tema" name="tema">
 									<%=WebUtility.printSelectKeyWordThemes() %>
 								</select>
 							</td>
-							
-							<td class="status"></td>
 						 	<td class="field"><input class="input" id="action" name="action" type="hidden" value="add" maxlength="32" /></td>
-							<td class="field"><input class="input" id="action" name="from" type="hidden" value="cadastrarPalavrasChave.jsp" maxlength="20" /></td>
+							<td class="field"><input class="input" id="action" name="from" type="hidden" value="cadastrarPalavrasChave.jsp" maxlength="20" /></td>							
 						</tr>
 
 						<tr>

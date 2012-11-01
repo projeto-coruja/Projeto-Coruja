@@ -124,8 +124,9 @@ a:hover,a:active,a:focus {
 	margin-top: 5px;
 }
 
-.input:FOCUS, .inputLogin:FOCUS, .inputTipoNum:FOCUS, .inputShort:FOCUS, .inputDia:FOCUS, .inputAno
-.inputPalavraChave:FOCUS, .inputResumo:FOCUS, .inputEstado:FOCUS, .inputLong:FOCUS {
+.input:FOCUS, .inputLogin:FOCUS, .inputTipoNum:FOCUS, .inputShort:FOCUS, .inputDia:FOCUS, .inputAno:FOCUS,
+.inputPalavraChave:FOCUS, .inputResumo:FOCUS, .inputEstado:FOCUS, .inputLong:FOCUS, 
+.inputPass:FOCUS, .inputMes:FOCUS, .inputKey:FOCUS {
 	border: 1px solid #4D90FE;
 }
 

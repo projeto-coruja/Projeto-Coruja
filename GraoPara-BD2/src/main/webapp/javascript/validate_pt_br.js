@@ -121,13 +121,15 @@ $(document).ready(function() {
 			},
 			
 			/* -----------------------------------------------------
-			 *  Painel de Editar Palavra-Chave
+			 *  Cadastro de Palavra-Chave
 			 * ----------------------------------------------------- */
 			
 			palavraNova:{
-				required: true,
-				minlength: 3
+				required: true
 			},
+			tema: {
+				required:true
+			},			
 			
 			/* -----------------------------------------------------
 			 *  Cadastro de Usuário [Administrador]
@@ -280,11 +282,11 @@ $(document).ready(function() {
 			},
 			
 			/* -----------------------------------------------------
-			 *  Painel de Editar Palavras-Chave
+			 *  Cadastro de Palavra-Chave
 			 * ----------------------------------------------------- */
 			
 			palavraNova: {
-				required: "Digite uma palavra nova",
+				required: "Digite uma palavra-chave.",
 				minlength: jQuery.format("Digite no mínimo {0} caracteres.")
 			},
 			
