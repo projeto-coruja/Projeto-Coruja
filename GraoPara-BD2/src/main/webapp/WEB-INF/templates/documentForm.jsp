@@ -80,11 +80,11 @@
 </tr>
 
 <tr>
-	<td class="tdPesquisa"><label class="labelForms" id="lautorOcupacao" for="autorOcupacao">Ocupação do Destinatário do Documento </label></td>
+	<td class="tdPesquisa"><label class="labelForms" id="ldestinatarioOcupacao" for="destinatarioOcupacao">Ocupação do Destinatário do Documento </label></td>
 </tr>
 	
 <tr>
-	<td class="field"><input class="input" name="destinatarioOcupacao" id="autorOcupacao" type="text" size="20" maxlength="48"></td>
+	<td class="field"><input class="input" name="destinatarioOcupacao" id="destinatarioOcupacao" type="text" size="20" maxlength="48"></td>
 	<td class="status"></td>
 </tr>
 
@@ -98,14 +98,14 @@
 </tr>
 
 <!-- Reservado o campo para amazenar o link de imagem -->
-<!-- <tr>
+<tr>
 	<td class="tdForms"><label class="labelForms" id="lurlImagem" for="urlImagem">URL da Imagem</label></td>
 </tr>
 	
 <tr>
 	<td class="field"><input class="input" name="urlImagem" id="urlImagem" type="text" size="20" maxlength="1024"></td>
 	<td class="status"></td>
-</tr> -->
+</tr>
 
 <tr>
 	<td class="tdForms"><label class="labelForms" id="ldata" for="data">Data do Documento</label></td>
@@ -123,7 +123,7 @@
 <tr>
 	<td class="field">
 		<!-- Pegar do Banco de dados os tipos e, caso o usuario selecione outro, exibir campo para cadastrar outro tipo -->
-		<select class="input" name="tipoDoc" id="tipoDoc">
+		<select class="inputLong" name="tipoDoc" id="tipoDoc">
 			<%= WebUtility.printSelectTipoDoc(request) %>
 		</select>
 	</td>
@@ -149,22 +149,22 @@
 </tr>
 
 <tr>
-	<td colspan="3"><label for="palavrasChaves" class="labelForms">Palavras-Chave (Obrigatório Pelo Menos Uma)</label></td>
+	<td colspan="3"><label for="palavrasChaves" class="labelForms">Palavras-Chave (Primeira palavra-chave é obrigatória.)</label></td>
 </tr>
 
 <tr>
 	<td class="field">
-		 <select class="input" name="chave1" id="chave1" style="width: 120px">
+		 <select class="inputKey" name="chave1" id="chave1">
 			<option value = "">Nenhuma</option>
 			<%= WebUtility.printSelectKeyWords(request, "chave1") %>
 		</select>
 
-		<select class="input" name="chave2" id="chave2" style="width: 120px">
+		<select class="inputKey" name="chave2" id="chave2">
 			<option value = "">Nenhuma</option>
 			<%= WebUtility.printSelectKeyWords(request, "chave2") %>
 		</select>
 
-		<select  class="input" name="chave3" id="chave3" style="width: 120px">
+		<select  class="inputKey" name="chave3" id="chave3">
 			<option value = "">Nenhuma</option>
 			<%= WebUtility.printSelectKeyWords(request, "chave3") %>
 		</select>

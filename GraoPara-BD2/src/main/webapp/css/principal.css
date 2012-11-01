@@ -124,6 +124,11 @@ a:hover,a:active,a:focus {
 	margin-top: 5px;
 }
 
+.input:FOCUS, .inputLogin:FOCUS, .inputTipoNum:FOCUS, .inputShort:FOCUS, .inputDia:FOCUS, .inputAno
+.inputPalavraChave:FOCUS, .inputResumo:FOCUS, .inputEstado:FOCUS, .inputLong:FOCUS {
+	border: 1px solid #4D90FE;
+}
+
 .input {
 	background-color: #ffffff;
 	/* Proximos três atributos definem a borda arredondada dos inputs, cada linha é para um tipo de navegador */
@@ -133,20 +138,35 @@ a:hover,a:active,a:focus {
 	/* border-radius: 0.4em; */
 	border: 1px solid gray;
 	/* Necessário quando o background da página em que o formulario estiver for branco */
-	width: 270px;
+	width: 403px; /* 270px; */
 	height: 20px;
 	margin: 5px 0;
 	color: #000;
 	padding: 0 0 0 2px;
 	/* Atributo para dar espaço no texto inserido, especie de margin, mas do texto e não do campo em si */
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: 1em;
+	font-size: small;
 	letter-spacing: 1px;
 }
 
-.input:FOCUS, .inputLogin:FOCUS, .inputTipoNum:FOCUS, .inputShort:FOCUS, .inputDia:FOCUS, .inputAno
-.inputPalavraChave:FOCUS, .inputResumo:FOCUS, .inputEstado:FOCUS, .inputLong:FOCUS {
-	border: 1px solid #4D90FE;
+.inputPass {
+	background-color: #ffffff;
+	/* Proximos três atributos definem a borda arredondada dos inputs, cada linha é para um tipo de navegador */
+	/* Por algum motivo obscuro o Opera ainda está deixando os inputs retangulares, apesar de no input login ele aceitar o código de borda arredondada*/
+	-webkit-border-radius: 0.4em;
+	-moz-border-radius: 0.4em;
+	/* border-radius: 0.4em; */
+	border: 1px solid gray;
+	/* Necessário quando o background da página em que o formulario estiver for branco */
+	width: 230px; /* 270px; */
+	height: 20px;
+	margin: 5px 0;
+	color: #000;
+	padding: 0 0 0 2px;
+	/* Atributo para dar espaço no texto inserido, especie de margin, mas do texto e não do campo em si */
+	font-family: Arial, Helvetica, sans-serif;
+	letter-spacing: 1px;
+	font-size: small;
 }
 
 .inputTipoNum {
@@ -155,13 +175,14 @@ a:hover,a:active,a:focus {
 	-moz-border-radius: 0.4em;
 	/* border-radius: 0.4em; */
 	border: 1px solid gray;
-	width: 140px;
-	height: 23px /* 20px */
+	width: 337px; /* 140px; */
+	height: 21px; /* 20px */
 	margin: 5px 0;
 	color: #000;
 	padding: 0 0 0 10px;
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: 1em;
+	font-size: small;
+	font-style: italic;
 	letter-spacing: 1px;
 }
 
@@ -176,8 +197,10 @@ a:hover,a:active,a:focus {
 	margin: 5px 0;
 	color: #000;
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: 1em;
+	font-size: small;
+	font-style: italic;
 	letter-spacing: 1px;
+	text-align: center;
 }
 
 .inputDia {
@@ -186,12 +209,29 @@ a:hover,a:active,a:focus {
 	-moz-border-radius: 0.4em;
 	/* border-radius: 0.4em; */
 	border: 1px solid gray;
-	width: 51px;
-	height: 20px;
+	width: 164px;
+	height: 21px; /* 20px */
 	margin: 5px 0;
 	color: #000;
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: 1em;
+	font-size: small;
+	font-style: italic;
+	letter-spacing: 1px;
+}
+
+.inputMes {
+	background-color: #ffffff;
+	-webkit-border-radius: 0.4em;
+	-moz-border-radius: 0.4em;
+	/* border-radius: 0.4em; */
+	border: 1px solid gray;
+	width: 164px;
+	height: 21px; /* 20px */
+	margin: 5px 0;
+	color: #000;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: small;
+	font-style: italic;
 	letter-spacing: 1px;
 }
 
@@ -206,8 +246,9 @@ a:hover,a:active,a:focus {
 	margin: 5px 0;
 	color: #000;
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: 1em;
-	letter-spacing: 1px;
+	font-size: small;
+	letter-spacing: 1px;	
+	text-align: center;
 }
 
 .inputPalavraChave {
@@ -222,7 +263,7 @@ a:hover,a:active,a:focus {
 	color: #000;
 	padding: 0 0 0 10px;
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: 1em;
+	font-size: small;
 	letter-spacing: 1px;
 }
 
@@ -238,7 +279,7 @@ a:hover,a:active,a:focus {
 	color: #000;
 	padding: 0 0 0 5px;
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: 1em;
+	font-size: small;
 	letter-spacing: 1px;
 }
 
@@ -254,7 +295,7 @@ a:hover,a:active,a:focus {
 	color: #000;
 	padding: 0 0 0 0px;
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: 1em;
+	font-size: small;
 	letter-spacing: 1px;
 }
 
@@ -264,13 +305,31 @@ a:hover,a:active,a:focus {
 	-moz-border-radius: .4em;
 	/* border-radius: .4em; */
 	border: 1px solid gray;
-	width: 350px;
+	width: 407px; /* 350px; */
 	height: 20px;
 	margin: 0px 0;
 	color: #000;
 	padding: 0 0 0 0px;
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: 1em;
+	font-size: small;
+	font-style: italic;
+	letter-spacing: 1px;
+}
+
+.inputKey {
+	background-color: #ffffff;
+	-webkit-border-radius: .4em;
+	-moz-border-radius: .4em;
+	/* border-radius: .4em; */
+	border: 1px solid gray;
+	width: 133px;
+	height: 21px; /* 20px */
+	margin: 0px 0;
+	color: #000;
+	padding: 0 0 0 0px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: small;
+	font-style: italic;
 	letter-spacing: 1px;
 }
 
@@ -374,7 +433,7 @@ label {
 .sidebar1 {
 	float: left;
 	width: 209px; /* Valor anterior: 180px; */
-	height: 1200px;
+	height: 1280px;
 	background-color: #24346F;
 	padding-bottom: 10px;
 }
@@ -454,6 +513,7 @@ ul.nav a:hover,ul.nav a:active,ul.nav a:focus {
 
 p.left {
 	text-align: left;
+	/* margin-left: 30px; */
 }
 
 .sidebar {
@@ -532,7 +592,7 @@ span.asterisco {
 	text-align: left;
 	/* margin: 40px 0 0 0px; */
 	margin-left: 100px;
-	width: 580px;
+	width: 709px; /* 580px; */
 	border-top: 1px solid;
 }
 

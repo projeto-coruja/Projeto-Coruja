@@ -1,5 +1,5 @@
 <td class="field">
-	<select name="dia" id="dia" class="inputShort">
+	<select name="dia" id="dia" class="inputDia">
 		<option value="" selected="selected">Dia</option>
 		<option value="00">Ilegível / Inexistente</option>
 		<option value="01">1</option>
@@ -35,23 +35,23 @@
 		<option value="31">31</option>
 	</select>
 
-	<select name="mes" id="mes" class="inputShort">
+	<select name="mes" id="mes" class="inputMes">
 		<option value="" selected="selected">Mês</option>
 		<option value="">Ilegível / Inexistente</option>
-		<option value="01">Jan</option>
-		<option value="02">Fev</option>
-		<option value="03">Mar</option>
-		<option value="04">Abr</option>
-		<option value="05">Mai</option>
-		<option value="06">Jun</option>
-		<option value="07">Jul</option>
-		<option value="08">Ago</option>
-		<option value="09">Set</option>
-		<option value="10">Out</option>
-		<option value="11">Nov</option>
-		<option value="12">Dez</option>
+		<option value="01">Janeiro</option>
+		<option value="02">Fevereiro</option>
+		<option value="03">Março</option>
+		<option value="04">Abril</option>
+		<option value="05">Maio</option>
+		<option value="06">Junho</option>
+		<option value="07">Julho</option>
+		<option value="08">Agosto</option>
+		<option value="09">Setembro</option>
+		<option value="10">Outubro</option>
+		<option value="11">Novembro</option>
+		<option value="12">Dezembro</option>
 	</select>
 
 	<label class="labelForms" id="ldata" for="data">Ano</label>
-	<input class="inputShort" type="text" name="ano" id="ano" maxlength="4"/>
+	<input class="inputAno" type="text" name="ano" id="ano" maxlength="4"/>
 </td>

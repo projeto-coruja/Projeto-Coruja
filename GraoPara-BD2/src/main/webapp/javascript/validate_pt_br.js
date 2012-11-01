@@ -172,7 +172,7 @@ $(document).ready(function() {
 			 * ----------------------------------------------------- */
 			
 			identificacao: {
-				required: "Selecione uma identificação."
+				required: "Escolhe uma identificação."
 			},
 			anoInicioCodiceCaixa: {
 				required: "Digite o ano inicial.",
@@ -185,11 +185,11 @@ $(document).ready(function() {
 				number: "Digite apenas números"
 			},
 			tipo_num: {
-				required: "Selecione APEP ou Sequencial."
+				required: "Número APEP ou Sequencial inválido."
 			},			
 			numero: {
-				required: "Número APEP ou Sequencial incorreto.",
-				minlength: jQuery.format("Mínimo {0} caracteres.")
+				required: "Número APEP ou Sequencial inválido.",
+				minlength: jQuery.format("Informe no mínimo {0} caracteres.")
 			},
 			codigo: {
 				required: "Digite o código do documento.",
@@ -225,10 +225,13 @@ $(document).ready(function() {
 				number: "Digite apenas números."
 			},
 			tipoDoc: {
-				required: "Selecione um tipo de documento."
+				required: "Escolhe um tipo de documento."
+			},
+			descricaoTipoDocumento: {
+				required: "Escreva uma descrição para o tipo de documento."
 			},
 			resumo: {
-				required: "Digite um resumo para o documento."
+				required: "Escreva um resumo para o documento."
 			},
 			chave1: {
 				required: "Informe a primeira palavra-chave."

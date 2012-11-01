@@ -1,6 +1,6 @@
 <table class="tableForms">
 	<tr>
-		<td class="tdForms2"><label class="labelForms" id="lfirstname" for="nome">Nome:</label></td>
+		<td class="tdForms2"><label class="labelForms" id="lfirstname" for="nome">Nome</label></td>
 	</tr>
 	
 	<tr>
@@ -9,7 +9,7 @@
 	</tr>
 
 	<tr>
-		<td class="tdForms2"><label class="labelForms"  id="lemail" for="email" >Email:</label></td>
+		<td class="tdForms2"><label class="labelForms"  id="lemail" for="email" >Email</label></td>
 	</tr>
 	
 	<tr>
@@ -18,7 +18,7 @@
 	</tr>
 
 	<tr>
-		<td class="tdForms2"><label class="labelForms"  id="lpassword" for="password">Senha:</label></td>
+		<td class="tdForms2"><label class="labelForms"  id="lpassword" for="password">Senha</label></td>
 	</tr>
 	
 	<tr>
@@ -27,7 +27,7 @@
 	</tr>
 
 	<tr>
-		<td class="tdForms2"><label class="labelForms"  id="lpassword_confirm" for="password_confirm">Confirma Senha:</label></td>
+		<td class="tdForms2"><label class="labelForms"  id="lpassword_confirm" for="password_confirm">Confirma Senha</label></td>
 	</tr>
 	
 	<tr>
