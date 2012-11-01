@@ -41,6 +41,10 @@ public class KeyWordEJB {
 	public List<DTO> getAllKeyWords() throws UnreachableDataBaseException, KeywordNotFoundException{
 		return keyWordDAO.getAllKeys();
 	}
+	
+	public List<DTO> findByTheme(String theme) throws UnreachableDataBaseException, KeywordNotFoundException{
+		return keyWordDAO.findKeyWordByTheme(theme);
+	}
 
 	public List<DTO> buscaPalavrasChaves() throws UnreachableDataBaseException, KeywordNotFoundException  {
 		return keyWordDAO.getAllKeys();

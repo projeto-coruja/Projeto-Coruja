@@ -225,22 +225,38 @@
 			</tr>
 			
 			<!-- Palavras-Chave -->			
+		
 			<tr>
-				<td colspan="3"><label for="palavrasChaves" class="labelFormsSearch">&#8226 Palavras-Chave</label></td>
+				<td colspan="3"><label for="palavrasChaves" class="labelForms">Palavras-Chave</label></td>
 			</tr>
-			
+
 			<tr>
-				<td class="field" colspan="2">
-					<select class="inputKey" name="chave1" id="chave1"><option value = "">Nenhuma</option>
-						<%= WebUtility.printSelectKeyWords(request, "chave1") %>
-					</select>
-					<select class="inputKey" name="chave2" id="chave2"><option value = "">Nenhuma</option>
-						<%= WebUtility.printSelectKeyWords(request, "chave2") %>
-					</select>
-					<select class="inputKey" name="chave3" id="chave3" style="width: 120px"><option value = "">Nenhuma</option>
-						<%= WebUtility.printSelectKeyWords(request, "chave3") %>
-					</select>
-					<label></label><a href="#"><img class="iconeAjuda" style="padding-left:9px;" src="/GraoPara/images/icone_ajuda.png" title="Informe de uma a três palavras chaves para filtrar sua pesquisa" /></a>
+				<td><label for="chave1" class="labelForms">Ação</label></td>
+				<td><label for="chave2" class="labelForms">Autores</label></td>
+				<td><label for="chave3" class="labelForms">Instituição</label></td>
+			</tr>
+
+			<tr>
+				<td class="field"><select class="input" name="chave1"
+					id="chave1" style="width: 120px"><option value="">Nenhuma</option>
+						<%=WebUtility.printSelectKeyWords(request, "chave1", "Ação")%>
+				</select></td>
+				<td class="field"><select class="input" name="chave2"
+					id="chave2" style="width: 120px"><option value="">Nenhuma</option>
+						<%=WebUtility.printSelectKeyWords(request, "chave2",
+					"Autores")%>
+				</select></td>
+				<td class="field"><select class="input" name="chave3"
+					id="chave3" style="width: 120px"><option value="">Nenhuma</option>
+						<%=WebUtility.printSelectKeyWords(request, "chave3",
+					"Instituição")%>
+				</select></td>
+
+
+				<td class="status"><a href="#"><img
+						src="/GraoPara/images/icone_ajuda.png"
+						alt="Informe de uma a três palavras chaves para filtrar sua pesquisa"
+						title="Informe de uma a três palavras chaves para filtrar sua pesquisa" /></a>
 				</td>
 			</tr>
 			
