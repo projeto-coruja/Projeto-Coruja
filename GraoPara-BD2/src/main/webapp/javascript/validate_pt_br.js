@@ -1,6 +1,11 @@
 $(document).ready(function() {
 	// validate signup form on keyup and submit
 	var validator = $("#signupform").validate({
+		groups: {
+			numberType: "tipo_num numero",
+			documentDate: "dia mes ano"
+		},
+		
 		rules: {
 			
 			/* -----------------------------------------------------
@@ -169,54 +174,64 @@ $(document).ready(function() {
 			identificacao: {
 				required: "Selecione uma identificação."
 			},
+			anoInicioCodiceCaixa: {
+				required: "Digite o ano inicial.",
+				minlength: jQuery.format("Informe o ano com {0} dígitos."),
+				number: "Digite apenas números"
+			},
+			anoFimCodiceCaixa: {
+				required: "Digite o ano final.",
+				minlength: jQuery.format("Informe o ano com {0} dígitos."),
+				number: "Digite apenas números"
+			},
 			tipo_num: {
-				required: "Selecione o tipo de número. </br>"
+				required: "Selecione APEP ou Sequencial."
+			},			
+			numero: {
+				required: "Número APEP ou Sequencial incorreto.",
+				minlength: jQuery.format("Mínimo {0} caracteres.")
 			},
 			codigo: {
 				required: "Digite o código do documento.",
 				minlength: jQuery.format("Digite no mínimo {0} caracteres.")
 			},
-			titulo: {
-				required: "Digite o título do documento.",
-				minlength: jQuery.format("Digite no mínimo {0} caracteres.")
-			},			
-			numero: {
-				required: "Digite o número APEP ou Sequencial.",
-				minlength: jQuery.format("Digite no mínimo {0} caracteres.")
+			tituloDocumento: {
+				required: "Digite o título do documento."
 			},
 			autor: {
-				required: "Digite o autor do documento.",
-				minlength: jQuery.format("Digite no mínimo {0} caracteres.")
+				required: "Digite o autor do documento."
+			},
+			autorOcupacao: {
+				required: "Digite a ocupação do autor do documento."
 			},
 			destinatario: {
-				required: "Digite o destinatário do documento.",
-				minlength: jQuery.format("Digite no mínimo {0} caracteres.")
+				required: "Digite o destinatário do documento."
+			},
+			destinatarioOcupacao: {
+				required: "Digite a ocupação do destinatário do documento."
 			},
 			local: {
-				required: "Digite o local do documento.",
-				minlength: jQuery.format("Digite no mínimo {0} caracteres.")
+				required: "Digite o local do documento."
 			},
 			dia: {
-				required: "Selecione o dia."				
+				required: "Data do documento inválido."				
 			},
 			mes: {
-				required: "Selecione o mês.</br>"				
+				required: "Data do documento inválido."				
 			},
 			ano: {
-				required: "Informe o Ano.",
+				required: "Data do documento inválido.",
 				minlength: jQuery.format("Informe o ano com {0} dígitos."),
-				max: jQuery.format("Informe um ano anterior a {0}"),
-				number: "Digite apenas números"
+				number: "Digite apenas números."
 			},
 			tipoDoc: {
-				required: "Selecione o tipo de Documento."
+				required: "Selecione um tipo de documento."
 			},
 			resumo: {
-				required: "Digite o resumo do Documento"
+				required: "Digite um resumo para o documento."
 			},
 			chave1: {
-				required: "Informe a primeira palavra chave.",
-				minlength: jQuery.format("Digite no mínimo {0} caracteres.")
+				required: "Informe a primeira palavra-chave."
 			},
 			
 			/* -----------------------------------------------------

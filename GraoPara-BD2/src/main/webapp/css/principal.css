@@ -156,7 +156,7 @@ a:hover,a:active,a:focus {
 	/* border-radius: 0.4em; */
 	border: 1px solid gray;
 	width: 140px;
-	height: 20px;
+	height: 23px /* 20px */
 	margin: 5px 0;
 	color: #000;
 	padding: 0 0 0 10px;
@@ -534,7 +534,6 @@ span.asterisco {
 	margin-left: 100px;
 	width: 580px;
 	border-top: 1px solid;
-    border-bottom: 1px solid;
 }
 
 .tablePesquisa {
@@ -546,14 +545,14 @@ span.asterisco {
 
 .tdForms {
 	text-align: left;
-	width: 130px;
+	width: 100px /* 130px; */
 	border: 0px;
 }
 
 
 .tdPesquisa {
 	text-align: left;
-	width: 200px;
+	width: 100px /* 200px; */
 	border: 0px;
 }
 
