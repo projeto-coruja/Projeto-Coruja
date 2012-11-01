@@ -33,6 +33,7 @@
 
 			<!-- Menu lateral -->
 			<div class="sidebar1">
+			
 				<!-- Area de login -->
 				<%@include file="/WEB-INF/templates/loginReception.jsp"%>
 
@@ -44,9 +45,12 @@
 				<h1>Geração de Senha</h1>
 
 				<form action="/GraoPara/doPasswordRecovery" id="signupform"  method="post" autocomplete="off">
-					<table class="tableControle">
+					<table class="tableForms">
 						<tr>
 							<td class="tdControle"><label class="labelForms"  id="lemail" for="email">Email do Usuário</label></td>
+						</tr>
+						
+						<tr>
 							<td class="field"><input class="input" id="email" name="email" type="text" value="" maxlength="150" /></td>
 							<td class="status"></td>
 						</tr>
@@ -61,6 +65,7 @@
 				</form>
 			</div>
 
+			<!-- Rodape -->
 			<%@include file="/WEB-INF/templates/footer.jsp"%>
 		</div>
 	</body>

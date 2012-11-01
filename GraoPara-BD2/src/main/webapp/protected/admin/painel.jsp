@@ -52,10 +52,10 @@
 					<%@include file="/WEB-INF/templates/newPasswordForm.jsp"%>
 				</form><br><br>
 	
-				<div id="tabsPainel">
+				<div id="tabsPainel" class="tableForms">
 					<ul>
-						<li><a href="#tab1"><span>Novos Usuários</span></a></li>
-						<li><a href="#tab2"><span>Todos os Usuários</span></a></li>
+						<li><a href="#tab1"><span Style="font-size:small;">Novos Usuários</span></a></li>
+						<li><a href="#tab2"><span Style="font-size:small;">Todos os Usuários</span></a></li>
 					</ul>
 					
 					<div id="tab1">
@@ -86,6 +86,7 @@
 				
 			</div>
 			
+			<!-- Rodape -->
 			<%@include file="/WEB-INF/templates/footer.jsp"%>
 		</div>
 	

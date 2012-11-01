@@ -55,6 +55,7 @@
 				<%@include file="/WEB-INF/templates/registeredCodiceCaixaDetails.jsp" %>
 			</div>
 
+			<!-- Rodape -->
 			<%@include file="/WEB-INF/templates/footer.jsp"%>
 		</div>
 	</body>

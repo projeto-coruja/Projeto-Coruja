@@ -103,7 +103,7 @@ public class InitServlet extends HttpServlet {
 		}
 		else user = null;
 		
-		user = pa.findEntity("from UserAccountMO where email = 'user1@graopara.com'");
+		user = pa.findEntity("from UserAccountMO where email = 'user2@graopara.com'");
 		if(user == null)
 		{
 			log.info("Criando usuário de teste...");

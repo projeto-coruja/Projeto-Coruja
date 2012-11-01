@@ -60,6 +60,7 @@
 				</form>
 			</div>
 
+			<!-- Rodape -->
 			<%@include file="/WEB-INF/templates/footer.jsp"%>
 		</div>
 	</body>

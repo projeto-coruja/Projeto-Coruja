@@ -267,14 +267,14 @@ $(document).ready(function() {
 			 * ----------------------------------------------------- */
 			
 			senhaAtual: {
-				required: "Informe sua senha atual."
+				required: "Digite sua senha atual."
 			},
 			senhaNova: {
-				required: "Digite a nova senha.",
+				required: "Digite uma senha nova.",
 				minlength: jQuery.format("Digite no mínimo {0} caracteres.")
 			},
 			senhaConfirme: {
-				required:  "Redigite a nova senha.",
+				required:  "Confirme sua senha nova.",
 				minlength: jQuery.format("Digite no mínimo {0} caracteres."),
 				equalTo: "Digite uma senha igual a anterior."
 			},

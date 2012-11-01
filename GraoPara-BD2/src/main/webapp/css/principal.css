@@ -37,7 +37,7 @@ ul,ol,dl {
 
 h1,h2,h3,h4,h5,h6 {
 	margin-top: 0;
-	margin-left: 100px;
+	margin-left: 80px;
 	/* removing the top margin gets around an issue where margins can escape from their containing div. The remaining bottom margin will hold it away from any elements that follow. */
 	/* padding-right: 15px;
 	padding-left: 15px; */
@@ -397,8 +397,11 @@ a:hover,a:active,a:focus {
 
 .scrollLong {
 	height: 35em;
-	width: 1000px;
+	width: 709px; /* 859px; */
+    /* border: 1px solid black; */
+    margin-left: 78px;
 	overflow: auto;
+	font-size: small;
 }
 
 .buttonPesquisa {
@@ -574,7 +577,7 @@ span.asterisco {
 }
 
 .labelExibe {
-	font-size: 10.5px;
+	font-size: small;
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	text-align: center;
 }
@@ -591,7 +594,7 @@ span.asterisco {
 .tableForms {
 	text-align: left;
 	/* margin: 40px 0 0 0px; */
-	margin-left: 100px;
+	margin-left: 78px; /* 100px; */
 	width: 709px; /* 580px; */
 	border-top: 1px solid;
 }
@@ -637,6 +640,7 @@ span.asterisco {
 }
 
 .tablePainel {
+	font-size:small;
 	text-align: center;
 	width: 540px;
 }
