@@ -27,7 +27,6 @@ public class AccountApprovalServlet extends HttpServlet {
      */
     public AccountApprovalServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -37,30 +36,23 @@ public class AccountApprovalServlet extends HttpServlet {
 		AdminBean adminBean = new AdminBean();
 		
 		try {
-			adminBean.alterarPermissoesUsuario(request.getParameter("email"), "user");
-			response.sendRedirect(request.getContextPath() + "/protected/admin/painel.jsp#tab1");
-		
+			adminBean.alterarPermissoesUsuario(request.getParameter("email"), "user" + request.getParameter("nivel"));
+			response.sendRedirect(request.getContextPath() + "/protected/admin/painel.jsp");
 		} catch (IncorrectProfileInformationException e) {
-			
 			AlertsUtility.alertAndRedirectHistory(response, "Erro de profile inválido, contate o suporte.");
 			e.printStackTrace();
 		} catch (UnreachableDataBaseException e) {
-			
 			AlertsUtility.alertAndRedirectHistory(response, "Erro de banco de dados, contate o suporte.");
 			e.printStackTrace();
 		} catch (UserNotFoundException e) {
-			
 			AlertsUtility.alertAndRedirectHistory(response, "Erro de usuário inválido, contate o suporte.");
 			e.printStackTrace();
 		} catch (ProfileNotFoundException e) {
-			
 			AlertsUtility.alertAndRedirectHistory(response, "Erro de profile não encontrado, contate o suporte.");
 			e.printStackTrace();
 		} catch (IllegalArgumentException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (UpdateEntityException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

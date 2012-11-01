@@ -181,7 +181,12 @@ public class PanelWorker {
 					out.println("<td>"
 						+ "<a href=\"/GraoPara/protected/admin/approveAccount?" 
 							+ "email=" + user.getEmail()
-							+ " \"><img src=\"/GraoPara/images/approve.png\" title=\"Aprovar\" alt=\"Aprovar\" /></a>"
+							+ "&nivel=" + 1
+							+ " \"><img src=\"/GraoPara/images/approve.png\" title=\"Aprovar como usuário comum\" alt=\"Aprovar como usuário comum\" /></a>"
+						+ "<a href=\"/GraoPara/protected/admin/approveAccount?" 
+							+ "email=" + user.getEmail()
+							+ "&nivel=" + 2
+							+ " \"><img src=\"/GraoPara/images/approve2.png\" title=\"Aprovar como usuário avançado\" alt=\"Aprovar como usuário avançado\" /></a>"
 						+ "<a href=\"/GraoPara/protected/admin/editarUsuario.jsp?"
 							+ "paramName=" + user.getName()
 							+"&paramEmail="+user.getEmail()+"\" ><img src=\"/GraoPara/images/edit.png\" title=\"Editar\" alt=\"Editar\" /></a>" 

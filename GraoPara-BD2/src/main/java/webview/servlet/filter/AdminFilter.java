@@ -12,9 +12,6 @@ import javax.servlet.annotation.WebFilter;
 
 import business.EJB.user.AuthBean;
 
-/**
- * Servlet Filter implementation class UserFilter
- */
 @WebFilter({"/protected/admin/*", "/protected/admin/"})
 public class AdminFilter implements Filter {
 

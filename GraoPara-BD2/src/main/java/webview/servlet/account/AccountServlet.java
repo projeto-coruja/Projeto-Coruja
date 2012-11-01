@@ -13,6 +13,7 @@ import persistence.exceptions.UpdateEntityException;
 import webview.util.AlertsUtility;
 import webview.util.WebUtility;
 import business.EJB.user.AdminBean;
+import business.EJB.user.AuthBean;
 import business.EJB.user.RegisterUserBean;
 import business.EJB.user.SearchUserBean;
 import business.EJB.util.EJBUtility;
@@ -53,7 +54,7 @@ public class AccountServlet extends HttpServlet {
 		String email = WebUtility.selectCookie(request.getCookies(), WebUtility.cookie_email).getValue();
 		String status = WebUtility.selectCookie(request.getCookies(), WebUtility.cookie_status).getValue();
 
-		if(action.equals("editPermission") && status.equals(WebUtility.admin_profile.getProfile())){
+		if(action.equals("editPermission") && status.equals(AuthBean.LoginSuccessAdmin)){
 			permissaoNova = request.getParameter("permissao");
 			email = request.getParameter("email");
 			

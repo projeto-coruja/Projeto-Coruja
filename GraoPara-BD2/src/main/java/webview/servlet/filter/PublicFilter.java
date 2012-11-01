@@ -10,15 +10,13 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 
-import business.EJB.user.AuthBean;
-
-@WebFilter({"/protected/user/*", "/protected/user/"})
-public class UserFilter implements Filter {
+@WebFilter({"/public/*", "/public/"})
+public class PublicFilter implements Filter {
 
     /**
      * Default constructor. 
      */
-    public UserFilter() {
+    public PublicFilter() {
         //  Auto-generated constructor stub
     }
 
@@ -33,7 +31,7 @@ public class UserFilter implements Filter {
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		FilterUtility.trueFilter(AuthBean.LoginSuccessUserLevel1, request, response, chain);
+		FilterUtility.truePublicFilter(request, response, chain);
 	}
 
 	/**

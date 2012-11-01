@@ -27,7 +27,6 @@ public class UserDAO {
 			resultSet = manager.findEntity("from UserAccountMO where email = '" + email +"'");
 			if(resultSet == null) {
 				throw new UserNotFoundException("Email não encontrado");
-//				return null;
 			}
 			else return (UserAccount) resultSet.get(0);
 		} catch (DataAccessLayerException e) {
