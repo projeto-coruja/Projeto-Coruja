@@ -230,7 +230,7 @@
 				<td class="field">
 					<select class="input" name="tipoDoc" id="tipoDoc">
 						<!-- Pegar do Banco de dados os tipos e, caso o usuÃ¡rio selecione outro, exibir campo para cadastrar outro tipo -->
-						<%=WebUtility.printSelectTipoDoc(request) %>
+						<%=WebUtility.printSelectTipoDoc(request)%>
 					</select>
 				</td>
 				<td class="status"><a href="#"><img 
@@ -246,27 +246,42 @@
 				<td class="field" colspan="2"><textarea class="inputResumo" id="resumo" name="resumo" rows="7" cols="40" maxlength="2048"></textarea></td>
 				<td class="status"></td>
 			</tr>
+		</table>
+		<table>
 			<tr>
 				<td colspan="3"><label for="palavrasChaves" class="labelForms">Palavras-Chave</label></td>
 			</tr>
+
 			<tr>
-				<td class="field" colspan="2">
-					<select class="input" name="chave1" id="chave1" style="width: 120px"><option value = "">Nenhuma</option>
-						<%= WebUtility.printSelectKeyWords(request, "chave1") %>
-					</select>
-					<select class="input" name="chave2" id="chave2" style="width: 120px"><option value = "">Nenhuma</option>
-						<%= WebUtility.printSelectKeyWords(request, "chave2") %>
-					</select>
-					<select class="input" name="chave3" id="chave3" style="width: 120px"><option value = "">Nenhuma</option>
-						<%= WebUtility.printSelectKeyWords(request, "chave3") %>
-					</select>
-				</td>
+				<td><label for="chave1" class="labelForms">Ação</label></td>
+				<td><label for="chave2" class="labelForms">Autores</label></td>
+				<td><label for="chave3" class="labelForms">Instituição</label></td>
+			</tr>
+
+			<tr>
+				<td class="field"><select class="input" name="chave1"
+					id="chave1" style="width: 120px"><option value="">Nenhuma</option>
+						<%=WebUtility.printSelectKeyWords(request, "chave1", "Ação")%>
+				</select></td>
+				<td class="field"><select class="input" name="chave2"
+					id="chave2" style="width: 120px"><option value="">Nenhuma</option>
+						<%=WebUtility.printSelectKeyWords(request, "chave2",
+					"Autores")%>
+				</select></td>
+				<td class="field"><select class="input" name="chave3"
+					id="chave3" style="width: 120px"><option value="">Nenhuma</option>
+						<%=WebUtility.printSelectKeyWords(request, "chave3",
+					"Instituição")%>
+				</select></td>
+
+
 				<td class="status"><a href="#"><img
-					src="/GraoPara/images/icone_ajuda.png"
-					alt="Informe de uma a três palavras chaves para filtrar sua pesquisa"
-					title="Informe de uma a três palavras chaves para filtrar sua pesquisa" /></a>
+						src="/GraoPara/images/icone_ajuda.png"
+						alt="Informe de uma a três palavras chaves para filtrar sua pesquisa"
+						title="Informe de uma a três palavras chaves para filtrar sua pesquisa" /></a>
 				</td>
 			</tr>
+
 			<tr>
 				<td colspan="3">
 					<br>

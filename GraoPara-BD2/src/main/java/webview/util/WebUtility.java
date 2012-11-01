@@ -475,12 +475,12 @@ public final class WebUtility {
 	 * @param key_pos
 	 * @return
 	 */
-	public static String printSelectKeyWords(HttpServletRequest request, String key_pos) {
+	public static String printSelectKeyWords(HttpServletRequest request, String key_pos, String tema) {
 		KeyWordEJB word = new KeyWordEJB();
 		String result = "";
 		String key = null;
 		try {
-			List<DTO> list = word.getAllKeyWords();
+			List<DTO> list = word.findByTheme(tema);
 
 			for(DTO d : list){
 				key = ((PalavraChave) d).getPalavra();
