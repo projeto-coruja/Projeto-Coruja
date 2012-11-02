@@ -441,7 +441,7 @@ label {
 .sidebar1 {
 	float: left;
 	width: 208px; /* Valor anterior: 180px; */
-	height: 1280px;
+	height: 1300px; /* 1280px; */
 	background-color: #24346F;
 	padding-bottom: 10px;
 }
@@ -609,6 +609,14 @@ span.asterisco {
 	border-top: 1px solid;
 }
 
+.tableFormsKey {
+	text-align: left;
+	/* margin: 40px 0 0 0px; */
+	margin-left: 78px; /* 100px; */
+	width: 411px;
+ 	/* border: 1px solid; */
+}
+
 .tablePesquisa {
 	text-align: left;
 	margin: 40px 0 0 0px;
@@ -618,7 +626,7 @@ span.asterisco {
 
 .tdForms {
 	text-align: left;
-	width: 100px /* 130px; */
+	width: 100px; /* 130px; */
 	border: 0px;
 }
 

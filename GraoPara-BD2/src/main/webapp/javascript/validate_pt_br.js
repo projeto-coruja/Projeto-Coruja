@@ -3,7 +3,8 @@ $(document).ready(function() {
 	var validator = $("#signupform").validate({
 		groups: {
 			numberType: "tipo_num numero",
-			documentDate: "dia mes ano"
+			documentDate: "dia mes ano",
+			keyword: "chave1 chave2 chave3"
 		},
 		
 		rules: {
@@ -77,6 +78,12 @@ $(document).ready(function() {
 			chave1: {
 				required: true
 			},
+			chave2: {
+				required: true
+			},
+			chave3: {
+				required: true
+			},
 			
 			/* -----------------------------------------------------
 			 *  Cadastro de Usuário
@@ -128,7 +135,7 @@ $(document).ready(function() {
 				required: true
 			},
 			tema: {
-				required:true
+				required: true
 			},			
 			
 			/* -----------------------------------------------------
@@ -261,7 +268,13 @@ $(document).ready(function() {
 				required: "Escreva um resumo para o documento."
 			},
 			chave1: {
-				required: "Informe a primeira palavra-chave."
+				required: "Escolhe palavras-chave."
+			},
+			chave2: {
+				required: "Escolhe palavras-chave."
+			},
+			chave3: {
+				required: "Escolhe palavras-chave."
 			},
 			
 			/* -----------------------------------------------------
@@ -376,12 +389,29 @@ $(document).ready(function() {
 		
 		// the errorPlacement has to take the table layout into account
 		errorPlacement: function(error, element) {
-			if ( element.is(":radio") )
+				error.appendTo( element.parent().next() );
+			/*if ( element.is(":radio") )
 				error.appendTo( element.parent().next().next() );
+			else if ( element.is(":checkbox") )
+				error.appendTo ( element.next() );*/
+			/*else if ( element.attr("name" == "chave1") )
+			error.appendTo( element.parent().next().next() );*/
+		}
+		
+		/*errorPlacement: function(error, element) {
+			if ( element.is(":chave1") )
+				error.appendTo( element.parent().next().next().next() );
 			else if ( element.is(":checkbox") )
 				error.appendTo ( element.next() );
 			else
 				error.appendTo( element.parent().next() );
-		}
+		}*/
+		
+		/*errorPlacement: function(error, element) {
+		    error.insertAfter( element );
+		    //error.appendTo( element.parent().next() );
+		    //error.appendTo(label.insertAfter( element ));
+		    //error.insertAfter(element.sibling(a));
+		}*/
 	});
 });
