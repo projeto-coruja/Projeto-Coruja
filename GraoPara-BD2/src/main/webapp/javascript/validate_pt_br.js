@@ -390,28 +390,6 @@ $(document).ready(function() {
 		// the errorPlacement has to take the table layout into account
 		errorPlacement: function(error, element) {
 				error.appendTo( element.parent().next() );
-			/*if ( element.is(":radio") )
-				error.appendTo( element.parent().next().next() );
-			else if ( element.is(":checkbox") )
-				error.appendTo ( element.next() );*/
-			/*else if ( element.attr("name" == "chave1") )
-			error.appendTo( element.parent().next().next() );*/
 		}
-		
-		/*errorPlacement: function(error, element) {
-			if ( element.is(":chave1") )
-				error.appendTo( element.parent().next().next().next() );
-			else if ( element.is(":checkbox") )
-				error.appendTo ( element.next() );
-			else
-				error.appendTo( element.parent().next() );
-		}*/
-		
-		/*errorPlacement: function(error, element) {
-		    error.insertAfter( element );
-		    //error.appendTo( element.parent().next() );
-		    //error.appendTo(label.insertAfter( element ));
-		    //error.insertAfter(element.sibling(a));
-		}*/
 	});
 });
