@@ -42,20 +42,7 @@
 			<div class="content" id="content">
 				<h1>Cadastro de Documento</h1>
 				<form id="signupform" autocomplete="off" method="GET" action="/GraoPara/protected/user/addDoc">	
-					<table class="tableForms">
-						<tr>
-							<td class="field"><input type = "hidden" id="action" name="action" value="add"></input></td>
-						</tr>
-						
-						<%@include file="/WEB-INF/templates/documentForm.jsp" %>	
-						
-						<tr>
-							<td class="tdForms">
-								<br>
-								<input class="buttonRegistrar" id="signupsubmit" name="inserir" type="submit" value="Enviar" />
-							</td>
-						</tr>
-					</table>
+					<%@include file="/WEB-INF/templates/documentForm.jsp"%>
 				</form>
 			</div>
 

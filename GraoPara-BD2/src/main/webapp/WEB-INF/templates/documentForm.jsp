@@ -215,9 +215,9 @@
 	
 <table class="tableFormsKey">
 	<tr>
-		<td class="field" style="text-align:center;"><label for="chave1" class="labelForms" style="text-decoration:underline;">Ação</label></td>
-		<td class="field" style="text-align:center;"><label for="chave2" class="labelForms" style="text-decoration:underline;">Autores</label></td>
-		<td class="field" style="text-align:center;"><label for="chave3" class="labelForms" style="text-decoration:underline;">Instituição</label></td>
+		<td class="field"><label for="chave1" class="labelForms">Ação:</label></td>
+		<td class="field"><label for="chave2" class="labelForms">Autores:</label></td>
+		<td class="field"><label for="chave3" class="labelForms" >Instituição:</label></td>
 	</tr>
 </table>
 
