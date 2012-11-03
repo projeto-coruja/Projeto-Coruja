@@ -26,12 +26,12 @@
 
 			<tr>
 				<td class="field">
-					<select name="tipoCodCodiceCaixa" class="input" id="identificacao">
+					<select name="tipoCodCodiceCaixa" class="inputLong" id="identificacao">
 						<option selected value="">Selecione...</option>
 						<option value="CODICE">Códice</option>
 						<option value="CAIXA">Caixa</option>
 					</select>
-					<label></label><a href="#"><img class="iconeAjuda" style="padding-left:9px;" src="/GraoPara/images/icone_ajuda.png" title="Escolha a coleção de Códices ou Caixas do Arquivo Público do Pará." /></a>
+					<label></label><a href="#"><img class="iconeAjuda" style="padding-left:5px;" src="/GraoPara/images/icone_ajuda.png" title="Escolha a coleção de Códices ou Caixas do Arquivo Público do Pará." /></a>
 				</td>				
 			</tr>
 			
@@ -62,10 +62,10 @@
 			
 			<tr>
 				<td class="field">
-					<select name="tituloCodiceCaixa" class="input" id="identificacao">
+					<select name="tituloCodiceCaixa" class="inputLong" id="identificacao">
 						<%=WebUtility.printSelectTituloCodiceCaixa(request)%>
 					</select>
-					<label></label><a href="#"><img class="iconeAjuda" style="padding-left:9px;" src="/GraoPara/images/icone_ajuda.png" title="Escolha a coleção de Códices ou Caixas do Arquivo Público do Pará." /></a>
+					<label></label><a href="#"><img class="iconeAjuda" style="padding-left:5px;" src="/GraoPara/images/icone_ajuda.png" title="Escolha a coleção de Códices ou Caixas do Arquivo Público do Pará." /></a>
 				</td>
 			</tr>
 
@@ -111,12 +111,12 @@
 
 			<tr>
 				<td class="field">
-					<select name="tipoDaIdentificacao" class="input" id="identificacao">
+					<select name="tipoDaIdentificacao" class="inputLong" id="identificacao">
 						<option selected value="">Selecione...</option>
 						<option value="APEP">APEP</option>
 						<option value="SEQ">Sequencial</option>
 					</select>
-					<label></label><a href="#"><img class="iconeAjuda" style="padding-left:9px;" src="/GraoPara/images/icone_ajuda.png" title="O Número APEP é aquele atribuído pelo arquivista do APEP para cada um dos documentos do Códice ou Caixa. Caso não tenha sido atribuído um número pelo arquivista, o projeto designou um que chamou de sequencial." /></a>
+					<label></label><a href="#"><img class="iconeAjuda" style="padding-left:5px;" src="/GraoPara/images/icone_ajuda.png" title="O Número APEP é aquele atribuído pelo arquivista do APEP para cada um dos documentos do Códice ou Caixa. Caso não tenha sido atribuído um número pelo arquivista, o projeto designou um que chamou de sequencial." /></a>
 				</td>
 			</tr>
 			
@@ -127,7 +127,7 @@
 			<tr>
 
 			<tr>
-				<td class="field"><input class="inputShort" type="text" name="numDaIdentificacao" id="ano" maxlength="10" />
+				<td class="field"><input class="input" type="text" name="numDaIdentificacao" id="ano" maxlength="10" />
 				<label></label><a href="#"><img class="iconeAjuda" src="/GraoPara/images/icone_ajuda.png" title="O Número APEP é aquele atribuído pelo arquivista do APEP para cada um dos documentos do Códice ou Caixa. Caso não tenha sido atribuído um número pelo arquivista, o projeto designou um que chamou de sequencial." /></a>
 				</td>
 			</tr>
@@ -209,11 +209,11 @@
 				
 			<tr>	
 				<td class="field">
-					<select class="input" name="tipoDoc" id="tipoDoc">
+					<select class="inputLong" name="tipoDoc" id="tipoDoc">
 						<!-- Pegar do Banco de dados os tipos e, caso o usuario selecione outro, exibir campo para cadastrar outro tipo -->
 						<%=WebUtility.printSelectTipoDoc(request) %>
 					</select>
-				<label></label><a href="#"><img class="iconeAjuda" style="padding-left:9px;" src="/GraoPara/images/icone_ajuda.png" title="Selecione um dos tipos de documentos para filtrar resultados." /></a>
+				<label></label><a href="#"><img class="iconeAjuda" style="padding-left:5px;" src="/GraoPara/images/icone_ajuda.png" title="Selecione um dos tipos de documentos para filtrar resultados." /></a>
 				</td>
 			</tr>
 			
@@ -259,7 +259,7 @@
 						<option value="">Nenhuma</option>
 						<%=WebUtility.printSelectKeyWords(request, "chave3", "Instituição")%>
 					</select>
-					<label></label><a href="#"><img class="iconeAjuda" style="padding-left:9px;" src="/GraoPara/images/icone_ajuda.png" title="Informe de uma a três palavras chaves para filtrar sua pesquisa."/></a>
+					<label></label><a href="#"><img class="iconeAjuda" style="padding-left:5px;" src="/GraoPara/images/icone_ajuda.png" title="Informe de uma a três palavras chaves para filtrar sua pesquisa."/></a>
 				</td>
 			</tr>
 			
