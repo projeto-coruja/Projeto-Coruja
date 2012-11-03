@@ -2,41 +2,55 @@
 
 	<!-- Nome -->
 	<tr>
-		<td class="tdForms2"><label class="labelForms" id="lfirstname" for="nome">Nome</label></td>
+		<td class="tdForms2">
+			<label id="lfirstname" class="labelForms" for="nome">Nome</label>
+		</td>
 	</tr>
 	
 	<tr>
-		<td class="field"><input class="input" id="nome" name="nome" type="text" value="" maxlength="100" required></td>
+		<td class="field">
+			<input id="nome" class="input" type="text" name="nome" maxlength="100" style="width:350px;"/>
+		</td>
 		<td class="status"></td>
 	</tr>
 
 	<!-- Email -->
 	<tr>
-		<td class="tdForms2"><label class="labelForms"  id="lemail" for="email" >Email</label></td>
+		<td class="tdForms2">
+			<label id="lemail" class="labelForms"  for="email" >Email</label>
+		</td>
 	</tr>
 	
 	<tr>
-		<td class="field"><input class="input" id="email" name="email" type="text" value="" maxlength="150"/></td>
+		<td class="field"><input id="email" class="input" type="text" name="email" maxlength="150" style="width:350px;"/></td>
 		<td class="status"></td>
 	</tr>
 
 	<!-- Senha -->
 	<tr>
-		<td class="tdForms2"><label class="labelForms"  id="lpassword" for="password">Senha</label></td>
+		<td class="tdForms2">
+			<label id="lpassword" class="labelForms" for="password">Senha</label>
+		</td>
 	</tr>
 	
 	<tr>
-		<td class="field"><input id="password" class="inputPass" name="senha" type="password" maxlength="50" value="" /></td>
+		<td class="field">
+			<input id="password" class="inputPass" type="password" name="senha" maxlength="50"/>
+		</td>
 		<td class="status"></td>
 	</tr>
 
 	<!-- Confirma Senha -->
 	<tr>
-		<td class="tdForms2"><label class="labelForms"  id="lpassword_confirm" for="password_confirm">Confirma Senha</label></td>
+		<td class="tdForms2">
+			<label id="lpassword_confirm" class="labelForms" for="password_confirm">Confirma Senha</label>
+		</td>
 	</tr>
 	
 	<tr>
-		<td class="field"><input class="inputPass" id="password_confirm" name="confsenha" type="password" maxlength="50" value="" /></td>
+		<td class="field">
+			<input id="password_confirm" class="inputPass" type="password" name="confsenha" maxlength="50"/>
+		</td>
 		<td class="status"></td>
 	</tr>
 
@@ -44,13 +58,7 @@
 	<tr>
 		<td class="tdForms2">
 			<br>
-			<input class="buttonRegistrar" id="signupsubmit" name="inserir" type="submit" value="Cadastrar" />
-		</td>
-	</tr>
-	
-	<tr>
-		<td class="tdForms">
-			<br>
+			<input id="signupsubmit" class="buttonRegistrar" type="submit" name="inserir" value="Cadastrar"/>
 		</td>
 	</tr>
 </table>

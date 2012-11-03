@@ -44,21 +44,25 @@
 			<div class="content" id="content">
 				<h1>Geração de Senha</h1>
 
-				<form action="/GraoPara/doPasswordRecovery" id="signupform"  method="post" autocomplete="off">
+				<form id="signupform" method="post" autocomplete="off" action="/GraoPara/doPasswordRecovery">
 					<table class="tableForms">
 						<tr>
-							<td class="tdControle"><label class="labelForms"  id="lemail" for="email">Email do Usuário</label></td>
+							<td class="tdControle">
+								<label id="lemail" class="labelForms" for="email">Email do Usuário</label>
+							</td>
 						</tr>
 						
 						<tr>
-							<td class="field"><input class="input" id="email" name="email" type="text" value="" maxlength="150" /></td>
+							<td class="field">
+								<input id="email" class="input" type="text" name="email" maxlength="150" style="width:350px;"/>
+							</td>
 							<td class="status"></td>
 						</tr>
 
 						<tr>
 							<td class="tdControle">
 								<br>
-								<input class="buttonRegistrar" id="signupsubmit" name="Enviar" type="submit" value="Gerar" />
+								<input id="signupsubmit" class="buttonRegistrar" type="submit" name="Enviar" value="Gerar"/>
 							</td>
 						</tr>
 					</table>

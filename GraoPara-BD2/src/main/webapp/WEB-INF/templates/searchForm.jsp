@@ -1,7 +1,9 @@
 <%@page import="webview.util.WebUtility"%>
 
 <div class="content" id="content">
-	<h1>Pesquisa de Documento <label style="font-size: x-small; color: black; padding-left: 10px;">(Os campos são opcionais.)</label></h1>
+	<h1>Pesquisa de Documento 
+		<label style="font-size: x-small; color: black; padding-left: 10px;">(Os campos são opcionais.)</label>
+	</h1>
 	
 
 	<form action="/GraoPara/public/listagemDocumentos.jsp" id="signupform" method="get" name="cadastro">
@@ -225,43 +227,44 @@
 			</tr>
 			
 			<!-- Palavras-Chave -->			
+			<tr>
+				<td class="tdForms">
+					<label for="palavrasChaves" class="labelForms">&#8226 Palavras-Chave</label>
+				</td>
+			</tr>
+		</table>
+
+		<table class="tableFormsKey">
+			<tr>
+				<td class="field"><label for="chave1" class="labelForms">Ação:</label></td>
+				<td class="field"><label for="chave2" class="labelForms">Autores:</label></td>
+				<td class="field"><label for="chave3" class="labelForms" >Instituição:</label></td>
+			</tr>
+		</table>
 		
+		<table class="tableFormsKey">
 			<tr>
-				<td colspan="3"><label for="palavrasChaves" class="labelForms">Palavras-Chave</label></td>
-			</tr>
-
-			<tr>
-				<td><label for="chave1" class="labelForms">Ação</label></td>
-				<td><label for="chave2" class="labelForms">Autores</label></td>
-				<td><label for="chave3" class="labelForms">Instituição</label></td>
-			</tr>
-
-			<tr>
-				<td class="field"><select class="input" name="chave1"
-					id="chave1" style="width: 120px"><option value="">Nenhuma</option>
+				<td class="field">
+					<select class="inputKey" name="chave1" id="chave1">
+						<option value="">Nenhuma</option>
 						<%=WebUtility.printSelectKeyWords(request, "chave1", "Ação")%>
-				</select></td>
-				<td class="field"><select class="input" name="chave2"
-					id="chave2" style="width: 120px"><option value="">Nenhuma</option>
-						<%=WebUtility.printSelectKeyWords(request, "chave2",
-					"Autores")%>
-				</select></td>
-				<td class="field"><select class="input" name="chave3"
-					id="chave3" style="width: 120px"><option value="">Nenhuma</option>
-						<%=WebUtility.printSelectKeyWords(request, "chave3",
-					"Instituição")%>
-				</select></td>
-
-
-				<td class="status"><a href="#"><img
-						src="/GraoPara/images/icone_ajuda.png"
-						alt="Informe de uma a três palavras chaves para filtrar sua pesquisa"
-						title="Informe de uma a três palavras chaves para filtrar sua pesquisa" /></a>
+					</select>							
+				
+					<select class="inputKey" name="chave2" id="chave2">
+						<option value="">Nenhuma</option>
+						<%=WebUtility.printSelectKeyWords(request, "chave2", "Autores")%>
+					</select>	
+							
+					<select class="inputKey" name="chave3" id="chave3">
+						<option value="">Nenhuma</option>
+						<%=WebUtility.printSelectKeyWords(request, "chave3", "Instituição")%>
+					</select>
+					<label></label><a href="#"><img class="iconeAjuda" style="padding-left:9px;" src="/GraoPara/images/icone_ajuda.png" title="Informe de uma a três palavras chaves para filtrar sua pesquisa."/></a>
 				</td>
 			</tr>
 			
 			<tr>
-				<td colspan="3">
+				<td>
 					<br>
 					<input class="buttonRegistrar" name="inserir" type="submit" value="Pesquisar" id="signupsubmit" />
 					<label style="padding-left: 30px;"></label>

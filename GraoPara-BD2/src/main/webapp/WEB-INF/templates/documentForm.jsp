@@ -1,18 +1,20 @@
 <%@page import="webview.util.WebUtility"%>
 <table class="tableForms">
 	<tr>
-		<td class="field"><input type = "hidden" id="action" name="action" value="add"></input></td>
+		<td class="field">
+			<input id="action" name="action" type="hidden" value="add"></input>
+		</td>
 	</tr>
 
 	<tr>
 		<td class="tdForms">
-			<label class="labelForms" id="lidentificacao" for="identificacao">Códice/Caixa</label>
+			<label id="lidentificacao" class="labelForms" for="identificacao">Códice/Caixa</label>
 		</td>
 	</tr>
 	
 	<tr>
 		<td class="field">
-			<select name="identificacao" class="inputLong" id="identificacao">
+			<select id="identificacao" class="inputLong" name="identificacao">
 				<%=WebUtility.printSelectTituloCodiceCaixa(request, false)%>
 			</select>
 		</td>
@@ -21,13 +23,13 @@
 	
 	<tr>
 		<td class="tdForms">
-			<label class="labelForms" id="lanoInicioCodiceCaixa" for="anoInicioCodiceCaixa">Ano Inicial do Códice/Caixa</label>
+			<label id="lanoInicioCodiceCaixa" class="labelForms" for="anoInicioCodiceCaixa">Ano Inicial do Códice/Caixa</label>
 		</td>
 	</tr>
 	
 	<tr>
 		<td class="field">
-			<input class="input" name="anoInicioCodiceCaixa" id="anoInicioCodiceCaixa" type="text" size="20" maxlength="4" />
+			<input class="input" name="anoInicioCodiceCaixa" id="anoInicioCodiceCaixa" type="text" size="20" maxlength="4"/>
 		</td>
 		<td class="status"></td>
 	</tr>
@@ -40,7 +42,7 @@
 	
 	<tr>
 		<td class="field">
-			<input class="input" name="anoFimCodiceCaixa" id="anoFimCodiceCaixa" type="text" size="20" maxlength="4" />
+			<input class="input" name="anoFimCodiceCaixa" id="anoFimCodiceCaixa" type="text" size="20" maxlength="4"/>
 		</td>
 		<td class="status"></td>
 	</tr>
@@ -229,14 +231,10 @@
 				<%=WebUtility.printSelectKeyWords(request, "chave1", "Ação")%>
 			</select>
 		
-		
-		
 			<select class="inputKey" name="chave2" id="chave2">
 				<option value="">Nenhuma</option>
 				<%=WebUtility.printSelectKeyWords(request, "chave2", "Autores")%>
-			</select>
-		
-		
+			</select>		
 		
 			<select class="inputKey" name="chave3" id="chave3">
 				<option value="">Nenhuma</option>
