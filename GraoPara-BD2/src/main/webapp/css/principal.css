@@ -52,6 +52,26 @@ h1 {
 	font-size: larger;
 }
 
+h2 {
+	text-align: center;
+	font-size: larger;
+	margin-top: 30px;
+	margin-left: 0px;
+}
+
+p {
+	text-align: justify;
+	text-indent: 3em;
+	/* text-align: left; */
+	/* margin-left: 30px; */
+}
+
+.text {
+	border: 1px none blue;
+	padding-left:3em;
+	padding-right:3em;
+}
+
 a img {
 	/* this selector removes the default blue border displayed in some browsers around an image when it is surrounded by a link */
 	border: none;
@@ -363,8 +383,8 @@ a:hover,a:active,a:focus {
 }
 
 .buttonSair {
-	margin-left: 22px;
-	width: 100px;
+	margin-left: 29px;
+	/* width: 100px; */
 }
 
 .buttonDownload {
@@ -451,6 +471,7 @@ label {
 	padding: 30px 10px 10px 20px;
 	width: 600px;
 	float: left;
+	border: 1px none red;
 }
 
 .content2 {
@@ -519,13 +540,8 @@ ul.nav a:hover,ul.nav a:active,ul.nav a:focus {
 	color: #335EB8;
 }
 
-p.left {
-	text-align: left;
-	/* margin-left: 30px; */
-}
-
 .sidebar {
-	font-weight: bold;
+	font-family: message-box;
 	text-align: center;
 	color: #24346F;
 }
