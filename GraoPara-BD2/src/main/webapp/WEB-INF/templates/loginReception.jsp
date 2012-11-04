@@ -1,6 +1,6 @@
 <%@page import="webview.util.WebUtility" %>
 
-<div class="bordaBox">
+<div class="bordaBox" style="border-top: 3px solid #033454;">
 	<div class="conteudo">
 		<div class="LoginArea" id="logado" style="display: block;">
 			<form method="post" action="/GraoPara/doLogout">

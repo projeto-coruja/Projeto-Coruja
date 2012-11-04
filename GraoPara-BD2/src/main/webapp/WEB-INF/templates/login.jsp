@@ -18,16 +18,12 @@
 						<td><a href="/GraoPara/public/userCadastre.jsp"><input type="button" class="buttonRegistrar" name="Registrar" value="Registrar"></a></td>						
 						<p></p>
 					</tr>
-				</div> -->				
-				
-				<!-- Espaco -->
-				<fieldset>
-				</fieldset>
+				</div> -->
 
-				<fieldset>
+				<div style="text-align:center; padding:0px 1px 8px;">
 					<input class="buttonEntrar" type="submit" name="Entrar"	value="Entrar" />
-					<a href="/GraoPara/public/userCadastre.jsp"><input type="button" class="buttonRegistrar" name="Registrar" value="Registrar"></a>
-				</fieldset>
+					<a style="text-decoration: none; "href="/GraoPara/public/userCadastre.jsp"><input type="button" class="buttonRegistrar" name="Registrar" value="Registrar"></a>
+				</div>
 			</form>
 		</div>
 	</div>
