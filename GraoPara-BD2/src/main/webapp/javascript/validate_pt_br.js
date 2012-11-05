@@ -195,6 +195,30 @@ $(document).ready(function() {
 			epocaAte: {
 				number: true,
 				minlength: 4
+			},
+			
+			/* -----------------------------------------------------
+			 * Cadastro de Codice/Caixa
+			 * ----------------------------------------------------- */
+			
+			tipo: {
+				required: true
+			},
+			
+			titulo: {
+				required: true
+			},
+			
+			anoIni: {
+				required: true,
+				number: true,
+				minlength: 4
+			},
+			
+			anoFim: {
+				required: true,
+				number: true,
+				minlength: 4
 			}
 			
 		},
@@ -224,10 +248,6 @@ $(document).ready(function() {
 			numero: {
 				required: "Número APEP ou Sequencial inválido.",
 				minlength: jQuery.format("Informe no mínimo {0} caracteres.")
-			},
-			codigo: {
-				required: "Digite o código do documento.",
-				minlength: jQuery.format("Digite no mínimo {0} caracteres.")
 			},
 			tituloDocumento: {
 				required: "Digite o título do documento."
@@ -382,6 +402,35 @@ $(document).ready(function() {
 			},
 			
 			epocaAte: {
+				minlength: jQuery.format("Informe o ano com {0} dígitos."),
+				number: "Digite apenas números."
+			},
+			
+			/* -----------------------------------------------------
+			 * Cadastro de Codice/Caixa
+			 * ----------------------------------------------------- */	
+			
+			tipo: {
+				required: "Escolhe uma identificação."
+			},
+
+			codigo: {
+				required: "Digite o código do documento.",
+				minlength: jQuery.format("Digite no mínimo {0} caracteres.")
+			},
+			
+			titulo: {
+				required: "Digite o título do documento."
+			},
+			
+			anoIni: {
+				required: "Digite o ano inicial do documento.",
+				minlength: jQuery.format("Informe o ano com {0} dígitos."),
+				number: "Digite apenas números."
+			},
+			
+			anoFim: {
+				required: "Digite o ano final do documento.",
 				minlength: jQuery.format("Informe o ano com {0} dígitos."),
 				number: "Digite apenas números."
 			}

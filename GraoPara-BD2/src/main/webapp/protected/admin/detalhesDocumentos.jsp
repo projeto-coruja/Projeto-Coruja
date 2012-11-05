@@ -31,6 +31,7 @@
 
 			<!-- Menu lateral -->
 			<div class="sidebar1">
+			
 				<!-- Area de login -->
 				<%@include file="/WEB-INF/templates/loginReception.jsp" %>
 
@@ -39,31 +40,16 @@
 			</div>
 
 			<div class="content" id="content">
-				<h2>Detalhes do Documento</h2>
-
-				<form id="signupform" autocomplete="off" method="POST" action="/GraoPara/protected/admin/updateDoc">
-					<table class="tableForms">
-						
-						<%@include file="/WEB-INF/templates/documentForm.jsp" %>
-
-						<tr>
-							<td class="tdControle" colspan="3">
-								<input class="buttonCancelar" type="button" value="Cancelar" onClick="history.go(-1)" />
-								<input class="buttonRegistrar" id="signupsubmit" name="Atualizar" type="submit" value="Atualizar" />
-							</td>
-						</tr>
-					</table>
-
+				<h1>Detalhes do Documento</h1>
+				<form id="signupform" autocomplete="off" method="POST" action="/GraoPara/protected/admin/updateDoc">						
+					<%@include file="/WEB-INF/templates/editDocumentForm.jsp" %>
 					<input class="inputShort" name="pesquisa_APEP_SEQ" id="numero" type="hidden" value=<%=WebUtility.printLabel(request, "tipoAPEP_SEQ")%>>
 					<input class="inputShort" name="pesquisa_num_APEP_SEQ" id="numero" type="hidden" value=<%=WebUtility.printLabel(request, "numeroAPEP")%>>
 				</form>
 			</div>
 
 			<!-- Rodape -->
-			<div class="footer">
-				<p>Copyright © - Universidade Federal de São Paulo - UNIFESP 2012</p>
-				<p>Desenvolvido pelo grupo Coruja</p>
-			</div>
+			<%@include file="/WEB-INF/templates/footer.jsp" %>
 		</div>
 	</body>
 </html>

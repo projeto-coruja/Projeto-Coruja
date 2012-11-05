@@ -44,7 +44,7 @@
 				<h1>Pesquisa de Documento 
 					<label style="font-size: x-small; color: black; padding-left: 10px;">(Os campos são opcionais.)</label>
 				</h1>
-				<form action="/GraoPara/userAdv/listagemDocumentos.jsp" id="signupform" method="get" name="cadastro">
+				<form action="/GraoPara/protected/userAdv/listagemDocumentos.jsp" id="signupform" method="get" name="cadastro">
 					<%@include file="/WEB-INF/templates/searchForm.jsp" %>
 				</form>
 			</div>

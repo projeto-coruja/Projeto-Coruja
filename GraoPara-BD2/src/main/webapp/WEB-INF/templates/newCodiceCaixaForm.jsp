@@ -15,6 +15,7 @@
 					<option value="caixa">Número de Caixa</option>
 			</select>
 		</td>
+		<td class="status"></td>
 	</tr>
 
 	<!-- Código -->
@@ -27,7 +28,8 @@
 	<tr>
 		<td class="field">
 			<input class="input" name="codigo" size="10" id="codigo" type="text" maxlength="5" style="width:350px;"/>
-		</td>
+		</td>		
+		<td class="status"></td>
 	</tr>
 
 	<!-- Título -->
@@ -41,6 +43,7 @@
 		<td class="field">
 			<input class="input" name="titulo" id="titulo" type="text" size="20" maxlength="350" style="width:350px;"/>
 		</td>
+		<td class="status"></td>
 	</tr>
 	
 	<!-- Ano Inicial -->
@@ -54,6 +57,7 @@
 		<td class="field">
 			<input class="input" name="anoIni" id="anoIni" type="text" size="10" maxlength="4" style="width:160px;"/>
 		</td>
+		<td class="status"></td>
 	</tr>
 	
 	<!-- Ano Final -->
@@ -67,6 +71,7 @@
 		<td class="field">
 			<input class="input" name="anoFim" id="anoFim" type="text" size="10" maxlength="4" style="width:160px;"/>
 		</td>
+		<td class="status"></td>
 	</tr>
 
 	<!-- Botao Cadastrar -->
