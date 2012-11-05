@@ -40,7 +40,14 @@
 				<%@include file="/WEB-INF/templates/userAdvMenu.jsp"%>
 			</div>
 
-			<%@include file="/WEB-INF/templates/searchForm.jsp" %>
+			<div class="content" id="content">
+				<h1>Pesquisa de Documento 
+					<label style="font-size: x-small; color: black; padding-left: 10px;">(Os campos são opcionais.)</label>
+				</h1>
+				<form action="/GraoPara/userAdv/listagemDocumentos.jsp" id="signupform" method="get" name="cadastro">
+					<%@include file="/WEB-INF/templates/searchForm.jsp" %>
+				</form>
+			</div>
 
 			<!-- Rodape -->
 			<%@include file="/WEB-INF/templates/footer.jsp" %>
