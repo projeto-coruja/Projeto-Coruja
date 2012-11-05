@@ -24,7 +24,6 @@ public class SearchWorker {
 	
 	public static void listAllDocuments(HttpServletRequest request, JspWriter out) throws IOException{
 		
-		//TODO: Pegar os valores via parâmetros.
 		String tipoCodiceCaixa = request.getParameter("tipoCodCodiceCaixa");
 		String tituloCodiceCaixa = request.getParameter("tituloCodiceCaixa");
 		String codCodiceCaixaDe = request.getParameter("codDe");
@@ -236,10 +235,12 @@ public class SearchWorker {
 
 			request.setAttribute("resumo",doc.getResumo());
 
-			request.setAttribute("tipoDocumento",doc.getTipoDocumento().getNome()); 
+			request.setAttribute("tipoDocumento",doc.getTipoDocumento().getNome() + " - " + doc.getTipoDocumento().getDescricao()); 
 
 			request.setAttribute("palavraChave1",(doc.getPalavraChave1() != null ? doc.getPalavraChave1().getPalavra() : ""));
+			
 			request.setAttribute("palavraChave2",(doc.getPalavraChave2() != null ? doc.getPalavraChave2().getPalavra() : ""));
+			
 			request.setAttribute("palavraChave3",(doc.getPalavraChave3() != null ? doc.getPalavraChave3().getPalavra() : ""));
 																		
 		} catch (IllegalArgumentException e) {

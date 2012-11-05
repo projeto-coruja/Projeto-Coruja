@@ -221,9 +221,9 @@ public final class WebUtility {
 					CodiceCaixa c = (CodiceCaixa) d;
 					if(!added.contains(c.getTitulo())) {
 						if(!c.getCod().equals(selected))
-							output += "\n	<option value=\""+ c.getCod() +"-"+ c.getTitulo() + " \">" + c.getCod().replace("-", " - ") + ": "+ c.getTitulo() + "</option> ";
+							output += "\n	<option value=\""+ c.getCod() +"-"+ c.getTitulo() + " \">" + c.getCod().replace("-", " - ") + ": "+ c.getTitulo() + " (" + c.getAnoInicio() + " - " + c.getAnoFim() + ")" + "</option> ";
 						else
-							output += "\n	<option selected value=\""+ c.getCod() +"-"+ c.getTitulo() + " \">" + c.getCod().replace("-", " - ") + ": "+ c.getTitulo() + "</option> ";
+							output += "\n	<option selected value=\""+ c.getCod() +"-"+ c.getTitulo() + " \">" + c.getCod().replace("-", " - ") + ": " + c.getTitulo()  + " (" + c.getAnoInicio() + " - " + c.getAnoFim() + ")" + "</option> ";
 						added.add(c.getTitulo());
 					}
 				}
@@ -433,9 +433,9 @@ public final class WebUtility {
 			for(DTO d : list){
 				tipoDoc = ((TipoDocumento) d).getNome();
 				if(tipoDoc.equals(request.getParameter("tipoDoc")))
-					result += "<option selected value=\"" + tipoDoc + "\">" + tipoDoc + "</option> ";
+					result += "<option selected value=\"" + tipoDoc + "\">" + tipoDoc + " - " + ((TipoDocumento) d).getDescricao() + "</option> ";
 				else
-					result += "<option value=\"" + tipoDoc + "\">" + tipoDoc + "</option> ";
+					result += "<option value=\"" + tipoDoc + "\">" + tipoDoc + " - " + ((TipoDocumento) d).getDescricao() + "</option> ";
 			}
 		} catch (UnreachableDataBaseException e) {
 			e.printStackTrace();
@@ -490,10 +490,8 @@ public final class WebUtility {
 					result += "<option value=\"" + key + "\">" + key + "</option> ";
 			}
 		} catch (UnreachableDataBaseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (KeywordNotFoundException e) {
-			// TODO Auto-generated catch block
 		}
 		return result;
 	}
