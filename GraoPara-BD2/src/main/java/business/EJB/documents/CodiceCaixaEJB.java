@@ -1,5 +1,6 @@
 package business.EJB.documents;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
@@ -59,15 +60,17 @@ public class CodiceCaixaEJB {
 	public List<DTO> getAllEntriesWithContent() throws UnreachableDataBaseException, CodiceCaixaNotFoundException{
 		DocumentoDAO documento = new DocumentoDAO();
 		List<DTO> list = dao.findAllCodiceCaixa();
-		HashSet<Integer> rm = new HashSet<Integer>();
+		List<DTO> contents = new ArrayList<DTO>();
+//		HashSet<Integer> rm = new HashSet<Integer>();
 		for(int i = 0; i < list.size(); i++) {
 			CodiceCaixa c = (CodiceCaixa) list.get(i);
 			Long count = documento.countDocumentsByCriteria("codiceCaixa.cod = '" + c.getCod() + "'");
-			if(count == 0) rm.add(i);
+			if(count != 0)	contents.add(list.get(i));
+//			if(count == 0) rm.add(i);
 		}
-		for(Integer i : rm) list.remove(i.intValue());
+//		for(Integer i : rm) list.remove(i.intValue());
 		
-		return list;
+		return contents;
 	}
 	
 	
