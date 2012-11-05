@@ -208,7 +208,7 @@ public class SearchWorker {
 			if(doc.getData() == null) dataFormatted = "Ilegível/Sem Data";	
 			else	dataFormatted = sdf.format(doc.getData());
 			
-			request.setAttribute("codCodiceCaixa", doc.getCodiceCaixa().getCod().replace("-", " - ") + ": " + doc.getCodiceCaixa().getTitulo());
+			request.setAttribute("codCodiceCaixa", doc.getCodiceCaixa().getCod().replace("-", " - ") + ": " + doc.getCodiceCaixa().getTitulo() + " (" + doc.getCodiceCaixa().getAnoInicio() + " - " + doc.getCodiceCaixa().getAnoFim() + ")");
 					
 			request.setAttribute("titulo",doc.getTitulo());
 					

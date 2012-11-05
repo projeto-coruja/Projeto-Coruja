@@ -148,15 +148,15 @@
 </tr>
 
 <tr>
-	<td class="field"><input class="input"
+	<td class="field" ><input style="width: 150px;"	class="input"
 		name="palavraChave1" id="palavraChave1" type="text"
 		size="20" maxlength="1024" width="100px"
 		readonly="readonly" value="<%= request.getAttribute("palavraChave1") %>"></td>
-	<td class="field"><input class="input"
+	<td class="field" ><input style="width: 150px;" class="input"
 		name="palavraChave2" id="palavraChave2" type="text"
 		size="20" maxlength="1024" width="100px"
 		readonly="readonly" value="<%= request.getAttribute("palavraChave2") %>"></td>
-	<td class="field"><input class="input"
+	<td class="field"><input style="width: 150px;" class="input"
 		name="palavraChave3" id="palavraChave3" type="text"
 		size="20" maxlength="1024" width="100px"
 		readonly="readonly" value="<%= request.getAttribute("palavraChave3") %>"></td>

@@ -33,10 +33,10 @@
 			<!-- Menu lateral -->
 			<div class="sidebar1">
 				<!-- Area de login -->
-				<%@include file="/WEB-INF/templates/loginReception.jsp" %>
+				<%@include file="/WEB-INF/templates/login.jsp" %>
 
 				<!-- Area de menu -->
-				<%@include file="/WEB-INF/templates/adminMenu.jsp"%>
+				<%@include file="/WEB-INF/templates/defaultMenu.jsp"%>
 			</div>
 
 			<div class="content" id="content">
