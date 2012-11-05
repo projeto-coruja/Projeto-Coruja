@@ -33,28 +33,20 @@
 			<!-- Menu lateral -->
 			<div class="sidebar1">
 				<!-- Area de login -->
-				<%@include file="/WEB-INF/templates/login.jsp" %>
+				<%@include file="/WEB-INF/templates/login.jsp"%>
 
 				<!-- Area de menu -->
 				<%@include file="/WEB-INF/templates/defaultMenu.jsp"%>
 			</div>
 
 			<div class="content" id="content">
-				<h2>Detalhes do Documento</h2>
-
-				<table class="tableForms">
-					
-					<% SearchWorker.getInfoFromDocument(request);%>
-					<%@include file="/WEB-INF/templates/documentDetails.jsp" %>
-				</table>
-
+				<h1>Detalhes do Documento</h1>					
+				<% SearchWorker.getInfoFromDocument(request);%>
+				<%@include file="/WEB-INF/templates/documentDetails.jsp"%>
 			</div>
 
 			<!-- Rodape -->
-			<div class="footer">
-				<p>Copyright © - Universidade Federal de São Paulo - UNIFESP 2012</p>
-				<p>Desenvolvido pelo grupo Coruja</p>
-			</div>
+			<%@include file="/WEB-INF/templates/footer.jsp"%>
 		</div>
 	</body>
 </html>

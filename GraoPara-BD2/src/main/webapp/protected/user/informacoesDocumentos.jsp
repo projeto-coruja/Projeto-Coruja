@@ -32,8 +32,9 @@
 
 			<!-- Menu lateral -->
 			<div class="sidebar1">
+			
 				<!-- Area de login -->
-				<%@include file="/WEB-INF/templates/loginReception.jsp" %>
+				<%@include file="/WEB-INF/templates/loginReception.jsp"%>
 
 				<!-- Area de menu -->
 				<%@include file="/WEB-INF/templates/userMenu.jsp"%>
@@ -41,8 +42,8 @@
 
 			<div class="content" id="content">
 				<h1>Detalhes do Documento</h1>
-					<%@include file="/WEB-INF/templates/documentDetails.jsp" %>
-					<% SearchWorker.getInfoFromDocument(request);%>
+				<%@include file="/WEB-INF/templates/documentDetails.jsp"%>
+				<% SearchWorker.getInfoFromDocument(request);%>
 			</div>
 
 			<!-- Rodape -->
