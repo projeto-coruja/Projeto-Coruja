@@ -40,21 +40,13 @@
 			</div>
 
 			<div class="content" id="content">
-				<h2>Detalhes do Documento</h2>
-
-				<table class="tableForms">
-					
-					<% SearchWorker.getInfoFromDocument(request);%>
+				<h1>Detalhes do Documento</h1>
 					<%@include file="/WEB-INF/templates/documentDetails.jsp" %>
-				</table>
-
+					<% SearchWorker.getInfoFromDocument(request);%>
 			</div>
 
 			<!-- Rodape -->
-			<div class="footer">
-				<p>Copyright © - Universidade Federal de São Paulo - UNIFESP 2012</p>
-				<p>Desenvolvido pelo grupo Coruja</p>
-			</div>
+			<%@include file="/WEB-INF/templates/footer.jsp"%>
 		</div>
 	</body>
 </html>
