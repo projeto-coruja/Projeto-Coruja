@@ -28,7 +28,9 @@ public class DocumentEJB {
 	
 	private final DocumentoDAO docDao;
 	
-	private static String default_query = "FROM DocumentoMO WHERE ";
+	private final static String default_query = "FROM DocumentoMO WHERE ";
+	
+	private final static String caixa_base = "CAIXA-0", caixa_fim = "CAIXA-ZZZZZ", codice_base = "CODICE-0", codice_fim = "CODICE-ZZZZZ";
 
 	public DocumentEJB() {
 		docDao = new DocumentoDAO();
@@ -59,60 +61,66 @@ public class DocumentEJB {
 		boolean continue_query = false;
 		String query = new String(default_query);
 		
-		/*if(codCodiceCaixaDe != null && !codCodiceCaixaDe.isEmpty()){
-			String codCdCxDe = tipoCodiceCaixa+"-"+codCodiceCaixaDe;
-			if(codCodiceCaixaAte != null && !codCodiceCaixaAte.isEmpty()) {
-				String codCdCxAte = tipoCodiceCaixa+"-"+codCodiceCaixaAte;
-				query += " codiceCaixa.cod BETWEEN '" + codCdCxDe.trim() + "' AND '" + codCdCxAte.trim() + "'";
-			}
-			else query += " codiceCaixa.cod = '" + codCdCxDe.trim() + "'";
-			continue_query = true;
-		}*/
 
-		// Eu não faço a mínima idéia do que eu escrevi nas próximas 40 linha... Então se alguem quiser revisar aí, a vontade...
-		// TODO: Verificar(?) se faz algum sentido!
-		if(codCodiceCaixaDe != null && !codCodiceCaixaDe.isEmpty()){ 
-			if(codCodiceCaixaAte != null && !codCodiceCaixaAte.isEmpty()) {
-				if(tipoCodiceCaixa != null && !tipoCodiceCaixa.isEmpty()){
-					query += " codiceCaixa.cod BETWEEN '" + (tipoCodiceCaixa+"-"+codCodiceCaixaDe).trim()  + "'"  + 
-							" AND '" + (tipoCodiceCaixa+"-"+codCodiceCaixaAte).trim() + "'";
-				}
-				else{
-					query += " codiceCaixa.cod BETWEEN '" + ("CODICE-"+codCodiceCaixaDe).trim() + "'" + 
-							" AND '" + ("CODICE-"+codCodiceCaixaAte).trim() + "'" + 
-							" AND codiceCaixa.cod BETWEEN '" + ("CAIXA-"+codCodiceCaixaDe).trim() + "'"  + 
-							" AND '" + ("CAIXA-"+codCodiceCaixaAte).trim() + "'";
-				}
-				continue_query = true;
+		//codice/caixa revisado 
+		boolean init_de = isInit(codCodiceCaixaDe), init_ate = isInit(codCodiceCaixaAte), init_tipo = isInit(tipoCodiceCaixa);
+		if(init_de && init_ate) {
+			if(init_tipo) {
+				String codDe = (tipoCodiceCaixa + "-" + codCodiceCaixaDe).trim();
+				String codAte = (tipoCodiceCaixa + "-" + codCodiceCaixaAte).trim();
+				query += "codiceCaixa.cod BETWEEN '" + codDe + "' AND '" + codAte + "'";
 			}
-			else{
-				if(tipoCodiceCaixa != null && !tipoCodiceCaixa.isEmpty()){
-					query += " codiceCaixa.cod >= '" + (tipoCodiceCaixa+"-"+codCodiceCaixaDe).trim() + "'" +
-							(tipoCodiceCaixa.equals("CAIXA") ? " AND codiceCaixa.cod < 'CODICE-%'" : "");
-				}
-				else{
-					query += " (codiceCaixa.cod >= '" + ("CAIXA-"+codCodiceCaixaDe).trim() + "' AND codiceCaixa.cod < 'CODICE-%')" +
-							" OR codiceCaixa.cod >= '" + ("CODICE-"+codCodiceCaixaDe).trim() + "'";
-				}
-				continue_query = true;
-			}
-		}
-		else if(codCodiceCaixaAte != null && !codCodiceCaixaAte.isEmpty()) {
-			if(tipoCodiceCaixa != null && !tipoCodiceCaixa.isEmpty()){
-				query += " codiceCaixa.cod <= '" + (tipoCodiceCaixa+"-"+codCodiceCaixaAte).trim() + "'" +
-						(tipoCodiceCaixa.equals("CODICE") ? " AND codiceCaixa.cod > 'CAIXA-%'" : "");
-			}
-			else{
-				query += " codiceCaixa.cod <= '" + ("CAIXA-"+codCodiceCaixaAte).trim() + "'" +
-						" OR (codiceCaixa.cod <= '" + ("CODICE-"+codCodiceCaixaAte).trim() + "' AND codiceCaixa.cod > 'CAIXA-%'";
+			else {
+				String cdDe = ("CODICE-" + codCodiceCaixaDe).trim();
+				String cdAte = ("CODICE-" + codCodiceCaixaAte).trim();
+				String cxDe = ("CAIXA-" + codCodiceCaixaDe).trim();
+				String cxAte = ("CAIXA-" + codCodiceCaixaAte).trim();
+				query += "codiceCaixa.cod BETWEEN '" + cdDe + "' AND '" + cdAte + "' " +
+						"OR codiceCaixa.cod BETWEEN '" + cxDe + "' AND '" + cxAte + "'";
 			}
 			continue_query = true;
 		}
-		else if(tipoCodiceCaixa != null && !tipoCodiceCaixa.isEmpty()){
-			query += " codiceCaixa.cod LIKE '" + tipoCodiceCaixa + "%'";
+		else if(init_de) {
+			if(init_tipo) {
+				String codDe = (tipoCodiceCaixa + "-" + codCodiceCaixaDe).trim();
+				String limite = (tipoCodiceCaixa.equals("CODICE") ? codice_fim : caixa_fim);
+				query += "codiceCaixa.cod >= '" + codDe + "' " +
+						"AND codiceCaixa.cod <= " + limite + "'";
+			}
+			else {
+				String cdDe = ("CODICE-" + codCodiceCaixaDe).trim();
+				String cxDe = ("CAIXA-" + codCodiceCaixaDe).trim();
+				query += "(codiceCaixa.cod >= '" + cdDe + "' and codiceCaixa.cod <= '" + codice_fim + "') "
+						+ "AND (codiceCaixa.cod >= '" + cxDe + "' and codiceCaixa.cod <= '" + caixa_fim + "') ";
+			}
 			continue_query = true;
 		}
-		// Fim do código que eu escrevi sem ter a mínima idéia do que eu fiz...
+		else if(init_ate) {
+			if(init_tipo) {
+				String codAte = (tipoCodiceCaixa + "-" + codCodiceCaixaAte).trim();
+				String limite = (tipoCodiceCaixa.equals("CODICE") ? codice_base : caixa_base);
+				query += "codiceCaixa.cod <= '" + codAte + "' " +
+						"AND codiceCaixa.cod >= " + limite + "'";
+			}
+			else {
+				String cdAte = ("CODICE-" + codCodiceCaixaAte).trim();
+				String cxAte = ("CAIXA-" + codCodiceCaixaAte).trim();
+				query += "(codiceCaixa.cod <= '" + cdAte + "' and codiceCaixa.cod >= '" + codice_base + "') "
+						+ "AND (codiceCaixa.cod <= '" + cxAte + "' and codiceCaixa.cod >= '" + caixa_base + "') ";
+			}
+			continue_query = true;
+		}
+		else if(init_tipo) {
+			if(tipoCodiceCaixa.equals("CAIXA")) {
+				query += " SUBSTRING(codiceCaixa.cod, 1, 5) = 'CAIXA'";
+				continue_query = true;
+			}
+			else if(tipoCodiceCaixa.equals("CODICE")) {
+				query += " SUBSTRING(codiceCaixa.cod, 1, 6) = 'CODICE'";
+				continue_query = true;
+			}
+		}
+		// Fim do código revisado
 		
 		if(tituloCodiceCaixa != null && !tituloCodiceCaixa.isEmpty()){
 			if(continue_query == true){
@@ -630,6 +638,10 @@ public class DocumentEJB {
 		List<DTO> list = docDao.findDocumentByQuery(query);
 		if(list == null) throw new DocumentNotFoundException();
 		return list;
+	}
+	
+	private boolean isInit(String s) {
+		return s != null && !s.isEmpty();
 	}
 	
 }
