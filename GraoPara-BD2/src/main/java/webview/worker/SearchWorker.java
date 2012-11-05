@@ -83,8 +83,6 @@ public class SearchWorker {
 				
 				String codiceCaixa[] = doc.getCodiceCaixa().getCod().split("-");
 				String codDoc[] = doc.getCod().split("-");
-				String dataFormatted = sdf.format(doc.getData());
-				String dataSplit[] = dataFormatted.split("/");
 				
 				out.println("<tr  class=\"trList\">");
 				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getCodiceCaixa().getTitulo()		+"</label></td>");
@@ -95,29 +93,15 @@ public class SearchWorker {
 				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ codDoc[1]								+"</label></td>");
 				if(c_status != null && c_status.equals(AuthBean.LoginSuccessAdmin)){
 					 out.println( "<td class=\"tdList\">"
-								+ "<a href=\"/GraoPara/protected/admin/detalhesDocumentos.jsp?"
-								+"codigo=" + doc.getCodiceCaixa().getCod()
-								+"&codigoDoDocumento=" + doc.getCod()
-								+"&titulo=" + doc.getTitulo()
-								+"&dia=" + dataSplit[0]
-								+"&mes=" + dataSplit[1]
-								+"&ano=" + dataSplit[2]
-								+"&autor=" + doc.getAutor()
-								+"&destinatario=" + doc.getDestinatario()
-								+"&local=" + doc.getLocal()
-								+"&tipoDoc=" + doc.getTipoDocumento().getNome()
-								+"&resumo=" + doc.getResumo()
-								+"&chave1=" + (doc.getPalavraChave1() != null ? doc.getPalavraChave1().getPalavra() : "" )
-								+"&chave2=" + (doc.getPalavraChave2() != null ? doc.getPalavraChave2().getPalavra() : "" )
-								+"&chave3=" + (doc.getPalavraChave3() != null ? doc.getPalavraChave3().getPalavra() : "" )
+								+ "<a href=\"/GraoPara/protected/admin/editarDocumentos.jsp?"
+								+"codigoDoDocumento=" + doc.getCod()
 								+ "\">"
 								+ "<img src=\"/GraoPara/images/edit.png\" title=\"Editar\" alt=\"Editar\"/></a> "
 								+ "<br>"
 								+ "<a href=\"/GraoPara/protected/admin/removeDoc?"
-								+"&numeroAPEP=" + doc.getCod()
+								+"numeroAPEP=" + doc.getCod()
 								+ "\">" 
-								+ "<img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\"/></a></td> "
-								+ "<a href=\"/GraoPara/protected/admin/informacoesDocumentos.jsp\">Detalhes</a>");
+								+ "<img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\"/></a></td> ");
 				}
 				else {
 					String path = "public";
@@ -127,9 +111,9 @@ public class SearchWorker {
 						path = "protected/userAdv";
 					out.println("<td class=\"tdList\">"
 							+ "<a href=\"/GraoPara/"+path+"/informacoesDocumentos.jsp?"
-							+"codigo=" + doc.getCod()
+							+"codigoDoDocumento=" + doc.getCod()
 							+"\">"
-							+"Detalhes completo"
+							+"Detalhes completos"
 							+"</a></td>");
 				}
 				out.println("</tr>");
@@ -205,42 +189,30 @@ public class SearchWorker {
 	}
 	
 	public static void getInfoFromDocument(HttpServletRequest request){
-		String code = request.getParameter("codigo");
+		String code = request.getParameter("codigoDoDocumento");
 		DocumentEJB docEJB = new DocumentEJB();
 		try {
 			Documento doc = docEJB.findSingleDocument(code);
 			String dataFormatted;
 			if(doc.getData() == null) dataFormatted = "Ilegível/Sem Data";	
-			else	dataFormatted = sdf.format(doc.getData());
+			else
+				dataFormatted = sdf.format(doc.getData());
 			
+			request.setAttribute("codigo", doc.getCodiceCaixa().getCod());
 			request.setAttribute("codCodiceCaixa", doc.getCodiceCaixa().getCod().replace("-", " - ") + ": " + doc.getCodiceCaixa().getTitulo() + " (" + doc.getCodiceCaixa().getAnoInicio() + " - " + doc.getCodiceCaixa().getAnoFim() + ")");
-					
 			request.setAttribute("titulo",doc.getTitulo());
-					
 			request.setAttribute("codDocumento",doc.getCod().replace("-", " - "));
-					
 			request.setAttribute("autorNome",doc.getAutor().getNome());
-			
 			request.setAttribute("autorOcupacao",doc.getAutor().getOcupacao()); 
-
 			request.setAttribute("destinatarioNome",doc.getDestinatario().getNome());
-			
 			request.setAttribute("destinatarioOcupacao",doc.getDestinatario().getOcupacao()); 
-
 			request.setAttribute("local",doc.getLocal());
-
 			request.setAttribute("data",dataFormatted); 
-			
 			request.setAttribute("url",doc.getUrl());
-
 			request.setAttribute("resumo",doc.getResumo());
-
 			request.setAttribute("tipoDocumento",doc.getTipoDocumento().getNome() + " - " + doc.getTipoDocumento().getDescricao()); 
-
 			request.setAttribute("palavraChave1",(doc.getPalavraChave1() != null ? doc.getPalavraChave1().getPalavra() : ""));
-			
 			request.setAttribute("palavraChave2",(doc.getPalavraChave2() != null ? doc.getPalavraChave2().getPalavra() : ""));
-			
 			request.setAttribute("palavraChave3",(doc.getPalavraChave3() != null ? doc.getPalavraChave3().getPalavra() : ""));
 																		
 		} catch (IllegalArgumentException e) {

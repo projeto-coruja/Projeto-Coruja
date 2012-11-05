@@ -44,7 +44,7 @@ public class PanelWorker {
 			for(DTO k : keys){
 				PalavraChave key = (PalavraChave) k;
 				out.write("<tr>");
-				out.write("<td "+td+"> <label for=\"identificacao\" class=\"labelExibe\">" + key.getId() + "</label> </td>");
+				out.write("<td "+td+"> <label for=\"identificacao\" class=\"labelExibe\">" + key.getTema().getTema() + "</label> </td>");
 				out.write("<td "+td+"> <label for=\"identificacao\" class=\"labelExibe\">" + key.getPalavra().replace("_", " ") + " </label> </td>");
 				out.println("<td "+td+">"
 						+ "<a href=\"/GraoPara/protected/admin/editarPalavraChave.jsp?"

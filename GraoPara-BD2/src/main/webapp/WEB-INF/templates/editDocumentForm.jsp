@@ -46,7 +46,7 @@
 	
 	<tr>
 		<td class="field">
-			<input class="input" name="tituloDocumento" id="tituloDocumento" type="text" size="20" maxlength="1024" />
+			<input class="input" name="tituloDocumento" id="tituloDocumento" type="text" size="20" maxlength="1024" value=<%=request.getAttribute("titulo") %>/>
 		</td>
 		<td class="status"></td>
 	</tr>
@@ -59,7 +59,7 @@
 	
 	<tr>
 		<td class="field">
-			<input class="input" name="autor" id="autor" type="text" size="20" maxlength="1024" />
+			<input class="input" name="autor" id="autor" type="text" size="20" maxlength="1024" value=<%=request.getAttribute("autorNome") %> />
 		</td>
 		<td class="status"></td>
 	</tr>
@@ -72,7 +72,7 @@
 	
 	<tr>
 		<td class="field">
-			<input class="input" name="autorOcupacao" id="autorOcupacao" type="text" size="20" maxlength="48" />
+			<input class="input" name="autorOcupacao" id="autorOcupacao" type="text" size="20" maxlength="48" value=<%=request.getAttribute("autorOcupacao") %> />
 		</td>
 		<td class="status"></td>
 	</tr>
@@ -85,7 +85,7 @@
 	
 	<tr>
 		<td class="field">
-			<input class="input" name="destinatario" id="destinatario" type="text" size="20" maxlength="1024" />
+			<input class="input" name="destinatario" id="destinatario" type="text" size="20" maxlength="1024" value=<%=request.getAttribute("destinatarioNome") %> />
 		</td>
 		<td class="status"></td>
 	</tr>
@@ -98,7 +98,7 @@
 	
 	<tr>
 		<td class="field">
-			<input class="input" name="destinatarioOcupacao" id="destinatarioOcupacao" type="text" size="20" maxlength="48" />
+			<input class="input" name="destinatarioOcupacao" id="destinatarioOcupacao" type="text" size="20" maxlength="48" value=<%=request.getAttribute("destinatarioOcupacao") %> />
 		</td>
 		<td class="status"></td>
 	</tr>
@@ -111,7 +111,7 @@
 	
 	<tr>
 		<td class="field">
-			<input class="input" name="local" id="local" type="text" maxlength="1024" />
+			<input class="input" name="local" id="local" type="text" maxlength="1024" value=<%=request.getAttribute("local") %>/>
 		</td>
 		<td class="status"></td>
 	</tr>

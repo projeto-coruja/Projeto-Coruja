@@ -56,7 +56,7 @@
 						<tr class="trList">
 							<thead>
 								<tr>
-									<td class="tdList"><label for="id" class="labelExibe">ID</label></td>
+									<td class="tdList"><label for="tema" class="labelExibe">Tema</label></td>
 									<td class="tdList"><label for="palavraChave" class="labelExibe">Palavra-Chave</label></td>
 									<td class="tdList"><label for="acao" class="labelExibe">Ação</label></td>
 								</tr>

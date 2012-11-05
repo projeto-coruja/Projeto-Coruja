@@ -166,6 +166,7 @@ public final class WebUtility {
 	 * @throws IOException
 	 * @throws UnreachableDataBaseException
 	 */
+	@Deprecated
 	public static String printCodCodiceCaixa(HttpServletRequest request) throws IOException, UnreachableDataBaseException {
 		String output = null;
 

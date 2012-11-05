@@ -42,8 +42,8 @@
 
 			<div class="content" id="content">
 				<h1>Detalhes do Documento</h1>
-				<%@include file="/WEB-INF/templates/documentDetails.jsp"%>
 				<% SearchWorker.getInfoFromDocument(request);%>
+				<%@include file="/WEB-INF/templates/documentDetails.jsp"%>
 			</div>
 
 			<!-- Rodape -->

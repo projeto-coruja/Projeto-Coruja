@@ -84,7 +84,6 @@ public class DocServlet extends HttpServlet {
 			uploader = (new SearchUserBean()).findUser(email);
 			DocumentEJB CB = new DocumentEJB();
 			codCodiceCaixa = tipoCodiceCaixa+"-"+codCodiceCaixa;
-			codDocumento = tipoCodDocumento+"-"+codDocumento;
 			try {
 				
 				CB.registerNewDocument(tituloDocumento, 
@@ -118,8 +117,8 @@ public class DocServlet extends HttpServlet {
 				response.setContentType("text/html");  
 			    PrintWriter out=response.getWriter();   
 				out.println("<script>");  
-				out.println("alert('Erro no banco de dados! Contate o suporte e tente novamente mais tarde." + e.getStackTrace() + "');");  
-				out.println("window.location.replace('/GraoPara/protected/user/index.jsp');");  
+				out.println("alert('Erro no banco de dados! Contate o suporte e tente novamente mais tarde.);");  
+			    out.println("history.go(-1);");  
 				out.println("</script>");
 				e.printStackTrace();
 			} catch (IllegalArgumentException e){
@@ -127,7 +126,7 @@ public class DocServlet extends HttpServlet {
 				response.setContentType("text/html");  
 			    PrintWriter out=response.getWriter();   
 			    out.println("<script>");  
-			    out.println("alert('Rá');");  
+			    out.println("alert('Erro interno, tente novamente mais tarde.');");  
 			    out.println("history.go(-1);");  
 			    out.println("</script>");
 			}

@@ -155,7 +155,7 @@ public class PalavraChaveDAO {
 	public List<DTO> getAllKeys() throws  UnreachableDataBaseException, KeywordNotFoundException  {
 		List<DTO> resultSet = null;
 		try {
-			resultSet = manager.findEntity("from PalavraChaveMO order by palavra");
+			resultSet = manager.findEntity("from PalavraChaveMO order by tema.tema");
 			if(resultSet == null) {
 				throw new KeywordNotFoundException ("Nenhuma palavra aprovada");
 			}
