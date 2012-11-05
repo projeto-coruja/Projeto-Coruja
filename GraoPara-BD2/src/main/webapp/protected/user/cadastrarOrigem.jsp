@@ -45,7 +45,7 @@
 			<div class="content" id="content">
 				<h1>Cadastro de Códice/Caixa</h1>
 
-				<form action="/GraoPara/protected/user/addOrigin" id="signupform" method="get" autocomplete="off">
+				<form action="/GraoPara/protected/user/addOrigin" id="signupform" method="post" autocomplete="off">
 					<!-- Formulario de cadastro de codice/caixa -->
 					<%@include file="/WEB-INF/templates/newCodiceCaixaForm.jsp"%>
 				</form>
