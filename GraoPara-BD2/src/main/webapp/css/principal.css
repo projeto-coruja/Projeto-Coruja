@@ -201,12 +201,12 @@ a:hover,a:active,a:focus {
 	/* border-radius: 0.4em; */
 	border: 1px solid gray;
 	width: 337px; /* 140px; */
-	height: 21px; /* 20px */
+	height: 23px; /* 20px */
 	margin: 5px 0;
 	color: #000;
 	padding: 0 0 0 10px;
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: small;
+	/* font-size: small; */
 	font-style: italic;
 	letter-spacing: 1px;
 }
@@ -235,11 +235,11 @@ a:hover,a:active,a:focus {
 	/* border-radius: 0.4em; */
 	border: 1px solid gray;
 	width: 164px;
-	height: 21px; /* 20px */
+	height: 23px; /* 20px */
 	margin: 5px 0;
 	color: #000;
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: small;
+	/* font-size: small; */
 	font-style: italic;
 	letter-spacing: 1px;
 }
@@ -251,11 +251,11 @@ a:hover,a:active,a:focus {
 	/* border-radius: 0.4em; */
 	border: 1px solid gray;
 	width: 164px;
-	height: 21px; /* 20px */
+	height: 23px; /* 20px */
 	margin: 5px 0;
 	color: #000;
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: small;
+	/* font-size: small; */
 	font-style: italic;
 	letter-spacing: 1px;
 }
@@ -331,12 +331,12 @@ a:hover,a:active,a:focus {
 	/* border-radius: .4em; */
 	border: 1px solid gray;
 	width: 407px; /* 350px; */
-	height: 22px;
+	height: 23px;
 	margin: 0px 0;
 	color: #000;
 	padding: 0 0 0 0px;
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: small;
+	/* font-size: small; */
 	font-style: italic;
 	letter-spacing: 1px;
 }
@@ -348,12 +348,12 @@ a:hover,a:active,a:focus {
 	/* border-radius: .4em; */
 	border: 1px solid gray;
 	width: 133px;
-	height: 22px; /* 20px */
+	height: 23px; /* 20px */
 	margin: 0px 0;
 	color: #000;
 	padding: 0 0 0 0px;
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: small;
+	/* font-size: small; */
 	font-style: italic;
 	letter-spacing: 1px;
 }
