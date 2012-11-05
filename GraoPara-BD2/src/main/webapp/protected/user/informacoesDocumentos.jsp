@@ -33,23 +33,21 @@
 			<!-- Menu lateral -->
 			<div class="sidebar1">
 				<!-- Area de login -->
-				<%@include file="/WEB-INF/templates/login.jsp" %>
+				<%@include file="/WEB-INF/templates/loginReception.jsp" %>
 
 				<!-- Area de menu -->
-				<%@include file="/WEB-INF/templates/defaultMenu.jsp"%>
+				<%@include file="/WEB-INF/templates/userMenu.jsp"%>
 			</div>
 
 			<div class="content" id="content">
 				<h2>Detalhes do Documento</h2>
 
-				<form id="signupform" autocomplete="off" method="POST" action="/GraoPara/protected/admin/updateDoc">
-					<table class="tableForms">
-						
-						<% SearchWorker.getInfoFromDocument(request);%>
-						<%@include file="/WEB-INF/templates/documentDetails.jsp" %>
-					</table>
+				<table class="tableForms">
+					
+					<% SearchWorker.getInfoFromDocument(request);%>
+					<%@include file="/WEB-INF/templates/documentDetails.jsp" %>
+				</table>
 
-				</form>
 			</div>
 
 			<!-- Rodape -->

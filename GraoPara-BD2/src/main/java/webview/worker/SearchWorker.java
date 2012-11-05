@@ -117,11 +117,17 @@ public class SearchWorker {
 								+ "<a href=\"/GraoPara/protected/admin/removeDoc?"
 								+"&numeroAPEP=" + doc.getCod()
 								+ "\">" 
-								+ "<img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\"/></a></td> ");
+								+ "<img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\"/></a></td> "
+								+ "<a href=\"/GraoPara/protected/admin/informacoesDocumentos.jsp\">Detalhes</a>");
 				}
-				else if(c_status == null || c_status.equals(AuthBean.LoginFailOrDefault)){
+				else {
+					String path = "public";
+					if(c_status != null && c_status.equals(AuthBean.LoginSuccessUserLevel1))
+						path = "protected/user";
+					else if(c_status != null && c_status.equals(AuthBean.LoginSuccessUserLevel2))
+						path = "protected/userAdv";
 					out.println("<td class=\"tdList\">"
-							+ "<a href=\"/GraoPara/public/detalhesDocumentos.jsp?"
+							+ "<a href=\"/GraoPara/"+path+"/informacoesDocumentos.jsp?"
 							+"codigo=" + doc.getCod()
 							+"\">"
 							+"Detalhes completo"
