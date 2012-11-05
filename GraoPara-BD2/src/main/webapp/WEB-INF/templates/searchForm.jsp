@@ -17,7 +17,7 @@
 				<option value="CODICE">Códice</option>
 				<option value="CAIXA">Caixa</option>
 			</select>
-			<label></label><a href="#"><img class="iconeAjuda" style="padding-left:5px;" src="/GraoPara/images/icone_ajuda.png" title="Escolha a coleção de Códices ou Caixas do Arquivo Público do Pará." /></a>
+			<label></label><a href="#"><img style="padding-left:5px; position: absolute;" src="/GraoPara/images/icone_ajuda.png" title="Escolha a coleção de Códices ou Caixas do Arquivo Público do Pará." /></a>
 		</td>				
 	</tr>
 	
@@ -51,7 +51,7 @@
 			<select name="tituloCodiceCaixa" class="inputLong" id="identificacao">
 				<%=WebUtility.printSelectTituloCodiceCaixa(request)%>
 			</select>
-			<label></label><a href="#"><img class="iconeAjuda" style="padding-left:5px;" src="/GraoPara/images/icone_ajuda.png" title="Escolha a coleção de Códices ou Caixas do Arquivo Público do Pará." /></a>
+			<label></label><a href="#"><img style="padding-left:5px; position: absolute;" src="/GraoPara/images/icone_ajuda.png" title="Escolha a coleção de Códices ou Caixas do Arquivo Público do Pará." /></a>
 		</td>
 	</tr>
 
@@ -102,7 +102,7 @@
 				<option value="APEP">APEP</option>
 				<option value="SEQ">Sequencial</option>
 			</select>
-			<label></label><a href="#"><img class="iconeAjuda" style="padding-left:5px;" src="/GraoPara/images/icone_ajuda.png" title="O Número APEP é aquele atribuído pelo arquivista do APEP para cada um dos documentos do Códice ou Caixa. Caso não tenha sido atribuído um número pelo arquivista, o projeto designou um que chamou de sequencial." /></a>
+			<label></label><a href="#"><img style="padding-left:5px; position: absolute;" src="/GraoPara/images/icone_ajuda.png" title="O Número APEP é aquele atribuído pelo arquivista do APEP para cada um dos documentos do Códice ou Caixa. Caso não tenha sido atribuído um número pelo arquivista, o projeto designou um que chamou de sequencial." /></a>
 		</td>
 	</tr>
 	
@@ -199,7 +199,7 @@
 				<!-- Pegar do Banco de dados os tipos e, caso o usuario selecione outro, exibir campo para cadastrar outro tipo -->
 				<%=WebUtility.printSelectTipoDoc(request) %>
 			</select>
-		<label></label><a href="#"><img class="iconeAjuda" style="padding-left:5px;" src="/GraoPara/images/icone_ajuda.png" title="Selecione um dos tipos de documentos para filtrar resultados." /></a>
+		<label></label><a href="#"><img style="padding-left:5px; position: absolute;" src="/GraoPara/images/icone_ajuda.png" title="Selecione um dos tipos de documentos para filtrar resultados." /></a>
 		</td>
 	</tr>
 	
@@ -245,7 +245,7 @@
 				<option value="">Nenhuma</option>
 				<%=WebUtility.printSelectKeyWords(request, "chave3", "Instituição")%>
 			</select>
-			<label></label><a href="#"><img class="iconeAjuda" style="padding-left:5px;" src="/GraoPara/images/icone_ajuda.png" title="Informe de uma a três palavras chaves para filtrar sua pesquisa."/></a>
+			<label></label><a href="#"><img style="padding-left:5px; position: absolute;" src="/GraoPara/images/icone_ajuda.png" title="Informe de uma a três palavras chaves para filtrar sua pesquisa."/></a>
 		</td>
 	</tr>
 	
