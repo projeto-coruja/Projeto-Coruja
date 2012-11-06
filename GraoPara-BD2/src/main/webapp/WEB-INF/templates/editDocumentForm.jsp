@@ -3,7 +3,9 @@
 <table class="tableForms">
 	<tr>
 		<td class="field">
-			<input id="action" name="action" type="hidden" value="add"></input>
+			<input id="action" name="action" type="hidden" value="update"></input>
+			<input id="pesquisa_num_APEP_SEQ" name="pesquisa_num_APEP_SEQ" type="hidden" value="<%= request.getAttribute("codDocumento") %>"></input>
+			<input id="pesquisa_APEP_SEQ" name="pesquisa_APEP_SEQ" type="hidden" value="<%= request.getAttribute("tipoCodDocumento") %>"></input>
 		</td>
 	</tr>
 
@@ -29,11 +31,12 @@
 	<tr>
 		<td class="field">
 			<select name="tipo_num" class="inputTipoNum" id="tipo_num">
-				<option value="">Selecione...</option>
+				<option value=<%= request.getAttribute("tipoCodDocumento") %>><%= request.getAttribute("tipoCodDocumento") %></option>
+				<option value="">--------</option>
 				<option value="APEP">APEP</option>
 				<option value="SEQ">Sequencial</option>
 			</select>
-			<input class="inputShort" name="numero" id="numero" type="text" maxlength="4" />
+			<input class="inputShort" name="numero" id="numero" type="text" maxlength="4" value=<%= request.getAttribute("codDocumento") %> />
 		</td>
 		<td class="status"></td>
 	</tr>
@@ -46,7 +49,7 @@
 	
 	<tr>
 		<td class="field">
-			<input class="input" name="tituloDocumento" id="tituloDocumento" type="text" size="20" maxlength="1024" value=<%=request.getAttribute("titulo") %>/>
+			<input class="input" name="tituloDocumento" id="tituloDocumento" type="text" size="20" maxlength="1024" value="<%=request.getAttribute("titulo") %>"/>
 		</td>
 		<td class="status"></td>
 	</tr>
@@ -59,7 +62,7 @@
 	
 	<tr>
 		<td class="field">
-			<input class="input" name="autor" id="autor" type="text" size="20" maxlength="1024" value=<%=request.getAttribute("autorNome") %> />
+			<input class="input" name="autor" id="autor" type="text" size="20" maxlength="1024" value="<%=request.getAttribute("autorNome") %>" />
 		</td>
 		<td class="status"></td>
 	</tr>
@@ -72,7 +75,7 @@
 	
 	<tr>
 		<td class="field">
-			<input class="input" name="autorOcupacao" id="autorOcupacao" type="text" size="20" maxlength="48" value=<%=request.getAttribute("autorOcupacao") %> />
+			<input class="input" name="autorOcupacao" id="autorOcupacao" type="text" size="20" maxlength="48" value="<%=request.getAttribute("autorOcupacao") %>" />
 		</td>
 		<td class="status"></td>
 	</tr>
@@ -85,7 +88,7 @@
 	
 	<tr>
 		<td class="field">
-			<input class="input" name="destinatario" id="destinatario" type="text" size="20" maxlength="1024" value=<%=request.getAttribute("destinatarioNome") %> />
+			<input class="input" name="destinatario" id="destinatario" type="text" size="20" maxlength="1024" value="<%=request.getAttribute("destinatarioNome") %>" />
 		</td>
 		<td class="status"></td>
 	</tr>
@@ -98,7 +101,7 @@
 	
 	<tr>
 		<td class="field">
-			<input class="input" name="destinatarioOcupacao" id="destinatarioOcupacao" type="text" size="20" maxlength="48" value=<%=request.getAttribute("destinatarioOcupacao") %> />
+			<input class="input" name="destinatarioOcupacao" id="destinatarioOcupacao" type="text" size="20" maxlength="48" value="<%=request.getAttribute("destinatarioOcupacao") %>" />
 		</td>
 		<td class="status"></td>
 	</tr>
@@ -111,7 +114,7 @@
 	
 	<tr>
 		<td class="field">
-			<input class="input" name="local" id="local" type="text" maxlength="1024" value=<%=request.getAttribute("local") %>/>
+			<input class="input" name="local" id="local" type="text" maxlength="1024" value="<%=request.getAttribute("local")%>"/>
 		</td>
 		<td class="status"></td>
 	</tr>
@@ -123,7 +126,7 @@
 	</tr>
 	
 	<tr>
-		<%@include file="/WEB-INF/templates/datesCadastre.jsp"%>
+		<%@include file="/WEB-INF/templates/datesEdit.jsp"%>
 		<td class="status"></td>
 	</tr>
 	
@@ -145,13 +148,13 @@
 	
 	<tr>
 		<td class="tdForms">
-			<label class="labelForms">Resumo ou Veberbete do Documento</label>
+			<label class="labelForms">Resumo ou Verbete do Documento</label>
 		</td>
 	</tr>
 	
 	<tr>
 		<td class="field">
-			<textarea class="inputResumo" id="resumo" name="resumo" rows="7" cols="40" maxlength="2048"></textarea>
+			<textarea class="inputResumo" id="resumo" name="resumo" rows="7" cols="40" maxlength="2048"><%= request.getAttribute("resumo") %></textarea>
 		</td>
 		<td class="status"></td>
 	</tr>
@@ -176,17 +179,17 @@
 		<td class="field">
 			<select class="inputKey" name="chave1" id="chave1">
 				<option value="">Nenhuma</option>
-				<%=WebUtility.printSelectKeyWords(request, "chave1", "Ação")%>
+				<%=WebUtility.printSelectKeyWords(request, "palavraChave1", "Ação")%>
 			</select>
 		
 			<select class="inputKey" name="chave2" id="chave2">
 				<option value="">Nenhuma</option>
-				<%=WebUtility.printSelectKeyWords(request, "chave2", "Autores")%>
+				<%=WebUtility.printSelectKeyWords(request, "palavraChave2", "Autores")%>
 			</select>		
 		
 			<select class="inputKey" name="chave3" id="chave3">
 				<option value="">Nenhuma</option>
-				<%=WebUtility.printSelectKeyWords(request, "chave3", "Instituição")%>
+				<%=WebUtility.printSelectKeyWords(request, "palavraChave3", "Instituição")%>
 			</select>
 		</td>
 		<td class="status"></td>
@@ -201,7 +204,7 @@
 	
 	<tr>
 		<td class="field">
-			<input class="input" name="urlImagem" id="urlImagem" type="text" size="20" maxlength="1024" />
+			<input class="input" name="urlImagem" id="urlImagem" type="text" size="20" maxlength="1024" value="<%= request.getAttribute("url") %>"/>
 		</td>
 		<td class="status"></td>
 	</tr>

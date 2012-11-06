@@ -42,7 +42,7 @@
 
 			<div class="content" id="content">
 				<h1>Detalhes do Documento</h1>				
-				<% SearchWorker.getInfoFromDocument(request);%>
+				<% SearchWorker.getRawInfoFromDocument(request);%>
 				<form id="signupform" autocomplete="off" method="POST" action="/GraoPara/protected/admin/updateDoc">
 					<%@include file="/WEB-INF/templates/editDocumentForm.jsp"%>
 				</form>

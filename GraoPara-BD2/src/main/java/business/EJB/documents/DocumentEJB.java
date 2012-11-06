@@ -419,9 +419,6 @@ public class DocumentEJB {
 			Date data,
 			// Códice e caixa
 			String codCodiceCaixa,
-			String tituloCodiceCaixa,
-			String anoInicioCodiceCaixa,
-			String anoFimCodiceCaixa,
 			// Autor documento
 			String autor,
 			String ocupacaoAutor,
@@ -430,12 +427,8 @@ public class DocumentEJB {
 			String ocupacaoDestinatario,
 			// Tipo Documento
 			String tipoDocumento,
-			String descricaoDoTipoDocumento,
-			// Palavra chave 1
 			String palavraChave1,
-			// Palavra chave 2
 			String palavraChave2,
-			// Palavra chave 3
 			String palavraChave3) throws UnreachableDataBaseException, DocumentNotFoundException, IllegalArgumentException, UpdateEntityException{
 
 		List<DTO> check;
@@ -467,15 +460,6 @@ public class DocumentEJB {
 			codCaixa = codiceCaixaDAO.findExactCodiceCaixa(codCodiceCaixa);
 		} catch (CodiceCaixaNotFoundException e1) {
 			throw new IllegalArgumentException();
-			/*try {
-				codCaixa = codiceCaixaDAO.addCodiceCaixa(
-								codCodiceCaixa, 
-								tituloCodiceCaixa, 
-								Integer.parseInt(anoInicioCodiceCaixa), 
-								Integer.parseInt(anoFimCodiceCaixa)	);
-			} catch (DuplicateCodiceCaixaException e) {
-				e.printStackTrace();
-			}*/
 		}
 		doc.setCodiceCaixa(codCaixa);
 
@@ -487,7 +471,7 @@ public class DocumentEJB {
 					tipoDoc = (TipoDocumento) dto;
 			}
 		} catch (DocumentTypeNotFoundException e1) {	
-			tipoDoc = tipoDocumentoDAO.addDocumentType(tipoDocumento, descricaoDoTipoDocumento);
+			throw new IllegalArgumentException();
 		}
 		doc.setTipoDocumento(tipoDoc);
 		
@@ -502,10 +486,6 @@ public class DocumentEJB {
 				}
 			} catch (KeywordNotFoundException e1) {
 				throw new IllegalArgumentException("Palavra chave inexistente");
-				/*palavraChave[0] = palavraChaveDAO.addKeyWord(
-								palavraChave1,
-								temaPalavraChave1
-								);*/
 			}
 		}
 		doc.setPalavraChave1(palavraChave[0]);
@@ -588,10 +568,8 @@ public class DocumentEJB {
 		String query = default_query;
 		query += " cod = '" + type+"-"+code + "'";
 		List<DTO> resultSet = docDao.findDocumentByQuery(query);
-		for(DTO dto : resultSet){
-			if(((Documento)dto).getCod().equals(code))	return (Documento) dto;
-		}
-		throw new DocumentNotFoundException("Documento não encontrado");
+		if(resultSet == null) throw new DocumentNotFoundException("Documento não encontrado");
+		else return (Documento) resultSet.get(0);
 	}
 	
 	public Documento findSingleDocument(String code) throws DocumentNotFoundException, UnreachableDataBaseException, IllegalArgumentException{
