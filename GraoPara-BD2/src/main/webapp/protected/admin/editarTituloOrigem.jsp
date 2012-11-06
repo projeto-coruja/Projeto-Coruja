@@ -44,12 +44,12 @@
 				<form id="editOriginForm" autocomplete="off" method="post" action="/GraoPara/protected/admin/editOrigin">
 					<table class="tableControle">
 						<tr>
-							<td class="tdForms"><label class="labelForms" id="lcodigo" for="codigo">Editando:</label></td>
+							<td class="tdForms"><label class="labelForms" id="lcodigo" for="codigo">Códice/Caixa</label></td>
 							<td class="field"><input readonly="readonly" name= "codigo" id="codigo" value=<%=request.getParameter("codigo")%> /></td>
 						</tr>
 						
 						<tr>
-							<td class="tdForms"><label class="labelForms" id="ltitulo" for="titulo">Título <span class="asterisco">*</span></label></td>
+							<td class="tdForms"><label class="labelForms" id="ltitulo" for="titulo">Título </label></td>
 							<td class="field">
 								<textarea class="inputResumo" name="titulo" id="titulo" rows="5" cols="40" maxlength="512"><%=WebUtility.printTituloCodCaixa(request)%></textarea>
 							</td>
