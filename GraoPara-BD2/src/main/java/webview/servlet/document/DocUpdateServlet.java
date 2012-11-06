@@ -39,18 +39,15 @@ public class DocUpdateServlet extends HttpServlet {
 		String codDocumentoAntigo = request.getParameter("pesquisa_num_APEP_SEQ");
 		
 		String tituloDocumento = request.getParameter("tituloDocumento");
-		String tipoCodDocumento = request.getParameter("tipoDoc");
+		String tipoCodDocumento = request.getParameter("tipo_num");
 		String codDocumento = request.getParameter("numero");
 		String local = request.getParameter("local");
-		String url = null;
+		String url = request.getParameter("urlImagem");
 		String resumo = request.getParameter("resumo");
 		
 		String[] identificacao = request.getParameter("identificacao").split("-");
 		String tipoCodiceCaixa = identificacao[0];
 		String codCodiceCaixa = identificacao[1];
-		String tituloCodiceCaixa = identificacao[2];
-		String anoInicioCodiceCaixa = request.getParameter("anoInicioCodiceCaixa");
-		String anoFimCodiceCaixa = request.getParameter("anoFimCodiceCaixa");
 		
 		String autor = request.getParameter("autor");
 		String ocupacaoAutor = request.getParameter("autorOcupacao");
@@ -59,7 +56,6 @@ public class DocUpdateServlet extends HttpServlet {
 		String ocupacaoDestinatario = request.getParameter("destinatarioOcupacao");
 		
 		String tipoDocumento = request.getParameter("tipoDoc");
-		String descricaoDoTipoDocumento = request.getParameter("descricaoTipoDocumento");
 		
 		String palavraChave1 = request.getParameter("chave1");
 		String palavraChave2 = request.getParameter("chave2");
@@ -92,15 +88,11 @@ public class DocUpdateServlet extends HttpServlet {
 					resumo, 
 					dataDoc, 
 					codCodiceCaixa, 
-					tituloCodiceCaixa, 
-					anoInicioCodiceCaixa, 
-					anoFimCodiceCaixa, 
 					autor, 
 					ocupacaoAutor, 
 					destinatario, 
 					ocupacaoDestinatario, 
 					tipoDocumento, 
-					descricaoDoTipoDocumento, 
 					palavraChave1,
 					palavraChave2, 
 					palavraChave3);

@@ -221,6 +221,48 @@ public class SearchWorker {
 			e.printStackTrace();
 		} catch (UnreachableDataBaseException e) {
 			e.printStackTrace();
+		}	
+	}
+	
+	public static void getRawInfoFromDocument(HttpServletRequest request){
+		String code = request.getParameter("codigoDoDocumento");
+		DocumentEJB docEJB = new DocumentEJB();
+		try {
+			Documento doc = docEJB.findSingleDocument(code);
+			String dataFormatted;
+			if(doc.getData() == null) dataFormatted = "00/00/0000";		
+			dataFormatted = sdf.format(doc.getData());
+			String[] dataSplit = dataFormatted.split("/");
+			String[] cdCxSplit = doc.getCodiceCaixa().getCod().split("-");
+			String[] codDocSplit = doc.getCod().split("-");
+			
+			request.setAttribute("codigo", doc.getCodiceCaixa().getCod());
+			request.setAttribute("codCodiceCaixa", cdCxSplit[0]);
+			request.setAttribute("tipoCodiceCaixa", cdCxSplit[1]);
+			request.setAttribute("titulo",doc.getTitulo());
+			request.setAttribute("codDocumento", codDocSplit[1]);
+			request.setAttribute("tipoCodDocumento", codDocSplit[0]);
+			request.setAttribute("autorNome",doc.getAutor().getNome());
+			request.setAttribute("autorOcupacao",doc.getAutor().getOcupacao()); 
+			request.setAttribute("destinatarioNome",doc.getDestinatario().getNome());
+			request.setAttribute("destinatarioOcupacao",doc.getDestinatario().getOcupacao()); 
+			request.setAttribute("local",doc.getLocal());
+			request.setAttribute("ano",dataSplit[2]); 
+			request.setAttribute("mes",dataSplit[1]); 
+			request.setAttribute("dia",dataSplit[0]); 
+			request.setAttribute("url",doc.getUrl());
+			request.setAttribute("resumo",doc.getResumo());
+			request.setAttribute("tipoDoc",doc.getTipoDocumento().getNome()); 
+			request.setAttribute("palavraChave1",(doc.getPalavraChave1() != null ? doc.getPalavraChave1().getPalavra() : ""));
+			request.setAttribute("palavraChave2",(doc.getPalavraChave2() != null ? doc.getPalavraChave2().getPalavra() : ""));
+			request.setAttribute("palavraChave3",(doc.getPalavraChave3() != null ? doc.getPalavraChave3().getPalavra() : ""));
+																		
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+		} catch (DocumentNotFoundException e) {
+			e.printStackTrace();
+		} catch (UnreachableDataBaseException e) {
+			e.printStackTrace();
 		}
 		
 	}

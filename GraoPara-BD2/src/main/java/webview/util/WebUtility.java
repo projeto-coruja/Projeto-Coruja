@@ -38,7 +38,7 @@ public final class WebUtility {
 	public static final String cookie_nome = "nome_graopara";
 	public static final String cookie_status = "status_graopara";
 	public static final String[] meses = {
-		"Janeiro", "Fevereiro", "Março", "" +
+		"Janeiro", "Fevereiro", "Março",
 		"Abril", "Maio", "Junho", 
 		"Julho", "Agosto", "Setembro", 
 		"Outubro", "Novembro", "Dezembro"
@@ -201,6 +201,7 @@ public final class WebUtility {
 	public static String printSelectTituloCodiceCaixa(HttpServletRequest request, boolean withContent) throws UnreachableDataBaseException {
 		String output = null;
 		String selected = request.getParameter("codigo");
+		if(selected == null) selected = (String) request.getAttribute("codigo");
 		CodiceCaixaEJB codiceCaixa = null;
 		List<DTO> list = null; 
 
@@ -433,7 +434,7 @@ public final class WebUtility {
 			result = "<option value=\"\">Selecione...</option> ";
 			for(DTO d : list){
 				tipoDoc = ((TipoDocumento) d).getNome();
-				if(tipoDoc.equals(request.getParameter("tipoDoc")))
+				if(tipoDoc.equals(request.getParameter("tipoDoc")) || tipoDoc.equals(request.getAttribute("tipoDoc")))
 					result += "<option selected value=\"" + tipoDoc + "\">" + tipoDoc + " - " + ((TipoDocumento) d).getDescricao() + "</option> ";
 				else
 					result += "<option value=\"" + tipoDoc + "\">" + tipoDoc + " - " + ((TipoDocumento) d).getDescricao() + "</option> ";
@@ -485,7 +486,7 @@ public final class WebUtility {
 
 			for(DTO d : list){
 				key = ((PalavraChave) d).getPalavra();
-				if(key.equals(request.getParameter(key_pos)))
+				if(key.equals(request.getParameter(key_pos)) || key.equals(request.getAttribute(key_pos)))
 					result += "<option selected value=\"" + key + "\">" + key + "</option> ";
 				else
 					result += "<option value=\"" + key + "\">" + key + "</option> ";
