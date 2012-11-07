@@ -66,7 +66,7 @@
 							<td class="field">
 								<input class="input" name="palavraNova" type="text" value="" maxlength="32" />
 								<input class="input" name="action" type="hidden" value="edit"/>
-								<input class="input" name="tema" type="hidden" value=<%=request.getParameter("tema") %>/>
+								<input class="input" name="tema" type="hidden" value="<%=request.getParameter("tema") %>"/>
 							</td>
 							<td class="status"></td>
 						</tr>

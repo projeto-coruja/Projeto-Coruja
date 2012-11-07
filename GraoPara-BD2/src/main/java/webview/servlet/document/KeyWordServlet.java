@@ -80,7 +80,7 @@ public class KeyWordServlet extends HttpServlet {
 			e.printStackTrace();
 		} catch (IllegalArgumentException e) {
 			out.println("<script>");  
-		    out.println("alert('Palavra chave já existe.');");  
+		    out.println("alert('Palavra chave já existe ou argumento inválido.');");  
 		    out.println("history.go(-1);");  
 		    out.println("</script>");
 		} catch (UpdateEntityException e) {

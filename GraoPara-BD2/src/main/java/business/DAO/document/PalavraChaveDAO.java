@@ -64,14 +64,13 @@ public class PalavraChaveDAO {
 		}
 	}
 	
-	public PalavraChave updateKeyWord(String key, String newKey, String newTheme) throws UnreachableDataBaseException, IllegalArgumentException, UpdateEntityException {
+	public PalavraChave updateKeyWord(String key, String newKey, String newTheme) throws UnreachableDataBaseException, IllegalArgumentException, UpdateEntityException, KeywordNotFoundException {
 		List<DTO> check = null;
 		PalavraChave select_pc = null;
 		TemaPalavraChave select_tpc = null;
 		
 		boolean unmodifiedTheme = false;
 		try {
-			
 			if(newTheme != null && !newTheme.isEmpty()){
 				try{	
 					check = (new TemaPalavraChaveDAO()).findThemeByString(newTheme);
@@ -79,16 +78,14 @@ public class PalavraChaveDAO {
 						if(((TemaPalavraChave) dto).getTema().equals(newTheme))
 							select_tpc = (TemaPalavraChave) dto;
 					}
-	
 				} catch(DataAccessLayerException e){
 					e.printStackTrace();
 					throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
 				} catch (ThemeNotFoundException e) {
-					TemaPalavraChaveDAO tpcDAO = new TemaPalavraChaveDAO();
-					select_tpc = tpcDAO.addThemeWord(newTheme);
+					throw new IllegalArgumentException("Tema não existe.");
 				}
 			}
-			else	unmodifiedTheme = true;
+			else unmodifiedTheme = true;
 			
 			check = findKeyWordByString(key);
 			for(DTO dto : check) {
@@ -96,29 +93,13 @@ public class PalavraChaveDAO {
 					select_pc = (PalavraChave) dto;
 			}
 			
-			/*if(!unmodifiedTheme)	select_pc.setTema(select_tpc);*/
+			if(!unmodifiedTheme) select_pc.setTema(select_tpc);
 			select_pc.setPalavra(newKey);
 			manager.updateEntity(select_pc);
 
 		} catch(DataAccessLayerException e){
 			e.printStackTrace();
 			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
-		} catch (KeywordNotFoundException e) {
-			try{	
-				check = (new TemaPalavraChaveDAO()).findThemeByString(newTheme);
-				for(DTO dto : check) {
-					if(((TemaPalavraChave) dto).getTema().equals(newTheme))
-						select_tpc = (TemaPalavraChave) dto;
-				}
-			} catch(DataAccessLayerException e1){
-				e.printStackTrace();
-				throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
-			} catch (ThemeNotFoundException e1) {
-				TemaPalavraChaveDAO tpcDAO = new TemaPalavraChaveDAO();
-				select_tpc = tpcDAO.addThemeWord(newTheme);
-			}
-			select_pc = new PalavraChave(newKey,select_tpc);
-			manager.saveEntity(select_pc);
 		}
 		
 		return select_pc;
