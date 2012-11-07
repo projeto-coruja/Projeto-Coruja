@@ -31,6 +31,7 @@
 
 			<!-- Menu lateral -->
 			<div class="sidebar1">
+			
 				<!-- Area de login -->
 				<%@include file="/WEB-INF/templates/loginReception.jsp" %>
 
@@ -39,42 +40,43 @@
 			</div>
 
 			<div class="content" id="content">
-				<h1>Editar Palavra Chave</h1>
+				<h1>Edição de Palavra-Chave</h1>
 
 				<form id="signupform" autocomplete="off" method="get" action="/GraoPara/protected/admin/doChangesToKeyWord">
-					<table class="tableControle">
+					<table class="tableForms">
 						<tr>
-							<td class="tdControle">
-								<label class="labelForms" for="palavraAntiga">Palavra Chave Antiga</label>
+							<td class="tdForms">
+								<label class="labelForms" for="palavraAntiga">Palavra-Chave Antiga</label>
 							</td>
-
+						</tr>
+						
+						<tr>
 							<td class="field">
 								<input class="input" id="palavraAntiga" name="palavraAntiga" type="text" value="<%= request.getParameter("palavraAntiga").replace("_", " ") %>" maxlength="32" readonly="readonly"/>
 							</td>
-
-							<td class="status"></td>
 						</tr>
 
 						<tr>
-							<td class="tdControle">
-								<label class="labelForms" for="palavraNova">
-									Palavra Chave Nova 
-								</label>
+							<td class="tdForms">
+								<label class="labelForms" for="palavraNova">Palavra-Chave Nova</label>
 							</td>
-
+						</tr>
+						
+						<tr>
 							<td class="field">
 								<input class="input" name="palavraNova" type="text" value="" maxlength="32" />
 								<input class="input" name="action" type="hidden" value="edit"/>
 								<input class="input" name="tema" type="hidden" value=<%=request.getParameter("tema") %>/>
 							</td>
-
 							<td class="status"></td>
 						</tr>
 
 						<tr>
-							<td class="tdControle" colspan="3" align="right">
-								<input class="buttonCancelar" type="button" value="Cancelar" onClick="history.go(-1)">
+							<td class="tdForms">
+								<br>
 								<input class="buttonRegistrar" id="signupsubmit" name="Atualizar" type="submit" value="Atualizar" />
+								<label style="padding-left: 10px;"></label>
+								<input class="buttonCancelar" type="button" value="Cancelar" onClick="history.go(-1)"/>
 							</td>
 						</tr>
 					</table>
@@ -82,10 +84,7 @@
 			</div>
 
 			<!-- Rodape -->
-			<div class="footer">
-				<p>Copyright © - Universidade Federal de São Paulo - UNIFESP 2012</p>
-				<p>Desenvolvido pelo grupo Coruja</p>
-			</div>
+			<%@include file="/WEB-INF/templates/footer.jsp"%>
 		</div>
 	</body>
 </html>

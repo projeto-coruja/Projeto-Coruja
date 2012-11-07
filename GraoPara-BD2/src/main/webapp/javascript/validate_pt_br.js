@@ -316,10 +316,10 @@ $(document).ready(function() {
 			},
 			email: {
 				required: "Digite um email válido.",
-				email: "Entre com um email válido."
+				email: "Digite um email válido."
 			},
 			permissao: {
-				required: "Selecione o nível do usuário."
+				required: "Selecione um nível de permissão para o usuário."
 			},
 			
 			/* -----------------------------------------------------
@@ -344,7 +344,7 @@ $(document).ready(function() {
 			 * ----------------------------------------------------- */
 			
 			palavraNova: {
-				required: "Digite uma palavra-chave.",
+				required: "Digite a palavra-chave nova.",
 				minlength: jQuery.format("Digite no mínimo {0} caracteres.")
 			},
 			
@@ -353,7 +353,7 @@ $(document).ready(function() {
 			 * ----------------------------------------------------- */
 			
 			permissao:{
-				required: "Selecione uma permissão para o usuário"
+				required: "Selecione um nível de permissão para o usuário."
 			},
 			
 			/* -----------------------------------------------------
@@ -378,7 +378,7 @@ $(document).ready(function() {
 			 * ----------------------------------------------------- */
 			
 			tpDocNovo:{
-				required: "Informe o tipo de Documento novo",
+				required: "Informe o novo tipo de documento.",
 				minlength: jQuery.format("Digite no mínimo {0} caracteres.")
 			},
 			

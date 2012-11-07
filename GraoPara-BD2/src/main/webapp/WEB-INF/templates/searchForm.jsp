@@ -253,7 +253,7 @@
 		<td>
 			<br>
 			<input class="buttonRegistrar" name="inserir" type="submit" value="Pesquisar" id="signupsubmit" />
-			<label style="padding-left: 30px;"></label>
+			<label style="padding-left: 10px;"></label>
 			<input class="buttonLimpar" name="limpar" type="reset" value="Limpar" title="Limpar todos os campos preenchidos."/>
 		</td>
 	</tr>

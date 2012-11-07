@@ -31,6 +31,7 @@
 
 			<!-- Menu lateral -->
 			<div class="sidebar1">
+			
 				<!-- Area de login -->
 				<%@include file="/WEB-INF/templates/loginReception.jsp" %>
 
@@ -39,17 +40,29 @@
 			</div>
 
 			<div class="content" id="content">
-				<h1>Editar Códice/Caixa</h1>
+				<h1>Edição de Códice/Caixa</h1>
 
 				<form id="editOriginForm" autocomplete="off" method="post" action="/GraoPara/protected/admin/editOrigin">
-					<table class="tableControle">
+					<table class="tableForms">
 						<tr>
-							<td class="tdForms"><label class="labelForms" id="lcodigo" for="codigo">Códice/Caixa</label></td>
-							<td class="field"><input readonly="readonly" name= "codigo" id="codigo" value=<%=request.getParameter("codigo")%> /></td>
+							<td class="tdForms">
+								<label class="labelForms" id="lcodigo" for="codigo">Códice/Caixa</label>
+							</td>
 						</tr>
 						
 						<tr>
-							<td class="tdForms"><label class="labelForms" id="ltitulo" for="titulo">Título </label></td>
+							<td class="field">
+								<input readonly="readonly" name= "codigo" id="codigo" value=<%=request.getParameter("codigo")%> />
+							</td>
+						</tr>
+						
+						<tr>
+							<td class="tdForms">
+								<label class="labelForms" id="ltitulo" for="titulo">Título</label>
+							</td>
+						</tr>
+						
+						<tr>
 							<td class="field">
 								<textarea class="inputResumo" name="titulo" id="titulo" rows="5" cols="40" maxlength="512"><%=WebUtility.printTituloCodCaixa(request)%></textarea>
 							</td>
@@ -57,21 +70,37 @@
 						</tr>
 						
 						<tr>
-							<td class="tdForms"><label class="labelForms" id="lanoIni" for="anoIni">Ano de Início</label></td>
-							<td class="field"><input class="inputShort" name="anoIni" size="10" id="anoIni" type="text" maxlength="4" value=<%=request.getParameter("anoIni")%>></td>
+							<td class="tdForms">
+								<label class="labelForms" id="lanoIni" for="anoIni">Ano Inicial</label>
+							</td>
+						</tr>
+						
+						<tr>
+							<td class="field">
+								<input class="input" name="anoIni" size="10" id="anoIni" type="text" maxlength="4" style="width:160px;" value=<%=request.getParameter("anoIni")%>>
+							</td>
 							<td class="status"></td>
 						</tr>
 						
 						<tr>
-							<td class="tdForms"><label class="labelForms" id="lanoFim" for="anoFim">Ano de Fim</label></td>
-							<td class="field"><input class="inputShort" name="anoFim" size="10" id="anoFim" type="text" maxlength="4" value=<%=request.getParameter("anoFim")%>></td>
+							<td class="tdForms">
+								<label class="labelForms" id="lanoFim" for="anoFim">Ano Final</label>
+							</td>
+						</tr>
+						
+						<tr>
+							<td class="field">
+								<input class="input" name="anoFim" size="10" id="anoFim" type="text" maxlength="4" style="width:160px;" value=<%=request.getParameter("anoFim")%>>
+							</td>
 							<td class="status"></td>
 						</tr>
 
 						<tr>
-							<td class="tdControle" colspan="3">
-								<input class="buttonCancelar" type="button" value="Cancelar" onClick="history.go(-1)">
+							<td class="tdForms">
+								<br>
 								<input class="buttonRegistrar" id="signupsubmit" name="Atualizar" type="submit" value="Atualizar" />
+								<label style="padding-left: 10px;"></label>
+								<input class="buttonCancelar" type="button" value="Cancelar" onClick="history.go(-1)">
 							</td>
 						</tr>
 					</table>
@@ -79,10 +108,7 @@
 			</div>
 
 			<!-- Rodape -->
-			<div class="footer">
-				<p>Copyright © - Universidade Federal de São Paulo - UNIFESP 2012</p>
-				<p>Desenvolvido pelo grupo Coruja</p>
-			</div>
+			<%@include file="/WEB-INF/templates/footer.jsp"%>
 		</div>
 	</body>
 </html>

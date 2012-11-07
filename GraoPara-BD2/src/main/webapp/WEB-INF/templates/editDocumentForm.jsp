@@ -212,7 +212,7 @@
 	<tr>
 		<td class="tdForms">
 			<br>
-			<input class="buttonRegistrar" id="signupsubmit" name="inserir" type="submit" value="Enviar" />
+			<input class="buttonRegistrar" id="signupsubmit" name="inserir" type="submit" value="Atualizar" />
 		</td>
 	</tr>
 </table>

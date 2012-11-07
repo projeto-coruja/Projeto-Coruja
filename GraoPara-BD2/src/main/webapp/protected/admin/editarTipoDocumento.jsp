@@ -33,6 +33,7 @@
 
 			<!-- Menu lateral -->
 			<div class="sidebar1">
+			
 				<!-- Area de login -->
 				<%@include file="/WEB-INF/templates/loginReception.jsp" %>
 
@@ -41,44 +42,42 @@
 			</div>
 
 			<div class="content" id="content">
-				<h1> Editar Tipos de Documentos</h1>
+				<h1> Edição do Tipo de Documento</h1>
 
 				<form action="/GraoPara/doPasswordRecovery" id="signupform"  method="post" autocomplete="off">
 					<table class="tableForms">
 						<tr>
-							<td class="tdControle">
-								<label class="labelForms"  id="ltpDocAntigo" for="tpDocAntigo">
-									Tipo de documento Antigo:
-									<span class="asterisco">*</span>
-								</label>
+							<td class="tdForms">
+								<label class="labelForms"  id="ltpDocAntigo" for="tpDocAntigo">Tipo de Documento Antigo</label>
 							</td>
+						</tr>
 
+						<tr>
 							<td class="field">
 								<input class="input" id="tpDocAntigo" name="tpDocAntigo" type="text" value="" maxlength="20" readonly="readonly"/>
 							</td>
-
 							<td class="status"></td>
 						</tr>
 
 						<tr>
 							<td class="tdControle">
-								<label class="labelForms"  id="ltpDocNovo" for="tpDocNovo">
-									Tipo de documento novo:
-									<span class="asterisco">*</span>
-								</label>
+								<label class="labelForms"  id="ltpDocNovo" for="tpDocNovo">Tipo de Documento Novo</label>
 							</td>
-
+						</tr>
+						
+						<tr>
 							<td class="field">
 								<input class="input" id="tpDocNovo" name="tpDocNovo" type="text" value="" maxlength="20" />
 							</td>
-
 							<td class="status"></td>
 						</tr>
 
 						<tr>
-							<td class="tdControle" colspan="3">
+							<td class="tdFroms">
+								<br>
+								<input class="buttonRegistrar" id="signupsubmit" name="Enviar" type="submit" value="Atualizar" />
+								<label style="padding-left: 10px;"></label>
 								<input class="buttonCancelar" type="button" value="Cancelar" onClick="history.go(-1)">
-								<input class="buttonRegistrar" id="signupsubmit" name="Enviar" type="submit" value="Enviar" />
 							</td>
 						</tr>
 					</table>
@@ -86,10 +85,7 @@
 			</div>
 
 			<!-- Rodape -->
-			<div class="footer">
-				<p>Copyright © - Universidade Federal de São Paulo - UNIFESP 2012</p>
-				<p>Desenvolvido pelo grupo Coruja</p>
-			</div>
+			<%@include file="/WEB-INF/templates/footer.jsp"%>
 		</div>
 	</body>
 </html>

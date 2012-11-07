@@ -32,6 +32,7 @@
 
 			<!-- Menu lateral -->
 			<div class="sidebar1">
+			
 				<!-- Area de login -->
 				<%@include file="/WEB-INF/templates/loginReception.jsp" %>
 
@@ -40,62 +41,58 @@
 			</div>
 
 			<div class="content" id="content">
-				<h1>Editar Usuário</h1>
+				<h1>Edição de Usuário</h1>
 
 				<form id="signupform" autocomplete="off" method="post" action="/GraoPara/doChangesToAccount?action=editPermission">
 					<table class="tableForms">
 						<tr>
 							<td>
-								<label class="labelForms" id="lfirstname" for="nome">
-									Nome Completo:
-									<span class="asterisco">*</span>
-								</label>
+								<label class="labelForms" id="lfirstname" for="nome">Nome</label>
 							</td>
-
+						</tr>
+						
+						<tr>
 							<td class="field">
-								<input class="inputLong" id="nome" name="nome" type="text" value="<%= request.getParameter("paramName") %>" maxlength="100" readonly="readonly" />
+								<input class="input" id="nome" name="nome" type="text" style="width:350px;" value="<%= request.getParameter("paramName") %>" maxlength="100" readonly="readonly" />
 							</td>
-
 							<td class="status"></td>
 						</tr>
 
 						<tr>
 							<td>
-								<label class="labelForms"  id="lemail" for="email" >
-									Email:
-									<span class="asterisco">*</span>
-								</label>
+								<label class="labelForms"  id="lemail" for="email">Email</label>
 							</td>
-
+						</tr>
+						
+						<tr>
 							<td class="field">
-								<input class="inputLong" id="email" name="email" type="text" value="<%= request.getParameter("paramEmail") %>" maxlength="150" readonly="readonly"/>
+								<input class="input" id="email" name="email" type="text" style="width:350px;" value="<%= request.getParameter("paramEmail") %>" maxlength="150" readonly="readonly"/>
 							</td>
-
 							<td class="status"></td>
 						</tr>
 
 						<tr>
 							<td>
-								<label class="labelForms" id="lpermissao" for="permissao">
-									Permissão
-									<span class="asterisco">*</span>
-								</label>
+								<label class="labelForms" id="lpermissao" for="permissao">Permissão</label>
 							</td>
+						</tr>
 
+						<tr>
 							<td class="field">
-								<select name="permissao" class="input" id="permissao">
+								<select name="permissao" class="inputLong" id="permissao" style="width:354px;" >
 									<option value="">Selecione...</option>
 									<% PanelWorker.listAllAvailableProfile(request, out); %>
 								</select>
 							</td>
-
 							<td class="status"></td>
 						</tr>
 
 						<tr>
-							<td class="tdControle" colspan="3">
+							<td class="tdForms">
+								<br>
+								<input class="buttonRegistrar" id="signupsubmit" name="Enviar" type="submit" value="Atualizar" />
+								<label style="padding-left: 10px;"></label>
 								<input class="buttonCancelar" type="button" value="Cancelar" onClick="history.go(-1)">
-								<input class="buttonRegistrar" id="signupsubmit" name="Enviar" type="submit" value="Enviar" />
 							</td>
 						</tr>
 					</table>
@@ -103,10 +100,7 @@
 			</div>
 
 			<!-- Rodape -->
-			<div class="footer">
-				<p>Copyright © - Universidade Federal de São Paulo - UNIFESP 2012</p>
-				<p>Desenvolvido pelo grupo Coruja</p>
-			</div>
+			<%@include file="/WEB-INF/templates/footer.jsp"%>
 		</div>
 	</body>
 </html>

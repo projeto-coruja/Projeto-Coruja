@@ -37,14 +37,21 @@
 			</div>
 
 			<div class="content" id="content">
-				<h1>Listagem de Documentos</h1>
-	
-				<div align="right">
-					<a class="tdMinilink" href="/GraoPara/doDownload?<% out.write(SearchWorker.getAllAttributesAndValues(request, out));%>">Download Pesquisa</a>
-					<label style="font-size: small">|</label>
-					<a class="tdMinilink" href="http://pt-br.libreoffice.org/baixe-ja/" target="_blank" title="Os documentos são baixados no formato ODT e podem ser visualizados utilizando LibreOffice. Clique aqui para baixar o LibreOffice!">Baixar o LibreOffice</a>
-				</div>
+				<h1>Listagem de Documentos
+				<label style="font-size: small; padding-left: 10px; font-style: normal;">
+						<a class="tdMinilink" href="/GraoPara/doDownload?<% out.write(SearchWorker.getAllAttributesAndValues(request, out));%>">Baixar a Listagem de Documentos</a>
+						|
+						<a class="tdMinilink" href="http://pt-br.libreoffice.org/baixe-ja/" target="_blank" title="Os documentos são baixados no formato ODT e podem ser visualizados utilizando LibreOffice. Clique aqui para baixar o LibreOffice!">Baixar o LibreOffice</a>
+				</label>
+				</h1>
 
+				<table class="tableForms" style="padding-bottom: 10px;">
+					<tr>
+						<td>
+						</td>
+					</tr>				
+				</table>
+				
 				<div class="scrollLong">
 					<table class="tableList">
 						<tr class="trList">
