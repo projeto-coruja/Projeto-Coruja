@@ -75,7 +75,7 @@ public class DocUpdateServlet extends HttpServlet {
 		}
 		DocumentEJB CB = new DocumentEJB();
 		codCodiceCaixa = tipoCodiceCaixa+"-"+codCodiceCaixa;
-		codDocumento = tipoCodDocumento+"-"+codDocumento;
+		/*codDocumento = tipoCodDocumento+"-"+codDocumento;*/
 		
 		try {
 			CB.modifyDocument(tipoCodDocumentoAntigo,
