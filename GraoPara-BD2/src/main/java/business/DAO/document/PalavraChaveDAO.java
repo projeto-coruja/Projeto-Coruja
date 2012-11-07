@@ -96,7 +96,7 @@ public class PalavraChaveDAO {
 					select_pc = (PalavraChave) dto;
 			}
 			
-			if(!unmodifiedTheme)	select_pc.setTema(select_tpc);
+			/*if(!unmodifiedTheme)	select_pc.setTema(select_tpc);*/
 			select_pc.setPalavra(newKey);
 			manager.updateEntity(select_pc);
 
