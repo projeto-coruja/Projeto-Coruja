@@ -115,17 +115,22 @@ public class PanelWorker {
 				out.print("<td class=\"tdList\"> <label for=\"titulo\" class=\"labelExibe\">" + ori.getTitulo() + " </label> </td>");
 				out.print("<td class=\"tdList\"> <label for=\"anoIni\" class=\"labelExibe\">" + ori.getAnoInicio() + " </label> </td>");
 				out.print("<td class=\"tdList\"> <label for=\"anoFim\" class=\"labelExibe\">" + ori.getAnoFim() + " </label> </td>");
-				out.println("<td class=\"tdList\">"
+				if(isAdmin)
+					out.println("<td class=\"tdList\">"
 						+ "<a href=\"/GraoPara/protected/admin/editarTituloOrigem.jsp?" 
 						+ "&codigo=" + ori.getCod()
 						+ "&anoIni=" + ori.getAnoInicio()
 						+ "&anoFim=" + ori.getAnoFim()
 						+ "\"><img src=\"/GraoPara/images/edit.png\" title=\"Editar códice/caixa\" alt=\"Editar códice/caixa\" /></a>"
-						+ (isAdmin ? "<a href=\"/GraoPara/protected/admin/removeCodex?" 
+						+ "<a href=\"/GraoPara/protected/admin/removeCodex?" 
 						+ "codigo=" + ori.getCod()
-						+ "\"><img src=\"/GraoPara/images/remove.png\" title=\"Deletar códice/caixa\" alt=\"Deletar códice/caixa\" /></a>" : "")
+						+ "\"><img src=\"/GraoPara/images/remove.png\" title=\"Deletar códice/caixa\" alt=\"Deletar códice/caixa\" /></a>"
 						+ "</td>" );
-				out.write("</tr>");				
+				else
+					out.println("<td class=\"tdList\">"
+							+ "<img src=\"/GraoPara/images/icone_ajuda.png\" title=\"Para editar informações, peça ajuda a um admin.\" alt=\"Para editar informações, peça ajuda a um admin\" />"
+							+ "</td>" );
+				out.println("</tr>");				
 			}
 		} catch (UnreachableDataBaseException e) {
 			out.write("<script>");  
