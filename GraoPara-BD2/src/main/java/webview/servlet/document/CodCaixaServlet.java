@@ -50,6 +50,12 @@ public class CodCaixaServlet extends HttpServlet {
 		else {
 			int anoIni = Integer.parseInt(strAnoIni);
 			int anoFim = Integer.parseInt(strAnoFim);
+			if(anoIni > anoFim) {
+				out.println("<script>");  
+				out.println("alert('Erro: ano de ínicio maior que ano de fim!');");  
+			    out.println("history.go(-1);");  
+			    out.println("</script>");
+			}
 
 			try {
 				od.add(tipo, codigo, titulo, anoIni, anoFim);
