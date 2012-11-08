@@ -11,6 +11,7 @@ import business.EJB.documents.CodiceCaixaEJB;
 import business.EJB.documents.KeyWordEJB;
 
 import business.EJB.user.AdminBean;
+import business.EJB.user.AuthBean;
 import business.EJB.user.SearchUserBean;
 
 import business.exceptions.documents.CodiceCaixaNotFoundException;
@@ -97,6 +98,12 @@ public class PanelWorker {
 	}
 	
 	public static void listAllCodex(HttpServletRequest request, JspWriter out) throws IOException{
+		String c_status = null;
+		if(request.getCookies().length > 1) {
+			c_status = WebUtility.selectCookie(request.getCookies(), WebUtility.cookie_status).getValue();
+		}
+		boolean isAdmin = (c_status != null && c_status.equals(AuthBean.LoginSuccessAdmin));
+			
 		CodiceCaixaEJB od = new CodiceCaixaEJB();
 		List<DTO> origens = null;	    
 		try{
@@ -114,7 +121,10 @@ public class PanelWorker {
 						+ "&anoIni=" + ori.getAnoInicio()
 						+ "&anoFim=" + ori.getAnoFim()
 						+ "\"><img src=\"/GraoPara/images/edit.png\" title=\"Editar códice/caixa\" alt=\"Editar códice/caixa\" /></a>"
-						+ "</td>");
+						+ (isAdmin ? "<a href=\"/GraoPara/protected/admin/removeCodex?" 
+						+ "codigo=" + ori.getCod()
+						+ "\"><img src=\"/GraoPara/images/remove.png\" title=\"Deletar códice/caixa\" alt=\"Deletar códice/caixa\" /></a>" : "")
+						+ "</td>" );
 				out.write("</tr>");				
 			}
 		} catch (UnreachableDataBaseException e) {

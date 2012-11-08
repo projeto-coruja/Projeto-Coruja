@@ -81,5 +81,9 @@ public class CodiceCaixaEJB {
 		}
 		throw new CodiceCaixaNotFoundException("Entrada não encontrada.");
 	}
+
+	public void deleteCodCaixa(String codigo) throws UnreachableDataBaseException, CodiceCaixaNotFoundException {
+		dao.removeCodiceCaixa((CodiceCaixa) dao.findCodiceCaixaByCod(codigo).get(0));
+	}
 	
 }
