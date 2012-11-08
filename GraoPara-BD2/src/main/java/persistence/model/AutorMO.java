@@ -15,7 +15,6 @@ public class AutorMO implements EntityModel {
 	private Long id;
 	
 	@NotEmpty
-	@NaturalId
 	private String nome;
 	
 	@NotEmpty

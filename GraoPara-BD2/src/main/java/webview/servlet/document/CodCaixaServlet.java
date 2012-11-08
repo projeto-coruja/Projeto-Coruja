@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import webview.util.AlertsUtility;
 import business.EJB.documents.CodiceCaixaEJB;
+import business.EJB.util.QuickRegex;
 import business.exceptions.documents.DuplicateCodiceCaixaException;
 import business.exceptions.login.UnreachableDataBaseException;
 
@@ -24,9 +25,8 @@ public class CodCaixaServlet extends HttpServlet {
 	private boolean isInit(String s) {
 		return s != null && !s.isEmpty();
 	}
-	
-	private static Pattern p = Pattern.compile("[^a-z0-9áãâéêíóõôúç]", Pattern.CASE_INSENSITIVE & Pattern.UNICODE_CASE);
-	private static Pattern q = Pattern.compile("[^0-9]");
+
+	private static final int max = 2012;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -50,7 +50,7 @@ public class CodCaixaServlet extends HttpServlet {
 		if(isInit(tipo) && isInit(codigo) && isInit(titulo) && isInit(strAnoIni) && isInit(strAnoFim)) {
 			AlertsUtility.alertAndRedirectHistory(response, "Erro: campos estão vazios!");
 		}
-		else if(q.matcher(codigo).find() || p.matcher(titulo).find() || q.matcher(strAnoFim).find() || q.matcher(strAnoIni).find()){
+		else if(QuickRegex.findN(codigo) || QuickRegex.findAN(titulo) || QuickRegex.findN(strAnoFim) || QuickRegex.findN(strAnoIni)){
 			AlertsUtility.alertAndRedirectHistory(response, "Erro: caracteres inválidos!");
 		}
 		else {
@@ -58,6 +58,9 @@ public class CodCaixaServlet extends HttpServlet {
 			int anoFim = Integer.parseInt(strAnoFim);
 			if(anoIni > anoFim) {
 				AlertsUtility.alertAndRedirectHistory(response, "Erro: ano de ínicio maior que de fim!");
+			}
+			else if(anoIni > max || anoFim > max) {
+				AlertsUtility.alertAndRedirectHistory(response, "Erro: ano inválido!");
 			}
 			else try {
 				od.add(tipo, codigo, titulo, anoIni, anoFim);
