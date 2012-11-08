@@ -1,7 +1,6 @@
 package webview.servlet.document;
 
 import java.io.IOException;
-import java.util.regex.Pattern;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import webview.util.AlertsUtility;
+import static webview.util.WebUtility.isInit;
+
 import business.EJB.documents.CodiceCaixaEJB;
 import business.EJB.util.QuickRegex;
 import business.exceptions.documents.DuplicateCodiceCaixaException;
@@ -21,10 +22,6 @@ import business.exceptions.login.UnreachableDataBaseException;
 @WebServlet(urlPatterns={"/protected/admin/addOrigin", "/protected/userAdv/addOrigin", "/protected/user/addOrigin" })
 public class CodCaixaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-	private boolean isInit(String s) {
-		return s != null && !s.isEmpty();
-	}
 
 	private static final int max = 2012;
        
@@ -46,8 +43,8 @@ public class CodCaixaServlet extends HttpServlet {
 		String titulo = request.getParameter("titulo");
 		String strAnoIni = request.getParameter("anoIni");
 		String strAnoFim = request.getParameter("anoFim");
-		
-		if(isInit(tipo) && isInit(codigo) && isInit(titulo) && isInit(strAnoIni) && isInit(strAnoFim)) {
+				
+		if(!(isInit(tipo) && isInit(codigo) && isInit(titulo) && isInit(strAnoIni) && isInit(strAnoFim))) {
 			AlertsUtility.alertAndRedirectHistory(response, "Erro: campos estão vazios!");
 		}
 		else if(QuickRegex.findN(codigo) || QuickRegex.findAN(titulo) || QuickRegex.findN(strAnoFim) || QuickRegex.findN(strAnoIni)){

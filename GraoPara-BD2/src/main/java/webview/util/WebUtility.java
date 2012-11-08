@@ -548,4 +548,8 @@ public final class WebUtility {
 	    str = str.replaceAll("[^\\p{ASCII}]", "");
 	    return str;
 	}
+	
+	public static boolean isInit(String s) {
+		return s != null && !s.isEmpty();
+	}
 }
