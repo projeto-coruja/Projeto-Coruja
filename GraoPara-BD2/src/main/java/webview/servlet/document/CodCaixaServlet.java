@@ -1,7 +1,7 @@
 package webview.servlet.document;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.regex.Pattern;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import webview.util.AlertsUtility;
 import business.EJB.documents.CodiceCaixaEJB;
 import business.exceptions.documents.DuplicateCodiceCaixaException;
 import business.exceptions.login.UnreachableDataBaseException;
@@ -19,6 +20,13 @@ import business.exceptions.login.UnreachableDataBaseException;
 @WebServlet(urlPatterns={"/protected/admin/addOrigin", "/protected/userAdv/addOrigin", "/protected/user/addOrigin" })
 public class CodCaixaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private boolean isInit(String s) {
+		return s != null && !s.isEmpty();
+	}
+	
+	private static Pattern p = Pattern.compile("[^a-z0-9áãâéêíóõôúç]", Pattern.CASE_INSENSITIVE & Pattern.UNICODE_CASE);
+	private static Pattern q = Pattern.compile("[^0-9]");
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -32,8 +40,6 @@ public class CodCaixaServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		CodiceCaixaEJB od = new CodiceCaixaEJB();
-		response.setContentType("text/html");
-	    PrintWriter out=response.getWriter();  
 		
 		String tipo = request.getParameter("tipo");
 		String codigo = request.getParameter("codigo");
@@ -41,38 +47,26 @@ public class CodCaixaServlet extends HttpServlet {
 		String strAnoIni = request.getParameter("anoIni");
 		String strAnoFim = request.getParameter("anoFim");
 		
-		if(tipo.trim().isEmpty() || codigo.trim().isEmpty() || titulo.trim().isEmpty() || strAnoIni.trim().isEmpty() || strAnoFim.trim().isEmpty()) {
-			out.println("<script>");  
-			out.println("alert('Preencha todos os campos, por favor!');");  
-		    out.println("history.go(-1);");  
-		    out.println("</script>");
+		if(isInit(tipo) && isInit(codigo) && isInit(titulo) && isInit(strAnoIni) && isInit(strAnoFim)) {
+			AlertsUtility.alertAndRedirectHistory(response, "Erro: campos estão vazios!");
+		}
+		else if(q.matcher(codigo).find() || p.matcher(titulo).find() || q.matcher(strAnoFim).find() || q.matcher(strAnoIni).find()){
+			AlertsUtility.alertAndRedirectHistory(response, "Erro: caracteres inválidos!");
 		}
 		else {
 			int anoIni = Integer.parseInt(strAnoIni);
 			int anoFim = Integer.parseInt(strAnoFim);
 			if(anoIni > anoFim) {
-				out.println("<script>");  
-				out.println("alert('Erro: ano de ínicio maior que ano de fim!');");  
-			    out.println("history.go(-1);");  
-			    out.println("</script>");
+				AlertsUtility.alertAndRedirectHistory(response, "Erro: ano de ínicio maior que de fim!");
 			}
-
-			try {
+			else try {
 				od.add(tipo, codigo, titulo, anoIni, anoFim);
-				out.println("<script>");  
-				out.println("window.location.replace('/GraoPara/protected/admin/cadastrarOrigem.jsp');");
-				out.println("</script>");		
+				AlertsUtility.redirectOnly(response, "/GraoPara/protected/admin/cadastrarOrigem.jsp");
 			} catch (DuplicateCodiceCaixaException e) {
-				out.println("<script>");  
-				out.println("alert('Número de códices/caixas já existe.');");  
-				out.println("history.go(-1);");  
-				out.println("</script>");
+				AlertsUtility.alertAndRedirectHistory(response, "Número de códices/caixas já existe.");
 				e.printStackTrace();
 			} catch (UnreachableDataBaseException e) {
-				out.println("<script>");  
-				out.println("alert('Erro no banco de dados, contate o suporte e tente novamente mais tarde.');");
-				out.println("window.location.replace('/GraoPara/protected/admin/adminIndex.jsp');");
-				out.println("</script>");
+				AlertsUtility.alertAndRedirectPage(response, "Erro no banco de dados, contate o suporte e tente novamente mais tarde.", "/GraoPara/protected/admin/adminIndex.jsp");
 			}
 		}
 	}

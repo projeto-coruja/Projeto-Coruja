@@ -32,5 +32,13 @@ public class AlertsUtility {
 	    out.println("history.go(-1);");  
 	    out.println("</script>");
 	}
+	
+	public static void redirectOnly(HttpServletResponse response, String jsp_Page) throws IOException{
+		response.setContentType("text/html");  
+	    PrintWriter out=response.getWriter();   
+		out.println("<script>");  
+	    out.println("window.location.replace('" + jsp_Page + "');");  
+	    out.println("</script>");
+	}
 
 }
