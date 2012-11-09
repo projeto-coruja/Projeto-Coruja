@@ -61,12 +61,12 @@ public class CodCaixaServlet extends HttpServlet {
 			}
 			else try {
 				od.add(tipo, codigo, titulo, anoIni, anoFim);
-				AlertsUtility.redirectOnly(response, "/GraoPara/protected/admin/cadastrarOrigem.jsp");
+				AlertsUtility.redirectOnly(response, "cadastrarOrigem.jsp");
 			} catch (DuplicateCodiceCaixaException e) {
 				AlertsUtility.alertAndRedirectHistory(response, "Número de códices/caixas já existe.");
 				e.printStackTrace();
 			} catch (UnreachableDataBaseException e) {
-				AlertsUtility.alertAndRedirectPage(response, "Erro no banco de dados, contate o suporte e tente novamente mais tarde.", "/GraoPara/protected/admin/adminIndex.jsp");
+				AlertsUtility.alertAndRedirectPage(response, "Erro no banco de dados, contate o suporte e tente novamente mais tarde.", "index.jsp");
 			}
 		}
 	}
