@@ -76,9 +76,9 @@ public class DocServlet extends HttpServlet {
 		if(isInit(ano)) {
 			data = ano;
 			if(isInit(mes) && !mes.equals("00"))  {
-				data += "-" + mes;
+				data += "/" + mes;
 				if(isInit(dia) && !dia.equals("00")) {
-					data += "-" + dia;
+					data += "/" + dia;
 				}
 			}
 			dataDoc = SimpleDate.parse(data);
