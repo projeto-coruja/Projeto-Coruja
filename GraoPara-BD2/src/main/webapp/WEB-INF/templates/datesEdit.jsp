@@ -23,7 +23,7 @@
 	<select name="dia" id="dia" class="inputDia">
 		<option value=<%= paramDia[1] %> selected="selected"><%= paramDia[0] %></option>
 		<option value="">--------</option>
-		<option value="00">Ilegível / Inexistente</option>
+		<option value="01">Ilegível / Inexistente</option>
 		<option value="01">1</option>
 		<option value="02">2</option>
 		<option value="03">3</option>
