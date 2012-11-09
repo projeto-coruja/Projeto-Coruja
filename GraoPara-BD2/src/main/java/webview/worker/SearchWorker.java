@@ -1,11 +1,12 @@
 package webview.worker;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.JspWriter;
+
+import datatype.SimpleDate;
 
 import persistence.dto.DTO;
 import persistence.dto.Documento;
@@ -19,9 +20,7 @@ import business.exceptions.documents.DocumentTypeNotFoundException;
 import business.exceptions.login.UnreachableDataBaseException;
 
 public class SearchWorker {
-	
-	private static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-	
+		
 	public static void listAllDocuments(HttpServletRequest request, JspWriter out) throws IOException{
 		
 		String tipoCodiceCaixa = request.getParameter("tipoCodCodiceCaixa");
@@ -196,7 +195,7 @@ public class SearchWorker {
 			String dataFormatted;
 			if(doc.getData() == null) dataFormatted = "Ilegível/Sem Data";	
 			else
-				dataFormatted = sdf.format(doc.getData());
+				dataFormatted = doc.getData().format();
 			
 			request.setAttribute("codigo", doc.getCodiceCaixa().getCod());
 			request.setAttribute("codCodiceCaixa", doc.getCodiceCaixa().getCod().replace("-", " - ") + ": " + doc.getCodiceCaixa().getTitulo() + " (" + doc.getCodiceCaixa().getAnoInicio() + " - " + doc.getCodiceCaixa().getAnoFim() + ")");
@@ -229,13 +228,25 @@ public class SearchWorker {
 		DocumentEJB docEJB = new DocumentEJB();
 		try {
 			Documento doc = docEJB.findSingleDocument(code);
-			String dataFormatted;
-			if(doc.getData() == null) dataFormatted = "00/00/0000";		
-			dataFormatted = sdf.format(doc.getData());
-			String[] dataSplit = dataFormatted.split("/");
 			String[] cdCxSplit = doc.getCodiceCaixa().getCod().split("-");
 			String[] codDocSplit = doc.getCod().split("-");
-			
+			SimpleDate sd = doc.getData();
+			String ano = null, mes = null, dia = null;
+			if(sd != null) {
+				ano = String.valueOf(sd.getYear());
+				try {
+					mes = String.valueOf(sd.getMonth());
+				} catch (IllegalAccessError e) {
+					//Do nothing
+				}
+				
+				try {
+					dia = String.valueOf(sd.getDay());
+				} catch (IllegalAccessError e) {
+					//Do nothing
+				}
+			}
+		
 			request.setAttribute("codigo", doc.getCodiceCaixa().getCod());
 			request.setAttribute("codCodiceCaixa", cdCxSplit[0]);
 			request.setAttribute("tipoCodiceCaixa", cdCxSplit[1]);
@@ -247,9 +258,9 @@ public class SearchWorker {
 			request.setAttribute("destinatarioNome",doc.getDestinatario().getNome());
 			request.setAttribute("destinatarioOcupacao",doc.getDestinatario().getOcupacao()); 
 			request.setAttribute("local",doc.getLocal());
-			request.setAttribute("ano",dataSplit[2]); 
-			request.setAttribute("mes",dataSplit[1]); 
-			request.setAttribute("dia",dataSplit[0]); 
+			request.setAttribute("ano", ano); 
+			request.setAttribute("mes", mes); 
+			request.setAttribute("dia", dia); 
 			request.setAttribute("url",doc.getUrl());
 			request.setAttribute("resumo",doc.getResumo());
 			request.setAttribute("tipoDoc",doc.getTipoDocumento().getNome()); 

@@ -40,7 +40,7 @@ public class SimpleDateHibernateType implements UserType {
 	public Object nullSafeGet(ResultSet rs, String[] names,
 			SessionImplementor session, Object owner)
 			throws HibernateException, SQLException {
-		String formattedDate = rs.getNString(names[0]);
+		String formattedDate = rs.getString(names[0]);
 		if(formattedDate == null || formattedDate.isEmpty()) {
 			return null;
 		}
