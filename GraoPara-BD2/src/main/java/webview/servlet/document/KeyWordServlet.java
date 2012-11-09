@@ -44,14 +44,14 @@ public class KeyWordServlet extends HttpServlet {
 		
 		try {
 			if(action!= null && action.equals("add")) {
-				cad.addKeyWord(newKey, theme);
+				cad.addKeyWord(newKey.toLowerCase(), theme);
 			    out.println("<script>");  
 			    out.println("alert('Palavra chave adicionada com sucesso. ');");  
 			    out.println("window.location.replace('/GraoPara/protected/admin/cadastrarPalavrasChave.jsp');");
 			    out.println("</script>");
 			}
 			else if(action!= null && action.equals("edit")) {
-				cad.updateKeyWord(oldKey, newKey, theme);
+				cad.updateKeyWord(oldKey, newKey.toLowerCase(), theme);
 			    out.println("<script>");  
 			    out.println("alert('Palavra chave atualizada com sucesso. ');");
 			    out.println("window.location.replace('/GraoPara/protected/admin/cadastrarPalavrasChave.jsp');");
