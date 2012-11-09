@@ -120,7 +120,7 @@
 	
 	<tr>
 		<td class="tdForms">
-			<label class="labelForms">Resumo ou Veberbete do Documento</label>
+			<label class="labelForms">Resumo ou Verbete do Documento</label>
 		</td>
 	</tr>
 	
