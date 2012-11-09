@@ -1,11 +1,8 @@
 package webview.servlet.document;
 
+import static webview.util.WebUtility.isInit;
+
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,9 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import persistence.exceptions.UpdateEntityException;
+import webview.util.AlertsUtility;
 import business.EJB.documents.DocumentEJB;
 import business.exceptions.documents.DocumentNotFoundException;
 import business.exceptions.login.UnreachableDataBaseException;
+import datatype.SimpleDate;
 
 /**
  * Servlet implementation class DocUpdateServlet
@@ -60,19 +59,24 @@ public class DocUpdateServlet extends HttpServlet {
 		String palavraChave1 = request.getParameter("chave1");
 		String palavraChave2 = request.getParameter("chave2");
 		String palavraChave3 = request.getParameter("chave3");
-    	
-		response.setContentType("text/html");  
-	    PrintWriter out=response.getWriter();   
+    			
+	    String ano = request.getParameter("ano");
+		String mes = request.getParameter("mes");
+		String dia = request.getParameter("dia");
+		String data = null;
+		SimpleDate dataDoc = null;
 		
-
-		String data = request.getParameter("ano") + "-" + request.getParameter("mes") + "-" + request.getParameter("dia");
-		Date dataDoc = null;
-		try {
-			DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-			dataDoc = (Date) df.parse(data);
-		} catch (ParseException e1) {
-			e1.printStackTrace();
+		if(isInit(ano)) {
+			data = ano;
+			if(isInit(mes) && !mes.equals("00"))  {
+				data += "-" + mes;
+				if(isInit(dia) && !dia.equals("00")) {
+					data += "-" + dia;
+				}
+			}
+			dataDoc = SimpleDate.parse(data);
 		}
+		
 		DocumentEJB CB = new DocumentEJB();
 		codCodiceCaixa = tipoCodiceCaixa+"-"+codCodiceCaixa;
 		/*codDocumento = tipoCodDocumento+"-"+codDocumento;*/
@@ -96,23 +100,15 @@ public class DocUpdateServlet extends HttpServlet {
 					palavraChave1,
 					palavraChave2, 
 					palavraChave3);
-			out.println("<script>");  
-			out.println("alert('Documento Atualizado com sucesso!');");  
-			out.println("window.location.replace('/GraoPara/protected/admin/index.jsp');");  
-			out.println("</script>");
+			AlertsUtility.alertAndRedirectPage(response, "Documento Atualizado com sucesso!", "index.jsp");
 		} catch (UnreachableDataBaseException e) {
-			out.println("<script>");  
-			out.println("alert('Erro no banco de dados! Contate o suporte e tente novamente mais tarde." + e.getStackTrace() + "');");  
-			out.println("history.go(-1)");  
-			out.println("</script>");
+			AlertsUtility.alertAndRedirectHistory(response, "Erro no banco de dados! Contate o suporte e tente novamente mais tarde.");
 			e.printStackTrace();
 		} catch (DocumentNotFoundException e) {
+			AlertsUtility.alertAndRedirectHistory(response, "Erro interno, tente novamente mais tarde.");
 			e.printStackTrace();
 		} catch (IllegalArgumentException e) {
-			out.println("<script>");  
-			out.println("alert('Número APEP/Sequencial duplicado.');");  
-			out.println("history.go(-1)");  
-			out.println("</script>");
+			AlertsUtility.alertAndRedirectHistory(response, "Número APEP/Sequencial duplicado!");
 		} catch (UpdateEntityException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

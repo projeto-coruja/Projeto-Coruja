@@ -1,8 +1,8 @@
 package persistence.dto;
 
-import java.util.Date;
-
 import org.jdto.annotation.DTOCascade;
+
+import datatype.SimpleDate;
 
 
 public class Documento implements DTO {
@@ -43,7 +43,7 @@ public class Documento implements DTO {
 	@DTOCascade
 	private UserAccount uploader;
 	
-	private Date data;
+	private SimpleDate data;
 	
 	public Documento() {
 		//JDTO
@@ -53,7 +53,7 @@ public class Documento implements DTO {
 			CodiceCaixa codiceCaixa, TipoDocumento tipoDocumento, Autor autor,
 			Autor destinatario, PalavraChave palavraChave1,
 			PalavraChave palavraChave2, PalavraChave palavraChave3,
-			UserAccount uploader, Date data) {
+			UserAccount uploader, SimpleDate data) {
 		super();
 		this.cod = cod;
 		this.titulo = titulo;
@@ -183,11 +183,11 @@ public class Documento implements DTO {
 		this.uploader = uploader;
 	}
 
-	public Date getData() {
+	public SimpleDate getData() {
 		return data;
 	}
 
-	public void setData(Date data) {
+	public void setData(SimpleDate data) {
 		this.data = data;
 	}
 

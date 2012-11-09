@@ -1,11 +1,8 @@
 package webview.servlet.document;
 
+import static webview.util.WebUtility.isInit;
+
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,17 +12,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import persistence.dto.UserAccount;
+import webview.util.AlertsUtility;
 import webview.util.WebUtility;
-
 import business.EJB.documents.DocumentEJB;
 import business.EJB.user.SearchUserBean;
 import business.exceptions.login.UnreachableDataBaseException;
 import business.exceptions.login.UserNotFoundException;
+import datatype.SimpleDate;
 
 /**
  * Servlet implementation class DocServlet
  */
-@WebServlet(urlPatterns={"/protected/admin/addDoc", "/protected/user/addDoc"})
+@WebServlet(urlPatterns={"/protected/admin/addDoc", "/protected/user/addDoc", "/protected/userAdv/addDoc"})
 public class DocServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -69,15 +67,23 @@ public class DocServlet extends HttpServlet {
 				request.getCookies(), WebUtility.cookie_email);
 		String email = c_user.getValue();
 		
-
-		String data = request.getParameter("ano") + "-" + request.getParameter("mes") + "-" + request.getParameter("dia");
-		Date dataDoc = null;
-		try {
-			DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-			dataDoc = (Date) df.parse(data);
-		} catch (ParseException e1) {
-			e1.printStackTrace();
+		String ano = request.getParameter("ano");
+		String mes = request.getParameter("mes");
+		String dia = request.getParameter("dia");
+		String data = null;
+		SimpleDate dataDoc = null;
+		
+		if(isInit(ano)) {
+			data = ano;
+			if(isInit(mes) && !mes.equals("00"))  {
+				data += "-" + mes;
+				if(isInit(dia) && !dia.equals("00")) {
+					data += "-" + dia;
+				}
+			}
+			dataDoc = SimpleDate.parse(data);
 		}
+		
 		
 		UserAccount uploader = null;
 		try {
@@ -85,7 +91,6 @@ public class DocServlet extends HttpServlet {
 			DocumentEJB CB = new DocumentEJB();
 			codCodiceCaixa = tipoCodiceCaixa+"-"+codCodiceCaixa;
 			try {
-				
 				CB.registerNewDocument(tituloDocumento, 
 						tipoCodDocumento,
 						codDocumento, 
@@ -107,28 +112,13 @@ public class DocServlet extends HttpServlet {
 						palavraChave1,
 						palavraChave2, 
 						palavraChave3);
-				response.setContentType("text/html");  
-			    PrintWriter out=response.getWriter();   
-			    out.println("<script>");  
-			    out.println("alert('Documento adicionado com sucesso!');");  
-			    out.println("history.go(-1);");  
-			    out.println("</script>");
+				AlertsUtility.alertAndRedirectHistory(response, "Documento adicionado com sucesso!");
 			} catch (UnreachableDataBaseException e) {
-				response.setContentType("text/html");  
-			    PrintWriter out=response.getWriter();   
-				out.println("<script>");  
-				out.println("alert('Erro no banco de dados! Contate o suporte e tente novamente mais tarde.);");  
-			    out.println("history.go(-1);");  
-				out.println("</script>");
+				AlertsUtility.alertAndRedirectHistory(response, "Erro no banco de dados! Contate o suporte e tente novamente mais tarde.");
 				e.printStackTrace();
 			} catch (IllegalArgumentException e){
 				e.printStackTrace();
-				response.setContentType("text/html");  
-			    PrintWriter out=response.getWriter();   
-			    out.println("<script>");  
-			    out.println("alert('Erro interno, tente novamente mais tarde.');");  
-			    out.println("history.go(-1);");  
-			    out.println("</script>");
+				AlertsUtility.alertAndRedirectHistory(response, "Erro interno, tente novamente mais tarde.");
 			}
 		} catch (UserNotFoundException e1) {
 			e1.printStackTrace();

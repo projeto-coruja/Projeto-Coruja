@@ -1,7 +1,7 @@
 <td class="field">
 	<select name="dia" id="dia" class="inputDia">
 		<option value="" selected="selected">Dia</option>
-		<option value="01">Ilegível / Inexistente</option>
+		<option value="00">Ilegível / Inexistente</option>
 		<option value="01">1</option>
 		<option value="02">2</option>
 		<option value="03">3</option>
@@ -37,7 +37,7 @@
 
 	<select name="mes" id="mes" class="inputMes">
 		<option value="" selected="selected">Mês</option>
-		<option value="">Ilegível / Inexistente</option>
+		<option value="00">Ilegível / Inexistente</option>
 		<option value="01">Janeiro</option>
 		<option value="02">Fevereiro</option>
 		<option value="03">Março</option>

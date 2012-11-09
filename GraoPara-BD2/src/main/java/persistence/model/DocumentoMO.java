@@ -1,7 +1,5 @@
 package persistence.model;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,9 +9,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
 
+import org.hibernate.annotations.Type;
 import org.hibernate.validator.constraints.NotEmpty;
+
+import datatype.SimpleDate;
 
 
 @Entity
@@ -67,8 +67,8 @@ public class DocumentoMO implements EntityModel  {
 	@ManyToOne
 	private UserAccountMO uploader;
 	
-	@Past
-	private Date data;
+	@Type(type="persistence.util.SimpleDateHibernateType")
+	private SimpleDate data;
 
 	public Long getId() {
 		return id;
@@ -182,11 +182,11 @@ public class DocumentoMO implements EntityModel  {
 		this.uploader = uploader;
 	}
 
-	public Date getData() {
+	public SimpleDate getData() {
 		return data;
 	}
 
-	public void setData(Date data) {
+	public void setData(SimpleDate data) {
 		this.data = data;
 	}
 

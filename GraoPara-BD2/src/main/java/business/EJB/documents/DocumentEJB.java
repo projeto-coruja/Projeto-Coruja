@@ -1,7 +1,8 @@
 package business.EJB.documents;
 
-import java.util.Date;
 import java.util.List;
+
+import datatype.SimpleDate;
 
 import persistence.dto.Autor;
 import persistence.dto.CodiceCaixa;
@@ -252,7 +253,7 @@ public class DocumentEJB {
 			String local,
 			String url,
 			String resumo,
-			Date data,
+			SimpleDate data,
 			UserAccount uploader,
 			// Códice e caixa
 			String codCodiceCaixa,
@@ -416,7 +417,7 @@ public class DocumentEJB {
 			String local,
 			String url,
 			String resumo,
-			Date data,
+			SimpleDate data,
 			// Códice e caixa
 			String codCodiceCaixa,
 			// Autor documento
