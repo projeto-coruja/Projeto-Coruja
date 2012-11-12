@@ -1,41 +1,49 @@
 package webview.worker;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.List;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.JspWriter;
 
+import persistence.dto.CodiceCaixa;
+import persistence.dto.DTO;
+import persistence.dto.PalavraChave;
+import persistence.dto.Profile;
+import persistence.dto.UserAccount;
+import webview.util.WebUtility;
 import business.EJB.documents.CodiceCaixaEJB;
 import business.EJB.documents.KeyWordEJB;
-
 import business.EJB.user.AdminBean;
 import business.EJB.user.AuthBean;
 import business.EJB.user.SearchUserBean;
-
 import business.exceptions.documents.CodiceCaixaNotFoundException;
 import business.exceptions.documents.KeywordNotFoundException;
 import business.exceptions.login.ProfileNotFoundException;
 import business.exceptions.login.UnreachableDataBaseException;
 import business.exceptions.login.UserNotFoundException;
 
-import persistence.dto.CodiceCaixa;
-import persistence.dto.DTO;
-import persistence.dto.PalavraChave;
-import persistence.dto.Profile;
-import persistence.dto.UserAccount;
-
-import webview.util.WebUtility;
-
 
 public class PanelWorker {
-
+	/**
+	 * 	Tipo de enconde <br>
+	 *	US-ASCII	 	Seven-bit ASCII, a.k.a. ISO646-US, a.k.a. the Basic Latin block of the Unicode character set<br>
+	 *	ISO-8859-1   	ISO Latin Alphabet No. 1, a.k.a. ISO-LATIN-1<br>
+	 *	UTF-8 			Eight-bit UCS Transformation Format<br>
+	 *	UTF-16BE 		Sixteen-bit UCS Transformation Format, big-endian byte order<br>
+	 *	UTF-16LE 		Sixteen-bit UCS Transformation Format, little-endian byte order<br>
+	 *	UTF-16 			Sixteen-bit UCS Transformation Format, byte order identified by an optional byte-order mark<br>
+	 */
+	
+	private static final String encode = "ISO-8859-1";
+	
 	public static void listAllKeyWords(HttpServletRequest request, JspWriter out)  throws IOException{
 		KeyWordEJB busca = new KeyWordEJB();
 		List<DTO> keys = null;	    
 		String in = (String) request.getAttribute("in");
-		String td = null;		
+		String td = null;
 		if(in.equals("cadastrarPalavrasChave.jsp"))
 			td =  "class=\"tdList\"";
 		else
@@ -46,15 +54,15 @@ public class PanelWorker {
 				PalavraChave key = (PalavraChave) k;
 				out.write("<tr>");
 				out.write("<td "+td+"> <label for=\"identificacao\" class=\"labelExibe\">" + key.getTema().getTema() + "</label> </td>");
-				out.write("<td "+td+"> <label for=\"identificacao\" class=\"labelExibe\">" + key.getPalavra().replace("_", " ") + " </label> </td>");
+				out.write("<td "+td+"> <label for=\"identificacao\" class=\"labelExibe\">" + key.getPalavra() + " </label> </td>");
 				out.println("<td "+td+">"
 						+ "<a href=\"/GraoPara/protected/admin/editarPalavraChave.jsp?"
-							+ "palavraAntiga="+ key.getPalavra()
-							+ "&tema="+ key.getTema().getTema() + "\" >"
+							+ "palavraAntiga="+ URLEncoder.encode(key.getPalavra(), encode)
+							+ "&tema="+ URLEncoder.encode(key.getTema().getTema(), encode) + "\" >"
 							+ "<img src=\"/GraoPara/images/edit.png\" title=\"Editar\" alt=\"Editar\" /></a>" 
 						+ "<a href=\"/GraoPara/protected/admin/doChangesToKeyWord?" 
-							+ "palavraAntiga=" + key.getPalavra()
-							+ "&tema="+ key.getTema().getTema()
+							+ "palavraAntiga=" + URLEncoder.encode(key.getPalavra(), encode)
+							+ "&tema="+ URLEncoder.encode(key.getTema().getTema(), encode)
 							+ "&action=delete"
 							+ "&from=" + in
 							+ "\"><img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\" /></a>"
@@ -85,7 +93,7 @@ public class PanelWorker {
 				PalavraChave key = (PalavraChave) k;
 				out.write("<tr>");
 				out.write("<td "+td+"> <label for=\"identificacao\" class=\"labelExibe\">" + key.getId() + "</label> </td>");
-				out.write("<td "+td+"> <label for=\"identificacao\" class=\"labelExibe\">" + key.getPalavra().replace("_", " ") + " </label> </td>");
+				out.write("<td "+td+"> <label for=\"identificacao\" class=\"labelExibe\">" + key.getPalavra() + " </label> </td>");
 				out.write("</tr>");
 			}
 		} catch (UnreachableDataBaseException e) {

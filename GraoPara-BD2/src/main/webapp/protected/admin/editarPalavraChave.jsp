@@ -52,7 +52,7 @@
 						
 						<tr>
 							<td class="field">
-								<input class="input" id="palavraAntiga" name="palavraAntiga" type="text" value="<%= request.getParameter("palavraAntiga").replace("_", " ") %>" maxlength="32" readonly="readonly"/>
+								<input class="input" id="palavraAntiga" name="palavraAntiga" type="text" value="<%= request.getParameter("palavraAntiga") %>" maxlength="32" readonly="readonly"/>
 							</td>
 						</tr>
 
