@@ -46,7 +46,10 @@ public class DocTypeServlet extends HttpServlet {;
 		    out.println("</script>");
 			e.printStackTrace();
 		} catch (DuplicatedDocumentTypeException e) {
-			e.printStackTrace();
+			out.println("<script>");  
+		    out.println("alert('Tipo de documento já existe.');");
+		    out.println("window.location.replace('/GraoPara/protected/admin/cadastrarTipoDocumento.jsp');");
+		    out.println("</script>");
 		}		
 	}
 }

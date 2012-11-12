@@ -20,7 +20,7 @@
 	
 	<tr>
 		<td class="field">
-			<input class="input" name="descricaoTipoDocumento" id="descricaoTipoDocumento" type="text" size="20" maxlength="1024" />
+			<input class="input" name="docTypeDescription" id="descricaoTipoDocumento" type="text" size="20" maxlength="1024" />
 		</td>
 		<td class="status"></td>
 	</tr>

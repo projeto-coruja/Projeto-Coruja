@@ -24,6 +24,7 @@ public class KeyWordEJB {
 		if(searchKeyWord == null || searchKeyWord.isEmpty())
 			throw new IllegalArgumentException("Nenhuma palavra chave informado");
 		
+		searchKeyWord = searchKeyWord.toLowerCase();
 		List<DTO> list = keyWordDAO.findKeyWordByString(searchKeyWord);
 		PalavraChave keyWord;
 		
@@ -51,7 +52,8 @@ public class KeyWordEJB {
 	}
 	
 	public synchronized void addKeyWord(String palavra, String tema) throws IllegalArgumentException, UnreachableDataBaseException {
-		PalavraChaveDAO kwDao = new PalavraChaveDAO();		
+		PalavraChaveDAO kwDao = new PalavraChaveDAO();
+		palavra = palavra.toLowerCase();
 		try {
 			List<DTO> check = kwDao.findKeyWordByString(palavra);
 			for (DTO dto : check) {
@@ -107,11 +109,22 @@ public class KeyWordEJB {
 		}
 	}
 	
-	public synchronized void updateKeyWord(String oldKey, String newKey, String newTheme) throws UnreachableDataBaseException, KeywordNotFoundException , IllegalArgumentException, UpdateEntityException {
+	public synchronized void updateKeyWord(String oldKey, String newKey, String newTheme) throws UnreachableDataBaseException, IllegalArgumentException, UpdateEntityException, KeywordNotFoundException {
 		if(oldKey == null || newKey == null || oldKey.equals("") || newKey.equals("") || newTheme == null || newTheme.isEmpty())	
 			throw new IllegalArgumentException("Argumentos não podem ser null/vazio");
-
-		keyWordDAO.updateKeyWord(oldKey.toLowerCase(), newKey.toLowerCase(), newTheme);
+		
+		oldKey = oldKey.toLowerCase();
+		newKey = newKey.toLowerCase();
+		try{
+			List<DTO> check = keyWordDAO.findKeyWordByString(newKey);
+			for (DTO dto : check) {
+				if (((PalavraChave) dto).getPalavra().equals(newKey))
+					throw new IllegalArgumentException("Palavra já existe");
+			}
+		} catch (KeywordNotFoundException e){
+			keyWordDAO.updateKeyWord(oldKey.toLowerCase(), newKey.toLowerCase(), newTheme);
+		}
+		
 	}
 
 }
