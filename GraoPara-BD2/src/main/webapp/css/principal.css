@@ -101,7 +101,7 @@ a:hover,a:active,a:focus {
 .container {
 	max-width: 1110px !important; /* valor anterior: 1024px */
 	/* a max-width may be desirable to keep this layout from getting too wide on a large monitor. This keeps line length more readable. IE6 does not respect this declaration. */
-	min-width: 810px !important; /* valor anterior: 810px */
+	min-width: 1110px !important; /* valor anterior: 810px */
 	background-color: #FFF !important;
 	margin: 0 auto !important; 
 	/* the auto value on the sides, coupled with the width, centers the layout. It is not needed if you set the .container's width to 100%. */
