@@ -38,13 +38,13 @@ public class CodexServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
-		out.println("Lista de códices e/ou caixas com conteúdo: \n");
+		out.println("Lista de códices e/ou caixas com conteúdo: <br>");
 		CodiceCaixaEJB cb = new CodiceCaixaEJB();
 		try {
 			List<DTO> list = cb.getAllEntriesWithContent();
 			for(DTO d : list) {
 				CodiceCaixa work = (CodiceCaixa) d;
-				out.println(work.getTitulo() + " - " + work.getAnoInicio() + "/" + work.getAnoFim() + "\n");
+				out.println("&#183" + work.getTitulo() + " - " + work.getAnoInicio() + "/" + work.getAnoFim() + "<br>");
 			}
 		} catch (UnreachableDataBaseException e) {
 			// TODO Auto-generated catch block
