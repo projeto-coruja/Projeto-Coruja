@@ -27,7 +27,6 @@ public class AccountRemovalServlet extends HttpServlet {
 	 */
 	public AccountRemovalServlet() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -47,10 +46,8 @@ public class AccountRemovalServlet extends HttpServlet {
 		try {
 			userToRemove = loginDAO.findUserByEmail(email);
 		} catch (UnreachableDataBaseException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		} catch (UserNotFoundException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 

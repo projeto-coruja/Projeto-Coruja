@@ -29,7 +29,6 @@ public class DocUpdateServlet extends HttpServlet {
      */
     public DocUpdateServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -110,7 +109,6 @@ public class DocUpdateServlet extends HttpServlet {
 		} catch (IllegalArgumentException e) {
 			AlertsUtility.alertAndRedirectHistory(response, "Número APEP/Sequencial duplicado!");
 		} catch (UpdateEntityException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     }

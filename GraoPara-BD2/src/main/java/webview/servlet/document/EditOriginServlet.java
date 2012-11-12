@@ -33,7 +33,6 @@ public class EditOriginServlet extends HttpServlet {
      */
     public EditOriginServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**

@@ -29,7 +29,6 @@ public class CodexServlet extends HttpServlet {
      */
     public CodexServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -47,7 +46,6 @@ public class CodexServlet extends HttpServlet {
 				out.println("&#183" + work.getTitulo() + " - " + work.getAnoInicio() + "/" + work.getAnoFim() + "<br>");
 			}
 		} catch (UnreachableDataBaseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (CodiceCaixaNotFoundException e) {
 

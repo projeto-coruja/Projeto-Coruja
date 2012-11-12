@@ -63,7 +63,6 @@ public class ThemeEJB {
 				);
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
 		}
 

@@ -25,7 +25,6 @@ public class RemoveDocTypeServlet extends HttpServlet {
      */
     public RemoveDocTypeServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

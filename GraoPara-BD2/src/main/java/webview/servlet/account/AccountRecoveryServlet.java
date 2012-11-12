@@ -30,7 +30,6 @@ public class AccountRecoveryServlet extends HttpServlet {
      */
     public AccountRecoveryServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -58,10 +57,8 @@ public class AccountRecoveryServlet extends HttpServlet {
 			
 			AlertsUtility.alertAndRedirectHistory(response, "Usuário não encontrado.");
 		} catch (IllegalArgumentException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (UpdateEntityException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

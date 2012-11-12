@@ -6,7 +6,6 @@ public class KeywordNotFoundException extends Exception {
 
 	public KeywordNotFoundException() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public KeywordNotFoundException(String arg0, Throwable arg1, boolean arg2, boolean arg3) {
