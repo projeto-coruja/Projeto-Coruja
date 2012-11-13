@@ -72,21 +72,25 @@ public class DocServlet extends HttpServlet {
 		String dia = request.getParameter("dia");
 		String data = null;
 		SimpleDate dataDoc = null;
-		
-		if(isInit(ano)) {
-			data = ano;
-			if(isInit(mes) && !mes.equals("00"))  {
-				data += "/" + mes;
-				if(isInit(dia) && !dia.equals("00")) {
-					data += "/" + dia;
-				}
-			}
-			dataDoc = SimpleDate.parse(data);
-		}
-		
+
 		
 		UserAccount uploader = null;
+		
 		try {
+			
+
+			if(isInit(ano)) {
+				data = ano;
+				if(ano.length() < 4 || ano.equals("0000"))	throw new IllegalArgumentException("Ano inválido");
+				if(isInit(mes) && !mes.equals("00"))  {
+					data += "/" + mes;
+					if(isInit(dia) && !dia.equals("00")) {
+						data += "/" + dia;
+					}
+				}
+				dataDoc = SimpleDate.parse(data);
+			}
+			
 			uploader = (new SearchUserBean()).findUser(email);
 			DocumentEJB CB = new DocumentEJB();
 			codCodiceCaixa = tipoCodiceCaixa+"-"+codCodiceCaixa;
@@ -124,6 +128,8 @@ public class DocServlet extends HttpServlet {
 			e1.printStackTrace();
 		} catch (UnreachableDataBaseException e1) {
 			e1.printStackTrace();
+		} catch (IllegalArgumentException e){
+			AlertsUtility.alertAndRedirectHistory(response, "Data inválido, verifique se a data esta correto e tente novamente.");
 		}
 	}
 }
