@@ -30,6 +30,7 @@ public class SearchWorker {
 		String anoInicioCodiceCaixa = request.getParameter("epocaDe");
 		String anoFimCodiceCaixa = request.getParameter("epocaAte");
 		
+		String tituloDoDocumento = request.getParameter("titulo");
 		String tipoCodDocumento = request.getParameter("tipoDaIdentificacao");
 		String codDocumento = request.getParameter("numDaIdentificacao");
 		
@@ -63,7 +64,8 @@ public class SearchWorker {
 					codCodiceCaixaAte, 
 					tituloCodiceCaixa, 
 					anoInicioCodiceCaixa, 
-					anoFimCodiceCaixa, 
+					anoFimCodiceCaixa,
+					tituloDoDocumento,
 					tipoCodDocumento, 
 					codDocumento, 
 					autor, ocupacaoAutor, 

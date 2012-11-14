@@ -45,6 +45,7 @@ public class DocumentEJB {
 			String anoInicioCodiceCaixa,
 			String anoFimCodiceCaixa,
 			
+			String tituloDoDocumento,
 			String tipoCodDocumento,
 			String codDocumento,
 			
@@ -136,19 +137,33 @@ public class DocumentEJB {
 				query += " AND ";
 			}
 			if(anoFimCodiceCaixa == null || anoFimCodiceCaixa.isEmpty()){
-				query += " codiceCaixa.anoInicio >= " + anoInicioCodiceCaixa;
+				query += " codiceCaixa.anoInicio >= " + anoInicioCodiceCaixa
+						+ " OR codiceCaixa.anoFim >=" + anoInicioCodiceCaixa;
 			}
 			else
 				query += " codiceCaixa.anoInicio >= '" + anoInicioCodiceCaixa + "' "
-							+"AND codiceCaixa.anoFim <=" + anoFimCodiceCaixa;
+							+"AND codiceCaixa.anoFim <= " + anoFimCodiceCaixa;
+
+			continue_query = true;
 		}
 		else{
 			if(anoFimCodiceCaixa != null && !anoFimCodiceCaixa.isEmpty()){
 				if(continue_query == true){
 					query += " AND ";
 				}
-				query += " codiceCaixa.anoFim <= " + anoFimCodiceCaixa;
+				query += " codiceCaixa.anoInicio <= " + anoFimCodiceCaixa
+						+ " OR codiceCaixa.anoFim <=" + anoFimCodiceCaixa;
+				continue_query = true;
 			}
+
+		}
+		
+		if(tituloDoDocumento != null && !tituloDoDocumento.isEmpty()){
+			if(continue_query == true){
+				query += " AND ";
+			}
+			query += " titulo LIKE '%" + tituloDoDocumento + "%'";
+			continue_query = true;
 		}
 		
 		if(autor != null && !autor.isEmpty()){
@@ -187,7 +202,14 @@ public class DocumentEJB {
 			if(continue_query == true){
 				query += " AND ";
 			}
-			query += " cod LIKE '%" + (tipoCodDocumento != null && !tipoCodDocumento.isEmpty() ? tipoCodDocumento + "-" : "") + codDocumento + "%'";
+			query += " cod LIKE '" + (tipoCodDocumento != null && !tipoCodDocumento.isEmpty() ? tipoCodDocumento + "-" : "%") + codDocumento + "%'";
+			continue_query = true;
+		}
+		else if(tipoCodDocumento != null && !tipoCodDocumento.isEmpty()){
+			if(continue_query == true){
+				query += " AND ";
+			}
+			query += " cod LIKE '" + tipoCodDocumento + "-" + "%'";
 			continue_query = true;
 		}
 		

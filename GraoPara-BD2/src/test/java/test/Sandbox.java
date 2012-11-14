@@ -57,7 +57,7 @@ public class Sandbox {
 				"palavraChave1",
 				"palavraChave2",
 				"palavraChave3");
-		Documento doc = (Documento) e.findDocuments(null, null, null, null, null, null, null, null, "autor", null, null, null, null, null, null, null, null, null).get(0);
+		Documento doc = (Documento) e.findDocuments(null, null, null, null, null, null, null, null, null, "autor", null, null, null, null, null, null, null, null, null).get(0);
 		System.out.println(doc.getCod());
 		
 	}
