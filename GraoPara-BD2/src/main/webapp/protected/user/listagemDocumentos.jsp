@@ -18,6 +18,7 @@
 		<!-- Import dos javascripts -->
 		<script type="text/javascript" src="/GraoPara/javascript/cookie.js" charset="utf-8"></script>
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" charset="utf-8"></script>
+		<script type="text/javascript" src="/GraoPara/javascript/confirmBox.js" charset="utf-8"></script>
 	</head>
 
 	<body onloadstart="checkCookie()">
@@ -38,7 +39,7 @@
 				<h1>Listagem de Documentos</h1>
 
 				<div align="right">
-					<a class="tdMinilink" href="/GraoPara/doDownload?<% out.write(SearchWorker.getAllAttributesAndValues(request, out));%>">Download Pesquisa</a>
+					<a class="tdMinilink" href="javascript:confirmBox('/GraoPara/doDownload?<% out.write(SearchWorker.getAllAttributesAndValues(request, out));%>')">Download Pesquisa</a>
 					<label style="font-size: small">|</label>
 					<a class="tdMinilink" href="http://pt-br.libreoffice.org/baixe-ja/" target="_blank" title="Os documentos são baixados no formato ODT e podem ser visualizados utilizando LibreOffice. Clique aqui para baixar o LibreOffice!">Baixar o LibreOffice</a>
 				</div>

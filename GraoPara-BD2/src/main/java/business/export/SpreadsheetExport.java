@@ -271,7 +271,7 @@ public class SpreadsheetExport {
 
 
 		String filePath = tmpPath + "/rlt_" + EJBUtility.genRandomString(8) + "_" + creationDate + ".ods";
-		System.out.println(filePath);
+//		System.out.println(filePath);
 		outerDoc.save(filePath);
 		outerDoc.close();
 		return filePath;

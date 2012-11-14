@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import persistence.dto.DTO;
+import webview.util.AlertsUtility;
 import business.EJB.documents.DocumentEJB;
 import business.exceptions.documents.DocumentNotFoundException;
 import business.export.SpreadsheetExport;
@@ -90,6 +91,7 @@ public class Download extends HttpServlet {
 			
 			if(resultSet == null)	throw new DocumentNotFoundException();
 			filePath = SpreadsheetExport.generateSpreadsheet(resultSet);	
+
 			File f = new File(filePath);
 			response.setHeader("Content-Disposition", "attachment;filename=\""+ filePath +"\"");
 			response.setContentLength((int) f.length());
