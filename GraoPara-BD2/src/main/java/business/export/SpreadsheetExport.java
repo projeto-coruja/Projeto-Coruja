@@ -4,8 +4,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import org.odftoolkit.odfdom.type.Color;
 import org.odftoolkit.simple.SpreadsheetDocument;
+import org.odftoolkit.simple.style.Border;
+import org.odftoolkit.simple.style.StyleTypeDefinitions.CellBordersType;
 import org.odftoolkit.simple.style.StyleTypeDefinitions.HorizontalAlignmentType;
+import org.odftoolkit.simple.style.StyleTypeDefinitions.SupportedLinearMeasure;
 import org.odftoolkit.simple.style.StyleTypeDefinitions.VerticalAlignmentType;
 import org.odftoolkit.simple.table.Cell;
 import org.odftoolkit.simple.table.Column;
@@ -43,230 +47,76 @@ public class SpreadsheetExport {
 		Row row = tbl.appendRow();
 		Column column = tbl.appendColumn();
 		Cell cel = row.getCellByIndex(0);
+		
+		Color grey = new Color("#DDDDDD");
+		Border border = new Border(new Color("#000000"), 0.001, SupportedLinearMeasure.IN);
+		
 		int coluna;
-		String tmp;
 		
 		getPath();
 		
 		// Primeira linha
 		coluna = 0;
 		row = tbl.getRowByIndex(0);
+		String index[] = {"Código da Caixa/Códice",
+				"Título da Caixa/Códice",
+				"Código do documento",
+				"Título do documento",
+				"Tipo de Documento",
+				"Autor",
+				"Ocupação do autor",
+				"Destinatário",
+				"Ocupação do destinatário",
+				"Local",
+				"Data",
+				"Palavra Chaves",
+				"URL da imagem",
+				"Resumo"};
 
-		tmp = "Código da Caixa/Códice";
-		column = tbl.getColumnByIndex(coluna);
-		column.setWidth(getStringWidth(tmp));
-		cel = row.getCellByIndex(coluna++);
-		cel.setHorizontalAlignment(HorizontalAlignmentType.CENTER);
-		cel.setVerticalAlignment(VerticalAlignmentType.MIDDLE);
-		cel.setDisplayText(tmp);
 		
-		tmp = "Título da Caixa/Códice";
-		column = tbl.getColumnByIndex(coluna);
-		column.setWidth(getStringWidth(tmp));
-		cel = row.getCellByIndex(coluna++);
-		cel.setHorizontalAlignment(HorizontalAlignmentType.CENTER);
-		cel.setVerticalAlignment(VerticalAlignmentType.MIDDLE);
-		cel.setDisplayText(tmp);
-		
-		tmp = "Código do documento";
-		column = tbl.getColumnByIndex(coluna);
-		column.setWidth(getStringWidth(tmp));
-		cel = row.getCellByIndex(coluna++);
-		cel.setHorizontalAlignment(HorizontalAlignmentType.CENTER);
-		cel.setVerticalAlignment(VerticalAlignmentType.MIDDLE);
-		cel.setDisplayText(tmp);
-
-		tmp = "Título do documento";
-		column = tbl.getColumnByIndex(coluna);
-		column.setWidth(getStringWidth(tmp));
-		cel = row.getCellByIndex(coluna++);
-		cel.setHorizontalAlignment(HorizontalAlignmentType.CENTER);
-		cel.setVerticalAlignment(VerticalAlignmentType.MIDDLE);
-		cel.setDisplayText(tmp);
-
-		tmp = "Tipo de Documento";
-		column = tbl.getColumnByIndex(coluna);
-		column.setWidth(getStringWidth(tmp));
-		cel = row.getCellByIndex(coluna++);
-		cel.setHorizontalAlignment(HorizontalAlignmentType.CENTER);
-		cel.setVerticalAlignment(VerticalAlignmentType.MIDDLE);
-		cel.setDisplayText(tmp);
-		
-		tmp = "Autor";
-		column = tbl.getColumnByIndex(coluna);
-		column.setWidth(getStringWidth(tmp));
-		cel = row.getCellByIndex(coluna++);
-		cel.setHorizontalAlignment(HorizontalAlignmentType.CENTER);
-		cel.setVerticalAlignment(VerticalAlignmentType.MIDDLE);
-		cel.setDisplayText(tmp);
-
-		tmp = "Ocupação do autor";
-		column = tbl.getColumnByIndex(coluna);
-		column.setWidth(getStringWidth(tmp));
-		cel = row.getCellByIndex(coluna++);
-		cel.setHorizontalAlignment(HorizontalAlignmentType.CENTER);
-		cel.setVerticalAlignment(VerticalAlignmentType.MIDDLE);
-		cel.setDisplayText(tmp);
-		
-		tmp = "Destinatário";
-		column = tbl.getColumnByIndex(coluna);
-		column.setWidth(getStringWidth(tmp));
-		cel = row.getCellByIndex(coluna++);
-		cel.setHorizontalAlignment(HorizontalAlignmentType.CENTER);
-		cel.setVerticalAlignment(VerticalAlignmentType.MIDDLE);
-		cel.setDisplayText(tmp);
-
-		tmp = "Ocupação do destinatário";
-		column = tbl.getColumnByIndex(coluna);
-		column.setWidth(getStringWidth(tmp));
-		cel = row.getCellByIndex(coluna++);
-		cel.setHorizontalAlignment(HorizontalAlignmentType.CENTER);
-		cel.setVerticalAlignment(VerticalAlignmentType.MIDDLE);
-		cel.setDisplayText(tmp);
-		
-		tmp = "Local";
-		column = tbl.getColumnByIndex(coluna);
-		column.setWidth(getStringWidth(tmp));
-		cel = row.getCellByIndex(coluna++);
-		cel.setHorizontalAlignment(HorizontalAlignmentType.CENTER);
-		cel.setVerticalAlignment(VerticalAlignmentType.MIDDLE);
-		cel.setDisplayText(tmp);
-		
-		tmp = "Data";
-		column = tbl.getColumnByIndex(coluna);
-		column.setWidth(getStringWidth(tmp));
-		cel = row.getCellByIndex(coluna++);
-		cel.setHorizontalAlignment(HorizontalAlignmentType.CENTER);
-		cel.setVerticalAlignment(VerticalAlignmentType.MIDDLE);
-		cel.setDisplayText(tmp);
-		
-		tmp = "Palavra Chaves";
-		column = tbl.getColumnByIndex(coluna);
-		column.setWidth(getStringWidth(tmp));
-		cel = row.getCellByIndex(coluna++);
-		cel.setHorizontalAlignment(HorizontalAlignmentType.CENTER);
-		cel.setVerticalAlignment(VerticalAlignmentType.MIDDLE);
-		cel.setDisplayText(tmp);
-		
-		tmp = "Resumo";
-		column = tbl.getColumnByIndex(coluna);
-		column.setWidth(getStringWidth(tmp));
-		cel = row.getCellByIndex(coluna++);
-		cel.setHorizontalAlignment(HorizontalAlignmentType.CENTER);
-		cel.setVerticalAlignment(VerticalAlignmentType.MIDDLE);
-		cel.setDisplayText(tmp);
-		
+		for(int i = 0; i < index.length; i++){
+			column = tbl.getColumnByIndex(coluna);
+			column.setWidth(getStringWidth(index[i]));
+			cel = row.getCellByIndex(coluna++);
+			cel.setCellBackgroundColor(grey);
+			cel.setBorders(CellBordersType.ALL_FOUR, border);
+			cel.setHorizontalAlignment(HorizontalAlignmentType.CENTER);
+			cel.setVerticalAlignment(VerticalAlignmentType.MIDDLE);
+			cel.setDisplayText(index[i]);
+		}
+	
 		// Segunda em diante
 		for(int linha = 0; linha < resultSet.size(); linha++){
 			coluna = 0;
 			docDTO = (Documento) resultSet.get(linha);
 			row = tbl.getRowByIndex(linha+1);
+			String cellContent[] = {docDTO.getCodiceCaixa().getCod().replace("-", " - "),
+					docDTO.getCodiceCaixa().getTitulo(),
+					docDTO.getCod().replace("-", " - "),
+					docDTO.getTitulo(),
+					docDTO.getTipoDocumento().getNome(),
+					docDTO.getAutor().getNome(),
+					docDTO.getAutor().getOcupacao(),
+					docDTO.getDestinatario().getNome(),
+					docDTO.getDestinatario().getOcupacao(),
+					docDTO.getLocal(),
+					docDTO.getData().getDay() + "-" + docDTO.getData().getMonth() + "-" + docDTO.getData().getYear(),
+					(docDTO.getPalavraChave1() != null ? docDTO.getPalavraChave1().getPalavra() : " ")	+
+						(docDTO.getPalavraChave2() != null ? " - " + docDTO.getPalavraChave2().getPalavra() : " ") + 
+						(docDTO.getPalavraChave3() != null ? " - " + docDTO.getPalavraChave3().getPalavra() : " "),
+					docDTO.getUrl(),
+					docDTO.getResumo()};
 
-			tmp = docDTO.getCodiceCaixa().getCod().replace("-", " - ");
-			column = tbl.getColumnByIndex(coluna);
-			if(getStringWidth(tmp) > column.getWidth())	column.setWidth(getStringWidth(tmp));
-			cel = row.getCellByIndex(coluna++);
-			cel.setHorizontalAlignment(HorizontalAlignmentType.CENTER);
-			cel.setVerticalAlignment(VerticalAlignmentType.MIDDLE);
-			cel.setDisplayText(tmp);
-
-			tmp = docDTO.getCodiceCaixa().getTitulo();
-			column = tbl.getColumnByIndex(coluna);
-			if(getStringWidth(tmp) > column.getWidth())	column.setWidth(getStringWidth(tmp));
-			cel = row.getCellByIndex(coluna++);
-			cel.setHorizontalAlignment(HorizontalAlignmentType.CENTER);
-			cel.setVerticalAlignment(VerticalAlignmentType.MIDDLE);
-			cel.setDisplayText(tmp);
-
-			tmp = docDTO.getCod().replace("-", " - ");
-			column = tbl.getColumnByIndex(coluna);
-			if(getStringWidth(tmp) > column.getWidth())	column.setWidth(getStringWidth(tmp));
-			cel = row.getCellByIndex(coluna++);
-			cel.setHorizontalAlignment(HorizontalAlignmentType.CENTER);
-			cel.setVerticalAlignment(VerticalAlignmentType.MIDDLE);
-			cel.setDisplayText(tmp);
-
-			tmp = docDTO.getTitulo();
-			column = tbl.getColumnByIndex(coluna);
-			if(getStringWidth(tmp) > column.getWidth())	column.setWidth(getStringWidth(tmp));
-			cel = row.getCellByIndex(coluna++);
-			cel.setHorizontalAlignment(HorizontalAlignmentType.CENTER);
-			cel.setVerticalAlignment(VerticalAlignmentType.MIDDLE);
-			cel.setDisplayText(tmp);
-
-			tmp = docDTO.getTipoDocumento().getNome();
-			column = tbl.getColumnByIndex(coluna);
-			if(getStringWidth(tmp) > column.getWidth())	column.setWidth(getStringWidth(tmp));
-			cel = row.getCellByIndex(coluna++);
-			cel.setHorizontalAlignment(HorizontalAlignmentType.CENTER);
-			cel.setVerticalAlignment(VerticalAlignmentType.MIDDLE);
-			cel.setDisplayText(tmp);
-
-			tmp = docDTO.getAutor().getNome();
-			column = tbl.getColumnByIndex(coluna);
-			if(getStringWidth(tmp) > column.getWidth())	column.setWidth(getStringWidth(tmp));
-			cel = row.getCellByIndex(coluna++);
-			cel.setHorizontalAlignment(HorizontalAlignmentType.CENTER);
-			cel.setVerticalAlignment(VerticalAlignmentType.MIDDLE);
-			cel.setDisplayText(tmp);
-
-			tmp = docDTO.getAutor().getOcupacao();
-			column = tbl.getColumnByIndex(coluna);
-			if(getStringWidth(tmp) > column.getWidth())	column.setWidth(getStringWidth(tmp));
-			cel = row.getCellByIndex(coluna++);
-			cel.setHorizontalAlignment(HorizontalAlignmentType.CENTER);
-			cel.setVerticalAlignment(VerticalAlignmentType.MIDDLE);
-			cel.setDisplayText(tmp);
-
-			tmp = docDTO.getDestinatario().getNome();
-			column = tbl.getColumnByIndex(coluna);
-			if(getStringWidth(tmp) > column.getWidth())	column.setWidth(getStringWidth(tmp));
-			cel = row.getCellByIndex(coluna++);
-			cel.setHorizontalAlignment(HorizontalAlignmentType.CENTER);
-			cel.setVerticalAlignment(VerticalAlignmentType.MIDDLE);
-			cel.setDisplayText(tmp);
-
-			tmp = docDTO.getDestinatario().getOcupacao();
-			column = tbl.getColumnByIndex(coluna);
-			if(getStringWidth(tmp) > column.getWidth())	column.setWidth(getStringWidth(tmp));
-			cel = row.getCellByIndex(coluna++);
-			cel.setHorizontalAlignment(HorizontalAlignmentType.CENTER);
-			cel.setVerticalAlignment(VerticalAlignmentType.MIDDLE);
-			cel.setDisplayText(tmp);
-
-			tmp = docDTO.getLocal();
-			column = tbl.getColumnByIndex(coluna);
-			if(getStringWidth(tmp) > column.getWidth())	column.setWidth(getStringWidth(tmp));
-			cel = row.getCellByIndex(coluna++);
-			cel.setHorizontalAlignment(HorizontalAlignmentType.CENTER);
-			cel.setVerticalAlignment(VerticalAlignmentType.MIDDLE);
-			cel.setDisplayText(tmp);
-
-			tmp = docDTO.getData().toString();
-			column = tbl.getColumnByIndex(coluna);
-			if(getStringWidth(tmp) > column.getWidth())	column.setWidth(getStringWidth(tmp));
-			cel = row.getCellByIndex(coluna++);
-			cel.setHorizontalAlignment(HorizontalAlignmentType.CENTER);
-			cel.setVerticalAlignment(VerticalAlignmentType.MIDDLE);
-			cel.setDisplayText(tmp);
-
-			tmp = (docDTO.getPalavraChave1() != null ? docDTO.getPalavraChave1().getPalavra() : " ")
-					+ (docDTO.getPalavraChave2() != null ? " - " + docDTO.getPalavraChave2().getPalavra() : " ")
-					+ (docDTO.getPalavraChave3() != null ? " - " + docDTO.getPalavraChave3().getPalavra() : " ");
-			column = tbl.getColumnByIndex(coluna);
-			if(getStringWidth(tmp) > column.getWidth())	column.setWidth(getStringWidth(tmp));
-			cel = row.getCellByIndex(coluna++);
-			cel.setHorizontalAlignment(HorizontalAlignmentType.CENTER);
-			cel.setVerticalAlignment(VerticalAlignmentType.MIDDLE);
-			cel.setDisplayText(tmp);
-
-			tmp = docDTO.getResumo();
-			column = tbl.getColumnByIndex(coluna);
-			if(getStringWidth(tmp) > column.getWidth())	column.setWidth(getStringWidth(tmp));
-			cel = row.getCellByIndex(coluna++);
-			cel.setHorizontalAlignment(HorizontalAlignmentType.CENTER);
-			cel.setVerticalAlignment(VerticalAlignmentType.MIDDLE);
-			cel.setDisplayText(tmp);
+			for(int i = 0; i < cellContent.length; i++){
+				column = tbl.getColumnByIndex(coluna);
+				if(getStringWidth(cellContent[i]) > column.getWidth())	column.setWidth(getStringWidth(cellContent[i]));
+				cel = row.getCellByIndex(coluna++);
+				if(linha%2 == 1)	cel.setCellBackgroundColor(grey);
+				cel.setBorders(CellBordersType.ALL_FOUR, border);
+				cel.setHorizontalAlignment(HorizontalAlignmentType.CENTER);
+				cel.setVerticalAlignment(VerticalAlignmentType.MIDDLE);
+				cel.setDisplayText(cellContent[i]);
+			}
 		}
 
 
