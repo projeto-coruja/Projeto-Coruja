@@ -1,10 +1,10 @@
-<!doctype html>
+<%@page contentType="text/html; charset=UTF-8"%>
 <%@page import="webview.util.WebUtility"%>
 
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Gr„o-Par·</title>
+		<title>Gr√£o-Par√°</title>
 
 		<!-- Import dos styles CSS -->
 		<link rel="stylesheet" type="text/css" href="/GraoPara/css/principal.css" />
@@ -40,7 +40,7 @@
 			</div>
 
 			<div class="content" id="content">
-				<h1>Cadastro de Usu·rio</h1>
+				<h1>Cadastro de Usu√°rio</h1>
 
 				<form id="signupform" autocomplete="off" method="post" action="/GraoPara/protected/admin/doAdminRegister">
 					<%@include file="/WEB-INF/templates/newUserForm.jsp"%>

@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 public class AlertsUtility {
 	
 	public static void alertAndRedirectPage(HttpServletResponse response, String alert, String jsp_Page) throws IOException{
-		response.setContentType("text/html");  
+		response.setContentType("text/html; charset=UTF-8");  
 	    PrintWriter out=response.getWriter();   
 		out.println("<script>");  
 	    out.println("alert('" + alert + "');");  
@@ -17,7 +17,7 @@ public class AlertsUtility {
 	}
 	
 	public static void alertOnly(HttpServletResponse response, String alert) throws IOException{
-		response.setContentType("text/html");  
+		response.setContentType("text/html; charset=UTF-8");  
 	    PrintWriter out=response.getWriter();   
 		out.println("<script>");  
 	    out.println("alert('" + alert + "');");  
@@ -25,7 +25,7 @@ public class AlertsUtility {
 	}
 	
 	public static void alertAndRedirectHistory(HttpServletResponse response, String alert) throws IOException{
-		response.setContentType("text/html");  
+		response.setContentType("text/html; charset=UTF-8");  
 	    PrintWriter out=response.getWriter();   
 		out.println("<script>");  
 	    out.println("alert('" + alert + "');");  
@@ -34,7 +34,7 @@ public class AlertsUtility {
 	}
 	
 	public static void redirectOnly(HttpServletResponse response, String jsp_Page) throws IOException{
-		response.setContentType("text/html");  
+		response.setContentType("text/html; charset=UTF-8");  
 	    PrintWriter out=response.getWriter();   
 		out.println("<script>");  
 	    out.println("window.location.replace('" + jsp_Page + "');");  

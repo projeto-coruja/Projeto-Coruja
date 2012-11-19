@@ -30,7 +30,7 @@ public class RemoveDocTypeServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String tipo = request.getParameter("docType");
 		DocumentTypeEJB tdEjb = new DocumentTypeEJB();
-		response.setContentType("text/html");
+		response.setContentType("text/html; charset=UTF-8");
 	    PrintWriter out=response.getWriter();   
 		
 		try {

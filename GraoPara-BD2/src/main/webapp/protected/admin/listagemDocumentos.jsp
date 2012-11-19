@@ -1,4 +1,4 @@
-<!doctype html>
+<%@page contentType="text/html; charset=UTF-8"%>
 <%@page import="java.io.PrintWriter"%>
 <%@page import="webview.util.WebUtility"%>
 <%@page import="business.EJB.user.AdminBean"%>
@@ -7,7 +7,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Gr„o-Par·</title>
+		<title>Gr√£o-Par√°</title>
 
 		<!-- Import dos styles CSS -->
 		<link rel="stylesheet" type="text/css"	href="/GraoPara/css/principal.css" />
@@ -42,7 +42,7 @@
 				<label style="font-size: small; padding-left: 10px; font-style: normal;">
 						<a class="tdMinilink" href="javascript:confirmBox('/GraoPara/doDownload?<% out.write(SearchWorker.getAllAttributesAndValues(request, out));%>')">Download Pesquisa</a>
 					|
-						<a class="tdMinilink" href="http://pt-br.libreoffice.org/baixe-ja/" target="_blank" title="Os documentos s„o baixados no formato ODT e podem ser visualizados utilizando LibreOffice. Clique aqui para baixar o LibreOffice!">Baixar o LibreOffice</a>
+						<a class="tdMinilink" href="http://pt-br.libreoffice.org/baixe-ja/" target="_blank" title="Os documentos s√£o baixados no formato ODT e podem ser visualizados utilizando LibreOffice. Clique aqui para baixar o LibreOffice!">Baixar o LibreOffice</a>
 				</label>
 				</h1>
 
@@ -58,7 +58,7 @@
 						<tr class="trList">
 							<%@include file="/WEB-INF/templates/documentData.jsp"%>
 							
-							<td class="tdList"><label class="labelExibe">AÁıes</label></td>
+							<td class="tdList"><label class="labelExibe">A√ß√µes</label></td>
 						</tr>
 						
 						<% SearchWorker.listAllDocuments(request, out); %>

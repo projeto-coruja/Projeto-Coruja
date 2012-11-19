@@ -32,7 +32,7 @@ public class DocTypeServlet extends HttpServlet {;
 		String tipo = request.getParameter("docType");
 		String descricao = request.getParameter("docTypeDescription");
 		DocumentTypeEJB tdEjb = new DocumentTypeEJB();
-		response.setContentType("text/html");  
+		response.setContentType("text/html; charset=UTF-8");  
 	    PrintWriter out=response.getWriter();   
 		try {
 			tdEjb.addNewDocumentType(tipo, descricao);

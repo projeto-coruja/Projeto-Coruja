@@ -1,10 +1,10 @@
-<!doctype html>
+<%@page contentType="text/html; charset=UTF-8"%>
 <%@page import="webview.util.WebUtility"%>
 
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Gr„o-Par·</title>
+		<title>Gr√£o-Par√°</title>
 
 		<!-- Import dos styles CSS -->
 		<link rel="stylesheet" type="text/css" href="/GraoPara/css/principal.css" />
@@ -40,13 +40,13 @@
 			</div>
 
 			<div class="content" id="content">
-				<h1>EdiÁ„o de CÛdice/Caixa</h1>
+				<h1>Edi√ß√£o de C√≥dice/Caixa</h1>
 
 				<form id="editOriginForm" autocomplete="off" method="post" action="/GraoPara/protected/admin/editOrigin">
 					<table class="tableForms">
 						<tr>
 							<td class="tdForms">
-								<label class="labelForms" id="lcodigo" for="codigo">CÛdice/Caixa</label>
+								<label class="labelForms" id="lcodigo" for="codigo">C√≥dice/Caixa</label>
 							</td>
 						</tr>
 						
@@ -58,7 +58,7 @@
 						
 						<tr>
 							<td class="tdForms">
-								<label class="labelForms" id="ltitulo" for="titulo">TÌtulo</label>
+								<label class="labelForms" id="ltitulo" for="titulo">T√≠tulo</label>
 							</td>
 						</tr>
 						

@@ -1,11 +1,11 @@
-<!doctype html>
+<%@page contentType="text/html; charset=UTF-8"%>
 <%@page import="webview.worker.PanelWorker"%>
 <%@page import="webview.util.WebUtility"%>
 
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Gr„o-Par·</title>
+		<title>Gr√£o-Par√°</title>
 
 		<!-- Import dos styles CSS -->
 		<link rel="stylesheet" type="text/css" href="/GraoPara/css/principal.css" />
@@ -21,7 +21,7 @@
 		<script src="/GraoPara/javascript/chili-1.7.pack.js" type="text/javascript"></script>
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"charset="utf-8"></script>
 
-		<!-- Import dos scripts de validaÁ„o de formul·rio -->
+		<!-- Import dos scripts de valida√ß√£o de formul√°rio -->
 		<script src="/GraoPara/javascript/jquery.js" type="text/javascript" charset="utf-8"></script>
 			<script src="/GraoPara/javascript/validate.js" type="text/javascript" charset="utf-8"></script>
 			<script src="/GraoPara/javascript/validate_pt_br.js" type="text/javascript" charset="utf-8"></script>
@@ -42,7 +42,7 @@
 			</div>
 
 			<div class="content" id="content">
-				<h1> EdiÁ„o do Tipo de Documento</h1>
+				<h1> Edi√ß√£o do Tipo de Documento</h1>
 
 				<form action="/GraoPara/doPasswordRecovery" id="signupform"  method="post" autocomplete="off">
 					<table class="tableForms">

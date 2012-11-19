@@ -1,4 +1,4 @@
-<!doctype html>
+<%@page contentType="text/html; charset=UTF-8"%>
 <%@page import="webview.worker.PanelWorker"%>
 <%@page import="webview.util.WebUtility"%>
 
@@ -6,7 +6,7 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>Gr„o-Par·</title>
+		<title>Gr√£o-Par√°</title>
 
 		<!-- Import dos styles CSS -->
 		<link rel="stylesheet" type="text/css" href="/GraoPara/css/principal.css" />
@@ -43,7 +43,7 @@
 			</div>
 
 			<div class="content" id="content">
-				<h1>Cadastro de CÛdice/Caixa</h1>
+				<h1>Cadastro de C√≥dice/Caixa</h1>
 
 				<form action="addOrigin" id="signupform" method="post" autocomplete="off">
 					<!-- Formulario de cadastro de codice/caixa -->

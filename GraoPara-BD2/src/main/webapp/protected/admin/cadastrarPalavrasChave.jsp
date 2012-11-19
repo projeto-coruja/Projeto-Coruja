@@ -1,4 +1,3 @@
-<!doctype html>
 <%@page import="webview.worker.PanelWorker"%>
 <%@page import="webview.util.WebUtility"%>
 

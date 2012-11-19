@@ -1,9 +1,9 @@
-<!doctype html>
+<%@page contentType="text/html; charset=UTF-8"%>
 
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Gr„o-Par·</title>
+		<title>Gr√£o-Par√°</title>
 
 		<!-- Import dos styles CSS -->
 		<link rel="stylesheet" type="text/css" href="/GraoPara/css/principal.css" />
@@ -38,7 +38,7 @@
 				<div class="browser">
 					<h2>Navegador Desatualizado!</h2>
 					<p>
-						Seu navegador est· desatualizado. Sugerimos o Download de um dos navegadores abaixo.
+						Seu navegador est√° desatualizado. Sugerimos o Download de um dos navegadores abaixo.
 						<br />
 					</p>
 
@@ -65,7 +65,7 @@
 
 			<!-- Rodape -->
 			<div class="footer">
-				<p>Copyright © - Universidade Federal de S„o Paulo - UNIFESP 2012</p>
+				<p>Copyright ¬© - Universidade Federal de S√£o Paulo - UNIFESP 2012</p>
 				<p>Desenvolvido pelo grupo Coruja</p>
 			</div>
 		</div>

@@ -50,7 +50,7 @@ public class AdminRegisterServlet extends HttpServlet {
 			
 			try {
 				adminBean.adicionarUsuario(email, nome, senha, permissao);
-				response.setContentType("text/html");
+				response.setContentType("text/html; charset=UTF-8");
 				
 				AlertsUtility.alertAndRedirectPage(response, "Usuário adicionado!", "/GraoPara/protected/admin/cadUser.jsp");
 

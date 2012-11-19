@@ -1,10 +1,10 @@
-<!doctype html>
+<%@page contentType="text/html; charset=UTF-8"%>
 <%@page import="webview.util.WebUtility"%>
 
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Gr„o-Par·</title>
+		<title>Gr√£o-Par√°</title>
 
 		<!-- Import dos styles CSS -->
 		<link rel="stylesheet" type="text/css" href="/GraoPara/css/principal.css" />
@@ -42,7 +42,7 @@
 
 			<div class="content" id="content">
 				<h1>Pesquisa de Documento 
-					<label style="font-size: x-small; color: black; padding-left: 10px;">(Os campos s„o opcionais.)</label>
+					<label style="font-size: x-small; color: black; padding-left: 10px;">(Os campos s√£o opcionais.)</label>
 				</h1>
 				<form action="/GraoPara/public/listagemDocumentos.jsp" id="signupform" method="get" name="cadastro">
 					<%@include file="/WEB-INF/templates/searchForm.jsp" %>

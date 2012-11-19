@@ -33,7 +33,7 @@ public class DocRemovalServlet extends HttpServlet {
 		String type = request.getParameter("tipo"); // Tipo APEP/SEQ
 		String code = request.getParameter("numero"); // Número APEP/SEQ
 		DocumentEJB docEJB = new DocumentEJB();
-		response.setContentType("text/html");  
+		response.setContentType("text/html; charset=UTF-8");  
 	    PrintWriter out=response.getWriter(); 
 	    Documento docs = null;
 		try {

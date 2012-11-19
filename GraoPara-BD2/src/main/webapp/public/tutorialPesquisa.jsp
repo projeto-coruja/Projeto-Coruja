@@ -1,9 +1,9 @@
-<!doctype html>
+<%@page contentType="text/html; charset=UTF-8"%>
 
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Gr„o-Par· - Sobre</title>
+		<title>Gr√£o-Par√° - Sobre</title>
 
 		<!-- Import dos styles CSS -->
 		<link rel="stylesheet" type="text/css" href="/GraoPara/css/principal.css" />

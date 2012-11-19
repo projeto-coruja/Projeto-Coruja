@@ -1,11 +1,11 @@
-<!doctype html>
+<%@page contentType="text/html; charset=UTF-8"%>
 <%@page import="webview.worker.SearchWorker"%>
 <%@page import="webview.util.WebUtility"%>
 
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Gr„o-Par·</title>
+		<title>Gr√£o-Par√°</title>
 
 		<!-- Import dos styles CSS -->
 		<link rel="stylesheet" type="text/css" href="/GraoPara/css/principal.css" />
@@ -54,7 +54,7 @@
 					<table class="tableList">
 						<tr class="trList">
 							<td class="tdList"><label class="labelExibe">Tipo de Documento</label></td>
-							<td class="tdList"><label class="labelExibe">DescriÁ„o</label></td>
+							<td class="tdList"><label class="labelExibe">Descri√ß√£o</label></td>
 						</tr>
 
 						<% SearchWorker.listAllDocumentsTypesForUser(request, out);%>

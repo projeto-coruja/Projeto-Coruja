@@ -50,7 +50,7 @@ public class AccountServlet extends HttpServlet {
 		String senhaVelha;
 		String senhaNova;
 		UserAccount user = null;
-		response.setContentType("text/html");  
+		response.setContentType("text/html; charset=UTF-8");  
 		String email = WebUtility.selectCookie(request.getCookies(), WebUtility.cookie_email).getValue();
 		String status = WebUtility.selectCookie(request.getCookies(), WebUtility.cookie_status).getValue();
 
