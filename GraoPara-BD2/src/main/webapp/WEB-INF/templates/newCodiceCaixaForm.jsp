@@ -1,9 +1,10 @@
+<%@page contentType="text/html; charset=UTF-8"%>
 <table class="tableForms">
 
-	<!-- Identificação -->
+	<!-- IdentificaÃ§Ã£o -->
 	<tr>
 		<td class="tdForms">
-			<label class="labelForms" id="ltipo" for="tipo">Identificação</label>
+			<label class="labelForms" id="ltipo" for="tipo">IdentificaÃ§Ã£o</label>
 		</td>
 	</tr>
 	
@@ -11,17 +12,17 @@
 		<td class="field">
 			<select name="tipo" class="inputLong" id="tipo" style="width:350px;">
 					<option value="">Selecione...</option>
-					<option value="codice">Número de Códice</option>
-					<option value="caixa">Número de Caixa</option>
+					<option value="codice">NÃºmero de CÃ³dice</option>
+					<option value="caixa">NÃºmero de Caixa</option>
 			</select>
 		</td>
 		<td class="status"></td>
 	</tr>
 
-	<!-- Código -->
+	<!-- CÃ³digo -->
 	<tr>
 		<td class="tdForms">
-			<label class="labelForms" id="lcodigo" for="codigo">Código</label>
+			<label class="labelForms" id="lcodigo" for="codigo">CÃ³digo</label>
 		</td>		
 	</tr>
 	
@@ -32,10 +33,10 @@
 		<td class="status"></td>
 	</tr>
 
-	<!-- Título -->
+	<!-- TÃ­tulo -->
 	<tr>
 		<td class="tdForms">
-			<label class="labelForms" id="ltitulo" for="titulo">Título</label>
+			<label class="labelForms" id="ltitulo" for="titulo">TÃ­tulo</label>
 		</td>
 	</tr>
 	

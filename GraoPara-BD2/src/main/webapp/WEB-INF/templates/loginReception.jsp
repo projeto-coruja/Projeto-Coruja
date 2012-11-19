@@ -1,3 +1,4 @@
+<%@page contentType="text/html; charset=UTF-8"%>
 <%@page import="webview.util.WebUtility" %>
 
 <div class="bordaBox" style="border-top: 3px solid #033454;">

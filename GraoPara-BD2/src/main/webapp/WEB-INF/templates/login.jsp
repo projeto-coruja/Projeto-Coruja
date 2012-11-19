@@ -1,3 +1,4 @@
+<%@page contentType="text/html; charset=UTF-8"%>
 <div class="bordaBox">
 	<div class="conteudo">
 		<div class="LoginArea" id="loginDefault" style="display:block;">

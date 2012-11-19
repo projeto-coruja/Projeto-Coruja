@@ -1,3 +1,4 @@
+<%@page contentType="text/html; charset=UTF-8"%>
 <!-- Home -->
 <div class="bordaBox">
 	<div class="conteudo">
@@ -25,7 +26,7 @@
 	<div class="conteudo">
 		<article class="menuLateral">
 			<ul class="nav" id="menu">
-				<li><a class="borderTop" href="/GraoPara/protected/user/cadastrarOrigem.jsp">Cadastrar Códice/Caixa</a></li>
+				<li><a class="borderTop" href="/GraoPara/protected/user/cadastrarOrigem.jsp">Cadastrar CÃ³dice/Caixa</a></li>
 				<li><a href="/GraoPara/protected/user/cadastroDocumentos.jsp">Cadastrar Documento</a></li>
 			</ul>
 		</article>
@@ -50,7 +51,7 @@
 			<ul class="nav" id="menu">
 				<li><a class="borderTop" href="/GraoPara/protected/user/tutorialPesquisa.jsp">Como Pesquisar no Acervo</a></li>
 				<li><a href="/GraoPara/protected/user/sobre.jsp">Sobre</a></li>
-				<li><a href="/GraoPara/protected/user/creditos.jsp">Créditos</a></li>
+				<li><a href="/GraoPara/protected/user/creditos.jsp">CrÃ©ditos</a></li>
 			</ul>
 		</article>
 	</div>

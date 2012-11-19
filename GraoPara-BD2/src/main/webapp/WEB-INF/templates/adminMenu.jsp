@@ -1,3 +1,4 @@
+<%@page contentType="text/html; charset=UTF-8"%>
 <!-- Home -->
 <div class="bordaBox">
 	<div class="conteudo">
@@ -25,7 +26,7 @@
 	<div class="conteudo">
 		<article class="menuLateral">
 			<ul class="nav" id="menu">
-				<li><a class="borderTop" href="cadastrarOrigem.jsp">Cadastrar CÛdice/Caixa</a></li>	
+				<li><a class="borderTop" href="cadastrarOrigem.jsp">Cadastrar C√≥dice/Caixa</a></li>	
 				<li><a href="cadastroDocumentos.jsp">Cadastrar Documento</a></li>
 				<li><a href="cadastrarPalavrasChave.jsp">Cadastrar Palavra-Chave</a></li>
 				<li><a href="cadastrarTipoDocumento.jsp">Cadastrar Tipo de Documento</a></li>
@@ -40,7 +41,7 @@
 		<article class="menuLateral">
 			<ul class="nav" id="menu">
 				<li><a class="borderTop" href="painel.jsp">Painel de Controle</a></li>
-				<li><a href="cadUser.jsp">Cadastrar Usu·rio</a></li>
+				<li><a href="cadUser.jsp">Cadastrar Usu√°rio</a></li>
 				<li><a href="gerarSenha.jsp">Gerar Senha</a></li>
 			</ul>
 		</article>
@@ -54,7 +55,7 @@
 			<ul class="nav" id="menu">
 				<li><a class="borderTop" href="tutorialPesquisa.jsp">Como Pesquisar no Acervo</a>
 				<li><a href="sobre.jsp">Sobre</a></li>
-				<li><a href="creditos.jsp">CrÈditos</a></li>
+				<li><a href="creditos.jsp">Cr√©ditos</a></li>
 			</ul>
 		</article>
 	</div>

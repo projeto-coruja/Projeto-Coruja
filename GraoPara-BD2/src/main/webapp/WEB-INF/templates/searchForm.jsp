@@ -1,12 +1,13 @@
+<%@page contentType="text/html; charset=UTF-8"%>
 <%@page import="webview.util.WebUtility"%>
 
 <table class="tableForms">
 
-	<!-- CÛdice/Caixa -->
+	<!-- C√≥dice/Caixa -->
 	<tr>
 		<td class="tdPesquisa">
-			<label class="labelFormsSearch" id="lidentificacao" for="identificacao">&#8226 CÛdice/Caixa</label>
-			<label Style="padding-left:10px;"><a class="tdMinilink" href="/GraoPara/listCodex" target="_blank">Lista de cÛdices/caixas consult·veis</a></label>
+			<label class="labelFormsSearch" id="lidentificacao" for="identificacao">&#8226 C√≥dice/Caixa</label>
+			<label Style="padding-left:10px;"><a class="tdMinilink" href="/GraoPara/listCodex" target="_blank">Lista de c√≥dices/caixas consult√°veis</a></label>
 		</td>
 	</tr>
 
@@ -14,17 +15,17 @@
 		<td class="field">
 			<select name="tipoCodCodiceCaixa" class="inputLong" id="identificacao">
 				<option selected value="">Selecione...</option>
-				<option value="CODICE">CÛdice</option>
+				<option value="CODICE">C√≥dice</option>
 				<option value="CAIXA">Caixa</option>
 			</select>
-			<label></label><a href="#"><img style="padding-left:5px; position: absolute;" src="/GraoPara/images/icone_ajuda.png" title="Escolha a coleÁ„o de CÛdices ou Caixas do Arquivo P˙blico do Par·." /></a>
+			<label></label><a href="#"><img style="padding-left:5px; position: absolute;" src="/GraoPara/images/icone_ajuda.png" title="Escolha a cole√ß√£o de C√≥dices ou Caixas do Arquivo P√∫blico do Par√°." /></a>
 		</td>				
 	</tr>
 	
-	<!-- Intervalo do CÛdigo do CÛdice/Caixa -->
+	<!-- Intervalo do C√≥digo do C√≥dice/Caixa -->
 	<tr>
 		<td class="tdPesquisa">
-			<label class="labelFormsSearch" id="lcodigo" for="codigo">&#8226 Intervalo do CÛdigo do CÛdice/Caixa</label>
+			<label class="labelFormsSearch" id="lcodigo" for="codigo">&#8226 Intervalo do C√≥digo do C√≥dice/Caixa</label>
 		</td>
 	</tr>
 	
@@ -32,17 +33,17 @@
 		<td class="field">
 			<label class="labelFormsSearch" id="ldata" for="data">De</label>
 			<input class="inputAno" type="text" name="codDe" id="ano" maxlength="4" />
-			<label class="labelFormsSearch" id="ldata" for="data">AtÈ</label>
+			<label class="labelFormsSearch" id="ldata" for="data">At√©</label>
 			<input class="inputAno" type="text" name="codAte" id="ano" maxlength="4" />
-			<label></label><a href="#"><img class="iconeAjuda" src="/GraoPara/images/icone_ajuda.png"	title="Pode-se solicitar a pesquisa de uma sequÍncia de CÛdices ou Caixas. Basta indicar o primeiro e o ˙ltimo desejado." /></a>
+			<label></label><a href="#"><img class="iconeAjuda" src="/GraoPara/images/icone_ajuda.png"	title="Pode-se solicitar a pesquisa de uma sequ√™ncia de C√≥dices ou Caixas. Basta indicar o primeiro e o √∫ltimo desejado." /></a>
 		</td>
 		<td class="status"></td>
 	</tr>
 
-	<!-- Titulo do CÛdice/Caixa -->
+	<!-- Titulo do C√≥dice/Caixa -->
 	<tr>
 		<td class="tdPesquisa">
-			<label class="labelFormsSearch" id="lidentificacao" for="identificacao">&#8226 Titulo do CÛdice/Caixa</label>
+			<label class="labelFormsSearch" id="lidentificacao" for="identificacao">&#8226 Titulo do C√≥dice/Caixa</label>
 		</td>
 	</tr>
 	
@@ -51,14 +52,14 @@
 			<select name="tituloCodiceCaixa" class="inputLong" id="identificacao">
 				<%=WebUtility.printSelectTituloCodiceCaixa(request)%>
 			</select>
-			<label></label><a href="#"><img style="padding-left:5px; position: absolute;" src="/GraoPara/images/icone_ajuda.png" title="Escolha a coleÁ„o de CÛdices ou Caixas do Arquivo P˙blico do Par·." /></a>
+			<label></label><a href="#"><img style="padding-left:5px; position: absolute;" src="/GraoPara/images/icone_ajuda.png" title="Escolha a cole√ß√£o de C√≥dices ou Caixas do Arquivo P√∫blico do Par√°." /></a>
 		</td>
 	</tr>
 
-	<!-- …poca (Caixa/CÛdice) -->
+	<!-- √âpoca (Caixa/C√≥dice) -->
 	<tr>
 		<td class="tdPesquisa">
-			<label class="labelFormsSearch" id="lcodigo" for="codigo">&#8226 …poca (Caixa/CÛdice)</label>
+			<label class="labelFormsSearch" id="lcodigo" for="codigo">&#8226 √âpoca (Caixa/C√≥dice)</label>
 		</td>
 	</tr>
 	
@@ -66,25 +67,25 @@
 		<td class="field">
 			<label class="labelFormsSearch" id="ldata" for="data">De</label>
 			<input class="inputAno" type="text" name="epocaDe" id="ano" maxlength="4" />
-			<label class="labelFormsSearch" id="ldata" for="data">AtÈ</label>
+			<label class="labelFormsSearch" id="ldata" for="data">At√©</label>
 			<input class="inputAno" type="text" name="epocaAte" id="ano" maxlength="4" />
 			<label></label>
-			<a href="#"><img class="iconeAjuda" src="/GraoPara/images/icone_ajuda.png"	title="Pode-se solicitar a pesquisa de uma sequÍncia de CÛdices ou Caixas. Basta indicar o primeiro e o ˙ltimo desejado." /></a>
+			<a href="#"><img class="iconeAjuda" src="/GraoPara/images/icone_ajuda.png"	title="Pode-se solicitar a pesquisa de uma sequ√™ncia de C√≥dices ou Caixas. Basta indicar o primeiro e o √∫ltimo desejado." /></a>
 		</td>
 		<td class="status"></td>
 	</tr>
 
-	<!-- TÌtulo do Documento -->
+	<!-- T√≠tulo do Documento -->
 	<tr>
 		<td class="tdPesquisa">
-			<label class="labelFormsSearch" id="ltitulo" for="titulo">&#8226 TÌtulo do Documento</label>
+			<label class="labelFormsSearch" id="ltitulo" for="titulo">&#8226 T√≠tulo do Documento</label>
 		</td>
 	</tr>
 
 	<tr>
 		<td class="field">
 			<input class="input" name="titulo" id="titulo" type="text" size="20" maxlength="500">
-			<label></label><a href="#"><img class="iconeAjuda" src="/GraoPara/images/icone_ajuda.png" title="Cada caixa ou cÛdice tem um tÌtulo, geralmente longo." /></a>
+			<label></label><a href="#"><img class="iconeAjuda" src="/GraoPara/images/icone_ajuda.png" title="Cada caixa ou c√≥dice tem um t√≠tulo, geralmente longo." /></a>
 		</td>
 	</tr>
 
@@ -102,19 +103,19 @@
 				<option value="APEP">APEP</option>
 				<option value="SEQ">Sequencial</option>
 			</select>
-			<label></label><a href="#"><img style="padding-left:5px; position: absolute;" src="/GraoPara/images/icone_ajuda.png" title="O N˙mero APEP È aquele atribuÌdo pelo arquivista do APEP para cada um dos documentos do CÛdice ou Caixa. Caso n„o tenha sido atribuÌdo um n˙mero pelo arquivista, o projeto designou um que chamou de sequencial." /></a>
+			<label></label><a href="#"><img style="padding-left:5px; position: absolute;" src="/GraoPara/images/icone_ajuda.png" title="O N√∫mero APEP √© aquele atribu√≠do pelo arquivista do APEP para cada um dos documentos do C√≥dice ou Caixa. Caso n√£o tenha sido atribu√≠do um n√∫mero pelo arquivista, o projeto designou um que chamou de sequencial." /></a>
 		</td>
 	</tr>
 	
 	
-	<!-- N˙mero da IdentificaÁ„o -->
+	<!-- N√∫mero da Identifica√ß√£o -->
 	<tr>
-		<td class="tdPesquisa"><label class="labelFormsSearch" id="lnumero" for="numero">&#8226 N˙mero da IdentificaÁ„o</label></td>
+		<td class="tdPesquisa"><label class="labelFormsSearch" id="lnumero" for="numero">&#8226 N√∫mero da Identifica√ß√£o</label></td>
 	<tr>
 
 	<tr>
 		<td class="field"><input class="input" type="text" name="numDaIdentificacao" id="ano" maxlength="10" />
-		<label></label><a href="#"><img class="iconeAjuda" src="/GraoPara/images/icone_ajuda.png" title="O N˙mero APEP È aquele atribuÌdo pelo arquivista do APEP para cada um dos documentos do CÛdice ou Caixa. Caso n„o tenha sido atribuÌdo um n˙mero pelo arquivista, o projeto designou um que chamou de sequencial." /></a>
+		<label></label><a href="#"><img class="iconeAjuda" src="/GraoPara/images/icone_ajuda.png" title="O N√∫mero APEP √© aquele atribu√≠do pelo arquivista do APEP para cada um dos documentos do C√≥dice ou Caixa. Caso n√£o tenha sido atribu√≠do um n√∫mero pelo arquivista, o projeto designou um que chamou de sequencial." /></a>
 		</td>
 	</tr>
 
@@ -129,36 +130,36 @@
 		</td>
 	</tr>
 
-	<!-- OcupaÁ„o do Autor do Documento -->
+	<!-- Ocupa√ß√£o do Autor do Documento -->
 	<tr>
-		<td class="tdPesquisa"><label class="labelFormsSearch" id="lautorOcupacao" for="autorOcupacao">&#8226 OcupaÁ„o do Autor do Documento</label></td>
+		<td class="tdPesquisa"><label class="labelFormsSearch" id="lautorOcupacao" for="autorOcupacao">&#8226 Ocupa√ß√£o do Autor do Documento</label></td>
 	<tr>	
 		
 	<tr>
 		<td class="field"><input class="input" name="autorOcupacao" id="autorOcupacao" type="text" size="20" maxlength="48">
-		<label></label><a href="#"><img class="iconeAjuda" src="/GraoPara/images/icone_ajuda.png" title="OcupaÁ„o do autor do documento. Por exemplo, Presidente da ProvÌncia." /></a>
+		<label></label><a href="#"><img class="iconeAjuda" src="/GraoPara/images/icone_ajuda.png" title="Ocupa√ß√£o do autor do documento. Por exemplo, Presidente da Prov√≠ncia." /></a>
 		</td>
 	</tr>
 	
-	<!-- Destinat·rio do Documento -->					
+	<!-- Destinat√°rio do Documento -->					
 	<tr>
-		<td class="tdPesquisa"><label class="labelFormsSearch" id="ldestinatario" for="destinatario">&#8226 Destinat·rio do Documento</label></td>
+		<td class="tdPesquisa"><label class="labelFormsSearch" id="ldestinatario" for="destinatario">&#8226 Destinat√°rio do Documento</label></td>
 	<tr>	
 		
 	<tr>	
 		<td class="field"><input class="input" name="destinatario" id="destinatario" type="text" size="20" maxlength="48">
-		<label></label><a href="#"><img class="iconeAjuda" src="/GraoPara/images/icone_ajuda.png" title="Busca pelo nome completo ou parte do destinat·rio do Documento." /></a>
+		<label></label><a href="#"><img class="iconeAjuda" src="/GraoPara/images/icone_ajuda.png" title="Busca pelo nome completo ou parte do destinat√°rio do Documento." /></a>
 		</td>
 	</tr>
 	
-	<!-- OcupaÁ„o do Destinat·rio do Documento -->
+	<!-- Ocupa√ß√£o do Destinat√°rio do Documento -->
 	<tr>
-		<td class="tdPesquisa"><label class="labelFormsSearch" id="lautorOcupacao" for="autorOcupacao">&#8226 OcupaÁ„o do Destinat·rio do Documento</label></td>
+		<td class="tdPesquisa"><label class="labelFormsSearch" id="lautorOcupacao" for="autorOcupacao">&#8226 Ocupa√ß√£o do Destinat√°rio do Documento</label></td>
 	<tr>	
 		
 	<tr>	
 		<td class="field"><input class="input" name="destinatarioOcupacao" id="autorOcupacao" type="text" size="20" maxlength="48">
-		<label></label><a href="#"><img class="iconeAjuda" src="/GraoPara/images/icone_ajuda.png" title="OcupaÁ„o do destinat·rio do documento. Por exemplo, Presidente da ProvÌncia." /></a>
+		<label></label><a href="#"><img class="iconeAjuda" src="/GraoPara/images/icone_ajuda.png" title="Ocupa√ß√£o do destinat√°rio do documento. Por exemplo, Presidente da Prov√≠ncia." /></a>
 		</td>
 	</tr>
 	
@@ -169,7 +170,7 @@
 		
 	<tr>	
 		<td class="field"><input class="input" name="local" id="local" type="text" maxlength="48">
-		<label></label><a href="#"><img class="iconeAjuda" src="/GraoPara/images/icone_ajuda.png" title="Trata-se do local em que foi escrito o documento, normalmente a cidade. Por exemplo, BelÈm." /></a>
+		<label></label><a href="#"><img class="iconeAjuda" src="/GraoPara/images/icone_ajuda.png" title="Trata-se do local em que foi escrito o documento, normalmente a cidade. Por exemplo, Bel√©m." /></a>
 		</td>
 	</tr>
 	
@@ -182,9 +183,9 @@
 		<td class="field">
 			<label class="labelFormsSearch" id="ldata" for="data">De</label>
 			<input class="inputAno" type="text" name="anoIni" id="ano" maxlength="4" />
-			<label class="labelFormsSearch" id="ldata" for="data">AtÈ</label>
+			<label class="labelFormsSearch" id="ldata" for="data">At√©</label>
 			<input class="inputAno" type="text" name="anoFim" id="ano" maxlength="4" />
-		<label></label><a href="#"><img class="iconeAjuda" src="/GraoPara/images/icone_ajuda.png" title="Informe um perÌodo para filtrar a pesquisa." /></a>
+		<label></label><a href="#"><img class="iconeAjuda" src="/GraoPara/images/icone_ajuda.png" title="Informe um per√≠odo para filtrar a pesquisa." /></a>
 		</td>
 	</tr>
 	
@@ -222,9 +223,9 @@
 
 <table class="tableFormsKey">
 	<tr>
-		<td class="field"><label for="chave1" class="labelForms">AÁ„o:</label></td>
+		<td class="field"><label for="chave1" class="labelForms">A√ß√£o:</label></td>
 		<td class="field"><label for="chave2" class="labelForms">Autores:</label></td>
-		<td class="field"><label for="chave3" class="labelForms" >InstituiÁ„o:</label></td>
+		<td class="field"><label for="chave3" class="labelForms" >Institui√ß√£o:</label></td>
 	</tr>
 </table>
 
@@ -233,7 +234,7 @@
 		<td class="field">
 			<select class="inputKey" name="chave1" id="chave1">
 				<option value="">Nenhuma</option>
-				<%=WebUtility.printSelectKeyWords(request, "chave1", "AÁ„o")%>
+				<%=WebUtility.printSelectKeyWords(request, "chave1", "A√ß√£o")%>
 			</select>							
 		
 			<select class="inputKey" name="chave2" id="chave2">
@@ -243,9 +244,9 @@
 					
 			<select class="inputKey" name="chave3" id="chave3">
 				<option value="">Nenhuma</option>
-				<%=WebUtility.printSelectKeyWords(request, "chave3", "InstituiÁ„o")%>
+				<%=WebUtility.printSelectKeyWords(request, "chave3", "Institui√ß√£o")%>
 			</select>
-			<label></label><a href="#"><img style="padding-left:5px; position: absolute;" src="/GraoPara/images/icone_ajuda.png" title="Informe de uma a trÍs palavras chaves para filtrar sua pesquisa."/></a>
+			<label></label><a href="#"><img style="padding-left:5px; position: absolute;" src="/GraoPara/images/icone_ajuda.png" title="Informe de uma a tr√™s palavras chaves para filtrar sua pesquisa."/></a>
 		</td>
 	</tr>
 	

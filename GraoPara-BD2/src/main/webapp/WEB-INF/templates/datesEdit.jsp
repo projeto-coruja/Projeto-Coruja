@@ -1,3 +1,4 @@
+<%@page contentType="text/html; charset=UTF-8"%>
 <%@page import="webview.util.WebUtility"%>
 <td class="field">
 	<%		
@@ -5,25 +6,25 @@
 		String[] paramMes = {(String) request.getAttribute("mes"), (String) request.getAttribute("mes")}; 
 		String[] paramAno = {(String) request.getAttribute("ano"), (String) request.getAttribute("ano")};
 		if(paramDia[0] == null || paramDia[0].equals("00")) {
-			paramDia[0] = "Ilegível / Inexistente";
+			paramDia[0] = "IlegÃ­vel / Inexistente";
 			paramDia[1] = "";
 		}
 		if(paramMes[0] == null || paramMes[0].equals("00")) {
-			paramMes[0] = "Ilegível / Inexistente";
+			paramMes[0] = "IlegÃ­vel / Inexistente";
 			paramMes[1] = "";
 		}
 		else {
 			paramMes[0] = WebUtility.meses[Integer.parseInt(paramMes[1]) - 1];
 		}
 		if(paramAno[0] == null || paramAno[0].equals("0000")) {
-			paramAno[0] = "Ilegível / Inexistente";
+			paramAno[0] = "IlegÃ­vel / Inexistente";
 			paramAno[1] = "";
 		}
 	%>
 	<select name="dia" id="dia" class="inputDia">
 		<option value=<%= paramDia[1] %> selected="selected"><%= paramDia[0] %></option>
 		<option value="">--------</option>
-		<option value="00">Ilegível / Inexistente</option>
+		<option value="00">IlegÃ­vel / Inexistente</option>
 		<option value="01">1</option>
 		<option value="02">2</option>
 		<option value="03">3</option>
@@ -60,10 +61,10 @@
 	<select name="mes" id="mes" class="inputMes">
 		<option value=<%= paramMes[1] %> selected="selected"><%= paramMes[0] %></option>
 		<option value="">--------</option>
-		<option value="00">Ilegível / Inexistente</option>
+		<option value="00">IlegÃ­vel / Inexistente</option>
 		<option value="01">Janeiro</option>
 		<option value="02">Fevereiro</option>
-		<option value="03">Março</option>
+		<option value="03">MarÃ§o</option>
 		<option value="04">Abril</option>
 		<option value="05">Maio</option>
 		<option value="06">Junho</option>

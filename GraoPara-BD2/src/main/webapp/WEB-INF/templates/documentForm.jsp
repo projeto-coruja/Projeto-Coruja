@@ -1,3 +1,4 @@
+<%@page contentType="text/html; charset=UTF-8"%>
 <%@page import="webview.util.WebUtility"%>
 
 <table class="tableForms">
@@ -9,7 +10,7 @@
 
 	<tr>
 		<td class="tdForms">
-			<label id="lidentificacao" class="labelForms" for="identificacao">Códice/Caixa</label>
+			<label id="lidentificacao" class="labelForms" for="identificacao">CÃ³dice/Caixa</label>
 		</td>
 	</tr>
 	
@@ -23,7 +24,7 @@
 	</tr>
 	
 	<tr>
-		<td class="tdForms"><label class="labelForms" id="lnumero" for="numero">Número APEP ou Sequencial</label></td>
+		<td class="tdForms"><label class="labelForms" id="lnumero" for="numero">NÃºmero APEP ou Sequencial</label></td>
 	</tr>
 	
 	<tr>
@@ -40,7 +41,7 @@
 	
 	<tr>
 		<td class="tdForms">
-			<label class="labelForms" id="ltituloDocumento" for="tituloDocumento">Título do Documento</label>
+			<label class="labelForms" id="ltituloDocumento" for="tituloDocumento">TÃ­tulo do Documento</label>
 		</td>
 	</tr>
 	
@@ -66,7 +67,7 @@
 	
 	<tr>
 		<td class="tdForms">
-			<label class="labelForms" id="lautorOcupacao" for="autorOcupacao">Ocupação do Autor do Documento</label>
+			<label class="labelForms" id="lautorOcupacao" for="autorOcupacao">OcupaÃ§Ã£o do Autor do Documento</label>
 		</td>
 	</tr>
 	
@@ -79,7 +80,7 @@
 	
 	<tr>
 		<td class="tdForms">
-			<label class="labelForms" id="ldestinatario" for="destinatario">Destinatário do Documento</label>
+			<label class="labelForms" id="ldestinatario" for="destinatario">DestinatÃ¡rio do Documento</label>
 		</td>
 	</tr>
 	
@@ -92,7 +93,7 @@
 	
 	<tr>
 		<td class="tdForms">
-			<label class="labelForms" id="ldestinatarioOcupacao" for="destinatarioOcupacao">Ocupação do Destinatário do Documento</label>
+			<label class="labelForms" id="ldestinatarioOcupacao" for="destinatarioOcupacao">OcupaÃ§Ã£o do DestinatÃ¡rio do Documento</label>
 		</td>
 	</tr>
 	
@@ -165,9 +166,9 @@
 	
 <table class="tableFormsKey">
 	<tr>
-		<td class="field"><label for="chave1" class="labelForms">Ação:</label></td>
+		<td class="field"><label for="chave1" class="labelForms">AÃ§Ã£o:</label></td>
 		<td class="field"><label for="chave2" class="labelForms">Autores:</label></td>
-		<td class="field"><label for="chave3" class="labelForms" >Instituição:</label></td>
+		<td class="field"><label for="chave3" class="labelForms" >InstituiÃ§Ã£o:</label></td>
 	</tr>
 </table>
 
@@ -176,7 +177,7 @@
 		<td class="field">
 			<select class="inputKey" name="chave1" id="chave1">
 				<option value="">Nenhuma</option>
-				<%=WebUtility.printSelectKeyWords(request, "chave1", "Ação")%>
+				<%=WebUtility.printSelectKeyWords(request, "chave1", "AÃ§Ã£o")%>
 			</select>
 		
 			<select class="inputKey" name="chave2" id="chave2">
@@ -186,7 +187,7 @@
 		
 			<select class="inputKey" name="chave3" id="chave3">
 				<option value="">Nenhuma</option>
-				<%=WebUtility.printSelectKeyWords(request, "chave3", "Instituição")%>
+				<%=WebUtility.printSelectKeyWords(request, "chave3", "InstituiÃ§Ã£o")%>
 			</select>
 		</td>
 		<td class="status"></td>

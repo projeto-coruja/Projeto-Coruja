@@ -1,10 +1,11 @@
+<%@page contentType="text/html; charset=UTF-8"%>
 <%@page import="webview.worker.PanelWorker"%>
 <%@page import="webview.util.WebUtility"%>
 
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Gr„o-Par·</title>
+		<title>Gr√£o-Par√°</title>
 
 		<!-- Import dos styles CSS -->
 		<link rel="stylesheet" type="text/css" href="/GraoPara/css/principal.css" />
@@ -57,7 +58,7 @@
 								<tr>
 									<td class="tdList"><label for="tema" class="labelExibe">Tema</label></td>
 									<td class="tdList"><label for="palavraChave" class="labelExibe">Palavra-Chave</label></td>
-									<td class="tdList"><label for="acao" class="labelExibe">AÁ„o</label></td>
+									<td class="tdList"><label for="acao" class="labelExibe">A√ß√£o</label></td>
 								</tr>
 							</thead>
 

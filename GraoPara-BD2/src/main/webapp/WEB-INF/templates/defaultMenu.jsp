@@ -1,3 +1,4 @@
+<%@page contentType="text/html; charset=UTF-8"%>
 <!-- Home -->
 <div class="bordaBox">
 	<div class="conteudo">
@@ -27,7 +28,7 @@
 			<ul class="nav" id="menu">
 				<li><a class="borderTop" href="tutorialPesquisa.jsp">Como pesquisar no acervo</a></li>
 				<li><a href="sobre.jsp">Sobre</a></li>
-				<li><a href="creditos.jsp">Créditos</a></li>
+				<li><a href="creditos.jsp">CrÃ©ditos</a></li>
 			</ul>
 		</article>
 	</div>
