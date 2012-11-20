@@ -4,6 +4,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
+
 		<title>Grão-Pará</title>
 
 		<!-- Import dos styles CSS -->
