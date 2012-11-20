@@ -77,8 +77,6 @@ public class DocServlet extends HttpServlet {
 		UserAccount uploader = null;
 		
 		try {
-			
-
 			if(isInit(ano)) {
 				data = ano;
 				if(ano.length() < 4 || ano.equals("0000"))	throw new IllegalArgumentException("Ano inválido");

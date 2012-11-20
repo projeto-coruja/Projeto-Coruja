@@ -49,6 +49,8 @@ public class DocumentEJB {
 			String tipoCodDocumento,
 			String codDocumento,
 			
+			SimpleDate dataDocIni,
+			SimpleDate dataDocFim, 
 			String autor,
 			String ocupacaoAutor,
 			
@@ -226,6 +228,22 @@ public class DocumentEJB {
 				query += " AND ";
 			}
 			query += " resumo LIKE '%" + resumo + "%'";
+			continue_query = true;
+		}
+		
+		if(tipoDocumento != null && !tipoDocumento.isEmpty()){
+			if(continue_query == true){
+				query += " AND ";
+			}
+			query += " tipoDocumento.nome = '" + tipoDocumento + "'";
+			continue_query = true;
+		}
+		
+		if(dataDocIni != null && dataDocFim != null){
+			if(continue_query == true){
+				query += " AND ";
+			}
+			query += " data BETWEEN '" + dataDocIni + "' AND '" + dataDocFim + "'";
 			continue_query = true;
 		}
 		

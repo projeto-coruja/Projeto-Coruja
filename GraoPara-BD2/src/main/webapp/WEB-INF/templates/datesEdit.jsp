@@ -7,22 +7,22 @@
 		String[] paramAno = {(String) request.getAttribute("ano"), (String) request.getAttribute("ano")};
 		if(paramDia[0] == null || paramDia[0].equals("00")) {
 			paramDia[0] = "Ilegível / Inexistente";
-			paramDia[1] = "";
+			paramDia[1] = "00";
 		}
 		if(paramMes[0] == null || paramMes[0].equals("00")) {
 			paramMes[0] = "Ilegível / Inexistente";
-			paramMes[1] = "";
+			paramMes[1] = "00";
 		}
 		else {
 			paramMes[0] = WebUtility.meses[Integer.parseInt(paramMes[1]) - 1];
 		}
 		if(paramAno[0] == null || paramAno[0].equals("0000")) {
 			paramAno[0] = "Ilegível / Inexistente";
-			paramAno[1] = "";
+			paramAno[1] = "0000";
 		}
 	%>
 	<select name="dia" id="dia" class="inputDia">
-		<option value=<%= paramDia[1] %> selected="selected"><%= paramDia[0] %></option>
+		<option value="<%= paramDia[1] %>" selected="selected"><%= paramDia[0] %></option>
 		<option value="">--------</option>
 		<option value="00">Ilegível / Inexistente</option>
 		<option value="01">1</option>
@@ -59,7 +59,7 @@
 	</select>
 
 	<select name="mes" id="mes" class="inputMes">
-		<option value=<%= paramMes[1] %> selected="selected"><%= paramMes[0] %></option>
+		<option value="<%= paramMes[1] %>" selected="selected"><%= paramMes[0] %></option>
 		<option value="">--------</option>
 		<option value="00">Ilegível / Inexistente</option>
 		<option value="01">Janeiro</option>
@@ -77,5 +77,5 @@
 	</select>
 
 	<label class="labelForms" id="ldata" for="data">Ano</label>
-	<input class="inputAno" type="text" name="ano" id="ano" maxlength="4" value=<%= paramAno[1] %> />
+	<input class="inputAno" type="text" name="ano" id="ano" maxlength="4" value="<%= paramAno[1] %>" />
 </td>

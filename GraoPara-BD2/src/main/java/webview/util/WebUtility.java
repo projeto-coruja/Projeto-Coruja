@@ -481,12 +481,14 @@ public final class WebUtility {
 		KeyWordEJB word = new KeyWordEJB();
 		String result = "";
 		String key = null;
+		String a_key = (String) request.getAttribute(key_pos);
+		String p_key = request.getParameter(key_pos);
 		try {
 			List<DTO> list = word.findByTheme(tema);
 
 			for(DTO d : list){
 				key = ((PalavraChave) d).getPalavra();
-				if(key.equals(request.getParameter(key_pos)) || key.equals(request.getAttribute(key_pos)))
+				if(key.equals(a_key) || key.equals(p_key))
 					result += "<option selected value=\"" + key + "\">" + key + "</option> ";
 				else
 					result += "<option value=\"" + key + "\">" + key + "</option> ";

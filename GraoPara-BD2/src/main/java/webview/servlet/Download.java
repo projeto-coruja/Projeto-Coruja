@@ -77,7 +77,7 @@ public class Download extends HttpServlet {
 					tituloDoDocumento,
 					tipoCodDocumento, 
 					codDocumento, 
-					autor, 
+					null, null, autor, 
 					ocupacaoAutor, 
 					destinatario, 
 					ocupacaoDestinatario, 

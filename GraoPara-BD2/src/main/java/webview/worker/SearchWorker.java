@@ -1,5 +1,7 @@
 package webview.worker;
 
+import static webview.util.WebUtility.isInit;
+
 import java.io.IOException;
 import java.util.List;
 
@@ -20,6 +22,9 @@ import business.exceptions.documents.DocumentTypeNotFoundException;
 import business.exceptions.login.UnreachableDataBaseException;
 
 public class SearchWorker {
+	
+	private static String minData = "1000/1/1";
+	private static String maxData = "2000/1/1";
 		
 	public static void listAllDocuments(HttpServletRequest request, JspWriter out) throws IOException{
 		
@@ -54,6 +59,25 @@ public class SearchWorker {
 			c_status = WebUtility.selectCookie(request.getCookies(), WebUtility.cookie_status).getValue();
 		}
 		
+		String anoIni = request.getParameter("anoIni");
+		String anoFim = request.getParameter("anoFim");
+		String dataIni = null, dataFim = null;;
+		SimpleDate dataDocIni = null, dataDocFim = null;
+		
+		if(isInit(anoIni)) {
+			dataIni = anoIni + "/1/1";
+		} else {
+			dataIni = minData;
+		}
+		if(isInit(anoFim)) {
+			dataFim = anoFim + "/12/31";
+		} else {
+			dataFim = maxData;
+		}
+		
+		dataDocIni = SimpleDate.parse(dataIni);
+		dataDocFim = SimpleDate.parse(dataFim);
+		
 		
 		DocumentEJB search = new DocumentEJB();
 		List<DTO> docs = null;    
@@ -68,7 +92,7 @@ public class SearchWorker {
 					tituloDoDocumento,
 					tipoCodDocumento, 
 					codDocumento, 
-					autor, ocupacaoAutor, 
+					dataDocIni, dataDocFim, autor, ocupacaoAutor, 
 					destinatario, 
 					ocupacaoDestinatario, 
 					tipoDocumento, 
@@ -241,7 +265,6 @@ public class SearchWorker {
 				} catch (IllegalAccessError e) {
 					//Do nothing
 				}
-				
 				try {
 					dia = String.valueOf(sd.getDay());
 				} catch (IllegalAccessError e) {

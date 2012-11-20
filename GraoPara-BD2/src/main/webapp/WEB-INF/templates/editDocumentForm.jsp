@@ -178,19 +178,19 @@
 <table class="tableFormsKey">
 	<tr>		
 		<td class="field">
+			<select class="inputKey" name="chave3" id="chave3">
+				<option value="">Nenhuma</option>
+				<%=WebUtility.printSelectKeyWords(request, "palavraChave3", "Ação")%>
+			</select>
+		
 			<select class="inputKey" name="chave1" id="chave1">
 				<option value="">Nenhuma</option>
-				<%=WebUtility.printSelectKeyWords(request, "palavraChave1", "Ação")%>
-			</select>
+				<%=WebUtility.printSelectKeyWords(request, "palavraChave1", "Autores")%>
+			</select>		
 		
 			<select class="inputKey" name="chave2" id="chave2">
 				<option value="">Nenhuma</option>
-				<%=WebUtility.printSelectKeyWords(request, "palavraChave2", "Autores")%>
-			</select>		
-		
-			<select class="inputKey" name="chave3" id="chave3">
-				<option value="">Nenhuma</option>
-				<%=WebUtility.printSelectKeyWords(request, "palavraChave3", "Instituição")%>
+				<%=WebUtility.printSelectKeyWords(request, "palavraChave2", "Instituição")%>
 			</select>
 		</td>
 		<td class="status"></td>
