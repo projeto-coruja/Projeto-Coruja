@@ -1,5 +1,8 @@
 package business.export;
 
+import java.awt.Font;
+import java.awt.FontMetrics;
+import java.awt.geom.Rectangle2D;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -29,13 +32,12 @@ public class SpreadsheetExport {
 	}
 	
 	private static double getStringWidth(String s){
-		/*
-		double width;
-		FontMetrics metrics = new FontMetricsExtension(new Font("Arial",Font.PLAIN,10));
-		width = metrics.stringWidth(s);
-		return (double) (0.264583 * width);
-		*/
-		return s.length()*2.5D;
+		Font font = new Font("Arial", Font.PLAIN, 10);  
+        FontMetrics metrics = new FontMetrics(font) {
+			private static final long serialVersionUID = 8731863241931241309L;  
+        };  
+        Rectangle2D bounds = metrics.getStringBounds(s, null);  
+		return bounds.getWidth();
 	}
 	
 	public static String generateSpreadsheet(List<DTO> resultSet) throws Exception{
@@ -100,7 +102,7 @@ public class SpreadsheetExport {
 					docDTO.getDestinatario().getNome(),
 					docDTO.getDestinatario().getOcupacao(),
 					docDTO.getLocal(),
-					docDTO.getData().getDay() + "-" + docDTO.getData().getMonth() + "-" + docDTO.getData().getYear(),
+					docDTO.getData().toString(),
 					(docDTO.getPalavraChave1() != null ? docDTO.getPalavraChave1().getPalavra() : " ")	+
 						(docDTO.getPalavraChave2() != null ? " - " + docDTO.getPalavraChave2().getPalavra() : " ") + 
 						(docDTO.getPalavraChave3() != null ? " - " + docDTO.getPalavraChave3().getPalavra() : " "),
@@ -113,9 +115,10 @@ public class SpreadsheetExport {
 				cel = row.getCellByIndex(coluna++);
 				if(linha%2 == 1)	cel.setCellBackgroundColor(grey);
 				cel.setBorders(CellBordersType.ALL_FOUR, border);
-				cel.setHorizontalAlignment(HorizontalAlignmentType.CENTER);
+				if(i == cellContent.length - 1)	cel.setHorizontalAlignment(HorizontalAlignmentType.LEFT);
+				else	cel.setHorizontalAlignment(HorizontalAlignmentType.CENTER);
 				cel.setVerticalAlignment(VerticalAlignmentType.MIDDLE);
-				cel.setDisplayText(cellContent[i]);
+				cel.setStringValue(cellContent[i]);
 			}
 		}
 
