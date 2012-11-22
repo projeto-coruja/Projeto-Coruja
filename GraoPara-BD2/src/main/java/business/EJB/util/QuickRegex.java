@@ -4,7 +4,7 @@ import java.util.regex.Pattern;
 
 public class QuickRegex {
 	
-	private static final Pattern p = Pattern.compile("[^a-zA-Z0-9áãâéêíóõôúçÁÃÂÉÊÍÓÕÔÚÇ -]");
+	private static final Pattern p = Pattern.compile("[^a-zA-Z0-9àáãâéêíóõôúçÀÁÃÂÉÊÍÓÕÔÚÇ -]");
 	private static final Pattern q = Pattern.compile("[^0-9]");
 	
 	public static boolean findAN(String s) {
