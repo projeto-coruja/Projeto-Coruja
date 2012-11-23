@@ -73,7 +73,7 @@ public class LoginServlet extends HttpServlet {
 				AlertsUtility.alertAndRedirectPage(response, 
 						"Sua conta ainda não foi aprovada pelo administrador, por favor aguarde e tente novamente mais tarde.", 
 						"/GraoPara/public/index.jsp");
-				}
+			}
 			else
 			{
 				//Exibir alerta e jogar de volta para o index, provisório

@@ -6,16 +6,23 @@ import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import persistence.dto.CodiceCaixa;
 import persistence.dto.DTO;
+import webview.util.AlertsUtility;
+import webview.util.WebUtility;
 
 import business.EJB.documents.CodiceCaixaEJB;
+import business.EJB.user.AuthBean;
+import business.EJB.user.UserBean;
+import business.EJB.util.EJBUtility;
 import business.exceptions.documents.CodiceCaixaNotFoundException;
 import business.exceptions.login.UnreachableDataBaseException;
+import business.exceptions.login.UserNotFoundException;
 
 /**
  * Servlet implementation class CodexServlet
@@ -35,7 +42,7 @@ public class CodexServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/html; charset=UTF-8");
+		/*response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.println("Lista de códices e/ou caixas com conteúdo: <br>");
 		CodiceCaixaEJB cb = new CodiceCaixaEJB();
@@ -49,7 +56,30 @@ public class CodexServlet extends HttpServlet {
 			e.printStackTrace();
 		} catch (CodiceCaixaNotFoundException e) {
 
+		}*/
+		
+		
+		
+		String status = null;
+		Cookie c_status = WebUtility.selectCookie(request.getCookies(), WebUtility.cookie_status);
+		if(c_status != null && WebUtility.isInit(c_status.getValue())){
+			status = WebUtility.selectCookie(request.getCookies(), WebUtility.cookie_status).getValue();
+			
+			if(status.equals(AuthBean.LoginSuccessAdmin)){
+				response.sendRedirect("/GraoPara/protected/admin/codCaixaList.jsp");
+			}
+			else if(status.equals(AuthBean.LoginSuccessUserLevel2)){
+				response.sendRedirect("/GraoPara/protected/userAdv/codCaixaList.jsp");
+			}
+			else if(status.equals(AuthBean.LoginSuccessUserLevel1)){
+				response.sendRedirect("/GraoPara/protected/user/codCaixaList.jsp");
+			}
+			else{
+				response.sendRedirect("/GraoPara/public/codCaixaList.jsp");
+			}
+		}
+		else{
+			response.sendRedirect("/GraoPara/public/codCaixaList.jsp");		
 		}
 	}
-
 }
