@@ -1,8 +1,6 @@
 package webview.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,18 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import persistence.dto.CodiceCaixa;
-import persistence.dto.DTO;
-import webview.util.AlertsUtility;
 import webview.util.WebUtility;
-
-import business.EJB.documents.CodiceCaixaEJB;
 import business.EJB.user.AuthBean;
-import business.EJB.user.UserBean;
-import business.EJB.util.EJBUtility;
-import business.exceptions.documents.CodiceCaixaNotFoundException;
-import business.exceptions.login.UnreachableDataBaseException;
-import business.exceptions.login.UserNotFoundException;
 
 /**
  * Servlet implementation class CodexServlet

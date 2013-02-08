@@ -167,11 +167,11 @@ public class InitServlet extends HttpServlet {
 		}
 		typeDocument = null;
 		
-		List<DTO> theme = pa.findEntity("from TemaPalavraChaveMO where tema = 'Autores'");
+		List<DTO> theme = pa.findEntity("from TemaPalavraChaveMO where tema = 'Atores'");
 		if(theme == null)
 		{
 			log.info("Criando um tema para palavra-chaves...");
-			pa.saveEntity(new TemaPalavraChave("Autores"));
+			pa.saveEntity(new TemaPalavraChave("Atores"));
 		}
 		
 		theme = pa.findEntity("from TemaPalavraChaveMO where tema = 'Instituição'");

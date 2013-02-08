@@ -56,25 +56,6 @@
 		</td>
 	</tr>
 
-	<!-- Época (Caixa/Códice) -->
-	<tr>
-		<td class="tdPesquisa">
-			<label class="labelFormsSearch" id="lcodigo" for="codigo">&#8226 Época (Caixa/Códice)</label>
-		</td>
-	</tr>
-	
-	<tr>
-		<td class="field">
-			<label class="labelFormsSearch" id="ldata" for="data">De</label>
-			<input class="inputAno" type="text" name="epocaDe" id="ano" maxlength="4" />
-			<label class="labelFormsSearch" id="ldata" for="data">Até</label>
-			<input class="inputAno" type="text" name="epocaAte" id="ano" maxlength="4" />
-			<label></label>
-			<a href="#"><img class="iconeAjuda" src="/GraoPara/images/icone_ajuda.png"	title="Pode-se solicitar a pesquisa de uma sequência de Códices ou Caixas. Basta indicar o primeiro e o último desejado." /></a>
-		</td>
-		<td class="status"></td>
-	</tr>
-
 	<!-- Título do Documento -->
 	<tr>
 		<td class="tdPesquisa">
@@ -224,8 +205,8 @@
 <table class="tableFormsKey">
 	<tr>
 		<td class="field"><label for="chave1" class="labelForms">Ação:</label></td>
-		<td class="field"><label for="chave2" class="labelForms">Autores:</label></td>
-		<td class="field"><label for="chave3" class="labelForms" >Instituição:</label></td>
+		<td class="field"><label for="chave2" class="labelForms">Atores:</label></td>
+		<td class="field"><label for="chave3" class="labelForms">Instituição:</label></td>
 	</tr>
 </table>
 
