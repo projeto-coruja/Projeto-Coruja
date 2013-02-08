@@ -28,7 +28,7 @@
 	
 	<tr>
 		<td class="field">
-			<input class="input" name="codigo" size="10" id="codigo" type="text" maxlength="5" style="width:350px;"/>
+			<input class="input" name="codigo" size="10" id="codigo" type="text" maxlength="4" style="width:350px;"/>
 		</td>		
 		<td class="status"></td>
 	</tr>

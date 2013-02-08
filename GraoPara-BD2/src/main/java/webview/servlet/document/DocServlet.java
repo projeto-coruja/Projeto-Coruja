@@ -95,7 +95,7 @@ public class DocServlet extends HttpServlet {
 			try {
 				CB.registerNewDocument(tituloDocumento, 
 						tipoCodDocumento,
-						codDocumento, 
+						String.format("%04d", Integer.parseInt(codDocumento)), 
 						local, 
 						url,
 						resumo, 

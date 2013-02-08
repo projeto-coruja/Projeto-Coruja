@@ -31,7 +31,7 @@ public class DocumentEJB {
 	
 	private final static String default_query = "FROM DocumentoMO WHERE ";
 	
-	private final static String caixa_base = "CAIXA-0", caixa_fim = "CAIXA-ZZZZZ", codice_base = "CODICE-0", codice_fim = "CODICE-ZZZZZ";
+	private final static String caixa_base = "CAIXA-0000", caixa_fim = "CAIXA-ZZZZ", codice_base = "CODICE-0000", codice_fim = "CODICE-ZZZZ";
 
 	public DocumentEJB() {
 		docDao = new DocumentoDAO();
@@ -70,15 +70,15 @@ public class DocumentEJB {
 		boolean init_de = isInit(codCodiceCaixaDe), init_ate = isInit(codCodiceCaixaAte), init_tipo = isInit(tipoCodiceCaixa);
 		if(init_de && init_ate) {
 			if(init_tipo) {
-				String codDe = (tipoCodiceCaixa + "-" + codCodiceCaixaDe).trim();
-				String codAte = (tipoCodiceCaixa + "-" + codCodiceCaixaAte).trim();
+				String codDe = (tipoCodiceCaixa + "-" + String.format("%04d", Integer.parseInt(codCodiceCaixaDe))).trim();
+				String codAte = (tipoCodiceCaixa + "-" + String.format("%04d", Integer.parseInt(codCodiceCaixaAte))).trim();
 				query += "codiceCaixa.cod BETWEEN '" + codDe + "' AND '" + codAte + "'";
 			}
 			else {
-				String cdDe = ("CODICE-" + codCodiceCaixaDe).trim();
-				String cdAte = ("CODICE-" + codCodiceCaixaAte).trim();
-				String cxDe = ("CAIXA-" + codCodiceCaixaDe).trim();
-				String cxAte = ("CAIXA-" + codCodiceCaixaAte).trim();
+				String cdDe = ("CODICE-" + String.format("%04d", Integer.parseInt(codCodiceCaixaDe))).trim();
+				String cdAte = ("CODICE-" + String.format("%04d", Integer.parseInt(codCodiceCaixaAte))).trim();
+				String cxDe = ("CAIXA-" + String.format("%04d", Integer.parseInt(codCodiceCaixaDe))).trim();
+				String cxAte = ("CAIXA-" + String.format("%04d", Integer.parseInt(codCodiceCaixaAte))).trim();
 				query += "codiceCaixa.cod BETWEEN '" + cdDe + "' AND '" + cdAte + "' " +
 						"OR codiceCaixa.cod BETWEEN '" + cxDe + "' AND '" + cxAte + "'";
 			}
@@ -86,31 +86,31 @@ public class DocumentEJB {
 		}
 		else if(init_de) {
 			if(init_tipo) {
-				String codDe = (tipoCodiceCaixa + "-" + codCodiceCaixaDe).trim();
+				String codDe = (tipoCodiceCaixa + "-" + String.format("%04d", Integer.parseInt(codCodiceCaixaDe))).trim();
 				String limite = (tipoCodiceCaixa.equals("CODICE") ? codice_fim : caixa_fim);
 				query += "codiceCaixa.cod >= '" + codDe + "' " +
 						"AND codiceCaixa.cod <= " + limite + "'";
 			}
 			else {
-				String cdDe = ("CODICE-" + codCodiceCaixaDe).trim();
-				String cxDe = ("CAIXA-" + codCodiceCaixaDe).trim();
-				query += "(codiceCaixa.cod >= '" + cdDe + "' and codiceCaixa.cod <= '" + codice_fim + "') "
-						+ "AND (codiceCaixa.cod >= '" + cxDe + "' and codiceCaixa.cod <= '" + caixa_fim + "') ";
+				String cdDe = ("CODICE-" + String.format("%04d", Integer.parseInt(codCodiceCaixaDe))).trim();
+				String cxDe = ("CAIXA-" + String.format("%04d", Integer.parseInt(codCodiceCaixaDe))).trim();
+				query += "(codiceCaixa.cod >= '" + cdDe + "' AND codiceCaixa.cod <= '" + codice_fim + "') "
+						+ "OR (codiceCaixa.cod >= '" + cxDe + "' AND codiceCaixa.cod <= '" + caixa_fim + "') ";
 			}
 			continue_query = true;
 		}
 		else if(init_ate) {
 			if(init_tipo) {
-				String codAte = (tipoCodiceCaixa + "-" + codCodiceCaixaAte).trim();
+				String codAte = (tipoCodiceCaixa + "-" + String.format("%04d", Integer.parseInt(codCodiceCaixaAte))).trim();
 				String limite = (tipoCodiceCaixa.equals("CODICE") ? codice_base : caixa_base);
 				query += "codiceCaixa.cod <= '" + codAte + "' " +
 						"AND codiceCaixa.cod >= " + limite + "'";
 			}
 			else {
-				String cdAte = ("CODICE-" + codCodiceCaixaAte).trim();
-				String cxAte = ("CAIXA-" + codCodiceCaixaAte).trim();
-				query += "(codiceCaixa.cod <= '" + cdAte + "' and codiceCaixa.cod >= '" + codice_base + "') "
-						+ "AND (codiceCaixa.cod <= '" + cxAte + "' and codiceCaixa.cod >= '" + caixa_base + "') ";
+				String cdAte = ("CODICE-" + String.format("%04d", Integer.parseInt(codCodiceCaixaAte))).trim();
+				String cxAte = ("CAIXA-" + String.format("%04d", Integer.parseInt(codCodiceCaixaAte))).trim();
+				query += "(codiceCaixa.cod <= '" + cdAte + "' AND codiceCaixa.cod >= '" + codice_base + "') "
+						+ "OR (codiceCaixa.cod <= '" + cxAte + "' AND codiceCaixa.cod >= '" + caixa_base + "') ";
 			}
 			continue_query = true;
 		}
@@ -281,7 +281,7 @@ public class DocumentEJB {
 			query = " FROM DocumentoMO ";
 		}
 		
-		query += " ORDER BY cod, titulo ";
+		query += " ORDER BY codiceCaixa.cod, cod, titulo ";
 		return docDao.findDocumentByQuery(query);
 	}
 	

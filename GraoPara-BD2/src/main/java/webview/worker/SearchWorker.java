@@ -65,7 +65,7 @@ public class SearchWorker {
 		SimpleDate dataDocIni = null, dataDocFim = null;
 		
 		if(isInit(anoIni)) {
-			dataIni = anoIni + "/1/1";
+			dataIni = anoIni;
 		} else {
 			dataIni = minData;
 		}

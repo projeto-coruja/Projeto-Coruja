@@ -82,10 +82,10 @@ public class DocUpdateServlet extends HttpServlet {
 		
 		try {
 			CB.modifyDocument(tipoCodDocumentoAntigo,
-					codDocumentoAntigo, 
+					String.format("%04d", Integer.parseInt(codDocumentoAntigo)), 
 					tituloDocumento, 
 					tipoCodDocumento,
-					codDocumento, 
+					String.format("%04d", Integer.parseInt(codDocumento)), 
 					local, 
 					url, 
 					resumo, 

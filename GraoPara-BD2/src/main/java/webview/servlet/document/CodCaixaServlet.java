@@ -60,7 +60,7 @@ public class CodCaixaServlet extends HttpServlet {
 				AlertsUtility.alertAndRedirectHistory(response, "Erro: ano inválido!");
 			}
 			else try {
-				od.add(tipo, codigo, titulo, anoIni, anoFim);
+				od.add(tipo, String.format("%04d", Integer.parseInt(codigo)), titulo, anoIni, anoFim);
 				AlertsUtility.redirectOnly(response, "cadastrarOrigem.jsp");
 			} catch (DuplicateCodiceCaixaException e) {
 				AlertsUtility.alertAndRedirectHistory(response, "Número de códices/caixas já existe.");

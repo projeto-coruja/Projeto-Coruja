@@ -165,7 +165,7 @@ public final class SimpleDate implements Serializable{
 	}
 	
 	private String str(short s) {
-		return Short.toString(s);
+		return String.format("%02d", s);
 	}
 	
 	private SimpleDate(short year, short month, short day, short dateMode) {
