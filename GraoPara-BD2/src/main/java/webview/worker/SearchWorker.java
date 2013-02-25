@@ -23,8 +23,8 @@ import business.exceptions.login.UnreachableDataBaseException;
 
 public class SearchWorker {
 	
-	private static String minData = "1000/1/1";
-	private static String maxData = "2000/1/1";
+	private static String minData = "1000/01/01";
+	private static String maxData = "3000/01/01";
 		
 	public static void listAllDocuments(HttpServletRequest request, JspWriter out) throws IOException{
 		
