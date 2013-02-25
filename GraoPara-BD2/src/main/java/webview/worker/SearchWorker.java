@@ -121,7 +121,7 @@ public class SearchWorker {
 				}
 				else{
 					out.println("<tr class=\"trList\">");
-					out.println("<td class=\"tdList\" colspan=\"3\"><br /></td>");
+					out.println("<td class=\"tdList\" colspan=\"4\"><br /></td>");
 					out.println("</tr>");
 				}
 				out.println("<tr class=\"trList\">");
@@ -129,7 +129,7 @@ public class SearchWorker {
 				out.println("<td class=\"tdList\" ><label class=\"labelExibe\">" + doc.getTipoDocumento().getNome() + "</label></td>");
 				out.println("<td class=\"tdList\" ><label class=\"labelExibe\">" + doc.getLocal() + "</label></td>");
 				out.println("<td class=\"tdList\" rowspan=\"5\"><label class=\"labelExibe\">"+ 
-						(doc.getUrl() != null && !doc.getUrl().equals("") ? "<a href=\"" + doc.getUrl() + "\"> URL </a>" : "URL" ));
+						(doc.getUrl() != null && !doc.getUrl().equals("") ? "<a href=\"" + doc.getUrl() + "\">URL</a>" : "" ));
 				if(c_status != null && c_status.equals(AuthBean.LoginSuccessAdmin)){
 					out.println( "<a href=\"/GraoPara/protected/admin/editarDocumentos.jsp?"
 					+"codigoDoDocumento=" + doc.getCod()
