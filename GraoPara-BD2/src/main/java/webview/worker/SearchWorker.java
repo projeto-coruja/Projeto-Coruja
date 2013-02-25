@@ -55,7 +55,11 @@ public class SearchWorker {
 		String c_status = null;
 		
 		if(request.getCookies().length > 1){
-			c_status = WebUtility.selectCookie(request.getCookies(), WebUtility.cookie_status).getValue();
+			try{
+				c_status = WebUtility.selectCookie(request.getCookies(), WebUtility.cookie_status).getValue();
+			} catch(NullPointerException e){
+				c_status = null;
+			}
 		}
 		
 		String anoIni = request.getParameter("anoIni");
