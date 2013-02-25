@@ -804,3 +804,7 @@ article.menuLateral section,article.menuLateral section h2 {
 	/* Acrescentado posteriormente */
 	width: 200px;
 }
+
+.resultLabel{
+	margin: 0;
+}

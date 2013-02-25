@@ -28,10 +28,6 @@ public class DocumentoMO implements EntityModel  {
 	@NotEmpty
 	private String cod;
 	
-	@NotNull
-	@Column(length = 1024)
-	private String titulo;
-	
 	@Column(length = 1024)
 	private String local;
 
@@ -84,14 +80,6 @@ public class DocumentoMO implements EntityModel  {
 
 	public void setCod(String cod) {
 		this.cod = cod;
-	}
-
-	public String getTitulo() {
-		return titulo;
-	}
-
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
 	}
 
 	public String getLocal() {

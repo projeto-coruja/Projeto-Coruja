@@ -35,7 +35,6 @@ public class SearchWorker {
 		String anoInicioCodiceCaixa = request.getParameter("epocaDe");
 		String anoFimCodiceCaixa = request.getParameter("epocaAte");
 		
-		String tituloDoDocumento = request.getParameter("titulo");
 		String tipoCodDocumento = request.getParameter("tipoDaIdentificacao");
 		String codDocumento = request.getParameter("numDaIdentificacao");
 		
@@ -78,7 +77,6 @@ public class SearchWorker {
 		dataDocIni = SimpleDate.parse(dataIni);
 		dataDocFim = SimpleDate.parse(dataFim);
 		
-		
 		DocumentEJB search = new DocumentEJB();
 		List<DTO> docs = null;    
 
@@ -89,7 +87,6 @@ public class SearchWorker {
 					tituloCodiceCaixa, 
 					anoInicioCodiceCaixa, 
 					anoFimCodiceCaixa,
-					tituloDoDocumento,
 					tipoCodDocumento, 
 					codDocumento, 
 					dataDocIni, dataDocFim, autor, ocupacaoAutor, 
@@ -101,48 +98,70 @@ public class SearchWorker {
 					palavraChave1, 
 					palavraChave2, 
 					palavraChave3);
+			
 
+			String lastCodex = "";
 			for(DTO d : docs){
 				
 				Documento doc = (Documento) d;
 				
-				String codiceCaixa[] = doc.getCodiceCaixa().getCod().split("-");
 				String codDoc[] = doc.getCod().split("-");
-				
-				out.println("<tr  class=\"trList\">");
-				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getCodiceCaixa().getTitulo()		+"</label></td>");
-				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ codiceCaixa[0]							+"</label></td>");
-				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ codiceCaixa[1]							+"</label></td>");
-				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ doc.getTitulo()						+"</label></td>");
-				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ codDoc[0]								+"</label></td>");
-				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ codDoc[1]								+"</label></td>");
+				if(!lastCodex.equals(doc.getCodiceCaixa().getCod())){
+					if(!lastCodex.equals("")){
+						out.println("</table>");
+						out.println("<br />");
+					}
+					out.println("<h1 class=\"resultLabel\">" + doc.getCodiceCaixa().getCod().replace("-", " - ") + ": " + doc.getCodiceCaixa().getTitulo() + " ( " + doc.getCodiceCaixa().getAnoInicio() + " - " + doc.getCodiceCaixa().getAnoFim() + ")</h1>");
+					out.println("<br />");
+					out.println("<table class=\"tableList\">");
+				}
+				else{
+					out.println("<tr class=\"trList\">");
+					out.println("<td class=\"tdList\" colspan=\"3\"><br /></td>");
+					out.println("</tr>");
+				}
+				out.println("<tr class=\"trList\">");
+				out.println("<td class=\"tdList\" rowspan=\"5\"><label class=\"labelExibe\">"+ codDoc[0] + "<br />" +  codDoc[1] + "</label></td>");
+				out.println("<td class=\"tdList\" ><label class=\"labelExibe\">" + doc.getTipoDocumento().getNome() + "</label></td>");
+				out.println("<td class=\"tdList\" ><label class=\"labelExibe\">" + doc.getLocal() + "</label></td>");
+				out.println("<td class=\"tdList\" rowspan=\"5\"><label class=\"labelExibe\">"+ 
+						(doc.getUrl() != null && !doc.getUrl().equals("") ? "<a href=\"" + doc.getUrl() + "\"> URL </a>" : "URL" ));
 				if(c_status != null && c_status.equals(AuthBean.LoginSuccessAdmin)){
-					 out.println( "<td class=\"tdList\">"
-								+ "<a href=\"/GraoPara/protected/admin/editarDocumentos.jsp?"
-								+"codigoDoDocumento=" + doc.getCod()
-								+ "\">"
-								+ "<img src=\"/GraoPara/images/edit.png\" title=\"Editar\" alt=\"Editar\"/></a> "
-								+ "<br>"
-								+ "<a href=\"/GraoPara/protected/admin/removeDoc?"
-								+"numeroAPEP=" + doc.getCod()
-								+ "\">" 
-								+ "<img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\"/></a></td> ");
+					out.println( "<a href=\"/GraoPara/protected/admin/editarDocumentos.jsp?"
+					+"codigoDoDocumento=" + doc.getCod()
+					+ "\">"
+					+ "<img src=\"/GraoPara/images/edit.png\" title=\"Editar\" alt=\"Editar\"/></a> "
+					+ "<br>"
+					+ "<a href=\"/GraoPara/protected/admin/removeDoc?"
+					+"numeroAPEP=" + doc.getCod()
+					+ "\">"
+					+ "<img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\"/></a></td> ");
 				}
-				else {
-					String path = "public";
-					if(c_status != null && c_status.equals(AuthBean.LoginSuccessUserLevel1))
-						path = "protected/user";
-					else if(c_status != null && c_status.equals(AuthBean.LoginSuccessUserLevel2))
-						path = "protected/userAdv";
-					out.println("<td class=\"tdList\">"
-							+ "<a href=\"/GraoPara/"+path+"/informacoesDocumentos.jsp?"
-							+"codigoDoDocumento=" + doc.getCod()
-							+"\">"
-							+"Detalhes completos"
-							+"</a></td>");
-				}
+				out.println("</label></td>");
 				out.println("</tr>");
+				out.println("<tr class=\"trList\">");
+				out.println("<td class=\"tdList\" ><label class=\"labelExibe\">" + doc.getAutor().getNome() + "</label></td>");
+				out.println("<td class=\"tdList\" ><label class=\"labelExibe\">" + doc.getAutor().getOcupacao() + "</label></td>");
+				out.println("</tr>");
+				out.println("<tr class=\"trList\">");
+				out.println("<td class=\"tdList\" ><label class=\"labelExibe\">" + doc.getDestinatario().getNome() + "</label></td>");
+				out.println("<td class=\"tdList\" ><label class=\"labelExibe\">" + doc.getDestinatario().getOcupacao() + "</label></td>");
+				out.println("</tr>");
+				out.println("<tr class=\"trList\">");
+				out.println("<td class=\"tdList\" ><label class=\"labelExibe\">" + doc.getData().format() + "</label></td>");
+				out.println("<td class=\"tdList\" ><label class=\"labelExibe\">" + 
+						(doc.getPalavraChave1() != null ? doc.getPalavraChave1().getPalavra() : "") +
+						(doc.getPalavraChave2() != null ? (doc.getPalavraChave1() != null ? " - " : "") + doc.getPalavraChave2().getPalavra() + "  " : "") +
+						(doc.getPalavraChave3() != null ? (doc.getPalavraChave1() != null || doc.getPalavraChave2() != null ? " - " : "") + doc.getPalavraChave3().getPalavra() + "  " : "") +
+						"</label></td>");
+				out.println("</tr>");
+				out.println("<tr class=\"trList\">");
+				out.println("<td class=\"tdList\" colspan=\"2\"><label class=\"labelExibe\">" + doc.getResumo() + "</label></td>");
+				out.println("</tr>");
+				
+				lastCodex = doc.getCodiceCaixa().getCod();
 			}
+			out.println("</table>");
 			
 		} catch (UnreachableDataBaseException e) {
 			out.write("<script>");  
@@ -225,7 +244,6 @@ public class SearchWorker {
 			
 			request.setAttribute("codigo", doc.getCodiceCaixa().getCod());
 			request.setAttribute("codCodiceCaixa", doc.getCodiceCaixa().getCod().replace("-", " - ") + ": " + doc.getCodiceCaixa().getTitulo() + " (" + doc.getCodiceCaixa().getAnoInicio() + " - " + doc.getCodiceCaixa().getAnoFim() + ")");
-			request.setAttribute("titulo",doc.getTitulo());
 			request.setAttribute("codDocumento",doc.getCod().replace("-", " - "));
 			request.setAttribute("autorNome",doc.getAutor().getNome());
 			request.setAttribute("autorOcupacao",doc.getAutor().getOcupacao()); 
@@ -275,7 +293,6 @@ public class SearchWorker {
 			request.setAttribute("codigo", doc.getCodiceCaixa().getCod());
 			request.setAttribute("codCodiceCaixa", cdCxSplit[0]);
 			request.setAttribute("tipoCodiceCaixa", cdCxSplit[1]);
-			request.setAttribute("titulo",doc.getTitulo());
 			request.setAttribute("codDocumento", codDocSplit[1]);
 			request.setAttribute("tipoCodDocumento", codDocSplit[0]);
 			request.setAttribute("autorNome",doc.getAutor().getNome());

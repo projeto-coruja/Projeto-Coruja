@@ -44,19 +44,6 @@
 	
 	<tr>
 		<td class="tdForms">
-			<label class="labelForms" id="ltituloDocumento" for="tituloDocumento">Título do Documento</label>
-		</td>
-	</tr>
-	
-	<tr>
-		<td class="field">
-			<input class="input" name="tituloDocumento" id="tituloDocumento" type="text" size="20" maxlength="1024" value="<%=request.getAttribute("titulo") %>"/>
-		</td>
-		<td class="status"></td>
-	</tr>
-	
-	<tr>
-		<td class="tdForms">
 			<label class="labelForms" id="lautor" for="autor">Autor do Documento</label>
 		</td>
 	</tr>
@@ -178,19 +165,19 @@
 <table class="tableFormsKey">
 	<tr>		
 		<td class="field">
-			<select class="inputKey" name="chave3" id="chave3">
-				<option value="">Nenhuma</option>
-				<%=WebUtility.printSelectKeyWords(request, "palavraChave3", "Ação")%>
-			</select>
-		
 			<select class="inputKey" name="chave1" id="chave1">
 				<option value="">Nenhuma</option>
-				<%=WebUtility.printSelectKeyWords(request, "palavraChave1", "Autores")%>
-			</select>		
+				<%=WebUtility.printSelectKeyWords(request, "palavraChave1", "Ação")%>
+			</select>
 		
 			<select class="inputKey" name="chave2" id="chave2">
 				<option value="">Nenhuma</option>
-				<%=WebUtility.printSelectKeyWords(request, "palavraChave2", "Instituição")%>
+				<%=WebUtility.printSelectKeyWords(request, "palavraChave2", "Autores")%>
+			</select>		
+		
+			<select class="inputKey" name="chave3" id="chave3">
+				<option value="">Nenhuma</option>
+				<%=WebUtility.printSelectKeyWords(request, "palavraChave3", "Instituição")%>
 			</select>
 		</td>
 		<td class="status"></td>

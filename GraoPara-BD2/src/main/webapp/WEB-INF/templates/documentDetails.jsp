@@ -27,18 +27,6 @@
 	
 	<tr>
 		<td class="tdForms">
-			<label class="labelForms" id="ltituloDocumento" for="tituloDocumento">Título do Documento</label>
-		</td>
-	</tr>
-	
-	<tr>
-		<td class="fieldDocInf">
-			<input class="input" name="tituloDocumento" id="tituloDocumento" type="text" maxlength="1024" readonly="readonly" value="<%= request.getAttribute("titulo") %>"/>
-		</td>
-	</tr>
-	
-	<tr>
-		<td class="tdForms">
 			<label class="labelForms" id="lautor" for="autor">Autor do Documento</label>
 		</td>
 	</tr>

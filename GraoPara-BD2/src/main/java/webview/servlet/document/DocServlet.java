@@ -36,7 +36,6 @@ public class DocServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String tituloDocumento = request.getParameter("tituloDocumento");
 		String tipoCodDocumento = request.getParameter("tipo_num");
 		String codDocumento = request.getParameter("numero");		
 		String local = request.getParameter("local");
@@ -93,7 +92,7 @@ public class DocServlet extends HttpServlet {
 			DocumentEJB CB = new DocumentEJB();
 			codCodiceCaixa = tipoCodiceCaixa+"-"+codCodiceCaixa;
 			try {
-				CB.registerNewDocument(tituloDocumento, 
+				CB.registerNewDocument(
 						tipoCodDocumento,
 						String.format("%04d", Integer.parseInt(codDocumento)), 
 						local, 

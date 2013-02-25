@@ -43,13 +43,8 @@
 				</div>
 
 				<div class="scrollLong">
-					<table class="tableList">
-						<tr class="trList">
-							<%@include file="/WEB-INF/templates/documentData.jsp"%>
-						</tr>
 
 						<% SearchWorker.listAllDocuments(request, out); %>
-					</table>
 				</div>
 			</div>
 

@@ -41,19 +41,6 @@
 	
 	<tr>
 		<td class="tdForms">
-			<label class="labelForms" id="ltituloDocumento" for="tituloDocumento">Título do Documento</label>
-		</td>
-	</tr>
-	
-	<tr>
-		<td class="field">
-			<input class="input" name="tituloDocumento" id="tituloDocumento" type="text" size="20" maxlength="1024" />
-		</td>
-		<td class="status"></td>
-	</tr>
-	
-	<tr>
-		<td class="tdForms">
 			<label class="labelForms" id="lautor" for="autor">Autor do Documento</label>
 		</td>
 	</tr>

@@ -37,7 +37,7 @@ public class DocRemovalServlet extends HttpServlet {
 	    PrintWriter out=response.getWriter(); 
 	    Documento docs = null;
 		try {
-			docs = docEJB.findSingleDocument(type, code);
+			docs = docEJB.findSingleDocument(type, String.format("%04d", Integer.parseInt(code)));
 			docEJB.removeDocument(docs);
 			response.sendRedirect(request.getHeader("referer"));
 			response.setHeader("Refresh", "0");

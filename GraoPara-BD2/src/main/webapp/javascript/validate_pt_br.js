@@ -30,9 +30,6 @@ $(document).ready(function() {
 				required: true,
 				minlength: 3				
 			},
-			tituloDocumento: {
-				required: true				
-			},
 			numero: {
 				required: true,
 				minlength: 3
@@ -248,9 +245,6 @@ $(document).ready(function() {
 			numero: {
 				required: "Número APEP ou Sequencial inválido.",
 				minlength: jQuery.format("Informe no mínimo {0} caracteres.")
-			},
-			tituloDocumento: {
-				required: "Digite o título do documento."
 			},
 			autor: {
 				required: "Digite o autor do documento."

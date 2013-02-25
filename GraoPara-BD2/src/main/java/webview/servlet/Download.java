@@ -43,7 +43,6 @@ public class Download extends HttpServlet {
 		String anoInicioCodiceCaixa = request.getParameter("epocaDe");
 		String anoFimCodiceCaixa = request.getParameter("epocaAte");
 
-		String tituloDoDocumento = request.getParameter("titulo");
 		String tipoCodDocumento = request.getParameter("tipoDaIdentificacao");
 		String codDocumento = request.getParameter("numDaIdentificacao");
 		
@@ -74,7 +73,6 @@ public class Download extends HttpServlet {
 					tituloCodiceCaixa, 
 					anoInicioCodiceCaixa, 
 					anoFimCodiceCaixa, 
-					tituloDoDocumento,
 					tipoCodDocumento, 
 					codDocumento, 
 					null, null, autor, 

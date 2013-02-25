@@ -121,8 +121,7 @@ public final class WebUtility {
 	 */
 	public static String docToString(Documento doc) {
 		return
-				doc.getTitulo() + "\n"
-				+ doc.getAutor() + " "
+				doc.getAutor() + " "
 				+ doc.getDestinatario() + " "
 				+ doc.getLocal() + " "
 				+ doc.getResumo() + " "

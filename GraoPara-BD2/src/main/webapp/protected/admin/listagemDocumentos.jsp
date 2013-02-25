@@ -54,15 +54,7 @@
 				</table>
 				
 				<div class="scrollLong">
-					<table class="tableList">
-						<tr class="trList">
-							<%@include file="/WEB-INF/templates/documentData.jsp"%>
-							
-							<td class="tdList"><label class="labelExibe">Ações</label></td>
-						</tr>
-						
-						<% SearchWorker.listAllDocuments(request, out); %>
-					</table>
+					<% SearchWorker.listAllDocuments(request, out); %>
 				</div>
 			</div>
 

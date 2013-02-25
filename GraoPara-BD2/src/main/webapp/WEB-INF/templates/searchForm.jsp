@@ -56,20 +56,6 @@
 		</td>
 	</tr>
 
-	<!-- Título do Documento -->
-	<tr>
-		<td class="tdPesquisa">
-			<label class="labelFormsSearch" id="ltitulo" for="titulo">&#8226 Título do Documento</label>
-		</td>
-	</tr>
-
-	<tr>
-		<td class="field">
-			<input class="input" name="titulo" id="titulo" type="text" size="20" maxlength="500">
-			<label></label><a href="#"><img class="iconeAjuda" src="/GraoPara/images/icone_ajuda.png" title="Cada caixa ou códice tem um título, geralmente longo." /></a>
-		</td>
-	</tr>
-
 	<!-- Tipo APEP ou Sequencial -->
 	<tr>
 		<td class="tdPesquisa">

@@ -85,14 +85,10 @@ public class KeyWordEJB {
 			for(DTO dto : results){
 				Documento doc = (Documento) dto;
 				if(doc.getPalavraChave1() != null && doc.getPalavraChave1().getPalavra().equals(keyWord)){
-					doc.setPalavraChave1(doc.getPalavraChave2());
-					doc.setPalavraChave2(doc.getPalavraChave3());
-					doc.setPalavraChave3(null);
+					doc.setPalavraChave1(null);
 				}
 				if(doc.getPalavraChave2() != null && doc.getPalavraChave2().getPalavra().equals(keyWord)){
-					
-					doc.setPalavraChave2(doc.getPalavraChave3());
-					doc.setPalavraChave3(null);
+					doc.setPalavraChave2(null);
 				}
 				if(doc.getPalavraChave3() != null && doc.getPalavraChave3().getPalavra().equals(keyWord)){
 					doc.setPalavraChave3(null);

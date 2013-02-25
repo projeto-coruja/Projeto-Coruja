@@ -36,7 +36,6 @@ public class DocUpdateServlet extends HttpServlet {
     	String tipoCodDocumentoAntigo = request.getParameter("pesquisa_APEP_SEQ");
 		String codDocumentoAntigo = request.getParameter("pesquisa_num_APEP_SEQ");
 		
-		String tituloDocumento = request.getParameter("tituloDocumento");
 		String tipoCodDocumento = request.getParameter("tipo_num");
 		String codDocumento = request.getParameter("numero");
 		String local = request.getParameter("local");
@@ -83,7 +82,6 @@ public class DocUpdateServlet extends HttpServlet {
 		try {
 			CB.modifyDocument(tipoCodDocumentoAntigo,
 					String.format("%04d", Integer.parseInt(codDocumentoAntigo)), 
-					tituloDocumento, 
 					tipoCodDocumento,
 					String.format("%04d", Integer.parseInt(codDocumento)), 
 					local, 
