@@ -12,6 +12,7 @@ import persistence.dto.PalavraChave;
 import persistence.dto.TipoDocumento;
 import persistence.dto.UserAccount;
 import persistence.exceptions.UpdateEntityException;
+import webview.worker.SearchWorker;
 import business.DAO.document.AutorDAO;
 import business.DAO.document.CodiceCaixaDAO;
 import business.DAO.document.DocumentoDAO;
@@ -235,6 +236,7 @@ public class DocumentEJB {
 				query += " AND ";
 			}
 			query += " data BETWEEN '" + dataDocIni + "' AND '" + dataDocFim + "'";
+			if(dataDocIni.toString().equals(SearchWorker.getMinData()))	query += " OR data IS NULL";
 			continue_query = true;
 		}
 		
