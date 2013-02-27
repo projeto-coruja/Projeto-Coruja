@@ -30,7 +30,7 @@ public class SpreadsheetExport {
 	private static void getPath(){
 		tmpPath = "/tmp"; // Jboss
 	}
-	
+	@SuppressWarnings("unused")
 	private static double getStringWidth(String s){
 		Font font = new Font("Arial", Font.PLAIN, 10);  
         FontMetrics metrics = new FontMetrics(font) {
@@ -50,7 +50,7 @@ public class SpreadsheetExport {
 		Column column = tbl.appendColumn();
 		Cell cel = row.getCellByIndex(0);
 		
-		Color grey = new Color("#DDDDDD");
+//		Color grey = new Color("#DDDDDD");
 		Border border = new Border(new Color("#000000"), 0.001, SupportedLinearMeasure.IN);
 		
 		int coluna;
@@ -63,23 +63,24 @@ public class SpreadsheetExport {
 		String index[] = {"Código da Caixa/Códice",
 				"Título da Caixa/Códice",
 				"Código do documento",
+				"Resumo",
+				"Data",
+				"Palavra Chaves",
 				"Tipo de Documento",
 				"Autor",
 				"Ocupação do autor",
 				"Destinatário",
 				"Ocupação do destinatário",
 				"Local",
-				"Data",
-				"Palavra Chaves",
-				"URL da imagem",
-				"Resumo"};
+				"URL da imagem"};
 
 		
 		for(int i = 0; i < index.length; i++){
 			column = tbl.getColumnByIndex(coluna);
-			column.setWidth(getStringWidth(index[i]));
+//			column.setWidth(getStringWidth(index[i]));
+			column.setWidth(50);
 			cel = row.getCellByIndex(coluna++);
-			cel.setCellBackgroundColor(grey);
+//			cel.setCellBackgroundColor(grey);
 			cel.setBorders(CellBordersType.ALL_FOUR, border);
 			cel.setHorizontalAlignment(HorizontalAlignmentType.CENTER);
 			cel.setVerticalAlignment(VerticalAlignmentType.MIDDLE);
@@ -91,27 +92,30 @@ public class SpreadsheetExport {
 			coluna = 0;
 			docDTO = (Documento) resultSet.get(linha);
 			row = tbl.getRowByIndex(linha+1);
+			row.setHeight(50, false);
 			String cellContent[] = {docDTO.getCodiceCaixa().getCod().replace("-", " - "),
 					docDTO.getCodiceCaixa().getTitulo(),
 					docDTO.getCod().replace("-", " - "),
+					docDTO.getResumo(),
+					(docDTO.getData() != null ? docDTO.getData().toString() : "Sem data" ),
+					(docDTO.getPalavraChave1() != null ? docDTO.getPalavraChave1().getPalavra() : " ")	+
+						(docDTO.getPalavraChave2() != null ? " - " + docDTO.getPalavraChave2().getPalavra() : " ") + 
+						(docDTO.getPalavraChave3() != null ? " - " + docDTO.getPalavraChave3().getPalavra() : " "),
 					docDTO.getTipoDocumento().getNome(),
 					docDTO.getAutor().getNome(),
 					docDTO.getAutor().getOcupacao(),
 					docDTO.getDestinatario().getNome(),
 					docDTO.getDestinatario().getOcupacao(),
 					docDTO.getLocal(),
-					docDTO.getData().toString(),
-					(docDTO.getPalavraChave1() != null ? docDTO.getPalavraChave1().getPalavra() : " ")	+
-						(docDTO.getPalavraChave2() != null ? " - " + docDTO.getPalavraChave2().getPalavra() : " ") + 
-						(docDTO.getPalavraChave3() != null ? " - " + docDTO.getPalavraChave3().getPalavra() : " "),
-					docDTO.getUrl(),
-					docDTO.getResumo()};
+					docDTO.getUrl()};
 
 			for(int i = 0; i < cellContent.length; i++){
+
 				column = tbl.getColumnByIndex(coluna);
-				if(getStringWidth(cellContent[i]) > column.getWidth())	column.setWidth(getStringWidth(cellContent[i]));
+//				if(getStringWidth(cellContent[i]) > column.getWidth())	column.setWidth(getStringWidth(cellContent[i]));
 				cel = row.getCellByIndex(coluna++);
-				if(linha%2 == 1)	cel.setCellBackgroundColor(grey);
+//				if(linha%2 == 1)	cel.setCellBackgroundColor(grey);
+				cel.setTextWrapped(true);
 				cel.setBorders(CellBordersType.ALL_FOUR, border);
 				if(i == cellContent.length - 1)	cel.setHorizontalAlignment(HorizontalAlignmentType.LEFT);
 				else	cel.setHorizontalAlignment(HorizontalAlignmentType.CENTER);
