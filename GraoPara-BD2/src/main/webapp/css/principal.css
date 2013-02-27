@@ -59,6 +59,10 @@ h2 {
 	margin-left: 0px;
 }
 
+hr{
+	width: 50em;
+}
+
 p {
 	text-align: justify;
 	text-indent: 3em;
@@ -447,12 +451,20 @@ a:hover,a:active,a:focus {
 }
 
 .scrollLong {
-	height: 35em;
+	height: 55em;
 	width: 709px; /* 859px; */
     /* border: 1px solid black; */
     margin-left: 78px;
 	overflow: auto;
 	font-size: small;
+}
+
+
+.legenda {
+    font-size: small;
+    margin-left: 78px;
+    overflow: auto;
+    width: 709px;
 }
 
 .buttonPesquisa {

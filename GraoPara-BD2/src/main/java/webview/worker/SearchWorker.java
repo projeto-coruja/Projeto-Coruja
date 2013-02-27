@@ -152,7 +152,7 @@ public class SearchWorker {
 				out.println("<td class=\"tdList\" ><label class=\"labelExibe\">" + doc.getDestinatario().getOcupacao() + "</label></td>");
 				out.println("</tr>");
 				out.println("<tr class=\"trList\">");
-				out.println("<td class=\"tdList\" ><label class=\"labelExibe\">" + doc.getData().format() + "</label></td>");
+				out.println("<td class=\"tdList\" ><label class=\"labelExibe\">" + (doc.getData() != null ? doc.getData().format() : "Sem data.") + "</label></td>");
 				out.println("<td class=\"tdList\" ><label class=\"labelExibe\">" + 
 						(doc.getPalavraChave1() != null ? doc.getPalavraChave1().getPalavra() : "") +
 						(doc.getPalavraChave2() != null ? (doc.getPalavraChave1() != null ? " - " : "") + doc.getPalavraChave2().getPalavra() + "  " : "") +

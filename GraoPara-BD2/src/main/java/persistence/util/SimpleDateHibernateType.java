@@ -28,7 +28,7 @@ public class SimpleDateHibernateType implements UserType {
 
 	@Override
 	public boolean equals(Object x, Object y) throws HibernateException {
-		return x.equals(y);
+		return (x != null & y != null ? x.equals(y) : false);
 	}
 
 	@Override

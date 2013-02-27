@@ -47,6 +47,9 @@
 				<div class="scrollLong">
 					<% SearchWorker.listAllDocuments(request, out); %>
 				</div>
+				<br />
+				<hr />
+				<%@include file="/WEB-INF/templates/searchCaption.jsp" %>
 			</div>
 
 			<!-- Rodape -->

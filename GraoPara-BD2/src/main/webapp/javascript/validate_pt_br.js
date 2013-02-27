@@ -59,7 +59,7 @@ $(document).ready(function() {
 				required: true				
 			},
 			ano: {
-				required: true,
+				required: false,
 				number: true,
 				minlength: 4
 			},
@@ -268,7 +268,6 @@ $(document).ready(function() {
 				required: "Data do documento inválido."				
 			},
 			ano: {
-				required: "Data do documento inválido.",
 				minlength: jQuery.format("Informe o ano com {0} dígitos."),
 				number: "Digite apenas números."
 			},
@@ -381,12 +380,12 @@ $(document).ready(function() {
 			 * ----------------------------------------------------- */
 			
 			codDe: {
-				minlength: jQuery.format("Informe o ano com {0} dígitos."),
+				minlength: jQuery.format("Informe o número com {0} dígitos."),
 				number: "Digite apenas números."
 			},
 			
 			codAte: {
-				minlength: jQuery.format("Informe o ano com {0} dígitos."),
+				minlength: jQuery.format("Informe o número com {0} dígitos."),
 				number: "Digite apenas números."
 			},
 			

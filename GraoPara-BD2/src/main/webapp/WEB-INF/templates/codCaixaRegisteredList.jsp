@@ -17,7 +17,7 @@
 					List<DTO> list = cb.getAllEntriesWithContent();
 					for(DTO d : list) {
 						CodiceCaixa work = (CodiceCaixa) d;
-						out.println("&#183" + work.getCod().replace("-", ": ") + "" + work.getTitulo() + " - " + work.getAnoInicio() + "/" + work.getAnoFim() + "<br>");
+						out.println("&#183" + work.getCod().replace("-", " - ") + ": " + work.getTitulo() + " (" + work.getAnoInicio() + " - " + work.getAnoFim() + ")<br>");
 					}
 				} catch (UnreachableDataBaseException e) {
 					e.printStackTrace();

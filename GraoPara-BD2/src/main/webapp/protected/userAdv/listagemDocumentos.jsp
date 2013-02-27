@@ -54,6 +54,9 @@
 						<% SearchWorker.listAllDocuments(request, out); %>
 					</table>
 				</div>
+				<br />
+				<hr />
+				<%@include file="/WEB-INF/templates/searchCaption.jsp" %>
 			</div>
 
 			<!-- Rodape -->
