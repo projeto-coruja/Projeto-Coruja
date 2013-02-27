@@ -60,7 +60,7 @@
 	
 	<tr>
 		<td class="field">
-			<input class="input" name="autorOcupacao" id="autorOcupacao" type="text" size="20" maxlength="48" />
+			<input class="input" name="autorOcupacao" id="autorOcupacao" type="text" size="20" maxlength="1024" />
 		</td>
 		<td class="status"></td>
 	</tr>
@@ -86,7 +86,7 @@
 	
 	<tr>
 		<td class="field">
-			<input class="input" name="destinatarioOcupacao" id="destinatarioOcupacao" type="text" size="20" maxlength="48" />
+			<input class="input" name="destinatarioOcupacao" id="destinatarioOcupacao" type="text" size="20" maxlength="1024" />
 		</td>
 		<td class="status"></td>
 	</tr>

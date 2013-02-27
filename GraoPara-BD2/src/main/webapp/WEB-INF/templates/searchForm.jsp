@@ -92,7 +92,7 @@
 	<tr>
 	
 	<tr>
-		<td class="field"><input class="input" name="autor" id="autor" type="text" size="20" maxlength="48">
+		<td class="field"><input class="input" name="autor" id="autor" type="text" size="20" maxlength="1024">
 		<label></label><a href="#"><img class="iconeAjuda" src="/GraoPara/images/icone_ajuda.png" title="Busca pelo nome completo ou parte do autor do documento." /></a>
 		</td>
 	</tr>
@@ -103,7 +103,7 @@
 	<tr>	
 		
 	<tr>
-		<td class="field"><input class="input" name="autorOcupacao" id="autorOcupacao" type="text" size="20" maxlength="48">
+		<td class="field"><input class="input" name="autorOcupacao" id="autorOcupacao" type="text" size="20" maxlength="1024">
 		<label></label><a href="#"><img class="iconeAjuda" src="/GraoPara/images/icone_ajuda.png" title="Ocupação do autor do documento. Por exemplo, Presidente da Província." /></a>
 		</td>
 	</tr>
@@ -114,7 +114,7 @@
 	<tr>	
 		
 	<tr>	
-		<td class="field"><input class="input" name="destinatario" id="destinatario" type="text" size="20" maxlength="48">
+		<td class="field"><input class="input" name="destinatario" id="destinatario" type="text" size="20" maxlength="1024">
 		<label></label><a href="#"><img class="iconeAjuda" src="/GraoPara/images/icone_ajuda.png" title="Busca pelo nome completo ou parte do destinatário do Documento." /></a>
 		</td>
 	</tr>
@@ -125,7 +125,7 @@
 	<tr>	
 		
 	<tr>	
-		<td class="field"><input class="input" name="destinatarioOcupacao" id="autorOcupacao" type="text" size="20" maxlength="48">
+		<td class="field"><input class="input" name="destinatarioOcupacao" id="autorOcupacao" type="text" size="20" maxlength="1024">
 		<label></label><a href="#"><img class="iconeAjuda" src="/GraoPara/images/icone_ajuda.png" title="Ocupação do destinatário do documento. Por exemplo, Presidente da Província." /></a>
 		</td>
 	</tr>
