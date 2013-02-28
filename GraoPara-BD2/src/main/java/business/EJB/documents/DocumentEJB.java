@@ -236,7 +236,7 @@ public class DocumentEJB {
 				query += " AND ";
 			}
 			query += " data BETWEEN '" + dataDocIni + "' AND '" + dataDocFim + "'";
-			if(dataDocIni.equals(SearchWorker.getMinData()))	query += " OR data IS NULL";
+			if(dataDocIni.toString().equals(SearchWorker.getMinData()))	query += " OR data IS NULL";
 			continue_query = true;
 		}
 		

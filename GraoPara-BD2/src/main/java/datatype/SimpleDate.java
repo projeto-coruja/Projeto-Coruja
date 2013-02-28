@@ -30,15 +30,15 @@ public final class SimpleDate implements Serializable{
 		String result = null;
 		switch (dateMode) {
 		case TRACKS_FULL_DATE:
-			result = str(year) + "/" + str(month) + "/" + str(day);
+			result = strYear(year) + "/" + str(month) + "/" + str(day);
 			break;
 			
 		case TRACKS_YEAR_AND_MONTH:
-			result = str(year) + "/" + str(month);
+			result = strYear(year) + "/" + str(month);
 			break;
 			
 		case TRACKS_ONLY_YEAR:
-			result = str(year);
+			result = strYear(year);
 			break;
 
 		default:
@@ -166,6 +166,9 @@ public final class SimpleDate implements Serializable{
 	
 	private String str(short s) {
 		return String.format("%02d", s);
+	}
+	private String strYear(short s) {
+		return String.format("%04d", s);
 	}
 	
 	private SimpleDate(short year, short month, short day, short dateMode) {
