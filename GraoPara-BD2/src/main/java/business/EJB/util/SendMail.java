@@ -1,6 +1,7 @@
 package business.EJB.util;
 
  
+import java.io.UnsupportedEncodingException;
 import java.util.Properties;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -38,7 +39,12 @@ public class SendMail {
  
 		try {
 			Message message = new MimeMessage(session);
-			message.setFrom(new InternetAddress(account));
+			try {
+				message.setFrom(new InternetAddress(account, "Não responder"));
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+				throw new RuntimeException(e);
+			}
 			message.setRecipients(Message.RecipientType.TO,	InternetAddress.parse(to));
 			
 			message.setSubject(subject);

@@ -16,21 +16,18 @@ import business.exceptions.login.UnreachableDataBaseException;
 import business.exceptions.login.UserNotFoundException;
 
 
-/**
- * Servlet implementation class AccoutRemoveServlet
- */
 @WebServlet("/passwordRecovery")
-public class AccountPasswordRetrieve {
-	  /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public AccountPasswordRetrieve() {
+public class AccountPasswordRetrieve extends HttpServlet {
+	
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -2804517812232329432L;
+
+	public AccountPasswordRetrieve() {
         super();
     }
     
-    /**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String email = request.getParameter("email");
 		RegisterUserBean bean = new RegisterUserBean();

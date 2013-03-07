@@ -25,6 +25,9 @@
 					<input class="buttonEntrar" type="submit" name="Entrar"	value="Entrar" />
 					<a style="text-decoration: none; "href="/GraoPara/public/userCadastre.jsp"><input type="button" class="buttonRegistrar" name="Registrar" value="Registrar"></a>
 				</div>
+				<div style="text-align:center; margin:-5px 0px -15px;">
+					<a style="text-decoration: none; "href="/GraoPara/public/recuperarSenha.jsp">Esqueci a senha</a>
+				</div>
 			</form>
 		</div>
 	</div>
