@@ -23,7 +23,7 @@ import business.exceptions.login.UnreachableDataBaseException;
 
 public class SearchWorker {
 	
-	private static String minData = "1000/01/01";
+	private static String minData = "0001/01/01";
 	private static String maxData = "3000/01/01";
 	
 	public static String getMinData(){

@@ -5,6 +5,7 @@ import persistence.exceptions.UpdateEntityException;
 import business.DAO.login.UserDAO;
 import business.EJB.util.EJBUtility;
 import business.EJB.util.RegularExpression;
+import business.EJB.util.SendMail;
 import business.exceptions.login.DuplicateUserException;
 import business.exceptions.login.IncorrectLoginInformationException;
 import business.exceptions.login.UnreachableDataBaseException;
@@ -41,6 +42,11 @@ public class RegisterUserBean {
 		String newPassword = EJBUtility.genRandomString(6);
 		user.setPassword(EJBUtility.getHash(newPassword, "MD5"));
 		userDAO.updateUser(user);
+		try{
+			SendMail.send(user.getEmail(), "Sua nova senha do Grão Pará!", "Aqui está a sua nova senha do Grão Pará.\n\n"+newPassword);
+		}catch(RuntimeException e){
+			e.printStackTrace();
+		}
 		return newPassword;
 	}
 

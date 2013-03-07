@@ -632,7 +632,7 @@ public class DocumentEJB {
 		query += "codiceCaixa.cod = '" + codCodiceCaixa + "'";
 
 		List<DTO> list = docDao.findDocumentByQuery(query);
-		if(list == null) throw new DocumentNotFoundException();
+		if(list == null)	 throw new DocumentNotFoundException();
 		return list;
 	}
 	
