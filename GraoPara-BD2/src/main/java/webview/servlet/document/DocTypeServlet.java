@@ -1,7 +1,6 @@
 package webview.servlet.document;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import webview.util.AlertsUtility;
 import business.EJB.documents.DocumentTypeEJB;
 import business.exceptions.documents.DuplicatedDocumentTypeException;
 import business.exceptions.login.UnreachableDataBaseException;
@@ -33,23 +33,14 @@ public class DocTypeServlet extends HttpServlet {;
 		String descricao = request.getParameter("docTypeDescription");
 		DocumentTypeEJB tdEjb = new DocumentTypeEJB();
 		response.setContentType("text/html; charset=UTF-8");  
-	    PrintWriter out=response.getWriter();   
 		try {
 			tdEjb.addNewDocumentType(tipo, descricao);
-			out.println("<script>");  
-		    out.println("window.location.replace('/GraoPara/protected/admin/cadastrarTipoDocumento.jsp');");
-		    out.println("</script>");
+			AlertsUtility.alertAndRedirectPage(response, "Tipo adicionado com sucesso.", "cadastrarTipoDocumento.jsp");
 		} catch (UnreachableDataBaseException e) {
-			out.println("<script>");  
-		    out.println("alert('Erro no banco de dados! Contate o suporte e tente novamente mais tarde.');");  
-		    out.println("window.location.replace('/GraoPara/protected/admin/index.jsp');");  
-		    out.println("</script>");
+			AlertsUtility.alertAndRedirectHistory(response, "Erro no banco de dados! Contate o suporte e tente novamente mais tarde.");
 			e.printStackTrace();
 		} catch (DuplicatedDocumentTypeException e) {
-			out.println("<script>");  
-		    out.println("alert('Tipo de documento já existe.');");
-		    out.println("window.location.replace('/GraoPara/protected/admin/cadastrarTipoDocumento.jsp');");
-		    out.println("</script>");
+			AlertsUtility.alertAndRedirectHistory(response, "Tipo de documento já existe.");
 		}		
 	}
 }

@@ -61,7 +61,7 @@ public class CodCaixaServlet extends HttpServlet {
 			}
 			else try {
 				od.add(tipo, String.format("%04d", Integer.parseInt(codigo)), titulo, anoIni, anoFim);
-				AlertsUtility.redirectOnly(response, "cadastrarOrigem.jsp");
+				AlertsUtility.alertAndRedirectPage(response, "Códice/Caixa adicionado com sucesso.", "cadastrarOrigem.jsp");
 			} catch (DuplicateCodiceCaixaException e) {
 				AlertsUtility.alertAndRedirectHistory(response, "Número de códices/caixas já existe.");
 				e.printStackTrace();

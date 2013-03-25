@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import persistence.exceptions.UpdateEntityException;
+import webview.util.AlertsUtility;
 import business.EJB.documents.KeyWordEJB;
 import business.exceptions.documents.KeywordNotFoundException;
 import business.exceptions.login.UnreachableDataBaseException;
@@ -44,10 +45,7 @@ public class KeyWordServlet extends HttpServlet {
 		try {
 			if(action!= null && action.equals("add")) {
 				cad.addKeyWord(newKey.toLowerCase(), theme);
-			    out.println("<script>");  
-			    out.println("alert('Palavra chave adicionada com sucesso. ');");  
-			    out.println("window.location.replace('/GraoPara/protected/admin/cadastrarPalavrasChave.jsp');");
-			    out.println("</script>");
+				AlertsUtility.alertAndRedirectPage(response, "Palavra chave adicionada com sucesso.","cadastrarPalavrasChave.jsp");
 			}
 			else if(action!= null && action.equals("edit")) {
 				cad.updateKeyWord(oldKey, newKey.toLowerCase(), theme);
@@ -64,24 +62,15 @@ public class KeyWordServlet extends HttpServlet {
 			    out.println("</script>");
 			}
 			else {
-			    out.println("<script>");  
-			    out.println("alert('Problema ao executar operação. ');");  
-			    out.println("history.go(-1);");
-			    out.println("</script>");
+				AlertsUtility.alertAndRedirectHistory(response, "Problema ao executar operação.");
 			}
 		} catch (UnreachableDataBaseException e) {
-		    out.println("<script>");  
-		    out.println("alert('Erro no banco de dados! Contate o suporte e tente novamente mais tarde. ');");  
-		    out.println("history.go(-1);");  
-		    out.println("</script>");
+			AlertsUtility.alertAndRedirectHistory(response, "Erro no banco de dados! Contate o suporte e tente novamente mais tarde.");
 			e.printStackTrace();
 		} catch (KeywordNotFoundException e) {
 			e.printStackTrace();
 		} catch (IllegalArgumentException e) {
-			out.println("<script>");  
-		    out.println("alert('Palavra chave já existe ou argumento inválido.');");  
-		    out.println("history.go(-1);");  
-		    out.println("</script>");
+			AlertsUtility.alertAndRedirectHistory(response, "Palavra chave já existe ou argumento inválido.");
 		} catch (UpdateEntityException e) {
 			e.printStackTrace();
 		}
