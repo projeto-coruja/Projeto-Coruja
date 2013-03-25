@@ -16,7 +16,7 @@ import business.exceptions.login.UnreachableDataBaseException;
 /**
  * Servlet implementation class DocTypeServlet
  */
-@WebServlet("/protected/admin/doDocType")
+@WebServlet(urlPatterns={"/protected/admin/doDocType", "/protected/userAdv/doDocType"})
 public class DocTypeServlet extends HttpServlet {;
        
 	private static final long serialVersionUID = 838811728644465716L;

@@ -17,7 +17,7 @@ import business.exceptions.login.UnreachableDataBaseException;
 /**
  * Servlet implementation class KeyWordServlet
  */
-@WebServlet("/protected/admin/doChangesToKeyWord")
+@WebServlet(urlPatterns={"/protected/admin/doChangesToKeyWord", "/protected/userAdv/doChangesToKeyWord"})
 public class KeyWordServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
