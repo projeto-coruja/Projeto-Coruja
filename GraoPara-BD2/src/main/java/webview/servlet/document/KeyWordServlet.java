@@ -60,7 +60,6 @@ public class KeyWordServlet extends HttpServlet {
 			AlertsUtility.alertAndRedirectHistory(response, "Erro no banco de dados! Contate o suporte e tente novamente mais tarde.");
 			e.printStackTrace();
 		} catch (KeywordNotFoundException e) {
-			System.err.println(oldKey);
 			e.printStackTrace();
 		} catch (IllegalArgumentException e) {
 			AlertsUtility.alertAndRedirectHistory(response, "Palavra chave já existe ou argumento inválido.");

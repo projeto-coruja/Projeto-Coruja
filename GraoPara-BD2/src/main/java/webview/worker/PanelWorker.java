@@ -37,7 +37,7 @@ public class PanelWorker {
 	 *	UTF-16 			Sixteen-bit UCS Transformation Format, byte order identified by an optional byte-order mark<br>
 	 */
 	
-	private static final String encode = "ISO-8859-1";
+	private static final String encode = "UTF-8";
 	
 	public static void listAllKeyWords(HttpServletRequest request, JspWriter out)  throws IOException{
 		KeyWordEJB busca = new KeyWordEJB();
