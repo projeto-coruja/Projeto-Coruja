@@ -1,7 +1,6 @@
 package webview.servlet.document;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -35,7 +34,6 @@ public class KeyWordServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		response.setContentType("text/html; charset=UTF-8");  
-	    PrintWriter out=response.getWriter();   
 		KeyWordEJB cad = new KeyWordEJB();
 		String oldKey = request.getParameter("palavraAntiga");
 		String newKey = request.getParameter("palavraNova");
@@ -49,17 +47,11 @@ public class KeyWordServlet extends HttpServlet {
 			}
 			else if(action!= null && action.equals("edit")) {
 				cad.updateKeyWord(oldKey, newKey.toLowerCase(), theme);
-			    out.println("<script>");  
-			    out.println("alert('Palavra chave atualizada com sucesso. ');");
-			    out.println("window.location.replace('/GraoPara/protected/admin/cadastrarPalavrasChave.jsp');");
-			    out.println("</script>");
+				AlertsUtility.alertAndRedirectPage(response, "alavra chave atualizada com sucesso.","cadastrarPalavrasChave.jsp");
 			}
 			else if(action != null && action.equals("delete")) {	
 				cad.removeKeyWord(oldKey);
-			    out.println("<script>");
-			    out.println("alert('Palavra chave excluída com sucesso. ');");
-			    out.println("window.location.replace('/GraoPara/protected/admin/cadastrarPalavrasChave.jsp');");
-			    out.println("</script>");
+				AlertsUtility.alertAndRedirectPage(response, "Palavra chave excluída com sucesso.","cadastrarPalavrasChave.jsp");
 			}
 			else {
 				AlertsUtility.alertAndRedirectHistory(response, "Problema ao executar operação.");
@@ -68,6 +60,7 @@ public class KeyWordServlet extends HttpServlet {
 			AlertsUtility.alertAndRedirectHistory(response, "Erro no banco de dados! Contate o suporte e tente novamente mais tarde.");
 			e.printStackTrace();
 		} catch (KeywordNotFoundException e) {
+			System.err.println(oldKey);
 			e.printStackTrace();
 		} catch (IllegalArgumentException e) {
 			AlertsUtility.alertAndRedirectHistory(response, "Palavra chave já existe ou argumento inválido.");

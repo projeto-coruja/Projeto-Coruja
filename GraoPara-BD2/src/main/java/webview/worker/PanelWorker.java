@@ -64,7 +64,6 @@ public class PanelWorker {
 							+ "palavraAntiga=" + URLEncoder.encode(key.getPalavra(), encode)
 							+ "&tema="+ URLEncoder.encode(key.getTema().getTema(), encode)
 							+ "&action=delete"
-							+ "&from=" + in
 							+ "\"><img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\" /></a>"
 						+ "</td>");
 				out.write("</tr>");
