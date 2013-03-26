@@ -44,7 +44,10 @@
 					<label style="font-size: small">|</label>
 					<a class="tdMinilink" href="http://pt-br.libreoffice.org/baixe-ja/" target="_blank" title="Os documentos são baixados no formato ODT e podem ser visualizados utilizando LibreOffice. Clique aqui para baixar o LibreOffice!">Baixar o LibreOffice</a>
 				</div>
-
+				<hr />
+				<%@include file="/WEB-INF/templates/searchCaption.jsp" %>
+				<hr />
+				<br />
 				<div class="scrollLong">
 					<table class="tableList">
 						<tr class="trList">
@@ -54,9 +57,6 @@
 						<% SearchWorker.listAllDocuments(request, out); %>
 					</table>
 				</div>
-				<br />
-				<hr />
-				<%@include file="/WEB-INF/templates/searchCaption.jsp" %>
 			</div>
 
 			<!-- Rodape -->

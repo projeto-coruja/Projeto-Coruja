@@ -77,7 +77,7 @@
 	
 	<!-- Número da Identificação -->
 	<tr>
-		<td class="tdPesquisa"><label class="labelFormsSearch" id="lnumero" for="numero">&#8226 Número da Identificação</label></td>
+		<td class="tdPesquisa"><label class="labelFormsSearch" id="lnumero" for="numero">&#8226 Número do Documento</label></td>
 	<tr>
 
 	<tr>

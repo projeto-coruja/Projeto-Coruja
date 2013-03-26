@@ -9,6 +9,7 @@ import persistence.exceptions.UpdateEntityException;
 import business.DAO.document.PalavraChaveDAO;
 import business.exceptions.documents.DocumentNotFoundException;
 import business.exceptions.documents.KeywordNotFoundException;
+import business.exceptions.documents.ThemeNotFoundException;
 import business.exceptions.login.UnreachableDataBaseException;
 
 public class KeyWordEJB {
@@ -36,7 +37,7 @@ public class KeyWordEJB {
 				return keyWord;
 		}
 		
-		throw new KeywordNotFoundException("Palavra chave não encontrado.");
+		throw new KeywordNotFoundException("Palavra chave "+ searchKeyWord +" não encontrado.");
 	}
 	
 	public List<DTO> getAllKeyWords() throws UnreachableDataBaseException, KeywordNotFoundException{
@@ -51,7 +52,7 @@ public class KeyWordEJB {
 		return keyWordDAO.getAllKeys();
 	}
 	
-	public synchronized void addKeyWord(String palavra, String tema) throws IllegalArgumentException, UnreachableDataBaseException {
+	public synchronized void addKeyWord(String palavra, String tema) throws IllegalArgumentException, UnreachableDataBaseException, ThemeNotFoundException {
 		PalavraChaveDAO kwDao = new PalavraChaveDAO();
 		palavra = palavra.toLowerCase();
 		try {

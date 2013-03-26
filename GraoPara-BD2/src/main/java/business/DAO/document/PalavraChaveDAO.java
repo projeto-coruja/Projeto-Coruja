@@ -20,20 +20,15 @@ public class PalavraChaveDAO {
 		manager = new PersistenceAccess();	
 	}
 	
-	public PalavraChave addKeyWord(String key, String theme) throws UnreachableDataBaseException{
+	public PalavraChave addKeyWord(String key, String theme) throws UnreachableDataBaseException, ThemeNotFoundException{
 		TemaPalavraChaveDAO newThemeDAO = new TemaPalavraChaveDAO();
 		TemaPalavraChave newTheme = null;
 		
-		try {
-			List<DTO> check = newThemeDAO.findThemeByString(theme);
-			for (DTO dto : check) {
-				if(((TemaPalavraChave) dto).getTema().equals(theme)){
-					newTheme = (TemaPalavraChave) dto;
-				}
+		List<DTO> check = newThemeDAO.findThemeByString(theme);
+		for (DTO dto : check) {
+			if(((TemaPalavraChave) dto).getTema().equals(theme)){
+				newTheme = (TemaPalavraChave) dto;
 			}
-			
-		} catch (ThemeNotFoundException e1) {
-			newTheme = newThemeDAO.addThemeWord(theme);
 		}
 		
 		PalavraChave newKey = new PalavraChave(key, newTheme);

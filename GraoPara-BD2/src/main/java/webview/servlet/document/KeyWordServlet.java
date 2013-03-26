@@ -12,6 +12,7 @@ import persistence.exceptions.UpdateEntityException;
 import webview.util.AlertsUtility;
 import business.EJB.documents.KeyWordEJB;
 import business.exceptions.documents.KeywordNotFoundException;
+import business.exceptions.documents.ThemeNotFoundException;
 import business.exceptions.login.UnreachableDataBaseException;
 
 /**
@@ -33,7 +34,7 @@ public class KeyWordServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		response.setContentType("text/html; charset=UTF-8");  
+		response.setContentType("text/html; charset=UTF-8");
 		KeyWordEJB cad = new KeyWordEJB();
 		String oldKey = request.getParameter("palavraAntiga");
 		String newKey = request.getParameter("palavraNova");
@@ -47,7 +48,7 @@ public class KeyWordServlet extends HttpServlet {
 			}
 			else if(action!= null && action.equals("edit")) {
 				cad.updateKeyWord(oldKey, newKey.toLowerCase(), theme);
-				AlertsUtility.alertAndRedirectPage(response, "alavra chave atualizada com sucesso.","cadastrarPalavrasChave.jsp");
+				AlertsUtility.alertAndRedirectPage(response, "Palavra chave atualizada com sucesso.","cadastrarPalavrasChave.jsp");
 			}
 			else if(action != null && action.equals("delete")) {	
 				cad.removeKeyWord(oldKey);
@@ -64,6 +65,8 @@ public class KeyWordServlet extends HttpServlet {
 		} catch (IllegalArgumentException e) {
 			AlertsUtility.alertAndRedirectHistory(response, "Palavra chave já existe ou argumento inválido.");
 		} catch (UpdateEntityException e) {
+			e.printStackTrace();
+		} catch (ThemeNotFoundException e) {
 			e.printStackTrace();
 		}
 	}

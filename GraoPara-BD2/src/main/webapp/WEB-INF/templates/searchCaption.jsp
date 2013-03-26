@@ -1,8 +1,8 @@
 <div class="legenda">
-	Legenda:
+	<h1 class="resultLabel">Legenda:</h1>
 	<table class="tableList">
 		<tr class="trList">
-			<td class="tdList" rowspan="5"><label class="labelExibe">Código<br />do<br />documento</label></td>
+			<td class="tdList" rowspan="5"><label class="labelExibe">Número<br />do<br />documento</label></td>
 			<td class="tdList"><label class="labelExibe">Tipo do documento</label></td>
 			<td class="tdList"><label class="labelExibe">Local</label></td>
 			<td class="tdList" rowspan="5"><label class="labelExibe">URL<br />(Quando<br />disponível)</label></td>
