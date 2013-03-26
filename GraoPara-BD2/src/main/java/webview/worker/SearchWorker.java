@@ -141,7 +141,7 @@ public class SearchWorker {
 					+ "<img src=\"/GraoPara/images/edit.png\" title=\"Editar\" alt=\"Editar\"/></a> "
 					+ "<br>"
 					+ "<a href=\"/GraoPara/protected/admin/removeDoc?"
-					+"numeroAPEP=" + doc.getCod()
+					+"codigo=" + doc.getCod()
 					+ "\">"
 					+ "<img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\"/></a></td> ");
 				}
