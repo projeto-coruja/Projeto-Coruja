@@ -29,6 +29,10 @@ public class SearchWorker {
 	public static String getMinData(){
 		return minData;
 	}
+	
+	public static String getMaxData(){
+		return maxData;
+	}
 		
 	public static void listAllDocuments(HttpServletRequest request, JspWriter out) throws IOException{
 		
@@ -55,17 +59,7 @@ public class SearchWorker {
 		String palavraChave1 = request.getParameter("chave1");
 		String palavraChave2 = request.getParameter("chave2");
 		String palavraChave3 = request.getParameter("chave3");
-		
-		String c_status = null;
-		
-		if(request.getCookies().length > 1){
-			try{
-				c_status = WebUtility.selectCookie(request.getCookies(), WebUtility.cookie_status).getValue();
-			} catch(NullPointerException e){
-				c_status = null;
-			}
-		}
-		
+			
 		String anoIni = request.getParameter("anoIni");
 		String anoFim = request.getParameter("anoFim");
 		String dataIni = null, dataFim = null;;
@@ -87,7 +81,16 @@ public class SearchWorker {
 		
 		DocumentEJB search = new DocumentEJB();
 		List<DTO> docs = null;    
-
+		
+		String c_status = null;
+		
+		if(request.getCookies().length > 1){
+			try{
+				c_status = WebUtility.selectCookie(request.getCookies(), WebUtility.cookie_status).getValue();
+			} catch(NullPointerException e){
+				c_status = null;
+			}
+		}
 		try {
 			docs = search.findDocuments(tipoCodiceCaixa, 
 					codCodiceCaixaDe, 
@@ -97,7 +100,9 @@ public class SearchWorker {
 					anoFimCodiceCaixa,
 					tipoCodDocumento, 
 					codDocumento, 
-					dataDocIni, dataDocFim, autor, ocupacaoAutor, 
+					dataDocIni, dataDocFim, 
+					autor, 
+					ocupacaoAutor, 
 					destinatario, 
 					ocupacaoDestinatario, 
 					tipoDocumento, 
@@ -333,37 +338,59 @@ public class SearchWorker {
 		
 		String param = "";
 		
-		String identificacao = request.getParameter("identificacao");
-		String codigoDe = request.getParameter("codigoDe");
-		String codigoAte = request.getParameter("codigoAte");
-		String titulo = request.getParameter("titulo");
-		String numAPEP_SEQ = request.getParameter("numero");
+		String tipoCodiceCaixa = request.getParameter("tipoCodCodiceCaixa");
+		String tituloCodiceCaixa = request.getParameter("tituloCodiceCaixa");
+		String codCodiceCaixaDe = request.getParameter("codDe");
+		String codCodiceCaixaAte = request.getParameter("codAte");
+		String anoInicioCodiceCaixa = request.getParameter("epocaDe");
+		String anoFimCodiceCaixa = request.getParameter("epocaAte");
+
+		String tipoCodDocumento = request.getParameter("tipoDaIdentificacao");
+		String codDocumento = request.getParameter("numDaIdentificacao");
+		
 		String autor = request.getParameter("autor");
+		String ocupacaoAutor = request.getParameter("autorOcupacao");
+		
 		String destinatario = request.getParameter("destinatario");
+		String ocupacaoDestinatario = request.getParameter("destinatarioOcupacao");
+		
+		String tipoDocumento = request.getParameter("tipoDoc");
 		String local = request.getParameter("local");
+		String resumo = request.getParameter("resumo");
+		
+		String palavraChave1 = request.getParameter("chave1");
+		String palavraChave2 = request.getParameter("chave2");
+		String palavraChave3 = request.getParameter("chave3");
+		
 		String anoIni = request.getParameter("anoIni");
 		String anoFim = request.getParameter("anoFim");
-		String tipoDoc = request.getParameter("tipoDoc");
-		String resumo = request.getParameter("resumo");
-		String palavra1 = request.getParameter("chave1");
-		String palavra2 = request.getParameter("chave2");
-		String palavra3 = request.getParameter("chave3");
 		
-		param += "identificacao="+identificacao;
-		param += "&codigoDe="+codigoDe;
-		param += "&codigoAte="+codigoAte;
-		param += "&titulo="+titulo;
-		param += "&numero="+numAPEP_SEQ;
-		param += "&autor="+autor;
-		param += "&destinatario="+destinatario;
-		param += "&local="+local;
-		param += "&anoIni="+anoIni;
-		param += "&anoFim="+anoFim;
-		param += "&tipoDoc="+tipoDoc;
-		param += "&resumo="+resumo;
-		param += "&chave1="+palavra1;
-		param += "&chave2="+palavra2;
-		param += "&chave3="+palavra3;
+		if(tipoCodiceCaixa != null && !tipoCodiceCaixa.isEmpty())	param += "tipoCodCodiceCaixa=" + tipoCodiceCaixa;
+		if(tituloCodiceCaixa != null && !tituloCodiceCaixa.isEmpty())	param += "&tituloCodiceCaixa=" + tituloCodiceCaixa;
+		if(codCodiceCaixaDe != null && !codCodiceCaixaDe.isEmpty())	param += "&codDe=" + codCodiceCaixaDe;
+		if(codCodiceCaixaAte != null && !codCodiceCaixaAte.isEmpty())	param += "&codAte=" + codCodiceCaixaAte;
+		if(anoInicioCodiceCaixa != null && !anoInicioCodiceCaixa.isEmpty())	param += "&epocaDe=" + anoInicioCodiceCaixa;
+		if(anoFimCodiceCaixa != null && !anoFimCodiceCaixa.isEmpty())	param += "&epocaAte=" + anoFimCodiceCaixa;
+
+		if(tipoCodDocumento != null && !tipoCodDocumento.isEmpty())	param += "&tipoDaIdentificacao=" + tipoCodDocumento;
+		if(codDocumento != null && !codDocumento.isEmpty())	param += "&numDaIdentificacao=" + codDocumento;
+
+		if(autor != null && !autor.isEmpty())	param += "&autor=" + autor;
+		if(ocupacaoAutor != null && !ocupacaoAutor.isEmpty())	param += "&autorOcupacao=" + ocupacaoAutor;
+
+		if(destinatario != null && !destinatario.isEmpty())	param += "&destinatario=" + destinatario;
+		if(ocupacaoDestinatario != null && !ocupacaoDestinatario.isEmpty())	param += "&destinatarioOcupacao=" + ocupacaoDestinatario;
+
+		if(tipoDocumento != null && !tipoDocumento.isEmpty())	param += "&tipoDoc=" + tipoDocumento;
+		if(local != null && !local.isEmpty())	param += "&local=" + local;
+		if(resumo != null && !resumo.isEmpty())	param += "&resumo=" + resumo;
+
+		if(palavraChave1 != null && !palavraChave1.isEmpty())	param += "&chave1=" + palavraChave1;
+		if(palavraChave2 != null && !palavraChave2.isEmpty())	param += "&chave2=" + palavraChave2;
+		if(palavraChave3 != null && !palavraChave3.isEmpty())	param += "&chave3=" + palavraChave3;
+
+		if(anoIni != null && !anoIni.isEmpty())	param += "&anoIni=" + anoIni;
+		if(anoFim != null && !anoFim.isEmpty())	param += "&anoFim=" + anoFim;
 		
 //		out.println(param);
 		return param;

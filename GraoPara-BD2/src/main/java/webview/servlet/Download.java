@@ -1,5 +1,7 @@
 package webview.servlet;
 
+import static webview.util.WebUtility.isInit;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -12,7 +14,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import datatype.SimpleDate;
+
 import persistence.dto.DTO;
+import webview.worker.SearchWorker;
 import business.EJB.documents.DocumentEJB;
 import business.exceptions.documents.DocumentNotFoundException;
 import business.export.SpreadsheetExport;
@@ -60,12 +65,30 @@ public class Download extends HttpServlet {
 		String palavraChave2 = request.getParameter("chave2");
 		String palavraChave3 = request.getParameter("chave3");
 		
+		String anoIni = request.getParameter("anoIni");
+		String anoFim = request.getParameter("anoFim");
+		String dataIni = null, dataFim = null;;
+		SimpleDate dataDocIni = null, dataDocFim = null;
+		
+		if(isInit(anoIni)) {
+			dataIni = anoIni;
+		} else {
+			dataIni = SearchWorker.getMinData();
+		}
+		if(isInit(anoFim)) {
+			dataFim = anoFim + "/12/31";
+		} else {
+			dataFim = SearchWorker.getMaxData();
+		}
+		
+		dataDocIni = SimpleDate.parse(dataIni);
+		dataDocFim = SimpleDate.parse(dataFim);
+
+		DocumentEJB search = new DocumentEJB();
+		
 		String filePath = null;
 		FileInputStream in = null;
 		OutputStream out = null;
-		
-
-		DocumentEJB search = new DocumentEJB();
 		try {
 			List<DTO> resultSet = search.findDocuments(tipoCodiceCaixa, 
 					codCodiceCaixaDe, 
@@ -75,7 +98,8 @@ public class Download extends HttpServlet {
 					anoFimCodiceCaixa, 
 					tipoCodDocumento, 
 					codDocumento, 
-					null, null, autor, 
+					dataDocIni, dataDocFim, 
+					autor, 
 					ocupacaoAutor, 
 					destinatario, 
 					ocupacaoDestinatario, 
@@ -85,6 +109,7 @@ public class Download extends HttpServlet {
 					palavraChave1, 
 					palavraChave2, 
 					palavraChave3);
+			
 			
 			if(resultSet == null)	throw new DocumentNotFoundException();
 			filePath = SpreadsheetExport.generateSpreadsheet(resultSet);	

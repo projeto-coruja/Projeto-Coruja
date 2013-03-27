@@ -89,7 +89,7 @@ public class DocumentEJB {
 				String codDe = (tipoCodiceCaixa + "-" + String.format("%04d", Integer.parseInt(codCodiceCaixaDe))).trim();
 				String limite = (tipoCodiceCaixa.equals("CODICE") ? codice_fim : caixa_fim);
 				query += "codiceCaixa.cod >= '" + codDe + "' " +
-						"AND codiceCaixa.cod <= " + limite + "'";
+						"AND codiceCaixa.cod <= '" + limite + "'";
 			}
 			else {
 				String cdDe = ("CODICE-" + String.format("%04d", Integer.parseInt(codCodiceCaixaDe))).trim();
@@ -104,7 +104,7 @@ public class DocumentEJB {
 				String codAte = (tipoCodiceCaixa + "-" + String.format("%04d", Integer.parseInt(codCodiceCaixaAte))).trim();
 				String limite = (tipoCodiceCaixa.equals("CODICE") ? codice_base : caixa_base);
 				query += "codiceCaixa.cod <= '" + codAte + "' " +
-						"AND codiceCaixa.cod >= " + limite + "'";
+						"AND codiceCaixa.cod >= '" + limite + "'";
 			}
 			else {
 				String cdAte = ("CODICE-" + String.format("%04d", Integer.parseInt(codCodiceCaixaAte))).trim();
@@ -231,12 +231,11 @@ public class DocumentEJB {
 			continue_query = true;
 		}
 		
-		if(dataDocIni != null && dataDocFim != null){
+		if(!dataDocIni.format().equals(SearchWorker.getMinData()) || !dataDocFim.format().equals(SearchWorker.getMaxData())){
 			if(continue_query == true){
 				query += " AND ";
 			}
-			query += " data BETWEEN '" + dataDocIni + "' AND '" + dataDocFim + "'";
-			if(dataDocIni.toString().equals(SearchWorker.getMinData()))	query += " OR data IS NULL";
+			query += " (data BETWEEN '" + dataDocIni + "' AND '" + dataDocFim + "')";
 			continue_query = true;
 		}
 		
@@ -244,9 +243,7 @@ public class DocumentEJB {
 			if(continue_query == true){
 				query += " AND ";
 			}
-			query += "(palavraChave1.palavra LIKE '%" + palavraChave1 + "%'";
-			query += "OR palavraChave2.palavra LIKE '%" + palavraChave1 + "%'";
-			query += "OR palavraChave3.palavra LIKE '%" + palavraChave1 + "%')";
+			query += "palavraChave1.palavra = '" + palavraChave1 + "'";
 			continue_query = true;
 		}
 
@@ -254,9 +251,7 @@ public class DocumentEJB {
 			if(continue_query == true){
 				query += " AND ";
 			}
-			query += "(palavraChave1.palavra LIKE '%" + palavraChave2 + "%'";
-			query += "OR palavraChave2.palavra LIKE '%" + palavraChave2 + "%'";
-			query += "OR palavraChave3.palavra LIKE '%" + palavraChave2 + "%')";
+			query += "palavraChave2.palavra = '" + palavraChave2 + "'";
 			continue_query = true;
 		}
 
@@ -264,9 +259,7 @@ public class DocumentEJB {
 			if(continue_query == true){
 				query += " AND ";
 			}
-			query += "(palavraChave1.palavra LIKE '%" + palavraChave3 + "%'";
-			query += "OR palavraChave2.palavra LIKE '%" + palavraChave3 + "%'";
-			query += "OR palavraChave3.palavra LIKE '%" + palavraChave3 + "%')";
+			query += "palavraChave3.palavra = '" + palavraChave3 + "'";
 			continue_query = true;
 		}
 		
@@ -275,6 +268,9 @@ public class DocumentEJB {
 		}
 		
 		query += " ORDER BY codiceCaixa.cod, cod, titulo ";
+		
+		System.out.println(query); // Debug
+		
 		return docDao.findDocumentByQuery(query);
 	}
 	
