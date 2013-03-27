@@ -269,7 +269,7 @@ public class DocumentEJB {
 		
 		query += " ORDER BY codiceCaixa.cod, cod, titulo ";
 		
-		System.out.println(query); // Debug
+//		System.out.println(query); // Debug
 		
 		return docDao.findDocumentByQuery(query);
 	}
