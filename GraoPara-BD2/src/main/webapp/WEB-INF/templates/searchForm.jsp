@@ -206,7 +206,7 @@
 		
 			<select class="inputKey" name="chave2" id="chave2">
 				<option value="">Nenhuma</option>
-				<%=WebUtility.printSelectKeyWords(request, "chave2", "Autores")%>
+				<%=WebUtility.printSelectKeyWords(request, "chave2", "Atores")%>
 			</select>	
 					
 			<select class="inputKey" name="chave3" id="chave3">
