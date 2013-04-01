@@ -196,7 +196,7 @@ public class DocumentEJB {
 			if(continue_query == true){
 				query += " AND ";
 			}
-			query += " cod LIKE '" + (tipoCodDocumento != null && !tipoCodDocumento.isEmpty() ? tipoCodDocumento + "-" : "%") + codDocumento + "%'";
+			query += " cod LIKE '" + (tipoCodDocumento != null && !tipoCodDocumento.isEmpty() ? tipoCodDocumento + "-" : "%") + String.format("%04d", Integer.parseInt(codDocumento)) + "%'";
 			continue_query = true;
 		}
 		else if(tipoCodDocumento != null && !tipoCodDocumento.isEmpty()){

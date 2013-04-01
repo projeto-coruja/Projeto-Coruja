@@ -42,7 +42,7 @@ public class SearchWorker {
 		String codCodiceCaixaAte = request.getParameter("codAte");
 		String anoInicioCodiceCaixa = request.getParameter("epocaDe");
 		String anoFimCodiceCaixa = request.getParameter("epocaAte");
-		
+
 		String tipoCodDocumento = request.getParameter("tipoDaIdentificacao");
 		String codDocumento = request.getParameter("numDaIdentificacao");
 		
