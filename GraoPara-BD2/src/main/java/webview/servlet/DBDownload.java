@@ -31,7 +31,7 @@ public class DBDownload extends HttpServlet {
 		OutputStream out = null;
 		File f = null;
 		
-		String filePath = new DBImportExport().export();
+		String filePath =  DBImportExport.export();
 		
 		try {
 			f = new File(filePath);

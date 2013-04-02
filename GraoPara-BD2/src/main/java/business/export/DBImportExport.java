@@ -9,7 +9,7 @@ public class DBImportExport {
 
 	private static final String tmp = "/tmp";
 
-	public String export(){
+	public static String export(){
 		
 		ProcessBuilder pb;  
 		Process p;  
@@ -21,7 +21,7 @@ public class DBImportExport {
 		date = new Date();
 		
 		filepath = tmp+"/"+dateFormat.format(date)+".sql";
-		pb = new ProcessBuilder("pg_dump ", "-i", "-h", "localhost", "-p", "5432","-U", "coruja_graopara", "-b", "-v" ,"-f", filepath, "coruja_graopara");  //  "-F", "c",
+		pb = new ProcessBuilder("pg_dump ", "-i", "-h", "localhost", "-p", "5432","-U", "coruja_graopara", "-b", "-F", "c", "-v" ,"-f", filepath, "coruja_graopara"); 
 		pb.environment().put("PGPASSWORD", "coruja");  
 		pb.redirectErrorStream(true);
 		
