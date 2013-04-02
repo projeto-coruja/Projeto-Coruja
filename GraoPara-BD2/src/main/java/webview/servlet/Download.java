@@ -126,6 +126,7 @@ public class Download extends HttpServlet {
 			while((read = in.read(bytes)) != -1){
 				out.write(bytes,0,read);
 			}
+			
 			in.close();
 			out.flush();
 			out.close();

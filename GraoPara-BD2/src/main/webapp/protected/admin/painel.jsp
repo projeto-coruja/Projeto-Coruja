@@ -48,11 +48,14 @@
 				<h1>Painel de Controle</h1>	
 				
 				<!-- Formulario para alterar senha -->
-				<form id="signupform" autocomplete="off" action="/GraoPara/doChangesToAccount?action=editPassword" method="post">
+				<form id="signupform" autocomplete="off" action="/GraoPara/doChangesToAccount?action=editPassword" method="post" style="width: 350px; float: left;">
 					<%@include file="/WEB-INF/templates/newPasswordForm.jsp"%>
-				</form><br><br>
-	
-				<div id="tabsPainel" class="tableForms">
+				</form>
+				<form id="signupform" action="/GraoPara/protected/admin/doDBDownload" style="width: 200px; margin: 30px 0px 0px 590px;">
+					<input class="buttonRegistrar" id="signupsubmit" name="Alterar" type="submit" value="Fazer Backup do Banco de Dados" style="width:200px" />
+				</form>
+				<br><br>
+				<div id="tabsPainel" class="tableForms" style="float:left;">
 					<ul>
 						<li><a href="#tab1"><span Style="font-size:small;">Novos Usuários</span></a></li>
 						<li><a href="#tab2"><span Style="font-size:small;">Todos os Usuários</span></a></li>
