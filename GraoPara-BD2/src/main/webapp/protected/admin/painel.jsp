@@ -51,8 +51,8 @@
 				<form id="signupform" autocomplete="off" action="/GraoPara/doChangesToAccount?action=editPassword" method="post" style="width: 350px; float: left;">
 					<%@include file="/WEB-INF/templates/newPasswordForm.jsp"%>
 				</form>
-				<form id="signupform" action="/GraoPara/protected/admin/doDBDownload" style="width: 200px; margin: 30px 0px 0px 590px;">
-					<input class="buttonRegistrar" id="signupsubmit" name="Alterar" type="submit" value="Fazer Backup do Banco de Dados" style="width:200px" />
+				<form id="signupform" action="/GraoPara/protected/admin/doDBDownload" style="width: 200px; margin: 30px 0px 0px 560px;">
+					<input class="buttonRegistrar" id="signupsubmit" name="Alterar" type="submit" value="Fazer Backup do Banco de Dados" style="width:230px" />
 				</form>
 				<br><br>
 				<div id="tabsPainel" class="tableForms" style="float:left;">

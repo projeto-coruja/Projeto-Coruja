@@ -31,6 +31,7 @@ public class SpreadsheetExport {
 		tmpPath = "/tmp"; // Jboss
 	}
 	@SuppressWarnings("unused")
+	@Deprecated
 	private static double getStringWidth(String s){
 		Font font = new Font("Arial", Font.PLAIN, 10);  
         FontMetrics metrics = new FontMetrics(font) {

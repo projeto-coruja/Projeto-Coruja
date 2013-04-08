@@ -115,7 +115,7 @@ public class Download extends HttpServlet {
 			filePath = SpreadsheetExport.generateSpreadsheet(resultSet);	
 
 			File f = new File(filePath);
-			response.setHeader("Content-Disposition", "attachment;filename=\""+ filePath +"\"");
+			response.setHeader("Content-Disposition", "attachment;filename=\""+ filePath.split("/")[2] +"\"");
 			response.setContentLength((int) f.length());
 			response.setContentType("application/ods");
 			in = new FileInputStream(f);

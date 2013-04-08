@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import business.export.DBImportExport;
+import business.export.DataBaseExport;
 
 @WebServlet("/protected/admin/doDBDownload")
 public class DBDownload extends HttpServlet {
@@ -31,13 +31,13 @@ public class DBDownload extends HttpServlet {
 		OutputStream out = null;
 		File f = null;
 		
-		String filePath =  DBImportExport.export();
+		String filePath =  DataBaseExport.export();
 		
 		try {
 			f = new File(filePath);
-			response.setHeader("Content-Disposition", "attachment;filename=\""+ filePath +"\"");
+			response.setHeader("Content-Disposition", "attachment;filename=\""+ filePath.split("/")[2] +"\"");
 			response.setContentLength((int) f.length());
-			response.setContentType("application/sql");
+			response.setContentType("application/x-tar");
 			in = new FileInputStream(f);
 			out = response.getOutputStream();
 			int read = 0;
