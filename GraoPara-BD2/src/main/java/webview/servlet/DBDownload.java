@@ -48,6 +48,7 @@ public class DBDownload extends HttpServlet {
 			in.close();
 			out.flush();
 			out.close();
+			f.delete();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
