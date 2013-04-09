@@ -731,10 +731,22 @@ span.asterisco {
 	width: 585px;
 }
 
-.tableList,.trList,.tdList {
+.tableResultList {
+	border: 1px solid;
+	text-align: center;
+	width: 685px;
+}
+
+.tdResultCenterList{
+	border: 1px solid;
+	width: 320px;
+}
+
+.tableList,.trList,.tdList,.tableResultList,.tdResultCenterList {
 	border-collapse: collapse;
 	border: 1px solid;
 }
+
 
 /* Banner rules xD */
 .banner {

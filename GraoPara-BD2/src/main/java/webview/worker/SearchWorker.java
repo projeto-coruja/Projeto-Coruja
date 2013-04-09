@@ -124,9 +124,9 @@ public class SearchWorker {
 						out.println("</table>");
 						out.println("<br />");
 					}
-					out.println("<h1 class=\"resultLabel\">" + doc.getCodiceCaixa().getCod().replace("-", " - ") + ": " + doc.getCodiceCaixa().getTitulo() + " ( " + doc.getCodiceCaixa().getAnoInicio() + " - " + doc.getCodiceCaixa().getAnoFim() + ")</h1>");
+					out.println("<h1 class=\"resultLabel\">" + doc.getCodiceCaixa().getCod().replace("-", " - ") + ": " + doc.getCodiceCaixa().getTitulo() + " (" + doc.getCodiceCaixa().getAnoInicio() + " - " + doc.getCodiceCaixa().getAnoFim() + ")</h1>");
 					out.println("<br />");
-					out.println("<table class=\"tableList\">");
+					out.println("<table class=\"tableResultList\">");
 				}
 				else{
 					out.println("<tr class=\"trList\">");
@@ -135,8 +135,8 @@ public class SearchWorker {
 				}
 				out.println("<tr class=\"trList\">");
 				out.println("<td class=\"tdList\" rowspan=\"5\"><label class=\"labelExibe\">"+ codDoc[0] + "<br />" +  codDoc[1] + "</label></td>");
-				out.println("<td class=\"tdList\" ><label class=\"labelExibe\">" + doc.getTipoDocumento().getNome() + "</label></td>");
-				out.println("<td class=\"tdList\" ><label class=\"labelExibe\">" + doc.getLocal() + "</label></td>");
+				out.println("<td class=\"tdResultCenterList\" ><label class=\"labelExibe\">" + doc.getTipoDocumento().getNome() + "</label></td>");
+				out.println("<td class=\"tdResultCenterList\" ><label class=\"labelExibe\">" + doc.getLocal() + "</label></td>");
 				out.println("<td class=\"tdList\" rowspan=\"5\"><label class=\"labelExibe\">"+ 
 						(doc.getUrl() != null && !doc.getUrl().equals("") ? "<a href=\"" + doc.getUrl() + "\">URL</a>" : "" ));
 				if(c_status != null && c_status.equals(AuthBean.LoginSuccessAdmin)){
@@ -153,16 +153,16 @@ public class SearchWorker {
 				out.println("</label></td>");
 				out.println("</tr>");
 				out.println("<tr class=\"trList\">");
-				out.println("<td class=\"tdList\" ><label class=\"labelExibe\">" + doc.getAutor().getNome() + "</label></td>");
-				out.println("<td class=\"tdList\" ><label class=\"labelExibe\">" + doc.getAutor().getOcupacao() + "</label></td>");
+				out.println("<td class=\"tdResultCenterList\" ><label class=\"labelExibe\">" + doc.getAutor().getNome() + "</label></td>");
+				out.println("<td class=\"tdResultCenterList\" ><label class=\"labelExibe\">" + doc.getAutor().getOcupacao() + "</label></td>");
 				out.println("</tr>");
 				out.println("<tr class=\"trList\">");
-				out.println("<td class=\"tdList\" ><label class=\"labelExibe\">" + doc.getDestinatario().getNome() + "</label></td>");
-				out.println("<td class=\"tdList\" ><label class=\"labelExibe\">" + doc.getDestinatario().getOcupacao() + "</label></td>");
+				out.println("<td class=\"tdResultCenterList\" ><label class=\"labelExibe\">" + doc.getDestinatario().getNome() + "</label></td>");
+				out.println("<td class=\"tdResultCenterList\" ><label class=\"labelExibe\">" + doc.getDestinatario().getOcupacao() + "</label></td>");
 				out.println("</tr>");
 				out.println("<tr class=\"trList\">");
-				out.println("<td class=\"tdList\" ><label class=\"labelExibe\">" + (doc.getData() != null ? doc.getData().format() : "Sem data.") + "</label></td>");
-				out.println("<td class=\"tdList\" ><label class=\"labelExibe\">" + 
+				out.println("<td class=\"tdResultCenterList\" ><label class=\"labelExibe\">" + (doc.getData() != null ? doc.getData().format() : "Sem data.") + "</label></td>");
+				out.println("<td class=\"tdResultCenterList\" ><label class=\"labelExibe\">" + 
 						(doc.getPalavraChave1() != null ? doc.getPalavraChave1().getPalavra() : "") +
 						(doc.getPalavraChave2() != null ? (doc.getPalavraChave1() != null ? " - " : "") + doc.getPalavraChave2().getPalavra() + "  " : "") +
 						(doc.getPalavraChave3() != null ? (doc.getPalavraChave1() != null || doc.getPalavraChave2() != null ? " - " : "") + doc.getPalavraChave3().getPalavra() + "  " : "") +
