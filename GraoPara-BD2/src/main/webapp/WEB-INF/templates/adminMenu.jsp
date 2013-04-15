@@ -55,6 +55,7 @@
 			<ul class="nav" id="menu">
 				<li><a class="borderTop" href="tutorialPesquisa.jsp">Como Pesquisar no Acervo</a>
 				<li><a href="sobre.jsp">Sobre</a></li>
+				<li><a href="contato.jsp">Contato</a></li>
 				<li><a href="creditos.jsp">Créditos</a></li>
 			</ul>
 		</article>

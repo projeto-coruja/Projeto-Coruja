@@ -130,7 +130,7 @@ public class DocumentEJB {
 			if(continue_query == true){
 				query += " AND ";
 			}
-			query += " codiceCaixa.titulo LIKE '%" + tituloCodiceCaixa + "%'";
+			query += " "+getQueryNormalization("codiceCaixa.titulo")+" LIKE "+getQueryNormalization("'%" + tituloCodiceCaixa + "%'");
 			continue_query = true;
 		}
 		
@@ -164,7 +164,8 @@ public class DocumentEJB {
 			if(continue_query == true){
 				query += " AND ";
 			}
-			query += " autor.nome LIKE '%" + autor + "%'";
+
+			query += " "+getQueryNormalization("autor.nome")+" LIKE "+getQueryNormalization("'%" + autor + "%'");
 			continue_query = true;
 		}
 		
@@ -172,7 +173,7 @@ public class DocumentEJB {
 			if(continue_query == true){
 				query += " AND ";
 			}
-			query += " autor.ocupacao LIKE '%" + ocupacaoAutor + "%'";
+			query += " "+getQueryNormalization("autor.ocupacao")+" LIKE "+getQueryNormalization("'%" + ocupacaoAutor + "%'");
 			continue_query = true;
 		}
 
@@ -180,7 +181,7 @@ public class DocumentEJB {
 			if(continue_query == true){
 				query += " AND ";
 			}
-			query += " destinatario.nome LIKE '%" + destinatario + "%'";
+			query += " "+getQueryNormalization("destinatario.nome")+" LIKE "+getQueryNormalization("'%" + destinatario + "%'");
 			continue_query = true;
 		}
 		
@@ -188,7 +189,7 @@ public class DocumentEJB {
 			if(continue_query == true){
 				query += " AND ";
 			}
-			query += " destinatario.ocupacao LIKE '%" + ocupacaoDestinatario + "%'";
+			query += " "+getQueryNormalization("destinatario.ocupacao")+" LIKE "+getQueryNormalization("'%" + ocupacaoDestinatario + "%'");
 			continue_query = true;
 		}
 		
@@ -211,7 +212,7 @@ public class DocumentEJB {
 			if(continue_query == true){
 				query += " AND ";
 			}
-			query += " local LIKE '%" + local + "%'";
+			query += " "+getQueryNormalization("local")+" LIKE "+getQueryNormalization("'%" + local + "%'");
 			continue_query = true;
 		}
 		
@@ -219,7 +220,7 @@ public class DocumentEJB {
 			if(continue_query == true){
 				query += " AND ";
 			}
-			query += " resumo LIKE '%" + resumo + "%'";
+			query += " "+getQueryNormalization("resumo")+" LIKE "+getQueryNormalization("'%" + resumo + "%'");
 			continue_query = true;
 		}
 		
@@ -647,6 +648,10 @@ public class DocumentEJB {
 	
 	private boolean isInit(String s) {
 		return s != null && !s.isEmpty();
+	}
+	
+	private String getQueryNormalization(String var){
+		return "LOWER(TRANSLATE("+var+",'áàãâäÁÀÃÂÄéèêëÉÈÊËíìîïÍÌÎÏóòõôöÓÒÕÔÖúùûüÚÙÛÜñÑçÇÿýÝ','aaaaaAAAAAeeeeEEEEiiiiIIIIoooooOOOOOuuuuUUUUnNcCyyY'))";
 	}
 	
 }

@@ -51,6 +51,7 @@
 			<ul class="nav" id="menu">
 				<li><a class="borderTop" href="/GraoPara/protected/user/tutorialPesquisa.jsp">Como Pesquisar no Acervo</a></li>
 				<li><a href="/GraoPara/protected/user/sobre.jsp">Sobre</a></li>
+				<li><a href="/GraoPara/protected/user/contato.jsp">Contato</a></li>
 				<li><a href="/GraoPara/protected/user/creditos.jsp">Créditos</a></li>
 			</ul>
 		</article>
