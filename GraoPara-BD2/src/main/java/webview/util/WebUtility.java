@@ -448,7 +448,7 @@ public final class WebUtility {
 				else
 					result += "<option value=\"" + tipoDoc + "\">" + tipoDoc + " - " + ((TipoDocumento) d).getDescricao() + "</option> ";
 
-				if(c_status.equals(AuthBean.LoginSuccessUserLevel2) || c_status.equals(AuthBean.LoginSuccessAdmin))
+				if((c_status != null && c_status.equals(AuthBean.LoginSuccessUserLevel2)) || (c_status != null && c_status.equals(AuthBean.LoginSuccessAdmin)))
 					result += "<option value=\"newDocType\" >Nova entrada</option>";
 			}
 		} catch (UnreachableDataBaseException e) {
@@ -514,7 +514,7 @@ public final class WebUtility {
 				else
 					result += "<option value=\"" + key + "\">" + key + "</option> ";
 			}
-			if(c_status.equals(AuthBean.LoginSuccessUserLevel2) || c_status.equals(AuthBean.LoginSuccessAdmin))
+			if((c_status != null && c_status.equals(AuthBean.LoginSuccessUserLevel2)) || (c_status != null && c_status.equals(AuthBean.LoginSuccessAdmin)))
 				result += "<option value=\"newKeyWord\">Nova palavra chave</option>";
 		} catch (UnreachableDataBaseException e) {
 			e.printStackTrace();
