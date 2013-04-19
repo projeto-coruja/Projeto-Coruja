@@ -18,12 +18,14 @@ import business.DAO.document.CodiceCaixaDAO;
 import business.DAO.document.DocumentoDAO;
 import business.DAO.document.PalavraChaveDAO;
 import business.DAO.document.TipoDocumentoDAO;
+import business.EJB.user.AuthBean;
 import business.exceptions.documents.AuthorNotFoundException;
 import business.exceptions.documents.CodiceCaixaNotFoundException;
 import business.exceptions.documents.DocumentNotFoundException;
 import business.exceptions.documents.DocumentTypeNotFoundException;
 import business.exceptions.documents.DuplicatedAuthorException;
 import business.exceptions.documents.KeywordNotFoundException;
+import business.exceptions.documents.ThemeNotFoundException;
 import business.exceptions.login.UnreachableDataBaseException;
 
 public class DocumentEJB {
@@ -303,7 +305,9 @@ public class DocumentEJB {
 			// Palavra chave 2
 			String palavraChave2,
 			// Palavra chave 3
-			String palavraChave3) throws UnreachableDataBaseException, IllegalArgumentException{
+			String palavraChave3,
+			// Nível de permissão do usuário
+			String c_status) throws UnreachableDataBaseException, IllegalArgumentException{
 
 		List<DTO> check;
 		CodiceCaixaDAO codiceCaixaDAO = new CodiceCaixaDAO();
@@ -355,11 +359,14 @@ public class DocumentEJB {
 						palavraChave[0] = (PalavraChave) dto;
 				}
 			} catch (KeywordNotFoundException e1) {
-				throw new IllegalArgumentException("Palavra-chave inexistente");
-				/*palavraChave[0] = palavraChaveDAO.addKeyWord(
-								palavraChave1,
-								temaPalavraChave1
-								);*/
+				if(c_status.equals(AuthBean.LoginSuccessUserLevel2) || c_status.equals(AuthBean.LoginSuccessAdmin)){
+					try {
+						palavraChave[0] = palavraChaveDAO.addKeyWord(palavraChave1, "Ação");
+					} catch (ThemeNotFoundException e) {
+						e.printStackTrace();
+					}
+				}
+				
 			}
 		}
 
@@ -372,10 +379,13 @@ public class DocumentEJB {
 						palavraChave[1] = (PalavraChave) dto;
 				}
 			} catch (KeywordNotFoundException e1) {
-				/*palavraChave[1] = palavraChaveDAO.addKeyWord(
-								palavraChave2,
-								temaPalavraChave2
-								);*/
+				if(c_status.equals(AuthBean.LoginSuccessUserLevel2) || c_status.equals(AuthBean.LoginSuccessAdmin)){
+					try {
+						palavraChave[1] = palavraChaveDAO.addKeyWord(palavraChave2, "Atores");
+					} catch (ThemeNotFoundException e) {
+						e.printStackTrace();
+					}
+				}
 			}
 		}
 
@@ -388,10 +398,13 @@ public class DocumentEJB {
 						palavraChave[2] = (PalavraChave) dto;
 				}
 			} catch (KeywordNotFoundException e1) {
-				/*palavraChave[2] = palavraChaveDAO.addKeyWord(
-								palavraChave3,
-								temaPalavraChave3
-								);*/
+				if(c_status.equals(AuthBean.LoginSuccessUserLevel2) || c_status.equals(AuthBean.LoginSuccessAdmin)){
+					try {
+						palavraChave[2] = palavraChaveDAO.addKeyWord(palavraChave3, "Instituição");
+					} catch (ThemeNotFoundException e) {
+						e.printStackTrace();
+					}
+				}
 			}
 		}
 		

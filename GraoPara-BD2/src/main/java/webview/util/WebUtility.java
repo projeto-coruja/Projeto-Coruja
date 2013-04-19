@@ -428,6 +428,16 @@ public final class WebUtility {
 		TipoDocumentoDAO dtd = new TipoDocumentoDAO();
 		String result = "";
 		String tipoDoc = null;
+
+		String c_status = null;
+		
+		if(request.getCookies().length > 1){
+			try{
+				c_status = WebUtility.selectCookie(request.getCookies(), WebUtility.cookie_status).getValue();
+			} catch(NullPointerException e){
+				c_status = null;
+			}
+		}
 		try {
 			List<DTO> list = dtd.findAllDocumentTypes();
 			result = "<option value=\"\">Selecione...</option> ";
@@ -437,6 +447,9 @@ public final class WebUtility {
 					result += "<option selected value=\"" + tipoDoc + "\">" + tipoDoc + " - " + ((TipoDocumento) d).getDescricao() + "</option> ";
 				else
 					result += "<option value=\"" + tipoDoc + "\">" + tipoDoc + " - " + ((TipoDocumento) d).getDescricao() + "</option> ";
+
+				if(c_status.equals(AuthBean.LoginSuccessUserLevel2) || c_status.equals(AuthBean.LoginSuccessAdmin))
+					result += "<option value=\"newDocType\" >Nova entrada</option>";
 			}
 		} catch (UnreachableDataBaseException e) {
 			e.printStackTrace();
@@ -482,6 +495,15 @@ public final class WebUtility {
 		String key = null;
 		String a_key = (String) request.getAttribute(key_pos);
 		String p_key = request.getParameter(key_pos);
+		String c_status = null;
+		
+		if(request.getCookies().length > 1){
+			try{
+				c_status = WebUtility.selectCookie(request.getCookies(), WebUtility.cookie_status).getValue();
+			} catch(NullPointerException e){
+				c_status = null;
+			}
+		}
 		try {
 			List<DTO> list = word.findByTheme(tema);
 
@@ -492,6 +514,8 @@ public final class WebUtility {
 				else
 					result += "<option value=\"" + key + "\">" + key + "</option> ";
 			}
+			if(c_status.equals(AuthBean.LoginSuccessUserLevel2) || c_status.equals(AuthBean.LoginSuccessAdmin))
+				result += "<option value=\"newKeyWord\">Nova palavra chave</option>";
 		} catch (UnreachableDataBaseException e) {
 			e.printStackTrace();
 		} catch (KeywordNotFoundException e) {

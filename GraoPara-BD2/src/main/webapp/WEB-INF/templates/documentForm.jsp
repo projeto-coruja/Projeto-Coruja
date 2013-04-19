@@ -124,7 +124,7 @@
 	<tr>
 		<td class="field">
 			<!-- Pegar do Banco de dados os tipos e, caso o usuario selecione outro, exibir campo para cadastrar outro tipo -->
-			<select class="inputLong" name="tipoDoc" id="tipoDoc">
+			<select class="inputLong" name="tipoDoc" id="tipoDoc" onchange="changeToInput(this)">
 				<%=WebUtility.printSelectTipoDoc(request)%>
 			</select>
 		</td>
@@ -162,17 +162,17 @@
 <table class="tableFormsKey">
 	<tr>		
 		<td class="field">
-			<select class="inputKey" name="chave1" id="chave1">
+			<select class="inputKey" name="chave1" id="chave1" onchange="changeToInput(this)">
 				<option value="">Nenhuma</option>
 				<%=WebUtility.printSelectKeyWords(request, "chave1", "Ação")%>
 			</select>
 		
-			<select class="inputKey" name="chave2" id="chave2">
+			<select class="inputKey" name="chave2" id="chave2" onchange="changeToInput(this)">
 				<option value="">Nenhuma</option>
 				<%=WebUtility.printSelectKeyWords(request, "chave2", "Atores")%>
 			</select>		
 		
-			<select class="inputKey" name="chave3" id="chave3">
+			<select class="inputKey" name="chave3" id="chave3" onchange="changeToInput(this)">
 				<option value="">Nenhuma</option>
 				<%=WebUtility.printSelectKeyWords(request, "chave3", "Instituição")%>
 			</select>

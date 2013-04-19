@@ -1,10 +1,20 @@
 function changeToInput(obj) {
 		check = obj.options[obj.selectedIndex].value;
-		if(check === '') {
+		if(check === 'newKeyWord') {
 			tb = document.createElement('INPUT');
 			tb.type = 'text';
-			tb.value = check;
-			tb.size = 8;
+			tb.value = '';
+			tb.size = 18;
+			tb.name = obj.name;
+			tb.id = obj.id;
+			obj.parentNode.insertBefore(tb, obj);
+			obj.parentNode.removeChild(obj);
+		}
+		if(check === 'newDocType') {
+			tb = document.createElement('INPUT');
+			tb.type = 'text';
+			tb.value = 'Tipo - Descrição';
+			tb.size = 64;
 			tb.name = obj.name;
 			tb.id = obj.id;
 			obj.parentNode.insertBefore(tb, obj);

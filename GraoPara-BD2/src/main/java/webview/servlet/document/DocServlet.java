@@ -56,7 +56,6 @@ public class DocServlet extends HttpServlet {
 		String ocupacaoDestinatario = request.getParameter("destinatarioOcupacao");
 		
 		String tipoDocumento = request.getParameter("tipoDoc");
-		String descricaoDoTipoDocumento = request.getParameter("descricaoTipoDocumento");
 		
 		String palavraChave1 = request.getParameter("chave1");
 		String palavraChave2 = request.getParameter("chave2");
@@ -72,8 +71,26 @@ public class DocServlet extends HttpServlet {
 		String data = null;
 		SimpleDate dataDoc = null;
 
+		String descricaoDoTipoDocumento = null;
 		
 		UserAccount uploader = null;
+		
+		String c_status = null;
+		
+		if(request.getCookies().length > 1){
+			try{
+				c_status = WebUtility.selectCookie(request.getCookies(), WebUtility.cookie_status).getValue();
+			} catch(NullPointerException e){
+				c_status = null;
+			}
+		}
+		
+		if(tipoDocumento.contains("-")){
+			descricaoDoTipoDocumento = tipoDocumento.split("-")[1];
+			tipoDocumento = tipoDocumento.split("-")[0];
+			descricaoDoTipoDocumento = descricaoDoTipoDocumento.trim();
+			tipoDocumento = tipoDocumento.trim();
+		}
 		
 		try {
 			if(isInit(ano)) {
@@ -112,7 +129,8 @@ public class DocServlet extends HttpServlet {
 						descricaoDoTipoDocumento, 
 						palavraChave1,
 						palavraChave2, 
-						palavraChave3);
+						palavraChave3,
+						c_status);
 				AlertsUtility.alertAndRedirectHistory(response, "Documento adicionado com sucesso!");
 			} catch (UnreachableDataBaseException e) {
 				AlertsUtility.alertAndRedirectHistory(response, "Erro no banco de dados! Contate o suporte e tente novamente mais tarde.");
