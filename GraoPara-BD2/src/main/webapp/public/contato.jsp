@@ -6,18 +6,20 @@
 		<title>Grão-Pará</title>
 
 		<!-- Import dos styles CSS -->
-		<link rel="stylesheet" type="text/css"	href="/GraoPara/css/principal.css" />
+		<link rel="stylesheet" type="text/css" href="/GraoPara/css/principal.css" />
 		<link rel="stylesheet" type="text/css" href="/GraoPara/css/tabs.css" />
 		<link rel="stylesheet" type="text/css" href="/GraoPara/css/controle.css" />
 
 		<!-- CSS das validacoes -->
-		<link rel="stylesheet" type="text/css" href="/GraoPara/css/validationEngine.jquery.css" />
+		<link rel="stylesheet" type="text/css" media="screen" href="/GraoPara/css/styleValidation.css" />
 
 		<!-- Import dos javascripts -->
 		<script type="text/javascript" src="/GraoPara/javascript/cookie.js"	charset="utf-8"></script>
+		<script src="/GraoPara/javascript/jquery.js" type="text/javascript"	charset="utf-8"></script>
+		<script src="/GraoPara/javascript/utility.js" type="text/javascript" charset="utf-8"></script>
 	</head>
 
-	<body onloadstart="checkCookie()">
+	<body>
 		<div class="container">
 			<div class="header"></div>
 

@@ -14,6 +14,8 @@
 		<link rel="stylesheet" type="text/css" href="/GraoPara/css/validationEngine.jquery.css" />
 
 		<!-- Import dos javascripts -->
+		<script src="/GraoPara/javascript/jquery.js" type="text/javascript"	charset="utf-8"></script>
+		<script src="/GraoPara/javascript/utility.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript" src="/GraoPara/javascript/cookie.js"	charset="utf-8"></script>
 	</head>
 

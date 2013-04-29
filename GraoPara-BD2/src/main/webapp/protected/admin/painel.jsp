@@ -23,6 +23,7 @@
 		
 		<script src="http://code.jquery.com/jquery-1.8.2.js" type="text/javascript"></script>
 		<script src="http://code.jquery.com/ui/1.9.1/jquery-ui.js" type="text/javascript"></script>
+		<script src="/GraoPara/javascript/utility.js" type="text/javascript" charset="utf-8"></script>
 		
 		<!-- Import dos scripts de validacao de formulario -->
 		<!-- <script src="/GraoPara/javascript/jquery.js" type="text/javascript" charset="utf-8"></script> -->

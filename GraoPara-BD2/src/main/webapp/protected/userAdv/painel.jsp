@@ -25,6 +25,7 @@
 		<script src="/GraoPara/javascript/jquery.js" type="text/javascript"	charset="utf-8"></script>
 		<script src="/GraoPara/javascript/validate.js" type="text/javascript" charset="utf-8"></script>
 		<script src="/GraoPara/javascript/validate_pt_br.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/GraoPara/javascript/utility.js" type="text/javascript" charset="utf-8"></script>
 	</head>
 
 	<body>

@@ -71,6 +71,7 @@ p {
 }
 
 .text {
+	width: 902px;
 	border: 1px none blue;
 	padding-left:3em;
 	padding-right:3em;

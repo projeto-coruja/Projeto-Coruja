@@ -1,5 +1,8 @@
 <div class="legenda">
-	<h1 class="resultLabel">Legenda:</h1>
+	<% String url = request.getRequestURL().toString();
+	if(!url.contains("tutorialPesquisa.jsp"))
+			out.print("<h1 class=\"resultLabel\">Legenda:</h1>");	
+	%>
 	<table class="tableList">
 		<tr class="trList">
 			<td class="tdList" rowspan="5"><label class="labelExibe">Número<br />do<br />documento</label></td>

@@ -3,9 +3,28 @@
 	<tr>
 		<td>
 			<h2>Como realizar pesquisas no acervo</h2>			
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultrices consequat nunc, vitae semper nulla egestas ac. Aliquam viverra mauris at augue iaculis varius. In in pulvinar turpis. Sed pulvinar tincidunt aliquam. Morbi porttitor leo sit amet massa interdum ut vulputate magna fermentum. Quisque volutpat, orci in pretium congue, erat neque rutrum ante, vitae pharetra felis lorem quis urna. Proin quis dui ante, sed faucibus nunc. Duis tempus dui non libero scelerisque id sollicitudin magna accumsan. Quisque elementum pretium purus, mollis sagittis mi blandit at. Sed tristique placerat lobortis. Aliquam id quam non eros faucibus laoreet vel eget sapien. Cras vehicula nunc sem, vel sollicitudin leo. Donec at metus neque. Cras commodo ante vel purus sagittis tempor. Vivamus ullamcorper sollicitudin interdum. Cras massa massa, suscipit a tempor et, malesuada vel mauris.</p>
-			<p>Nullam venenatis nisl in massa mollis eu congue quam facilisis. Sed tempor ipsum sit amet quam commodo vulputate. Etiam eget turpis ipsum. Ut ac lectus nisi, eu feugiat mi. Donec viverra adipiscing lorem eget consectetur. Etiam in fringilla purus. Aliquam erat volutpat..</p>
-			<p>Donec est nisi, euismod sed dapibus nec, vulputate ac nisi. Ut varius luctus ipsum, eget pulvinar tellus rutrum ac. Fusce non diam a nibh aliquet eleifend vel faucibus mi. In porttitor urna ac ante placerat id mollis enim ornare. Nulla fringilla est et libero vehicula vulputate. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Ut auctor, leo et faucibus ultricies, mauris tellus vehicula dolor, eget sodales lacus ante eget erat. Ut vulputate lorem ipsum. Morbi tempus mattis urna, quis tincidunt velit pellentesque vel. Cras sagittis magna quis elit molestie dapibus. Suspendisse non fringilla libero. Cras aliquam, odio at condimentum mollis, nibh lorem pretium tellus, porta aliquet velit sem eu quam. Phasellus vehicula nulla sed risus interdum eu volutpat orci venenatis.</p>
+			<p>A primeira questão que o consulente deve lembrar é que este é um projeto aberto e em construção. 
+			Em razão disso, todos os dias os alunos participantes do projeto acrescentam novos verbetes aos já existentes. 
+			Dessa forma, consultas realizadas em datas diferentes podem trazer resultados distintos. O pesquisador tem como 
+			acompanhar a progressão do trabalho do projeto, visualizando quais foram as caixas e códices já trabalhados. 
+			Para isso, entre na página “pesquisar” e clique no link “Lista de códices/caixas consultáveis”.</p>
+			<p>Para pesquisar os verbetes, entre na página “pesquisar”. Ali há uma série de campos que podem ser preenchidos para efetuar a busca. 
+			O preenchimento dos campos filtra progressivamente os resultados e, portanto, quanto mais campos forem preenchidos mais 
+			específicos serão os resultados. Se o consulente pedir uma pesquisa sem preencher qualquer campo, aparecerão todos os verbetes 
+			já redigidos. Se selecionar a opção “códices”, aparecerão apenas verbetes relacionados a códices. Se além dessa primeira opção, 
+			colocar também o intervalo de códices entre 900 e 902, só os verbetes relacionados aos códices 900, 901 e 902 aparecerão. 
+			Se somadas a essas seleções, também preencher o campo “autor do documento” com a palavra “Burgos”, o resultado da pesquisa 
+			trará apenas verbetes dos códices 900, 901 e 902 que tem documentos escritos por alguma pessoa que tem em seu nome a palavra “Burgos”. 
+			Não é necessário escrever o nome inteiro do autor e tampouco se preocupar com as letras maiúsculas ou minúsculas. No caso do preenchimento 
+			do campo data, o consulente deve saber que não aparecerão os verbetes sem data identificável, mesmo que correspondam a outros campos da busca. 
+			Uma vez feita a pesquisa, os resultados apareceram na tela, separados por códice e em ordem crescente do número dos documentos, no seguinte formato:</p>  
+			<br/>
+			<%@include file="/WEB-INF/templates/searchCaption.jsp" %><br/>
+			<p>Nessa mesma tela, na extremidade superior, o pesquisador pode solicitar que sua busca gere uma planilha com os resultados obtidos. 
+			Para isto basta clicar no link “Download Pesquisa”. A planilha será criada no programa LibreOffice, que é um software livre. 
+			Caso você não tenha esse software, ao lado do link “Download Pesquisa” está o link “Baixar o LibreOffice”. Recomenda-se que você grave 
+			a planilha no seu disco rígido, pois isso permitirá, além da sua cópia, futuras formatações da mesma. Se a planilha for apenas aberta 
+			não será possível gravá-la e tampouco fazer modificações.</p>
 		</td>
 	</tr>
 </table>

@@ -10,6 +10,10 @@
 		<link rel="stylesheet" type="text/css" href="/GraoPara/css/principal.css" />
 		<link rel="stylesheet" type="text/css" href="/GraoPara/css/tabs.css" />
 		<link rel="stylesheet" type="text/css" href="/GraoPara/css/controle.css" />
+		
+		<!-- Import dos javascripts -->
+		<script src="/GraoPara/javascript/jquery.js" type="text/javascript"	charset="utf-8"></script>
+		<script src="/GraoPara/javascript/utility.js" type="text/javascript" charset="utf-8"></script>
 	</head>
 
 	<body>

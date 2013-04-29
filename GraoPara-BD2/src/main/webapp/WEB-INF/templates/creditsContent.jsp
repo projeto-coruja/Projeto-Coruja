@@ -3,9 +3,34 @@
 	<tr>
 		<td>
 			<h2>Créditos</h2>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultrices consequat nunc, vitae semper nulla egestas ac. Aliquam viverra mauris at augue iaculis varius. In in pulvinar turpis. Sed pulvinar tincidunt aliquam. Morbi porttitor leo sit amet massa interdum ut vulputate magna fermentum. Quisque volutpat, orci in pretium congue, erat neque rutrum ante, vitae pharetra felis lorem quis urna. Proin quis dui ante, sed faucibus nunc. Duis tempus dui non libero scelerisque id sollicitudin magna accumsan. Quisque elementum pretium purus, mollis sagittis mi blandit at. Sed tristique placerat lobortis. Aliquam id quam non eros faucibus laoreet vel eget sapien. Cras vehicula nunc sem, vel sollicitudin leo. Donec at metus neque. Cras commodo ante vel purus sagittis tempor. Vivamus ullamcorper sollicitudin interdum. Cras massa massa, suscipit a tempor et, malesuada vel mauris.</p>
-			<p>Nullam venenatis nisl in massa mollis eu congue quam facilisis. Sed tempor ipsum sit amet quam commodo vulputate. Etiam eget turpis ipsum. Ut ac lectus nisi, eu feugiat mi. Donec viverra adipiscing lorem eget consectetur. Etiam in fringilla purus. Aliquam erat volutpat..</p>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultrices consequat nunc, vitae semper nulla egestas ac. Aliquam viverra mauris at augue iaculis varius. In in pulvinar turpis. Sed pulvinar tincidunt aliquam. Morbi porttitor leo sit amet massa interdum ut vulputate magna fermentum. Quisque volutpat, orci in pretium congue, erat neque rutrum ante, vitae pharetra felis lorem quis urna. Proin quis dui ante, sed faucibus nunc. Duis tempus dui non libero scelerisque id sollicitudin magna accumsan. Quisque elementum pretium purus, mollis sagittis mi blandit at. Sed tristique placerat lobortis. Aliquam id quam non eros faucibus laoreet vel eget sapien. Cras vehicula nunc sem, vel sollicitudin leo. Donec at metus neque. Cras commodo ante vel purus sagittis tempor. Vivamus ullamcorper sollicitudin interdum. Cras massa massa, suscipit a tempor et, malesuada vel mauris.</p>
+			Universidade Federal de São Paulo<br />
+			Reitora: Profa. Dra. Soraya Soubhi Smaili<br/>
+			Vice-reitora: Profa. Dra. Valeria Petri<br />
+			<br />
+			Departamento de História<br />
+			Chefe: Profa. Dra. Maria Rita Toledo<br />
+			Vice-chefe: Prof. Dr. André Roberto de A. Machado<br />
+			<br />
+			Centro de Memória e Pesquisa História <br />
+			Coordenadora: Profa. Dra. Márcia Eckert Miranda<br />
+			Vice-coordenador: Prof. Dr. Jaime Rodrigues<br />
+			<br />
+			Documentos do Grão-Pará: 1800-1850<br />
+			Coordenador Geral do Projeto: Prof. Dr. André Roberto de Arruda Machado (UNIFESP)<br />
+			Coordenadores locais: Prof. Ms. Adilson Júnior Ishihara Brito (UFPA),<br/>
+			Prof. Ms. Carlos Augusto Bastos (UNIFAP), Prof. Ms. Siméia de Nazaré Lopes (UNIFAP)<br />
+			Redação dos Verbetes: Bruna Valença Mallorga (UNIFESP), Evelyn Ariane Lauro (UNIFESP), <br/>
+			Lucas Alves de Araújo (UNIFESP), Samuel Rocha Ferreira (UNIFESP)<br />
+			<br />
+			Programação do Banco de Dados<br />
+			Coordenador Geral: Prof. Dr. Arlindo Flavio da Conceição (UNIFESP)<br />
+			Supervisão: Henrique Palaver Dallago <br />
+			Programadores: COMPLETAR COM OS DADOS DE VOCÊS<br />
+			Arte da imagem na Home Page: COMPLETAR COM OS DADOS DE VOCÊS<br />
+			<br />
+			<br />			
+			
+			Este projeto recebeu financiamento do CNPq, da FAP-UNIFESP e da FAPESP. <br />
 		</td>
 	</tr>
 </table>

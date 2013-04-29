@@ -21,6 +21,8 @@
 		<script type="text/javascript" src="/GraoPara/javascript/cookie.js" charset="utf-8"></script>
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" charset="utf-8"></script>	
 		<script type="text/javascript" src="/GraoPara/javascript/confirmBox.js" charset="utf-8"></script>
+		<script src="/GraoPara/javascript/jquery.js" type="text/javascript"	charset="utf-8"></script>
+		<script src="/GraoPara/javascript/utility.js" type="text/javascript" charset="utf-8"></script>
 	</head>
 
 	<body onloadstart="checkCookie()">

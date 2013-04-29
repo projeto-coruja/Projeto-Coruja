@@ -16,6 +16,8 @@
 		<script type="text/javascript" src="/GraoPara/javascript/cookie.js" charset="utf-8"></script>
 		
 		<script type="text/javascript" src="/GraoPara/javascript/confirmBox.js" charset="utf-8"></script>
+		<script src="/GraoPara/javascript/jquery.js" type="text/javascript"	charset="utf-8"></script>
+		<script src="/GraoPara/javascript/utility.js" type="text/javascript" charset="utf-8"></script>
 		
 	</head>
 
