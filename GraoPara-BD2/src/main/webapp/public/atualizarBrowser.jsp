@@ -12,6 +12,16 @@
 
 		<link type="text/css" href="/GraoPara/css/ie.css" rel="stylesheet" />
 		<style type="text/css">
+			.content2{
+				padding: 0 0 0 175px;
+			}
+			.download{
+				margin: 0 0 0 -20px;
+			}
+			p{
+				text-align: center;
+				text-indent: 1em;
+			}
 			a:link {
 				text-decoration: none;
 			}
@@ -36,30 +46,32 @@
 
 			<div class="content2" id="content">
 				<div class="browser">
-					<h2>Navegador Desatualizado!</h2>
+					<h2>Navegador Incompatível!</h2>
 					<p>
-						Seu navegador está desatualizado. Sugerimos o Download de um dos navegadores abaixo.
+						Seu navegador não é compatível com o nosso site. <br/>Para a visualização do site, será necessário o download de um dos navegadores abaixo.
 						<br />
 					</p>
 
-					<!-- Downloads de navegadores -->
-					<a href="http://www.google.com/chrome/?hl=pt_BR">
-						<img src="/GraoPara/images/chrome.png" alt="Chrome" />
-						<br />
-						Download do Google Chrome
-					</a>
-
-					<a href="http://www.mozilla.com/firefox/">
-						<img src="/GraoPara/images/firefox.png" alt="Firefox" />
-						<br />
-						Download do Firefox
-					</a>
-
-					<a href="http://www.apple.com/safari/download/">
-						<img src="/GraoPara/images/safari.png" alt="Safari" />
-						<br />
-						Download do Safari
-					</a>
+					<div class="download">
+						<!-- Downloads de navegadores -->
+						<a style="margin: 10px 20px 30px 40px;" href="http://www.google.com/chrome/?hl=pt_BR">
+							<img src="/GraoPara/images/chrome.png" alt="Chrome" />
+							<br />
+							Download do Google Chrome
+						</a>
+	
+						<a style="margin: 10px 20px 30px 40px;" href="http://www.mozilla.com/firefox/">
+							<img src="/GraoPara/images/firefox.png" alt="Firefox" />
+							<br />
+							Download do Mozilla Firefox
+						</a>
+	
+						<a style="margin: 10px 20px 30px 40px;" href="http://www.apple.com/safari/download/">
+							<img src="/GraoPara/images/safari.png" alt="Safari" />
+							<br />
+							Download do Safari
+						</a>
+					</div>
 				</div>
 			</div>
 

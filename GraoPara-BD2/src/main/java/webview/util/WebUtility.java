@@ -447,10 +447,9 @@ public final class WebUtility {
 					result += "<option selected value=\"" + tipoDoc + "\">" + tipoDoc + " - " + ((TipoDocumento) d).getDescricao() + "</option> ";
 				else
 					result += "<option value=\"" + tipoDoc + "\">" + tipoDoc + " - " + ((TipoDocumento) d).getDescricao() + "</option> ";
-
-				if((c_status != null && c_status.equals(AuthBean.LoginSuccessUserLevel2)) || (c_status != null && c_status.equals(AuthBean.LoginSuccessAdmin)))
-					result += "<option value=\"newDocType\" >Nova entrada</option>";
 			}
+			if((c_status != null && c_status.equals(AuthBean.LoginSuccessUserLevel2)) || (c_status != null && c_status.equals(AuthBean.LoginSuccessAdmin)) && request.getRequestURL().toString().contains("cadastroDocumentos.jsp"))
+				result += "<option value=\"newDocType\" >Nova entrada</option>";
 		} catch (UnreachableDataBaseException e) {
 			e.printStackTrace();
 		} catch (DocumentTypeNotFoundException e) {
@@ -514,7 +513,7 @@ public final class WebUtility {
 				else
 					result += "<option value=\"" + key + "\">" + key + "</option> ";
 			}
-			if((c_status != null && c_status.equals(AuthBean.LoginSuccessUserLevel2)) || (c_status != null && c_status.equals(AuthBean.LoginSuccessAdmin)))
+			if((c_status != null && c_status.equals(AuthBean.LoginSuccessUserLevel2)) || (c_status != null && c_status.equals(AuthBean.LoginSuccessAdmin)) && request.getRequestURL().toString().contains("cadastroDocumentos.jsp"))
 				result += "<option value=\"newKeyWord\">Nova palavra chave</option>";
 		} catch (UnreachableDataBaseException e) {
 			e.printStackTrace();

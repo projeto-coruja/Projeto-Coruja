@@ -145,9 +145,7 @@ public class SearchWorker {
 					+ "\">"
 					+ "<img src=\"/GraoPara/images/edit.png\" title=\"Editar\" alt=\"Editar\"/></a> "
 					+ "<br>"
-					+ "<a href=\"/GraoPara/protected/admin/removeDoc?"
-					+"codigo=" + doc.getCod()
-					+ "\">"
+					+ "<a href=\"javascript:confirmAction('Você tem certeza que quer deletar o documento selecionado?','/GraoPara/protected/admin/removeDoc?codigo=" + doc.getCod()+"')\">"
 					+ "<img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\"/></a></td> ");
 				}
 				out.println("</label></td>");
@@ -205,7 +203,7 @@ public class SearchWorker {
 				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ tipoDoc.getNome()+"</label></td>");
 				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ tipoDoc.getDescricao()+"</label></td>");
 				out.println("<td class=\"tdList\">"
-						+ "<a href=\"/GraoPara/protected/admin/removeDocType?docType="+ tipoDoc.getNome() + "\">"
+						+ "<a href=\"javascript:confirmAction('Tem certeza que deseja remover a entrada \\'"+ tipoDoc.getNome() +"\\'?' ,'/GraoPara/protected/admin/removeDocType?docType="+ tipoDoc.getNome() + "')\">"
 							+"<img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\"/>"
 						+ "</a>"
 						+ "</td> ");

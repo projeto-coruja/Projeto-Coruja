@@ -60,10 +60,10 @@ public class PanelWorker {
 							+ "palavraAntiga="+ URLEncoder.encode(key.getPalavra(), encode)
 							+ "&tema="+ URLEncoder.encode(key.getTema().getTema(), encode) + "\" >"
 							+ "<img src=\"/GraoPara/images/edit.png\" title=\"Editar\" alt=\"Editar\" /></a>" 
-						+ "<a href=\"/GraoPara/protected/admin/doChangesToKeyWord?" 
+						+ "<a href=\"javascript:confirmAction('Tem certeza que deseja remover a palavra \\'"+ key.getPalavra() +"\\'?','/GraoPara/protected/admin/doChangesToKeyWord?" 
 							+ "palavraAntiga=" + URLEncoder.encode(key.getPalavra(), encode)
 							+ "&tema="+ URLEncoder.encode(key.getTema().getTema(), encode)
-							+ "&action=delete"
+							+ "&action=delete')"
 							+ "\"><img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\" /></a>"
 						+ "</td>");
 				out.write("</tr>");
@@ -129,9 +129,8 @@ public class PanelWorker {
 						+ "&anoIni=" + ori.getAnoInicio()
 						+ "&anoFim=" + ori.getAnoFim()
 						+ "\"><img src=\"/GraoPara/images/edit.png\" title=\"Editar códice/caixa\" alt=\"Editar códice/caixa\" /></a>"
-						+ "<a href=\"/GraoPara/protected/admin/removeCodex?" 
-						+ "codigo=" + ori.getCod()
-						+ "\"><img src=\"/GraoPara/images/remove.png\" title=\"Deletar códice/caixa\" alt=\"Deletar códice/caixa\" /></a>"
+						+ "<a href=\"javascript:confirmAction('Tem certeza que deseja remover "+ ori.getCod().replace("-", " - ") +"?' ,'/GraoPara/protected/admin/removeCodex?codigo=" + ori.getCod()+ "')\">"
+						+ "<img src=\"/GraoPara/images/remove.png\" title=\"Deletar códice/caixa\" alt=\"Deletar códice/caixa\" /></a>"
 						+ "</td>" );
 				else
 					out.println("<td class=\"tdList\">"
@@ -170,9 +169,8 @@ public class PanelWorker {
 							+ "<a href=\"/GraoPara/protected/admin/editarUsuario.jsp?"
 							+ "paramName=" + user.getName()
 							+"&paramEmail="+user.getEmail()+"\" ><img src=\"/GraoPara/images/edit.png\" title=\"Editar\" alt=\"Editar\" /></a>" 
-							+ "<a href=\"/GraoPara/protected/admin/removeAccount?" 
-							+ "email=" + user.getEmail()
-							+ "&tab=2\"><img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\" /></a>"
+							+ "<a href=\"javascript:confirmAction('Tem certeza que deseja remover o usuário "+user.getEmail()+"?','/GraoPara/protected/admin/removeAccount?" 
+							+ "email=" + user.getEmail()+"&tab=2')\" ><img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\" /></a>"
 							+ "</td>");
 					out.println("</tr>");
 					out.println("</tr>");
@@ -212,9 +210,8 @@ public class PanelWorker {
 						+ "<a href=\"/GraoPara/protected/admin/editarUsuario.jsp?"
 							+ "paramName=" + user.getName()
 							+"&paramEmail="+user.getEmail()+"\" ><img src=\"/GraoPara/images/edit.png\" title=\"Editar\" alt=\"Editar\" /></a>" 
-						+ "<a href=\"/GraoPara/protected/admin/removeAccount?" 
-							+ "email=" + user.getEmail()
-							+ "&tab=1\"><img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\" /></a>"
+						+ "<a href=\"javascript:confirmAction('Tem certeza que deseja remover o usuário "+user.getEmail()+"?','/GraoPara/protected/admin/removeAccount?" 
+							+ "email=" + user.getEmail()+"&tab=2')\" ><img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\" /></a>"
 							+ "</td>");
 					out.println("</tr>");
 				}
