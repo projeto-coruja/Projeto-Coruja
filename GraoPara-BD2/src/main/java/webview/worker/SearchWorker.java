@@ -145,7 +145,7 @@ public class SearchWorker {
 					+ "\">"
 					+ "<img src=\"/GraoPara/images/edit.png\" title=\"Editar\" alt=\"Editar\"/></a> "
 					+ "<br>"
-					+ "<a href=\"javascript:confirmAction('Você tem certeza que quer deletar o documento selecionado?','/GraoPara/protected/admin/removeDoc?codigo=" + doc.getCod()+"')\">"
+					+ "<a href=\"javascript:confirmAction('Você tem certeza que quer deletar o documento \\'"+ doc.getCod().replace("-", " - ") +"\\'?','/GraoPara/protected/admin/removeDoc?codigo=" + doc.getCod()+"')\">"
 					+ "<img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\"/></a></td> ");
 				}
 				out.println("</label></td>");
