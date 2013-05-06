@@ -55,21 +55,21 @@
 					<div class="download">
 						<!-- Downloads de navegadores -->
 						<a style="margin: 10px 20px 30px 40px;" href="http://www.google.com/chrome/?hl=pt_BR">
-							<img src="/GraoPara/images/chrome.png" alt="Chrome" />
+							<img height="96px" width="96px" src="/GraoPara/images/chrome.png" alt="Chrome" />
 							<br />
 							Download do Google Chrome
 						</a>
 	
 						<a style="margin: 10px 20px 30px 40px;" href="http://www.mozilla.com/firefox/">
-							<img src="/GraoPara/images/firefox.png" alt="Firefox" />
+							<img height="96px" width="96px" src="/GraoPara/images/firefox.png" alt="Firefox" />
 							<br />
 							Download do Mozilla Firefox
 						</a>
 	
-						<a style="margin: 10px 20px 30px 40px;" href="http://www.apple.com/safari/download/">
-							<img src="/GraoPara/images/safari.png" alt="Safari" />
+						<a style="margin: 10px 20px 30px 40px;" href="http://www.opera.com/pt/">
+							<img height="96px" width="96px" src="/GraoPara/images/opera.png" alt="Opera" />
 							<br />
-							Download do Safari
+							Download do Opera
 						</a>
 					</div>
 				</div>
