@@ -27,7 +27,7 @@ $(window).bind("load",function(){
 		if($height < 361)	$height = 361;
 	}
 	else if(pathname.indexOf("userAdv/", 0) >= 0){	
-		if($height < 451)	$height = 451;
+		if($height < 438)	$height = 438;
 	}
 	else if(pathname.indexOf("admin/", 0) >= 0){	
 		if($height < 477)	$height = 477;

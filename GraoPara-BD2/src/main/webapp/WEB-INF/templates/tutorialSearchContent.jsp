@@ -17,7 +17,7 @@
 			trará apenas verbetes dos códices 900, 901 e 902 que tem documentos escritos por alguma pessoa que tem em seu nome a palavra “Burgos”. 
 			Não é necessário escrever o nome inteiro do autor e tampouco se preocupar com as letras maiúsculas ou minúsculas. No caso do preenchimento 
 			do campo data, o consulente deve saber que não aparecerão os verbetes sem data identificável, mesmo que correspondam a outros campos da busca. 
-			Uma vez feita a pesquisa, os resultados apareceram na tela, separados por códice e em ordem crescente do número dos documentos, no seguinte formato:</p>  
+			Uma vez feita a pesquisa, os resultados aparecerão na tela, separados por códice e em ordem crescente do número dos documentos, no seguinte formato:</p>  
 			<br/>
 			<%@include file="/WEB-INF/templates/searchCaption.jsp" %><br/>
 			<p>Nessa mesma tela, na extremidade superior, o pesquisador pode solicitar que sua busca gere uma planilha com os resultados obtidos. 

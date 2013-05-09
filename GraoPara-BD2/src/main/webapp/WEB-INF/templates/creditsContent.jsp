@@ -11,7 +11,7 @@
 			<b>Chefe</b>: Profa. Dra. Maria Rita Toledo<br />
 			<b>Vice-chefe</b>: Prof. Dr. André Roberto de A. Machado<br />
 			<br />
-			<h1 style="margin:0px 0 -22px 0;">Centro de Memória e Pesquisa História</h1> <br />
+			<h1 style="margin:0px 0 -22px 0;">Centro de Memória e Pesquisa Histórica</h1> <br />
 			<b>Coordenadora</b>: Profa. Dra. Márcia Eckert Miranda<br />
 			<b>Vice-coordenador</b>: Prof. Dr. Jaime Rodrigues<br />
 			<br />

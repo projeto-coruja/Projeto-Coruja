@@ -19,7 +19,7 @@
 		<script type="text/javascript" src="/GraoPara/javascript/cookie.js"	charset="utf-8"></script>
 	</head>
 
-	<body">
+	<body>
 		<div class="container">
 			<div class="header"></div>
 
