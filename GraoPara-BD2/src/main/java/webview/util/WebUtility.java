@@ -438,9 +438,9 @@ public final class WebUtility {
 				c_status = null;
 			}
 		}
+		result = "<option value=\"\">Selecione...</option> ";
 		try {
 			List<DTO> list = dtd.findAllDocumentTypes();
-			result = "<option value=\"\">Selecione...</option> ";
 			for(DTO d : list){
 				tipoDoc = ((TipoDocumento) d).getNome();
 				if(tipoDoc.equals(request.getParameter("tipoDoc")) || tipoDoc.equals(request.getAttribute("tipoDoc")))
@@ -453,7 +453,8 @@ public final class WebUtility {
 		} catch (UnreachableDataBaseException e) {
 			e.printStackTrace();
 		} catch (DocumentTypeNotFoundException e) {
-			//e.printStackTrace();
+			if((c_status != null && c_status.equals(AuthBean.LoginSuccessUserLevel2)) || (c_status != null && c_status.equals(AuthBean.LoginSuccessAdmin)) && request.getRequestURL().toString().contains("cadastroDocumentos.jsp"))
+				result += "<option value=\"newDocType\" >Nova entrada</option>";
 		}
 		return result;
 	}
@@ -518,6 +519,8 @@ public final class WebUtility {
 		} catch (UnreachableDataBaseException e) {
 			e.printStackTrace();
 		} catch (KeywordNotFoundException e) {
+			if((c_status != null && c_status.equals(AuthBean.LoginSuccessUserLevel2)) || (c_status != null && c_status.equals(AuthBean.LoginSuccessAdmin)) && request.getRequestURL().toString().contains("cadastroDocumentos.jsp"))
+				result += "<option value=\"newKeyWord\">Nova palavra chave</option>";
 		}
 		return result;
 	}
