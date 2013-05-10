@@ -24,7 +24,7 @@ public class DataBaseExport {
 		dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
 		date = new Date();
 		
-		filePath = tmp+"/bkp_"+dateFormat.format(date)+".tar";
+		filePath = tmp+"/bkp_"+dateFormat.format(date)+".sql.gz";
 
 		commands.add("pg_dump");
 		commands.add("-i");

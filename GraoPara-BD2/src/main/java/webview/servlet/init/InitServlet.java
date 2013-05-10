@@ -86,53 +86,53 @@ public class InitServlet extends HttpServlet {
 			);
 		}
 		else user = null;
-
-		user = pa.findEntity("from UserAccountMO where email = 'user1@graopara.com'");
-		if(user == null)
-		{
-			log.info("Criando usuário de teste...");
-			pa.saveEntity(
-					new UserAccount(
-							"Usuário Padrão Nível 1", 
-							(Profile) (pa.findEntity("from ProfileMO where profile = 'user1'").get(0)),
-							"user1@graopara.com",
-							EJBUtility.getHash("null","MD5")
-					)
-			);
-			
-		}
-		else user = null;
-		
-		user = pa.findEntity("from UserAccountMO where email = 'user2@graopara.com'");
-		if(user == null)
-		{
-			log.info("Criando usuário de teste...");
-			pa.saveEntity(
-					new UserAccount(
-							"Usuário Padrão Nível 2", 
-							(Profile) (pa.findEntity("from ProfileMO where profile = 'user2'").get(0)),
-							"user2@graopara.com",
-							EJBUtility.getHash("null","MD5")
-					)
-			);
-			
-		}
-		else user = null;
-
-		user = pa.findEntity("from UserAccountMO where email = 'default@graopara.com'");
-		if(user == null)
-		{
-			log.info("Criando usuário sem privilégios de teste...");
-			pa.saveEntity(
-					new UserAccount(
-							"Anonimo", 
-							(Profile) (pa.findEntity("from ProfileMO where profile = 'default'").get(0)),
-							"default@graopara.com",
-							EJBUtility.getHash("null","MD5")
-					)
-			);
-		}
-		user = null;
+//
+//		user = pa.findEntity("from UserAccountMO where email = 'user1@graopara.com'");
+//		if(user == null)
+//		{
+//			log.info("Criando usuário de teste...");
+//			pa.saveEntity(
+//					new UserAccount(
+//							"Usuário Padrão Nível 1", 
+//							(Profile) (pa.findEntity("from ProfileMO where profile = 'user1'").get(0)),
+//							"user1@graopara.com",
+//							EJBUtility.getHash("null","MD5")
+//					)
+//			);
+//			
+//		}
+//		else user = null;
+//		
+//		user = pa.findEntity("from UserAccountMO where email = 'user2@graopara.com'");
+//		if(user == null)
+//		{
+//			log.info("Criando usuário de teste...");
+//			pa.saveEntity(
+//					new UserAccount(
+//							"Usuário Padrão Nível 2", 
+//							(Profile) (pa.findEntity("from ProfileMO where profile = 'user2'").get(0)),
+//							"user2@graopara.com",
+//							EJBUtility.getHash("null","MD5")
+//					)
+//			);
+//			
+//		}
+//		else user = null;
+//
+//		user = pa.findEntity("from UserAccountMO where email = 'default@graopara.com'");
+//		if(user == null)
+//		{
+//			log.info("Criando usuário sem privilégios de teste...");
+//			pa.saveEntity(
+//					new UserAccount(
+//							"Anonimo", 
+//							(Profile) (pa.findEntity("from ProfileMO where profile = 'default'").get(0)),
+//							"default@graopara.com",
+//							EJBUtility.getHash("null","MD5")
+//					)
+//			);
+//		}
+//		user = null;
 
 //		List<DTO> origem = pa.findEntity("from CodiceCaixaMO where tipoOrigem = 'CODICE'");
 //		if(origem == null) {
