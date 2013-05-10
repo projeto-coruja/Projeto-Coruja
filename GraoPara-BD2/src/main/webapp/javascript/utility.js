@@ -30,7 +30,7 @@ $(window).bind("load",function(){
 		if($height < 438)	$height = 438;
 	}
 	else if(pathname.indexOf("admin/", 0) >= 0){	
-		if($height < 477)	$height = 477;
+		if($height < 461)	$height = 461;
 	}
 	$('.sidebar1').css({height:$height});
 });

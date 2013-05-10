@@ -9,7 +9,7 @@
 			<p <% String url = request.getRequestURL().toString();
 			int h = 60;
 			if(url.contains("userAdv/")) h = 90;
-			else if(url.contains("admin/")) h = 120;
+			else if(url.contains("admin/")) h = 145;
 			out.print("style=\"height:"+h+"\"");%>>Através desse site, qualquer pesquisador tem acesso livre e integral aos verbetes já redigidos pelo projeto. Para obter melhores resultados em suas buscas, recomenda-se a leitura do link “como pesquisar no acervo”, à esquerda da tela.</p>
 			
 			<img src="/GraoPara/images/LogotipoUNIFESP.jpg" alt="UNIFESP" width="190px">
