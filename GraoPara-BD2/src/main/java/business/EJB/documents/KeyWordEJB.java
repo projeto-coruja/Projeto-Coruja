@@ -79,7 +79,7 @@ public class KeyWordEJB {
 		DocumentEJB docEJB = new DocumentEJB();
 		List<DTO> results = null;
 
-		keyWord = keyWord.toLowerCase();
+//		keyWord = keyWord.toLowerCase();
 
 		try {
 			results = docEJB.findByKeyWord(keyWord);
