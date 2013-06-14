@@ -57,7 +57,7 @@ public class TipoDocumentoDAO {
 	public List<DTO> findDocumentTypeByString(String name) throws  UnreachableDataBaseException, DocumentTypeNotFoundException  {
 		List<DTO> resultSet = null;
 		try {
-			resultSet = manager.findEntity("from TipoDocumentoMO where nome = '" + name +"' order by nome, descricao");
+			resultSet = manager.findEntity("from TipoDocumentoMO where nome = '" + normalize(name) +"' order by nome, descricao");
 			if(resultSet == null) {
 				throw new DocumentTypeNotFoundException ("Tipo não encontrado");
 			}
@@ -71,7 +71,7 @@ public class TipoDocumentoDAO {
 	public TipoDocumento findSingleDocumentTypeByString(String name) throws  UnreachableDataBaseException, DocumentTypeNotFoundException  {
 		List<DTO> resultSet = null;
 		try {
-			resultSet = manager.findEntity("from TipoDocumentoMO where nome = '" + name +"' order by nome, descricao");
+			resultSet = manager.findEntity("from TipoDocumentoMO where nome = '" + normalize(name) +"' order by nome, descricao");
 			if(resultSet == null) {
 				throw new DocumentTypeNotFoundException ("Tipo não encontrado");
 			}
@@ -95,5 +95,11 @@ public class TipoDocumentoDAO {
 			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
 		}
 	}
-	
+
+	private String normalize(String var){
+		if(var == null)	return null;
+		var = var.replace("'", "''");
+//		var = var.replace("\"", "\\\"");
+		return var;
+	}
 }

@@ -59,7 +59,7 @@ public class DocumentTypeEJB {
 			throw new IllegalArgumentException("Tentativa de remoção de tipo de documento que possue associação a algum documento.");
 		} catch (DocumentNotFoundException e) {
 			typeDoc.removeDocumentType(type);
-			e.printStackTrace();
+//			e.printStackTrace();
 		}
 
 	}

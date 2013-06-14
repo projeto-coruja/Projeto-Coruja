@@ -60,9 +60,9 @@ public class PanelWorker {
 							+ "palavraAntiga="+ URLEncoder.encode(key.getPalavra(), encode)
 							+ "&tema="+ URLEncoder.encode(key.getTema().getTema(), encode) + "\" >"
 							+ "<img src=\"/GraoPara/images/edit.png\" title=\"Editar\" alt=\"Editar\" /></a>" 
-						+ "<a href=\"javascript:confirmAction('Tem certeza que deseja remover a palavra \\'"+ key.getPalavra() +"\\'?','/GraoPara/protected/admin/doChangesToKeyWord?" 
-							+ "palavraAntiga=" + URLEncoder.encode(key.getPalavra(), encode)
-							+ "&tema="+ URLEncoder.encode(key.getTema().getTema(), encode)
+						+ "<a href=\"javascript:confirmAction('Tem certeza que deseja remover a palavra \\'"+ key.getPalavra().replace("'", "\\'") +"\\'?','/GraoPara/protected/admin/doChangesToKeyWord?" 
+							+ "palavraAntiga=" + URLEncoder.encode(key.getPalavra().replace("'", "\\'"), encode)
+							+ "&tema="+ URLEncoder.encode(key.getTema().getTema().replace("'", "\\'"), encode)
 							+ "&action=delete')"
 							+ "\"><img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\" /></a>"
 						+ "</td>");

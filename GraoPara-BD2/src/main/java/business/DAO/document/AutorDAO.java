@@ -56,8 +56,8 @@ public class AutorDAO {
 		List<DTO> resultSet = null;
 		try {
 			resultSet = manager.findEntity("from AutorMO where nome = '" 
-					+ name +"'"
-					+ " and ocupacao = '" + occupation +"'" 
+					+ normalize(name) +"'"
+					+ " and ocupacao = '" + normalize(occupation) +"'" 
 					+ " order by nome, ocupacao");
 			if(resultSet == null) {
 				throw new AuthorNotFoundException ("Autor não encontrado.");
@@ -73,7 +73,7 @@ public class AutorDAO {
 		List<DTO> resultSet = null;
 		try {
 			resultSet = manager.findEntity("from AutorMO where nome = '" 
-					+ name +"'"
+					+ normalize(name) +"'"
 					+ " order by nome, ocupacao");
 			if(resultSet == null) {
 				throw new AuthorNotFoundException ("Autor não encontrado.");
@@ -98,5 +98,11 @@ public class AutorDAO {
 			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
 		}
 	}
-	
+
+	private String normalize(String var){
+		if(var == null)	return null;
+		var = var.replace("'", "''");
+//		var = var.replace("\"", "\\\"");
+		return var;
+	}
 }

@@ -89,7 +89,7 @@ public class CodiceCaixaDAO {
 	public List<DTO> findCodiceCaixaByTitle(String titulo) throws  UnreachableDataBaseException, CodiceCaixaNotFoundException  {
 		List<DTO> resultSet = null;
 		try {
-			resultSet = manager.findEntity("from CodiceCaixaMO where titulo like '%" + titulo +"%' order by cod, titulo, anoInicio, anoFim");
+			resultSet = manager.findEntity("from CodiceCaixaMO where titulo like '%" + normalize(titulo) +"%' order by cod, titulo, anoInicio, anoFim");
 			if(resultSet == null) {
 				throw new CodiceCaixaNotFoundException ("Título não encontrado.");
 			}
@@ -113,5 +113,11 @@ public class CodiceCaixaDAO {
 			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
 		}
 	}
-	
+
+	private String normalize(String var){
+		if(var == null)	return null;
+		var = var.replace("'", "''");
+//		var = var.replace("\"", "\\\"");
+		return var;
+	}
 }

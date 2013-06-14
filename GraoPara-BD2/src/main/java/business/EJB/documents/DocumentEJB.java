@@ -132,7 +132,7 @@ public class DocumentEJB {
 			if(continue_query == true){
 				query += " AND ";
 			}
-			query += " "+getQueryNormalization("codiceCaixa.titulo")+" LIKE "+getQueryNormalization("'%" + tituloCodiceCaixa + "%'");
+			query += " "+getQueryNormalization("codiceCaixa.titulo")+" LIKE "+getQueryNormalization("'%" ,tituloCodiceCaixa, "%'");
 			continue_query = true;
 		}
 		
@@ -167,7 +167,7 @@ public class DocumentEJB {
 				query += " AND ";
 			}
 
-			query += " "+getQueryNormalization("autor.nome")+" LIKE "+getQueryNormalization("'%" + autor + "%'");
+			query += " "+getQueryNormalization("autor.nome")+" LIKE "+getQueryNormalization("'%" ,autor, "%'");
 			continue_query = true;
 		}
 		
@@ -175,7 +175,7 @@ public class DocumentEJB {
 			if(continue_query == true){
 				query += " AND ";
 			}
-			query += " "+getQueryNormalization("autor.ocupacao")+" LIKE "+getQueryNormalization("'%" + ocupacaoAutor + "%'");
+			query += " "+getQueryNormalization("autor.ocupacao")+" LIKE "+getQueryNormalization("'%" ,ocupacaoAutor, "%'");
 			continue_query = true;
 		}
 
@@ -183,7 +183,7 @@ public class DocumentEJB {
 			if(continue_query == true){
 				query += " AND ";
 			}
-			query += " "+getQueryNormalization("destinatario.nome")+" LIKE "+getQueryNormalization("'%" + destinatario + "%'");
+			query += " "+getQueryNormalization("destinatario.nome")+" LIKE "+getQueryNormalization("'%" ,destinatario, "%'");
 			continue_query = true;
 		}
 		
@@ -191,7 +191,7 @@ public class DocumentEJB {
 			if(continue_query == true){
 				query += " AND ";
 			}
-			query += " "+getQueryNormalization("destinatario.ocupacao")+" LIKE "+getQueryNormalization("'%" + ocupacaoDestinatario + "%'");
+			query += " "+getQueryNormalization("destinatario.ocupacao")+" LIKE "+getQueryNormalization("'%" ,ocupacaoDestinatario, "%'");
 			continue_query = true;
 		}
 		
@@ -214,7 +214,7 @@ public class DocumentEJB {
 			if(continue_query == true){
 				query += " AND ";
 			}
-			query += " "+getQueryNormalization("local")+" LIKE "+getQueryNormalization("'%" + local + "%'");
+			query += " "+getQueryNormalization("local")+" LIKE "+getQueryNormalization("'%" ,local, "%'");
 			continue_query = true;
 		}
 		
@@ -222,7 +222,7 @@ public class DocumentEJB {
 			if(continue_query == true){
 				query += " AND ";
 			}
-			query += " "+getQueryNormalization("resumo")+" LIKE "+getQueryNormalization("'%" + resumo + "%'");
+			query += " "+getQueryNormalization("resumo")+" LIKE "+getQueryNormalization("'%" ,resumo, "%'");
 			continue_query = true;
 		}
 		
@@ -246,7 +246,7 @@ public class DocumentEJB {
 			if(continue_query == true){
 				query += " AND ";
 			}
-			query += "palavraChave1.palavra = '" + palavraChave1 + "'";
+			query += "palavraChave1.palavra = '" + normalize(palavraChave1) + "'";
 			continue_query = true;
 		}
 
@@ -254,7 +254,7 @@ public class DocumentEJB {
 			if(continue_query == true){
 				query += " AND ";
 			}
-			query += "palavraChave2.palavra = '" + palavraChave2 + "'";
+			query += "palavraChave2.palavra = '" + normalize(palavraChave2) + "'";
 			continue_query = true;
 		}
 
@@ -262,7 +262,7 @@ public class DocumentEJB {
 			if(continue_query == true){
 				query += " AND ";
 			}
-			query += "palavraChave3.palavra = '" + palavraChave3 + "'";
+			query += "palavraChave3.palavra = '" + normalize(palavraChave3) + "'";
 			continue_query = true;
 		}
 		
@@ -628,7 +628,7 @@ public class DocumentEJB {
 
 		String query = new String(default_query);
 
-		query += "tipoDocumento.nome LIKE '%" + type + "%'";
+		query += "tipoDocumento.nome LIKE '%" + normalize(type) + "%'";
 
 		List<DTO> list = docDao.findDocumentByQuery(query);
 		if(list == null) throw new DocumentNotFoundException();
@@ -649,6 +649,8 @@ public class DocumentEJB {
 	public List<DTO> findByKeyWord(String keyWord) throws UnreachableDataBaseException, DocumentNotFoundException{
 
 		String query = new String(default_query);
+		
+		keyWord = normalize(keyWord);
 
 		query += "palavraChave1.palavra = '" + keyWord + "' OR "
 				+ "palavraChave2.palavra = '" + keyWord + "' OR "
@@ -663,8 +665,18 @@ public class DocumentEJB {
 		return s != null && !s.isEmpty();
 	}
 	
+	private String getQueryNormalization(String prefix, String var, String suffix){
+		return "LOWER(TRANSLATE("+prefix+normalize(var)+suffix+",'áàãâäÁÀÃÂÄéèêëÉÈÊËíìîïÍÌÎÏóòõôöÓÒÕÔÖúùûüÚÙÛÜñÑçÇÿýÝ','aaaaaAAAAAeeeeEEEEiiiiIIIIoooooOOOOOuuuuUUUUnNcCyyY'))";
+	}
+
 	private String getQueryNormalization(String var){
-		return "LOWER(TRANSLATE("+var+",'áàãâäÁÀÃÂÄéèêëÉÈÊËíìîïÍÌÎÏóòõôöÓÒÕÔÖúùûüÚÙÛÜñÑçÇÿýÝ','aaaaaAAAAAeeeeEEEEiiiiIIIIoooooOOOOOuuuuUUUUnNcCyyY'))";
+		return "LOWER(TRANSLATE("+normalize(var)+",'áàãâäÁÀÃÂÄéèêëÉÈÊËíìîïÍÌÎÏóòõôöÓÒÕÔÖúùûüÚÙÛÜñÑçÇÿýÝ','aaaaaAAAAAeeeeEEEEiiiiIIIIoooooOOOOOuuuuUUUUnNcCyyY'))";
 	}
 	
+	private String normalize(String var){
+		if(var == null)	return null;
+		var = var.replace("'", "''");
+//		var = var.replace("\"", "\\\"");
+		return var;
+	}
 }

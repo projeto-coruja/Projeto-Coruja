@@ -203,7 +203,7 @@ public class SearchWorker {
 				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ tipoDoc.getNome()+"</label></td>");
 				out.println("<td class=\"tdList\"><label class=\"labelExibe\">"+ tipoDoc.getDescricao()+"</label></td>");
 				out.println("<td class=\"tdList\">"
-						+ "<a href=\"javascript:confirmAction('Tem certeza que deseja remover a entrada \\'"+ tipoDoc.getNome() +"\\'?' ,'/GraoPara/protected/admin/removeDocType?docType="+ tipoDoc.getNome() + "')\">"
+						+ "<a href=\"javascript:confirmAction('Tem certeza que deseja remover a entrada \\'"+ tipoDoc.getNome().replace("'", "\\'") +"\\'?' ,'/GraoPara/protected/admin/removeDocType?docType="+ tipoDoc.getNome().replace("'", "\\'") + "')\">"
 							+"<img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\"/>"
 						+ "</a>"
 						+ "</td> ");

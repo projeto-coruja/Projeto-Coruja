@@ -103,7 +103,7 @@ public class PalavraChaveDAO {
 	public List<DTO> findKeyWordByString(String key) throws  UnreachableDataBaseException, KeywordNotFoundException  {
 		List<DTO> resultSet = null;
 		try {
-			resultSet = manager.findEntity("from PalavraChaveMO where palavra like '%" + key + "%' order by tema, palavra");
+			resultSet = manager.findEntity("from PalavraChaveMO where palavra like '%" + normalize(key) + "%' order by tema, palavra");
 			if(resultSet == null) {
 				throw new KeywordNotFoundException ("Palavra não encontrada");
 			}
@@ -141,5 +141,11 @@ public class PalavraChaveDAO {
 			throw new UnreachableDataBaseException("Erro ao acessar o banco de dados");
 		}
 	}
-	
+
+	private String normalize(String var){
+		if(var == null)	return null;
+		var = var.replace("'", "''");
+//		var = var.replace("\"", "\\\"");
+		return var;
+	}
 }
