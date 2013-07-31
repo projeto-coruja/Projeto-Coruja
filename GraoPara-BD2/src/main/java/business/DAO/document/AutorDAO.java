@@ -19,6 +19,14 @@ public class AutorDAO {
 		manager = new PersistenceAccess();
 	}
 	
+	/**
+	 * Adiciona um novo Autor.
+	 * @param nome uma Stirng contendo o nome do Autor.
+	 * @param ocupacao uma Stirng contendo a ocupação do Autor.
+	 * @return o novo objeto Autor criado.
+	 * @throws UnreachableDataBaseException
+	 * @throws DuplicatedAuthorException
+	 */
 	public Autor addAutor(String nome, String ocupacao) 
 			throws UnreachableDataBaseException, DuplicatedAuthorException {
 		Autor newAuthor = new Autor(nome, ocupacao);
@@ -34,6 +42,11 @@ public class AutorDAO {
 		}
 	}
 
+	/**
+	 * Remove o Autor especificado.
+	 * @param author o objeto Autor a ser removido.
+	 * @throws UnreachableDataBaseException
+	 */
 	public void removeAuthor(Autor author) throws UnreachableDataBaseException{
 		try{
 			manager.deleteEntity(author);
@@ -43,6 +56,13 @@ public class AutorDAO {
 		}
 	}
 	
+	/**
+	 * Atualiza Códice/Caixa.
+	 * @param author o objeto Autor a ser associado com o códice/caixa.
+	 * @throws UnreachableDataBaseException
+	 * @throws IllegalArgumentException
+	 * @throws UpdateEntityException
+	 */
 	public void updateCodiceCaixa(Autor author) throws UnreachableDataBaseException, IllegalArgumentException, UpdateEntityException{
 		try{
 			manager.updateEntity(author);
@@ -52,6 +72,14 @@ public class AutorDAO {
 		}
 	}
 
+	/**
+	 * Procura o Autor pelo nome e ocupação.
+	 * @param name uma String contendo o nome do Autor.
+	 * @param occupation uma String contendo a ocupação do Autor.
+	 * @return o objeto Autor achado.
+	 * @throws AuthorNotFoundException
+	 * @throws UnreachableDataBaseException
+	 */
 	public Autor findAuthorByNameAndOccupation(String name, String occupation) throws AuthorNotFoundException, UnreachableDataBaseException {
 		List<DTO> resultSet = null;
 		try {
@@ -69,6 +97,13 @@ public class AutorDAO {
 		}
 	}
 	
+	/**
+	 * Procura o Autor pelo nome.
+	 * @param name uma String contendo o nome do Autor.
+	 * @return uma lista de Autores com o mesmo nome.
+	 * @throws AuthorNotFoundException
+	 * @throws UnreachableDataBaseException
+	 */
 	public List<DTO> findAutorByName(String name) throws AuthorNotFoundException, UnreachableDataBaseException {
 		List<DTO> resultSet = null;
 		try {
@@ -85,6 +120,12 @@ public class AutorDAO {
 		}
 	}
 	
+	/**
+	 * Lista todos os Autores existentes.
+	 * @return uma lista de Autores já existentes.
+	 * @throws UnreachableDataBaseException
+	 * @throws AuthorNotFoundException
+	 */
 	public List<DTO> findAllAuthor() throws UnreachableDataBaseException, AuthorNotFoundException {
 		List<DTO> resultSet = null;
 		try{
@@ -99,6 +140,11 @@ public class AutorDAO {
 		}
 	}
 
+	/**
+	 * Formata a palavra-chave a ser uasada na função findEntity().
+	 * @param var uma string.
+	 * @return a string formatada.
+	 */
 	private String normalize(String var){
 		if(var == null)	return null;
 		var = var.replace("'", "''");

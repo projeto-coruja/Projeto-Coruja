@@ -19,6 +19,16 @@ public class CodiceCaixaDAO {
 		manager = new PersistenceAccess();
 	}
 	
+	/**
+	 * Adiciona um novo Códice/Caixa.
+	 * @param cod uma String contendo o códice/caixa.
+	 * @param titulo uma String contendo o título do novo Códice/Caixa.
+	 * @param anoInicio um int contendo o ano inicial do novo Códice/Caixa.
+	 * @param anoFim um int contendo o ano final do novo Códice/Caixa.
+	 * @return o objeto Códice/Caixa criado.
+	 * @throws UnreachableDataBaseException
+	 * @throws DuplicateCodiceCaixaException
+	 */
 	public CodiceCaixa addCodiceCaixa(String cod, String titulo, int anoInicio, int anoFim) 
 			throws UnreachableDataBaseException, DuplicateCodiceCaixaException {
 		CodiceCaixa newId = new CodiceCaixa(cod, titulo, anoInicio, anoFim);
@@ -34,6 +44,11 @@ public class CodiceCaixaDAO {
 		}
 	}
 	
+	/**
+	 * Removo o Códice/Caixa especificado.
+	 * @param origin o objeto Códice/Caixa a ser removido.
+	 * @throws UnreachableDataBaseException
+	 */
 	public void removeCodiceCaixa(CodiceCaixa origin) throws UnreachableDataBaseException{
 		try{
 			manager.deleteEntity(origin);
@@ -43,6 +58,13 @@ public class CodiceCaixaDAO {
 		}
 	}
 	
+	/**
+	 * Atualiza o Códice/Caixa especificado.
+	 * @param codiceCaixa o objeto Códice/Caixa a ser atualizado.
+	 * @throws UnreachableDataBaseException
+	 * @throws IllegalArgumentException
+	 * @throws UpdateEntityException
+	 */
 	public void updateCodiceCaixa(CodiceCaixa codiceCaixa) throws UnreachableDataBaseException, IllegalArgumentException, UpdateEntityException{
 		try{
 			manager.updateEntity(codiceCaixa);
@@ -52,6 +74,13 @@ public class CodiceCaixaDAO {
 		}
 	}
 	
+	/**
+	 * Procura o Códice/Caixa pelo seu código/caixa.
+	 * @param cod uma String contendo o código/caixa.
+	 * @return o objeto Códice/Caixa achado.
+	 * @throws UnreachableDataBaseException
+	 * @throws CodiceCaixaNotFoundException
+	 */
 	public CodiceCaixa findExactCodiceCaixa(String cod) 
 			throws  UnreachableDataBaseException, CodiceCaixaNotFoundException  {
 		
@@ -69,6 +98,13 @@ public class CodiceCaixaDAO {
 		}
 	}
 	
+	/**
+	 * Procura o Códice/Caixa pelo seu código/caixa.
+	 * @param cod uma String contendo o códice/caixa.
+	 * @return uma lista de Códice/Caixa com o mesmo código/caixa.
+	 * @throws UnreachableDataBaseException
+	 * @throws CodiceCaixaNotFoundException
+	 */
 	public List<DTO> findCodiceCaixaByCod(String cod) throws  UnreachableDataBaseException, CodiceCaixaNotFoundException {
 		List<DTO> resultSet = null;
 		try {
@@ -86,6 +122,13 @@ public class CodiceCaixaDAO {
 		}
 	}
 	
+	/**
+	 * Procura o Códice/Caixa pelo título.
+	 * @param titulo uma String contendo o título do Códice/Caixa.
+	 * @return uma lista de Códice/Caixa com o mesmo título.
+	 * @throws UnreachableDataBaseException
+	 * @throws CodiceCaixaNotFoundException
+	 */
 	public List<DTO> findCodiceCaixaByTitle(String titulo) throws  UnreachableDataBaseException, CodiceCaixaNotFoundException  {
 		List<DTO> resultSet = null;
 		try {
@@ -100,6 +143,12 @@ public class CodiceCaixaDAO {
 		}
 	}
 	
+	/**
+	 * Lista todos os Códice/Caixa existentes.
+	 * @return uma lista de Códice/Caixa já existentes.
+	 * @throws UnreachableDataBaseException
+	 * @throws CodiceCaixaNotFoundException
+	 */
 	public List<DTO> findAllCodiceCaixa() throws  UnreachableDataBaseException, CodiceCaixaNotFoundException  {
 		List<DTO> resultSet = null;
 		try {
@@ -114,6 +163,11 @@ public class CodiceCaixaDAO {
 		}
 	}
 
+	/**
+	 * Formata a palavra-chave a ser uasada na função findEntity().
+	 * @param var uma string.
+	 * @return a string formatada.
+	 */
 	private String normalize(String var){
 		if(var == null)	return null;
 		var = var.replace("'", "''");
