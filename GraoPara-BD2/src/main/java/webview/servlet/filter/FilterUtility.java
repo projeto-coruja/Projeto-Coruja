@@ -17,6 +17,9 @@ import webview.util.WebUtility;
 import business.EJB.user.AuthBean;
 import business.EJB.user.UserBean;
 
+/**
+ * Classe contendo os filtros (Interceptions)
+ */
 public class FilterUtility {
 
 	private static class Tuple {
@@ -41,17 +44,34 @@ public class FilterUtility {
 		redirMap.put(AuthBean.LoginSuccessAdmin, 
 				new Tuple("Acesso negado: você não pode acessar essa área como admin.", "/GraoPara/protected/admin/index.jsp"));	
 	}
-	
+	/**
+	 * Bloqueia uma requisição, mostra um alerta e redireciona para uma determinada página.
+	 * @param res - HttpServletResponse
+	 * @param c_value - cookie
+	 * @throws IOException
+	 */
 	public static void blockAndRedirect(HttpServletResponse res, String c_value) throws IOException {
 		Tuple selected = redirMap.get(c_value);
 		AlertsUtility.alertAndRedirectPage(res, selected.fst, selected.snd);
 	}
-	
+	/**
+	 * Bloqueia uma requisição e redireciona para uma determinada página.
+	 * @param res - HttpServletResponse
+	 * @param c_value - cookie
+	 * @throws IOException
+	 */
 	public static void redirectOnly(HttpServletResponse res, String c_value) throws IOException {
 		Tuple selected = redirMap.get(c_value);
 		res.sendRedirect(selected.snd);
 	}
-	
+	/**
+	 * @param authLevel - Nível de usuário (i.e. admin)
+	 * @param request - ServletRequest
+	 * @param response - ServletResponse
+	 * @param chain - FilterChain
+	 * @throws IOException
+	 * @throws ServletException
+	 */
 	public static void trueFilter(String authLevel, ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response;
@@ -80,6 +100,14 @@ public class FilterUtility {
 		}
 	}
 	
+	/**
+	 * 
+	 * @param request
+	 * @param response
+	 * @param chain
+	 * @throws IOException
+	 * @throws ServletException
+	 */
 	public static void truePublicFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response;

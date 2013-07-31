@@ -40,7 +40,7 @@ public class Download extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected synchronized void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		// Parametros passados via formulário HTML.
 		String tipoCodiceCaixa = request.getParameter("tipoCodCodiceCaixa");
 		String tituloCodiceCaixa = request.getParameter("tituloCodiceCaixa");
 		String codCodiceCaixaDe = request.getParameter("codDe");
@@ -67,6 +67,8 @@ public class Download extends HttpServlet {
 		
 		String anoIni = request.getParameter("anoIni");
 		String anoFim = request.getParameter("anoFim");
+		// ===========================================
+		// Conversão para a data (De String para SimpleDate)
 		String dataIni = null, dataFim = null;;
 		SimpleDate dataDocIni = null, dataDocFim = null;
 		
@@ -83,13 +85,15 @@ public class Download extends HttpServlet {
 		
 		dataDocIni = SimpleDate.parse(dataIni);
 		dataDocFim = SimpleDate.parse(dataFim);
-
+		// ==========================================
+		
 		DocumentEJB search = new DocumentEJB();
 		
 		String filePath = null;
 		FileInputStream in = null;
 		OutputStream out = null;
 		try {
+			// Busca os documentos.
 			List<DTO> resultSet = search.findDocuments(tipoCodiceCaixa, 
 					codCodiceCaixaDe, 
 					codCodiceCaixaAte, 
@@ -112,8 +116,9 @@ public class Download extends HttpServlet {
 			
 			
 			if(resultSet == null)	throw new DocumentNotFoundException();
-			filePath = SpreadsheetExport.generateSpreadsheet(resultSet);	
+			filePath = SpreadsheetExport.generateSpreadsheet(resultSet);	// Gera o documento que será utilizado para o download.
 
+			// Download
 			File f = new File(filePath);
 			f.canWrite();
 			response.setHeader("Content-Disposition", "attachment;filename=\""+ filePath.split("/")[2] +"\"");
@@ -131,7 +136,7 @@ public class Download extends HttpServlet {
 			in.close();
 			out.flush();
 			out.close();
-			f.delete();
+			f.delete(); // Deleta o documento local após o download.
 			
 		} catch (IOException e){
 			e.printStackTrace();

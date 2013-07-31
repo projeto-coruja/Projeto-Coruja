@@ -1,4 +1,4 @@
-package persistence.util;
+package persistence.exceptions;
 
 public class DataAccessLayerException extends RuntimeException {
 	

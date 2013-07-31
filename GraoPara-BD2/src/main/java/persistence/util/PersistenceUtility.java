@@ -10,6 +10,12 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 
+import persistence.exceptions.DataAccessLayerException;
+
+/**
+ * Configurador da persistencia,
+ *
+ */
 public class PersistenceUtility {
 
 	private static SessionFactory sessionFactory = configureSessionFactory();
@@ -18,6 +24,11 @@ public class PersistenceUtility {
 
 	private static Log log = LogFactory.getLog(PersistenceUtility.class);
 
+	/**
+	 * 
+	 * @return
+	 * @throws HibernateException
+	 */
 	public static SessionFactory buildSessionFactory() throws HibernateException {
 		if (sessionFactory != null) {
 			closeFactory();
@@ -25,6 +36,11 @@ public class PersistenceUtility {
 		return configureSessionFactory();
 	}
 
+	/**
+	 * 
+	 * @return
+	 * @throws DataAccessLayerException
+	 */
 	public static SessionFactory buildIfNeeded() throws DataAccessLayerException{
 		if (sessionFactory != null) {
 			return sessionFactory;
@@ -36,16 +52,27 @@ public class PersistenceUtility {
 		}
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public static SessionFactory getSessionFactory() {
 		return sessionFactory;
 	}
 
-
+	/**
+	 * 
+	 * @return
+	 * @throws HibernateException
+	 */
 	public static Session openSession() throws HibernateException {
 		buildIfNeeded();
 		return sessionFactory.openSession();
 	}
 
+	/**
+	 * 
+	 */
 	public static void closeFactory() {
 		if (sessionFactory != null) {
 			try {
@@ -56,6 +83,10 @@ public class PersistenceUtility {
 		}
 	}
 
+	/**
+	 * 
+	 * @param session
+	 */
 	public static void close(Session session) {
 		if (session != null) {
 			try {
@@ -66,6 +97,10 @@ public class PersistenceUtility {
 		}
 	}
 
+	/**
+	 * 
+	 * @param tx
+	 */
 	public static void rollback(Transaction tx) {
 		try {
 			if (tx != null) {
@@ -76,6 +111,11 @@ public class PersistenceUtility {
 		}
 	}
 
+	/**
+	 * 
+	 * @return
+	 * @throws HibernateException
+	 */
 	private static SessionFactory configureSessionFactory() throws HibernateException {
 		Configuration configuration = new Configuration();
 		configuration.configure("hibernate.cfg.xml");
@@ -90,12 +130,18 @@ public class PersistenceUtility {
 		return sessionFactory;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public static SessionFactory getSession() {
 		return sessionFactory;
 	}
 	
+	/**
+	 * 
+	 */
 	public static void closeSessionFactory() {
 		sessionFactory.close();
 	}
-	    
 }

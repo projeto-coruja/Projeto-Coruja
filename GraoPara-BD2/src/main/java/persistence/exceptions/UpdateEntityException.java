@@ -1,5 +1,9 @@
 package persistence.exceptions;
 
+/**
+ * Exceção para problemas relacionado a atualização de um entrada SQL.
+ *
+ */
 public class UpdateEntityException extends Exception {
 
 	/**
