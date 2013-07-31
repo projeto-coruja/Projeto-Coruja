@@ -5,8 +5,8 @@ import java.util.List;
 import persistence.PersistenceAccess;
 import persistence.dto.DTO;
 import persistence.dto.Documento;
+import persistence.exceptions.DataAccessLayerException;
 import persistence.exceptions.UpdateEntityException;
-import persistence.util.DataAccessLayerException;
 import business.exceptions.documents.DocumentNotFoundException;
 import business.exceptions.login.UnreachableDataBaseException;
 

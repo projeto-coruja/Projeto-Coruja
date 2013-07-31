@@ -12,6 +12,10 @@ import org.hibernate.usertype.UserType;
 
 import datatype.SimpleDate;
 
+/**
+ * Classe para armazenar datas.
+ *
+ */
 public class SimpleDateHibernateType implements UserType {
 
 	

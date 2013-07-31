@@ -8,7 +8,7 @@ import business.exceptions.login.UnreachableDataBaseException;
 import persistence.PersistenceAccess;
 import persistence.dto.DTO;
 import persistence.dto.Profile;
-import persistence.util.DataAccessLayerException;
+import persistence.exceptions.DataAccessLayerException;
 
 public class ProfileDAO {
 

@@ -8,8 +8,8 @@ import business.exceptions.login.UnreachableDataBaseException;
 import persistence.PersistenceAccess;
 import persistence.dto.CodiceCaixa;
 import persistence.dto.DTO;
+import persistence.exceptions.DataAccessLayerException;
 import persistence.exceptions.UpdateEntityException;
-import persistence.util.DataAccessLayerException;
 
 public class CodiceCaixaDAO {
 	
