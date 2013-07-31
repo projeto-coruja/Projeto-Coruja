@@ -23,13 +23,22 @@ import persistence.dto.DTO;
 import persistence.dto.Documento;
 import business.EJB.util.EJBUtility;
 
+/**
+ * Classe para exportar resultado.
+ *
+ */
 public class SpreadsheetExport {
 
 	private static String tmpPath;
 	
 	private static void getPath(){
-		tmpPath = "/tmp"; // Jboss
+		tmpPath = "/tmp"; // caminho local onde o documento será gerado.
 	}
+	
+	/**
+	 * @param s
+	 * @return
+	 */
 	@SuppressWarnings("unused")
 	@Deprecated
 	private static double getStringWidth(String s){
@@ -41,8 +50,13 @@ public class SpreadsheetExport {
 		return bounds.getWidth();
 	}
 	
+	/**
+	 * Cria uma planilha contendo o resultado da pesquisa de documentos.
+	 * @param resultSet - List&lt;DTO&gt; contendo o resultado que será inserido no documento.
+	 * @return <i>String</i> com o caminho absoluto do arquivo gerado.
+	 * @throws Exception
+	 */
 	public static String generateSpreadsheet(List<DTO> resultSet) throws Exception{
-		
 		SpreadsheetDocument outerDoc = SpreadsheetDocument.newSpreadsheetDocument();
 		String creationDate = new SimpleDateFormat("dd-MM-YYYY").format(new Date());
 		Documento docDTO = null;
@@ -52,7 +66,7 @@ public class SpreadsheetExport {
 		Cell cel = row.getCellByIndex(0);
 		
 //		Color grey = new Color("#DDDDDD");
-		Border border = new Border(new Color("#000000"), 0.001, SupportedLinearMeasure.IN);
+		Border border = new Border(new Color("#000000"), 0.001, SupportedLinearMeasure.IN);	// Formatação da borda das células.
 		
 		int coluna;
 		
@@ -61,6 +75,7 @@ public class SpreadsheetExport {
 		// Primeira linha
 		coluna = 0;
 		row = tbl.getRowByIndex(0);
+		// Conteúdo das células da primeira linha.
 		String index[] = {"Código da Caixa/Códice",
 				"Título da Caixa/Códice",
 				"Código do documento",
@@ -74,17 +89,17 @@ public class SpreadsheetExport {
 				"Ocupação do destinatário",
 				"Local",
 				"URL da imagem"};
-
-		
+		// =======================================================
+		// Modificando e formatando as células
 		for(int i = 0; i < index.length; i++){
 			column = tbl.getColumnByIndex(coluna);
 //			column.setWidth(getStringWidth(index[i]));
-			column.setWidth(50);
+			column.setWidth(50);											// Modifica a largura da célula
 			cel = row.getCellByIndex(coluna++);
 //			cel.setCellBackgroundColor(grey);
-			cel.setBorders(CellBordersType.ALL_FOUR, border);
-			cel.setHorizontalAlignment(HorizontalAlignmentType.CENTER);
-			cel.setVerticalAlignment(VerticalAlignmentType.MIDDLE);
+			cel.setBorders(CellBordersType.ALL_FOUR, border);				// Formata as bordas de acordo com a variável "border"
+			cel.setHorizontalAlignment(HorizontalAlignmentType.CENTER);		// Seta o alinhamento horizontal.
+			cel.setVerticalAlignment(VerticalAlignmentType.MIDDLE);			// Seta o alinhamento vertical.
 			cel.setDisplayText(index[i]);
 		}
 	
@@ -94,6 +109,7 @@ public class SpreadsheetExport {
 			docDTO = (Documento) resultSet.get(linha);
 			row = tbl.getRowByIndex(linha+1);
 			row.setHeight(50, false);
+			// Conteúdo das células.
 			String cellContent[] = {docDTO.getCodiceCaixa().getCod().replace("-", " - "),
 					docDTO.getCodiceCaixa().getTitulo(),
 					docDTO.getCod().replace("-", " - "),
@@ -109,7 +125,7 @@ public class SpreadsheetExport {
 					docDTO.getDestinatario().getOcupacao(),
 					docDTO.getLocal(),
 					docDTO.getUrl()};
-
+			// =======================================================
 			for(int i = 0; i < cellContent.length; i++){
 
 				column = tbl.getColumnByIndex(coluna);
@@ -133,6 +149,9 @@ public class SpreadsheetExport {
 		return filePath;
 	}
 
+	/**
+	 * Testes...
+	 */
 	/*public static void main(String[] args) throws Exception {
 		getPath();
 		System.out.println(tmpPath);

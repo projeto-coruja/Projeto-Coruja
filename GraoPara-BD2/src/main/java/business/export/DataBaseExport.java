@@ -9,10 +9,18 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Classe para exportaçao do banco de dados.
+ */
 public class DataBaseExport {
+	
+	private static final String tmp = "/tmp";	// Caminho absoluto para a pasta onde o arquivo será criado.
+	private static final String dbPassword = "coruja";	// Senha do banco de dados. Necessário modificar caso modifique no arquivo de configurações.
 
-	private static final String tmp = "/tmp";
-
+	/**
+	 * Exporta o banco de dados.
+	 * @return <i>String</i> contendo o caminho absoluto do arquivo gerado.
+	 */
 	public static String export(){
 		
 		ProcessBuilder pb;  
@@ -23,9 +31,9 @@ public class DataBaseExport {
 		List<String> commands = new ArrayList<String>();
 		dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
 		date = new Date();
-		
+		// Seta o caminho absoluto do arquivo.
 		filePath = tmp+"/bkp_"+dateFormat.format(date)+".sql.gz";
-
+		// Adiciona os comandos do processo.
 		commands.add("pg_dump");
 		commands.add("-i");
 		commands.add("-h");
@@ -41,11 +49,12 @@ public class DataBaseExport {
 		commands.add("-f");
 		commands.add(filePath);
 		commands.add("coruja_graopara");
-		
-		pb = new ProcessBuilder(commands);
-		pb.environment().put("PGPASSWORD", "coruja");
+		// =============================================
+		pb = new ProcessBuilder(commands);	// Constroe um processo com os comandos.
+		pb.environment().put("PGPASSWORD", dbPassword);	// Seta senha do banco de dados no ambiente.
 		pb.redirectErrorStream(true);
 		
+		// Execução do processo.
 		try {
 			p = pb.start();
 
