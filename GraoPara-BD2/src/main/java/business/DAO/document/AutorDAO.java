@@ -43,7 +43,7 @@ public class AutorDAO {
 	}
 
 	/**
-	 * Remove o Autor especificado.
+	 * Remove um Autor específico.
 	 * @param author o objeto Autor a ser removido.
 	 * @throws UnreachableDataBaseException
 	 */

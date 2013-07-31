@@ -19,6 +19,13 @@ public class TipoDocumentoDAO {
 		manager = new PersistenceAccess();	
 	}
 	
+	/**
+	 * Adiciona um novo Tipo de Documento.
+	 * @param tipoDocumento uma String contendo o tipo do documento.
+	 * @param descricao uma String contendo a descrição do documento.
+	 * @return o objeto TipoDocumento criado. 
+	 * @throws UnreachableDataBaseException
+	 */
 	public TipoDocumento addDocumentType(String tipoDocumento, String descricao) throws UnreachableDataBaseException{
 		TipoDocumento newType = new TipoDocumento(tipoDocumento, descricao);
 		try{
@@ -30,6 +37,11 @@ public class TipoDocumentoDAO {
 		return newType;
 	}
 	
+	/**
+	 * Remove um TipoDocumento específico.
+	 * @param docType um objeto TipoDocumento a ser removido.
+	 * @throws UnreachableDataBaseException
+	 */
 	public void removeDocumentType(TipoDocumento docType) throws UnreachableDataBaseException {
 		if(docType == null)	throw new IllegalArgumentException("Nenhum tipo especificado");
 		try{
@@ -40,6 +52,17 @@ public class TipoDocumentoDAO {
 		}
 	}
 	
+	/**
+	 * Atualiza um TipoDocumento específico.
+	 * @param docType um objeto TipoDocumento a ser atualizado.
+	 * @throws UnreachableDataBaseException
+	 * @throws IllegalAccessException
+	 * @throws IllegalArgumentException
+	 * @throws InvocationTargetException
+	 * @throws NoSuchMethodException
+	 * @throws SecurityException
+	 * @throws UpdateEntityException
+	 */
 	public void updateDocumentType(TipoDocumento docType) 
 			throws UnreachableDataBaseException, IllegalAccessException, IllegalArgumentException, 
 			InvocationTargetException, NoSuchMethodException, SecurityException, UpdateEntityException {
@@ -54,6 +77,13 @@ public class TipoDocumentoDAO {
 		}
 	}
 	
+	/**
+	 * Procura TipoDocumento.
+	 * @param name uma String contendo o nome do TipoDocumento.
+	 * @return uma lista de TipoDocumento.
+	 * @throws UnreachableDataBaseException
+	 * @throws DocumentTypeNotFoundException
+	 */
 	public List<DTO> findDocumentTypeByString(String name) throws  UnreachableDataBaseException, DocumentTypeNotFoundException  {
 		List<DTO> resultSet = null;
 		try {
@@ -68,6 +98,13 @@ public class TipoDocumentoDAO {
 		}
 	}
 	
+	/**
+	 * Procura TipoDocumento.
+	 * @param name uma String contendo o nome do TipoDocumento.
+	 * @return o objeto TipoDocumento achado.
+	 * @throws UnreachableDataBaseException
+	 * @throws DocumentTypeNotFoundException
+	 */
 	public TipoDocumento findSingleDocumentTypeByString(String name) throws  UnreachableDataBaseException, DocumentTypeNotFoundException  {
 		List<DTO> resultSet = null;
 		try {
@@ -82,6 +119,12 @@ public class TipoDocumentoDAO {
 		}
 	}
 	
+	/**
+	 * Lista todos os TipoDocumento existentes.
+	 * @return uma lista de TipoDocumento já existentes.
+	 * @throws UnreachableDataBaseException
+	 * @throws DocumentTypeNotFoundException
+	 */
 	public List<DTO> findAllDocumentTypes() throws  UnreachableDataBaseException, DocumentTypeNotFoundException  {
 		List<DTO> resultSet = null;
 		try {
@@ -96,6 +139,11 @@ public class TipoDocumentoDAO {
 		}
 	}
 
+	/**
+	 * Formata a palavra-chave a ser uasada na função findEntity().
+	 * @param var uma string.
+	 * @return a string formatada.
+	 */
 	private String normalize(String var){
 		if(var == null)	return null;
 		var = var.replace("'", "''");

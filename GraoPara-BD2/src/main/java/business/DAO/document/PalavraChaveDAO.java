@@ -20,6 +20,14 @@ public class PalavraChaveDAO {
 		manager = new PersistenceAccess();	
 	}
 	
+	/**
+	 * Adiciona uma nova Palavra-Chave.
+	 * @param key uma String contendo a palavra-chave.
+	 * @param theme uma String contendo o tema da Palavra-Chave. 
+	 * @return o objeto Palavra-Chave criado.
+	 * @throws UnreachableDataBaseException
+	 * @throws ThemeNotFoundException
+	 */
 	public PalavraChave addKeyWord(String key, String theme) throws UnreachableDataBaseException, ThemeNotFoundException{
 		TemaPalavraChaveDAO newThemeDAO = new TemaPalavraChaveDAO();
 		TemaPalavraChave newTheme = null;
@@ -42,6 +50,12 @@ public class PalavraChaveDAO {
 		return newKey;
 	}
 	
+	/**
+	 * Remove uma Palavra-Chave.
+	 * @param key uma String contendo a palavra-chave.
+	 * @throws UnreachableDataBaseException
+	 * @throws KeywordNotFoundException
+	 */
 	public void removeKeyWord(String key) throws UnreachableDataBaseException, KeywordNotFoundException{
 		List<DTO> check = null;
 		PalavraChave select = null;
@@ -59,6 +73,17 @@ public class PalavraChaveDAO {
 		}
 	}
 	
+	/**
+	 * Atualiza uma Palavra-Chave.
+	 * @param key uma String contendo a palavra-chave a ser atualizada.
+	 * @param newKey uma String contendo a palavra-chave nova.
+	 * @param newTheme ums String contendo o tema novo da Palavra-Chave.
+	 * @return o objeto Palavra-Chave atualizado.
+	 * @throws UnreachableDataBaseException
+	 * @throws IllegalArgumentException
+	 * @throws UpdateEntityException
+	 * @throws KeywordNotFoundException
+	 */
 	public PalavraChave updateKeyWord(String key, String newKey, String newTheme) throws UnreachableDataBaseException, IllegalArgumentException, UpdateEntityException, KeywordNotFoundException {
 		List<DTO> check = null;
 		PalavraChave select_pc = null;
@@ -100,6 +125,13 @@ public class PalavraChaveDAO {
 		return select_pc;
 	}
 	
+	/**
+	 * Procura Palavra-Chave.
+	 * @param key uma String contendo a palavra-chave.
+	 * @return uma lista de Palavras-Chave.
+	 * @throws UnreachableDataBaseException
+	 * @throws KeywordNotFoundException
+	 */
 	public List<DTO> findKeyWordByString(String key) throws  UnreachableDataBaseException, KeywordNotFoundException  {
 		List<DTO> resultSet = null;
 		try {
@@ -114,6 +146,13 @@ public class PalavraChaveDAO {
 		}
 	}
 	
+	/**
+	 * Procura Palavra-Chave pelo tema.
+	 * @param theme uma String contendo o tema da Palavra-Chave.
+	 * @return uma lista de Palavras-Chave.
+	 * @throws UnreachableDataBaseException
+	 * @throws KeywordNotFoundException
+	 */
 	public List<DTO> findKeyWordByTheme(String theme) throws  UnreachableDataBaseException, KeywordNotFoundException  {
 		List<DTO> resultSet = null;
 		try {
@@ -128,6 +167,12 @@ public class PalavraChaveDAO {
 		}
 	}
 	
+	/**
+	 * Lista todas as Palavras-Chave existentes.
+	 * @return uma lista de Palavras-Chave já existentes.
+	 * @throws UnreachableDataBaseException
+	 * @throws KeywordNotFoundException
+	 */
 	public List<DTO> getAllKeys() throws  UnreachableDataBaseException, KeywordNotFoundException  {
 		List<DTO> resultSet = null;
 		try {
@@ -142,6 +187,11 @@ public class PalavraChaveDAO {
 		}
 	}
 
+	/**
+	 * Formata a palavra-chave a ser uasada na função findEntity().
+	 * @param var uma string.
+	 * @return a string formatada.
+	 */
 	private String normalize(String var){
 		if(var == null)	return null;
 		var = var.replace("'", "''");

@@ -45,7 +45,7 @@ public class CodiceCaixaDAO {
 	}
 	
 	/**
-	 * Removo o Códice/Caixa especificado.
+	 * Remove um Códice/Caixa específico.
 	 * @param origin o objeto Códice/Caixa a ser removido.
 	 * @throws UnreachableDataBaseException
 	 */
@@ -59,7 +59,7 @@ public class CodiceCaixaDAO {
 	}
 	
 	/**
-	 * Atualiza o Códice/Caixa especificado.
+	 * Atualiza um Códice/Caixa específico.
 	 * @param codiceCaixa o objeto Códice/Caixa a ser atualizado.
 	 * @throws UnreachableDataBaseException
 	 * @throws IllegalArgumentException
