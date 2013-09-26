@@ -40,6 +40,32 @@ public class DocumentEJB {
 		docDao = new DocumentoDAO();
 	}
 	
+	/**
+	 * Busca de documentos no banco de dados.
+	 * @param tipoCodiceCaixa
+	 * @param codCodiceCaixaDe
+	 * @param codCodiceCaixaAte
+	 * @param tituloCodiceCaixa
+	 * @param anoInicioCodiceCaixa
+	 * @param anoFimCodiceCaixa
+	 * @param tipoCodDocumento
+	 * @param codDocumento
+	 * @param dataDocIni
+	 * @param dataDocFim
+	 * @param autor
+	 * @param ocupacaoAutor
+	 * @param destinatario
+	 * @param ocupacaoDestinatario
+	 * @param tipoDocumento
+	 * @param local
+	 * @param resumo
+	 * @param palavraChave1
+	 * @param palavraChave2
+	 * @param palavraChave3
+	 * @return Resultado da pesquisa em forma de lista de DTOs
+	 * @throws DocumentNotFoundException
+	 * @throws UnreachableDataBaseException
+	 */
 	public List<DTO> findDocuments(
 			String tipoCodiceCaixa,
 			String codCodiceCaixaDe,
@@ -277,6 +303,32 @@ public class DocumentEJB {
 		return docDao.findDocumentByQuery(query);
 	}
 	
+	/**
+	 * Registra um novo documento no banco de dados.
+	 * @param tipoCodDocumento
+	 * @param codDocumento
+	 * @param local
+	 * @param url
+	 * @param resumo
+	 * @param data
+	 * @param uploader
+	 * @param codCodiceCaixa
+	 * @param tituloCodiceCaixa
+	 * @param anoInicioCodiceCaixa
+	 * @param anoFimCodiceCaixa
+	 * @param autor
+	 * @param ocupacaoAutor
+	 * @param destinatario
+	 * @param ocupacaoDestinatario
+	 * @param tipoDocumento
+	 * @param descricaoDoTipoDocumento
+	 * @param palavraChave1
+	 * @param palavraChave2
+	 * @param palavraChave3
+	 * @param c_status
+	 * @throws UnreachableDataBaseException
+	 * @throws IllegalArgumentException
+	 */
 	public synchronized void registerNewDocument (
 			// Documento
 			String tipoCodDocumento, // APEP/SEQ
@@ -443,11 +495,41 @@ public class DocumentEJB {
 				palavraChave[0], palavraChave[1], palavraChave[2], uploader, data);
 		docDao.addDocument(newDoc);
 	}
-	
+	/**
+	 * Modificação de documentos.
+	 * @param doc - Objeto a ser modificado.
+	 * @throws IllegalArgumentException
+	 * @throws UnreachableDataBaseException
+	 * @throws UpdateEntityException
+	 */
 	public synchronized void modifyDocument(Documento doc) throws IllegalArgumentException, UnreachableDataBaseException, UpdateEntityException{
 		docDao.updateDocument(doc);
 	}
 	
+	/**
+	 * Modificação de documentos.
+	 * @param tipoCodDocumentoAntigo
+	 * @param codDocumentoAntigo
+	 * @param tipoCodDocumento
+	 * @param codDocumento
+	 * @param local
+	 * @param url
+	 * @param resumo
+	 * @param data
+	 * @param codCodiceCaixa
+	 * @param autor
+	 * @param ocupacaoAutor
+	 * @param destinatario
+	 * @param ocupacaoDestinatario
+	 * @param tipoDocumento
+	 * @param palavraChave1
+	 * @param palavraChave2
+	 * @param palavraChave3
+	 * @throws UnreachableDataBaseException
+	 * @throws DocumentNotFoundException
+	 * @throws IllegalArgumentException
+	 * @throws UpdateEntityException
+	 */
 	public synchronized void modifyDocument(
 			// Busca do documento a ser modificado
 			String tipoCodDocumentoAntigo,
