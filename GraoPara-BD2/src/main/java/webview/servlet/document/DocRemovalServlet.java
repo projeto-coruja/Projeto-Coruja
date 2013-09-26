@@ -30,11 +30,12 @@ public class DocRemovalServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String code = request.getParameter("codigo"); // Número APEP/SEQ
+		String codex = request.getParameter("container");	// Número da caixa/códice
 		DocumentEJB docEJB = new DocumentEJB();
 		response.setContentType("text/html; charset=UTF-8");  
 	    Documento docs = null;
 		try {
-			docs = docEJB.findSingleDocument(code);
+			docs = docEJB.findSingleDocument(code,codex);
 			docEJB.removeDocument(docs);
 			AlertsUtility.alertAndRedirectPage(response, "Documento removido com sucesso.",request.getHeader("referer"));
 		} catch (UnreachableDataBaseException e) {

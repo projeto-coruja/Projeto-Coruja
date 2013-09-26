@@ -486,7 +486,7 @@ public class DocumentEJB {
 		Autor author = null;
 		Autor addressee = null;
 		
-		doc = findSingleDocument(tipoCodDocumentoAntigo, codDocumentoAntigo);
+		doc = findSingleDocument(tipoCodDocumentoAntigo,codDocumentoAntigo);
 		
 		
 		doc.setCod(tipoCodDocumento+"-"+codDocumento); 
@@ -604,24 +604,26 @@ public class DocumentEJB {
 		docDao.removeDocument(document);
 	}
 	
-	public Documento findSingleDocument(String type, String code) throws DocumentNotFoundException, UnreachableDataBaseException, IllegalArgumentException{
+//	@Deprecated
+//	método totalmente quebrado   =(
+//	public Documento findSingleDocument(String code) throws DocumentNotFoundException, UnreachableDataBaseException, IllegalArgumentException{
+//		if(code == null || code.isEmpty()) throw new IllegalArgumentException("Code is empty");
+//		String query = default_query;
+//		query += " cod = '" + code + "'";
+//		List<DTO> resultSet = docDao.findDocumentByQuery(query);
+//		for(DTO dto : resultSet){
+//			if(((Documento)dto).getCod().equals(code))	return (Documento) dto;
+//		}
+//		throw new DocumentNotFoundException("Documento não encontrado");
+//	}
+	
+	public Documento findSingleDocument(String code, String codCodiceCaixa) throws DocumentNotFoundException, UnreachableDataBaseException, IllegalArgumentException{
 		if(code == null || code.isEmpty()) throw new IllegalArgumentException("Code is empty");
 		String query = default_query;
-		query += " cod = '" + type+"-"+code + "'";
+		query += " cod = '" +code + "' AND codiceCaixa.cod = '" + codCodiceCaixa + "'";
 		List<DTO> resultSet = docDao.findDocumentByQuery(query);
 		if(resultSet == null) throw new DocumentNotFoundException("Documento não encontrado");
 		else return (Documento) resultSet.get(0);
-	}
-	
-	public Documento findSingleDocument(String code) throws DocumentNotFoundException, UnreachableDataBaseException, IllegalArgumentException{
-		if(code == null || code.isEmpty()) throw new IllegalArgumentException("Code is empty");
-		String query = default_query;
-		query += " cod = '" + code + "'";
-		List<DTO> resultSet = docDao.findDocumentByQuery(query);
-		for(DTO dto : resultSet){
-			if(((Documento)dto).getCod().equals(code))	return (Documento) dto;
-		}
-		throw new DocumentNotFoundException("Documento não encontrado");
 	}
 	
 	public List<DTO> findByDocumentType(String type) throws UnreachableDataBaseException, DocumentNotFoundException{

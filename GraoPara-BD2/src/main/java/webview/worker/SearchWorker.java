@@ -141,11 +141,12 @@ public class SearchWorker {
 						(doc.getUrl() != null && !doc.getUrl().equals("") ? "<a href=\"" + doc.getUrl() + "\">URL</a>" : "" ));
 				if(c_status != null && c_status.equals(AuthBean.LoginSuccessAdmin)){
 					out.println( "<a href=\"/GraoPara/protected/admin/editarDocumentos.jsp?"
-					+"codigoDoDocumento=" + doc.getCod()
+					+"container=" + doc.getCodiceCaixa().getCod()
+					+"&codigoDoDocumento=" + doc.getCod()
 					+ "\">"
 					+ "<img src=\"/GraoPara/images/edit.png\" title=\"Editar\" alt=\"Editar\"/></a> "
 					+ "<br>"
-					+ "<a href=\"javascript:confirmAction('Você tem certeza que quer deletar o documento \\'"+ doc.getCod().replace("-", " - ") +"\\'?','/GraoPara/protected/admin/removeDoc?codigo=" + doc.getCod()+"')\">"
+					+ "<a href=\"javascript:confirmAction('Você tem certeza que quer deletar o documento \\'"+ doc.getCod().replace("-", " - ") +"\\'?','/GraoPara/protected/admin/removeDoc?container=" + doc.getCodiceCaixa().getCod()+ "&codigo=" + doc.getCod()+"')\">"
 					+ "<img src=\"/GraoPara/images/remove.png\" title=\"Remover\" alt=\"Remover\"/></a></td> ");
 				}
 				out.println("</label></td>");
@@ -245,9 +246,10 @@ public class SearchWorker {
 	
 	public static void getInfoFromDocument(HttpServletRequest request){
 		String code = request.getParameter("codigoDoDocumento");
+		String codex = request.getParameter("container");
 		DocumentEJB docEJB = new DocumentEJB();
 		try {
-			Documento doc = docEJB.findSingleDocument(code);
+			Documento doc = docEJB.findSingleDocument(code,codex);
 			String dataFormatted;
 			if(doc.getData() == null) dataFormatted = "Ilegível/Sem Data";	
 			else
@@ -280,9 +282,10 @@ public class SearchWorker {
 	
 	public static void getRawInfoFromDocument(HttpServletRequest request){
 		String code = request.getParameter("codigoDoDocumento");
+		String codex = request.getParameter("container");
 		DocumentEJB docEJB = new DocumentEJB();
 		try {
-			Documento doc = docEJB.findSingleDocument(code);
+			Documento doc = docEJB.findSingleDocument(code,codex);
 			String[] cdCxSplit = doc.getCodiceCaixa().getCod().split("-");
 			String[] codDocSplit = doc.getCod().split("-");
 			SimpleDate sd = doc.getData();
