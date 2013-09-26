@@ -17,6 +17,9 @@ import business.exceptions.login.ProfileNotFoundException;
 import business.exceptions.login.UnreachableDataBaseException;
 import business.exceptions.login.UserNotFoundException;
 
+/**
+ * Classe de administração
+ */
 public class AdminBean {
 
 	private UserDAO userDAO;
@@ -33,6 +36,16 @@ public class AdminBean {
 		profileDAO = new ProfileDAO();
 	}
 
+	/**
+	 * Classe não usado.
+	 * @param profile
+	 * @param read
+	 * @param write
+	 * @param edit
+	 * @throws UnreachableDataBaseException
+	 * @throws IncorrectProfileInformationException
+	 */
+	@Deprecated
 	public void adicionarProfile(String profile, boolean read, boolean write, boolean edit) 
 			throws UnreachableDataBaseException, IncorrectProfileInformationException {
 		try {
@@ -47,6 +60,16 @@ public class AdminBean {
 		}
 	}
 
+	/**
+	 * Adiciona um novo usuário pré-aprovado no banco de dados.
+	 * @param email - Email do usuário
+	 * @param name - Nome do usuário
+	 * @param password - Senha do usuário
+	 * @param profile - Perfil no qual o usuário fará parte
+	 * @throws UnreachableDataBaseException
+	 * @throws IncorrectLoginInformationException quando é fornecido um email fora do padrão.
+	 * @throws DuplicateUserException quando o email já está registrado.
+	 */
 	public void adicionarUsuario(String email, String name, String password, String profile) throws UnreachableDataBaseException, IncorrectLoginInformationException, DuplicateUserException {
 		try {
 			if(!emailChecker.check(email))	
@@ -74,16 +97,39 @@ public class AdminBean {
 		}
 	}
 
+	/**
+	 * Troca o nível de permissão um usuário
+	 * @param email - Email do usuário que terá as permissões alterada.
+	 * @param novo_perfil - Nível de permissão que o usuário passará fazer parte.
+	 * @throws IncorrectProfileInformationException quando o perfil escolhido já é o perfil do usuário
+	 * @throws UnreachableDataBaseException quando há algum problema na transação, hibernate ou sql
+	 * @throws UserNotFoundException quando o email fornecido não corresponde a nenhum usuário cadastrado.
+	 * @throws ProfileNotFoundException quando o perfil fornecido não corresponde a nenhum perfil cadastrado.
+	 * @throws IllegalArgumentException
+	 * @throws UpdateEntityException
+	 */
 	public void alterarPermissoesUsuario(String email, String novo_perfil) 
 			throws IncorrectProfileInformationException, UnreachableDataBaseException, UserNotFoundException, 
 				ProfileNotFoundException, IllegalArgumentException, UpdateEntityException {
 		userDAO.changeUserProfile(email, profileDAO.findProfileByName(novo_perfil));
 	}
 
+	/**
+	 * Remove um usuário do BD
+	 * @param email - Email do usuári a ser removido.
+	 * @throws UnreachableDataBaseException
+	 * @throws UserNotFoundException
+	 */
 	public void deletarUsuario(String email) throws UnreachableDataBaseException, UserNotFoundException {
 		userDAO.removeUser(email);
 	}
 
+	/**
+	 * Lista todos os perfils disponíveis
+	 * @return <tt>List&lt;DTO&gt;</tt> com todos os perfils disponíveis no BD
+	 * @throws UnreachableDataBaseException
+	 * @throws ProfileNotFoundException
+	 */
 	public List<DTO> getAllAvailableProfiles() throws UnreachableDataBaseException, ProfileNotFoundException{
 		return profileDAO.getAllProfiles();
 	}

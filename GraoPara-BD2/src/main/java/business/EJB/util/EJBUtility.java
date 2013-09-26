@@ -4,6 +4,9 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Random;
 
+/**
+ * Classe de utilidades.
+ */
 public class EJBUtility {
 
 	private EJBUtility (){}
@@ -29,7 +32,7 @@ public class EJBUtility {
 	}
 
 	/**
-	 * Transforma uma senha em hash.
+	 * Transforma uma string em hash.
 	 * @param s - String que será transformado em hash.
 	 * @param algorithm - Algorítmo a ser utilizado. 
 	 * Caso <b>null</b> ou algoritmo inexistente, o método utilizará o <b>MD5</b> como padrão. 

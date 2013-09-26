@@ -13,6 +13,10 @@ import business.exceptions.documents.CodiceCaixaNotFoundException;
 import business.exceptions.documents.DuplicateCodiceCaixaException;
 import business.exceptions.login.UnreachableDataBaseException;
 
+/**
+ * EJB para códice e caixa
+ * 
+ */
 public class CodiceCaixaEJB {
 	CodiceCaixaDAO dao;
 
@@ -20,6 +24,17 @@ public class CodiceCaixaEJB {
 		dao = new CodiceCaixaDAO();
 	}
 	
+	/**
+	 * Adiciona um novo códice/caixa no banco de dados.<br>
+	 * Formato de armazenament: [TIPO]-[COD] (i.e. CODICE-0001)
+	 * @param tipo - Tipo do container (códice ou caixa)
+	 * @param cod - Código do container
+	 * @param titulo - Título
+	 * @param anoInicio - Ano de início
+	 * @param anoFim - Ano do fim
+	 * @throws UnreachableDataBaseException
+	 * @throws DuplicateCodiceCaixaException quando já existe um container com o código fornecido.
+	 */
 	public synchronized void add(String tipo, String cod, String titulo, int anoInicio, int anoFim) throws UnreachableDataBaseException, DuplicateCodiceCaixaException{
 		if(anoFim < anoInicio)	throw new IllegalArgumentException("anoFim < anoInicio");
 		if(tipo == null || cod == null || tipo.isEmpty() || cod.isEmpty())	throw new IllegalArgumentException("Código e/ou tipo vazio ou nulo");
@@ -27,6 +42,19 @@ public class CodiceCaixaEJB {
 		dao.addCodiceCaixa(cod, titulo, anoInicio, anoFim);
 	}
 	
+	/**
+	 * Atualiza um container.
+	 * @param oldCod - Código atual do container. (Busca)
+	 * @param oldTitle - Título atual do container. (Busca)
+	 * @param newCod - Novo código.
+	 * @param newTitle - Novo título
+	 * @param anoInicio - Novo ano de início
+	 * @param anoFim - Novo ano de fim
+	 * @throws UnreachableDataBaseException
+	 * @throws CodiceCaixaNotFoundException
+	 * @throws IllegalArgumentException
+	 * @throws UpdateEntityException
+	 */
 	public synchronized void update(String oldCod, String oldTitle, String newCod, String newTitle, int anoInicio, int anoFim) throws UnreachableDataBaseException, CodiceCaixaNotFoundException, IllegalArgumentException, UpdateEntityException{
 		if(anoFim < anoInicio)	throw new IllegalArgumentException("anoFim < anoInicio");
 		if(oldCod == null || oldCod.isEmpty() || newCod == null || newCod.isEmpty())	throw new IllegalArgumentException("Código vazio ou nulo");
@@ -38,6 +66,17 @@ public class CodiceCaixaEJB {
 		dao.updateCodiceCaixa(cc);
 	}
 	
+	/**
+	 * Atualiza as informações de um container.
+	 * @param oldCod
+	 * @param newTitle
+	 * @param anoInicio
+	 * @param anoFim
+	 * @throws UnreachableDataBaseException
+	 * @throws CodiceCaixaNotFoundException
+	 * @throws IllegalArgumentException
+	 * @throws UpdateEntityException
+	 */
 	public synchronized void update(String oldCod, String newTitle, int anoInicio, int anoFim) throws UnreachableDataBaseException, CodiceCaixaNotFoundException, IllegalArgumentException, UpdateEntityException{
 		if(anoFim < anoInicio)	throw new IllegalArgumentException("anoFim < anoInicio");
 		if(oldCod == null || oldCod.isEmpty())	throw new IllegalArgumentException("Código vazio ou nulo");

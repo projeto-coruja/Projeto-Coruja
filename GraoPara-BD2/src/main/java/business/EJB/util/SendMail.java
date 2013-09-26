@@ -10,18 +10,33 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
- 
+/**
+ * Classe para envio de email.
+ */
 public class SendMail {
-	
+	/**
+	 * Conta de usuário.<br>
+	 * Nota: Alguns servidores necessitam do endereço completo (i.e. nome@servidor.com.br)
+	 */
 	private static String account = "graoparaproject";
+	/**
+	 * Senha do email.
+	 */
 	private static String password = "g1r2a3o4";
 	
-	private static String host = "smtp.gmail.com";
-	private static String port = "465";
-	private static String socketPort = "465";
 	
-	private SendMail(){}
+	private static String host = "smtp.gmail.com";	// SMTP
+	private static String port = "465";				// Porta
+	private static String socketPort = "465";		// Socket
 	
+	private SendMail(){}	// Impedir instância
+	
+	/**
+	 * Envia um novo email.
+	 * @param to - Email do destinatário.
+	 * @param subject - Assunto no email
+	 * @param msg - Corpo da menssagem (formato MIME)
+	 */
 	public static void send(String to, String subject, String msg) {
 		Properties props = new Properties();
 		props.put("mail.smtp.host", host);
