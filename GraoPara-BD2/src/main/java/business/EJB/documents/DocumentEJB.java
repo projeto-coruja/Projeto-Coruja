@@ -568,7 +568,7 @@ public class DocumentEJB {
 		Autor author = null;
 		Autor addressee = null;
 		
-		doc = findSingleDocument(tipoCodDocumentoAntigo,codDocumentoAntigo);
+		doc = findSingleDocument(tipoCodDocumentoAntigo+"-"+codDocumentoAntigo,codCodiceCaixa);
 		
 		
 		doc.setCod(tipoCodDocumento+"-"+codDocumento); 
@@ -699,10 +699,10 @@ public class DocumentEJB {
 //		throw new DocumentNotFoundException("Documento não encontrado");
 //	}
 	
-	public Documento findSingleDocument(String code, String codCodiceCaixa) throws DocumentNotFoundException, UnreachableDataBaseException, IllegalArgumentException{
-		if(code == null || code.isEmpty()) throw new IllegalArgumentException("Code is empty");
+	public Documento findSingleDocument(String codDoc, String codCodiceCaixa) throws DocumentNotFoundException, UnreachableDataBaseException, IllegalArgumentException{
+		if(codDoc == null || codDoc.isEmpty()) throw new IllegalArgumentException("Code is empty");
 		String query = default_query;
-		query += " cod = '" +code + "' AND codiceCaixa.cod = '" + codCodiceCaixa + "'";
+		query += " cod = '" + codDoc + "' AND codiceCaixa.cod = '" + codCodiceCaixa + "'";
 		List<DTO> resultSet = docDao.findDocumentByQuery(query);
 		if(resultSet == null) throw new DocumentNotFoundException("Documento não encontrado");
 		else return (Documento) resultSet.get(0);

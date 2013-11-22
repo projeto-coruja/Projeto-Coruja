@@ -3,6 +3,7 @@ package webview.servlet.document;
 import static webview.util.WebUtility.isInit;
 
 import java.io.IOException;
+import java.nio.charset.Charset;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import persistence.exceptions.UpdateEntityException;
 import webview.util.AlertsUtility;
+import webview.util.ParamsWrapper;
 import business.EJB.documents.DocumentEJB;
 import business.exceptions.documents.DocumentNotFoundException;
 import business.exceptions.login.UnreachableDataBaseException;
@@ -32,35 +34,36 @@ public class DocUpdateServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    	String tipoCodDocumentoAntigo = request.getParameter("pesquisa_APEP_SEQ");
-		String codDocumentoAntigo = request.getParameter("pesquisa_num_APEP_SEQ");
+    	ParamsWrapper req = new ParamsWrapper(request);
+    	
+    	String tipoCodDocumentoAntigo = req.getParameter("pesquisa_APEP_SEQ");
+		String codDocumentoAntigo = req.getParameter("pesquisa_num_APEP_SEQ");
 		
-		String tipoCodDocumento = request.getParameter("tipo_num");
-		String codDocumento = request.getParameter("numero");
-		String local = request.getParameter("local");
-		String url = request.getParameter("urlImagem");
-		String resumo = request.getParameter("resumo");
+		String tipoCodDocumento = req.getParameter("tipo_num");
+		String codDocumento = req.getParameter("numero");
+		String local = req.getParameter("local");
+		String url = req.getParameter("urlImagem");
+		String resumo = req.getParameter("resumo");
 		
-		String[] identificacao = request.getParameter("identificacao").split("-");
+		String[] identificacao = req.getParameter("identificacao").split("-");
 		String tipoCodiceCaixa = identificacao[0];
 		String codCodiceCaixa = identificacao[1];
 		
-		String autor = request.getParameter("autor");
-		String ocupacaoAutor = request.getParameter("autorOcupacao");
+		String autor = req.getParameter("autor");
+		String ocupacaoAutor = req.getParameter("autorOcupacao");
 		
-		String destinatario = request.getParameter("destinatario");
-		String ocupacaoDestinatario = request.getParameter("destinatarioOcupacao");
+		String destinatario = req.getParameter("destinatario");
+		String ocupacaoDestinatario = req.getParameter("destinatarioOcupacao");
 		
-		String tipoDocumento = request.getParameter("tipoDoc");
+		String tipoDocumento = req.getParameter("tipoDoc");
 		
-		String palavraChave1 = request.getParameter("chave1");
-		String palavraChave2 = request.getParameter("chave2");
-		String palavraChave3 = request.getParameter("chave3");
+		String palavraChave1 = req.getParameter("chave1");
+		String palavraChave2 = req.getParameter("chave2");
+		String palavraChave3 = req.getParameter("chave3");
     			
-	    String ano = request.getParameter("ano");
-		String mes = request.getParameter("mes");
-		String dia = request.getParameter("dia");
+	    String ano = req.getParameter("ano");
+		String mes = req.getParameter("mes");
+		String dia = req.getParameter("dia");
 		String data = null;
 		SimpleDate dataDoc = null;
 		
@@ -81,9 +84,9 @@ public class DocUpdateServlet extends HttpServlet {
 		
 		try {
 			CB.modifyDocument(tipoCodDocumentoAntigo,
-					String.format("%04d", Integer.parseInt(codDocumentoAntigo)), 
+					codDocumentoAntigo, 
 					tipoCodDocumento,
-					String.format("%04d", Integer.parseInt(codDocumento)), 
+					codDocumento,
 					local, 
 					url, 
 					resumo, 

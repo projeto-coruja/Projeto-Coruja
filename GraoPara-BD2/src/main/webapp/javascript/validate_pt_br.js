@@ -76,7 +76,7 @@ $(document).ready(function() {
 				required: true
 			},
 			chave2: {
-				required: true
+				required: false
 			},
 			chave3: {
 				required: true

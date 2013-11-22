@@ -63,7 +63,7 @@
 	
 	<tr>
 		<td class="field">
-			<input class="input" name="autorOcupacao" id="autorOcupacao" type="text" size="20" maxlength="48" value="<%=request.getAttribute("autorOcupacao") %>" />
+			<input class="input" name="autorOcupacao" id="autorOcupacao" type="text" size="20" value="<%=request.getAttribute("autorOcupacao") %>" />
 		</td>
 		<td class="status"></td>
 	</tr>
@@ -89,7 +89,7 @@
 	
 	<tr>
 		<td class="field">
-			<input class="input" name="destinatarioOcupacao" id="destinatarioOcupacao" type="text" size="20" maxlength="48" value="<%=request.getAttribute("destinatarioOcupacao") %>" />
+			<input class="input" name="destinatarioOcupacao" id="destinatarioOcupacao" type="text" size="20" value="<%=request.getAttribute("destinatarioOcupacao") %>" />
 		</td>
 		<td class="status"></td>
 	</tr>
