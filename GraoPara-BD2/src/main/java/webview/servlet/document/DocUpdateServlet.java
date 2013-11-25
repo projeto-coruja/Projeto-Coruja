@@ -3,13 +3,14 @@ package webview.servlet.document;
 import static webview.util.WebUtility.isInit;
 
 import java.io.IOException;
-import java.nio.charset.Charset;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.log4j.Logger;
 
 import persistence.exceptions.UpdateEntityException;
 import webview.util.AlertsUtility;
@@ -25,6 +26,7 @@ import datatype.SimpleDate;
 @WebServlet("/protected/admin/updateDoc")
 public class DocUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final Logger LOGGER = Logger.getLogger(DocUpdateServlet.class);
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -103,15 +105,15 @@ public class DocUpdateServlet extends HttpServlet {
 			AlertsUtility.alertAndRedirectPage(response, "Documento Atualizado com sucesso!", "index.jsp");
 		} catch (UnreachableDataBaseException e) {
 			AlertsUtility.alertAndRedirectHistory(response, "Erro no banco de dados! Contate o suporte e tente novamente mais tarde.");
-			e.printStackTrace();
+			LOGGER.warn(e, e);
 		} catch (DocumentNotFoundException e) {
 			AlertsUtility.alertAndRedirectHistory(response, "Erro interno, tente novamente mais tarde.");
-			e.printStackTrace();
+			LOGGER.warn(e, e);
 		} catch (IllegalArgumentException e) {
 			AlertsUtility.alertAndRedirectHistory(response, "Número APEP/Sequencial duplicado!");
-			throw e;
+			LOGGER.warn(e, e);
 		} catch (UpdateEntityException e) {
-			e.printStackTrace();
+			LOGGER.warn(e, e);
 		}
     }
 }

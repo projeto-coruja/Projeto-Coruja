@@ -2,8 +2,9 @@ package business.EJB.documents;
 
 import java.util.List;
 
-import datatype.SimpleDate;
+import org.apache.log4j.Logger;
 
+import datatype.SimpleDate;
 import persistence.dto.Autor;
 import persistence.dto.CodiceCaixa;
 import persistence.dto.DTO;
@@ -29,6 +30,8 @@ import business.exceptions.documents.ThemeNotFoundException;
 import business.exceptions.login.UnreachableDataBaseException;
 
 public class DocumentEJB {
+	
+	private final static Logger LOGGER = Logger.getLogger(DocumentEJB.class);
 	
 	private final DocumentoDAO docDao;
 	
@@ -594,6 +597,7 @@ public class DocumentEJB {
 					tipoDoc = (TipoDocumento) dto;
 			}
 		} catch (DocumentTypeNotFoundException e1) {	
+			LOGGER.info(tipoDocumento);
 			throw new IllegalArgumentException();
 		}
 		doc.setTipoDocumento(tipoDoc);
