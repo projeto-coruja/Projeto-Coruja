@@ -109,6 +109,7 @@ public class DocUpdateServlet extends HttpServlet {
 			e.printStackTrace();
 		} catch (IllegalArgumentException e) {
 			AlertsUtility.alertAndRedirectHistory(response, "Número APEP/Sequencial duplicado!");
+			throw e;
 		} catch (UpdateEntityException e) {
 			e.printStackTrace();
 		}
